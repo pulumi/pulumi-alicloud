@@ -17,7 +17,7 @@ type AlarmEscalationsCritical struct {
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times *int `pulumi:"times"`
 }
 
@@ -39,7 +39,7 @@ type AlarmEscalationsCriticalArgs struct {
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -135,7 +135,7 @@ func (o AlarmEscalationsCriticalOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 func (o AlarmEscalationsCriticalOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -194,7 +194,7 @@ func (o AlarmEscalationsCriticalPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *int {
 		if v == nil {
@@ -211,7 +211,7 @@ type AlarmEscalationsInfo struct {
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times *int `pulumi:"times"`
 }
 
@@ -233,7 +233,7 @@ type AlarmEscalationsInfoArgs struct {
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -329,7 +329,7 @@ func (o AlarmEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 func (o AlarmEscalationsInfoOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -388,7 +388,7 @@ func (o AlarmEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *int {
 		if v == nil {
@@ -405,7 +405,7 @@ type AlarmEscalationsWarn struct {
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times *int `pulumi:"times"`
 }
 
@@ -427,7 +427,7 @@ type AlarmEscalationsWarnArgs struct {
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -523,7 +523,7 @@ func (o AlarmEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 func (o AlarmEscalationsWarnOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -582,7 +582,7 @@ func (o AlarmEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
 func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *int {
 		if v == nil {
@@ -590,6 +590,130 @@ func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 		}
 		return v.Times
 	}).(pulumi.IntPtrOutput)
+}
+
+type AlarmPrometheus struct {
+	// The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+	Level *string `pulumi:"level"`
+	// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
+	PromQl *string `pulumi:"promQl"`
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+	Times *int `pulumi:"times"`
+}
+
+// AlarmPrometheusInput is an input type that accepts AlarmPrometheusArgs and AlarmPrometheusOutput values.
+// You can construct a concrete instance of `AlarmPrometheusInput` via:
+//
+//          AlarmPrometheusArgs{...}
+type AlarmPrometheusInput interface {
+	pulumi.Input
+
+	ToAlarmPrometheusOutput() AlarmPrometheusOutput
+	ToAlarmPrometheusOutputWithContext(context.Context) AlarmPrometheusOutput
+}
+
+type AlarmPrometheusArgs struct {
+	// The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
+	Annotations pulumi.MapInput `pulumi:"annotations"`
+	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
+	PromQl pulumi.StringPtrInput `pulumi:"promQl"`
+	// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlarmPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmPrometheus)(nil)).Elem()
+}
+
+func (i AlarmPrometheusArgs) ToAlarmPrometheusOutput() AlarmPrometheusOutput {
+	return i.ToAlarmPrometheusOutputWithContext(context.Background())
+}
+
+func (i AlarmPrometheusArgs) ToAlarmPrometheusOutputWithContext(ctx context.Context) AlarmPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmPrometheusOutput)
+}
+
+// AlarmPrometheusArrayInput is an input type that accepts AlarmPrometheusArray and AlarmPrometheusArrayOutput values.
+// You can construct a concrete instance of `AlarmPrometheusArrayInput` via:
+//
+//          AlarmPrometheusArray{ AlarmPrometheusArgs{...} }
+type AlarmPrometheusArrayInput interface {
+	pulumi.Input
+
+	ToAlarmPrometheusArrayOutput() AlarmPrometheusArrayOutput
+	ToAlarmPrometheusArrayOutputWithContext(context.Context) AlarmPrometheusArrayOutput
+}
+
+type AlarmPrometheusArray []AlarmPrometheusInput
+
+func (AlarmPrometheusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmPrometheus)(nil)).Elem()
+}
+
+func (i AlarmPrometheusArray) ToAlarmPrometheusArrayOutput() AlarmPrometheusArrayOutput {
+	return i.ToAlarmPrometheusArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmPrometheusArray) ToAlarmPrometheusArrayOutputWithContext(ctx context.Context) AlarmPrometheusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmPrometheusArrayOutput)
+}
+
+type AlarmPrometheusOutput struct{ *pulumi.OutputState }
+
+func (AlarmPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmPrometheus)(nil)).Elem()
+}
+
+func (o AlarmPrometheusOutput) ToAlarmPrometheusOutput() AlarmPrometheusOutput {
+	return o
+}
+
+func (o AlarmPrometheusOutput) ToAlarmPrometheusOutputWithContext(ctx context.Context) AlarmPrometheusOutput {
+	return o
+}
+
+// The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
+func (o AlarmPrometheusOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v AlarmPrometheus) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+func (o AlarmPrometheusOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmPrometheus) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
+func (o AlarmPrometheusOutput) PromQl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmPrometheus) *string { return v.PromQl }).(pulumi.StringPtrOutput)
+}
+
+// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+func (o AlarmPrometheusOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmPrometheus) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlarmPrometheusArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmPrometheusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmPrometheus)(nil)).Elem()
+}
+
+func (o AlarmPrometheusArrayOutput) ToAlarmPrometheusArrayOutput() AlarmPrometheusArrayOutput {
+	return o
+}
+
+func (o AlarmPrometheusArrayOutput) ToAlarmPrometheusArrayOutputWithContext(ctx context.Context) AlarmPrometheusArrayOutput {
+	return o
+}
+
+func (o AlarmPrometheusArrayOutput) Index(i pulumi.IntInput) AlarmPrometheusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmPrometheus {
+		return vs[0].([]AlarmPrometheus)[vs[1].(int)]
+	}).(AlarmPrometheusOutput)
 }
 
 type DynamicTagGroupMatchExpress struct {
@@ -1453,6 +1577,938 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 		}
 		return v.Times
 	}).(pulumi.IntPtrOutput)
+}
+
+type HybridMonitorSlsTaskAttachLabel struct {
+	// The tag key of the metric.
+	Name *string `pulumi:"name"`
+	// The tag value of the metric.
+	Value *string `pulumi:"value"`
+}
+
+// HybridMonitorSlsTaskAttachLabelInput is an input type that accepts HybridMonitorSlsTaskAttachLabelArgs and HybridMonitorSlsTaskAttachLabelOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskAttachLabelInput` via:
+//
+//          HybridMonitorSlsTaskAttachLabelArgs{...}
+type HybridMonitorSlsTaskAttachLabelInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskAttachLabelOutput() HybridMonitorSlsTaskAttachLabelOutput
+	ToHybridMonitorSlsTaskAttachLabelOutputWithContext(context.Context) HybridMonitorSlsTaskAttachLabelOutput
+}
+
+type HybridMonitorSlsTaskAttachLabelArgs struct {
+	// The tag key of the metric.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The tag value of the metric.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HybridMonitorSlsTaskAttachLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskAttachLabel)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskAttachLabelArgs) ToHybridMonitorSlsTaskAttachLabelOutput() HybridMonitorSlsTaskAttachLabelOutput {
+	return i.ToHybridMonitorSlsTaskAttachLabelOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskAttachLabelArgs) ToHybridMonitorSlsTaskAttachLabelOutputWithContext(ctx context.Context) HybridMonitorSlsTaskAttachLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskAttachLabelOutput)
+}
+
+// HybridMonitorSlsTaskAttachLabelArrayInput is an input type that accepts HybridMonitorSlsTaskAttachLabelArray and HybridMonitorSlsTaskAttachLabelArrayOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskAttachLabelArrayInput` via:
+//
+//          HybridMonitorSlsTaskAttachLabelArray{ HybridMonitorSlsTaskAttachLabelArgs{...} }
+type HybridMonitorSlsTaskAttachLabelArrayInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskAttachLabelArrayOutput() HybridMonitorSlsTaskAttachLabelArrayOutput
+	ToHybridMonitorSlsTaskAttachLabelArrayOutputWithContext(context.Context) HybridMonitorSlsTaskAttachLabelArrayOutput
+}
+
+type HybridMonitorSlsTaskAttachLabelArray []HybridMonitorSlsTaskAttachLabelInput
+
+func (HybridMonitorSlsTaskAttachLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskAttachLabel)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskAttachLabelArray) ToHybridMonitorSlsTaskAttachLabelArrayOutput() HybridMonitorSlsTaskAttachLabelArrayOutput {
+	return i.ToHybridMonitorSlsTaskAttachLabelArrayOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskAttachLabelArray) ToHybridMonitorSlsTaskAttachLabelArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskAttachLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskAttachLabelArrayOutput)
+}
+
+type HybridMonitorSlsTaskAttachLabelOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskAttachLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskAttachLabel)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskAttachLabelOutput) ToHybridMonitorSlsTaskAttachLabelOutput() HybridMonitorSlsTaskAttachLabelOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskAttachLabelOutput) ToHybridMonitorSlsTaskAttachLabelOutputWithContext(ctx context.Context) HybridMonitorSlsTaskAttachLabelOutput {
+	return o
+}
+
+// The tag key of the metric.
+func (o HybridMonitorSlsTaskAttachLabelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskAttachLabel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The tag value of the metric.
+func (o HybridMonitorSlsTaskAttachLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskAttachLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HybridMonitorSlsTaskAttachLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskAttachLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskAttachLabel)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskAttachLabelArrayOutput) ToHybridMonitorSlsTaskAttachLabelArrayOutput() HybridMonitorSlsTaskAttachLabelArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskAttachLabelArrayOutput) ToHybridMonitorSlsTaskAttachLabelArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskAttachLabelArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskAttachLabelArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskAttachLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HybridMonitorSlsTaskAttachLabel {
+		return vs[0].([]HybridMonitorSlsTaskAttachLabel)[vs[1].(int)]
+	}).(HybridMonitorSlsTaskAttachLabelOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfig struct {
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Expresses []HybridMonitorSlsTaskSlsProcessConfigExpress `pulumi:"expresses"`
+	// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+	Filter *HybridMonitorSlsTaskSlsProcessConfigFilter `pulumi:"filter"`
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+	GroupBies []HybridMonitorSlsTaskSlsProcessConfigGroupBy `pulumi:"groupBies"`
+	// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+	Statistics []HybridMonitorSlsTaskSlsProcessConfigStatistic `pulumi:"statistics"`
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigArgs and HybridMonitorSlsTaskSlsProcessConfigOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigArgs{...}
+type HybridMonitorSlsTaskSlsProcessConfigInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigOutput() HybridMonitorSlsTaskSlsProcessConfigOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigArgs struct {
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Expresses HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput `pulumi:"expresses"`
+	// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+	Filter HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput `pulumi:"filter"`
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+	GroupBies HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput `pulumi:"groupBies"`
+	// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+	Statistics HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput `pulumi:"statistics"`
+}
+
+func (HybridMonitorSlsTaskSlsProcessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToHybridMonitorSlsTaskSlsProcessConfigOutput() HybridMonitorSlsTaskSlsProcessConfigOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToHybridMonitorSlsTaskSlsProcessConfigOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigOutput)
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutput() HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigOutput).ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(ctx)
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigPtrInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigArgs, HybridMonitorSlsTaskSlsProcessConfigPtr and HybridMonitorSlsTaskSlsProcessConfigPtrOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigPtrInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type HybridMonitorSlsTaskSlsProcessConfigPtrInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigPtrOutput() HybridMonitorSlsTaskSlsProcessConfigPtrOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigPtrOutput
+}
+
+type hybridMonitorSlsTaskSlsProcessConfigPtrType HybridMonitorSlsTaskSlsProcessConfigArgs
+
+func HybridMonitorSlsTaskSlsProcessConfigPtr(v *HybridMonitorSlsTaskSlsProcessConfigArgs) HybridMonitorSlsTaskSlsProcessConfigPtrInput {
+	return (*hybridMonitorSlsTaskSlsProcessConfigPtrType)(v)
+}
+
+func (*hybridMonitorSlsTaskSlsProcessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridMonitorSlsTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (i *hybridMonitorSlsTaskSlsProcessConfigPtrType) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutput() HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *hybridMonitorSlsTaskSlsProcessConfigPtrType) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) ToHybridMonitorSlsTaskSlsProcessConfigOutput() HybridMonitorSlsTaskSlsProcessConfigOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) ToHybridMonitorSlsTaskSlsProcessConfigOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutput() HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return o.ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HybridMonitorSlsTaskSlsProcessConfig) *HybridMonitorSlsTaskSlsProcessConfig {
+		return &v
+	}).(HybridMonitorSlsTaskSlsProcessConfigPtrOutput)
+}
+
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) Expresses() HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigExpress {
+		return v.Expresses
+	}).(HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput)
+}
+
+// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) Filter() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) *HybridMonitorSlsTaskSlsProcessConfigFilter {
+		return v.Filter
+	}).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
+}
+
+// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) GroupBies() HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigGroupBy {
+		return v.GroupBies
+	}).(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput)
+}
+
+// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) Statistics() HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigStatistic {
+		return v.Statistics
+	}).(HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridMonitorSlsTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutput() HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Elem() HybridMonitorSlsTaskSlsProcessConfigOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) HybridMonitorSlsTaskSlsProcessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret HybridMonitorSlsTaskSlsProcessConfig
+		return ret
+	}).(HybridMonitorSlsTaskSlsProcessConfigOutput)
+}
+
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Expresses() HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigExpress {
+		if v == nil {
+			return nil
+		}
+		return v.Expresses
+	}).(HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput)
+}
+
+// The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Filter() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) *HybridMonitorSlsTaskSlsProcessConfigFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
+}
+
+// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) GroupBies() HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigGroupBy {
+		if v == nil {
+			return nil
+		}
+		return v.GroupBies
+	}).(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput)
+}
+
+// The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Statistics() HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfig) []HybridMonitorSlsTaskSlsProcessConfigStatistic {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigExpress struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias *string `pulumi:"alias"`
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Express *string `pulumi:"express"`
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigExpressInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigExpressArgs and HybridMonitorSlsTaskSlsProcessConfigExpressOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigExpressInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigExpressArgs{...}
+type HybridMonitorSlsTaskSlsProcessConfigExpressInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigExpressOutput() HybridMonitorSlsTaskSlsProcessConfigExpressOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigExpressOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigExpressArgs struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Express pulumi.StringPtrInput `pulumi:"express"`
+}
+
+func (HybridMonitorSlsTaskSlsProcessConfigExpressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigExpressArgs) ToHybridMonitorSlsTaskSlsProcessConfigExpressOutput() HybridMonitorSlsTaskSlsProcessConfigExpressOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigExpressOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigExpressArgs) ToHybridMonitorSlsTaskSlsProcessConfigExpressOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigExpressOutput)
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigExpressArray and HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigExpressArray{ HybridMonitorSlsTaskSlsProcessConfigExpressArgs{...} }
+type HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput() HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigExpressArray []HybridMonitorSlsTaskSlsProcessConfigExpressInput
+
+func (HybridMonitorSlsTaskSlsProcessConfigExpressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigExpressArray) ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput() HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigExpressArray) ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigExpressOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigExpressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) ToHybridMonitorSlsTaskSlsProcessConfigExpressOutput() HybridMonitorSlsTaskSlsProcessConfigExpressOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) ToHybridMonitorSlsTaskSlsProcessConfigExpressOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressOutput {
+	return o
+}
+
+// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigExpress) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) Express() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigExpress) *string { return v.Express }).(pulumi.StringPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput() HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigExpressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HybridMonitorSlsTaskSlsProcessConfigExpress {
+		return vs[0].([]HybridMonitorSlsTaskSlsProcessConfigExpress)[vs[1].(int)]
+	}).(HybridMonitorSlsTaskSlsProcessConfigExpressOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilter struct {
+	// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+	Filters []HybridMonitorSlsTaskSlsProcessConfigFilterFilter `pulumi:"filters"`
+	// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+	Relation *string `pulumi:"relation"`
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigFilterInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterArgs and HybridMonitorSlsTaskSlsProcessConfigFilterOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigFilterArgs{...}
+type HybridMonitorSlsTaskSlsProcessConfigFilterInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterOutput() HybridMonitorSlsTaskSlsProcessConfigFilterOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterArgs struct {
+	// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+	Filters HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput `pulumi:"filters"`
+	// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
+}
+
+func (HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToHybridMonitorSlsTaskSlsProcessConfigFilterOutput() HybridMonitorSlsTaskSlsProcessConfigFilterOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigFilterOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToHybridMonitorSlsTaskSlsProcessConfigFilterOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterOutput)
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterOutput).ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(ctx)
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterArgs, HybridMonitorSlsTaskSlsProcessConfigFilterPtr and HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigFilterArgs{...}
+//
+//  or:
+//
+//          nil
+type HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput
+}
+
+type hybridMonitorSlsTaskSlsProcessConfigFilterPtrType HybridMonitorSlsTaskSlsProcessConfigFilterArgs
+
+func HybridMonitorSlsTaskSlsProcessConfigFilterPtr(v *HybridMonitorSlsTaskSlsProcessConfigFilterArgs) HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput {
+	return (*hybridMonitorSlsTaskSlsProcessConfigFilterPtrType)(v)
+}
+
+func (*hybridMonitorSlsTaskSlsProcessConfigFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridMonitorSlsTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (i *hybridMonitorSlsTaskSlsProcessConfigFilterPtrType) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *hybridMonitorSlsTaskSlsProcessConfigFilterPtrType) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterOutput() HybridMonitorSlsTaskSlsProcessConfigFilterOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return o.ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HybridMonitorSlsTaskSlsProcessConfigFilter) *HybridMonitorSlsTaskSlsProcessConfigFilter {
+		return &v
+	}).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
+}
+
+// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) Filters() HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigFilter) []HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
+		return v.Filters
+	}).(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput)
+}
+
+// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigFilter) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridMonitorSlsTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) Elem() HybridMonitorSlsTaskSlsProcessConfigFilterOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfigFilter) HybridMonitorSlsTaskSlsProcessConfigFilter {
+		if v != nil {
+			return *v
+		}
+		var ret HybridMonitorSlsTaskSlsProcessConfigFilter
+		return ret
+	}).(HybridMonitorSlsTaskSlsProcessConfigFilterOutput)
+}
+
+// The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) Filters() HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfigFilter) []HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput)
+}
+
+// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HybridMonitorSlsTaskSlsProcessConfigFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterFilter struct {
+	// The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+	Operator *string `pulumi:"operator"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName *string `pulumi:"slsKeyName"`
+	// The tag value of the metric.
+	Value *string `pulumi:"value"`
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs and HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{...}
+type HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput() HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs struct {
+	// The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName pulumi.StringPtrInput `pulumi:"slsKeyName"`
+	// The tag value of the metric.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput() HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput)
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray and HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{ HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{...} }
+type HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput() HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray []HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput
+
+func (HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput() HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput() HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput {
+	return o
+}
+
+// The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigFilterFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The name of the key that is used to filter logs imported from Log Service.
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) SlsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigFilterFilter) *string { return v.SlsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// The tag value of the metric.
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigFilterFilter) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput() HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
+		return vs[0].([]HybridMonitorSlsTaskSlsProcessConfigFilterFilter)[vs[1].(int)]
+	}).(HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigGroupBy struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias *string `pulumi:"alias"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName *string `pulumi:"slsKeyName"`
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigGroupByInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigGroupByArgs and HybridMonitorSlsTaskSlsProcessConfigGroupByOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigGroupByInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{...}
+type HybridMonitorSlsTaskSlsProcessConfigGroupByInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutput() HybridMonitorSlsTaskSlsProcessConfigGroupByOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigGroupByArgs struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName pulumi.StringPtrInput `pulumi:"slsKeyName"`
+}
+
+func (HybridMonitorSlsTaskSlsProcessConfigGroupByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArgs) ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutput() HybridMonitorSlsTaskSlsProcessConfigGroupByOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArgs) ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigGroupByOutput)
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigGroupByArray and HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigGroupByArray{ HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{...} }
+type HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput() HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigGroupByArray []HybridMonitorSlsTaskSlsProcessConfigGroupByInput
+
+func (HybridMonitorSlsTaskSlsProcessConfigGroupByArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArray) ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput() HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArray) ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigGroupByOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutput() HybridMonitorSlsTaskSlsProcessConfigGroupByOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByOutput {
+	return o
+}
+
+// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigGroupBy) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The name of the key that is used to filter logs imported from Log Service.
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) SlsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigGroupBy) *string { return v.SlsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput() HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigGroupByOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HybridMonitorSlsTaskSlsProcessConfigGroupBy {
+		return vs[0].([]HybridMonitorSlsTaskSlsProcessConfigGroupBy)[vs[1].(int)]
+	}).(HybridMonitorSlsTaskSlsProcessConfigGroupByOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigStatistic struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias *string `pulumi:"alias"`
+	// The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+	Function *string `pulumi:"function"`
+	// The value of the function that is used to aggregate logs imported from Log Service.
+	// - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+	// - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+	ParameterOne *string `pulumi:"parameterOne"`
+	// The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+	ParameterTwo *string `pulumi:"parameterTwo"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName *string `pulumi:"slsKeyName"`
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigStatisticInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigStatisticArgs and HybridMonitorSlsTaskSlsProcessConfigStatisticOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigStatisticInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{...}
+type HybridMonitorSlsTaskSlsProcessConfigStatisticInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutput() HybridMonitorSlsTaskSlsProcessConfigStatisticOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigStatisticArgs struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+	Function pulumi.StringPtrInput `pulumi:"function"`
+	// The value of the function that is used to aggregate logs imported from Log Service.
+	// - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+	// - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+	ParameterOne pulumi.StringPtrInput `pulumi:"parameterOne"`
+	// The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+	ParameterTwo pulumi.StringPtrInput `pulumi:"parameterTwo"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName pulumi.StringPtrInput `pulumi:"slsKeyName"`
+}
+
+func (HybridMonitorSlsTaskSlsProcessConfigStatisticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArgs) ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutput() HybridMonitorSlsTaskSlsProcessConfigStatisticOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArgs) ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigStatisticOutput)
+}
+
+// HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigStatisticArray and HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput values.
+// You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput` via:
+//
+//          HybridMonitorSlsTaskSlsProcessConfigStatisticArray{ HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{...} }
+type HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput interface {
+	pulumi.Input
+
+	ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput() HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput
+	ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutputWithContext(context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigStatisticArray []HybridMonitorSlsTaskSlsProcessConfigStatisticInput
+
+func (HybridMonitorSlsTaskSlsProcessConfigStatisticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArray) ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput() HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
+	return i.ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutputWithContext(context.Background())
+}
+
+func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArray) ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigStatisticOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutput() HybridMonitorSlsTaskSlsProcessConfigStatisticOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticOutput {
+	return o
+}
+
+// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigStatistic) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) Function() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigStatistic) *string { return v.Function }).(pulumi.StringPtrOutput)
+}
+
+// The value of the function that is used to aggregate logs imported from Log Service.
+// - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+// - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ParameterOne() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigStatistic) *string { return v.ParameterOne }).(pulumi.StringPtrOutput)
+}
+
+// The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ParameterTwo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigStatistic) *string { return v.ParameterTwo }).(pulumi.StringPtrOutput)
+}
+
+// The name of the key that is used to filter logs imported from Log Service.
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) SlsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridMonitorSlsTaskSlsProcessConfigStatistic) *string { return v.SlsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput struct{ *pulumi.OutputState }
+
+func (HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HybridMonitorSlsTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput() HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
+	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigStatisticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HybridMonitorSlsTaskSlsProcessConfigStatistic {
+		return vs[0].([]HybridMonitorSlsTaskSlsProcessConfigStatistic)[vs[1].(int)]
+	}).(HybridMonitorSlsTaskSlsProcessConfigStatisticOutput)
 }
 
 type MetricRuleTemplateAlertTemplate struct {
@@ -4368,6 +5424,1401 @@ func (o GetHybridMonitorDatasDataValueArrayOutput) Index(i pulumi.IntInput) GetH
 	}).(GetHybridMonitorDatasDataValueOutput)
 }
 
+type GetHybridMonitorFcTasksTask struct {
+	// Create the timestamp of the monitoring task. Unit: milliseconds.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the monitoring task.
+	HybridMonitorFcTaskId string `pulumi:"hybridMonitorFcTaskId"`
+	// The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
+	Id string `pulumi:"id"`
+	// The index warehouse where the host belongs.
+	Namespace string `pulumi:"namespace"`
+	// The ID of the member account.
+	TargetUserId string `pulumi:"targetUserId"`
+	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+	YarmConfig string `pulumi:"yarmConfig"`
+}
+
+// GetHybridMonitorFcTasksTaskInput is an input type that accepts GetHybridMonitorFcTasksTaskArgs and GetHybridMonitorFcTasksTaskOutput values.
+// You can construct a concrete instance of `GetHybridMonitorFcTasksTaskInput` via:
+//
+//          GetHybridMonitorFcTasksTaskArgs{...}
+type GetHybridMonitorFcTasksTaskInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorFcTasksTaskOutput() GetHybridMonitorFcTasksTaskOutput
+	ToGetHybridMonitorFcTasksTaskOutputWithContext(context.Context) GetHybridMonitorFcTasksTaskOutput
+}
+
+type GetHybridMonitorFcTasksTaskArgs struct {
+	// Create the timestamp of the monitoring task. Unit: milliseconds.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the monitoring task.
+	HybridMonitorFcTaskId pulumi.StringInput `pulumi:"hybridMonitorFcTaskId"`
+	// The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The index warehouse where the host belongs.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The ID of the member account.
+	TargetUserId pulumi.StringInput `pulumi:"targetUserId"`
+	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+	YarmConfig pulumi.StringInput `pulumi:"yarmConfig"`
+}
+
+func (GetHybridMonitorFcTasksTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorFcTasksTask)(nil)).Elem()
+}
+
+func (i GetHybridMonitorFcTasksTaskArgs) ToGetHybridMonitorFcTasksTaskOutput() GetHybridMonitorFcTasksTaskOutput {
+	return i.ToGetHybridMonitorFcTasksTaskOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorFcTasksTaskArgs) ToGetHybridMonitorFcTasksTaskOutputWithContext(ctx context.Context) GetHybridMonitorFcTasksTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorFcTasksTaskOutput)
+}
+
+// GetHybridMonitorFcTasksTaskArrayInput is an input type that accepts GetHybridMonitorFcTasksTaskArray and GetHybridMonitorFcTasksTaskArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorFcTasksTaskArrayInput` via:
+//
+//          GetHybridMonitorFcTasksTaskArray{ GetHybridMonitorFcTasksTaskArgs{...} }
+type GetHybridMonitorFcTasksTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorFcTasksTaskArrayOutput() GetHybridMonitorFcTasksTaskArrayOutput
+	ToGetHybridMonitorFcTasksTaskArrayOutputWithContext(context.Context) GetHybridMonitorFcTasksTaskArrayOutput
+}
+
+type GetHybridMonitorFcTasksTaskArray []GetHybridMonitorFcTasksTaskInput
+
+func (GetHybridMonitorFcTasksTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorFcTasksTask)(nil)).Elem()
+}
+
+func (i GetHybridMonitorFcTasksTaskArray) ToGetHybridMonitorFcTasksTaskArrayOutput() GetHybridMonitorFcTasksTaskArrayOutput {
+	return i.ToGetHybridMonitorFcTasksTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorFcTasksTaskArray) ToGetHybridMonitorFcTasksTaskArrayOutputWithContext(ctx context.Context) GetHybridMonitorFcTasksTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorFcTasksTaskArrayOutput)
+}
+
+type GetHybridMonitorFcTasksTaskOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorFcTasksTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorFcTasksTask)(nil)).Elem()
+}
+
+func (o GetHybridMonitorFcTasksTaskOutput) ToGetHybridMonitorFcTasksTaskOutput() GetHybridMonitorFcTasksTaskOutput {
+	return o
+}
+
+func (o GetHybridMonitorFcTasksTaskOutput) ToGetHybridMonitorFcTasksTaskOutputWithContext(ctx context.Context) GetHybridMonitorFcTasksTaskOutput {
+	return o
+}
+
+// Create the timestamp of the monitoring task. Unit: milliseconds.
+func (o GetHybridMonitorFcTasksTaskOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the monitoring task.
+func (o GetHybridMonitorFcTasksTaskOutput) HybridMonitorFcTaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.HybridMonitorFcTaskId }).(pulumi.StringOutput)
+}
+
+// The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
+func (o GetHybridMonitorFcTasksTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The index warehouse where the host belongs.
+func (o GetHybridMonitorFcTasksTaskOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The ID of the member account.
+func (o GetHybridMonitorFcTasksTaskOutput) TargetUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.TargetUserId }).(pulumi.StringOutput)
+}
+
+// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+func (o GetHybridMonitorFcTasksTaskOutput) YarmConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.YarmConfig }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorFcTasksTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorFcTasksTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorFcTasksTask)(nil)).Elem()
+}
+
+func (o GetHybridMonitorFcTasksTaskArrayOutput) ToGetHybridMonitorFcTasksTaskArrayOutput() GetHybridMonitorFcTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorFcTasksTaskArrayOutput) ToGetHybridMonitorFcTasksTaskArrayOutputWithContext(ctx context.Context) GetHybridMonitorFcTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorFcTasksTaskArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorFcTasksTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorFcTasksTask {
+		return vs[0].([]GetHybridMonitorFcTasksTask)[vs[1].(int)]
+	}).(GetHybridMonitorFcTasksTaskOutput)
+}
+
+type GetHybridMonitorSlsTasksTask struct {
+	// The tags of the metric import task.
+	AttachLabels []GetHybridMonitorSlsTasksTaskAttachLabel `pulumi:"attachLabels"`
+	// The interval between the cloud monitoring plug-in collecting host monitoring data.
+	CollectInterval int `pulumi:"collectInterval"`
+	// The address where the cloudmonitor Plug-In collects the monitoring data of the host.
+	CollectTargetEndpoint string `pulumi:"collectTargetEndpoint"`
+	// When the cloud monitor Agent collects, the relative path of the collection.
+	CollectTargetPath string `pulumi:"collectTargetPath"`
+	// The type of the monitoring data. Valid values: Spring, Tomcat, Nginx, Tengine, JVM, Redis, MySQL, and AWS.
+	CollectTargetType string `pulumi:"collectTargetType"`
+	// The timeout period for the cloudmonitor plug-in to collect host monitoring data.
+	CollectTimout int `pulumi:"collectTimout"`
+	// Create the timestamp of the monitoring task. Unit: milliseconds.
+	CreateTime string `pulumi:"createTime"`
+	// Monitoring task description.
+	Description string `pulumi:"description"`
+	// Additional information for the instance.
+	ExtraInfo string `pulumi:"extraInfo"`
+	// The ID of the application Group.
+	GroupId string `pulumi:"groupId"`
+	// The ID of the monitoring task.
+	HybridMonitorSlsTaskId string `pulumi:"hybridMonitorSlsTaskId"`
+	// The ID of the Hybrid Monitor Sls Task.
+	Id string `pulumi:"id"`
+	// A list of instances where monitoring data is collected in batches.
+	Instances []string `pulumi:"instances"`
+	// The path where on-premises log data is stored. On-premises log data is stored in the specified path of the host where CloudMonitor is deployed.
+	LogFilePath string `pulumi:"logFilePath"`
+	// Local Log Monitoring and calculation method.
+	LogProcess string `pulumi:"logProcess"`
+	// The sample on-premises log.
+	LogSample string `pulumi:"logSample"`
+	// The local log data is divided according to different matching patterns.
+	LogSplit string `pulumi:"logSplit"`
+	// The filter condition of the instance of the monitoring task.
+	MatchExpressRelation string `pulumi:"matchExpressRelation"`
+	// The matching condition of the instance in the application Group.
+	MatchExpresses []GetHybridMonitorSlsTasksTaskMatchExpress `pulumi:"matchExpresses"`
+	// The namespace to which the host belongs.
+	Namespace string `pulumi:"namespace"`
+	// The network type of the host.
+	NetworkType string `pulumi:"networkType"`
+	// The configurations of the logs that are imported from Log Service.
+	SlsProcess string `pulumi:"slsProcess"`
+	// The configurations of the logs that are imported from Log Service.
+	SlsProcessConfigs []GetHybridMonitorSlsTasksTaskSlsProcessConfig `pulumi:"slsProcessConfigs"`
+	// The name of the metric import task.
+	TaskName string `pulumi:"taskName"`
+	// Monitoring Task type.
+	TaskType string `pulumi:"taskType"`
+	// The region where the host resides.
+	UploadRegion string `pulumi:"uploadRegion"`
+	YarmConfig   string `pulumi:"yarmConfig"`
+}
+
+// GetHybridMonitorSlsTasksTaskInput is an input type that accepts GetHybridMonitorSlsTasksTaskArgs and GetHybridMonitorSlsTasksTaskOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskArgs{...}
+type GetHybridMonitorSlsTasksTaskInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskOutput() GetHybridMonitorSlsTasksTaskOutput
+	ToGetHybridMonitorSlsTasksTaskOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskOutput
+}
+
+type GetHybridMonitorSlsTasksTaskArgs struct {
+	// The tags of the metric import task.
+	AttachLabels GetHybridMonitorSlsTasksTaskAttachLabelArrayInput `pulumi:"attachLabels"`
+	// The interval between the cloud monitoring plug-in collecting host monitoring data.
+	CollectInterval pulumi.IntInput `pulumi:"collectInterval"`
+	// The address where the cloudmonitor Plug-In collects the monitoring data of the host.
+	CollectTargetEndpoint pulumi.StringInput `pulumi:"collectTargetEndpoint"`
+	// When the cloud monitor Agent collects, the relative path of the collection.
+	CollectTargetPath pulumi.StringInput `pulumi:"collectTargetPath"`
+	// The type of the monitoring data. Valid values: Spring, Tomcat, Nginx, Tengine, JVM, Redis, MySQL, and AWS.
+	CollectTargetType pulumi.StringInput `pulumi:"collectTargetType"`
+	// The timeout period for the cloudmonitor plug-in to collect host monitoring data.
+	CollectTimout pulumi.IntInput `pulumi:"collectTimout"`
+	// Create the timestamp of the monitoring task. Unit: milliseconds.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Monitoring task description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Additional information for the instance.
+	ExtraInfo pulumi.StringInput `pulumi:"extraInfo"`
+	// The ID of the application Group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The ID of the monitoring task.
+	HybridMonitorSlsTaskId pulumi.StringInput `pulumi:"hybridMonitorSlsTaskId"`
+	// The ID of the Hybrid Monitor Sls Task.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list of instances where monitoring data is collected in batches.
+	Instances pulumi.StringArrayInput `pulumi:"instances"`
+	// The path where on-premises log data is stored. On-premises log data is stored in the specified path of the host where CloudMonitor is deployed.
+	LogFilePath pulumi.StringInput `pulumi:"logFilePath"`
+	// Local Log Monitoring and calculation method.
+	LogProcess pulumi.StringInput `pulumi:"logProcess"`
+	// The sample on-premises log.
+	LogSample pulumi.StringInput `pulumi:"logSample"`
+	// The local log data is divided according to different matching patterns.
+	LogSplit pulumi.StringInput `pulumi:"logSplit"`
+	// The filter condition of the instance of the monitoring task.
+	MatchExpressRelation pulumi.StringInput `pulumi:"matchExpressRelation"`
+	// The matching condition of the instance in the application Group.
+	MatchExpresses GetHybridMonitorSlsTasksTaskMatchExpressArrayInput `pulumi:"matchExpresses"`
+	// The namespace to which the host belongs.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The network type of the host.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The configurations of the logs that are imported from Log Service.
+	SlsProcess pulumi.StringInput `pulumi:"slsProcess"`
+	// The configurations of the logs that are imported from Log Service.
+	SlsProcessConfigs GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput `pulumi:"slsProcessConfigs"`
+	// The name of the metric import task.
+	TaskName pulumi.StringInput `pulumi:"taskName"`
+	// Monitoring Task type.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
+	// The region where the host resides.
+	UploadRegion pulumi.StringInput `pulumi:"uploadRegion"`
+	YarmConfig   pulumi.StringInput `pulumi:"yarmConfig"`
+}
+
+func (GetHybridMonitorSlsTasksTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTask)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskArgs) ToGetHybridMonitorSlsTasksTaskOutput() GetHybridMonitorSlsTasksTaskOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskArgs) ToGetHybridMonitorSlsTasksTaskOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskArray and GetHybridMonitorSlsTasksTaskArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskArray{ GetHybridMonitorSlsTasksTaskArgs{...} }
+type GetHybridMonitorSlsTasksTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskArrayOutput() GetHybridMonitorSlsTasksTaskArrayOutput
+	ToGetHybridMonitorSlsTasksTaskArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskArray []GetHybridMonitorSlsTasksTaskInput
+
+func (GetHybridMonitorSlsTasksTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTask)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskArray) ToGetHybridMonitorSlsTasksTaskArrayOutput() GetHybridMonitorSlsTasksTaskArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskArray) ToGetHybridMonitorSlsTasksTaskArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTask)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskOutput) ToGetHybridMonitorSlsTasksTaskOutput() GetHybridMonitorSlsTasksTaskOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskOutput) ToGetHybridMonitorSlsTasksTaskOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskOutput {
+	return o
+}
+
+// The tags of the metric import task.
+func (o GetHybridMonitorSlsTasksTaskOutput) AttachLabels() GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) []GetHybridMonitorSlsTasksTaskAttachLabel { return v.AttachLabels }).(GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput)
+}
+
+// The interval between the cloud monitoring plug-in collecting host monitoring data.
+func (o GetHybridMonitorSlsTasksTaskOutput) CollectInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) int { return v.CollectInterval }).(pulumi.IntOutput)
+}
+
+// The address where the cloudmonitor Plug-In collects the monitoring data of the host.
+func (o GetHybridMonitorSlsTasksTaskOutput) CollectTargetEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.CollectTargetEndpoint }).(pulumi.StringOutput)
+}
+
+// When the cloud monitor Agent collects, the relative path of the collection.
+func (o GetHybridMonitorSlsTasksTaskOutput) CollectTargetPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.CollectTargetPath }).(pulumi.StringOutput)
+}
+
+// The type of the monitoring data. Valid values: Spring, Tomcat, Nginx, Tengine, JVM, Redis, MySQL, and AWS.
+func (o GetHybridMonitorSlsTasksTaskOutput) CollectTargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.CollectTargetType }).(pulumi.StringOutput)
+}
+
+// The timeout period for the cloudmonitor plug-in to collect host monitoring data.
+func (o GetHybridMonitorSlsTasksTaskOutput) CollectTimout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) int { return v.CollectTimout }).(pulumi.IntOutput)
+}
+
+// Create the timestamp of the monitoring task. Unit: milliseconds.
+func (o GetHybridMonitorSlsTasksTaskOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Monitoring task description.
+func (o GetHybridMonitorSlsTasksTaskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Additional information for the instance.
+func (o GetHybridMonitorSlsTasksTaskOutput) ExtraInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.ExtraInfo }).(pulumi.StringOutput)
+}
+
+// The ID of the application Group.
+func (o GetHybridMonitorSlsTasksTaskOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the monitoring task.
+func (o GetHybridMonitorSlsTasksTaskOutput) HybridMonitorSlsTaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.HybridMonitorSlsTaskId }).(pulumi.StringOutput)
+}
+
+// The ID of the Hybrid Monitor Sls Task.
+func (o GetHybridMonitorSlsTasksTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instances where monitoring data is collected in batches.
+func (o GetHybridMonitorSlsTasksTaskOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+// The path where on-premises log data is stored. On-premises log data is stored in the specified path of the host where CloudMonitor is deployed.
+func (o GetHybridMonitorSlsTasksTaskOutput) LogFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.LogFilePath }).(pulumi.StringOutput)
+}
+
+// Local Log Monitoring and calculation method.
+func (o GetHybridMonitorSlsTasksTaskOutput) LogProcess() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.LogProcess }).(pulumi.StringOutput)
+}
+
+// The sample on-premises log.
+func (o GetHybridMonitorSlsTasksTaskOutput) LogSample() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.LogSample }).(pulumi.StringOutput)
+}
+
+// The local log data is divided according to different matching patterns.
+func (o GetHybridMonitorSlsTasksTaskOutput) LogSplit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.LogSplit }).(pulumi.StringOutput)
+}
+
+// The filter condition of the instance of the monitoring task.
+func (o GetHybridMonitorSlsTasksTaskOutput) MatchExpressRelation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.MatchExpressRelation }).(pulumi.StringOutput)
+}
+
+// The matching condition of the instance in the application Group.
+func (o GetHybridMonitorSlsTasksTaskOutput) MatchExpresses() GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) []GetHybridMonitorSlsTasksTaskMatchExpress {
+		return v.MatchExpresses
+	}).(GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput)
+}
+
+// The namespace to which the host belongs.
+func (o GetHybridMonitorSlsTasksTaskOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The network type of the host.
+func (o GetHybridMonitorSlsTasksTaskOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The configurations of the logs that are imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskOutput) SlsProcess() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.SlsProcess }).(pulumi.StringOutput)
+}
+
+// The configurations of the logs that are imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskOutput) SlsProcessConfigs() GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) []GetHybridMonitorSlsTasksTaskSlsProcessConfig {
+		return v.SlsProcessConfigs
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput)
+}
+
+// The name of the metric import task.
+func (o GetHybridMonitorSlsTasksTaskOutput) TaskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.TaskName }).(pulumi.StringOutput)
+}
+
+// Monitoring Task type.
+func (o GetHybridMonitorSlsTasksTaskOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// The region where the host resides.
+func (o GetHybridMonitorSlsTasksTaskOutput) UploadRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.UploadRegion }).(pulumi.StringOutput)
+}
+
+func (o GetHybridMonitorSlsTasksTaskOutput) YarmConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.YarmConfig }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTask)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskArrayOutput) ToGetHybridMonitorSlsTasksTaskArrayOutput() GetHybridMonitorSlsTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskArrayOutput) ToGetHybridMonitorSlsTasksTaskArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTask {
+		return vs[0].([]GetHybridMonitorSlsTasksTask)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskAttachLabel struct {
+	// The name of the instance.
+	Name string `pulumi:"name"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value string `pulumi:"value"`
+}
+
+// GetHybridMonitorSlsTasksTaskAttachLabelInput is an input type that accepts GetHybridMonitorSlsTasksTaskAttachLabelArgs and GetHybridMonitorSlsTasksTaskAttachLabelOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskAttachLabelInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskAttachLabelArgs{...}
+type GetHybridMonitorSlsTasksTaskAttachLabelInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskAttachLabelOutput() GetHybridMonitorSlsTasksTaskAttachLabelOutput
+	ToGetHybridMonitorSlsTasksTaskAttachLabelOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskAttachLabelOutput
+}
+
+type GetHybridMonitorSlsTasksTaskAttachLabelArgs struct {
+	// The name of the instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetHybridMonitorSlsTasksTaskAttachLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskAttachLabel)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskAttachLabelArgs) ToGetHybridMonitorSlsTasksTaskAttachLabelOutput() GetHybridMonitorSlsTasksTaskAttachLabelOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskAttachLabelOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskAttachLabelArgs) ToGetHybridMonitorSlsTasksTaskAttachLabelOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskAttachLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskAttachLabelOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskAttachLabelArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskAttachLabelArray and GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskAttachLabelArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskAttachLabelArray{ GetHybridMonitorSlsTasksTaskAttachLabelArgs{...} }
+type GetHybridMonitorSlsTasksTaskAttachLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutput() GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput
+	ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskAttachLabelArray []GetHybridMonitorSlsTasksTaskAttachLabelInput
+
+func (GetHybridMonitorSlsTasksTaskAttachLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskAttachLabel)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskAttachLabelArray) ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutput() GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskAttachLabelArray) ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskAttachLabelOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskAttachLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskAttachLabel)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) ToGetHybridMonitorSlsTasksTaskAttachLabelOutput() GetHybridMonitorSlsTasksTaskAttachLabelOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) ToGetHybridMonitorSlsTasksTaskAttachLabelOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskAttachLabelOutput {
+	return o
+}
+
+// The name of the instance.
+func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskAttachLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the key that is used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskAttachLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskAttachLabel)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutput() GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskAttachLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskAttachLabel {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskAttachLabel)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskAttachLabelOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskMatchExpress struct {
+	// The function that is used to aggregate log data within a statistical period.
+	Function string `pulumi:"function"`
+	// The name of the instance.
+	Name string `pulumi:"name"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value string `pulumi:"value"`
+}
+
+// GetHybridMonitorSlsTasksTaskMatchExpressInput is an input type that accepts GetHybridMonitorSlsTasksTaskMatchExpressArgs and GetHybridMonitorSlsTasksTaskMatchExpressOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskMatchExpressInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskMatchExpressArgs{...}
+type GetHybridMonitorSlsTasksTaskMatchExpressInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskMatchExpressOutput() GetHybridMonitorSlsTasksTaskMatchExpressOutput
+	ToGetHybridMonitorSlsTasksTaskMatchExpressOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskMatchExpressOutput
+}
+
+type GetHybridMonitorSlsTasksTaskMatchExpressArgs struct {
+	// The function that is used to aggregate log data within a statistical period.
+	Function pulumi.StringInput `pulumi:"function"`
+	// The name of the instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetHybridMonitorSlsTasksTaskMatchExpressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskMatchExpress)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskMatchExpressArgs) ToGetHybridMonitorSlsTasksTaskMatchExpressOutput() GetHybridMonitorSlsTasksTaskMatchExpressOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskMatchExpressOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskMatchExpressArgs) ToGetHybridMonitorSlsTasksTaskMatchExpressOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskMatchExpressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskMatchExpressOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskMatchExpressArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskMatchExpressArray and GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskMatchExpressArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskMatchExpressArray{ GetHybridMonitorSlsTasksTaskMatchExpressArgs{...} }
+type GetHybridMonitorSlsTasksTaskMatchExpressArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutput() GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput
+	ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskMatchExpressArray []GetHybridMonitorSlsTasksTaskMatchExpressInput
+
+func (GetHybridMonitorSlsTasksTaskMatchExpressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskMatchExpress)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskMatchExpressArray) ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutput() GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskMatchExpressArray) ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskMatchExpressOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskMatchExpressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskMatchExpress)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) ToGetHybridMonitorSlsTasksTaskMatchExpressOutput() GetHybridMonitorSlsTasksTaskMatchExpressOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) ToGetHybridMonitorSlsTasksTaskMatchExpressOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskMatchExpressOutput {
+	return o
+}
+
+// The function that is used to aggregate log data within a statistical period.
+func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Function() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Function }).(pulumi.StringOutput)
+}
+
+// The name of the instance.
+func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the key that is used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskMatchExpress)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutput() GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskMatchExpressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskMatchExpress {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskMatchExpress)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskMatchExpressOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfig struct {
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Expresses []GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress `pulumi:"expresses"`
+	// The conditions that are used to filter logs imported from Log Service.
+	Filters []GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter `pulumi:"filters"`
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+	GroupBies []GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy `pulumi:"groupBies"`
+	// The method that is used to aggregate logs imported from Log Service.
+	Statistics []GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic `pulumi:"statistics"`
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs{...}
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs struct {
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Expresses GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput `pulumi:"expresses"`
+	// The conditions that are used to filter logs imported from Log Service.
+	Filters GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput `pulumi:"filters"`
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+	GroupBies GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput `pulumi:"groupBies"`
+	// The method that is used to aggregate logs imported from Log Service.
+	Statistics GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput `pulumi:"statistics"`
+}
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs{...} }
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigArray []GetHybridMonitorSlsTasksTaskSlsProcessConfigInput
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput {
+	return o
+}
+
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) Expresses() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfig) []GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
+		return v.Expresses
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput)
+}
+
+// The conditions that are used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) Filters() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfig) []GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
+		return v.Filters
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput)
+}
+
+// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) GroupBies() GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfig) []GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
+		return v.GroupBies
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput)
+}
+
+// The method that is used to aggregate logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) Statistics() GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfig) []GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
+		return v.Statistics
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfig)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskSlsProcessConfig {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskSlsProcessConfig)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias string `pulumi:"alias"`
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Express string `pulumi:"express"`
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs{...}
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
+	Express pulumi.StringInput `pulumi:"express"`
+}
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs{...} }
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray []GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput {
+	return o
+}
+
+// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) Express() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress) string { return v.Express }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter struct {
+	// The conditions that are used to filter logs imported from Log Service.
+	Filters []GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter `pulumi:"filters"`
+	// The relationship between multiple filter conditions.
+	Relation string `pulumi:"relation"`
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs{...}
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs struct {
+	// The conditions that are used to filter logs imported from Log Service.
+	Filters GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput `pulumi:"filters"`
+	// The relationship between multiple filter conditions.
+	Relation pulumi.StringInput `pulumi:"relation"`
+}
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs{...} }
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray []GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput {
+	return o
+}
+
+// The conditions that are used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) Filters() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter) []GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
+		return v.Filters
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput)
+}
+
+// The relationship between multiple filter conditions.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) Relation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter) string { return v.Relation }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter struct {
+	// The method that is used to filter logs imported from Log Service.
+	Operator string `pulumi:"operator"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName string `pulumi:"slsKeyName"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value string `pulumi:"value"`
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs{...}
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs struct {
+	// The method that is used to filter logs imported from Log Service.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName pulumi.StringInput `pulumi:"slsKeyName"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs{...} }
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray []GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput {
+	return o
+}
+
+// The method that is used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The name of the key that is used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) SlsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter) string { return v.SlsKeyName }).(pulumi.StringOutput)
+}
+
+// The value of the key that is used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias string `pulumi:"alias"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName string `pulumi:"slsKeyName"`
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs{...}
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName pulumi.StringInput `pulumi:"slsKeyName"`
+}
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs{...} }
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray []GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput {
+	return o
+}
+
+// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The name of the key that is used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) SlsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy) string { return v.SlsKeyName }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias string `pulumi:"alias"`
+	// The function that is used to aggregate log data within a statistical period.
+	Function string `pulumi:"function"`
+	// The value of the function that is used to aggregate logs imported from Log Service.
+	ParameterOne string `pulumi:"parameterOne"`
+	// The value of the function that is used to aggregate logs imported from Log Service.
+	ParameterTwo string `pulumi:"parameterTwo"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName string `pulumi:"slsKeyName"`
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs{...}
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs struct {
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The function that is used to aggregate log data within a statistical period.
+	Function pulumi.StringInput `pulumi:"function"`
+	// The value of the function that is used to aggregate logs imported from Log Service.
+	ParameterOne pulumi.StringInput `pulumi:"parameterOne"`
+	// The value of the function that is used to aggregate logs imported from Log Service.
+	ParameterTwo pulumi.StringInput `pulumi:"parameterTwo"`
+	// The name of the key that is used to filter logs imported from Log Service.
+	SlsKeyName pulumi.StringInput `pulumi:"slsKeyName"`
+}
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput)
+}
+
+// GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput` via:
+//
+//          GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs{...} }
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput
+	ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutputWithContext(context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray []GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput {
+	return i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput {
+	return o
+}
+
+// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The function that is used to aggregate log data within a statistical period.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) Function() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.Function }).(pulumi.StringOutput)
+}
+
+// The value of the function that is used to aggregate logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ParameterOne() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.ParameterOne }).(pulumi.StringOutput)
+}
+
+// The value of the function that is used to aggregate logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ParameterTwo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.ParameterTwo }).(pulumi.StringOutput)
+}
+
+// The name of the key that is used to filter logs imported from Log Service.
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) SlsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.SlsKeyName }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic)(nil)).Elem()
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput() GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
+		return vs[0].([]GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic)[vs[1].(int)]
+	}).(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput)
+}
+
 type GetMetricRuleTemplatesTemplate struct {
 	// The details of alert rules that are generated based on the alert template.
 	AlertTemplates []GetMetricRuleTemplatesTemplateAlertTemplate `pulumi:"alertTemplates"`
@@ -5994,6 +8445,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsInfoPtrInput)(nil)).Elem(), AlarmEscalationsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnPtrInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPrometheusInput)(nil)).Elem(), AlarmPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPrometheusArrayInput)(nil)).Elem(), AlarmPrometheusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
@@ -6004,6 +8457,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInfoPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsWarnInput)(nil)).Elem(), GroupMetricRuleEscalationsWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsWarnPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskAttachLabelInput)(nil)).Elem(), HybridMonitorSlsTaskAttachLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskAttachLabelArrayInput)(nil)).Elem(), HybridMonitorSlsTaskAttachLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigPtrInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigExpressInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigExpressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilterInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigGroupByInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigGroupByArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigStatisticInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput)(nil)).Elem(), HybridMonitorSlsTaskSlsProcessConfigStatisticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateArrayInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsArgs{})
@@ -6044,6 +8511,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataLabelArrayInput)(nil)).Elem(), GetHybridMonitorDatasDataLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataValueInput)(nil)).Elem(), GetHybridMonitorDatasDataValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataValueArrayInput)(nil)).Elem(), GetHybridMonitorDatasDataValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorFcTasksTaskInput)(nil)).Elem(), GetHybridMonitorFcTasksTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorFcTasksTaskArrayInput)(nil)).Elem(), GetHybridMonitorFcTasksTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskAttachLabelInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskAttachLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskAttachLabelArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskAttachLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskMatchExpressInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskMatchExpressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskMatchExpressArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskMatchExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput)(nil)).Elem(), GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateArgs{})
@@ -6074,6 +8561,8 @@ func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsInfoPtrOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
+	pulumi.RegisterOutputType(AlarmPrometheusOutput{})
+	pulumi.RegisterOutputType(AlarmPrometheusArrayOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsOutput{})
@@ -6084,6 +8573,20 @@ func init() {
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsInfoPtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnPtrOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskAttachLabelOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskAttachLabelArrayOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigPtrOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigExpressOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigFilterOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigGroupByOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigStatisticOutput{})
+	pulumi.RegisterOutputType(HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput{})
 	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateOutput{})
 	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateArrayOutput{})
 	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsOutput{})
@@ -6124,6 +8627,26 @@ func init() {
 	pulumi.RegisterOutputType(GetHybridMonitorDatasDataLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetHybridMonitorDatasDataValueOutput{})
 	pulumi.RegisterOutputType(GetHybridMonitorDatasDataValueArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorFcTasksTaskOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorFcTasksTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskAttachLabelOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskMatchExpressOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput{})
 	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateOutput{})

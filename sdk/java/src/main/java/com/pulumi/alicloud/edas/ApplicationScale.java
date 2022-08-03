@@ -23,6 +23,39 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.edas.ApplicationScale;
+ * import com.pulumi.alicloud.edas.ApplicationScaleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ApplicationScale(&#34;default&#34;, ApplicationScaleArgs.builder()        
+ *             .appId(var_.app_id())
+ *             .deployGroup(var_.deploy_group())
+ *             .ecuInfos(var_.ecu_info())
+ *             .forceStatus(var_.force_status())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:edas/applicationScale:ApplicationScale")
 public class ApplicationScale extends com.pulumi.resources.CustomResource {

@@ -24,6 +24,58 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cdn.DomainNew;
+ * import com.pulumi.alicloud.cdn.DomainNewArgs;
+ * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+ * import com.pulumi.alicloud.cdn.DomainConfig;
+ * import com.pulumi.alicloud.cdn.DomainConfigArgs;
+ * import com.pulumi.alicloud.cdn.inputs.DomainConfigFunctionArgArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
+ *             .domainName(&#34;mycdndomain.xiaozhu.com&#34;)
+ *             .cdnType(&#34;web&#34;)
+ *             .scope(&#34;overseas&#34;)
+ *             .sources(DomainNewSourceArgs.builder()
+ *                 .content(&#34;1.1.1.1&#34;)
+ *                 .type(&#34;ipaddr&#34;)
+ *                 .priority(&#34;20&#34;)
+ *                 .port(80)
+ *                 .weight(&#34;15&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var config = new DomainConfig(&#34;config&#34;, DomainConfigArgs.builder()        
+ *             .domainName(domain.domainName())
+ *             .functionName(&#34;ip_allow_list_set&#34;)
+ *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+ *                 .argName(&#34;ip_list&#34;)
+ *                 .argValue(&#34;110.110.110.110&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CDN domain config can be imported using the id, e.g.

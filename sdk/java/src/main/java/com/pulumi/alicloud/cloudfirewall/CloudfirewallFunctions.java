@@ -27,6 +27,35 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAddressBooksResult> getAddressBooks() {
         return getAddressBooks(GetAddressBooksArgs.Empty, InvokeOptions.Empty);
@@ -37,6 +66,35 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.178.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain() {
@@ -49,6 +107,35 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args) {
         return getAddressBooks(args, InvokeOptions.Empty);
@@ -59,6 +146,35 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.178.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain(GetAddressBooksPlainArgs args) {
@@ -71,6 +187,35 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", TypeShape.of(GetAddressBooksResult.class), args, Utilities.withVersion(options));
@@ -81,6 +226,35 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.178.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain(GetAddressBooksPlainArgs args, InvokeOptions options) {
@@ -93,6 +267,36 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .direction(&#34;in&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args) {
         return getControlPolicies(args, InvokeOptions.Empty);
@@ -103,6 +307,36 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .direction(&#34;in&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args) {
@@ -115,6 +349,36 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .direction(&#34;in&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", TypeShape.of(GetControlPoliciesResult.class), args, Utilities.withVersion(options));
@@ -125,6 +389,36 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .direction(&#34;in&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args, InvokeOptions options) {
@@ -137,6 +431,35 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -147,6 +470,35 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -159,6 +511,35 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -169,6 +550,35 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -181,6 +591,35 @@ public final class CloudfirewallFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -191,6 +630,35 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {

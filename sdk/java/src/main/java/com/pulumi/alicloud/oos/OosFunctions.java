@@ -42,6 +42,46 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-ApplicationGroup-1&#34;,
+     *                 &#34;my-ApplicationGroup-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args) {
         return getApplicationGroups(args, InvokeOptions.Empty);
@@ -52,6 +92,46 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-ApplicationGroup-1&#34;,
+     *                 &#34;my-ApplicationGroup-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationGroupsResult> getApplicationGroupsPlain(GetApplicationGroupsPlainArgs args) {
@@ -64,6 +144,46 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-ApplicationGroup-1&#34;,
+     *                 &#34;my-ApplicationGroup-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getApplicationGroups:getApplicationGroups", TypeShape.of(GetApplicationGroupsResult.class), args, Utilities.withVersion(options));
@@ -74,6 +194,46 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-ApplicationGroup-1&#34;,
+     *                 &#34;my-ApplicationGroup-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationGroupsResult> getApplicationGroupsPlain(GetApplicationGroupsPlainArgs args, InvokeOptions options) {
@@ -86,6 +246,40 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplications();
+     * 
+     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationsResult> getApplications() {
         return getApplications(GetApplicationsArgs.Empty, InvokeOptions.Empty);
@@ -96,6 +290,40 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplications();
+     * 
+     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain() {
@@ -108,6 +336,40 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplications();
+     * 
+     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args) {
         return getApplications(args, InvokeOptions.Empty);
@@ -118,6 +380,40 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplications();
+     * 
+     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args) {
@@ -130,6 +426,40 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplications();
+     * 
+     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getApplications:getApplications", TypeShape.of(GetApplicationsResult.class), args, Utilities.withVersion(options));
@@ -141,6 +471,40 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplications();
+     * 
+     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oos/getApplications:getApplications", TypeShape.of(GetApplicationsResult.class), args, Utilities.withVersion(options));
@@ -151,6 +515,37 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .ids(&#34;execution_id&#34;)
+     *             .status(&#34;Success&#34;)
+     *             .templateName(&#34;name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetExecutionsResult> getExecutions() {
@@ -162,6 +557,37 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .ids(&#34;execution_id&#34;)
+     *             .status(&#34;Success&#34;)
+     *             .templateName(&#34;name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExecutionsResult> getExecutionsPlain() {
@@ -173,6 +599,37 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .ids(&#34;execution_id&#34;)
+     *             .status(&#34;Success&#34;)
+     *             .templateName(&#34;name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args) {
@@ -184,6 +641,37 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .ids(&#34;execution_id&#34;)
+     *             .status(&#34;Success&#34;)
+     *             .templateName(&#34;name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExecutionsResult> getExecutionsPlain(GetExecutionsPlainArgs args) {
@@ -195,6 +683,37 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .ids(&#34;execution_id&#34;)
+     *             .status(&#34;Success&#34;)
+     *             .templateName(&#34;name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args, InvokeOptions options) {
@@ -206,6 +725,37 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .ids(&#34;execution_id&#34;)
+     *             .status(&#34;Success&#34;)
+     *             .templateName(&#34;name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExecutionsResult> getExecutionsPlain(GetExecutionsPlainArgs args, InvokeOptions options) {
@@ -218,6 +768,57 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetParametersResult> getParameters() {
         return getParameters(GetParametersArgs.Empty, InvokeOptions.Empty);
@@ -228,6 +829,57 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetParametersResult> getParametersPlain() {
@@ -240,6 +892,57 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetParametersResult> getParameters(GetParametersArgs args) {
         return getParameters(args, InvokeOptions.Empty);
@@ -250,6 +953,57 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetParametersResult> getParametersPlain(GetParametersPlainArgs args) {
@@ -262,6 +1016,57 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetParametersResult> getParameters(GetParametersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getParameters:getParameters", TypeShape.of(GetParametersResult.class), args, Utilities.withVersion(options));
@@ -272,6 +1077,57 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(&#34;my-Parameter&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetParametersResult> getParametersPlain(GetParametersPlainArgs args, InvokeOptions options) {
@@ -392,6 +1248,35 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetStateConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getStateConfigurations();
+     * 
+     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStateConfigurationsResult> getStateConfigurations() {
         return getStateConfigurations(GetStateConfigurationsArgs.Empty, InvokeOptions.Empty);
@@ -402,6 +1287,35 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetStateConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getStateConfigurations();
+     * 
+     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStateConfigurationsResult> getStateConfigurationsPlain() {
@@ -414,6 +1328,35 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetStateConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getStateConfigurations();
+     * 
+     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStateConfigurationsResult> getStateConfigurations(GetStateConfigurationsArgs args) {
         return getStateConfigurations(args, InvokeOptions.Empty);
@@ -424,6 +1367,35 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetStateConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getStateConfigurations();
+     * 
+     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStateConfigurationsResult> getStateConfigurationsPlain(GetStateConfigurationsPlainArgs args) {
@@ -436,6 +1408,35 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetStateConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getStateConfigurations();
+     * 
+     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStateConfigurationsResult> getStateConfigurations(GetStateConfigurationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getStateConfigurations:getStateConfigurations", TypeShape.of(GetStateConfigurationsResult.class), args, Utilities.withVersion(options));
@@ -447,6 +1448,35 @@ public final class OosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetStateConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getStateConfigurations();
+     * 
+     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetStateConfigurationsResult> getStateConfigurationsPlain(GetStateConfigurationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oos/getStateConfigurations:getStateConfigurations", TypeShape.of(GetStateConfigurationsResult.class), args, Utilities.withVersion(options));
@@ -457,6 +1487,41 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .hasTrigger(false)
+     *             .nameRegex(&#34;test&#34;)
+     *             .shareType(&#34;Private&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTemplatesResult> getTemplates() {
@@ -468,6 +1533,41 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .hasTrigger(false)
+     *             .nameRegex(&#34;test&#34;)
+     *             .shareType(&#34;Private&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain() {
@@ -479,6 +1579,41 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .hasTrigger(false)
+     *             .nameRegex(&#34;test&#34;)
+     *             .shareType(&#34;Private&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args) {
@@ -490,6 +1625,41 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .hasTrigger(false)
+     *             .nameRegex(&#34;test&#34;)
+     *             .shareType(&#34;Private&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args) {
@@ -501,6 +1671,41 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .hasTrigger(false)
+     *             .nameRegex(&#34;test&#34;)
+     *             .shareType(&#34;Private&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOptions options) {
@@ -512,6 +1717,41 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .hasTrigger(false)
+     *             .nameRegex(&#34;test&#34;)
+     *             .shareType(&#34;Private&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args, InvokeOptions options) {

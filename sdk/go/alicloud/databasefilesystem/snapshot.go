@@ -312,6 +312,36 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to force deletion of snapshots.
+func (o SnapshotOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the database file system.
+func (o SnapshotOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+func (o SnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+func (o SnapshotOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SnapshotName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the Snapshot.
+func (o SnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (SnapshotArrayOutput) ElementType() reflect.Type {

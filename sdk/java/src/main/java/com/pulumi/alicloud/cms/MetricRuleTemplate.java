@@ -26,6 +26,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cms.MetricRuleTemplate;
+ * import com.pulumi.alicloud.cms.MetricRuleTemplateArgs;
+ * import com.pulumi.alicloud.cms.inputs.MetricRuleTemplateAlertTemplateArgs;
+ * import com.pulumi.alicloud.cms.inputs.MetricRuleTemplateAlertTemplateEscalationsArgs;
+ * import com.pulumi.alicloud.cms.inputs.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new MetricRuleTemplate(&#34;example&#34;, MetricRuleTemplateArgs.builder()        
+ *             .alertTemplates(MetricRuleTemplateAlertTemplateArgs.builder()
+ *                 .category(&#34;ecs&#34;)
+ *                 .escalations(MetricRuleTemplateAlertTemplateEscalationsArgs.builder()
+ *                     .critical(MetricRuleTemplateAlertTemplateEscalationsCriticalArgs.builder()
+ *                         .comparisonOperator(&#34;GreaterThanThreshold&#34;)
+ *                         .statistics(&#34;Average&#34;)
+ *                         .threshold(&#34;90&#34;)
+ *                         .times(&#34;3&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .metricName(&#34;cpu_total&#34;)
+ *                 .namespace(&#34;acs_ecs_dashboard&#34;)
+ *                 .ruleName(&#34;tf_testAcc_new&#34;)
+ *                 .build())
+ *             .metricRuleTemplateName(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.

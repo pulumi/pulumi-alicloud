@@ -45,6 +45,40 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorSpareIpAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs args) {
         return getAcceleratorSpareIpAttachments(args, InvokeOptions.Empty);
@@ -55,6 +89,40 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.167.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorSpareIpAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachmentsPlain(GetAcceleratorSpareIpAttachmentsPlainArgs args) {
@@ -67,6 +135,40 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorSpareIpAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", TypeShape.of(GetAcceleratorSpareIpAttachmentsResult.class), args, Utilities.withVersion(options));
@@ -77,6 +179,40 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.167.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorSpareIpAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachmentsPlain(GetAcceleratorSpareIpAttachmentsPlainArgs args, InvokeOptions options) {
@@ -89,6 +225,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAcceleratorsResult> getAccelerators() {
         return getAccelerators(GetAcceleratorsArgs.Empty, InvokeOptions.Empty);
@@ -99,6 +267,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAcceleratorsResult> getAcceleratorsPlain() {
@@ -111,6 +311,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAcceleratorsResult> getAccelerators(GetAcceleratorsArgs args) {
         return getAccelerators(args, InvokeOptions.Empty);
@@ -121,6 +353,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAcceleratorsResult> getAcceleratorsPlain(GetAcceleratorsPlainArgs args) {
@@ -133,6 +397,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAcceleratorsResult> getAccelerators(GetAcceleratorsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getAccelerators:getAccelerators", TypeShape.of(GetAcceleratorsResult.class), args, Utilities.withVersion(options));
@@ -143,6 +439,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAcceleratorsResult> getAcceleratorsPlain(GetAcceleratorsPlainArgs args, InvokeOptions options) {
@@ -155,6 +483,40 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls() {
         return getAcls(GetAclsArgs.Empty, InvokeOptions.Empty);
@@ -165,6 +527,40 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.150.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain() {
@@ -177,6 +573,40 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args) {
         return getAcls(args, InvokeOptions.Empty);
@@ -187,6 +617,40 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.150.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args) {
@@ -199,6 +663,40 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
@@ -209,6 +707,40 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.150.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
@@ -221,6 +753,41 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAdditionalCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdditionalCertificatesResult> getAdditionalCertificates(GetAdditionalCertificatesArgs args) {
         return getAdditionalCertificates(args, InvokeOptions.Empty);
@@ -231,6 +798,41 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.150.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAdditionalCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdditionalCertificatesResult> getAdditionalCertificatesPlain(GetAdditionalCertificatesPlainArgs args) {
@@ -243,6 +845,41 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAdditionalCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdditionalCertificatesResult> getAdditionalCertificates(GetAdditionalCertificatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", TypeShape.of(GetAdditionalCertificatesResult.class), args, Utilities.withVersion(options));
@@ -253,6 +890,41 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.150.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAdditionalCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdditionalCertificatesResult> getAdditionalCertificatesPlain(GetAdditionalCertificatesPlainArgs args, InvokeOptions options) {
@@ -265,6 +937,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages() {
         return getBandwidthPackages(GetBandwidthPackagesArgs.Empty, InvokeOptions.Empty);
@@ -275,6 +979,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain() {
@@ -287,6 +1023,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args) {
         return getBandwidthPackages(args, InvokeOptions.Empty);
@@ -297,6 +1065,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args) {
@@ -309,6 +1109,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getBandwidthPackages:getBandwidthPackages", TypeShape.of(GetBandwidthPackagesResult.class), args, Utilities.withVersion(options));
@@ -319,6 +1151,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args, InvokeOptions options) {
@@ -331,6 +1195,39 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointGroupsResult> getEndpointGroups(GetEndpointGroupsArgs args) {
         return getEndpointGroups(args, InvokeOptions.Empty);
@@ -341,6 +1238,39 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.113.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointGroupsResult> getEndpointGroupsPlain(GetEndpointGroupsPlainArgs args) {
@@ -353,6 +1283,39 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointGroupsResult> getEndpointGroups(GetEndpointGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getEndpointGroups:getEndpointGroups", TypeShape.of(GetEndpointGroupsResult.class), args, Utilities.withVersion(options));
@@ -363,6 +1326,39 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.113.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointGroupsResult> getEndpointGroupsPlain(GetEndpointGroupsPlainArgs args, InvokeOptions options) {
@@ -375,6 +1371,39 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args) {
         return getForwardingRules(args, InvokeOptions.Empty);
@@ -385,6 +1414,39 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args) {
@@ -397,6 +1459,39 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getForwardingRules:getForwardingRules", TypeShape.of(GetForwardingRulesResult.class), args, Utilities.withVersion(options));
@@ -407,6 +1502,39 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .listenerId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args, InvokeOptions options) {
@@ -419,6 +1547,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetIpSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpSetsResult> getIpSets(GetIpSetsArgs args) {
         return getIpSets(args, InvokeOptions.Empty);
@@ -429,6 +1589,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.113.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetIpSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpSetsResult> getIpSetsPlain(GetIpSetsPlainArgs args) {
@@ -441,6 +1633,38 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetIpSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpSetsResult> getIpSets(GetIpSetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getIpSets:getIpSets", TypeShape.of(GetIpSetsResult.class), args, Utilities.withVersion(options));
@@ -451,6 +1675,38 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.113.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetIpSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpSetsResult> getIpSetsPlain(GetIpSetsPlainArgs args, InvokeOptions options) {
@@ -463,6 +1719,39 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args) {
         return getListeners(args, InvokeOptions.Empty);
@@ -473,6 +1762,39 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args) {
@@ -485,6 +1807,39 @@ public final class GaFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
@@ -495,6 +1850,39 @@ public final class GaFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
+     *             .acceleratorId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args, InvokeOptions options) {

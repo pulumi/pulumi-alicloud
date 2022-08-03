@@ -322,6 +322,70 @@ func (o CommonBandwithPackageOutput) ToCommonBandwithPackageOutputWithContext(ct
 	return o
 }
 
+// The bandwidth of the common bandwidth package. Unit: Mbps.
+func (o CommonBandwithPackageOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// The name of the common bandwidth package.
+func (o CommonBandwithPackageOutput) BandwidthPackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.BandwidthPackageName }).(pulumi.StringOutput)
+}
+
+// Whether enable the deletion protection or not. Default value: `false`.
+// - true: Enable deletion protection.
+// - false: Disable deletion protection.
+func (o CommonBandwithPackageOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The description of the common bandwidth package instance.
+func (o CommonBandwithPackageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is used for resource destroy. Default value is `false`.
+func (o CommonBandwithPackageOutput) Force() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+func (o CommonBandwithPackageOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+func (o CommonBandwithPackageOutput) Isp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Isp }).(pulumi.StringPtrOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+func (o CommonBandwithPackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
+func (o CommonBandwithPackageOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.IntPtrOutput { return v.Ratio }).(pulumi.IntPtrOutput)
+}
+
+// The Id of resource group which the common bandwidth package belongs.
+func (o CommonBandwithPackageOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.120.0+) The status of bandwidth package.
+func (o CommonBandwithPackageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The zone of bandwidth package.
+func (o CommonBandwithPackageOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
 type CommonBandwithPackageArrayOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageArrayOutput) ElementType() reflect.Type {

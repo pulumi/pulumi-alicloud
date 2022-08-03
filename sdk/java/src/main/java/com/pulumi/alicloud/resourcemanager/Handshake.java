@@ -21,6 +21,36 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.82.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.Handshake;
+ * import com.pulumi.alicloud.resourcemanager.HandshakeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Handshake(&#34;example&#34;, HandshakeArgs.builder()        
+ *             .note(&#34;test resource manager handshake&#34;)
+ *             .targetEntity(&#34;1182775234******&#34;)
+ *             .targetType(&#34;Account&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

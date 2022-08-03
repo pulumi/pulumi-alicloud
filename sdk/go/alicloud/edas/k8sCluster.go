@@ -249,6 +249,45 @@ func (o K8sClusterOutput) ToK8sClusterOutputWithContext(ctx context.Context) K8s
 	return o
 }
 
+// The import status of cluster:
+// `1`: success.
+// `2`: failed.
+// `3`: importing.
+// `4`: deleted.
+func (o K8sClusterOutput) ClusterImportStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v *K8sCluster) pulumi.IntOutput { return v.ClusterImportStatus }).(pulumi.IntOutput)
+}
+
+// The name of the cluster that you want to create.
+func (o K8sClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *K8sCluster) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
+func (o K8sClusterOutput) ClusterType() pulumi.IntOutput {
+	return o.ApplyT(func(v *K8sCluster) pulumi.IntOutput { return v.ClusterType }).(pulumi.IntOutput)
+}
+
+// The ID of the alicloud container service kubernetes cluster that you want to import.
+func (o K8sClusterOutput) CsClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *K8sCluster) pulumi.StringOutput { return v.CsClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
+func (o K8sClusterOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *K8sCluster) pulumi.StringPtrOutput { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
+func (o K8sClusterOutput) NetworkMode() pulumi.IntOutput {
+	return o.ApplyT(func(v *K8sCluster) pulumi.IntOutput { return v.NetworkMode }).(pulumi.IntOutput)
+}
+
+// The ID of the Virtual Private Cloud (VPC) for the cluster.
+func (o K8sClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *K8sCluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type K8sClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (K8sClusterArrayOutput) ElementType() reflect.Type {

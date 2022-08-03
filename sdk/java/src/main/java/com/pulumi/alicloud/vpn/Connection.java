@@ -23,6 +23,80 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpn.Gateway;
+ * import com.pulumi.alicloud.vpn.GatewayArgs;
+ * import com.pulumi.alicloud.vpn.CustomerGateway;
+ * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+ * import com.pulumi.alicloud.vpn.Connection;
+ * import com.pulumi.alicloud.vpn.ConnectionArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionIkeConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionIpsecConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooGateway = new Gateway(&#34;fooGateway&#34;, GatewayArgs.builder()        
+ *             .vpcId(&#34;vpc-fake-id&#34;)
+ *             .bandwidth(&#34;10&#34;)
+ *             .enableSsl(true)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .description(&#34;test_create_description&#34;)
+ *             .build());
+ * 
+ *         var fooCustomerGateway = new CustomerGateway(&#34;fooCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *             .ipAddress(&#34;42.104.22.228&#34;)
+ *             .description(&#34;testAccVpnCgwDesc&#34;)
+ *             .build());
+ * 
+ *         var fooConnection = new Connection(&#34;fooConnection&#34;, ConnectionArgs.builder()        
+ *             .vpnGatewayId(fooGateway.id())
+ *             .customerGatewayId(fooCustomerGateway.id())
+ *             .localSubnets(            
+ *                 &#34;172.16.0.0/24&#34;,
+ *                 &#34;172.16.1.0/24&#34;)
+ *             .remoteSubnets(            
+ *                 &#34;10.0.0.0/24&#34;,
+ *                 &#34;10.0.1.0/24&#34;)
+ *             .effectImmediately(true)
+ *             .ikeConfig(ConnectionIkeConfigArgs.builder()
+ *                 .ikeAuthAlg(&#34;md5&#34;)
+ *                 .ikeEncAlg(&#34;des&#34;)
+ *                 .ikeVersion(&#34;ikev1&#34;)
+ *                 .ikeMode(&#34;main&#34;)
+ *                 .ikeLifetime(86400)
+ *                 .psk(&#34;tf-testvpn2&#34;)
+ *                 .ikePfs(&#34;group1&#34;)
+ *                 .ikeRemoteId(&#34;testbob2&#34;)
+ *                 .ikeLocalId(&#34;testalice2&#34;)
+ *                 .build())
+ *             .ipsecConfig(ConnectionIpsecConfigArgs.builder()
+ *                 .ipsecPfs(&#34;group5&#34;)
+ *                 .ipsecEncAlg(&#34;des&#34;)
+ *                 .ipsecAuthAlg(&#34;md5&#34;)
+ *                 .ipsecLifetime(8640)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPN connection can be imported using the id, e.g.

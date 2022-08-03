@@ -224,6 +224,21 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
+// The Description of Namespace.
+func (o NamespaceOutput) NamespaceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.NamespaceDescription }).(pulumi.StringPtrOutput)
+}
+
+// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The Name of Namespace.
+func (o NamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
 type NamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceArrayOutput) ElementType() reflect.Type {

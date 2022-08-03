@@ -25,6 +25,65 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Available in 1.127.0+
  * 
  * ## Example Usage
+ * ### Create a AnalyticDB for PostgreSQL instance
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.gpdb.ElasticInstance;
+ * import com.pulumi.alicloud.gpdb.ElasticInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Gpdb&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .vswitchName(&#34;vpc-123456&#34;)
+ *             .build());
+ * 
+ *         var adbPgInstance = new ElasticInstance(&#34;adbPgInstance&#34;, ElasticInstanceArgs.builder()        
+ *             .engine(&#34;gpdb&#34;)
+ *             .engineVersion(&#34;6.0&#34;)
+ *             .segStorageType(&#34;cloud_essd&#34;)
+ *             .segNodeNum(4)
+ *             .storageSize(50)
+ *             .instanceSpec(&#34;2C16G&#34;)
+ *             .dbInstanceDescription(&#34;Created by terraform&#34;)
+ *             .instanceNetworkType(&#34;VPC&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -210,6 +210,21 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// Is logging enabled? true or false. Default value to false.
+func (o TopicOutput) LoggingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.BoolPtrOutput { return v.LoggingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
+func (o TopicOutput) MaximumMessageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntPtrOutput { return v.MaximumMessageSize }).(pulumi.IntPtrOutput)
+}
+
+// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+func (o TopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type TopicArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicArrayOutput) ElementType() reflect.Type {

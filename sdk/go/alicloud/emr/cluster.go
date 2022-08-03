@@ -390,6 +390,116 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Boot action parameters.
+func (o ClusterOutput) BootstrapActions() ClusterBootstrapActionArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterBootstrapActionArrayOutput { return v.BootstrapActions }).(ClusterBootstrapActionArrayOutput)
+}
+
+// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+func (o ClusterOutput) ChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ChargeType }).(pulumi.StringPtrOutput)
+}
+
+// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
+func (o ClusterOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+func (o ClusterOutput) DepositType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DepositType }).(pulumi.StringPtrOutput)
+}
+
+// High security cluster (true) or not. Default value is false.
+func (o ClusterOutput) EasEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EasEnable }).(pulumi.BoolPtrOutput)
+}
+
+// EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
+func (o ClusterOutput) EmrVer() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EmrVer }).(pulumi.StringOutput)
+}
+
+// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
+func (o ClusterOutput) HighAvailabilityEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.HighAvailabilityEnable }).(pulumi.BoolPtrOutput)
+}
+
+// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+func (o ClusterOutput) HostGroups() ClusterHostGroupArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterHostGroupArrayOutput { return v.HostGroups }).(ClusterHostGroupArrayOutput)
+}
+
+// Whether the MASTER node has a public IP address enabled. Default value is false.
+func (o ClusterOutput) IsOpenPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsOpenPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// Ssh key pair.
+func (o ClusterOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// Master ssh password.
+func (o ClusterOutput) MasterPwd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.MasterPwd }).(pulumi.StringPtrOutput)
+}
+
+// bootstrap action name.
+func (o ClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional software list.
+func (o ClusterOutput) OptionSoftwareLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.OptionSoftwareLists }).(pulumi.StringArrayOutput)
+}
+
+// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+func (o ClusterOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// This specify the related cluster id, if this cluster is a Gateway.
+func (o ClusterOutput) RelatedClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RelatedClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Security Group ID for Cluster, you can also specify this key for each host group.
+func (o ClusterOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// If this is set true, we can ssh into cluster. Default value is false.
+func (o ClusterOutput) SshEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.SshEnable }).(pulumi.BoolPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Use local metadb. Default is false.
+func (o ClusterOutput) UseLocalMetadb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.UseLocalMetadb }).(pulumi.BoolPtrOutput)
+}
+
+// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+func (o ClusterOutput) UserDefinedEmrEcsRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.UserDefinedEmrEcsRole }).(pulumi.StringPtrOutput)
+}
+
+// Global vswitch id, you can also specify it in host group.
+func (o ClusterOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// Zone ID, e.g. cn-huhehaote-a
+func (o ClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {

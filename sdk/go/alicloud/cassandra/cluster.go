@@ -425,6 +425,117 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
+func (o ClusterOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
+func (o ClusterOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
+func (o ClusterOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
+func (o ClusterOutput) DataCenterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DataCenterName }).(pulumi.StringPtrOutput)
+}
+
+// User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
+// - Custom storage space; value range: [160, 2000].
+// - 80-GB increments.
+func (o ClusterOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
+func (o ClusterOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterOutput) EnablePublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnablePublic }).(pulumi.BoolPtrOutput)
+}
+
+// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
+func (o ClusterOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Set the instance's IP whitelist in VPC network.
+func (o ClusterOutput) IpWhite() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.IpWhite }).(pulumi.StringOutput)
+}
+
+// The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
+func (o ClusterOutput) MaintainEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.MaintainEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
+func (o ClusterOutput) MaintainStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.MaintainStartTime }).(pulumi.StringPtrOutput)
+}
+
+// Cassandra major version. Now only support version `3.11`.
+func (o ClusterOutput) MajorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MajorVersion }).(pulumi.StringOutput)
+}
+
+// The node count of Cassandra dataCenter-1 default to 2.
+func (o ClusterOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+func (o ClusterOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
+func (o ClusterOutput) PayType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PayType }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterOutput) PublicPoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.PublicPoints }).(pulumi.StringArrayOutput)
+}
+
+// A list of security group ids to associate with.
+func (o ClusterOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The vswitchId of dataCenter-1, can not empty.
+func (o ClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
+func (o ClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {

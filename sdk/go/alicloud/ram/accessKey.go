@@ -273,6 +273,39 @@ func (o AccessKeyOutput) ToAccessKeyOutputWithContext(ctx context.Context) Acces
 	return o
 }
 
+func (o AccessKeyOutput) EncryptedSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.EncryptedSecret }).(pulumi.StringOutput)
+}
+
+// The fingerprint of the PGP key used to encrypt the secret
+func (o AccessKeyOutput) KeyFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.KeyFingerprint }).(pulumi.StringOutput)
+}
+
+// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+func (o AccessKeyOutput) PgpKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.PgpKey }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
+// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
+func (o AccessKeyOutput) SecretFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.SecretFile }).(pulumi.StringPtrOutput)
+}
+
+// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+func (o AccessKeyOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+func (o AccessKeyOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
 type AccessKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessKeyArrayOutput) ElementType() reflect.Type {

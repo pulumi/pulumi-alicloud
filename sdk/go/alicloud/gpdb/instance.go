@@ -331,6 +331,55 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The name of DB instance. It a string of 2 to 256 characters.
+func (o InstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Database engine: gpdb. System Default value: gpdb.
+func (o InstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+func (o InstanceOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+// The number of groups. Valid values: [2,4,8,16,32]
+func (o InstanceOutput) InstanceGroupCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceGroupCount }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o InstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The virtual switch ID to launch DB instances in one VPC.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

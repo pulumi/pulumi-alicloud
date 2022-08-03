@@ -25,6 +25,45 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ddos.DomainResource;
+ * import com.pulumi.alicloud.ddos.DomainResourceArgs;
+ * import com.pulumi.alicloud.ddos.inputs.DomainResourceProxyTypeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new DomainResource(&#34;example&#34;, DomainResourceArgs.builder()        
+ *             .domain(&#34;tftestacc1234.abc&#34;)
+ *             .httpsExt(&#34;{\&#34;Http2\&#34;:1,\&#34;Http2https\&#34;:0，\&#34;Https2http\&#34;:0}&#34;)
+ *             .instanceIds(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
+ *             .proxyTypes(DomainResourceProxyTypeArgs.builder()
+ *                 .proxyPorts(443)
+ *                 .proxyType(&#34;https&#34;)
+ *                 .build())
+ *             .realServers(&#34;177.167.32.11&#34;)
+ *             .rsType(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Anti-DDoS Pro Domain Resource can be imported using the id, e.g.

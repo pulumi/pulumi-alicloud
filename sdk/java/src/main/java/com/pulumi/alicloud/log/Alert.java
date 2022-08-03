@@ -36,6 +36,243 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.log.Alert;
+ * import com.pulumi.alicloud.log.AlertArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertScheduleArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertQueryListArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertNotificationListArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;create by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .retentionPeriod(3650)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var exampleAlert = new Alert(&#34;exampleAlert&#34;, AlertArgs.builder()        
+ *             .projectName(exampleProject.name())
+ *             .alertName(&#34;tf-test-alert&#34;)
+ *             .alertDisplayname(&#34;tf-test-alert-displayname&#34;)
+ *             .condition(&#34;count&gt; 100&#34;)
+ *             .dashboard(&#34;tf-test-dashboard&#34;)
+ *             .schedule(AlertScheduleArgs.builder()
+ *                 .type(&#34;FixedRate&#34;)
+ *                 .interval(&#34;5m&#34;)
+ *                 .hour(0)
+ *                 .dayOfWeek(0)
+ *                 .delay(0)
+ *                 .runImmediately(false)
+ *                 .build())
+ *             .queryLists(AlertQueryListArgs.builder()
+ *                 .logstore(&#34;tf-test-logstore&#34;)
+ *                 .chartTitle(&#34;chart_title&#34;)
+ *                 .start(&#34;-60s&#34;)
+ *                 .end(&#34;20s&#34;)
+ *                 .query(&#34;* AND aliyun&#34;)
+ *                 .build())
+ *             .notificationLists(            
+ *                 AlertNotificationListArgs.builder()
+ *                     .type(&#34;SMS&#34;)
+ *                     .mobileLists(                    
+ *                         &#34;12345678&#34;,
+ *                         &#34;87654321&#34;)
+ *                     .content(&#34;alert content&#34;)
+ *                     .build(),
+ *                 AlertNotificationListArgs.builder()
+ *                     .type(&#34;Email&#34;)
+ *                     .emailLists(                    
+ *                         &#34;aliyun@alibaba-inc.com&#34;,
+ *                         &#34;tf-test@123.com&#34;)
+ *                     .content(&#34;alert content&#34;)
+ *                     .build(),
+ *                 AlertNotificationListArgs.builder()
+ *                     .type(&#34;DingTalk&#34;)
+ *                     .serviceUri(&#34;www.aliyun.com&#34;)
+ *                     .content(&#34;alert content&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Basic Usage for new alert
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.log.Alert;
+ * import com.pulumi.alicloud.log.AlertArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertScheduleArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertQueryListArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertLabelArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertAnnotationArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertGroupConfigurationArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertPolicyConfigurationArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertSeverityConfigurationArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertJoinConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;create by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .retentionPeriod(3650)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var example_2 = new Alert(&#34;example-2&#34;, AlertArgs.builder()        
+ *             .version(&#34;2.0&#34;)
+ *             .type(&#34;default&#34;)
+ *             .projectName(exampleProject.name())
+ *             .alertName(&#34;tf-test-alert-2&#34;)
+ *             .alertDisplayname(&#34;tf-test-alert-displayname-2&#34;)
+ *             .dashboard(&#34;tf-test-dashboard&#34;)
+ *             .muteUntil(&#34;1632486684&#34;)
+ *             .noDataFire(&#34;false&#34;)
+ *             .noDataSeverity(8)
+ *             .sendResolved(true)
+ *             .autoAnnotation(true)
+ *             .schedule(AlertScheduleArgs.builder()
+ *                 .type(&#34;FixedRate&#34;)
+ *                 .interval(&#34;5m&#34;)
+ *                 .hour(0)
+ *                 .dayOfWeek(0)
+ *                 .delay(0)
+ *                 .runImmediately(false)
+ *                 .build())
+ *             .queryLists(            
+ *                 AlertQueryListArgs.builder()
+ *                     .store(&#34;tf-test-logstore&#34;)
+ *                     .storeType(&#34;log&#34;)
+ *                     .project(exampleProject.name())
+ *                     .region(&#34;cn-heyuan&#34;)
+ *                     .chartTitle(&#34;chart_title&#34;)
+ *                     .start(&#34;-60s&#34;)
+ *                     .end(&#34;20s&#34;)
+ *                     .query(&#34;* AND aliyun | select count(1) as cnt&#34;)
+ *                     .powerSqlMode(&#34;auto&#34;)
+ *                     .build(),
+ *                 AlertQueryListArgs.builder()
+ *                     .store(&#34;tf-test-logstore&#34;)
+ *                     .storeType(&#34;log&#34;)
+ *                     .project(exampleProject.name())
+ *                     .region(&#34;cn-heyuan&#34;)
+ *                     .chartTitle(&#34;chart_title&#34;)
+ *                     .start(&#34;-60s&#34;)
+ *                     .end(&#34;20s&#34;)
+ *                     .query(&#34;error | select count(1) as error_cnt&#34;)
+ *                     .powerSqlMode(&#34;enable&#34;)
+ *                     .build())
+ *             .labels(AlertLabelArgs.builder()
+ *                 .key(&#34;env&#34;)
+ *                 .value(&#34;test&#34;)
+ *                 .build())
+ *             .annotations(            
+ *                 AlertAnnotationArgs.builder()
+ *                     .key(&#34;title&#34;)
+ *                     .value(&#34;alert title&#34;)
+ *                     .build(),
+ *                 AlertAnnotationArgs.builder()
+ *                     .key(&#34;desc&#34;)
+ *                     .value(&#34;alert desc&#34;)
+ *                     .build(),
+ *                 AlertAnnotationArgs.builder()
+ *                     .key(&#34;test_key&#34;)
+ *                     .value(&#34;test value&#34;)
+ *                     .build())
+ *             .groupConfiguration(AlertGroupConfigurationArgs.builder()
+ *                 .type(&#34;custom&#34;)
+ *                 .fields(&#34;cnt&#34;)
+ *                 .build())
+ *             .policyConfiguration(AlertPolicyConfigurationArgs.builder()
+ *                 .alertPolicyId(&#34;sls.bultin&#34;)
+ *                 .actionPolicyId(&#34;sls_test_action&#34;)
+ *                 .repeatInterval(&#34;4h&#34;)
+ *                 .build())
+ *             .severityConfigurations(            
+ *                 AlertSeverityConfigurationArgs.builder()
+ *                     .severity(8)
+ *                     .evalCondition(Map.ofEntries(
+ *                         Map.entry(&#34;condition&#34;, &#34;cnt &gt; 3&#34;),
+ *                         Map.entry(&#34;count_condition&#34;, &#34;__count__ &gt; 3&#34;)
+ *                     ))
+ *                     .build(),
+ *                 AlertSeverityConfigurationArgs.builder()
+ *                     .severity(6)
+ *                     .evalCondition(Map.ofEntries(
+ *                         Map.entry(&#34;condition&#34;, &#34;&#34;),
+ *                         Map.entry(&#34;count_condition&#34;, &#34;__count__ &gt; 0&#34;)
+ *                     ))
+ *                     .build(),
+ *                 AlertSeverityConfigurationArgs.builder()
+ *                     .severity(2)
+ *                     .evalCondition(Map.ofEntries(
+ *                         Map.entry(&#34;condition&#34;, &#34;&#34;),
+ *                         Map.entry(&#34;count_condition&#34;, &#34;&#34;)
+ *                     ))
+ *                     .build())
+ *             .joinConfigurations(AlertJoinConfigurationArgs.builder()
+ *                 .type(&#34;cross_join&#34;)
+ *                 .condition(&#34;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Log alert can be imported using the id, e.g.

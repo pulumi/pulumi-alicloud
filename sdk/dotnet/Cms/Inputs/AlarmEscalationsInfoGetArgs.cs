@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// Critical level alarm retry times. Default to 3.
+        /// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         /// </summary>
         [Input("times")]
         public Input<int>? Times { get; set; }

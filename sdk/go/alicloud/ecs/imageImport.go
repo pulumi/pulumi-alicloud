@@ -276,6 +276,41 @@ func (o ImageImportOutput) ToImageImportOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
+func (o ImageImportOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+func (o ImageImportOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Description of the system with disks and snapshots under the image.
+func (o ImageImportOutput) DiskDeviceMappings() ImageImportDiskDeviceMappingArrayOutput {
+	return o.ApplyT(func(v *ImageImport) ImageImportDiskDeviceMappingArrayOutput { return v.DiskDeviceMappings }).(ImageImportDiskDeviceMappingArrayOutput)
+}
+
+// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+func (o ImageImportOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+func (o ImageImportOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.LicenseType }).(pulumi.StringPtrOutput)
+}
+
+// Operating system platform type. Valid values: `windows`, Default is `linux`.
+func (o ImageImportOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+func (o ImageImportOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
 type ImageImportArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageImportArrayOutput) ElementType() reflect.Type {

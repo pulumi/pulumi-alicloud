@@ -36,6 +36,47 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
  * 
  * ## Example Usage
+ * ### Create a hbase instance
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.hbase.Instance;
+ * import com.pulumi.alicloud.hbase.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .coldStorageSize(0)
+ *             .coreDiskSize(400)
+ *             .coreDiskType(&#34;cloud_efficiency&#34;)
+ *             .coreInstanceQuantity(2)
+ *             .coreInstanceType(&#34;hbase.sn1.large&#34;)
+ *             .engine(&#34;hbaseue&#34;)
+ *             .engineVersion(&#34;2.0&#34;)
+ *             .masterInstanceType(&#34;hbase.sn1.large&#34;)
+ *             .payType(&#34;PostPaid&#34;)
+ *             .vswitchId(&#34;vsw-123456&#34;)
+ *             .zoneId(&#34;cn-shenzhen-b&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * this is a example for class netType instance. you can find more detail with the examples/hbase dir.
  * 
  * ## Import
  * 

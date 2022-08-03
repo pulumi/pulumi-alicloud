@@ -207,6 +207,16 @@ func (o KeyVersionOutput) ToKeyVersionOutputWithContext(ctx context.Context) Key
 	return o
 }
 
+// The id of the master key (CMK).
+func (o KeyVersionOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyVersion) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The id of the Alikms key version.
+func (o KeyVersionOutput) KeyVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyVersion) pulumi.StringOutput { return v.KeyVersionId }).(pulumi.StringOutput)
+}
+
 type KeyVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyVersionArrayOutput) ElementType() reflect.Type {

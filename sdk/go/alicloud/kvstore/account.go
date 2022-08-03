@@ -362,6 +362,58 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The name of the account. The name must meet the following requirements:
+// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+// * The name can be up to 100 characters in length.
+// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+func (o AccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// The privilege of account access database. Default value: `RoleReadWrite`
+// - `RoleReadOnly`: This value is only for Redis and Memcache
+// - `RoleReadWrite`: This value is only for Redis and Memcache
+func (o AccountOutput) AccountPrivilege() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPrivilege }).(pulumi.StringPtrOutput)
+}
+
+// Privilege type of account.
+// - Normal: Common privilege.
+//   Default to Normal.
+func (o AccountOutput) AccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountType }).(pulumi.StringPtrOutput)
+}
+
+// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+func (o AccountOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
+func (o AccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
+func (o AccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o AccountOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *Account) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The status of KVStore Account.
+func (o AccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AccountArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountArrayOutput) ElementType() reflect.Type {

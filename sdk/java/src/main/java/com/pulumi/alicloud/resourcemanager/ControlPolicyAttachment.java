@@ -22,6 +22,77 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourceDirectory;
+ * import com.pulumi.alicloud.resourcemanager.ResourceDirectoryArgs;
+ * import com.pulumi.alicloud.resourcemanager.ControlPolicy;
+ * import com.pulumi.alicloud.resourcemanager.ControlPolicyArgs;
+ * import com.pulumi.alicloud.resourcemanager.Folder;
+ * import com.pulumi.alicloud.resourcemanager.FolderArgs;
+ * import com.pulumi.alicloud.resourcemanager.ControlPolicyAttachment;
+ * import com.pulumi.alicloud.resourcemanager.ControlPolicyAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleResourceDirectory = new ResourceDirectory(&#34;exampleResourceDirectory&#34;, ResourceDirectoryArgs.builder()        
+ *             .status(&#34;Enabled&#34;)
+ *             .build());
+ * 
+ *         var exampleControlPolicy = new ControlPolicy(&#34;exampleControlPolicy&#34;, ControlPolicyArgs.builder()        
+ *             .controlPolicyName(&#34;tf-testAccName&#34;)
+ *             .description(&#34;tf-testAccRDControlPolicy&#34;)
+ *             .effectScope(&#34;RAM&#34;)
+ *             .policyDocument(&#34;&#34;&#34;
+ *   {
+ *     &#34;Version&#34;: &#34;1&#34;,
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Effect&#34;: &#34;Deny&#34;,
+ *         &#34;Action&#34;: [
+ *           &#34;ram:UpdateRole&#34;,
+ *           &#34;ram:DeleteRole&#34;,
+ *           &#34;ram:AttachPolicyToRole&#34;,
+ *           &#34;ram:DetachPolicyFromRole&#34;
+ *         ],
+ *         &#34;Resource&#34;: &#34;acs:ram:*:*:role/ResourceDirectoryAccountAccessRole&#34;
+ *       }
+ *     ]
+ *   }
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var exampleFolder = new Folder(&#34;exampleFolder&#34;, FolderArgs.builder()        
+ *             .folderName(&#34;tf-testAccName&#34;)
+ *             .build());
+ * 
+ *         var exampleControlPolicyAttachment = new ControlPolicyAttachment(&#34;exampleControlPolicyAttachment&#34;, ControlPolicyAttachmentArgs.builder()        
+ *             .policyId(exampleControlPolicy.id())
+ *             .targetId(exampleFolder.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exampleResourceDirectory)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Resource Manager Control Policy Attachment can be imported using the id, e.g.

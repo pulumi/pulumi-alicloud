@@ -286,6 +286,36 @@ func (o GatewayCacheDiskOutput) ToGatewayCacheDiskOutputWithContext(ctx context.
 	return o
 }
 
+// The cache disk type. Valid values: `cloudEfficiency`, `cloudSsd`.
+func (o GatewayCacheDiskOutput) CacheDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayCacheDisk) pulumi.StringOutput { return v.CacheDiskCategory }).(pulumi.StringOutput)
+}
+
+// size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+func (o GatewayCacheDiskOutput) CacheDiskSizeInGb() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayCacheDisk) pulumi.IntOutput { return v.CacheDiskSizeInGb }).(pulumi.IntOutput)
+}
+
+// The ID of the cache.
+func (o GatewayCacheDiskOutput) CacheId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayCacheDisk) pulumi.StringOutput { return v.CacheId }).(pulumi.StringOutput)
+}
+
+// The ID of the gateway.
+func (o GatewayCacheDiskOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayCacheDisk) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The cache disk inside the device name.
+func (o GatewayCacheDiskOutput) LocalFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayCacheDisk) pulumi.StringOutput { return v.LocalFilePath }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+func (o GatewayCacheDiskOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayCacheDisk) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
 type GatewayCacheDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayCacheDiskArrayOutput) ElementType() reflect.Type {

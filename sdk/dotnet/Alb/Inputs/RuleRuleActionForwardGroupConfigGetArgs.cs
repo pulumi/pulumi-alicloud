@@ -12,6 +12,12 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class RuleRuleActionForwardGroupConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The configuration of session persistence for server groups.
+        /// </summary>
+        [Input("serverGroupStickySession")]
+        public Input<Inputs.RuleRuleActionForwardGroupConfigServerGroupStickySessionGetArgs>? ServerGroupStickySession { get; set; }
+
         [Input("serverGroupTuples")]
         private InputList<Inputs.RuleRuleActionForwardGroupConfigServerGroupTupleGetArgs>? _serverGroupTuples;
 

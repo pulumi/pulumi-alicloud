@@ -672,6 +672,229 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
+// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored.
+func (o ListenerOutput) AclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.AclId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable "acl(access control list)", the acl is specified by `aclId`. Valid values are `on` and `off`. Default to `off`.
+func (o ListenerOutput) AclStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.AclStatus }).(pulumi.StringPtrOutput)
+}
+
+// Mode for handling the acl specified by acl_id. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+func (o ListenerOutput) AclType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.AclType }).(pulumi.StringPtrOutput)
+}
+
+// Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+func (o ListenerOutput) BackendPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.BackendPort }).(pulumi.IntPtrOutput)
+}
+
+// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+func (o ListenerOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+func (o ListenerOutput) CaCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.CaCertificateId }).(pulumi.StringPtrOutput)
+}
+
+// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+func (o ListenerOutput) Cookie() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Cookie }).(pulumi.StringPtrOutput)
+}
+
+// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+func (o ListenerOutput) CookieTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.CookieTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (o ListenerOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.DeleteProtectionValidation }).(pulumi.BoolPtrOutput)
+}
+
+// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+func (o ListenerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+func (o ListenerOutput) EnableHttp2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.EnableHttp2 }).(pulumi.StringPtrOutput)
+}
+
+// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+func (o ListenerOutput) EstablishedTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.EstablishedTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The port that http redirect to https.
+func (o ListenerOutput) ForwardPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.ForwardPort }).(pulumi.IntPtrOutput)
+}
+
+// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+func (o ListenerOutput) FrontendPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.FrontendPort }).(pulumi.IntOutput)
+}
+
+// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+func (o ListenerOutput) Gzip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.Gzip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+func (o ListenerOutput) HealthCheck() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.HealthCheck }).(pulumi.StringPtrOutput)
+}
+
+// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+func (o ListenerOutput) HealthCheckConnectPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
+}
+
+// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+func (o ListenerOutput) HealthCheckDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.HealthCheckDomain }).(pulumi.StringPtrOutput)
+}
+
+// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
+func (o ListenerOutput) HealthCheckHttpCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.HealthCheckHttpCode }).(pulumi.StringOutput)
+}
+
+// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
+func (o ListenerOutput) HealthCheckInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
+}
+
+// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+func (o ListenerOutput) HealthCheckMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.HealthCheckMethod }).(pulumi.StringOutput)
+}
+
+// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
+func (o ListenerOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+func (o ListenerOutput) HealthCheckType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+}
+
+// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+func (o ListenerOutput) HealthCheckUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.HealthCheckUri }).(pulumi.StringPtrOutput)
+}
+
+// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
+func (o ListenerOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+func (o ListenerOutput) IdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.IdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
+func (o ListenerOutput) InstancePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.InstancePort }).(pulumi.IntPtrOutput)
+}
+
+// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+func (o ListenerOutput) LbPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.LbPort }).(pulumi.IntPtrOutput)
+}
+
+// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+func (o ListenerOutput) LbProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.LbProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+func (o ListenerOutput) ListenerForward() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ListenerForward }).(pulumi.StringOutput)
+}
+
+// The Load Balancer ID which is used to launch a new listener.
+func (o ListenerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// The ID of the master slave server group.
+func (o ListenerOutput) MasterSlaveServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.MasterSlaveServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+func (o ListenerOutput) PersistenceTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.PersistenceTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+func (o ListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+func (o ListenerOutput) RequestTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.RequestTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
+// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+func (o ListenerOutput) Scheduler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Scheduler }).(pulumi.StringPtrOutput)
+}
+
+// SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
+func (o ListenerOutput) ServerCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ServerCertificateId }).(pulumi.StringOutput)
+}
+
+// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
+func (o ListenerOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+//
+// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
+func (o ListenerOutput) SslCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.SslCertificateId }).(pulumi.StringOutput)
+}
+
+// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+func (o ListenerOutput) StickySession() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.StickySession }).(pulumi.StringPtrOutput)
+}
+
+// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+func (o ListenerOutput) StickySessionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.StickySessionType }).(pulumi.StringPtrOutput)
+}
+
+// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
+func (o ListenerOutput) TlsCipherPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.TlsCipherPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
+func (o ListenerOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+func (o ListenerOutput) XForwardedFor() ListenerXForwardedForOutput {
+	return o.ApplyT(func(v *Listener) ListenerXForwardedForOutput { return v.XForwardedFor }).(ListenerXForwardedForOutput)
+}
+
 type ListenerArrayOutput struct{ *pulumi.OutputState }
 
 func (ListenerArrayOutput) ElementType() reflect.Type {

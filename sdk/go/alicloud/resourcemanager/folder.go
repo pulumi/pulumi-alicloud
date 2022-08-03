@@ -210,6 +210,16 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+func (o FolderOutput) FolderName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.FolderName }).(pulumi.StringOutput)
+}
+
+// The ID of the parent folder. If not set, the system default value will be used.
+func (o FolderOutput) ParentFolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.ParentFolderId }).(pulumi.StringOutput)
+}
+
 type FolderArrayOutput struct{ *pulumi.OutputState }
 
 func (FolderArrayOutput) ElementType() reflect.Type {

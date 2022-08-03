@@ -38,6 +38,46 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId1&#34;, ids.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AccessConfiguration&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId2&#34;, nameRegex.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessConfigurationsResult> getAccessConfigurations(GetAccessConfigurationsArgs args) {
         return getAccessConfigurations(args, InvokeOptions.Empty);
@@ -50,6 +90,46 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId1&#34;, ids.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AccessConfiguration&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId2&#34;, nameRegex.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessConfigurationsResult> getAccessConfigurationsPlain(GetAccessConfigurationsPlainArgs args) {
@@ -64,6 +144,46 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId1&#34;, ids.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AccessConfiguration&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId2&#34;, nameRegex.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessConfigurationsResult> getAccessConfigurations(GetAccessConfigurationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", TypeShape.of(GetAccessConfigurationsResult.class), args, Utilities.withVersion(options));
@@ -76,6 +196,46 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId1&#34;, ids.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AccessConfiguration&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessConfigurationId2&#34;, nameRegex.applyValue(getAccessConfigurationsResult -&gt; getAccessConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessConfigurationsResult> getAccessConfigurationsPlain(GetAccessConfigurationsPlainArgs args, InvokeOptions options) {
@@ -90,6 +250,42 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId1&#34;, ids.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-Directory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId2&#34;, nameRegex.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDirectoriesResult> getDirectories() {
         return getDirectories(GetDirectoriesArgs.Empty, InvokeOptions.Empty);
@@ -102,6 +298,42 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId1&#34;, ids.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-Directory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId2&#34;, nameRegex.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDirectoriesResult> getDirectoriesPlain() {
@@ -116,6 +348,42 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId1&#34;, ids.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-Directory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId2&#34;, nameRegex.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDirectoriesResult> getDirectories(GetDirectoriesArgs args) {
         return getDirectories(args, InvokeOptions.Empty);
@@ -128,6 +396,42 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId1&#34;, ids.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-Directory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId2&#34;, nameRegex.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDirectoriesResult> getDirectoriesPlain(GetDirectoriesPlainArgs args) {
@@ -142,6 +446,42 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId1&#34;, ids.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-Directory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId2&#34;, nameRegex.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDirectoriesResult> getDirectories(GetDirectoriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getDirectories:getDirectories", TypeShape.of(GetDirectoriesResult.class), args, Utilities.withVersion(options));
@@ -154,6 +494,42 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId1&#34;, ids.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-Directory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoDirectoryId2&#34;, nameRegex.applyValue(getDirectoriesResult -&gt; getDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDirectoriesResult> getDirectoriesPlain(GetDirectoriesPlainArgs args, InvokeOptions options) {
@@ -168,6 +544,46 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId1&#34;, ids.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId2&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
         return getGroups(args, InvokeOptions.Empty);
@@ -180,6 +596,46 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId1&#34;, ids.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId2&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -194,6 +650,46 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId1&#34;, ids.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId2&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
@@ -206,6 +702,46 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId1&#34;, ids.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoGroupId2&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -220,6 +756,40 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getScimServerCredentials(GetScimServerCredentialsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoScimServerCredentialId1&#34;, ids.applyValue(getScimServerCredentialsResult -&gt; getScimServerCredentialsResult.credentials()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetScimServerCredentialsResult> getScimServerCredentials(GetScimServerCredentialsArgs args) {
         return getScimServerCredentials(args, InvokeOptions.Empty);
@@ -232,6 +802,40 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getScimServerCredentials(GetScimServerCredentialsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoScimServerCredentialId1&#34;, ids.applyValue(getScimServerCredentialsResult -&gt; getScimServerCredentialsResult.credentials()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScimServerCredentialsResult> getScimServerCredentialsPlain(GetScimServerCredentialsPlainArgs args) {
@@ -246,6 +850,40 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getScimServerCredentials(GetScimServerCredentialsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoScimServerCredentialId1&#34;, ids.applyValue(getScimServerCredentialsResult -&gt; getScimServerCredentialsResult.credentials()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetScimServerCredentialsResult> getScimServerCredentials(GetScimServerCredentialsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", TypeShape.of(GetScimServerCredentialsResult.class), args, Utilities.withVersion(options));
@@ -258,6 +896,40 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getScimServerCredentials(GetScimServerCredentialsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoScimServerCredentialId1&#34;, ids.applyValue(getScimServerCredentialsResult -&gt; getScimServerCredentialsResult.credentials()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScimServerCredentialsResult> getScimServerCredentialsPlain(GetScimServerCredentialsPlainArgs args, InvokeOptions options) {
@@ -274,6 +946,36 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudssoFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
         return getService(args, InvokeOptions.Empty);
@@ -288,6 +990,36 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudssoFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -304,6 +1036,36 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudssoFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
@@ -319,6 +1081,36 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudssoFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudsso/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
@@ -331,6 +1123,60 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .provisionType(&#34;Manual&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId3&#34;, provisionType.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Enabled&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId4&#34;, status.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
@@ -345,6 +1191,60 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .provisionType(&#34;Manual&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId3&#34;, provisionType.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Enabled&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId4&#34;, status.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
         return getUsersPlain(args, InvokeOptions.Empty);
@@ -358,6 +1258,60 @@ public final class CloudssoFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .provisionType(&#34;Manual&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId3&#34;, provisionType.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Enabled&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId4&#34;, status.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
@@ -370,6 +1324,60 @@ public final class CloudssoFunctions {
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .provisionType(&#34;Manual&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId3&#34;, provisionType.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Enabled&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoUserId4&#34;, status.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

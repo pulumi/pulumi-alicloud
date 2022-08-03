@@ -27,6 +27,56 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cfg.Aggregator;
+ * import com.pulumi.alicloud.cfg.AggregatorArgs;
+ * import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;
+ * import com.pulumi.alicloud.cfg.AggregateConfigRule;
+ * import com.pulumi.alicloud.cfg.AggregateConfigRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAggregator = new Aggregator(&#34;exampleAggregator&#34;, AggregatorArgs.builder()        
+ *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
+ *                 .accountId(&#34;140278452670****&#34;)
+ *                 .accountName(&#34;test-2&#34;)
+ *                 .accountType(&#34;ResourceDirectory&#34;)
+ *                 .build())
+ *             .aggregatorName(&#34;tf-testaccaggregator&#34;)
+ *             .description(&#34;tf-testaccaggregator&#34;)
+ *             .build());
+ * 
+ *         var exampleAggregateConfigRule = new AggregateConfigRule(&#34;exampleAggregateConfigRule&#34;, AggregateConfigRuleArgs.builder()        
+ *             .aggregateConfigRuleName(&#34;tf-testaccconfig1234&#34;)
+ *             .aggregatorId(exampleAggregator.id())
+ *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
+ *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .sourceIdentifier(&#34;ecs-cpu-min-count-limit&#34;)
+ *             .riskLevel(1)
+ *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .inputParameters(Map.of(&#34;cpuCount&#34;, &#34;4&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Config Aggregate Config Rule can be imported using the id, e.g.

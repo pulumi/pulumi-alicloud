@@ -287,6 +287,33 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
+// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+//
+// Deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
+func (o AclOutput) EntryLists() AclEntryListArrayOutput {
+	return o.ApplyT(func(v *Acl) AclEntryListArrayOutput { return v.EntryLists }).(AclEntryListArrayOutput)
+}
+
+// The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
+func (o AclOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
+}
+
+// Name of the access control list.
+func (o AclOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Resource group ID.
+func (o AclOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o AclOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Acl) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type AclArrayOutput struct{ *pulumi.OutputState }
 
 func (AclArrayOutput) ElementType() reflect.Type {

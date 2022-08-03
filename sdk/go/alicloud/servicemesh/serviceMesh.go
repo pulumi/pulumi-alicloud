@@ -270,6 +270,61 @@ func (o ServiceMeshOutput) ToServiceMeshOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The array of the cluster ids.
+func (o ServiceMeshOutput) ClusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringArrayOutput { return v.ClusterIds }).(pulumi.StringArrayOutput)
+}
+
+// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+func (o ServiceMeshOutput) ClusterSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
+}
+
+// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+func (o ServiceMeshOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
+}
+
+// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+func (o ServiceMeshOutput) ExtraConfiguration() ServiceMeshExtraConfigurationOutput {
+	return o.ApplyT(func(v *ServiceMesh) ServiceMeshExtraConfigurationOutput { return v.ExtraConfiguration }).(ServiceMeshExtraConfigurationOutput)
+}
+
+// This parameter is used for resource destroy. Default value is `false`.
+func (o ServiceMeshOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+func (o ServiceMeshOutput) LoadBalancer() ServiceMeshLoadBalancerOutput {
+	return o.ApplyT(func(v *ServiceMesh) ServiceMeshLoadBalancerOutput { return v.LoadBalancer }).(ServiceMeshLoadBalancerOutput)
+}
+
+// The configuration of the Service grid. See the following `Block meshConfig`.
+func (o ServiceMeshOutput) MeshConfig() ServiceMeshMeshConfigOutput {
+	return o.ApplyT(func(v *ServiceMesh) ServiceMeshMeshConfigOutput { return v.MeshConfig }).(ServiceMeshMeshConfigOutput)
+}
+
+// The network configuration of the Service grid. See the following `Block network`.
+func (o ServiceMeshOutput) Network() ServiceMeshNetworkOutput {
+	return o.ApplyT(func(v *ServiceMesh) ServiceMeshNetworkOutput { return v.Network }).(ServiceMeshNetworkOutput)
+}
+
+// The name of the resource.
+func (o ServiceMeshOutput) ServiceMeshName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.ServiceMeshName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource. Valid values: `running` or `initial`.
+func (o ServiceMeshOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
+func (o ServiceMeshOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
 type ServiceMeshArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshArrayOutput) ElementType() reflect.Type {

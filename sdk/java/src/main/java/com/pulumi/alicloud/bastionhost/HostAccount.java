@@ -23,6 +23,40 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.bastionhost.HostAccount;
+ * import com.pulumi.alicloud.bastionhost.HostAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new HostAccount(&#34;example&#34;, HostAccountArgs.builder()        
+ *             .hostAccountName(&#34;example_value&#34;)
+ *             .hostId(&#34;15&#34;)
+ *             .instanceId(&#34;bastionhost-cn-tl32bh0no30&#34;)
+ *             .password(&#34;YourPassword12345&#34;)
+ *             .protocolName(&#34;SSH&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Bastion Host Host Account can be imported using the id, e.g.

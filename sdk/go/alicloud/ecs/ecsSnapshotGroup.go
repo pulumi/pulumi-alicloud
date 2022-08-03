@@ -256,6 +256,56 @@ func (o EcsSnapshotGroupOutput) ToEcsSnapshotGroupOutputWithContext(ctx context.
 	return o
 }
 
+// The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+func (o EcsSnapshotGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
+func (o EcsSnapshotGroupOutput) DiskIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringArrayOutput { return v.DiskIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
+func (o EcsSnapshotGroupOutput) ExcludeDiskIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringArrayOutput { return v.ExcludeDiskIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the instance.
+func (o EcsSnapshotGroupOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringPtrOutput { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the instant access feature.
+func (o EcsSnapshotGroupOutput) InstantAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.BoolPtrOutput { return v.InstantAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
+func (o EcsSnapshotGroupOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.IntPtrOutput { return v.InstantAccessRetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the resource group to which the snapshot consistency group belongs.
+func (o EcsSnapshotGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
+func (o EcsSnapshotGroupOutput) SnapshotGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringPtrOutput { return v.SnapshotGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource.
+func (o EcsSnapshotGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the snapshot group.
+func (o EcsSnapshotGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type EcsSnapshotGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsSnapshotGroupArrayOutput) ElementType() reflect.Type {

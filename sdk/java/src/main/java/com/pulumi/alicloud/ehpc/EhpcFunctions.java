@@ -24,6 +24,42 @@ public final class EhpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetClustersResult> getClusters() {
         return getClusters(GetClustersArgs.Empty, InvokeOptions.Empty);
@@ -34,6 +70,42 @@ public final class EhpcFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -46,6 +118,42 @@ public final class EhpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
         return getClusters(args, InvokeOptions.Empty);
@@ -56,6 +164,42 @@ public final class EhpcFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -68,6 +212,42 @@ public final class EhpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ehpc/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
@@ -78,6 +258,42 @@ public final class EhpcFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -90,6 +306,44 @@ public final class EhpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.JobTemplate;
+     * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
+     *             .jobTemplateName(&#34;example_value&#34;)
+     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *             .build());
+     * 
+     *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetJobTemplatesResult> getJobTemplates() {
         return getJobTemplates(GetJobTemplatesArgs.Empty, InvokeOptions.Empty);
@@ -100,6 +354,44 @@ public final class EhpcFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.JobTemplate;
+     * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
+     *             .jobTemplateName(&#34;example_value&#34;)
+     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *             .build());
+     * 
+     *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetJobTemplatesResult> getJobTemplatesPlain() {
@@ -112,6 +404,44 @@ public final class EhpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.JobTemplate;
+     * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
+     *             .jobTemplateName(&#34;example_value&#34;)
+     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *             .build());
+     * 
+     *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetJobTemplatesResult> getJobTemplates(GetJobTemplatesArgs args) {
         return getJobTemplates(args, InvokeOptions.Empty);
@@ -122,6 +452,44 @@ public final class EhpcFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.JobTemplate;
+     * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
+     *             .jobTemplateName(&#34;example_value&#34;)
+     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *             .build());
+     * 
+     *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetJobTemplatesResult> getJobTemplatesPlain(GetJobTemplatesPlainArgs args) {
@@ -134,6 +502,44 @@ public final class EhpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.JobTemplate;
+     * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
+     *             .jobTemplateName(&#34;example_value&#34;)
+     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *             .build());
+     * 
+     *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetJobTemplatesResult> getJobTemplates(GetJobTemplatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ehpc/getJobTemplates:getJobTemplates", TypeShape.of(GetJobTemplatesResult.class), args, Utilities.withVersion(options));
@@ -144,6 +550,44 @@ public final class EhpcFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.JobTemplate;
+     * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
+     *             .jobTemplateName(&#34;example_value&#34;)
+     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *             .build());
+     * 
+     *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetJobTemplatesResult> getJobTemplatesPlain(GetJobTemplatesPlainArgs args, InvokeOptions options) {

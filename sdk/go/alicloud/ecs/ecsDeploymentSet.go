@@ -249,6 +249,36 @@ func (o EcsDeploymentSetOutput) ToEcsDeploymentSetOutputWithContext(ctx context.
 	return o
 }
 
+// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+func (o EcsDeploymentSetOutput) DeploymentSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.DeploymentSetName }).(pulumi.StringPtrOutput)
+}
+
+// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+func (o EcsDeploymentSetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The deployment domain. Valid values: `Default`.
+func (o EcsDeploymentSetOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The deployment granularity. Valid values: `Host`.
+func (o EcsDeploymentSetOutput) Granularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Granularity }).(pulumi.StringPtrOutput)
+}
+
+// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+func (o EcsDeploymentSetOutput) OnUnableToRedeployFailedInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.OnUnableToRedeployFailedInstance }).(pulumi.StringPtrOutput)
+}
+
+// The deployment strategy. Valid values: `Availability`.
+func (o EcsDeploymentSetOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
 type EcsDeploymentSetArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsDeploymentSetArrayOutput) ElementType() reflect.Type {

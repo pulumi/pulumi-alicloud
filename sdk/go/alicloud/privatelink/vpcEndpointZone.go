@@ -240,6 +240,31 @@ func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutputWithContext(ctx context.Co
 	return o
 }
 
+// The dry run.
+func (o VpcEndpointZoneOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Vpc Endpoint.
+func (o VpcEndpointZoneOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// Status.
+func (o VpcEndpointZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The VSwitch id.
+func (o VpcEndpointZoneOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone Id.
+func (o VpcEndpointZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type VpcEndpointZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointZoneArrayOutput) ElementType() reflect.Type {

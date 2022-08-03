@@ -232,6 +232,36 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
+// The name of the resource.
+func (o EndpointOutput) EndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+// The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+func (o EndpointOutput) IpConfigs() EndpointIpConfigArrayOutput {
+	return o.ApplyT(func(v *Endpoint) EndpointIpConfigArrayOutput { return v.IpConfigs }).(EndpointIpConfigArrayOutput)
+}
+
+// The ID of the Security Group.
+func (o EndpointOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+func (o EndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The VPC ID.
+func (o EndpointOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The Region of the VPC.
+func (o EndpointOutput) VpcRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.VpcRegionId }).(pulumi.StringOutput)
+}
+
 type EndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointArrayOutput) ElementType() reflect.Type {

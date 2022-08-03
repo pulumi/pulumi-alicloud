@@ -259,6 +259,41 @@ func (o TransitRouterOutput) ToTransitRouterOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of the CEN.
+func (o TransitRouterOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The dry run.
+func (o TransitRouterOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the Transit Router.
+func (o TransitRouterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of the transit router.
+func (o TransitRouterOutput) TransitRouterDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringPtrOutput { return v.TransitRouterDescription }).(pulumi.StringPtrOutput)
+}
+
+// The transit router id of the transit router.
+func (o TransitRouterOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+// The name of the transit router.
+func (o TransitRouterOutput) TransitRouterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringPtrOutput { return v.TransitRouterName }).(pulumi.StringPtrOutput)
+}
+
+// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+func (o TransitRouterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type TransitRouterArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterArrayOutput) ElementType() reflect.Type {

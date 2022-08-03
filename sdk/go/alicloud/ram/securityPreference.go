@@ -271,6 +271,44 @@ func (o SecurityPreferenceOutput) ToSecurityPreferenceOutputWithContext(ctx cont
 	return o
 }
 
+// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+func (o SecurityPreferenceOutput) AllowUserToChangePassword() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToChangePassword }).(pulumi.BoolOutput)
+}
+
+// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+func (o SecurityPreferenceOutput) AllowUserToManageAccessKeys() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToManageAccessKeys }).(pulumi.BoolOutput)
+}
+
+// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+func (o SecurityPreferenceOutput) AllowUserToManageMfaDevices() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToManageMfaDevices }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+func (o SecurityPreferenceOutput) EnableSaveMfaTicket() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.EnableSaveMfaTicket }).(pulumi.BoolOutput)
+}
+
+// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+func (o SecurityPreferenceOutput) EnforceMfaForLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.EnforceMfaForLogin }).(pulumi.BoolOutput)
+}
+
+// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
+// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+func (o SecurityPreferenceOutput) LoginNetworkMasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.StringPtrOutput { return v.LoginNetworkMasks }).(pulumi.StringPtrOutput)
+}
+
+// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+func (o SecurityPreferenceOutput) LoginSessionDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.IntOutput { return v.LoginSessionDuration }).(pulumi.IntOutput)
+}
+
 type SecurityPreferenceArrayOutput struct{ *pulumi.OutputState }
 
 func (SecurityPreferenceArrayOutput) ElementType() reflect.Type {

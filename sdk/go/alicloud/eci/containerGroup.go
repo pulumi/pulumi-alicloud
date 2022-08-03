@@ -538,6 +538,145 @@ func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+func (o ContainerGroupOutput) AutoCreateEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolPtrOutput { return v.AutoCreateEip }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to automatically match the image cache. Default value: false.
+func (o ContainerGroupOutput) AutoMatchImageCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolPtrOutput { return v.AutoMatchImageCache }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the container group.
+func (o ContainerGroupOutput) ContainerGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.ContainerGroupName }).(pulumi.StringOutput)
+}
+
+// The list of containers.
+func (o ContainerGroupOutput) Containers() ContainerGroupContainerArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupContainerArrayOutput { return v.Containers }).(ContainerGroupContainerArrayOutput)
+}
+
+// The amount of CPU resources allocated to the container.
+func (o ContainerGroupOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.Float64Output { return v.Cpu }).(pulumi.Float64Output)
+}
+
+// The structure of dnsConfig.
+func (o ContainerGroupOutput) DnsConfig() ContainerGroupDnsConfigPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupDnsConfigPtrOutput { return v.DnsConfig }).(ContainerGroupDnsConfigPtrOutput)
+}
+
+// The security context of the container group.
+func (o ContainerGroupOutput) EciSecurityContext() ContainerGroupEciSecurityContextPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupEciSecurityContextPtrOutput { return v.EciSecurityContext }).(ContainerGroupEciSecurityContextPtrOutput)
+}
+
+// The bandwidth of the EIP. The default value is `5`.
+func (o ContainerGroupOutput) EipBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.IntPtrOutput { return v.EipBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the elastic IP address (EIP).
+func (o ContainerGroupOutput) EipInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.EipInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// HostAliases.
+func (o ContainerGroupOutput) HostAliases() ContainerGroupHostAliasArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupHostAliasArrayOutput { return v.HostAliases }).(ContainerGroupHostAliasArrayOutput)
+}
+
+// The image registry credential. The details see Block `imageRegistryCredential`.
+func (o ContainerGroupOutput) ImageRegistryCredentials() ContainerGroupImageRegistryCredentialArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupImageRegistryCredentialArrayOutput {
+		return v.ImageRegistryCredentials
+	}).(ContainerGroupImageRegistryCredentialArrayOutput)
+}
+
+// The list of initContainers.
+func (o ContainerGroupOutput) InitContainers() ContainerGroupInitContainerArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupInitContainerArrayOutput { return v.InitContainers }).(ContainerGroupInitContainerArrayOutput)
+}
+
+// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+func (o ContainerGroupOutput) InsecureRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.InsecureRegistry }).(pulumi.StringPtrOutput)
+}
+
+// The type of the ECS instance.
+func (o ContainerGroupOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// (Available in v1.170.0+) The Public IP of the container group.
+func (o ContainerGroupOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// (Available in v1.170.0+) The Private IP of the container group.
+func (o ContainerGroupOutput) IntranetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.IntranetIp }).(pulumi.StringOutput)
+}
+
+// The amount of memory resources allocated to the container.
+func (o ContainerGroupOutput) Memory() pulumi.Float64Output {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.Float64Output { return v.Memory }).(pulumi.Float64Output)
+}
+
+// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+func (o ContainerGroupOutput) PlainHttpRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.PlainHttpRegistry }).(pulumi.StringPtrOutput)
+}
+
+// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
+func (o ContainerGroupOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o ContainerGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
+func (o ContainerGroupOutput) RestartPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.RestartPolicy }).(pulumi.StringOutput)
+}
+
+// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
+func (o ContainerGroupOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The status of container group.
+func (o ContainerGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o ContainerGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The list of volumes.
+func (o ContainerGroupOutput) Volumes() ContainerGroupVolumeArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupVolumeArrayOutput { return v.Volumes }).(ContainerGroupVolumeArrayOutput)
+}
+
+// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+func (o ContainerGroupOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
+func (o ContainerGroupOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ContainerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupArrayOutput) ElementType() reflect.Type {

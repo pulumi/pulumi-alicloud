@@ -611,6 +611,176 @@ func (o GatewayFileShareOutput) ToGatewayFileShareOutputWithContext(ctx context.
 	return o
 }
 
+// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
+func (o GatewayFileShareOutput) AccessBasedEnumeration() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.AccessBasedEnumeration }).(pulumi.BoolOutput)
+}
+
+// The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
+func (o GatewayFileShareOutput) BackendLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.IntOutput { return v.BackendLimit }).(pulumi.IntOutput)
+}
+
+// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
+func (o GatewayFileShareOutput) Browsable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.Browsable }).(pulumi.BoolOutput)
+}
+
+// Direct reading OSS of the gateway file share.
+func (o GatewayFileShareOutput) BypassCacheRead() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.BypassCacheRead }).(pulumi.BoolOutput)
+}
+
+// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+func (o GatewayFileShareOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
+func (o GatewayFileShareOutput) DirectIo() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.DirectIo }).(pulumi.BoolOutput)
+}
+
+// The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
+func (o GatewayFileShareOutput) DownloadLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.IntOutput { return v.DownloadLimit }).(pulumi.IntOutput)
+}
+
+// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
+func (o GatewayFileShareOutput) FastReclaim() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.FastReclaim }).(pulumi.BoolOutput)
+}
+
+// The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
+func (o GatewayFileShareOutput) FeLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.IntOutput { return v.FeLimit }).(pulumi.IntOutput)
+}
+
+// The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
+func (o GatewayFileShareOutput) GatewayFileShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.GatewayFileShareName }).(pulumi.StringOutput)
+}
+
+// The ID of the gateway.
+func (o GatewayFileShareOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version >= 1.0.40 above support.
+func (o GatewayFileShareOutput) IgnoreDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.IgnoreDelete }).(pulumi.BoolOutput)
+}
+
+// The whether debris optimization of the gateway file share. Default value: `false`.
+func (o GatewayFileShareOutput) InPlace() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.InPlace }).(pulumi.BoolOutput)
+}
+
+// The ID of the file share.
+func (o GatewayFileShareOutput) IndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.IndexId }).(pulumi.StringOutput)
+}
+
+// The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
+func (o GatewayFileShareOutput) LagPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.IntOutput { return v.LagPeriod }).(pulumi.IntOutput)
+}
+
+// The cache disk inside the device name.
+func (o GatewayFileShareOutput) LocalPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.LocalPath }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version >= 1.2.0 above support.
+func (o GatewayFileShareOutput) NfsV4Optimization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.NfsV4Optimization }).(pulumi.BoolOutput)
+}
+
+// The name of the OSS Bucket.
+func (o GatewayFileShareOutput) OssBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.OssBucketName }).(pulumi.StringOutput)
+}
+
+// Whether they are using SSL connect to OSS Bucket.
+func (o GatewayFileShareOutput) OssBucketSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.OssBucketSsl }).(pulumi.BoolOutput)
+}
+
+// The gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`.
+func (o GatewayFileShareOutput) OssEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.OssEndpoint }).(pulumi.StringOutput)
+}
+
+// In part mode, the directory path group JSON format.
+func (o GatewayFileShareOutput) PartialSyncPaths() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringPtrOutput { return v.PartialSyncPaths }).(pulumi.StringPtrOutput)
+}
+
+// The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
+func (o GatewayFileShareOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringPtrOutput { return v.PathPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
+func (o GatewayFileShareOutput) PollingInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.IntPtrOutput { return v.PollingInterval }).(pulumi.IntPtrOutput)
+}
+
+// Share types. Valid values: `SMB`, `NFS`.
+func (o GatewayFileShareOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+func (o GatewayFileShareOutput) RemoteSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.RemoteSync }).(pulumi.BoolOutput)
+}
+
+// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
+func (o GatewayFileShareOutput) RemoteSyncDownload() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.RemoteSyncDownload }).(pulumi.BoolOutput)
+}
+
+// File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
+func (o GatewayFileShareOutput) RoClientList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringPtrOutput { return v.RoClientList }).(pulumi.StringPtrOutput)
+}
+
+// The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
+func (o GatewayFileShareOutput) RoUserList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringPtrOutput { return v.RoUserList }).(pulumi.StringPtrOutput)
+}
+
+// Read and write the client list. When Protocol NFS is returned when the status is.
+func (o GatewayFileShareOutput) RwClientList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringPtrOutput { return v.RwClientList }).(pulumi.StringPtrOutput)
+}
+
+// Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
+func (o GatewayFileShareOutput) RwUserList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringPtrOutput { return v.RwUserList }).(pulumi.StringPtrOutput)
+}
+
+// The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
+func (o GatewayFileShareOutput) Squash() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.Squash }).(pulumi.StringOutput)
+}
+
+// Whether to support the archive transparent read.
+func (o GatewayFileShareOutput) SupportArchive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.SupportArchive }).(pulumi.BoolOutput)
+}
+
+// The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
+func (o GatewayFileShareOutput) TransferAcceleration() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.TransferAcceleration }).(pulumi.BoolOutput)
+}
+
+// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
+func (o GatewayFileShareOutput) WindowsAcl() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.WindowsAcl }).(pulumi.BoolOutput)
+}
+
 type GatewayFileShareArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayFileShareArrayOutput) ElementType() reflect.Type {

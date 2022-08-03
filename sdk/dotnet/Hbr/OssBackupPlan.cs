@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         });
     ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = name,
+    ///             BucketName = name,
     ///         });
     ///         var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new AliCloud.Hbr.OssBackupPlanArgs
     ///         {

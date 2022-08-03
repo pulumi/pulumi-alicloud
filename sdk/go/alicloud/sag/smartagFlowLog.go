@@ -330,6 +330,69 @@ func (o SmartagFlowLogOutput) ToSmartagFlowLogOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
+func (o SmartagFlowLogOutput) ActiveAging() pulumi.IntOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.IntOutput { return v.ActiveAging }).(pulumi.IntOutput)
+}
+
+// The description of the flow log.
+func (o SmartagFlowLogOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the flow log.
+func (o SmartagFlowLogOutput) FlowLogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringPtrOutput { return v.FlowLogName }).(pulumi.StringPtrOutput)
+}
+
+// The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
+func (o SmartagFlowLogOutput) InactiveAging() pulumi.IntOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.IntOutput { return v.InactiveAging }).(pulumi.IntOutput)
+}
+
+// The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
+func (o SmartagFlowLogOutput) LogstoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringPtrOutput { return v.LogstoreName }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
+func (o SmartagFlowLogOutput) NetflowServerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringPtrOutput { return v.NetflowServerIp }).(pulumi.StringPtrOutput)
+}
+
+// The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
+func (o SmartagFlowLogOutput) NetflowServerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.IntOutput { return v.NetflowServerPort }).(pulumi.IntOutput)
+}
+
+// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
+func (o SmartagFlowLogOutput) NetflowVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringOutput { return v.NetflowVersion }).(pulumi.StringOutput)
+}
+
+// The location where the flow log is stored. Valid values:
+// - `sls`: The flow log is stored in Log Service.
+// - `netflow`: The flow log is stored on a NetFlow collector.
+// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+func (o SmartagFlowLogOutput) OutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringOutput { return v.OutputType }).(pulumi.StringOutput)
+}
+
+// The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
+func (o SmartagFlowLogOutput) ProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringPtrOutput { return v.ProjectName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
+func (o SmartagFlowLogOutput) SlsRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringPtrOutput { return v.SlsRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
+func (o SmartagFlowLogOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SmartagFlowLogArrayOutput struct{ *pulumi.OutputState }
 
 func (SmartagFlowLogArrayOutput) ElementType() reflect.Type {

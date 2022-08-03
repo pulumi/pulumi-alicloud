@@ -386,6 +386,41 @@ func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Co
 	return o
 }
 
+// Is the addon ready for upgrade.
+func (o KubernetesAddonOutput) CanUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.BoolOutput { return v.CanUpgrade }).(pulumi.BoolOutput)
+}
+
+// The id of kubernetes cluster.
+func (o KubernetesAddonOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+func (o KubernetesAddonOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringPtrOutput { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+// The name of addon.
+func (o KubernetesAddonOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The version which addon can be upgraded to.
+func (o KubernetesAddonOutput) NextVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.NextVersion }).(pulumi.StringOutput)
+}
+
+// Is it a mandatory addon to be installed.
+func (o KubernetesAddonOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.BoolOutput { return v.Required }).(pulumi.BoolOutput)
+}
+
+// The current version of addon.
+func (o KubernetesAddonOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
 type KubernetesAddonArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAddonArrayOutput) ElementType() reflect.Type {

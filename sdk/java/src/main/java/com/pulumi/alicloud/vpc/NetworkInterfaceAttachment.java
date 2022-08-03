@@ -18,6 +18,111 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Bacis Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.vpc.NetworkInterface;
+ * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+ * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+ * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfaceAttachment&#34;);
+ *         final var number = config.get(&#34;number&#34;).orElse(&#34;2&#34;);
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         final var instanceType = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .eniAmount(2)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; number; i++) {
+ *             new Instance(&#34;instance-&#34; + i, InstanceArgs.builder()            
+ *                 .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .securityGroups(group.id())
+ *                 .instanceType(instanceType.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *                 .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceName(name)
+ *                 .vswitchId(vswitch.id())
+ *                 .internetMaxBandwidthOut(10)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; number; i++) {
+ *             new NetworkInterface(&#34;interface-&#34; + i, NetworkInterfaceArgs.builder()            
+ *                 .vswitchId(vswitch.id())
+ *                 .securityGroups(group.id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; number; i++) {
+ *             new NetworkInterfaceAttachment(&#34;attachment-&#34; + i, NetworkInterfaceAttachmentArgs.builder()            
+ *                 .instanceId(instance.stream().map(element -&gt; element.id()).collect(toList())[range.index()])
+ *                 .networkInterfaceId(interface_.stream().map(element -&gt; element.id()).collect(toList())[range.index()])
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Network Interfaces Attachment resource can be imported using the id, e.g.

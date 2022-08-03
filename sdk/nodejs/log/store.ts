@@ -82,6 +82,10 @@ export class Store extends pulumi.CustomResource {
      * The shard attribute.
      */
     public /*out*/ readonly shards!: pulumi.Output<outputs.log.StoreShard[]>;
+    /**
+     * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     */
+    public readonly telemetryType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Store resource with the given unique name, arguments, and options.
@@ -106,6 +110,7 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
             resourceInputs["shardCount"] = state ? state.shardCount : undefined;
             resourceInputs["shards"] = state ? state.shards : undefined;
+            resourceInputs["telemetryType"] = state ? state.telemetryType : undefined;
         } else {
             const args = argsOrState as StoreArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -120,6 +125,7 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
+            resourceInputs["telemetryType"] = args ? args.telemetryType : undefined;
             resourceInputs["shards"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -171,6 +177,10 @@ export interface StoreState {
      * The shard attribute.
      */
     shards?: pulumi.Input<pulumi.Input<inputs.log.StoreShard>[]>;
+    /**
+     * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     */
+    telemetryType?: pulumi.Input<string>;
 }
 
 /**
@@ -213,4 +223,8 @@ export interface StoreArgs {
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
      */
     shardCount?: pulumi.Input<number>;
+    /**
+     * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     */
+    telemetryType?: pulumi.Input<string>;
 }

@@ -25,10 +25,27 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-// 			Description:    pulumi.String("this is a policy test"),
-// 			Force:          pulumi.Bool(true),
-// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": [\n", "          \"oss:ListObjects\",\n", "          \"oss:GetObject\"\n", "        ],\n", "        \"Effect\": \"Allow\",\n", "        \"Resource\": [\n", "          \"acs:oss:*:*:mybucket\",\n", "          \"acs:oss:*:*:mybucket/*\"\n", "        ]\n", "      }\n", "    ],\n", "      \"Version\": \"1\"\n", "  }\n", "  \n")),
-// 			PolicyName:     pulumi.String("policyName"),
+// 			Description: pulumi.String("this is a policy test"),
+// 			Force:       pulumi.Bool(true),
+// 			PolicyDocument: pulumi.String(fmt.Sprintf(`  {
+//     "Statement": [
+//       {
+//         "Action": [
+//           "oss:ListObjects",
+//           "oss:GetObject"
+//         ],
+//         "Effect": "Allow",
+//         "Resource": [
+//           "acs:oss:*:*:mybucket",
+//           "acs:oss:*:*:mybucket/*"
+//         ]
+//       }
+//     ],
+//       "Version": "1"
+//   }
+//
+// `)),
+// 			PolicyName: pulumi.String("policyName"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -334,6 +351,79 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
+}
+
+// The policy attachment count.
+func (o PolicyOutput) AttachmentCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Policy) pulumi.IntOutput { return v.AttachmentCount }).(pulumi.IntOutput)
+}
+
+// The default version of policy.
+func (o PolicyOutput) DefaultVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.DefaultVersion }).(pulumi.StringOutput)
+}
+
+// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+func (o PolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from provider version 1.114.0 and `policyDocument` instead.
+//
+// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
+func (o PolicyOutput) Document() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Document }).(pulumi.StringOutput)
+}
+
+// This parameter is used for resource destroy. Default value is `false`.
+func (o PolicyOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// It has been deprecated from provider version 1.114.0 and `policyName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
+func (o PolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Document of the RAM policy. It is required when the `statement` is not specified.
+func (o PolicyOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyDocument }).(pulumi.StringOutput)
+}
+
+// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+func (o PolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+func (o PolicyOutput) RotateStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.RotateStrategy }).(pulumi.StringPtrOutput)
+}
+
+// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+//
+// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
+func (o PolicyOutput) Statements() PolicyStatementArrayOutput {
+	return o.ApplyT(func(v *Policy) PolicyStatementArrayOutput { return v.Statements }).(PolicyStatementArrayOutput)
+}
+
+// The policy type.
+func (o PolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+//
+// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
+func (o PolicyOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// The ID of default version policy.
+func (o PolicyOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }
 
 type PolicyArrayOutput struct{ *pulumi.OutputState }

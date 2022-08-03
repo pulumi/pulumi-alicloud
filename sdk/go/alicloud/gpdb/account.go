@@ -256,6 +256,39 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The description of the account.
+// * Starts with a letter.
+// * Does not start with `http://` or `https://`.
+// * Contains letters, underscores (_), hyphens (-), or digits.
+// * Be 2 to 256 characters in length.
+func (o AccountOutput) AccountDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the account. The account name must be unique and meet the following requirements:
+// * Starts with a letter.
+// * Contains only lowercase letters, digits, or underscores (_).
+// * Be up to 16 characters in length.
+// * Contains no reserved keywords.
+func (o AccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+func (o AccountOutput) AccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o AccountOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+func (o AccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AccountArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountArrayOutput) ElementType() reflect.Type {

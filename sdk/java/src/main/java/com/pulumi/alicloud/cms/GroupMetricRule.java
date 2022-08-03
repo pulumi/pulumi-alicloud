@@ -25,6 +25,67 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomUuid;
+ * import com.pulumi.alicloud.cms.GroupMetricRule;
+ * import com.pulumi.alicloud.cms.GroupMetricRuleArgs;
+ * import com.pulumi.alicloud.cms.inputs.GroupMetricRuleEscalationsArgs;
+ * import com.pulumi.alicloud.cms.inputs.GroupMetricRuleEscalationsWarnArgs;
+ * import com.pulumi.alicloud.cms.inputs.GroupMetricRuleEscalationsInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var thisRandomUuid = new RandomUuid(&#34;thisRandomUuid&#34;);
+ * 
+ *         var thisGroupMetricRule = new GroupMetricRule(&#34;thisGroupMetricRule&#34;, GroupMetricRuleArgs.builder()        
+ *             .groupId(&#34;539****&#34;)
+ *             .ruleId(thisRandomUuid.id())
+ *             .category(&#34;ecs&#34;)
+ *             .namespace(&#34;acs_ecs_dashboard&#34;)
+ *             .metricName(&#34;cpu_total&#34;)
+ *             .period(&#34;60&#34;)
+ *             .groupMetricRuleName(&#34;tf-testacc-rule-name&#34;)
+ *             .emailSubject(&#34;tf-testacc-rule-name-warning&#34;)
+ *             .interval(&#34;3600&#34;)
+ *             .silenceTime(85800)
+ *             .noEffectiveInterval(&#34;00:00-05:30&#34;)
+ *             .webhook(&#34;http://www.aliyun.com&#34;)
+ *             .escalations(GroupMetricRuleEscalationsArgs.builder()
+ *                 .warn(GroupMetricRuleEscalationsWarnArgs.builder()
+ *                     .comparisonOperator(&#34;GreaterThanOrEqualToThreshold&#34;)
+ *                     .statistics(&#34;Average&#34;)
+ *                     .threshold(&#34;90&#34;)
+ *                     .times(3)
+ *                     .build())
+ *                 .info(GroupMetricRuleEscalationsInfoArgs.builder()
+ *                     .comparisonOperator(&#34;LessThanLastWeek&#34;)
+ *                     .statistics(&#34;Average&#34;)
+ *                     .threshold(&#34;90&#34;)
+ *                     .times(5)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.

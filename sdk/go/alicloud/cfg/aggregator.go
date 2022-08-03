@@ -246,6 +246,31 @@ func (o AggregatorOutput) ToAggregatorOutputWithContext(ctx context.Context) Agg
 	return o
 }
 
+// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+func (o AggregatorOutput) AggregatorAccounts() AggregatorAggregatorAccountArrayOutput {
+	return o.ApplyT(func(v *Aggregator) AggregatorAggregatorAccountArrayOutput { return v.AggregatorAccounts }).(AggregatorAggregatorAccountArrayOutput)
+}
+
+// The name of aggregator.
+func (o AggregatorOutput) AggregatorName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.AggregatorName }).(pulumi.StringOutput)
+}
+
+// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+func (o AggregatorOutput) AggregatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.AggregatorType }).(pulumi.StringOutput)
+}
+
+// The description of aggregator.
+func (o AggregatorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+func (o AggregatorOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AggregatorArrayOutput struct{ *pulumi.OutputState }
 
 func (AggregatorArrayOutput) ElementType() reflect.Type {

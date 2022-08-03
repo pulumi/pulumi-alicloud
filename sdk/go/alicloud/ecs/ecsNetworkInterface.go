@@ -457,6 +457,101 @@ func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutputWithContext(ctx co
 	return o
 }
 
+// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+func (o EcsNetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The MAC address of the ENI.
+func (o EcsNetworkInterfaceOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+func (o EcsNetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+func (o EcsNetworkInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
+func (o EcsNetworkInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.PrimaryIpAddress }).(pulumi.StringOutput)
+}
+
+// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
+//
+// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+func (o EcsNetworkInterfaceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
+func (o EcsNetworkInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
+//
+// Deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
+func (o EcsNetworkInterfaceOutput) PrivateIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
+}
+
+// Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
+//
+// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
+func (o EcsNetworkInterfaceOutput) PrivateIpsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.IntOutput { return v.PrivateIpsCount }).(pulumi.IntOutput)
+}
+
+// The queue number of the ENI.
+func (o EcsNetworkInterfaceOutput) QueueNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.IntOutput { return v.QueueNumber }).(pulumi.IntOutput)
+}
+
+// The resource group id.
+func (o EcsNetworkInterfaceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The number of private IP addresses that can be automatically created by ECS.
+func (o EcsNetworkInterfaceOutput) SecondaryPrivateIpAddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.IntOutput { return v.SecondaryPrivateIpAddressCount }).(pulumi.IntOutput)
+}
+
+// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+func (o EcsNetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
+//
+// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
+func (o EcsNetworkInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// The status of the ENI.
+func (o EcsNetworkInterfaceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o EcsNetworkInterfaceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
+func (o EcsNetworkInterfaceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type EcsNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceArrayOutput) ElementType() reflect.Type {

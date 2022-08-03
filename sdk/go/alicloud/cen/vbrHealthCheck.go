@@ -302,6 +302,46 @@ func (o VbrHealthCheckOutput) ToVbrHealthCheckOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the CEN instance.
+func (o VbrHealthCheckOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
+func (o VbrHealthCheckOutput) HealthCheckInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.IntPtrOutput { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
+}
+
+// The source IP address of health checks.
+func (o VbrHealthCheckOutput) HealthCheckSourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringPtrOutput { return v.HealthCheckSourceIp }).(pulumi.StringPtrOutput)
+}
+
+// The destination IP address of health checks.
+func (o VbrHealthCheckOutput) HealthCheckTargetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringOutput { return v.HealthCheckTargetIp }).(pulumi.StringOutput)
+}
+
+// Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
+func (o VbrHealthCheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.IntPtrOutput { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the VBR.
+func (o VbrHealthCheckOutput) VbrInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringOutput { return v.VbrInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the account to which the VBR belongs.
+func (o VbrHealthCheckOutput) VbrInstanceOwnerId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.IntPtrOutput { return v.VbrInstanceOwnerId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the region to which the VBR belongs.
+func (o VbrHealthCheckOutput) VbrInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringOutput { return v.VbrInstanceRegionId }).(pulumi.StringOutput)
+}
+
 type VbrHealthCheckArrayOutput struct{ *pulumi.OutputState }
 
 func (VbrHealthCheckArrayOutput) ElementType() reflect.Type {

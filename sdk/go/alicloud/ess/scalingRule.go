@@ -301,6 +301,71 @@ func (o ScalingRuleOutput) ToScalingRuleOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// Adjustment mode of a scaling rule. Optional values:
+// - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
+// - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
+// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
+func (o ScalingRuleOutput) AdjustmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.AdjustmentType }).(pulumi.StringPtrOutput)
+}
+
+// The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
+// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
+// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
+// - TotalCapacity：[0, 1000]
+func (o ScalingRuleOutput) AdjustmentValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntPtrOutput { return v.AdjustmentValue }).(pulumi.IntPtrOutput)
+}
+
+func (o ScalingRuleOutput) Ari() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.Ari }).(pulumi.StringOutput)
+}
+
+// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+func (o ScalingRuleOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntPtrOutput { return v.Cooldown }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether scale in by the target tracking policy is disabled. Default to false.
+func (o ScalingRuleOutput) DisableScaleIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.BoolPtrOutput { return v.DisableScaleIn }).(pulumi.BoolPtrOutput)
+}
+
+// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+func (o ScalingRuleOutput) EstimatedInstanceWarmup() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.EstimatedInstanceWarmup }).(pulumi.IntOutput)
+}
+
+// A CloudMonitor metric name.
+func (o ScalingRuleOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// ID of the scaling group of a scaling rule.
+func (o ScalingRuleOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
+func (o ScalingRuleOutput) ScalingRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.ScalingRuleName }).(pulumi.StringOutput)
+}
+
+// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+func (o ScalingRuleOutput) ScalingRuleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.ScalingRuleType }).(pulumi.StringPtrOutput)
+}
+
+// Steps for StepScalingRule. See Block stepAdjustment below for details.
+func (o ScalingRuleOutput) StepAdjustments() ScalingRuleStepAdjustmentArrayOutput {
+	return o.ApplyT(func(v *ScalingRule) ScalingRuleStepAdjustmentArrayOutput { return v.StepAdjustments }).(ScalingRuleStepAdjustmentArrayOutput)
+}
+
+// The target value for the metric.
+func (o ScalingRuleOutput) TargetValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.Float64PtrOutput { return v.TargetValue }).(pulumi.Float64PtrOutput)
+}
+
 type ScalingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingRuleArrayOutput) ElementType() reflect.Type {

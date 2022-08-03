@@ -222,7 +222,15 @@ import (
 // 		_, err := oss.NewBucket(ctx, "bucket-policy", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-policy"),
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "  {\"Statement\":\n", "      [{\"Action\":\n", "          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n", "        \"Effect\":\"Allow\",\n", "        \"Resource\":\n", "            [\"acs:oss:*:*:*\"]}],\n", "   \"Version\":\"1\"}\n", "  \n")),
+// 			Policy: pulumi.String(fmt.Sprintf(`  {"Statement":
+//       [{"Action":
+//           ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
+//         "Effect":"Allow",
+//         "Resource":
+//             ["acs:oss:*:*:*"]}],
+//    "Version":"1"}
+//
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -726,6 +734,112 @@ func (o BucketOutput) ToBucketOutput() BucketOutput {
 
 func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 	return o
+}
+
+// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+func (o BucketOutput) Acl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+func (o BucketOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+func (o BucketOutput) CorsRules() BucketCorsRuleArrayOutput {
+	return o.ApplyT(func(v *Bucket) BucketCorsRuleArrayOutput { return v.CorsRules }).(BucketCorsRuleArrayOutput)
+}
+
+// The creation date of the bucket.
+func (o BucketOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// The extranet access endpoint of the bucket.
+func (o BucketOutput) ExtranetEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.ExtranetEndpoint }).(pulumi.StringOutput)
+}
+
+// A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+func (o BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The intranet access endpoint of the bucket.
+func (o BucketOutput) IntranetEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.IntranetEndpoint }).(pulumi.StringOutput)
+}
+
+// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+func (o BucketOutput) LifecycleRules() BucketLifecycleRuleArrayOutput {
+	return o.ApplyT(func(v *Bucket) BucketLifecycleRuleArrayOutput { return v.LifecycleRules }).(BucketLifecycleRuleArrayOutput)
+}
+
+// The location of the bucket.
+func (o BucketOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+func (o BucketOutput) Logging() BucketLoggingPtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketLoggingPtrOutput { return v.Logging }).(BucketLoggingPtrOutput)
+}
+
+// The flag of using logging enable container. Defaults true.
+//
+// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
+func (o BucketOutput) LoggingIsenable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.LoggingIsenable }).(pulumi.BoolPtrOutput)
+}
+
+// The bucket owner.
+func (o BucketOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+func (o BucketOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+func (o BucketOutput) RedundancyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.RedundancyType }).(pulumi.StringPtrOutput)
+}
+
+// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+func (o BucketOutput) RefererConfig() BucketRefererConfigPtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketRefererConfigPtrOutput { return v.RefererConfig }).(BucketRefererConfigPtrOutput)
+}
+
+// A configuration of server-side encryption (documented below).
+func (o BucketOutput) ServerSideEncryptionRule() BucketServerSideEncryptionRulePtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketServerSideEncryptionRulePtrOutput { return v.ServerSideEncryptionRule }).(BucketServerSideEncryptionRulePtrOutput)
+}
+
+// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+func (o BucketOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+func (o BucketOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// A transfer acceleration status of a bucket (documented below).
+func (o BucketOutput) TransferAcceleration() BucketTransferAccelerationPtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketTransferAccelerationPtrOutput { return v.TransferAcceleration }).(BucketTransferAccelerationPtrOutput)
+}
+
+// A state of versioning (documented below).
+func (o BucketOutput) Versioning() BucketVersioningPtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketVersioningPtrOutput { return v.Versioning }).(BucketVersioningPtrOutput)
+}
+
+// A website object(documented below).
+func (o BucketOutput) Website() BucketWebsitePtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketWebsitePtrOutput { return v.Website }).(BucketWebsitePtrOutput)
 }
 
 type BucketArrayOutput struct{ *pulumi.OutputState }

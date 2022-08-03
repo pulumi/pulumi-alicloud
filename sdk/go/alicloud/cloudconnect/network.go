@@ -233,6 +233,26 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 	return o
 }
 
+// The CidrBlock of the CCN instance. Defaults to null.
+func (o NetworkOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
+func (o NetworkOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
+func (o NetworkOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+func (o NetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type NetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkArrayOutput) ElementType() reflect.Type {

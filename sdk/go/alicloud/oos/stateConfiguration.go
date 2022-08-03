@@ -314,6 +314,56 @@ func (o StateConfigurationOutput) ToStateConfigurationOutputWithContext(ctx cont
 	return o
 }
 
+// Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
+func (o StateConfigurationOutput) ConfigureMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringOutput { return v.ConfigureMode }).(pulumi.StringOutput)
+}
+
+// The description of the resource.
+func (o StateConfigurationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The parameter of the Template. This field is in the format of JSON strings. For detailed definition instructions, please refer to [Metadata types that are supported by a configuration list](https://www.alibabacloud.com/help/en/doc-detail/208276.html).
+func (o StateConfigurationOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringPtrOutput { return v.Parameters }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o StateConfigurationOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Timing expression.
+func (o StateConfigurationOutput) ScheduleExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringOutput { return v.ScheduleExpression }).(pulumi.StringOutput)
+}
+
+// Timing type. Valid values: `rate`.
+func (o StateConfigurationOutput) ScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringOutput { return v.ScheduleType }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o StateConfigurationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
+func (o StateConfigurationOutput) Targets() pulumi.StringOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringOutput { return v.Targets }).(pulumi.StringOutput)
+}
+
+// The name of the template.
+func (o StateConfigurationOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The version number. If you do not specify this parameter, the system uses the latest version.
+func (o StateConfigurationOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringOutput { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
 type StateConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (StateConfigurationArrayOutput) ElementType() reflect.Type {

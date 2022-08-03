@@ -495,6 +495,116 @@ func (o RestoreJobOutput) ToRestoreJobOutputWithContext(ctx context.Context) Res
 	return o
 }
 
+// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+func (o RestoreJobOutput) Exclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.Exclude }).(pulumi.StringPtrOutput)
+}
+
+// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+func (o RestoreJobOutput) Include() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.Include }).(pulumi.StringPtrOutput)
+}
+
+// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+func (o RestoreJobOutput) Options() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
+}
+
+// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
+func (o RestoreJobOutput) RestoreJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.RestoreJobId }).(pulumi.StringOutput)
+}
+
+// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+func (o RestoreJobOutput) RestoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.RestoreType }).(pulumi.StringOutput)
+}
+
+// The hashcode of Snapshot.
+func (o RestoreJobOutput) SnapshotHash() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.SnapshotHash }).(pulumi.StringOutput)
+}
+
+// The ID of Snapshot.
+func (o RestoreJobOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
+func (o RestoreJobOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The Restore Job Status.
+func (o RestoreJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The target name of OSS bucket. **NOTE:** Required while sourceType equals `OSS`,
+func (o RestoreJobOutput) TargetBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetBucket }).(pulumi.StringPtrOutput)
+}
+
+// The target client ID.
+func (o RestoreJobOutput) TargetClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetClientId }).(pulumi.StringPtrOutput)
+}
+
+// The creation time of destination File System. **NOTE:** While sourceType equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+func (o RestoreJobOutput) TargetCreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetCreateTime }).(pulumi.StringPtrOutput)
+}
+
+// The target data source ID.
+func (o RestoreJobOutput) TargetDataSourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetDataSourceId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of destination File System. **NOTE:** Required while sourceType equals `NAS`
+func (o RestoreJobOutput) TargetFileSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetFileSystemId }).(pulumi.StringPtrOutput)
+}
+
+// The target ID of ECS instance. **NOTE:** Required while sourceType equals `ECS_FILE`
+func (o RestoreJobOutput) TargetInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Table store instance to which you want to restore data.**WARNING:** Required while sourceType equals `OTS_TABLE`.
+func (o RestoreJobOutput) TargetInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetInstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The target file path of (ECS) instance. **WARNING:** Required while sourceType equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+func (o RestoreJobOutput) TargetPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetPath }).(pulumi.StringPtrOutput)
+}
+
+// The target prefix of the OSS object. **WARNING:** Required while sourceType equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+func (o RestoreJobOutput) TargetPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
+func (o RestoreJobOutput) TargetTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetTableName }).(pulumi.StringPtrOutput)
+}
+
+// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
+func (o RestoreJobOutput) TargetTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.TargetTime }).(pulumi.StringPtrOutput)
+}
+
+// The full machine backup details.
+func (o RestoreJobOutput) UdmDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.UdmDetail }).(pulumi.StringPtrOutput)
+}
+
+// The ID of backup vault.
+func (o RestoreJobOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.VaultId }).(pulumi.StringOutput)
+}
+
 type RestoreJobArrayOutput struct{ *pulumi.OutputState }
 
 func (RestoreJobArrayOutput) ElementType() reflect.Type {

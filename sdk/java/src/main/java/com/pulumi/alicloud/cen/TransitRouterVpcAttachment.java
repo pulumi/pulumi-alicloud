@@ -22,6 +22,89 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in 1.126.0+
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var transitRouterAttachmentName = config.get(&#34;transitRouterAttachmentName&#34;).orElse(&#34;sdk_rebot_cen_tr_yaochi&#34;);
+ *         final var transitRouterAttachmentDescription = config.get(&#34;transitRouterAttachmentDescription&#34;).orElse(&#34;sdk_rebot_cen_tr_yaochi&#34;);
+ *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultMaster = new Switch(&#34;defaultMaster&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *             .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+ *             .build());
+ * 
+ *         var defaultSlave = new Switch(&#34;defaultSlave&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;192.168.2.0/24&#34;)
+ *             .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;sdk_rebot_cen_tr_yaochi&#34;)
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .build());
+ * 
+ *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;defaultTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .transitRouterId(defaultTransitRouter.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneMapping(            
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .transitRouterAttachmentName(transitRouterAttachmentName)
+ *             .transitRouterAttachmentDescription(transitRouterAttachmentDescription)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN instance can be imported using the id, e.g.

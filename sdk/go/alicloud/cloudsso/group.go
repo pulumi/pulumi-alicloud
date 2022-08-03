@@ -205,6 +205,26 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
+// The Description of the group. The description can be up to `1024` characters long.
+func (o GroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Directory.
+func (o GroupOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The GroupId of the group.
+func (o GroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+func (o GroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
 type GroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupArrayOutput) ElementType() reflect.Type {

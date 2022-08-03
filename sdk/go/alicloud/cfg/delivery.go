@@ -292,6 +292,61 @@ func (o DeliveryOutput) ToDeliveryOutputWithContext(ctx context.Context) Deliver
 	return o
 }
 
+// Open or close delivery configuration change history. true: open, false: close.
+func (o DeliveryOutput) ConfigurationItemChangeNotification() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.BoolOutput { return v.ConfigurationItemChangeNotification }).(pulumi.BoolOutput)
+}
+
+// Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `OSS`.
+func (o DeliveryOutput) ConfigurationSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.BoolOutput { return v.ConfigurationSnapshot }).(pulumi.BoolOutput)
+}
+
+// The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `MNS`.
+func (o DeliveryOutput) DeliveryChannelCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.StringPtrOutput { return v.DeliveryChannelCondition }).(pulumi.StringPtrOutput)
+}
+
+// The name of the delivery method.
+func (o DeliveryOutput) DeliveryChannelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.StringPtrOutput { return v.DeliveryChannelName }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the delivery destination. The value must be in one of the following formats:
+// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
+// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
+// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+func (o DeliveryOutput) DeliveryChannelTargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.StringOutput { return v.DeliveryChannelTargetArn }).(pulumi.StringOutput)
+}
+
+// The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+func (o DeliveryOutput) DeliveryChannelType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.StringOutput { return v.DeliveryChannelType }).(pulumi.StringOutput)
+}
+
+// The description of the delivery method.
+func (o DeliveryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `SLS` or `MNS`.
+func (o DeliveryOutput) NonCompliantNotification() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.BoolOutput { return v.NonCompliantNotification }).(pulumi.BoolOutput)
+}
+
+// The oss ARN of the delivery channel when the value data oversized limit.
+// * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
+// * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+func (o DeliveryOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.StringPtrOutput { return v.OversizedDataOssTargetArn }).(pulumi.StringPtrOutput)
+}
+
+// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+func (o DeliveryOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
 type DeliveryArrayOutput struct{ *pulumi.OutputState }
 
 func (DeliveryArrayOutput) ElementType() reflect.Type {

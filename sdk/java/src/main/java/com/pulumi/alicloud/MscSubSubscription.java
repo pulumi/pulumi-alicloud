@@ -23,6 +23,41 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.MscSubSubscription;
+ * import com.pulumi.alicloud.MscSubSubscriptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new MscSubSubscription(&#34;example&#34;, MscSubSubscriptionArgs.builder()        
+ *             .emailStatus(&#34;1&#34;)
+ *             .itemName(&#34;Notifications of Product Expiration&#34;)
+ *             .pmsgStatus(&#34;1&#34;)
+ *             .smsStatus(&#34;1&#34;)
+ *             .ttsStatus(&#34;1&#34;)
+ *             .webhookStatus(&#34;0&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Msc Sub Subscription can be imported using the id, e.g.

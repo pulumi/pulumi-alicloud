@@ -213,6 +213,26 @@ func (o AdditionalCertificateOutput) ToAdditionalCertificateOutputWithContext(ct
 	return o
 }
 
+// The ID of the GA instance.
+func (o AdditionalCertificateOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The Certificate ID.
+func (o AdditionalCertificateOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
+func (o AdditionalCertificateOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
+func (o AdditionalCertificateOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
 type AdditionalCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (AdditionalCertificateArrayOutput) ElementType() reflect.Type {

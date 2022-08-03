@@ -26,6 +26,129 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceAttachment;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceAttachmentArgs;
+ * import com.pulumi.alicloud.vpc.TrafficMirrorFilter;
+ * import com.pulumi.alicloud.vpc.TrafficMirrorFilterArgs;
+ * import com.pulumi.alicloud.vpc.TrafficMirrorSession;
+ * import com.pulumi.alicloud.vpc.TrafficMirrorSessionArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .instanceTypeFamily(&#34;ecs.g7&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var vswitchId = defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;New security group&#34;)
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+ *                 .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .instanceName(&#34;example_value&#34;)
+ *                 .hostName(&#34;tf-testAcc&#34;)
+ *                 .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .securityGroups(defaultSecurityGroup.id())
+ *                 .vswitchId(vswitchId)
+ *                 .systemDiskCategory(&#34;cloud_essd&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new EcsNetworkInterface(&#34;defaultEcsNetworkInterface-&#34; + i, EcsNetworkInterfaceArgs.builder()            
+ *                 .networkInterfaceName(&#34;example_value&#34;)
+ *                 .vswitchId(vswitchId)
+ *                 .securityGroupIds(defaultSecurityGroup.id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new EcsNetworkInterfaceAttachment(&#34;defaultEcsNetworkInterfaceAttachment-&#34; + i, EcsNetworkInterfaceAttachmentArgs.builder()            
+ *                 .instanceId(defaultInstance.stream().map(element -&gt; element.id()).collect(toList())[range.value()])
+ *                 .networkInterfaceId(defaultEcsNetworkInterface.stream().map(element -&gt; element.id()).collect(toList())[range.value()])
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultTrafficMirrorFilter = new TrafficMirrorFilter(&#34;defaultTrafficMirrorFilter&#34;, TrafficMirrorFilterArgs.builder()        
+ *             .trafficMirrorFilterName(&#34;example_value&#34;)
+ *             .trafficMirrorFilterDescription(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *         var defaultTrafficMirrorSession = new TrafficMirrorSession(&#34;defaultTrafficMirrorSession&#34;, TrafficMirrorSessionArgs.builder()        
+ *             .priority(1)
+ *             .virtualNetworkId(10)
+ *             .trafficMirrorSessionDescription(&#34;example_value&#34;)
+ *             .trafficMirrorSessionName(&#34;example_value&#34;)
+ *             .trafficMirrorTargetId(defaultEcsNetworkInterfaceAttachment[0].networkInterfaceId())
+ *             .trafficMirrorSourceIds(defaultEcsNetworkInterfaceAttachment[1].networkInterfaceId())
+ *             .trafficMirrorFilterId(defaultTrafficMirrorFilter.id())
+ *             .trafficMirrorTargetType(&#34;NetworkInterface&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPC Traffic Mirror Session can be imported using the id, e.g.

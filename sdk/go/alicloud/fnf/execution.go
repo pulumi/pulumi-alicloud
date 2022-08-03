@@ -41,13 +41,33 @@ import (
 // 			name = param
 // 		}
 // 		defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-// 			Document: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": \"sts:AssumeRole\",\n", "        \"Effect\": \"Allow\",\n", "        \"Principal\": {\n", "          \"Service\": [\n", "            \"fnf.aliyuncs.com\"\n", "          ]\n", "        }\n", "      }\n", "    ],\n", "    \"Version\": \"1\"\n", "  }\n")),
+// 			Document: pulumi.String(fmt.Sprintf(`  {
+//     "Statement": [
+//       {
+//         "Action": "sts:AssumeRole",
+//         "Effect": "Allow",
+//         "Principal": {
+//           "Service": [
+//             "fnf.aliyuncs.com"
+//           ]
+//         }
+//       }
+//     ],
+//     "Version": "1"
+//   }
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultFlow, err := fnf.NewFlow(ctx, "defaultFlow", &fnf.FlowArgs{
-// 			Definition:  pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "  version: v1beta1\n", "  type: flow\n", "  steps:\n", "    - type: wait\n", "      name: custom_wait\n", "      duration: ", "$", ".wait\n")),
+// 			Definition: pulumi.String(fmt.Sprintf(`  version: v1beta1
+//   type: flow
+//   steps:
+//     - type: wait
+//       name: custom_wait
+//       duration: $.wait
+// `)),
 // 			RoleArn:     defaultRole.Arn,
 // 			Description: pulumi.String("Test for terraform fnf_flow."),
 // 			Type:        pulumi.String("FDL"),
@@ -256,6 +276,26 @@ func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {
 
 func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
 	return o
+}
+
+// The name of the execution.
+func (o ExecutionOutput) ExecutionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.ExecutionName }).(pulumi.StringOutput)
+}
+
+// The name of the flow.
+func (o ExecutionOutput) FlowName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.FlowName }).(pulumi.StringOutput)
+}
+
+// The Input information for this execution.
+func (o ExecutionOutput) Input() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.Input }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource. Valid values: `Stopped`.
+func (o ExecutionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 type ExecutionArrayOutput struct{ *pulumi.OutputState }

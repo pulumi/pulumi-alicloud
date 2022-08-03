@@ -34,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ros.NewTemplate(ctx, "example", &ros.TemplateArgs{
-// 			TemplateBody: pulumi.String(fmt.Sprintf("%v%v%v%v", "    {\n", "    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n", "    }\n", "    \n")),
+// 			TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
 // 			TemplateName: pulumi.String("example_value"),
 // 		})
 // 		if err != nil {
@@ -240,6 +240,31 @@ func (o TemplateOutput) ToTemplateOutput() TemplateOutput {
 
 func (o TemplateOutput) ToTemplateOutputWithContext(ctx context.Context) TemplateOutput {
 	return o
+}
+
+// The description of the template. The description can be up to 256 characters in length.
+func (o TemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o TemplateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Template) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+func (o TemplateOutput) TemplateBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringPtrOutput { return v.TemplateBody }).(pulumi.StringPtrOutput)
+}
+
+// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+func (o TemplateOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The template url.
+func (o TemplateOutput) TemplateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringPtrOutput { return v.TemplateUrl }).(pulumi.StringPtrOutput)
 }
 
 type TemplateArrayOutput struct{ *pulumi.OutputState }

@@ -236,6 +236,35 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The description of the account.
+// * The description must start with a letter, and cannot start with `http://` or `https://`.
+// * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+func (o AccountOutput) AccountDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the account. Valid values: `root`.
+func (o AccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The Password of the Account.
+// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+// * The password must be `8` to `32` characters in length.
+func (o AccountOutput) AccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o AccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The status of the account. Valid values: `Unavailable`, `Available`.
+func (o AccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AccountArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountArrayOutput) ElementType() reflect.Type {

@@ -233,6 +233,26 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The desired member count.
+func (o OrganizationOutput) DesiredMemberCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.IntPtrOutput { return v.DesiredMemberCount }).(pulumi.IntPtrOutput)
+}
+
+// Company name.
+func (o OrganizationOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
+func (o OrganizationOutput) RealPk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.RealPk }).(pulumi.StringPtrOutput)
+}
+
+// This is organization source information
+func (o OrganizationOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
 type OrganizationArrayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationArrayOutput) ElementType() reflect.Type {

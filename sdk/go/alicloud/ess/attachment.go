@@ -338,6 +338,21 @@ func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) Att
 	return o
 }
 
+// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+func (o AttachmentOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+func (o AttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// ID of the scaling group of a scaling configuration.
+func (o AttachmentOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
 type AttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AttachmentArrayOutput) ElementType() reflect.Type {

@@ -35,8 +35,17 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ros.NewStack(ctx, "example", &ros.StackArgs{
 // 			StackName: pulumi.String("tf-testaccstack"),
-// 			StackPolicyBody: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v", "    {\n", "    	\"Statement\": [{\n", "    		\"Action\": \"Update:Delete\",\n", "    		\"Resource\": \"*\",\n", "    		\"Effect\": \"Allow\",\n", "    		\"Principal\": \"*\"\n", "    	}]\n", "    }\n", "    \n")),
-// 			TemplateBody: pulumi.String(fmt.Sprintf("%v%v%v%v", "    {\n", "    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n", "    }\n", "    \n")),
+// 			StackPolicyBody: pulumi.String(fmt.Sprintf(`    {
+//     	"Statement": [{
+//     		"Action": "Update:Delete",
+//     		"Resource": "*",
+//     		"Effect": "Allow",
+//     		"Principal": "*"
+//     	}]
+//     }
+//
+// `)),
+// 			TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -397,6 +406,111 @@ func (o StackOutput) ToStackOutput() StackOutput {
 
 func (o StackOutput) ToStackOutputWithContext(ctx context.Context) StackOutput {
 	return o
+}
+
+// Specifies whether to delete the stack after it is created.
+func (o StackOutput) CreateOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.CreateOption }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
+func (o StackOutput) DeletionProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.DeletionProtection }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to disable rollback on stack creation failure. Default to: `false`.
+func (o StackOutput) DisableRollback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.BoolPtrOutput { return v.DisableRollback }).(pulumi.BoolPtrOutput)
+}
+
+// The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
+func (o StackOutput) NotificationUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringArrayOutput { return v.NotificationUrls }).(pulumi.StringArrayOutput)
+}
+
+// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+func (o StackOutput) Parameters() StackParameterArrayOutput {
+	return o.ApplyT(func(v *Stack) StackParameterArrayOutput { return v.Parameters }).(StackParameterArrayOutput)
+}
+
+// The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
+func (o StackOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
+func (o StackOutput) ReplacementOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.ReplacementOption }).(pulumi.StringPtrOutput)
+}
+
+// The retain all resources.
+func (o StackOutput) RetainAllResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.BoolPtrOutput { return v.RetainAllResources }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to retain the resources in the stack.
+func (o StackOutput) RetainResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
+}
+
+// The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+func (o StackOutput) StackName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringOutput { return v.StackName }).(pulumi.StringOutput)
+}
+
+// The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
+func (o StackOutput) StackPolicyBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.StackPolicyBody }).(pulumi.StringPtrOutput)
+}
+
+// The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
+func (o StackOutput) StackPolicyDuringUpdateBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.StackPolicyDuringUpdateBody }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+func (o StackOutput) StackPolicyDuringUpdateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.StackPolicyDuringUpdateUrl }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+func (o StackOutput) StackPolicyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.StackPolicyUrl }).(pulumi.StringPtrOutput)
+}
+
+// The status of Stack.
+func (o StackOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o StackOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Stack) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+func (o StackOutput) TemplateBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.TemplateBody }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+func (o StackOutput) TemplateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.TemplateUrl }).(pulumi.StringPtrOutput)
+}
+
+// The version of the template.
+func (o StackOutput) TemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.StringPtrOutput { return v.TemplateVersion }).(pulumi.StringPtrOutput)
+}
+
+// The timeout period that is specified for the stack creation request. Default to: `60`.
+func (o StackOutput) TimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.IntPtrOutput { return v.TimeoutInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
+func (o StackOutput) UsePreviousParameters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Stack) pulumi.BoolPtrOutput { return v.UsePreviousParameters }).(pulumi.BoolPtrOutput)
 }
 
 type StackArrayOutput struct{ *pulumi.OutputState }

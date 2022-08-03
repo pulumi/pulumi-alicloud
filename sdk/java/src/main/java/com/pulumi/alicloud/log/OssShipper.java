@@ -26,6 +26,64 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.log.OssShipper;
+ * import com.pulumi.alicloud.log.OssShipperArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;created by terraform&#34;)
+ *             .tags(Map.of(&#34;test&#34;, &#34;test&#34;))
+ *             .build());
+ * 
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .retentionPeriod(3650)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var exampleOssShipper = new OssShipper(&#34;exampleOssShipper&#34;, OssShipperArgs.builder()        
+ *             .projectName(exampleProject.name())
+ *             .logstoreName(exampleStore.name())
+ *             .shipperName(&#34;oss_shipper_name&#34;)
+ *             .ossBucket(&#34;test_bucket&#34;)
+ *             .ossPrefix(&#34;root&#34;)
+ *             .bufferInterval(300)
+ *             .bufferSize(250)
+ *             .compressType(&#34;none&#34;)
+ *             .pathFormat(&#34;%Y/%m/%d/%H/%M&#34;)
+ *             .format(&#34;json&#34;)
+ *             .jsonEnableTag(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Log oss shipper can be imported using the id or name, e.g.

@@ -205,6 +205,16 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
+// GroupId.
+func (o GroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// GroupName.
+func (o GroupOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
 type GroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupArrayOutput) ElementType() reflect.Type {

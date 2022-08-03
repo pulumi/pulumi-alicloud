@@ -258,6 +258,31 @@ func (o ServiceSettingOutput) ToServiceSettingOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
+func (o ServiceSettingOutput) DeliveryOssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSetting) pulumi.StringPtrOutput { return v.DeliveryOssBucketName }).(pulumi.StringPtrOutput)
+}
+
+// Is the recording function for the OSS delivery template enabled.
+func (o ServiceSettingOutput) DeliveryOssEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceSetting) pulumi.BoolPtrOutput { return v.DeliveryOssEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
+func (o ServiceSettingOutput) DeliveryOssKeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSetting) pulumi.StringPtrOutput { return v.DeliveryOssKeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Is the execution record function to SLS delivery Template turned on.
+func (o ServiceSettingOutput) DeliverySlsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceSetting) pulumi.BoolPtrOutput { return v.DeliverySlsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
+func (o ServiceSettingOutput) DeliverySlsProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSetting) pulumi.StringPtrOutput { return v.DeliverySlsProjectName }).(pulumi.StringPtrOutput)
+}
+
 type ServiceSettingArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceSettingArrayOutput) ElementType() reflect.Type {

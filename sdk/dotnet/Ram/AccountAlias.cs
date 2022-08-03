@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ram
     ///         // Create a alias for cloud account.
     ///         var @alias = new AliCloud.Ram.AccountAlias("alias", new AliCloud.Ram.AccountAliasArgs
     ///         {
-    ///             AccountAlias = "hallo",
+    ///             Alias = "hallo",
     ///         });
     ///     }
     /// 

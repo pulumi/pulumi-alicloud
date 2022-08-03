@@ -201,6 +201,26 @@ func (o StoreIndexOutput) ToStoreIndexOutputWithContext(ctx context.Context) Sto
 	return o
 }
 
+// List configurations of field search index. Valid item as follows:
+func (o StoreIndexOutput) FieldSearches() StoreIndexFieldSearchArrayOutput {
+	return o.ApplyT(func(v *StoreIndex) StoreIndexFieldSearchArrayOutput { return v.FieldSearches }).(StoreIndexFieldSearchArrayOutput)
+}
+
+// The configuration of full text index. Valid item as follows:
+func (o StoreIndexOutput) FullText() StoreIndexFullTextPtrOutput {
+	return o.ApplyT(func(v *StoreIndex) StoreIndexFullTextPtrOutput { return v.FullText }).(StoreIndexFullTextPtrOutput)
+}
+
+// The log store name to the query index belongs.
+func (o StoreIndexOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoreIndex) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The project name to the log store belongs.
+func (o StoreIndexOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoreIndex) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 type StoreIndexArrayOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexArrayOutput) ElementType() reflect.Type {

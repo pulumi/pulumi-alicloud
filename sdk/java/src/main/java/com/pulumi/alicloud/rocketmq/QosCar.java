@@ -27,6 +27,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rocketmq.Qos;
+ * import com.pulumi.alicloud.rocketmq.QosCar;
+ * import com.pulumi.alicloud.rocketmq.QosCarArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultQos = new Qos(&#34;defaultQos&#34;);
+ * 
+ *         var defaultQosCar = new QosCar(&#34;defaultQosCar&#34;, QosCarArgs.builder()        
+ *             .qosId(defaultQos.id())
+ *             .description(&#34;tf-testSagQosCarDescription&#34;)
+ *             .priority(&#34;1&#34;)
+ *             .limitType(&#34;Absolute&#34;)
+ *             .minBandwidthAbs(&#34;10&#34;)
+ *             .maxBandwidthAbs(&#34;20&#34;)
+ *             .minBandwidthPercent(&#34;10&#34;)
+ *             .maxBandwidthPercent(&#34;20&#34;)
+ *             .percentSourceType(&#34;InternetUpBandwidth&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The Sag Qos Car can be imported using the id, e.g.

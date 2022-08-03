@@ -23,6 +23,59 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.tsdb.Instance;
+ * import com.pulumi.alicloud.tsdb.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleZones = TsdbFunctions.getZones();
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .vswitchId(exampleSwitch.id())
+ *             .instanceStorage(&#34;50&#34;)
+ *             .instanceClass(&#34;tsdb.1x.basic&#34;)
+ *             .engineType(&#34;tsdb_tsdb&#34;)
+ *             .instanceAlias(&#34;tf-testaccTsdbInstance&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * TSDB Instance can be imported using the id, e.g.

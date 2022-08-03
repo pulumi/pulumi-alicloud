@@ -247,6 +247,52 @@ func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryOutputWithContex
 	return o
 }
 
+// The dry run.
+func (o TransitRouterRouteEntryOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the Transit Router.
+func (o TransitRouterRouteEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of the transit router route entry.
+func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringPtrOutput { return v.TransitRouterRouteEntryDescription }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR of the transit router route entry.
+func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryDestinationCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringOutput {
+		return v.TransitRouterRouteEntryDestinationCidrBlock
+	}).(pulumi.StringOutput)
+}
+
+func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringOutput { return v.TransitRouterRouteEntryId }).(pulumi.StringOutput)
+}
+
+// The name of the transit router route entry.
+func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringPtrOutput { return v.TransitRouterRouteEntryName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the transit router route entry next hop.
+func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryNextHopId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringPtrOutput { return v.TransitRouterRouteEntryNextHopId }).(pulumi.StringPtrOutput)
+}
+
+// The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
+func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryNextHopType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringOutput { return v.TransitRouterRouteEntryNextHopType }).(pulumi.StringOutput)
+}
+
+// The ID of the transit router route table.
+func (o TransitRouterRouteEntryOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringOutput { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
+}
+
 type TransitRouterRouteEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteEntryArrayOutput) ElementType() reflect.Type {

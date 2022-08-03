@@ -242,6 +242,26 @@ func (o CustomLineOutput) ToCustomLineOutputWithContext(ctx context.Context) Cus
 	return o
 }
 
+// The name of the Custom Line.
+func (o CustomLineOutput) CustomLineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomLine) pulumi.StringOutput { return v.CustomLineName }).(pulumi.StringOutput)
+}
+
+// The Domain name.
+func (o CustomLineOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomLine) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The IP segment list. See the following `Block ipSegmentList`.
+func (o CustomLineOutput) IpSegmentLists() CustomLineIpSegmentListArrayOutput {
+	return o.ApplyT(func(v *CustomLine) CustomLineIpSegmentListArrayOutput { return v.IpSegmentLists }).(CustomLineIpSegmentListArrayOutput)
+}
+
+// The lang.
+func (o CustomLineOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomLine) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
 type CustomLineArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomLineArrayOutput) ElementType() reflect.Type {

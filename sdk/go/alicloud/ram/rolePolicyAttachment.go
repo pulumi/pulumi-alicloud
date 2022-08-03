@@ -28,7 +28,22 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "      \"Statement\": [\n", "        {\n", "          \"Action\": \"sts:AssumeRole\",\n", "          \"Effect\": \"Allow\",\n", "          \"Principal\": {\n", "            \"Service\": [\n", "              \"apigateway.aliyuncs.com\", \n", "              \"ecs.aliyuncs.com\"\n", "            ]\n", "          }\n", "        }\n", "      ],\n", "      \"Version\": \"1\"\n", "    }\n")),
+// 			Document: pulumi.String(fmt.Sprintf(`    {
+//       "Statement": [
+//         {
+//           "Action": "sts:AssumeRole",
+//           "Effect": "Allow",
+//           "Principal": {
+//             "Service": [
+//               "apigateway.aliyuncs.com",
+//               "ecs.aliyuncs.com"
+//             ]
+//           }
+//         }
+//       ],
+//       "Version": "1"
+//     }
+// `)),
 // 			Description: pulumi.String("this is a role test."),
 // 			Force:       pulumi.Bool(true),
 // 		})
@@ -36,7 +51,23 @@ import (
 // 			return err
 // 		}
 // 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": [\n", "          \"oss:ListObjects\",\n", "          \"oss:GetObject\"\n", "        ],\n", "        \"Effect\": \"Allow\",\n", "        \"Resource\": [\n", "          \"acs:oss:*:*:mybucket\",\n", "          \"acs:oss:*:*:mybucket/*\"\n", "        ]\n", "      }\n", "    ],\n", "      \"Version\": \"1\"\n", "  }\n")),
+// 			Document: pulumi.String(fmt.Sprintf(`  {
+//     "Statement": [
+//       {
+//         "Action": [
+//           "oss:ListObjects",
+//           "oss:GetObject"
+//         ],
+//         "Effect": "Allow",
+//         "Resource": [
+//           "acs:oss:*:*:mybucket",
+//           "acs:oss:*:*:mybucket/*"
+//         ]
+//       }
+//     ],
+//       "Version": "1"
+//   }
+// `)),
 // 			Description: pulumi.String("this is a policy test"),
 // 			Force:       pulumi.Bool(true),
 // 		})
@@ -237,6 +268,21 @@ func (o RolePolicyAttachmentOutput) ToRolePolicyAttachmentOutput() RolePolicyAtt
 
 func (o RolePolicyAttachmentOutput) ToRolePolicyAttachmentOutputWithContext(ctx context.Context) RolePolicyAttachmentOutput {
 	return o
+}
+
+// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+func (o RolePolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RolePolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// Type of the RAM policy. It must be `Custom` or `System`.
+func (o RolePolicyAttachmentOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RolePolicyAttachment) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+func (o RolePolicyAttachmentOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RolePolicyAttachment) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
 }
 
 type RolePolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

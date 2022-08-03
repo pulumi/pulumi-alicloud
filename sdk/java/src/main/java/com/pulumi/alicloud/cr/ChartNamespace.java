@@ -23,6 +23,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+ * import com.pulumi.alicloud.cr.ChartNamespace;
+ * import com.pulumi.alicloud.cr.ChartNamespaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;defaultRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .instanceType(&#34;Advanced&#34;)
+ *             .instanceName(&#34;name&#34;)
+ *             .build());
+ * 
+ *         var defaultChartNamespace = new ChartNamespace(&#34;defaultChartNamespace&#34;, ChartNamespaceArgs.builder()        
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
+ *             .namespaceName(&#34;name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CR Chart Namespace can be imported using the id, e.g.

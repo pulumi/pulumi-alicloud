@@ -421,6 +421,97 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
+func (o InstanceOutput) BigScreen() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BigScreen }).(pulumi.StringOutput)
+}
+
+// Specify the number of exclusive WAF IP addresses.
+func (o InstanceOutput) ExclusiveIpPackage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ExclusiveIpPackage }).(pulumi.StringOutput)
+}
+
+// The extra bandwidth. Unit: Mbit/s.
+func (o InstanceOutput) ExtBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ExtBandwidth }).(pulumi.StringOutput)
+}
+
+// The number of extra domains.
+func (o InstanceOutput) ExtDomainPackage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ExtDomainPackage }).(pulumi.StringOutput)
+}
+
+// Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
+func (o InstanceOutput) LogStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LogStorage }).(pulumi.StringOutput)
+}
+
+// Log storage period. Unit: day. Valid values: [180, 360].
+func (o InstanceOutput) LogTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LogTime }).(pulumi.StringOutput)
+}
+
+// Type of configuration change. Valid value: Upgrade.
+func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
+}
+
+// Subscription plan:
+// * China site customers can purchase the following versions of China Mainland region, valid values: ["version3", "version4", "version5"].
+// * China site customers can purchase the following versions of International region, valid values: ["versionProAsia", "versionBusinessAsia", "versionEnterpriseAsia"]
+// * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
+// * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
+func (o InstanceOutput) PackageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PackageCode }).(pulumi.StringOutput)
+}
+
+// Service time of Web Application Firewall.
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Specify whether professional service is supported. Valid values: ["true", "false"]
+func (o InstanceOutput) PrefessionalService() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrefessionalService }).(pulumi.StringOutput)
+}
+
+// The instance region ID.
+func (o InstanceOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Renewal period of WAF service. Unit: month
+func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Renewal status of WAF service. Valid values:
+// * AutoRenewal: The service time of WAF is renewed automatically.
+// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+func (o InstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalStatus }).(pulumi.StringPtrOutput)
+}
+
+// The resource group ID.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the instance.
+func (o InstanceOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
+// Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
+func (o InstanceOutput) SubscriptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SubscriptionType }).(pulumi.StringOutput)
+}
+
+// Specify whether Log service is supported. Valid values: ["true", "false"]
+func (o InstanceOutput) WafLog() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.WafLog }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

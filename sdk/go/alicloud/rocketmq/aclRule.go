@@ -287,6 +287,56 @@ func (o AclRuleOutput) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOu
 	return o
 }
 
+// The ID of the ACL.
+func (o AclRuleOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The description of the ACL rule. It must be 1 to 512 characters in length.
+func (o AclRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
+func (o AclRuleOutput) DestCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.DestCidr }).(pulumi.StringOutput)
+}
+
+// The range of the destination port. Valid value: 80/80.
+func (o AclRuleOutput) DestPortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.DestPortRange }).(pulumi.StringOutput)
+}
+
+// The direction of the ACL rule. Valid values: in|out.
+func (o AclRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The protocol used by the ACL rule. The value is not case sensitive.
+func (o AclRuleOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The policy used by the ACL rule. Valid values: accept|drop.
+func (o AclRuleOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
+}
+
+// The priority of the ACL rule. Value range: 1 to 100.
+func (o AclRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
+func (o AclRuleOutput) SourceCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.SourceCidr }).(pulumi.StringOutput)
+}
+
+// The range of the source port. Valid value: 80/80.
+func (o AclRuleOutput) SourcePortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.SourcePortRange }).(pulumi.StringOutput)
+}
+
 type AclRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AclRuleArrayOutput) ElementType() reflect.Type {

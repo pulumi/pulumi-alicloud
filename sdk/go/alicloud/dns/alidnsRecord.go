@@ -311,6 +311,61 @@ func (o AlidnsRecordOutput) ToAlidnsRecordOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+func (o AlidnsRecordOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// User language.
+func (o AlidnsRecordOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
+func (o AlidnsRecordOutput) Line() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringPtrOutput { return v.Line }).(pulumi.StringPtrOutput)
+}
+
+// The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
+func (o AlidnsRecordOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The remark of the domain record.
+func (o AlidnsRecordOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+// Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
+func (o AlidnsRecordOutput) Rr() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringOutput { return v.Rr }).(pulumi.StringOutput)
+}
+
+// The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
+func (o AlidnsRecordOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
+func (o AlidnsRecordOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+func (o AlidnsRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The IP address of the client.
+func (o AlidnsRecordOutput) UserClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringPtrOutput { return v.UserClientIp }).(pulumi.StringPtrOutput)
+}
+
+// The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
+func (o AlidnsRecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type AlidnsRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (AlidnsRecordArrayOutput) ElementType() reflect.Type {

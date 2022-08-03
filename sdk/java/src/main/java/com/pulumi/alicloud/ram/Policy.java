@@ -20,6 +20,55 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.Policy;
+ * import com.pulumi.alicloud.ram.PolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *             .description(&#34;this is a policy test&#34;)
+ *             .force(true)
+ *             .policyDocument(&#34;&#34;&#34;
+ *   {
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Action&#34;: [
+ *           &#34;oss:ListObjects&#34;,
+ *           &#34;oss:GetObject&#34;
+ *         ],
+ *         &#34;Effect&#34;: &#34;Allow&#34;,
+ *         &#34;Resource&#34;: [
+ *           &#34;acs:oss:*:*:mybucket&#34;,
+ *           &#34;acs:oss:*:*:mybucket/*&#34;
+ *         ]
+ *       }
+ *     ],
+ *       &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .policyName(&#34;policyName&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -104,6 +104,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetLifecycleHooksResult> getLifecycleHooks() {
@@ -115,6 +145,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLifecycleHooksResult> getLifecycleHooksPlain() {
@@ -126,6 +186,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetLifecycleHooksResult> getLifecycleHooks(GetLifecycleHooksArgs args) {
@@ -137,6 +227,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLifecycleHooksResult> getLifecycleHooksPlain(GetLifecycleHooksPlainArgs args) {
@@ -148,6 +268,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetLifecycleHooksResult> getLifecycleHooks(GetLifecycleHooksArgs args, InvokeOptions options) {
@@ -159,6 +309,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLifecycleHooksResult> getLifecycleHooksPlain(GetLifecycleHooksPlainArgs args, InvokeOptions options) {
@@ -170,6 +350,35 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNotificationsResult> getNotifications(GetNotificationsArgs args) {
@@ -181,6 +390,35 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNotificationsResult> getNotificationsPlain(GetNotificationsPlainArgs args) {
@@ -192,6 +430,35 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNotificationsResult> getNotifications(GetNotificationsArgs args, InvokeOptions options) {
@@ -203,6 +470,35 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNotificationsResult> getNotificationsPlain(GetNotificationsPlainArgs args, InvokeOptions options) {
@@ -212,6 +508,39 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_configuration_id1&#34;,
+     *                 &#34;scaling_configuration_id2&#34;)
+     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingConfigurationsResult> getScalingConfigurations() {
@@ -221,6 +550,39 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_configuration_id1&#34;,
+     *                 &#34;scaling_configuration_id2&#34;)
+     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingConfigurationsResult> getScalingConfigurationsPlain() {
@@ -230,6 +592,39 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_configuration_id1&#34;,
+     *                 &#34;scaling_configuration_id2&#34;)
+     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingConfigurationsResult> getScalingConfigurations(GetScalingConfigurationsArgs args) {
@@ -239,6 +634,39 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_configuration_id1&#34;,
+     *                 &#34;scaling_configuration_id2&#34;)
+     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingConfigurationsResult> getScalingConfigurationsPlain(GetScalingConfigurationsPlainArgs args) {
@@ -248,6 +676,39 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_configuration_id1&#34;,
+     *                 &#34;scaling_configuration_id2&#34;)
+     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingConfigurationsResult> getScalingConfigurations(GetScalingConfigurationsArgs args, InvokeOptions options) {
@@ -257,6 +718,39 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_configuration_id1&#34;,
+     *                 &#34;scaling_configuration_id2&#34;)
+     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingConfigurationsResult> getScalingConfigurationsPlain(GetScalingConfigurationsPlainArgs args, InvokeOptions options) {
@@ -266,6 +760,38 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_group_id1&#34;,
+     *                 &#34;scaling_group_id2&#34;)
+     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingGroupsResult> getScalingGroups() {
@@ -275,6 +801,38 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_group_id1&#34;,
+     *                 &#34;scaling_group_id2&#34;)
+     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingGroupsResult> getScalingGroupsPlain() {
@@ -284,6 +842,38 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_group_id1&#34;,
+     *                 &#34;scaling_group_id2&#34;)
+     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingGroupsResult> getScalingGroups(GetScalingGroupsArgs args) {
@@ -293,6 +883,38 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_group_id1&#34;,
+     *                 &#34;scaling_group_id2&#34;)
+     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingGroupsResult> getScalingGroupsPlain(GetScalingGroupsPlainArgs args) {
@@ -302,6 +924,38 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_group_id1&#34;,
+     *                 &#34;scaling_group_id2&#34;)
+     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingGroupsResult> getScalingGroups(GetScalingGroupsArgs args, InvokeOptions options) {
@@ -311,6 +965,38 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_group_id1&#34;,
+     *                 &#34;scaling_group_id2&#34;)
+     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingGroupsResult> getScalingGroupsPlain(GetScalingGroupsPlainArgs args, InvokeOptions options) {
@@ -320,6 +1006,39 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_rule_id1&#34;,
+     *                 &#34;scaling_rule_id2&#34;)
+     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingRulesResult> getScalingRules() {
@@ -329,6 +1048,39 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_rule_id1&#34;,
+     *                 &#34;scaling_rule_id2&#34;)
+     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingRulesResult> getScalingRulesPlain() {
@@ -338,6 +1090,39 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_rule_id1&#34;,
+     *                 &#34;scaling_rule_id2&#34;)
+     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingRulesResult> getScalingRules(GetScalingRulesArgs args) {
@@ -347,6 +1132,39 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_rule_id1&#34;,
+     *                 &#34;scaling_rule_id2&#34;)
+     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingRulesResult> getScalingRulesPlain(GetScalingRulesPlainArgs args) {
@@ -356,6 +1174,39 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_rule_id1&#34;,
+     *                 &#34;scaling_rule_id2&#34;)
+     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScalingRulesResult> getScalingRules(GetScalingRulesArgs args, InvokeOptions options) {
@@ -365,6 +1216,39 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .ids(            
+     *                 &#34;scaling_rule_id1&#34;,
+     *                 &#34;scaling_rule_id2&#34;)
+     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScalingRulesResult> getScalingRulesPlain(GetScalingRulesPlainArgs args, InvokeOptions options) {
@@ -376,6 +1260,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScheduledTasksResult> getScheduledTasks() {
@@ -387,6 +1301,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScheduledTasksResult> getScheduledTasksPlain() {
@@ -398,6 +1342,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScheduledTasksResult> getScheduledTasks(GetScheduledTasksArgs args) {
@@ -409,6 +1383,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScheduledTasksResult> getScheduledTasksPlain(GetScheduledTasksPlainArgs args) {
@@ -420,6 +1424,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetScheduledTasksResult> getScheduledTasks(GetScheduledTasksArgs args, InvokeOptions options) {
@@ -431,6 +1465,36 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetScheduledTasksResult> getScheduledTasksPlain(GetScheduledTasksPlainArgs args, InvokeOptions options) {

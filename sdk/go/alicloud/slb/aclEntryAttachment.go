@@ -238,6 +238,21 @@ func (o AclEntryAttachmentOutput) ToAclEntryAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the Acl.
+func (o AclEntryAttachmentOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The comment of the entry.
+func (o AclEntryAttachmentOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR blocks.
+func (o AclEntryAttachmentOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringOutput { return v.Entry }).(pulumi.StringOutput)
+}
+
 type AclEntryAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AclEntryAttachmentArrayOutput) ElementType() reflect.Type {

@@ -23,6 +23,45 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.83.0+ .
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.waf.Instance;
+ * import com.pulumi.alicloud.waf.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .bigScreen(&#34;0&#34;)
+ *             .exclusiveIpPackage(&#34;1&#34;)
+ *             .extBandwidth(&#34;50&#34;)
+ *             .extDomainPackage(&#34;1&#34;)
+ *             .logStorage(&#34;3&#34;)
+ *             .logTime(&#34;180&#34;)
+ *             .packageCode(&#34;version_3&#34;)
+ *             .period(1)
+ *             .prefessionalService(&#34;false&#34;)
+ *             .resourceGroupId(&#34;rs-abc12345&#34;)
+ *             .subscriptionType(&#34;Subscription&#34;)
+ *             .wafLog(&#34;false&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -81,6 +81,45 @@ public final class DcdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .domainName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpaDomainsResult> getIpaDomains() {
         return getIpaDomains(GetIpaDomainsArgs.Empty, InvokeOptions.Empty);
@@ -91,6 +130,45 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .domainName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain() {
@@ -103,6 +181,45 @@ public final class DcdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .domainName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpaDomainsResult> getIpaDomains(GetIpaDomainsArgs args) {
         return getIpaDomains(args, InvokeOptions.Empty);
@@ -113,6 +230,45 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .domainName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain(GetIpaDomainsPlainArgs args) {
@@ -125,6 +281,45 @@ public final class DcdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .domainName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpaDomainsResult> getIpaDomains(GetIpaDomainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dcdn/getIpaDomains:getIpaDomains", TypeShape.of(GetIpaDomainsResult.class), args, Utilities.withVersion(options));
@@ -135,6 +330,45 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .domainName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain(GetIpaDomainsPlainArgs args, InvokeOptions options) {
@@ -148,6 +382,34 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -161,6 +423,34 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -174,6 +464,34 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -187,6 +505,34 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -200,6 +546,34 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -213,6 +587,34 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

@@ -243,6 +243,28 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
+// Specifies whether to enable remote debugging.
+func (o NamespaceOutput) DebugEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.BoolOutput { return v.DebugEnable }).(pulumi.BoolOutput)
+}
+
+// The description of the namespace, The description can be up to `128` characters in length.
+func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the namespace.
+// - The ID of a custom namespace is in the `region ID:namespace identifier` format. An example is `cn-beijing:tdy218`.
+// - The ID of the default namespace is in the `region ID` format. An example is cn-beijing.
+func (o NamespaceOutput) NamespaceLogicalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceLogicalId }).(pulumi.StringOutput)
+}
+
+// The name of the namespace, The name can be up to `63` characters in length.
+func (o NamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
 type NamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceArrayOutput) ElementType() reflect.Type {

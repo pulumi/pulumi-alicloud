@@ -216,6 +216,16 @@ func (o CustomPropertyOutput) ToCustomPropertyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Custom attribute key.
+func (o CustomPropertyOutput) PropertyKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomProperty) pulumi.StringOutput { return v.PropertyKey }).(pulumi.StringOutput)
+}
+
+// Custom attribute sets the value of. See the following `Block propertyValues`.
+func (o CustomPropertyOutput) PropertyValues() CustomPropertyPropertyValueArrayOutput {
+	return o.ApplyT(func(v *CustomProperty) CustomPropertyPropertyValueArrayOutput { return v.PropertyValues }).(CustomPropertyPropertyValueArrayOutput)
+}
+
 type CustomPropertyArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomPropertyArrayOutput) ElementType() reflect.Type {

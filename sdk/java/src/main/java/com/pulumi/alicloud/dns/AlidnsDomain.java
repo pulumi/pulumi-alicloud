@@ -25,6 +25,39 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.95.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dns.AlidnsDomain;
+ * import com.pulumi.alicloud.dns.AlidnsDomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dns = new AlidnsDomain(&#34;dns&#34;, AlidnsDomainArgs.builder()        
+ *             .domainName(&#34;starmove.com&#34;)
+ *             .groupId(&#34;85ab8713-4a30-4de4-9d20-155ff830****&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;Terraform&#34;),
+ *                 Map.entry(&#34;Environment&#34;, &#34;test&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

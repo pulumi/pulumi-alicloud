@@ -223,6 +223,31 @@ func (o AccessConfigurationProvisioningOutput) ToAccessConfigurationProvisioning
 	return o
 }
 
+// The Access configuration ID.
+func (o AccessConfigurationProvisioningOutput) AccessConfigurationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfigurationProvisioning) pulumi.StringOutput { return v.AccessConfigurationId }).(pulumi.StringOutput)
+}
+
+// The ID of the Directory.
+func (o AccessConfigurationProvisioningOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfigurationProvisioning) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
+func (o AccessConfigurationProvisioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfigurationProvisioning) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the target to create the resource range.
+func (o AccessConfigurationProvisioningOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfigurationProvisioning) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// The type of the resource range target to be accessed. Valid values: `RD-Account`.
+func (o AccessConfigurationProvisioningOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfigurationProvisioning) pulumi.StringOutput { return v.TargetType }).(pulumi.StringOutput)
+}
+
 type AccessConfigurationProvisioningArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationProvisioningArrayOutput) ElementType() reflect.Type {

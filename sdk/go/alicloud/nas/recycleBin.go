@@ -225,6 +225,21 @@ func (o RecycleBinOutput) ToRecycleBinOutputWithContext(ctx context.Context) Rec
 	return o
 }
 
+// The ID of the file system for which you want to enable the recycle bin feature.
+func (o RecycleBinOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecycleBin) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
+func (o RecycleBinOutput) ReservedDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *RecycleBin) pulumi.IntOutput { return v.ReservedDays }).(pulumi.IntOutput)
+}
+
+// The status of the recycle bin.
+func (o RecycleBinOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecycleBin) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type RecycleBinArrayOutput struct{ *pulumi.OutputState }
 
 func (RecycleBinArrayOutput) ElementType() reflect.Type {

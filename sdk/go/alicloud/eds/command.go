@@ -302,6 +302,36 @@ func (o CommandOutput) ToCommandOutputWithContext(ctx context.Context) CommandOu
 	return o
 }
 
+// The Contents of the Script to Base64 Encoded Transmission.
+func (o CommandOutput) CommandContent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringOutput { return v.CommandContent }).(pulumi.StringOutput)
+}
+
+// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+func (o CommandOutput) CommandType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringOutput { return v.CommandType }).(pulumi.StringOutput)
+}
+
+// That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
+func (o CommandOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringPtrOutput { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+// The desktop id of the Desktop.
+func (o CommandOutput) DesktopId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringOutput { return v.DesktopId }).(pulumi.StringOutput)
+}
+
+// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+func (o CommandOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The timeout period for script execution the unit is seconds. Default to: `60`.
+func (o CommandOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringPtrOutput { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
 type CommandArrayOutput struct{ *pulumi.OutputState }
 
 func (CommandArrayOutput) ElementType() reflect.Type {

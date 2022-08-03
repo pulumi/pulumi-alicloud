@@ -140,9 +140,16 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// </summary>
+        [Output("prometheuses")]
+        public Output<ImmutableArray<Outputs.AlarmPrometheus>> Prometheuses { get; private set; } = null!;
 
         /// <summary>
         /// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
@@ -325,9 +332,22 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        [Input("prometheuses")]
+        private InputList<Inputs.AlarmPrometheusArgs>? _prometheuses;
+
+        /// <summary>
+        /// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// </summary>
+        public InputList<Inputs.AlarmPrometheusArgs> Prometheuses
+        {
+            get => _prometheuses ?? (_prometheuses = new InputList<Inputs.AlarmPrometheusArgs>());
+            set => _prometheuses = value;
+        }
 
         /// <summary>
         /// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
@@ -465,9 +485,22 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("prometheuses")]
+        private InputList<Inputs.AlarmPrometheusGetArgs>? _prometheuses;
+
+        /// <summary>
+        /// The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        /// </summary>
+        public InputList<Inputs.AlarmPrometheusGetArgs> Prometheuses
+        {
+            get => _prometheuses ?? (_prometheuses = new InputList<Inputs.AlarmPrometheusGetArgs>());
+            set => _prometheuses = value;
+        }
 
         /// <summary>
         /// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400

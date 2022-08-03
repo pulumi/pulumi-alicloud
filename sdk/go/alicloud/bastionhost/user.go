@@ -433,6 +433,87 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
+func (o UserOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Specify the New Created the User's Display Name. Supports up to 128 Characters.
+func (o UserOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Specify the New User's Mailbox.
+func (o UserOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// You Want to Query the User the Bastion Host ID of.
+func (o UserOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+func (o UserOutput) Mobile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Mobile }).(pulumi.StringPtrOutput)
+}
+
+// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN. Valid Values:
+// * CN: Mainland China (+86)
+// * HK: hong Kong, China (+852)
+// * MO: Macau, China (+853)
+// * TW: Taiwan, China (+886)
+// * RU: Russian (+7)
+// * SG: Singapore (+65)
+// * MY: malaysia (+60)
+// * ID: Indonesia (+62)
+// * DE: Germany (+49)
+// * AU: Australia (+61)
+// * US: United States (+1)
+// * AE: dubai (+971)
+// * JP: Japan (+81) Introducing the Long-Range
+// * GB: United Kingdom (+44)
+// * IN: India (+91)
+// * KR: South Korea (+82)
+// * PH: philippines (+63)
+// * CH: Switzerland (+41)
+// * SE: Sweden (+46)
+func (o UserOutput) MobileCountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.MobileCountryCode }).(pulumi.StringOutput)
+}
+
+// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
+func (o UserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Specify the New of the User That Created the Source. Valid Values:
+// * Local: Local User
+// * RAM: Ram User
+func (o UserOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
+// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+func (o UserOutput) SourceUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.SourceUserId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource. Valid values: `Frozen`, `Normal`.
+func (o UserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The User ID.
+func (o UserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+func (o UserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

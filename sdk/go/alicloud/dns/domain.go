@@ -221,6 +221,31 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// A list of the dns server name.
+func (o DomainOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// The domain ID.
+func (o DomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// Id of the group in which the domain will add. If not supplied, then use default group.
+func (o DomainOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+func (o DomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the dns belongs.
+func (o DomainOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

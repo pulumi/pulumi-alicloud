@@ -259,6 +259,31 @@ func (o Ipv6InternetBandwidthOutput) ToIpv6InternetBandwidthOutputWithContext(ct
 	return o
 }
 
+// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internetChargeType` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
+func (o Ipv6InternetBandwidthOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
+func (o Ipv6InternetBandwidthOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 address.
+func (o Ipv6InternetBandwidthOutput) Ipv6AddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.Ipv6AddressId }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 gateway.
+func (o Ipv6InternetBandwidthOutput) Ipv6GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.Ipv6GatewayId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+func (o Ipv6InternetBandwidthOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type Ipv6InternetBandwidthArrayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6InternetBandwidthArrayOutput) ElementType() reflect.Type {

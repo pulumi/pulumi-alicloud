@@ -292,6 +292,46 @@ func (o BgpGroupOutput) ToBgpGroupOutputWithContext(ctx context.Context) BgpGrou
 	return o
 }
 
+// The authentication key of the BGP group.
+func (o BgpGroupOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.StringPtrOutput { return v.AuthKey }).(pulumi.StringPtrOutput)
+}
+
+// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+func (o BgpGroupOutput) BgpGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.StringPtrOutput { return v.BgpGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+func (o BgpGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+func (o BgpGroupOutput) IsFakeAsn() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.BoolOutput { return v.IsFakeAsn }).(pulumi.BoolOutput)
+}
+
+// The AS number on the Alibaba Cloud side.
+func (o BgpGroupOutput) LocalAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.IntOutput { return v.LocalAsn }).(pulumi.IntOutput)
+}
+
+// The AS number of the BGP peer.
+func (o BgpGroupOutput) PeerAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.IntOutput { return v.PeerAsn }).(pulumi.IntOutput)
+}
+
+// The ID of the VBR.
+func (o BgpGroupOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o BgpGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type BgpGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (BgpGroupArrayOutput) ElementType() reflect.Type {

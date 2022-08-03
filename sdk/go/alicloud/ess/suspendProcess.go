@@ -183,6 +183,16 @@ func (o SuspendProcessOutput) ToSuspendProcessOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
+func (o SuspendProcessOutput) Process() pulumi.StringOutput {
+	return o.ApplyT(func(v *SuspendProcess) pulumi.StringOutput { return v.Process }).(pulumi.StringOutput)
+}
+
+// ID of the scaling group.
+func (o SuspendProcessOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SuspendProcess) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
 type SuspendProcessArrayOutput struct{ *pulumi.OutputState }
 
 func (SuspendProcessArrayOutput) ElementType() reflect.Type {

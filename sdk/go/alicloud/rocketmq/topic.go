@@ -311,6 +311,47 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// ID of the ONS Instance that owns the topics.
+func (o TopicOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
+func (o TopicOutput) MessageType() pulumi.IntOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.MessageType }).(pulumi.IntOutput)
+}
+
+// This attribute has been deprecated.
+//
+// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
+func (o TopicOutput) Perm() pulumi.IntOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.Perm }).(pulumi.IntOutput)
+}
+
+// This attribute is a concise description of topic. The length cannot exceed 128.
+func (o TopicOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o TopicOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Replaced by `topicName` after version 1.97.0.
+//
+// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
+func (o TopicOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
+}
+
+// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
+func (o TopicOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.TopicName }).(pulumi.StringOutput)
+}
+
 type TopicArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicArrayOutput) ElementType() reflect.Type {

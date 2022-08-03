@@ -23,6 +23,44 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+ * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;example_value&#34;)
+ *             .enableIpv6(&#34;true&#34;)
+ *             .build());
+ * 
+ *         var example = new Ipv6Gateway(&#34;example&#34;, Ipv6GatewayArgs.builder()        
+ *             .ipv6GatewayName(&#34;example_value&#34;)
+ *             .vpcId(default_.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPC Ipv6 Gateway can be imported using the id, e.g.

@@ -81,6 +81,35 @@ public final class HbaseFunctions {
      * &gt; **NOTE:**  Available in 1.67.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -93,6 +122,35 @@ public final class HbaseFunctions {
      * &gt; **NOTE:**  Available in 1.67.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -105,6 +163,35 @@ public final class HbaseFunctions {
      * &gt; **NOTE:**  Available in 1.67.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -117,6 +204,35 @@ public final class HbaseFunctions {
      * &gt; **NOTE:**  Available in 1.67.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -129,6 +245,35 @@ public final class HbaseFunctions {
      * &gt; **NOTE:**  Available in 1.67.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -141,6 +286,35 @@ public final class HbaseFunctions {
      * &gt; **NOTE:**  Available in 1.67.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -152,6 +326,38 @@ public final class HbaseFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = HbaseFunctions.getZones();
+     * 
+     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -163,6 +369,38 @@ public final class HbaseFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = HbaseFunctions.getZones();
+     * 
+     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -174,6 +412,38 @@ public final class HbaseFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = HbaseFunctions.getZones();
+     * 
+     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -185,6 +455,38 @@ public final class HbaseFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = HbaseFunctions.getZones();
+     * 
+     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -196,6 +498,38 @@ public final class HbaseFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = HbaseFunctions.getZones();
+     * 
+     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -207,6 +541,38 @@ public final class HbaseFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = HbaseFunctions.getZones();
+     * 
+     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

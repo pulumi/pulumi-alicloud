@@ -22,6 +22,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.Policy;
+ * import com.pulumi.alicloud.resourcemanager.PolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Policy(&#34;example&#34;, PolicyArgs.builder()        
+ *             .policyDocument(&#34;&#34;&#34;
+ * 		{
+ * 			&#34;Statement&#34;: [{
+ * 				&#34;Action&#34;: [&#34;oss:*&#34;],
+ * 				&#34;Effect&#34;: &#34;Allow&#34;,
+ * 				&#34;Resource&#34;: [&#34;acs:oss:*:*:*&#34;]
+ * 			}],
+ * 			&#34;Version&#34;: &#34;1&#34;
+ * 		}
+ *     
+ *             &#34;&#34;&#34;)
+ *             .policyName(&#34;abc12345&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Resource Manager Policy can be imported using the id, e.g.

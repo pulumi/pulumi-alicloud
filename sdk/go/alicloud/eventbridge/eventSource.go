@@ -324,6 +324,49 @@ func (o EventSourceOutput) ToEventSourceOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// The detail describe of event source.
+func (o EventSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of event bus.
+func (o EventSourceOutput) EventBusName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.StringOutput { return v.EventBusName }).(pulumi.StringOutput)
+}
+
+// The code name of event source.
+func (o EventSourceOutput) EventSourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.StringOutput { return v.EventSourceName }).(pulumi.StringOutput)
+}
+
+// The config of external source.
+// When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
+// `RegionId` - The region ID of RabbitMQ.
+// `InstanceId` - The instance ID of RabbitMQ.
+// `VirtualHostName` - The virtual host name of RabbitMQ.
+// `QueueName` - The queue name of RabbitMQ.
+// When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
+// `RegionId` - The region ID of RabbitMQ.
+// `InstanceId` - The instance ID of RabbitMQ.
+// `Topic` - The topic of RabbitMQ.
+// `Offset` -  The offset of RabbitMQ, valid values: `CONSUME_FROM_FIRST_OFFSET`, `CONSUME_FROM_LAST_OFFSET` and `CONSUME_FROM_TIMESTAMP`.
+// `GroupID` - The group ID of consumer.
+// When `externalSourceType` is `MNS`, The following attributes are supported:
+// `QueueName` - The queue name of MNS.
+func (o EventSourceOutput) ExternalSourceConfig() pulumi.MapOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.MapOutput { return v.ExternalSourceConfig }).(pulumi.MapOutput)
+}
+
+// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+func (o EventSourceOutput) ExternalSourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.StringPtrOutput { return v.ExternalSourceType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to connect to an external data source. Default value: `false`
+func (o EventSourceOutput) LinkedExternalSource() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.BoolOutput { return v.LinkedExternalSource }).(pulumi.BoolOutput)
+}
+
 type EventSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (EventSourceArrayOutput) ElementType() reflect.Type {

@@ -274,6 +274,54 @@ func (o DataFlowOutput) ToDataFlowOutputWithContext(ctx context.Context) DataFlo
 	return o
 }
 
+// The ID of the Data flow.
+func (o DataFlowOutput) DataFlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.DataFlowId }).(pulumi.StringOutput)
+}
+
+// The Description of the data flow. Restrictions:
+func (o DataFlowOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The dry run.
+func (o DataFlowOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the file system.
+func (o DataFlowOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The ID of the Fileset.
+func (o DataFlowOutput) FsetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.FsetId }).(pulumi.StringOutput)
+}
+
+// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+func (o DataFlowOutput) SourceSecurityType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.SourceSecurityType }).(pulumi.StringOutput)
+}
+
+// The access path of the source store. Format: `<storage type>://<path>`. Among them:
+// - storage type: currently only OSS is supported.
+// - path: the bucket name of OSS.
+// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+func (o DataFlowOutput) SourceStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.SourceStorage }).(pulumi.StringOutput)
+}
+
+// The status of the Data flow. Valid values: `Running`, `Stopped`.
+func (o DataFlowOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
+func (o DataFlowOutput) Throughput() pulumi.IntOutput {
+	return o.ApplyT(func(v *DataFlow) pulumi.IntOutput { return v.Throughput }).(pulumi.IntOutput)
+}
+
 type DataFlowArrayOutput struct{ *pulumi.OutputState }
 
 func (DataFlowArrayOutput) ElementType() reflect.Type {

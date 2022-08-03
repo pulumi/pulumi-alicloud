@@ -23,6 +23,56 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ControlPolicy;
+ * import com.pulumi.alicloud.resourcemanager.ControlPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ControlPolicy(&#34;example&#34;, ControlPolicyArgs.builder()        
+ *             .controlPolicyName(&#34;tf-testAccRDControlPolicy&#34;)
+ *             .description(&#34;tf-testAccRDControlPolicy&#34;)
+ *             .effectScope(&#34;RAM&#34;)
+ *             .policyDocument(&#34;&#34;&#34;
+ *   {
+ *     &#34;Version&#34;: &#34;1&#34;,
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Effect&#34;: &#34;Deny&#34;,
+ *         &#34;Action&#34;: [
+ *           &#34;ram:UpdateRole&#34;,
+ *           &#34;ram:DeleteRole&#34;,
+ *           &#34;ram:AttachPolicyToRole&#34;,
+ *           &#34;ram:DetachPolicyFromRole&#34;
+ *         ],
+ *         &#34;Resource&#34;: &#34;acs:ram:*:*:role/ResourceDirectoryAccountAccessRole&#34;
+ *       }
+ *     ]
+ *   }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Resource Manager Control Policy can be imported using the id, e.g.

@@ -209,6 +209,16 @@ func (o EventBusOutput) ToEventBusOutputWithContext(ctx context.Context) EventBu
 	return o
 }
 
+// The description of event bus.
+func (o EventBusOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventBus) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+func (o EventBusOutput) EventBusName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventBus) pulumi.StringOutput { return v.EventBusName }).(pulumi.StringOutput)
+}
+
 type EventBusArrayOutput struct{ *pulumi.OutputState }
 
 func (EventBusArrayOutput) ElementType() reflect.Type {

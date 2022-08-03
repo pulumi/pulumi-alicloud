@@ -44,6 +44,46 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetChainsResult> getChains(GetChainsArgs args) {
         return getChains(args, InvokeOptions.Empty);
@@ -56,6 +96,46 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetChainsResult> getChainsPlain(GetChainsPlainArgs args) {
@@ -70,6 +150,46 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetChainsResult> getChains(GetChainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getChains:getChains", TypeShape.of(GetChainsResult.class), args, Utilities.withVersion(options));
@@ -82,6 +202,46 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetChainsResult> getChainsPlain(GetChainsPlainArgs args, InvokeOptions options) {
@@ -130,6 +290,40 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChartRepositoryId1&#34;, data.alicloud_cr_chart_repositories().default().ids()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetChartRepositoriesResult> getChartRepositories(GetChartRepositoriesArgs args) {
         return getChartRepositories(args, InvokeOptions.Empty);
@@ -140,6 +334,40 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.149.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChartRepositoryId1&#34;, data.alicloud_cr_chart_repositories().default().ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetChartRepositoriesResult> getChartRepositoriesPlain(GetChartRepositoriesPlainArgs args) {
@@ -152,6 +380,40 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChartRepositoryId1&#34;, data.alicloud_cr_chart_repositories().default().ids()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetChartRepositoriesResult> getChartRepositories(GetChartRepositoriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getChartRepositories:getChartRepositories", TypeShape.of(GetChartRepositoriesResult.class), args, Utilities.withVersion(options));
@@ -162,6 +424,40 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.149.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crChartRepositoryId1&#34;, data.alicloud_cr_chart_repositories().default().ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetChartRepositoriesResult> getChartRepositoriesPlain(GetChartRepositoriesPlainArgs args, InvokeOptions options) {
@@ -174,6 +470,41 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .endpointType(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointAclPoliciesResult> getEndpointAclPolicies(GetEndpointAclPoliciesArgs args) {
         return getEndpointAclPolicies(args, InvokeOptions.Empty);
@@ -184,6 +515,41 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .endpointType(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointAclPoliciesResult> getEndpointAclPoliciesPlain(GetEndpointAclPoliciesPlainArgs args) {
@@ -196,6 +562,41 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .endpointType(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointAclPoliciesResult> getEndpointAclPolicies(GetEndpointAclPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", TypeShape.of(GetEndpointAclPoliciesResult.class), args, Utilities.withVersion(options));
@@ -206,6 +607,41 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .endpointType(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointAclPoliciesResult> getEndpointAclPoliciesPlain(GetEndpointAclPoliciesPlainArgs args, InvokeOptions options) {
@@ -220,6 +656,39 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
+     *             .enable(true)
+     *             .endpointType(&#34;internet&#34;)
+     *             .instanceId(&#34;example_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointAclServiceResult> getEndpointAclService(GetEndpointAclServiceArgs args) {
         return getEndpointAclService(args, InvokeOptions.Empty);
@@ -232,6 +701,39 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
+     *             .enable(true)
+     *             .endpointType(&#34;internet&#34;)
+     *             .instanceId(&#34;example_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointAclServiceResult> getEndpointAclServicePlain(GetEndpointAclServicePlainArgs args) {
@@ -246,6 +748,39 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
+     *             .enable(true)
+     *             .endpointType(&#34;internet&#34;)
+     *             .instanceId(&#34;example_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointAclServiceResult> getEndpointAclService(GetEndpointAclServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getEndpointAclService:getEndpointAclService", TypeShape.of(GetEndpointAclServiceResult.class), args, Utilities.withVersion(options));
@@ -259,6 +794,39 @@ public final class CrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
+     *             .enable(true)
+     *             .endpointType(&#34;internet&#34;)
+     *             .instanceId(&#34;example_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetEndpointAclServiceResult> getEndpointAclServicePlain(GetEndpointAclServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getEndpointAclService:getEndpointAclService", TypeShape.of(GetEndpointAclServiceResult.class), args, Utilities.withVersion(options));
@@ -269,6 +837,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
@@ -280,6 +878,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -291,6 +919,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
@@ -302,6 +960,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -313,6 +1001,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
@@ -324,6 +1042,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
@@ -335,6 +1083,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetReposResult> getRepos() {
@@ -346,6 +1124,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetReposResult> getReposPlain() {
@@ -357,6 +1165,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetReposResult> getRepos(GetReposArgs args) {
@@ -368,6 +1206,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetReposResult> getReposPlain(GetReposPlainArgs args) {
@@ -379,6 +1247,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetReposResult> getRepos(GetReposArgs args, InvokeOptions options) {
@@ -390,6 +1288,36 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetReposResult> getReposPlain(GetReposPlainArgs args, InvokeOptions options) {
@@ -403,6 +1331,35 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .password(&#34;1111aaaa&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -416,6 +1373,35 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .password(&#34;1111aaaa&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -429,6 +1415,35 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .password(&#34;1111aaaa&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -442,6 +1457,35 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .password(&#34;1111aaaa&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

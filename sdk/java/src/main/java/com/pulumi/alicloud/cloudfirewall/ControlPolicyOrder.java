@@ -24,6 +24,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudfirewall.ControlPolicy;
+ * import com.pulumi.alicloud.cloudfirewall.ControlPolicyArgs;
+ * import com.pulumi.alicloud.cloudfirewall.ControlPolicyOrder;
+ * import com.pulumi.alicloud.cloudfirewall.ControlPolicyOrderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example1 = new ControlPolicy(&#34;example1&#34;, ControlPolicyArgs.builder()        
+ *             .applicationName(&#34;ANY&#34;)
+ *             .aclAction(&#34;accept&#34;)
+ *             .description(&#34;example&#34;)
+ *             .destinationType(&#34;net&#34;)
+ *             .destination(&#34;100.1.1.0/24&#34;)
+ *             .direction(&#34;out&#34;)
+ *             .proto(&#34;ANY&#34;)
+ *             .source(&#34;1.2.3.0/24&#34;)
+ *             .sourceType(&#34;net&#34;)
+ *             .build());
+ * 
+ *         var example2 = new ControlPolicyOrder(&#34;example2&#34;, ControlPolicyOrderArgs.builder()        
+ *             .aclUuid(example1.aclUuid())
+ *             .direction(example1.direction())
+ *             .order(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Firewall Control Policy Order can be imported using the id, e.g.

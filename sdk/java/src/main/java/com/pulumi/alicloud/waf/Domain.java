@@ -25,6 +25,49 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.82.0+ .
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.waf.Domain;
+ * import com.pulumi.alicloud.waf.DomainArgs;
+ * import com.pulumi.alicloud.waf.inputs.DomainLogHeaderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
+ *             .clusterType(&#34;PhysicalCluster&#34;)
+ *             .domain(&#34;www.aliyun.com&#34;)
+ *             .http2Ports(443)
+ *             .httpPorts(80)
+ *             .httpToUserIp(&#34;Off&#34;)
+ *             .httpsPorts(443)
+ *             .httpsRedirect(&#34;Off&#34;)
+ *             .instanceId(&#34;waf-123455&#34;)
+ *             .isAccessProduct(&#34;On&#34;)
+ *             .loadBalancing(&#34;IpHash&#34;)
+ *             .logHeaders(DomainLogHeaderArgs.builder()
+ *                 .key(&#34;foo&#34;)
+ *                 .value(&#34;http&#34;)
+ *                 .build())
+ *             .sourceIps(&#34;1.1.1.1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

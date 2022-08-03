@@ -1396,6 +1396,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cms/hybridMonitorFcTask",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask": "HybridMonitorFcTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cms/hybridMonitorSlsTask",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask": "HybridMonitorSlsTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cms/metricRuleTemplate",
   "fqn": "pulumi_alicloud.cms",
   "classes": {
@@ -3104,6 +3120,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.hbr",
   "classes": {
    "alicloud:hbr/ecsBackupPlan:EcsBackupPlan": "EcsBackupPlan"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "hbr/hanaBackupPlan",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/hanaBackupPlan:HanaBackupPlan": "HanaBackupPlan"
   }
  },
  {

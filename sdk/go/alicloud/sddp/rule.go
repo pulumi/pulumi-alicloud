@@ -429,6 +429,97 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+// Sensitive Data Identification Rules for the Type of. Valid values:
+// * `0`: Keyword.
+// * `2`: Regular expression.
+func (o RuleOutput) Category() pulumi.IntOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Category }).(pulumi.IntOutput)
+}
+
+// Sensitive Data Identification Rules the Content.
+func (o RuleOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
+// The Content Classification.
+func (o RuleOutput) ContentCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ContentCategory }).(pulumi.StringOutput)
+}
+
+// Sensitive Data Identification Rules of Type. Valid values:
+// * `0`: the Built-in.
+// * `1`: The User-Defined.
+func (o RuleOutput) CustomType() pulumi.IntOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.CustomType }).(pulumi.IntOutput)
+}
+
+// Sensitive Data Identification a Description of the Rule Information.
+func (o RuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Request and Receive the Language of the Message Type. Valid values:
+// * `zh`: Chinese.
+// * `en`: English.
+func (o RuleOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+func (o RuleOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.ProductCode }).(pulumi.StringPtrOutput)
+}
+
+// Product ID. Valid values:
+// * `1`:MaxCompute
+// * `2`:OSS
+// * `5`:RDS.
+func (o RuleOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// Sensitive Data Identification Rules of Risk Level ID. Valid values:
+// * `2`:S1, Weak Risk Level.
+// * `3`:S2, Medium Risk Level.
+// * `4`:S3 High Risk Level.
+// * `5`:S4, the Highest Risk Level.
+func (o RuleOutput) RiskLevelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.RiskLevelId }).(pulumi.StringPtrOutput)
+}
+
+// Sensitive Data Identification Name of the Rule.
+func (o RuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// Rule Type.
+func (o RuleOutput) RuleType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.RuleType }).(pulumi.IntPtrOutput)
+}
+
+// Triggered the Alarm Conditions.
+func (o RuleOutput) StatExpress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.StatExpress }).(pulumi.StringPtrOutput)
+}
+
+// Sensitive Data Identification Rules Detection State of.
+func (o RuleOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
+// The Target of rule.
+func (o RuleOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The Level of Risk. Valid values:
+// * `1`: Weak warn Level.
+// * `2`: Medium Risk Level.
+// * `3`: High Risk Level.
+func (o RuleOutput) WarnLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.WarnLevel }).(pulumi.IntPtrOutput)
+}
+
 type RuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleArrayOutput) ElementType() reflect.Type {

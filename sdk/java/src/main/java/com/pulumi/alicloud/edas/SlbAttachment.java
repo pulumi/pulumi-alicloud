@@ -22,6 +22,41 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.edas.SlbAttachment;
+ * import com.pulumi.alicloud.edas.SlbAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SlbAttachment(&#34;default&#34;, SlbAttachmentArgs.builder()        
+ *             .appId(var_.app_id())
+ *             .slbId(var_.slb_id())
+ *             .slbIp(var_.slb_ip())
+ *             .type(var_.type())
+ *             .listenerPort(var_.listener_port())
+ *             .vserverGroupId(var_.vserver_group_id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:edas/slbAttachment:SlbAttachment")
 public class SlbAttachment extends com.pulumi.resources.CustomResource {

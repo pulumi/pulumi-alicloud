@@ -310,6 +310,57 @@ func (o ImageCopyOutput) ToImageCopyOutputWithContext(ctx context.Context) Image
 	return o
 }
 
+func (o ImageCopyOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.BoolPtrOutput { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+func (o ImageCopyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to encrypt the image.
+func (o ImageCopyOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to force delete the custom image, Default is `false`.
+// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+func (o ImageCopyOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+func (o ImageCopyOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// Key ID used to encrypt the image.
+func (o ImageCopyOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+func (o ImageCopyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source image ID.
+func (o ImageCopyOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+func (o ImageCopyOutput) SourceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.StringOutput { return v.SourceRegionId }).(pulumi.StringOutput)
+}
+
+// The tag value of an image. The value of N ranges from 1 to 20.
+func (o ImageCopyOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type ImageCopyArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageCopyArrayOutput) ElementType() reflect.Type {

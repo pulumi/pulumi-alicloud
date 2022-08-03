@@ -32,6 +32,63 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
  * 
  * ## Example Usage
+ * ### Create a cassandra dataCenter
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cassandra.Cluster;
+ * import com.pulumi.alicloud.cassandra.ClusterArgs;
+ * import com.pulumi.alicloud.cassandra.DataCenter;
+ * import com.pulumi.alicloud.cassandra.DataCenterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *             .clusterName(&#34;cassandra-cluster-name-tf&#34;)
+ *             .dataCenterName(&#34;dc-1&#34;)
+ *             .autoRenew(&#34;false&#34;)
+ *             .instanceType(&#34;cassandra.c.large&#34;)
+ *             .majorVersion(&#34;3.11&#34;)
+ *             .nodeCount(&#34;2&#34;)
+ *             .payType(&#34;PayAsYouGo&#34;)
+ *             .vswitchId(&#34;vsw-xxxx1&#34;)
+ *             .diskSize(&#34;160&#34;)
+ *             .diskType(&#34;cloud_ssd&#34;)
+ *             .maintainStartTime(&#34;18:00Z&#34;)
+ *             .maintainEndTime(&#34;20:00Z&#34;)
+ *             .ipWhite(&#34;127.0.0.1&#34;)
+ *             .build());
+ * 
+ *         var defaultDataCenter = new DataCenter(&#34;defaultDataCenter&#34;, DataCenterArgs.builder()        
+ *             .clusterId(defaultCluster.id())
+ *             .dataCenterName(&#34;dc-2&#34;)
+ *             .autoRenew(&#34;false&#34;)
+ *             .instanceType(&#34;cassandra.c.large&#34;)
+ *             .nodeCount(&#34;2&#34;)
+ *             .payType(&#34;PayAsYouGo&#34;)
+ *             .vswitchId(&#34;vsw-xxxx2&#34;)
+ *             .diskSize(&#34;160&#34;)
+ *             .diskType(&#34;cloud_ssd&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
  * 
  * ## Import
  * 

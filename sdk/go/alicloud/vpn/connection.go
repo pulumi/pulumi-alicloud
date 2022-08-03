@@ -362,6 +362,71 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+func (o ConnectionOutput) BgpConfig() ConnectionBgpConfigOutput {
+	return o.ApplyT(func(v *Connection) ConnectionBgpConfigOutput { return v.BgpConfig }).(ConnectionBgpConfigOutput)
+}
+
+// The ID of the customer gateway.
+func (o ConnectionOutput) CustomerGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CustomerGatewayId }).(pulumi.StringOutput)
+}
+
+// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+func (o ConnectionOutput) EffectImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.EffectImmediately }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable NAT traversal.
+func (o ConnectionOutput) EnableDpd() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableDpd }).(pulumi.BoolOutput)
+}
+
+// Whether to enable NAT traversal.
+func (o ConnectionOutput) EnableNatTraversal() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableNatTraversal }).(pulumi.BoolOutput)
+}
+
+// The health check configurations. See the following `Block healthCheckConfig`.
+func (o ConnectionOutput) HealthCheckConfig() ConnectionHealthCheckConfigOutput {
+	return o.ApplyT(func(v *Connection) ConnectionHealthCheckConfigOutput { return v.HealthCheckConfig }).(ConnectionHealthCheckConfigOutput)
+}
+
+// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+func (o ConnectionOutput) IkeConfig() ConnectionIkeConfigOutput {
+	return o.ApplyT(func(v *Connection) ConnectionIkeConfigOutput { return v.IkeConfig }).(ConnectionIkeConfigOutput)
+}
+
+// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+func (o ConnectionOutput) IpsecConfig() ConnectionIpsecConfigOutput {
+	return o.ApplyT(func(v *Connection) ConnectionIpsecConfigOutput { return v.IpsecConfig }).(ConnectionIpsecConfigOutput)
+}
+
+// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
+func (o ConnectionOutput) LocalSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.LocalSubnets }).(pulumi.StringArrayOutput)
+}
+
+// The name of the IPsec connection.
+func (o ConnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
+func (o ConnectionOutput) RemoteSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.RemoteSubnets }).(pulumi.StringArrayOutput)
+}
+
+// The status of VPN connection.
+func (o ConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPN gateway.
+func (o ConnectionOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
+}
+
 type ConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (ConnectionArrayOutput) ElementType() reflect.Type {

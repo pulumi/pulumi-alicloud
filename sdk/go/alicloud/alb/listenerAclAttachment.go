@@ -359,6 +359,28 @@ func (o ListenerAclAttachmentOutput) ToListenerAclAttachmentOutputWithContext(ct
 	return o
 }
 
+// The ID of the Acl.
+func (o ListenerAclAttachmentOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The type of the ACL. Valid values:
+// - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
+// - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+func (o ListenerAclAttachmentOutput) AclType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.AclType }).(pulumi.StringOutput)
+}
+
+// The ID of the ALB listener.
+func (o ListenerAclAttachmentOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The status of the Listener Acl Attachment.
+func (o ListenerAclAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ListenerAclAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ListenerAclAttachmentArrayOutput) ElementType() reflect.Type {

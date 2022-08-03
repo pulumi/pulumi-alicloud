@@ -27,6 +27,72 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.cfg.Rule;
+ * import com.pulumi.alicloud.cfg.RuleArgs;
+ * import com.pulumi.alicloud.cfg.CompliancePack;
+ * import com.pulumi.alicloud.cfg.CompliancePackArgs;
+ * import com.pulumi.alicloud.cfg.inputs.CompliancePackConfigRuleIdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_name&#34;);
+ *         final var defaultInstances = EcsFunctions.getInstances();
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+ *             .ruleName(name)
+ *             .description(name)
+ *             .sourceIdentifier(&#34;ecs-instances-in-vpc&#34;)
+ *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .riskLevel(1)
+ *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
+ *             .tagKeyScope(&#34;tfTest&#34;)
+ *             .tagValueScope(&#34;tfTest 123&#34;)
+ *             .resourceGroupIdsScope(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .excludeResourceIdsScope(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *             .regionIdsScope(&#34;cn-hangzhou&#34;)
+ *             .inputParameters(Map.of(&#34;vpcIds&#34;, defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].vpcId())))
+ *             .build());
+ * 
+ *         var defaultCompliancePack = new CompliancePack(&#34;defaultCompliancePack&#34;, CompliancePackArgs.builder()        
+ *             .compliancePackName(&#34;tf-testaccConfig1234&#34;)
+ *             .description(&#34;tf-testaccConfig1234&#34;)
+ *             .riskLevel(&#34;1&#34;)
+ *             .configRuleIds(CompliancePackConfigRuleIdArgs.builder()
+ *                 .configRuleId(defaultRule.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Config Compliance Pack can be imported using the id, e.g.

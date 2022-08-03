@@ -24,6 +24,70 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.AccessGroup;
+ * import com.pulumi.alicloud.nas.AccessGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new AccessGroup(&#34;foo&#34;, AccessGroupArgs.builder()        
+ *             .description(&#34;test_AccessG&#34;)
+ *             .type(&#34;Classic&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Example after v1.92.0
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.AccessGroup;
+ * import com.pulumi.alicloud.nas.AccessGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new AccessGroup(&#34;foo&#34;, AccessGroupArgs.builder()        
+ *             .accessGroupName(&#34;CreateAccessGroup&#34;)
+ *             .accessGroupType(&#34;Vpc&#34;)
+ *             .description(&#34;test_AccessG&#34;)
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * NAS Access Group can be imported using the id, e.g.

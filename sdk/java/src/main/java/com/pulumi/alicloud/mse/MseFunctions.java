@@ -29,6 +29,36 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.94.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
+     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -40,6 +70,36 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.94.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
+     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -51,6 +111,36 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.94.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
+     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -62,6 +152,36 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.94.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
+     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -73,6 +193,36 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.94.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
+     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -84,6 +234,36 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.94.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
+     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -96,6 +276,38 @@ public final class MseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEngineNamespacesResult> getEngineNamespaces(GetEngineNamespacesArgs args) {
         return getEngineNamespaces(args, InvokeOptions.Empty);
@@ -106,6 +318,38 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEngineNamespacesResult> getEngineNamespacesPlain(GetEngineNamespacesPlainArgs args) {
@@ -118,6 +362,38 @@ public final class MseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEngineNamespacesResult> getEngineNamespaces(GetEngineNamespacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mse/getEngineNamespaces:getEngineNamespaces", TypeShape.of(GetEngineNamespacesResult.class), args, Utilities.withVersion(options));
@@ -128,6 +404,38 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEngineNamespacesResult> getEngineNamespacesPlain(GetEngineNamespacesPlainArgs args, InvokeOptions options) {
@@ -140,6 +448,47 @@ public final class MseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .status(&#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewaysResult> getGateways() {
         return getGateways(GetGatewaysArgs.Empty, InvokeOptions.Empty);
@@ -150,6 +499,47 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .status(&#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain() {
@@ -162,6 +552,47 @@ public final class MseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .status(&#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args) {
         return getGateways(args, InvokeOptions.Empty);
@@ -172,6 +603,47 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .status(&#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args) {
@@ -184,6 +656,47 @@ public final class MseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .status(&#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mse/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
@@ -194,6 +707,47 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .status(&#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args, InvokeOptions options) {
@@ -206,6 +760,48 @@ public final class MseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetZnodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .path(&#34;/&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .path(&#34;/&#34;)
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZnodesResult> getZnodes(GetZnodesArgs args) {
         return getZnodes(args, InvokeOptions.Empty);
@@ -216,6 +812,48 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.162.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetZnodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .path(&#34;/&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .path(&#34;/&#34;)
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZnodesResult> getZnodesPlain(GetZnodesPlainArgs args) {
@@ -228,6 +866,48 @@ public final class MseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetZnodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .path(&#34;/&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .path(&#34;/&#34;)
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZnodesResult> getZnodes(GetZnodesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mse/getZnodes:getZnodes", TypeShape.of(GetZnodesResult.class), args, Utilities.withVersion(options));
@@ -238,6 +918,48 @@ public final class MseFunctions {
      * &gt; **NOTE:** Available in v1.162.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetZnodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .path(&#34;/&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
+     *             .path(&#34;/&#34;)
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZnodesResult> getZnodesPlain(GetZnodesPlainArgs args, InvokeOptions options) {

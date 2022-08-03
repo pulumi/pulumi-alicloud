@@ -245,6 +245,26 @@ func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The name of the application.
+func (o ApplicationOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// Application group description information.
+func (o ApplicationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o ApplicationOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o ApplicationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Application) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type ApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationArrayOutput) ElementType() reflect.Type {

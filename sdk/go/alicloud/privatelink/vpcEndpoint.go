@@ -267,6 +267,66 @@ func (o VpcEndpointOutput) ToVpcEndpointOutputWithContext(ctx context.Context) V
 	return o
 }
 
+// The Bandwidth.
+func (o VpcEndpointOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The status of Connection.
+func (o VpcEndpointOutput) ConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ConnectionStatus }).(pulumi.StringOutput)
+}
+
+// The dry run. Default to: `false`.
+func (o VpcEndpointOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The status of Endpoint Business.
+func (o VpcEndpointOutput) EndpointBusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointBusinessStatus }).(pulumi.StringOutput)
+}
+
+// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+func (o VpcEndpointOutput) EndpointDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringPtrOutput { return v.EndpointDescription }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint Domain.
+func (o VpcEndpointOutput) EndpointDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointDomain }).(pulumi.StringOutput)
+}
+
+// The security group associated with the terminal node network card.
+func (o VpcEndpointOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The terminal node service associated with the terminal node.
+func (o VpcEndpointOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringPtrOutput { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the terminal node service associated with the terminal node.
+func (o VpcEndpointOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The status of Vpc Endpoint.
+func (o VpcEndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+func (o VpcEndpointOutput) VpcEndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringPtrOutput { return v.VpcEndpointName }).(pulumi.StringPtrOutput)
+}
+
+// The private network to which the terminal node belongs.
+func (o VpcEndpointOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type VpcEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointArrayOutput) ElementType() reflect.Type {

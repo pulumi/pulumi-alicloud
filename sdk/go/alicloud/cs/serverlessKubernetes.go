@@ -567,6 +567,161 @@ func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx 
 	return o
 }
 
+// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+func (o ServerlessKubernetesOutput) Addons() ServerlessKubernetesAddonArrayOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesAddonArrayOutput { return v.Addons }).(ServerlessKubernetesAddonArrayOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o ServerlessKubernetesOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o ServerlessKubernetesOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+func (o ServerlessKubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ClusterCaCert }).(pulumi.StringPtrOutput)
+}
+
+// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+// - ack.standard: Standard serverless clusters.
+// - ack.pro.small: Professional serverless clusters.
+func (o ServerlessKubernetesOutput) ClusterSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
+}
+
+func (o ServerlessKubernetesOutput) CreateV2Cluster() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolOutput { return v.CreateV2Cluster }).(pulumi.BoolOutput)
+}
+
+// Whether enable the deletion protection or not.
+// - true: Enable deletion protection.
+// - false: Disable deletion protection.
+func (o ServerlessKubernetesOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+func (o ServerlessKubernetesOutput) EnableRrsa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EnableRrsa }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to create internet  eip for API Server. Default to false.
+func (o ServerlessKubernetesOutput) EndpointPublicAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EndpointPublicAccessEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
+func (o ServerlessKubernetesOutput) ForceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// The path of kube config, like `~/.kube/config`.
+func (o ServerlessKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.KubeConfig }).(pulumi.StringPtrOutput)
+}
+
+// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+func (o ServerlessKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
+}
+
+// Enable log service, Valid value `SLS`.
+func (o ServerlessKubernetesOutput) LoggingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.LoggingType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+func (o ServerlessKubernetesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ServerlessKubernetesOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+func (o ServerlessKubernetesOutput) NewNatGateway() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.NewNatGateway }).(pulumi.BoolPtrOutput)
+}
+
+// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+//
+// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
+func (o ServerlessKubernetesOutput) PrivateZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.PrivateZone }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+func (o ServerlessKubernetesOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o ServerlessKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+func (o ServerlessKubernetesOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+func (o ServerlessKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ServiceCidr }).(pulumi.StringPtrOutput)
+}
+
+// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+func (o ServerlessKubernetesOutput) ServiceDiscoveryTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.ServiceDiscoveryTypes }).(pulumi.StringArrayOutput)
+}
+
+// If you use an existing SLS project, you must specify `slsProjectName`.
+func (o ServerlessKubernetesOutput) SlsProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.SlsProjectName }).(pulumi.StringOutput)
+}
+
+// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
+func (o ServerlessKubernetesOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The time zone of the cluster.
+func (o ServerlessKubernetesOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+func (o ServerlessKubernetesOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+func (o ServerlessKubernetesOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+//
+// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
+func (o ServerlessKubernetesOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The vswitches where new kubernetes cluster will be located.
+func (o ServerlessKubernetesOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
+// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+func (o ServerlessKubernetesOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type ServerlessKubernetesArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerlessKubernetesArrayOutput) ElementType() reflect.Type {

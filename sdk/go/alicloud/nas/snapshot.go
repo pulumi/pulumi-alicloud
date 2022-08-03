@@ -268,6 +268,32 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+// The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
+func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the file system.
+func (o SnapshotOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The retention period of the snapshot. Unit: days. Valid values:
+// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
+func (o SnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
+func (o SnapshotOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SnapshotName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the snapshot.
+func (o SnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (SnapshotArrayOutput) ElementType() reflect.Type {

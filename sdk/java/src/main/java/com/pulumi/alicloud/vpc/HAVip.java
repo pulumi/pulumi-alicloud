@@ -17,6 +17,37 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.HAVip;
+ * import com.pulumi.alicloud.vpc.HAVipArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new HAVip(&#34;foo&#34;, HAVipArgs.builder()        
+ *             .description(&#34;test_havip&#34;)
+ *             .vswitchId(&#34;vsw-fakeid&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The havip can be imported using the id, e.g.

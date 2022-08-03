@@ -28,6 +28,85 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.arms.AlertContact;
+ * import com.pulumi.alicloud.arms.AlertContactArgs;
+ * import com.pulumi.alicloud.arms.AlertContactGroup;
+ * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+ * import com.pulumi.alicloud.arms.DispatchRule;
+ * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+ * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+ * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+ * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultAlertContact = new AlertContact(&#34;defaultAlertContact&#34;, AlertContactArgs.builder()        
+ *             .alertContactName(&#34;example_value&#34;)
+ *             .email(&#34;example_value@aaa.com&#34;)
+ *             .build());
+ * 
+ *         var defaultAlertContactGroup = new AlertContactGroup(&#34;defaultAlertContactGroup&#34;, AlertContactGroupArgs.builder()        
+ *             .alertContactGroupName(&#34;example_value&#34;)
+ *             .contactIds(defaultAlertContact.id())
+ *             .build());
+ * 
+ *         var defaultDispatchRule = new DispatchRule(&#34;defaultDispatchRule&#34;, DispatchRuleArgs.builder()        
+ *             .dispatchRuleName(&#34;example_value&#34;)
+ *             .dispatchType(&#34;CREATE_ALERT&#34;)
+ *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+ *                 .groupWaitTime(5)
+ *                 .groupInterval(15)
+ *                 .repeatInterval(100)
+ *                 .groupingFields(&#34;alertname&#34;)
+ *                 .build())
+ *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+ *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+ *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+ *                         .key(&#34;_aliyun_arms_involvedObject_kind&#34;)
+ *                         .value(&#34;app&#34;)
+ *                         .operator(&#34;eq&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+ *                 .notifyObjects(                
+ *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+ *                         .notifyObjectId(defaultAlertContact.id())
+ *                         .notifyType(&#34;ARMS_CONTACT&#34;)
+ *                         .name(&#34;example_value&#34;)
+ *                         .build(),
+ *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+ *                         .notifyObjectId(defaultAlertContactGroup.id())
+ *                         .notifyType(&#34;ARMS_CONTACT_GROUP&#34;)
+ *                         .name(&#34;example_value&#34;)
+ *                         .build())
+ *                 .notifyChannels(                
+ *                     &#34;dingTalk&#34;,
+ *                     &#34;wechat&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.

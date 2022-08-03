@@ -233,6 +233,26 @@ func (o ShortUrlOutput) ToShortUrlOutputWithContext(ctx context.Context) ShortUr
 	return o
 }
 
+// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
+func (o ShortUrlOutput) EffectiveDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShortUrl) pulumi.IntOutput { return v.EffectiveDays }).(pulumi.IntOutput)
+}
+
+// The name of the resource.
+func (o ShortUrlOutput) ShortUrlName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShortUrl) pulumi.StringOutput { return v.ShortUrlName }).(pulumi.StringOutput)
+}
+
+// The original link address.
+func (o ShortUrlOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShortUrl) pulumi.StringOutput { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+// Short chain status.
+func (o ShortUrlOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShortUrl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ShortUrlArrayOutput struct{ *pulumi.OutputState }
 
 func (ShortUrlArrayOutput) ElementType() reflect.Type {

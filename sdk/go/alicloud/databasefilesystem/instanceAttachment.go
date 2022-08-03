@@ -271,6 +271,20 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the ECS instance.
+func (o InstanceAttachmentOutput) EcsId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.EcsId }).(pulumi.StringOutput)
+}
+
+// The ID of the database file system.
+func (o InstanceAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o InstanceAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type InstanceAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceAttachmentArrayOutput) ElementType() reflect.Type {

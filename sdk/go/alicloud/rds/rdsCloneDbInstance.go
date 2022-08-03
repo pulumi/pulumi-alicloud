@@ -1019,6 +1019,339 @@ func (o RdsCloneDbInstanceOutput) ToRdsCloneDbInstanceOutputWithContext(ctx cont
 	return o
 }
 
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+func (o RdsCloneDbInstanceOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
+}
+
+// How to upgrade the minor version of the instance. Valid values:
+// * **Auto**: automatically upgrade the minor version.
+// * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
+func (o RdsCloneDbInstanceOutput) AutoUpgradeMinorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.AutoUpgradeMinorVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+func (o RdsCloneDbInstanceOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.BackupId }).(pulumi.StringPtrOutput)
+}
+
+// The type of backup that is used to restore the data of the original instance. Valid values:
+// * **FullBackup**: full backup
+// * **IncrementalBackup**: incremental backup
+func (o RdsCloneDbInstanceOutput) BackupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.BackupType }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
+// * **aliyun**: using cloud certificates
+// * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
+func (o RdsCloneDbInstanceOutput) CaType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.CaType }).(pulumi.StringOutput)
+}
+
+// Instance series. Valid values:
+// * **Basic**: Basic Edition
+// * **HighAvailability**: High availability
+// * **AlwaysOn**: Cluster Edition
+// * **Finance**: Three-node Enterprise Edition.
+func (o RdsCloneDbInstanceOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// The file that contains the certificate used for TDE.
+func (o RdsCloneDbInstanceOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
+func (o RdsCloneDbInstanceOutput) ClientCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.ClientCaCert }).(pulumi.StringPtrOutput)
+}
+
+// The client ca enabled.
+func (o RdsCloneDbInstanceOutput) ClientCaEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.IntPtrOutput { return v.ClientCaEnabled }).(pulumi.IntPtrOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
+func (o RdsCloneDbInstanceOutput) ClientCertRevocationList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.ClientCertRevocationList }).(pulumi.StringPtrOutput)
+}
+
+// The client crl enabled.
+func (o RdsCloneDbInstanceOutput) ClientCrlEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.IntPtrOutput { return v.ClientCrlEnabled }).(pulumi.IntPtrOutput)
+}
+
+// The database connection address.
+func (o RdsCloneDbInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The connection string prefix.
+func (o RdsCloneDbInstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+func (o RdsCloneDbInstanceOutput) DbInstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.DbInstanceClass }).(pulumi.StringOutput)
+}
+
+// The db instance description.
+func (o RdsCloneDbInstanceOutput) DbInstanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
+}
+
+// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+func (o RdsCloneDbInstanceOutput) DbInstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.IntOutput { return v.DbInstanceStorage }).(pulumi.IntOutput)
+}
+
+// The type of storage media that is used for the new instance. Valid values:
+// * **local_ssd**: local SSDs
+// * **cloud_ssd**: standard SSDs
+// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
+// * **cloud_essd2**: ESSDs of PL2
+// * **cloud_essd3**: ESSDs of PL3
+func (o RdsCloneDbInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
+// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+func (o RdsCloneDbInstanceOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// The names of the databases that you want to create on the new instance.
+func (o RdsCloneDbInstanceOutput) DbNames() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.DbNames }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
+func (o RdsCloneDbInstanceOutput) DedicatedHostGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.DedicatedHostGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The switch of delete protection. Valid values:
+// - true: delete protect.
+// - false: no delete protect.
+func (o RdsCloneDbInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
+func (o RdsCloneDbInstanceOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The effective time.
+func (o RdsCloneDbInstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the private key.
+func (o RdsCloneDbInstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+func (o RdsCloneDbInstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Database version. Value:
+// * MySQL:**5.5/5.6/5.7/8.0**
+// * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
+// * PostgreSQL:**9.4/10.0/11.0/12.0/13.0**
+// * PPAS:**9.3/10.0**
+// * MariaDB:**10.3**.
+func (o RdsCloneDbInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Set it to true to make some parameter efficient when modifying them. Default to false.
+func (o RdsCloneDbInstanceOutput) ForceRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.BoolPtrOutput { return v.ForceRestart }).(pulumi.BoolPtrOutput)
+}
+
+// The high availability mode. Valid values:
+// * **RPO**: Data persistence is preferred. The instance preferentially ensures data reliability to minimize data loss. Use this mode if you have higher requirements on data consistency.
+// * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
+func (o RdsCloneDbInstanceOutput) HaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.HaMode }).(pulumi.StringOutput)
+}
+
+// The network type of the instance. Valid values:
+// * **Classic**: Classic Network
+// * **VPC**: VPC.
+func (o RdsCloneDbInstanceOutput) InstanceNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.InstanceNetworkType }).(pulumi.StringOutput)
+}
+
+// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
+func (o RdsCloneDbInstanceOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+func (o RdsCloneDbInstanceOutput) Parameters() RdsCloneDbInstanceParameterArrayOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) RdsCloneDbInstanceParameterArrayOutput { return v.Parameters }).(RdsCloneDbInstanceParameterArrayOutput)
+}
+
+// The password of the certificate.
+func (o RdsCloneDbInstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+func (o RdsCloneDbInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The period. Valid values: `Month`, `Year`.
+func (o RdsCloneDbInstanceOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+func (o RdsCloneDbInstanceOutput) PgHbaConfs() RdsCloneDbInstancePgHbaConfArrayOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) RdsCloneDbInstancePgHbaConfArrayOutput { return v.PgHbaConfs }).(RdsCloneDbInstancePgHbaConfArrayOutput)
+}
+
+// The port.
+func (o RdsCloneDbInstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
+func (o RdsCloneDbInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The file that contains the private key used for TDE.
+func (o RdsCloneDbInstanceOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// The released keep policy.
+func (o RdsCloneDbInstanceOutput) ReleasedKeepPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.ReleasedKeepPolicy }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+func (o RdsCloneDbInstanceOutput) ReplicationAcl() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ReplicationAcl }).(pulumi.StringOutput)
+}
+
+// The resource group id.
+func (o RdsCloneDbInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
+func (o RdsCloneDbInstanceOutput) RestoreTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.RestoreTable }).(pulumi.StringPtrOutput)
+}
+
+// The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+func (o RdsCloneDbInstanceOutput) RestoreTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.RestoreTime }).(pulumi.StringPtrOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+func (o RdsCloneDbInstanceOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
+// * IP address form, for example: 10.23.12.24.
+// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+func (o RdsCloneDbInstanceOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
+func (o RdsCloneDbInstanceOutput) ServerCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ServerCert }).(pulumi.StringOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
+func (o RdsCloneDbInstanceOutput) ServerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ServerKey }).(pulumi.StringOutput)
+}
+
+// The source biz.
+func (o RdsCloneDbInstanceOutput) SourceBiz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.SourceBiz }).(pulumi.StringPtrOutput)
+}
+
+// The source db instance id.
+func (o RdsCloneDbInstanceOutput) SourceDbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.SourceDbInstanceId }).(pulumi.StringOutput)
+}
+
+// Enable or disable SSL. Valid values: `0` and `1`.
+func (o RdsCloneDbInstanceOutput) SslEnabled() pulumi.IntOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.IntOutput { return v.SslEnabled }).(pulumi.IntOutput)
+}
+
+// The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+func (o RdsCloneDbInstanceOutput) SwitchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.SwitchTime }).(pulumi.StringPtrOutput)
+}
+
+// [The data replication mode](https://www.alibabacloud.com/help/doc-detail/96055.htm). Valid values:
+// * **Sync**: strong synchronization
+// * **Semi-sync**: Semi-synchronous
+// * **Async**: asynchronous
+func (o RdsCloneDbInstanceOutput) SyncMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.SyncMode }).(pulumi.StringOutput)
+}
+
+// The information about the databases and tables that you want to restore. Format:
+// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+func (o RdsCloneDbInstanceOutput) TableMeta() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.TableMeta }).(pulumi.StringPtrOutput)
+}
+
+// The availability check method of the instance. Valid values:
+// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+func (o RdsCloneDbInstanceOutput) TcpConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.TcpConnectionType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable TDE. Valid values:
+// * Enabled
+// * Disabled
+func (o RdsCloneDbInstanceOutput) TdeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
+}
+
+// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
+// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
+// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+func (o RdsCloneDbInstanceOutput) UsedTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.IntPtrOutput { return v.UsedTime }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the VPC to which the new instance belongs.
+func (o RdsCloneDbInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch associated with the specified VPC.
+func (o RdsCloneDbInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+func (o RdsCloneDbInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type RdsCloneDbInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstanceArrayOutput) ElementType() reflect.Type {

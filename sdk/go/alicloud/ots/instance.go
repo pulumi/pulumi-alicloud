@@ -235,6 +235,31 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The network limitation of accessing instance. Valid values:
+func (o InstanceOutput) AccessedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AccessedBy }).(pulumi.StringPtrOutput)
+}
+
+// The description of the instance. Currently, it does not support modifying.
+func (o InstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
+func (o InstanceOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the instance.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the instance.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

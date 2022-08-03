@@ -299,6 +299,41 @@ func (o EndpointAddressOutput) ToEndpointAddressOutputWithContext(ctx context.Co
 	return o
 }
 
+// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+func (o EndpointAddressOutput) ConnectionPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAddress) pulumi.StringOutput { return v.ConnectionPrefix }).(pulumi.StringOutput)
+}
+
+// Connection cluster or endpoint string.
+func (o EndpointAddressOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAddress) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The Id of cluster that can run database.
+func (o EndpointAddressOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAddress) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The Id of endpoint that can run database.
+func (o EndpointAddressOutput) DbEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAddress) pulumi.StringOutput { return v.DbEndpointId }).(pulumi.StringOutput)
+}
+
+// The ip address of connection string.
+func (o EndpointAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAddress) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
+func (o EndpointAddressOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAddress) pulumi.StringPtrOutput { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+// Connection cluster or endpoint port.
+func (o EndpointAddressOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAddress) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
 type EndpointAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointAddressArrayOutput) ElementType() reflect.Type {

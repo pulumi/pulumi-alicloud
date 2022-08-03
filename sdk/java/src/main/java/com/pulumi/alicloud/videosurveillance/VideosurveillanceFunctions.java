@@ -27,6 +27,34 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -42,6 +70,34 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -57,6 +113,34 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -72,6 +156,34 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -87,6 +199,34 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -102,6 +242,34 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -114,6 +282,47 @@ public final class VideosurveillanceFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroup;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
+     *             .groupName(&#34;groupname&#34;)
+     *             .inProtocol(&#34;rtmp&#34;)
+     *             .outProtocol(&#34;flv&#34;)
+     *             .playDomain(&#34;your_plan_domain&#34;)
+     *             .pushDomain(&#34;your_push_domain&#34;)
+     *             .build());
+     * 
+     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *             .ids(defaultSystemGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSystemGroupsResult> getSystemGroups() {
         return getSystemGroups(GetSystemGroupsArgs.Empty, InvokeOptions.Empty);
@@ -124,6 +333,47 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroup;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
+     *             .groupName(&#34;groupname&#34;)
+     *             .inProtocol(&#34;rtmp&#34;)
+     *             .outProtocol(&#34;flv&#34;)
+     *             .playDomain(&#34;your_plan_domain&#34;)
+     *             .pushDomain(&#34;your_push_domain&#34;)
+     *             .build());
+     * 
+     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *             .ids(defaultSystemGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSystemGroupsResult> getSystemGroupsPlain() {
@@ -136,6 +386,47 @@ public final class VideosurveillanceFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroup;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
+     *             .groupName(&#34;groupname&#34;)
+     *             .inProtocol(&#34;rtmp&#34;)
+     *             .outProtocol(&#34;flv&#34;)
+     *             .playDomain(&#34;your_plan_domain&#34;)
+     *             .pushDomain(&#34;your_push_domain&#34;)
+     *             .build());
+     * 
+     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *             .ids(defaultSystemGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSystemGroupsResult> getSystemGroups(GetSystemGroupsArgs args) {
         return getSystemGroups(args, InvokeOptions.Empty);
@@ -146,6 +437,47 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroup;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
+     *             .groupName(&#34;groupname&#34;)
+     *             .inProtocol(&#34;rtmp&#34;)
+     *             .outProtocol(&#34;flv&#34;)
+     *             .playDomain(&#34;your_plan_domain&#34;)
+     *             .pushDomain(&#34;your_push_domain&#34;)
+     *             .build());
+     * 
+     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *             .ids(defaultSystemGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSystemGroupsResult> getSystemGroupsPlain(GetSystemGroupsPlainArgs args) {
@@ -158,6 +490,47 @@ public final class VideosurveillanceFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroup;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
+     *             .groupName(&#34;groupname&#34;)
+     *             .inProtocol(&#34;rtmp&#34;)
+     *             .outProtocol(&#34;flv&#34;)
+     *             .playDomain(&#34;your_plan_domain&#34;)
+     *             .pushDomain(&#34;your_push_domain&#34;)
+     *             .build());
+     * 
+     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *             .ids(defaultSystemGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSystemGroupsResult> getSystemGroups(GetSystemGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:videosurveillance/getSystemGroups:getSystemGroups", TypeShape.of(GetSystemGroupsResult.class), args, Utilities.withVersion(options));
@@ -168,6 +541,47 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroup;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
+     *             .groupName(&#34;groupname&#34;)
+     *             .inProtocol(&#34;rtmp&#34;)
+     *             .outProtocol(&#34;flv&#34;)
+     *             .playDomain(&#34;your_plan_domain&#34;)
+     *             .pushDomain(&#34;your_push_domain&#34;)
+     *             .build());
+     * 
+     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *             .ids(defaultSystemGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSystemGroupsResult> getSystemGroupsPlain(GetSystemGroupsPlainArgs args, InvokeOptions options) {

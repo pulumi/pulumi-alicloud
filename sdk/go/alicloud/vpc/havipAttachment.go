@@ -282,6 +282,16 @@ func (o HAVipAttachmentOutput) ToHAVipAttachmentOutputWithContext(ctx context.Co
 	return o
 }
 
+// The havipId of the havip attachment, the field can't be changed.
+func (o HAVipAttachmentOutput) HavipId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringOutput { return v.HavipId }).(pulumi.StringOutput)
+}
+
+// The instanceId of the havip attachment, the field can't be changed.
+func (o HAVipAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type HAVipAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (HAVipAttachmentArrayOutput) ElementType() reflect.Type {

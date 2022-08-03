@@ -261,6 +261,31 @@ func (o RdsParameterGroupOutput) ToRdsParameterGroupOutputWithContext(ctx contex
 	return o
 }
 
+// The database engine. Valid values: `mysql`, `mariadb`.
+func (o RdsParameterGroupOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsParameterGroup) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+func (o RdsParameterGroupOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsParameterGroup) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Parameter list.
+func (o RdsParameterGroupOutput) ParamDetails() RdsParameterGroupParamDetailArrayOutput {
+	return o.ApplyT(func(v *RdsParameterGroup) RdsParameterGroupParamDetailArrayOutput { return v.ParamDetails }).(RdsParameterGroupParamDetailArrayOutput)
+}
+
+// The description of the parameter template.
+func (o RdsParameterGroupOutput) ParameterGroupDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsParameterGroup) pulumi.StringPtrOutput { return v.ParameterGroupDesc }).(pulumi.StringPtrOutput)
+}
+
+// The name of the parameter template.
+func (o RdsParameterGroupOutput) ParameterGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsParameterGroup) pulumi.StringOutput { return v.ParameterGroupName }).(pulumi.StringOutput)
+}
+
 type RdsParameterGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsParameterGroupArrayOutput) ElementType() reflect.Type {

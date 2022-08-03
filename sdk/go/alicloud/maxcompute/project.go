@@ -232,6 +232,26 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// It has been deprecated from provider version 1.110.0 and `projectName` instead.
+func (o ProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of payment, only `PayAsYouGo` supported currently.
+func (o ProjectOutput) OrderType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OrderType }).(pulumi.StringOutput)
+}
+
+// The name of the maxcompute project.
+func (o ProjectOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The type of resource Specification, only `OdpsStandard` supported currently.
+func (o ProjectOutput) SpecificationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SpecificationType }).(pulumi.StringOutput)
+}
+
 type ProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectArrayOutput) ElementType() reflect.Type {

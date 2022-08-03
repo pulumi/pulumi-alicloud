@@ -1002,6 +1002,319 @@ func (o RdsUpgradeDbInstanceOutput) ToRdsUpgradeDbInstanceOutputWithContext(ctx 
 	return o
 }
 
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+func (o RdsUpgradeDbInstanceOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
+}
+
+// How to upgrade the minor version of the instance. Valid values:
+// * **Auto**: automatically upgrade the minor version.
+// * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
+func (o RdsUpgradeDbInstanceOutput) AutoUpgradeMinorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.AutoUpgradeMinorVersion }).(pulumi.StringOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
+// * **aliyun**: using cloud certificates.
+// * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
+func (o RdsUpgradeDbInstanceOutput) CaType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.CaType }).(pulumi.StringOutput)
+}
+
+// The file that contains the certificate used for TDE.
+func (o RdsUpgradeDbInstanceOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
+func (o RdsUpgradeDbInstanceOutput) ClientCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.ClientCaCert }).(pulumi.StringPtrOutput)
+}
+
+// The client ca enabled.
+func (o RdsUpgradeDbInstanceOutput) ClientCaEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.IntPtrOutput { return v.ClientCaEnabled }).(pulumi.IntPtrOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
+func (o RdsUpgradeDbInstanceOutput) ClientCertRevocationList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.ClientCertRevocationList }).(pulumi.StringPtrOutput)
+}
+
+// The client crl enabled.
+func (o RdsUpgradeDbInstanceOutput) ClientCrlEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.IntPtrOutput { return v.ClientCrlEnabled }).(pulumi.IntPtrOutput)
+}
+
+// The time at which ApsaraDB RDS collects the statistics of the new instance.
+// * **Before**: ApsaraDB RDS collects the statistics of the new instance before the switchover to ensure service stability. If the original instance contains a large amount of data, the upgrade may require a long period of time.
+// * **After**: ApsaraDB RDS collects the statistics of the new instance after the switchover to accelerate the upgrade. If you access tables for which no statistics are generated, the query plans that you specify may be inaccurately executed. In addition, your database service may be unavailable during peak hours.
+func (o RdsUpgradeDbInstanceOutput) CollectStatMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.CollectStatMode }).(pulumi.StringOutput)
+}
+
+// The database connection address.
+func (o RdsUpgradeDbInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The connection string prefix.
+func (o RdsUpgradeDbInstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+func (o RdsUpgradeDbInstanceOutput) DbInstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.DbInstanceClass }).(pulumi.StringOutput)
+}
+
+// The db instance description.
+func (o RdsUpgradeDbInstanceOutput) DbInstanceDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.DbInstanceDescription }).(pulumi.StringOutput)
+}
+
+// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+func (o RdsUpgradeDbInstanceOutput) DbInstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.IntOutput { return v.DbInstanceStorage }).(pulumi.IntOutput)
+}
+
+// The type of storage media that is used for the new instance. Valid values:
+// * **local_ssd**: local SSDs.
+// * **cloud_ssd**: standard SSDs.
+// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1).
+// * **cloud_essd2**: ESSDs of PL2.
+// * **cloud_essd3**: ESSDs of PL3.
+func (o RdsUpgradeDbInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
+// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+func (o RdsUpgradeDbInstanceOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
+func (o RdsUpgradeDbInstanceOutput) DedicatedHostGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.DedicatedHostGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The switch of delete protection. Valid values:
+// - true: delete protect.
+// - false: no delete protect.
+func (o RdsUpgradeDbInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
+func (o RdsUpgradeDbInstanceOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The effective time.
+func (o RdsUpgradeDbInstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the private key.
+func (o RdsUpgradeDbInstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+func (o RdsUpgradeDbInstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Database version. Value:
+// * MySQL: **5.5/5.6/5.7/8.0**.
+// * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**.
+// * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
+// * PPAS: **9.3/10.0**.
+// * MariaDB: **10.3**.
+func (o RdsUpgradeDbInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Set it to true to make some parameter efficient when modifying them. Default to false.
+func (o RdsUpgradeDbInstanceOutput) ForceRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.BoolPtrOutput { return v.ForceRestart }).(pulumi.BoolPtrOutput)
+}
+
+// The high availability mode. Valid values:
+// * **RPO**: Data persistence is preferred. The instance preferentially ensures data reliability to minimize data loss. Use this mode if you have higher requirements on data consistency.
+// * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
+func (o RdsUpgradeDbInstanceOutput) HaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.HaMode }).(pulumi.StringOutput)
+}
+
+// The network type of the instance. Valid values:
+// * **Classic**: Classic Network.
+// * **VPC**: VPC.
+func (o RdsUpgradeDbInstanceOutput) InstanceNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.InstanceNetworkType }).(pulumi.StringOutput)
+}
+
+// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
+func (o RdsUpgradeDbInstanceOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+func (o RdsUpgradeDbInstanceOutput) Parameters() RdsUpgradeDbInstanceParameterArrayOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) RdsUpgradeDbInstanceParameterArrayOutput { return v.Parameters }).(RdsUpgradeDbInstanceParameterArrayOutput)
+}
+
+// The password of the certificate.
+func (o RdsUpgradeDbInstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+func (o RdsUpgradeDbInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+func (o RdsUpgradeDbInstanceOutput) PgHbaConfs() RdsUpgradeDbInstancePgHbaConfArrayOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) RdsUpgradeDbInstancePgHbaConfArrayOutput { return v.PgHbaConfs }).(RdsUpgradeDbInstancePgHbaConfArrayOutput)
+}
+
+// The port.
+func (o RdsUpgradeDbInstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
+func (o RdsUpgradeDbInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The file that contains the private key used for TDE.
+func (o RdsUpgradeDbInstanceOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// The released keep policy.
+func (o RdsUpgradeDbInstanceOutput) ReleasedKeepPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.ReleasedKeepPolicy }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
+func (o RdsUpgradeDbInstanceOutput) ReplicationAcl() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ReplicationAcl }).(pulumi.StringOutput)
+}
+
+// The resource group id.
+func (o RdsUpgradeDbInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+func (o RdsUpgradeDbInstanceOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
+// * IP address form, for example: 10.23.12.24.
+// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+func (o RdsUpgradeDbInstanceOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
+func (o RdsUpgradeDbInstanceOutput) ServerCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ServerCert }).(pulumi.StringOutput)
+}
+
+// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
+func (o RdsUpgradeDbInstanceOutput) ServerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ServerKey }).(pulumi.StringOutput)
+}
+
+// The source biz.
+func (o RdsUpgradeDbInstanceOutput) SourceBiz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.SourceBiz }).(pulumi.StringPtrOutput)
+}
+
+// The source db instance id.
+func (o RdsUpgradeDbInstanceOutput) SourceDbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.SourceDbInstanceId }).(pulumi.StringOutput)
+}
+
+// Enable or disable SSL. Valid values: `0` and `1`.
+func (o RdsUpgradeDbInstanceOutput) SslEnabled() pulumi.IntOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.IntOutput { return v.SslEnabled }).(pulumi.IntOutput)
+}
+
+// Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
+// * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
+// * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+// * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
+// * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+// * **false**: ApsaraDB RDS does not automatically switch your workloads over to the new instance. Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads. If you set this parameter to false, you must take note of the following information:
+// * The data migration does not interrupt your workloads on the original instance.
+// * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
+func (o RdsUpgradeDbInstanceOutput) SwitchOver() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.SwitchOver }).(pulumi.StringOutput)
+}
+
+// The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+func (o RdsUpgradeDbInstanceOutput) SwitchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.SwitchTime }).(pulumi.StringPtrOutput)
+}
+
+// The time at which ApsaraDB RDS switches your workloads over to the new instance. This parameter is used together with the SwitchOver parameter and takes effect only when you set the SwitchOver parameter to true. Valid values:
+// * **Immediate**: After data is migrated to the new instance, ApsaraDB RDS immediately switches your workloads over to the new instance.
+// * **MaintainTime**: After data is migrated to the new instance, ApsaraDB RDS switches your workloads over to the new instance during the maintenance window that you specify. You can call the [ModifyDBInstanceMaintainTime](https://www.alibabacloud.com/help/doc-detail/26249.htm) operation to change the maintenance window of an instance.
+func (o RdsUpgradeDbInstanceOutput) SwitchTimeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.SwitchTimeMode }).(pulumi.StringPtrOutput)
+}
+
+// [The data replication mode](https://www.alibabacloud.com/help/doc-detail/96055.htm). Valid values:
+// * **Sync**: strong synchronization.
+// * **Semi-sync**: Semi-synchronous.
+// * **Async**: asynchronous.
+func (o RdsUpgradeDbInstanceOutput) SyncMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.SyncMode }).(pulumi.StringOutput)
+}
+
+// The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
+func (o RdsUpgradeDbInstanceOutput) TargetMajorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.TargetMajorVersion }).(pulumi.StringOutput)
+}
+
+// The availability check method of the instance. Valid values:
+// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+func (o RdsUpgradeDbInstanceOutput) TcpConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.TcpConnectionType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
+func (o RdsUpgradeDbInstanceOutput) TdeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC to which the new instance belongs.
+func (o RdsUpgradeDbInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch associated with the specified VPC.
+func (o RdsUpgradeDbInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+func (o RdsUpgradeDbInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+func (o RdsUpgradeDbInstanceOutput) ZoneIdSlave1() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ZoneIdSlave1 }).(pulumi.StringOutput)
+}
+
 type RdsUpgradeDbInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsUpgradeDbInstanceArrayOutput) ElementType() reflect.Type {

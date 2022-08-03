@@ -323,6 +323,47 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
+func (o InstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+// - `drds.sn2.4c16g` Starter Edition.
+// - `drds.sn2.8c32g` Standard Edition.
+// - `drds.sn2.16c64g` Enterprise Edition.
+func (o InstanceOutput) InstanceSeries() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceSeries }).(pulumi.StringOutput)
+}
+
+// User-defined DRDS instance specification. Value range:
+// - `drds.sn1.4c8g` for DRDS instance Starter version;
+// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
+// - `drds.sn1.8c16g` for DRDS instance Standard edition;
+// - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
+// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
+// - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
+// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+// - value range : `drds.sn1.32c64g.128c256g`
+func (o InstanceOutput) Specification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
+}
+
+// The VSwitch ID to launch in.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone to launch the DRDS instance.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

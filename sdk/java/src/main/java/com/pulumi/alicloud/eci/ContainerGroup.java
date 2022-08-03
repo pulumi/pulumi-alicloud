@@ -36,6 +36,93 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eci.ContainerGroup;
+ * import com.pulumi.alicloud.eci.ContainerGroupArgs;
+ * import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerArgs;
+ * import com.pulumi.alicloud.eci.inputs.ContainerGroupInitContainerArgs;
+ * import com.pulumi.alicloud.eci.inputs.ContainerGroupVolumeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ContainerGroup(&#34;example&#34;, ContainerGroupArgs.builder()        
+ *             .containerGroupName(&#34;tf-testacc-eci-gruop&#34;)
+ *             .cpu(8)
+ *             .memory(16)
+ *             .restartPolicy(&#34;OnFailure&#34;)
+ *             .securityGroupId(alicloud_security_group.group().id())
+ *             .vswitchId(data.alicloud_vpcs().default().vpcs()[0].vswitch_ids()[0])
+ *             .tags(Map.of(&#34;TF&#34;, &#34;create&#34;))
+ *             .containers(            
+ *                 ContainerGroupContainerArgs.builder()
+ *                     .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine&#34;)
+ *                     .name(&#34;nginx&#34;)
+ *                     .workingDir(&#34;/tmp/nginx&#34;)
+ *                     .imagePullPolicy(&#34;IfNotPresent&#34;)
+ *                     .commands(                    
+ *                         &#34;/bin/sh&#34;,
+ *                         &#34;-c&#34;,
+ *                         &#34;sleep 9999&#34;)
+ *                     .volumeMounts(ContainerGroupContainerVolumeMountArgs.builder()
+ *                         .mountPath(&#34;/tmp/test&#34;)
+ *                         .readOnly(false)
+ *                         .name(&#34;empty1&#34;)
+ *                         .build())
+ *                     .ports(ContainerGroupContainerPortArgs.builder()
+ *                         .port(80)
+ *                         .protocol(&#34;TCP&#34;)
+ *                         .build())
+ *                     .environmentVars(ContainerGroupContainerEnvironmentVarArgs.builder()
+ *                         .key(&#34;test&#34;)
+ *                         .value(&#34;nginx&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 ContainerGroupContainerArgs.builder()
+ *                     .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7&#34;)
+ *                     .name(&#34;centos&#34;)
+ *                     .commands(                    
+ *                         &#34;/bin/sh&#34;,
+ *                         &#34;-c&#34;,
+ *                         &#34;sleep 9999&#34;)
+ *                     .build())
+ *             .initContainers(ContainerGroupInitContainerArgs.builder()
+ *                 .name(&#34;init-busybox&#34;)
+ *                 .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30&#34;)
+ *                 .imagePullPolicy(&#34;IfNotPresent&#34;)
+ *                 .commands(&#34;echo&#34;)
+ *                 .args(&#34;hello initcontainer&#34;)
+ *                 .build())
+ *             .volumes(            
+ *                 ContainerGroupVolumeArgs.builder()
+ *                     .name(&#34;empty1&#34;)
+ *                     .type(&#34;EmptyDirVolume&#34;)
+ *                     .build(),
+ *                 ContainerGroupVolumeArgs.builder()
+ *                     .name(&#34;empty2&#34;)
+ *                     .type(&#34;EmptyDirVolume&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECI Container Group can be imported using the id, e.g.

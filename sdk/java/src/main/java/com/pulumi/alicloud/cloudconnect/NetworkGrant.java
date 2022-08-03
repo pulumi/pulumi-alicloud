@@ -24,6 +24,67 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.pulumi.providers.alicloud;
+ * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cloudconnect.Network;
+ * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+ * import com.pulumi.alicloud.cloudconnect.NetworkGrant;
+ * import com.pulumi.alicloud.cloudconnect.NetworkGrantArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ccnAccount = new Provider(&#34;ccnAccount&#34;);
+ * 
+ *         var cenAccount = new Provider(&#34;cenAccount&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
+ *             .accessKey(&#34;xxxxxx&#34;)
+ *             .secretKey(&#34;xxxxxx&#34;)
+ *             .build());
+ * 
+ *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(alicloud.cen_account())
+ *             .build());
+ * 
+ *         var ccn = new Network(&#34;ccn&#34;, NetworkArgs.builder()        
+ *             .isDefault(&#34;true&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.ccn_account())
+ *                 .build());
+ * 
+ *         var default_ = new NetworkGrant(&#34;default&#34;, NetworkGrantArgs.builder()        
+ *             .ccnId(ccn.id())
+ *             .cenId(cen.id())
+ *             .cenUid(&#34;xxxxxx&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     ccn,
+ *                     cen)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The Cloud Connect Network Grant can be imported using the instance_id, e.g.

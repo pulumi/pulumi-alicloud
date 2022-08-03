@@ -335,6 +335,41 @@ func (o SaslAclOutput) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOu
 	return o
 }
 
+// Operation type for this acl. The operation type can only be "Write" and "Read".
+func (o SaslAclOutput) AclOperationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.AclOperationType }).(pulumi.StringOutput)
+}
+
+// Resource name for this acl. The resource name should be a topic or consumer group name.
+func (o SaslAclOutput) AclResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.AclResourceName }).(pulumi.StringOutput)
+}
+
+// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
+func (o SaslAclOutput) AclResourcePatternType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.AclResourcePatternType }).(pulumi.StringOutput)
+}
+
+// Resource type for this acl. The resource type can only be "Topic" and "Group".
+func (o SaslAclOutput) AclResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.AclResourceType }).(pulumi.StringOutput)
+}
+
+// The host of the acl.
+func (o SaslAclOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// ID of the ALIKAFKA Instance that owns the groups.
+func (o SaslAclOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+func (o SaslAclOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
 type SaslAclArrayOutput struct{ *pulumi.OutputState }
 
 func (SaslAclArrayOutput) ElementType() reflect.Type {

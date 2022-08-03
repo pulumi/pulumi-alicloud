@@ -21,6 +21,75 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.bastionhost.Host;
+ * import com.pulumi.alicloud.bastionhost.HostArgs;
+ * import com.pulumi.alicloud.bastionhost.HostAccount;
+ * import com.pulumi.alicloud.bastionhost.HostAccountArgs;
+ * import com.pulumi.alicloud.bastionhost.User;
+ * import com.pulumi.alicloud.bastionhost.UserArgs;
+ * import com.pulumi.alicloud.bastionhost.HostAccountUserAttachment;
+ * import com.pulumi.alicloud.bastionhost.HostAccountUserAttachmentArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHost = new Host(&#34;defaultHost&#34;, HostArgs.builder()        
+ *             .instanceId(&#34;bastionhost-cn-tl32bh0no30&#34;)
+ *             .hostName(var_.name())
+ *             .activeAddressType(&#34;Private&#34;)
+ *             .hostPrivateAddress(&#34;172.16.0.10&#34;)
+ *             .osType(&#34;Linux&#34;)
+ *             .source(&#34;Local&#34;)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; 3; i++) {
+ *             new HostAccount(&#34;defaultHostAccount-&#34; + i, HostAccountArgs.builder()            
+ *                 .instanceId(defaultHost.instanceId())
+ *                 .hostAccountName(String.format(&#34;example_value-%s&#34;, range.value()))
+ *                 .hostId(defaultHost.hostId())
+ *                 .protocolName(&#34;SSH&#34;)
+ *                 .password(&#34;YourPassword12345&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+ *             .instanceId(defaultHost.instanceId())
+ *             .mobileCountryCode(&#34;CN&#34;)
+ *             .mobile(&#34;13312345678&#34;)
+ *             .password(&#34;YourPassword-123&#34;)
+ *             .source(&#34;Local&#34;)
+ *             .userName(&#34;my-local-user&#34;)
+ *             .build());
+ * 
+ *         var defaultHostAccountUserAttachment = new HostAccountUserAttachment(&#34;defaultHostAccountUserAttachment&#34;, HostAccountUserAttachmentArgs.builder()        
+ *             .instanceId(defaultHost.instanceId())
+ *             .userId(defaultUser.userId())
+ *             .hostId(defaultHost.hostId())
+ *             .hostAccountIds(defaultHostAccount.stream().map(element -&gt; element.hostAccountId()).collect(toList()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Bastion Host Host Account can be imported using the id, e.g.

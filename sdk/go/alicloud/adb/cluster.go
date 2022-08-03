@@ -455,6 +455,128 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+func (o ClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+func (o ClusterOutput) ComputeResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ComputeResource }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.93.0+) The connection string of the ADB cluster.
+func (o ClusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// Cluster category. Value options: `Basic`, `Cluster`.
+func (o ClusterOutput) DbClusterCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbClusterCategory }).(pulumi.StringOutput)
+}
+
+// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+func (o ClusterOutput) DbClusterClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DbClusterClass }).(pulumi.StringPtrOutput)
+}
+
+// Cluster version. Value options: `3.0`, Default to `3.0`.
+func (o ClusterOutput) DbClusterVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DbClusterVersion }).(pulumi.StringPtrOutput)
+}
+
+// The dbNodeClass of cluster node.
+func (o ClusterOutput) DbNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbNodeClass }).(pulumi.StringOutput)
+}
+
+// The dbNodeCount of cluster node.
+func (o ClusterOutput) DbNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DbNodeCount }).(pulumi.IntOutput)
+}
+
+// The dbNodeStorage of cluster node.
+func (o ClusterOutput) DbNodeStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DbNodeStorage }).(pulumi.IntOutput)
+}
+
+// The description of cluster.
+func (o ClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) ElasticIoResource() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ElasticIoResource }).(pulumi.IntOutput)
+}
+
+// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+func (o ClusterOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) ModifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
+}
+
+// Field `payType` has been deprecated. New field `paymentType` instead.
+//
+// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+func (o ClusterOutput) PayType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PayType }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+func (o ClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+func (o ClusterOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+func (o ClusterOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o ClusterOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o ClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o ClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The virtual switch ID to launch DB instances in one VPC.
+func (o ClusterOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the DB cluster.
+func (o ClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {

@@ -206,6 +206,26 @@ func (o SharedResourceOutput) ToSharedResourceOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The resource ID need shared.
+func (o SharedResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The resource share ID of resource manager.
+func (o SharedResourceOutput) ResourceShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceShareId }).(pulumi.StringOutput)
+}
+
+// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+func (o SharedResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// status.
+func (o SharedResourceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SharedResourceArrayOutput struct{ *pulumi.OutputState }
 
 func (SharedResourceArrayOutput) ElementType() reflect.Type {

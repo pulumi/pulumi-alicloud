@@ -26,6 +26,43 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.graphdatabase.DbInstance;
+ * import com.pulumi.alicloud.graphdatabase.DbInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new DbInstance(&#34;example&#34;, DbInstanceArgs.builder()        
+ *             .dbInstanceCategory(&#34;HA&#34;)
+ *             .dbInstanceDescription(&#34;example_value&#34;)
+ *             .dbInstanceNetworkType(&#34;vpc&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_ssd&#34;)
+ *             .dbNodeClass(&#34;gdb.r.2xlarge&#34;)
+ *             .dbNodeStorage(&#34;example_value&#34;)
+ *             .dbVersion(&#34;1.0&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Graph Database Db Instance can be imported using the id, e.g.

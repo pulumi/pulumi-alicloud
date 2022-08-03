@@ -25,6 +25,70 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+ * import com.pulumi.alicloud.hbr.NasBackupPlan;
+ * import com.pulumi.alicloud.hbr.NasBackupPlanArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccHBRNas&#34;);
+ *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
+ *             .vaultName(name)
+ *             .build());
+ * 
+ *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *             .protocolType(&#34;NFS&#34;)
+ *             .storageType(&#34;Performance&#34;)
+ *             .description(name)
+ *             .encryptType(&#34;1&#34;)
+ *             .build());
+ * 
+ *         final var defaultFileSystems = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
+ *             .protocolType(&#34;NFS&#34;)
+ *             .descriptionRegex(defaultFileSystem.description())
+ *             .build());
+ * 
+ *         var defaultNasBackupPlan = new NasBackupPlan(&#34;defaultNasBackupPlan&#34;, NasBackupPlanArgs.builder()        
+ *             .nasBackupPlanName(name)
+ *             .fileSystemId(defaultFileSystem.id())
+ *             .schedule(&#34;I|1602673264|PT2H&#34;)
+ *             .backupType(&#34;COMPLETE&#34;)
+ *             .vaultId(defaultVault.id())
+ *             .createTime(defaultFileSystems.applyValue(getFileSystemsResult -&gt; getFileSystemsResult).applyValue(defaultFileSystems -&gt; defaultFileSystems.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].createTime())))
+ *             .retention(&#34;2&#34;)
+ *             .paths(&#34;/&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(&#34;alicloud_nas_file_system.default&#34;)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * HBR Nas Backup Plan can be imported using the id, e.g.

@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Cen
     ///                 "eu-central-1",
     ///                 "cn-shanghai",
     ///             },
-    ///             BandwidthLimit = 4,
+    ///             Limit = 4,
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 

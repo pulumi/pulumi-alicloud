@@ -231,6 +231,26 @@ func (o VpcAccessOutput) ToVpcAccessOutputWithContext(ctx context.Context) VpcAc
 	return o
 }
 
+// ID of the instance in VPC (ECS/Server Load Balance).
+func (o VpcAccessOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the vpc authorization.
+func (o VpcAccessOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the port corresponding to the instance.
+func (o VpcAccessOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *VpcAccess) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// The vpc id of the vpc authorization.
+func (o VpcAccessOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type VpcAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcAccessArrayOutput) ElementType() reflect.Type {

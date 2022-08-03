@@ -209,6 +209,16 @@ func (o StorageBundleOutput) ToStorageBundleOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The description of storage bundle.
+func (o StorageBundleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageBundle) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of storage bundle.
+func (o StorageBundleOutput) StorageBundleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageBundle) pulumi.StringOutput { return v.StorageBundleName }).(pulumi.StringOutput)
+}
+
 type StorageBundleArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageBundleArrayOutput) ElementType() reflect.Type {

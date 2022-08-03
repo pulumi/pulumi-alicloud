@@ -886,6 +886,329 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+//
+// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
+func (o InstanceOutput) AllocatePublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AllocatePublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// The automatic release time of the `PostPaid` instance.
+// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+func (o InstanceOutput) AutoReleaseTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
+}
+
+// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+// - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
+// - [1, 2, 3] when `periodUnit` in "Week"
+func (o InstanceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
+func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+func (o InstanceOutput) CreditSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreditSpecification }).(pulumi.StringOutput)
+}
+
+// The list of data disks created with instance.
+func (o InstanceOutput) DataDisks() InstanceDataDiskArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceDataDiskArrayOutput { return v.DataDisks }).(InstanceDataDiskArrayOutput)
+}
+
+// Whether enable the deletion protection or not. Default value: `false`.
+// - true: Enable deletion protection.
+// - false: Disable deletion protection.
+func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+func (o InstanceOutput) DeploymentSetGroupNo() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeploymentSetGroupNo }).(pulumi.StringOutput)
+}
+
+// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
+func (o InstanceOutput) DeploymentSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
+}
+
+// The description of the data disk.
+func (o InstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to send a dry-run request. Default to false.
+// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
+// - false: A request is sent. If the validation succeeds, the instance is created.
+func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
+func (o InstanceOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
+// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+func (o InstanceOutput) HpcClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.HpcClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Whether to change instance disks charge type when changing instance charge type.
+func (o InstanceOutput) IncludeDataDisks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.IncludeDataDisks }).(pulumi.BoolPtrOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+func (o InstanceOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
+//
+// Deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
+func (o InstanceOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
+}
+
+// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+func (o InstanceOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
+}
+
+// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+//
+// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+func (o InstanceOutput) IoOptimized() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use outdated instance type. Default to false.
+func (o InstanceOutput) IsOutdated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.IsOutdated }).(pulumi.BoolPtrOutput)
+}
+
+// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+func (o InstanceOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
+func (o InstanceOutput) OperatorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OperatorType }).(pulumi.StringPtrOutput)
+}
+
+// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+func (o InstanceOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// The instance public ip.
+func (o InstanceOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
+}
+
+// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
+// - `AutoRenewal`: Enable auto renewal.
+// - `Normal`: Disable auto renewal.
+// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+func (o InstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalStatus }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the instance belongs.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+func (o InstanceOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+func (o InstanceOutput) SecondaryPrivateIpAddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SecondaryPrivateIpAddressCount }).(pulumi.IntOutput)
+}
+
+// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+func (o InstanceOutput) SecondaryPrivateIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecondaryPrivateIps }).(pulumi.StringArrayOutput)
+}
+
+// The security enhancement strategy.
+// - Active: Enable security enhancement strategy, it only works on system images.
+// - Deactive: Disable security enhancement strategy, it works on all images.
+func (o InstanceOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
+}
+
+// A list of security group ids to associate with.
+func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+func (o InstanceOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
+// - NoSpot: A regular Pay-As-You-Go instance.
+// - SpotWithPriceLimit: A price threshold for a spot instance
+// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+func (o InstanceOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+func (o InstanceOutput) StoppedMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StoppedMode }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
+func (o InstanceOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The ID of the automatic snapshot policy applied to the system disk.
+func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+func (o InstanceOutput) SystemDiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskCategory }).(pulumi.StringPtrOutput)
+}
+
+// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+func (o InstanceOutput) SystemDiskDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskDescription }).(pulumi.StringPtrOutput)
+}
+
+// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+func (o InstanceOutput) SystemDiskEncryptAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskEncryptAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+// - `true`: encrypts the system disk.
+// - `false`: does not encrypt the system disk.
+func (o InstanceOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Key Management Service (KMS) key to be used for the system disk.
+func (o InstanceOutput) SystemDiskKmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskKmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+func (o InstanceOutput) SystemDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskName }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+func (o InstanceOutput) SystemDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringOutput)
+}
+
+// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
+func (o InstanceOutput) SystemDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SystemDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+func (o InstanceOutput) SystemDiskStorageClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskStorageClusterId }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+func (o InstanceOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the devices created by the instance at launch time.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o InstanceOutput) VolumeTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.VolumeTags }).(pulumi.MapOutput)
+}
+
+// The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

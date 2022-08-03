@@ -35,7 +35,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ros.NewStackGroup(ctx, "example", &ros.StackGroupArgs{
 // 			StackGroupName: pulumi.String("example_value"),
-// 			TemplateBody: pulumi.String(fmt.Sprintf("%v%v%v%v", "    {\n", "    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n", "    }\n", "    \n")),
+// 			TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -322,6 +322,76 @@ func (o StackGroupOutput) ToStackGroupOutput() StackGroupOutput {
 
 func (o StackGroupOutput) ToStackGroupOutputWithContext(ctx context.Context) StackGroupOutput {
 	return o
+}
+
+// The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
+func (o StackGroupOutput) AccountIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.AccountIds }).(pulumi.StringPtrOutput)
+}
+
+// The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+func (o StackGroupOutput) AdministrationRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringOutput { return v.AdministrationRoleName }).(pulumi.StringOutput)
+}
+
+// The description of the stack group.
+func (o StackGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+func (o StackGroupOutput) ExecutionRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringOutput { return v.ExecutionRoleName }).(pulumi.StringOutput)
+}
+
+// The description of the operation.
+func (o StackGroupOutput) OperationDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.OperationDescription }).(pulumi.StringPtrOutput)
+}
+
+// The operation settings, in JSON format.
+func (o StackGroupOutput) OperationPreferences() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.OperationPreferences }).(pulumi.StringPtrOutput)
+}
+
+// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+func (o StackGroupOutput) Parameters() StackGroupParameterArrayOutput {
+	return o.ApplyT(func(v *StackGroup) StackGroupParameterArrayOutput { return v.Parameters }).(StackGroupParameterArrayOutput)
+}
+
+// The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+func (o StackGroupOutput) RegionIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.RegionIds }).(pulumi.StringPtrOutput)
+}
+
+// The id of Stack Group.
+func (o StackGroupOutput) StackGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringOutput { return v.StackGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the stack group. The name must be unique in a region.
+func (o StackGroupOutput) StackGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringOutput { return v.StackGroupName }).(pulumi.StringOutput)
+}
+
+// The status of Stack Group.
+func (o StackGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+func (o StackGroupOutput) TemplateBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.TemplateBody }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+func (o StackGroupOutput) TemplateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.TemplateUrl }).(pulumi.StringPtrOutput)
+}
+
+// The version of the template.
+func (o StackGroupOutput) TemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackGroup) pulumi.StringPtrOutput { return v.TemplateVersion }).(pulumi.StringPtrOutput)
 }
 
 type StackGroupArrayOutput struct{ *pulumi.OutputState }

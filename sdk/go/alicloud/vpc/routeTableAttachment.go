@@ -242,6 +242,16 @@ func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutputWithContext(ctx 
 	return o
 }
 
+// The routeTableId of the route table attachment, the field can't be changed.
+func (o RouteTableAttachmentOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTableAttachment) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// The vswitchId of the route table attachment, the field can't be changed.
+func (o RouteTableAttachmentOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTableAttachment) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type RouteTableAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteTableAttachmentArrayOutput) ElementType() reflect.Type {

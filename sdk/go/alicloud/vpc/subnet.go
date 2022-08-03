@@ -207,6 +207,44 @@ func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutpu
 	return o
 }
 
+// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+func (o SubnetOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+func (o SubnetOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o SubnetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+func (o SubnetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SubnetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o SubnetOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o SubnetOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func (o SubnetOutput) VswitchName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.VswitchName }).(pulumi.StringOutput)
+}
+
+func (o SubnetOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type SubnetArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetArrayOutput) ElementType() reflect.Type {

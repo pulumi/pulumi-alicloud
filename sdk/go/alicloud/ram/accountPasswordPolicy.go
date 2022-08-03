@@ -297,6 +297,51 @@ func (o AccountPasswordPolicyOutput) ToAccountPasswordPolicyOutputWithContext(ct
 	return o
 }
 
+// Specifies if a password can expire in a hard way. Default to false.
+func (o AccountPasswordPolicyOutput) HardExpiry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.BoolPtrOutput { return v.HardExpiry }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
+func (o AccountPasswordPolicyOutput) MaxLoginAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.IntPtrOutput { return v.MaxLoginAttempts }).(pulumi.IntPtrOutput)
+}
+
+// The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
+func (o AccountPasswordPolicyOutput) MaxPasswordAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.IntPtrOutput { return v.MaxPasswordAge }).(pulumi.IntPtrOutput)
+}
+
+// Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
+func (o AccountPasswordPolicyOutput) MinimumPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.IntPtrOutput { return v.MinimumPasswordLength }).(pulumi.IntPtrOutput)
+}
+
+// User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
+func (o AccountPasswordPolicyOutput) PasswordReusePrevention() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.IntPtrOutput { return v.PasswordReusePrevention }).(pulumi.IntPtrOutput)
+}
+
+// Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
+func (o AccountPasswordPolicyOutput) RequireLowercaseCharacters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.BoolPtrOutput { return v.RequireLowercaseCharacters }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies if the occurrence of a number in the password is mandatory. Default to true.
+func (o AccountPasswordPolicyOutput) RequireNumbers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.BoolPtrOutput { return v.RequireNumbers }).(pulumi.BoolPtrOutput)
+}
+
+// (Optional Specifies if the occurrence of a special character in the password is mandatory. Default to true.
+func (o AccountPasswordPolicyOutput) RequireSymbols() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.BoolPtrOutput { return v.RequireSymbols }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
+func (o AccountPasswordPolicyOutput) RequireUppercaseCharacters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) pulumi.BoolPtrOutput { return v.RequireUppercaseCharacters }).(pulumi.BoolPtrOutput)
+}
+
 type AccountPasswordPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountPasswordPolicyArrayOutput) ElementType() reflect.Type {

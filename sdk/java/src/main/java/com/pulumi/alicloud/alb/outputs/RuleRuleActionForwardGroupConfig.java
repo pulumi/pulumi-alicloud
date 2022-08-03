@@ -3,14 +3,21 @@
 
 package com.pulumi.alicloud.alb.outputs;
 
+import com.pulumi.alicloud.alb.outputs.RuleRuleActionForwardGroupConfigServerGroupStickySession;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionForwardGroupConfigServerGroupTuple;
 import com.pulumi.core.annotations.CustomType;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionForwardGroupConfig {
+    /**
+     * @return The configuration of session persistence for server groups.
+     * 
+     */
+    private final @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession;
     /**
      * @return The destination server group to which requests are forwarded.
      * 
@@ -18,10 +25,20 @@ public final class RuleRuleActionForwardGroupConfig {
     private final @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
     @CustomType.Constructor
-    private RuleRuleActionForwardGroupConfig(@CustomType.Parameter("serverGroupTuples") @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
+    private RuleRuleActionForwardGroupConfig(
+        @CustomType.Parameter("serverGroupStickySession") @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession,
+        @CustomType.Parameter("serverGroupTuples") @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
+        this.serverGroupStickySession = serverGroupStickySession;
         this.serverGroupTuples = serverGroupTuples;
     }
 
+    /**
+     * @return The configuration of session persistence for server groups.
+     * 
+     */
+    public Optional<RuleRuleActionForwardGroupConfigServerGroupStickySession> serverGroupStickySession() {
+        return Optional.ofNullable(this.serverGroupStickySession);
+    }
     /**
      * @return The destination server group to which requests are forwarded.
      * 
@@ -39,6 +56,7 @@ public final class RuleRuleActionForwardGroupConfig {
     }
 
     public static final class Builder {
+        private @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession;
         private @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
         public Builder() {
@@ -47,9 +65,14 @@ public final class RuleRuleActionForwardGroupConfig {
 
         public Builder(RuleRuleActionForwardGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.serverGroupStickySession = defaults.serverGroupStickySession;
     	      this.serverGroupTuples = defaults.serverGroupTuples;
         }
 
+        public Builder serverGroupStickySession(@Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession) {
+            this.serverGroupStickySession = serverGroupStickySession;
+            return this;
+        }
         public Builder serverGroupTuples(@Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
             this.serverGroupTuples = serverGroupTuples;
             return this;
@@ -57,7 +80,7 @@ public final class RuleRuleActionForwardGroupConfig {
         public Builder serverGroupTuples(RuleRuleActionForwardGroupConfigServerGroupTuple... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
         }        public RuleRuleActionForwardGroupConfig build() {
-            return new RuleRuleActionForwardGroupConfig(serverGroupTuples);
+            return new RuleRuleActionForwardGroupConfig(serverGroupStickySession, serverGroupTuples);
         }
     }
 }

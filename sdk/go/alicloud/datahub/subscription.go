@@ -238,6 +238,36 @@ func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Comment of the datahub subscription. It cannot be longer than 255 characters.
+func (o SubscriptionOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
+func (o SubscriptionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
+func (o SubscriptionOutput) LastModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.LastModifyTime }).(pulumi.StringOutput)
+}
+
+// The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+func (o SubscriptionOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The identidy of the subscription, generate from server side.
+func (o SubscriptionOutput) SubId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.SubId }).(pulumi.StringOutput)
+}
+
+// The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+func (o SubscriptionOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.TopicName }).(pulumi.StringOutput)
+}
+
 type SubscriptionArrayOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionArrayOutput) ElementType() reflect.Type {

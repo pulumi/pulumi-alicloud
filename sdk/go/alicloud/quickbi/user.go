@@ -265,6 +265,36 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// Alibaba Cloud account ID.
+func (o UserOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// An Alibaba Cloud account, Alibaba Cloud name.
+func (o UserOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Whether it is the administrator. Valid values: `true` and `false`.
+func (o UserOutput) AdminUser() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.AdminUser }).(pulumi.BoolOutput)
+}
+
+// Whether this is a permissions administrator. Valid values: `false`, `true`.
+func (o UserOutput) AuthAdminUser() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.AuthAdminUser }).(pulumi.BoolOutput)
+}
+
+// The nickname of the user.
+func (o UserOutput) NickName() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.NickName }).(pulumi.StringOutput)
+}
+
+// The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
+func (o UserOutput) UserType() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserType }).(pulumi.StringOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

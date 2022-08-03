@@ -323,6 +323,68 @@ func (o EcsSnapshotOutput) ToEcsSnapshotOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// The category of the snapshot. Valid Values: `standard` and `flash`.
+func (o EcsSnapshotOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// The description of the snapshot.
+func (o EcsSnapshotOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the disk.
+func (o EcsSnapshotOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+func (o EcsSnapshotOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to enable the instant access feature.
+func (o EcsSnapshotOutput) InstantAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.BoolPtrOutput { return v.InstantAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+func (o EcsSnapshotOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.IntPtrOutput { return v.InstantAccessRetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+func (o EcsSnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource group id.
+func (o EcsSnapshotOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The retention period of the snapshot.
+func (o EcsSnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The name of the snapshot.
+func (o EcsSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The status of snapshot.
+func (o EcsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the snapshot.
+func (o EcsSnapshotOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type EcsSnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsSnapshotArrayOutput) ElementType() reflect.Type {

@@ -328,6 +328,21 @@ func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
+// The destination CIDR block of the route entry to publish.
+func (o RouteEntryOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN.
+func (o RouteEntryOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The route table of the attached VBR or VPC.
+func (o RouteEntryOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
 type RouteEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryArrayOutput) ElementType() reflect.Type {

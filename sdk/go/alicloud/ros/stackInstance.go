@@ -327,6 +327,56 @@ func (o StackInstanceOutput) ToStackInstanceOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The operation description.
+func (o StackInstanceOutput) OperationDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.StringPtrOutput { return v.OperationDescription }).(pulumi.StringPtrOutput)
+}
+
+// The operation preferences. The operation settings. The following fields are supported:
+func (o StackInstanceOutput) OperationPreferences() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.StringPtrOutput { return v.OperationPreferences }).(pulumi.StringPtrOutput)
+}
+
+// ParameterOverrides. See the following `Block parameterOverrides`.
+func (o StackInstanceOutput) ParameterOverrides() StackInstanceParameterOverrideArrayOutput {
+	return o.ApplyT(func(v *StackInstance) StackInstanceParameterOverrideArrayOutput { return v.ParameterOverrides }).(StackInstanceParameterOverrideArrayOutput)
+}
+
+// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
+func (o StackInstanceOutput) RetainStacks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.BoolPtrOutput { return v.RetainStacks }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the stack group.
+func (o StackInstanceOutput) StackGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.StackGroupName }).(pulumi.StringOutput)
+}
+
+// The account to which the stack instance belongs.
+func (o StackInstanceOutput) StackInstanceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.StackInstanceAccountId }).(pulumi.StringOutput)
+}
+
+// The region of the stack instance.
+func (o StackInstanceOutput) StackInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.StackInstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+// * The create or update operation is not complete.
+func (o StackInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
+func (o StackInstanceOutput) TimeoutInMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackInstance) pulumi.StringPtrOutput { return v.TimeoutInMinutes }).(pulumi.StringPtrOutput)
+}
+
 type StackInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (StackInstanceArrayOutput) ElementType() reflect.Type {

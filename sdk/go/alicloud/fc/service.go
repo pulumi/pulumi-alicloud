@@ -262,6 +262,66 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// The Function Compute Service description.
+func (o ServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to allow the Service to access Internet. Default to "true".
+func (o ServiceOutput) InternetAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.InternetAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The date this resource was last modified.
+func (o ServiceOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+func (o ServiceOutput) LogConfig() ServiceLogConfigPtrOutput {
+	return o.ApplyT(func(v *Service) ServiceLogConfigPtrOutput { return v.LogConfig }).(ServiceLogConfigPtrOutput)
+}
+
+// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
+func (o ServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Setting a prefix to get a only name. It is conflict with `name`.
+func (o ServiceOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+func (o ServiceOutput) NasConfig() ServiceNasConfigPtrOutput {
+	return o.ApplyT(func(v *Service) ServiceNasConfigPtrOutput { return v.NasConfig }).(ServiceNasConfigPtrOutput)
+}
+
+// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
+func (o ServiceOutput) Publish() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.Publish }).(pulumi.BoolPtrOutput)
+}
+
+// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+func (o ServiceOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// The Function Compute Service ID.
+func (o ServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The latest published version of your Function Compute Service.
+func (o ServiceOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+func (o ServiceOutput) VpcConfig() ServiceVpcConfigPtrOutput {
+	return o.ApplyT(func(v *Service) ServiceVpcConfigPtrOutput { return v.VpcConfig }).(ServiceVpcConfigPtrOutput)
+}
+
 type ServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceArrayOutput) ElementType() reflect.Type {

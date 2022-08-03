@@ -52,6 +52,34 @@ public final class GetInstancesInstance {
     private final List<String> securityGroupIds;
     /**
      * @return A map of tags assigned to the bastionhost instance. It must be in the format:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     private final @Nullable Map<String,Object> tags;
@@ -139,6 +167,34 @@ public final class GetInstancesInstance {
     }
     /**
      * @return A map of tags assigned to the bastionhost instance. It must be in the format:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Map<String,Object> tags() {

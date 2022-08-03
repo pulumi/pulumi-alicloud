@@ -20,6 +20,39 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.MscSubContract;
+ * import com.pulumi.alicloud.MscSubContractArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new MscSubContract(&#34;default&#34;, MscSubContractArgs.builder()        
+ *             .contactName(example_value)
+ *             .position(&#34;CEO&#34;)
+ *             .email(&#34;123@163.com&#34;)
+ *             .mobile(&#34;153xxxxx906&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Msc Sub Contact can be imported using the id, e.g.

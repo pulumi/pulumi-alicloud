@@ -236,6 +236,26 @@ func (o LoadBalancerInternetOutput) ToLoadBalancerInternetOutputWithContext(ctx 
 	return o
 }
 
+// The target application ID that needs to be bound to the SLB.
+func (o LoadBalancerInternetOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerInternet) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Use designated public network SLBs that have been purchased to support non-shared instances.
+func (o LoadBalancerInternetOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerInternet) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// The internet SLB ID.
+func (o LoadBalancerInternetOutput) InternetSlbId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerInternet) pulumi.StringPtrOutput { return v.InternetSlbId }).(pulumi.StringPtrOutput)
+}
+
+// The bound private network SLB. See the following `Block internet`.
+func (o LoadBalancerInternetOutput) Internets() LoadBalancerInternetInternetArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerInternet) LoadBalancerInternetInternetArrayOutput { return v.Internets }).(LoadBalancerInternetInternetArrayOutput)
+}
+
 type LoadBalancerInternetArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerInternetArrayOutput) ElementType() reflect.Type {

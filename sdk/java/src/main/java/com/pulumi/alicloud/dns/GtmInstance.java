@@ -27,6 +27,65 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.cms.AlarmContactGroup;
+ * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+ * import com.pulumi.alicloud.dns.GtmInstance;
+ * import com.pulumi.alicloud.dns.GtmInstanceArgs;
+ * import com.pulumi.alicloud.dns.inputs.GtmInstanceAlertConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName(var_.name())
+ *             .build());
+ * 
+ *         var defaultGtmInstance = new GtmInstance(&#34;defaultGtmInstance&#34;, GtmInstanceArgs.builder()        
+ *             .instanceName(var_.name())
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .packageEdition(&#34;standard&#34;)
+ *             .healthCheckTaskCount(100)
+ *             .smsNotificationCount(1000)
+ *             .publicCnameMode(&#34;SYSTEM_ASSIGN&#34;)
+ *             .ttl(60)
+ *             .cnameType(&#34;PUBLIC&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .alertGroups(defaultAlarmContactGroup.alarmContactGroupName())
+ *             .publicUserDomainName(var_.domain_name())
+ *             .alertConfigs(GtmInstanceAlertConfigArgs.builder()
+ *                 .smsNotice(true)
+ *                 .noticeType(&#34;ADDR_ALERT&#34;)
+ *                 .emailNotice(true)
+ *                 .dingtalkNotice(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Alidns Gtm Instance can be imported using the id, e.g.

@@ -223,6 +223,16 @@ func (o NetworkAttachmentOutput) ToNetworkAttachmentOutputWithContext(ctx contex
 	return o
 }
 
+// The ID of the CCN instance.
+func (o NetworkAttachmentOutput) CcnId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAttachment) pulumi.StringOutput { return v.CcnId }).(pulumi.StringOutput)
+}
+
+// The ID of the Smart Access Gateway instance.
+func (o NetworkAttachmentOutput) SagId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAttachment) pulumi.StringOutput { return v.SagId }).(pulumi.StringOutput)
+}
+
 type NetworkAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkAttachmentArrayOutput) ElementType() reflect.Type {

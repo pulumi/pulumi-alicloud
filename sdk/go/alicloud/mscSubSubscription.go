@@ -279,6 +279,55 @@ func (o MscSubSubscriptionOutput) ToMscSubSubscriptionOutputWithContext(ctx cont
 	return o
 }
 
+// The channel the Subscription.
+func (o MscSubSubscriptionOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.StringOutput { return v.Channel }).(pulumi.StringOutput)
+}
+
+func (o MscSubSubscriptionOutput) ContactIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.StringArrayOutput { return v.ContactIds }).(pulumi.StringArrayOutput)
+}
+
+// The description of the Subscription.
+func (o MscSubSubscriptionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o MscSubSubscriptionOutput) EmailStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.IntPtrOutput { return v.EmailStatus }).(pulumi.IntPtrOutput)
+}
+
+// The name of the Subscription. **NOTE:**  You should use the `getMscSubSubscriptions` to query the available subscription item name.
+func (o MscSubSubscriptionOutput) ItemName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.StringOutput { return v.ItemName }).(pulumi.StringOutput)
+}
+
+// The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o MscSubSubscriptionOutput) PmsgStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.IntPtrOutput { return v.PmsgStatus }).(pulumi.IntPtrOutput)
+}
+
+// The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o MscSubSubscriptionOutput) SmsStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.IntPtrOutput { return v.SmsStatus }).(pulumi.IntPtrOutput)
+}
+
+// The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o MscSubSubscriptionOutput) TtsStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.IntPtrOutput { return v.TtsStatus }).(pulumi.IntPtrOutput)
+}
+
+// The ids of subscribed webhooks.
+func (o MscSubSubscriptionOutput) WebhookIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.StringArrayOutput { return v.WebhookIds }).(pulumi.StringArrayOutput)
+}
+
+// The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
+func (o MscSubSubscriptionOutput) WebhookStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MscSubSubscription) pulumi.IntPtrOutput { return v.WebhookStatus }).(pulumi.IntPtrOutput)
+}
+
 type MscSubSubscriptionArrayOutput struct{ *pulumi.OutputState }
 
 func (MscSubSubscriptionArrayOutput) ElementType() reflect.Type {

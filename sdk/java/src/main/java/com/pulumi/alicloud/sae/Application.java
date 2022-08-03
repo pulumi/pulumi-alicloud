@@ -27,6 +27,77 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.sae.Namespace;
+ * import com.pulumi.alicloud.sae.NamespaceArgs;
+ * import com.pulumi.alicloud.sae.Application;
+ * import com.pulumi.alicloud.sae.ApplicationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_testacc&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .namespaceDescription(name)
+ *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+ *             .namespaceName(name)
+ *             .build());
+ * 
+ *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *             .appDescription(&#34;tf-testaccDescription&#34;)
+ *             .appName(&#34;tf-testaccAppName&#34;)
+ *             .namespaceId(defaultNamespace.id())
+ *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+ *             .packageType(&#34;Image&#34;)
+ *             .vswitchId(vsw.id())
+ *             .timezone(&#34;Asia/Beijing&#34;)
+ *             .replicas(&#34;5&#34;)
+ *             .cpu(&#34;500&#34;)
+ *             .memory(&#34;2048&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless App Engine (SAE) Application can be imported using the id, e.g.

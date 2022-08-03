@@ -24,6 +24,111 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.pulumi.providers.alicloud;
+ * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackage;
+ * import com.pulumi.alicloud.cen.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.cen.BandwidthLimit;
+ * import com.pulumi.alicloud.cen.BandwidthLimitArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenBandwidthLimitConfig&#34;);
+ *         var fra = new Provider(&#34;fra&#34;, ProviderArgs.builder()        
+ *             .region(&#34;eu-central-1&#34;)
+ *             .build());
+ * 
+ *         var sh = new Provider(&#34;sh&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-shanghai&#34;)
+ *             .build());
+ * 
+ *         var vpc1 = new Network(&#34;vpc1&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.fra())
+ *                 .build());
+ * 
+ *         var vpc2 = new Network(&#34;vpc2&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.sh())
+ *                 .build());
+ * 
+ *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
+ *             .description(&#34;tf-testAccCenBandwidthLimitConfigDescription&#34;)
+ *             .build());
+ * 
+ *         var bwp = new BandwidthPackage(&#34;bwp&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(5)
+ *             .geographicRegionIds(            
+ *                 &#34;Europe&#34;,
+ *                 &#34;China&#34;)
+ *             .build());
+ * 
+ *         var bwpAttach = new BandwidthPackageAttachment(&#34;bwpAttach&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .bandwidthPackageId(bwp.id())
+ *             .build());
+ * 
+ *         var vpcAttach1 = new InstanceAttachment(&#34;vpcAttach1&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .childInstanceId(vpc1.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(&#34;eu-central-1&#34;)
+ *             .build());
+ * 
+ *         var vpcAttach2 = new InstanceAttachment(&#34;vpcAttach2&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .childInstanceId(vpc2.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(&#34;cn-shanghai&#34;)
+ *             .build());
+ * 
+ *         var foo = new BandwidthLimit(&#34;foo&#34;, BandwidthLimitArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .regionIds(            
+ *                 &#34;eu-central-1&#34;,
+ *                 &#34;cn-shanghai&#34;)
+ *             .bandwidthLimit(4)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     bwpAttach,
+ *                     vpcAttach1,
+ *                     vpcAttach2)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN bandwidth limit can be imported using the id, e.g.

@@ -18,6 +18,43 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.pvtz.ZoneRecord;
+ * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var zone = new Zone(&#34;zone&#34;);
+ * 
+ *         var foo = new ZoneRecord(&#34;foo&#34;, ZoneRecordArgs.builder()        
+ *             .zoneId(zone.id())
+ *             .rr(&#34;www&#34;)
+ *             .type(&#34;CNAME&#34;)
+ *             .value(&#34;bbb.test.com&#34;)
+ *             .ttl(60)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Private Zone Record can be imported using the id, e.g.

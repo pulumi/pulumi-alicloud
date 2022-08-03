@@ -9,6 +9,7 @@ import com.pulumi.alicloud.cms.inputs.AlarmState;
 import com.pulumi.alicloud.cms.outputs.AlarmEscalationsCritical;
 import com.pulumi.alicloud.cms.outputs.AlarmEscalationsInfo;
 import com.pulumi.alicloud.cms.outputs.AlarmEscalationsWarn;
+import com.pulumi.alicloud.cms.outputs.AlarmPrometheus;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -27,6 +28,48 @@ import javax.annotation.Nullable;
  * Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cms.Alarm;
+ * import com.pulumi.alicloud.cms.AlarmArgs;
+ * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basic = new Alarm(&#34;basic&#34;, AlarmArgs.builder()        
+ *             .contactGroups(&#34;test-group&#34;)
+ *             .effectiveInterval(&#34;0:00-2:00&#34;)
+ *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+ *                 .comparisonOperator(&#34;&lt;=&#34;)
+ *                 .statistics(&#34;Average&#34;)
+ *                 .threshold(35)
+ *                 .times(2)
+ *                 .build())
+ *             .metricDimensions(&#34;[{\&#34;instanceId\&#34;:\&#34;i-bp1247jeep0y53nu3bnk\&#34;,\&#34;device\&#34;:\&#34;/dev/vda1\&#34;},{\&#34;instanceId\&#34;:\&#34;i-bp11gdcik8z6dl5jm84p\&#34;,\&#34;device\&#34;:\&#34;/dev/vdb1\&#34;}]&#34;)
+ *             .period(900)
+ *             .project(&#34;acs_ecs_dashboard&#34;)
+ *             .webhook(String.format(&#34;https://%s.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/&#34;, data.alicloud_account().current().id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -235,6 +278,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
     }
     /**
      * Monitor project name, such as &#34;acs_ecs_dashboard&#34; and &#34;acs_rds_dashboard&#34;. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
@@ -242,10 +286,25 @@ public class Alarm extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Monitor project name, such as &#34;acs_ecs_dashboard&#34; and &#34;acs_rds_dashboard&#34;. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
      * 
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * 
+     */
+    @Export(name="prometheuses", type=List.class, parameters={AlarmPrometheus.class})
+    private Output</* @Nullable */ List<AlarmPrometheus>> prometheuses;
+
+    /**
+     * @return The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * 
+     */
+    public Output<Optional<List<AlarmPrometheus>>> prometheuses() {
+        return Codegen.optional(this.prometheuses);
     }
     /**
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400

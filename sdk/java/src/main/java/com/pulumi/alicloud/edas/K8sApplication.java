@@ -22,6 +22,71 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in 1.105.0+
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.edas.K8sApplication;
+ * import com.pulumi.alicloud.edas.K8sApplicationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new K8sApplication(&#34;default&#34;, K8sApplicationArgs.builder()        
+ *             .packageType(&#34;Image&#34;)
+ *             .applicationName(&#34;DemoApplication&#34;)
+ *             .applicationDescriotion(&#34;This is description of application&#34;)
+ *             .clusterId(var_.cluster_id())
+ *             .replicas(2)
+ *             .imageUrl(&#34;registry-vpc.cn-beijing.aliyuncs.com/edas-demo-image/consumer:1.0&#34;)
+ *             .packageUrl(var_.package_url())
+ *             .packageVersion(var_.package_version())
+ *             .jdk(var_.jdk())
+ *             .webContainer(var_.web_container())
+ *             .edasContainerVersion(var_.edas_container_version())
+ *             .internetTargetPort(var_.internet_target_port())
+ *             .internetSlbPort(var_.internet_slb_port())
+ *             .internetSlbProtocol(var_.internet_slb_protocol())
+ *             .internetSlbId(var_.internet_slb_id())
+ *             .limitCpu(4)
+ *             .limitMem(2048)
+ *             .requestsCpu(0)
+ *             .requestsMem(0)
+ *             .requestsMCpu(0)
+ *             .limitMCpu(4000)
+ *             .command(var_.command())
+ *             .commandArgs(var_.command_args())
+ *             .envs(var_.envs())
+ *             .preStop(&#34;{\&#34;exec\&#34;:{\&#34;command\&#34;:[\&#34;ls\&#34;,\&#34;/\&#34;]}}&#34;)
+ *             .postStart(&#34;{\&#34;exec\&#34;:{\&#34;command\&#34;:[\&#34;ls\&#34;,\&#34;/\&#34;]}}&#34;)
+ *             .liveness(var_.liveness())
+ *             .readiness(var_.readiness())
+ *             .nasId(var_.nas_id())
+ *             .mountDescs(var_.mount_descs())
+ *             .localVolume(var_.local_volume())
+ *             .namespace(&#34;default&#34;)
+ *             .logicalRegionId(cn_beijing)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * EDAS k8s application can be imported as below, e.g.

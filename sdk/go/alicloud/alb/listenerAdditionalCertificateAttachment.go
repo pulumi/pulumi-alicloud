@@ -199,6 +199,26 @@ func (o ListenerAdditionalCertificateAttachmentOutput) ToListenerAdditionalCerti
 	return o
 }
 
+// The Certificate ID.
+func (o ListenerAdditionalCertificateAttachmentOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// The type of the certificate.
+func (o ListenerAdditionalCertificateAttachmentOutput) CertificateType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.StringOutput { return v.CertificateType }).(pulumi.StringOutput)
+}
+
+// The ID of the ALB listener.
+func (o ListenerAdditionalCertificateAttachmentOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The status of the certificate.
+func (o ListenerAdditionalCertificateAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ListenerAdditionalCertificateAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ListenerAdditionalCertificateAttachmentArrayOutput) ElementType() reflect.Type {

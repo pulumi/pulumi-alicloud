@@ -323,6 +323,36 @@ func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) Att
 	return o
 }
 
+// The backend servers of the load balancer.
+func (o AttachmentOutput) BackendServers() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.StringOutput { return v.BackendServers }).(pulumi.StringOutput)
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (o AttachmentOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.BoolPtrOutput { return v.DeleteProtectionValidation }).(pulumi.BoolPtrOutput)
+}
+
+// A list of instance ids to added backend server in the SLB.
+func (o AttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// ID of the load balancer.
+func (o AttachmentOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// Type of the instances. Valid value ecs, eni. Default to ecs.
+func (o AttachmentOutput) ServerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.StringPtrOutput { return v.ServerType }).(pulumi.StringPtrOutput)
+}
+
+// Weight of the instances. Valid value range: [0-100]. Default to 100.
+func (o AttachmentOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Attachment) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
 type AttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AttachmentArrayOutput) ElementType() reflect.Type {

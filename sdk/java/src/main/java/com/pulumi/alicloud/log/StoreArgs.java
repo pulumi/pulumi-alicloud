@@ -153,6 +153,21 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.shardCount);
     }
 
+    /**
+     * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     * 
+     */
+    @Import(name="telemetryType")
+    private @Nullable Output<String> telemetryType;
+
+    /**
+     * @return Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     * 
+     */
+    public Optional<Output<String>> telemetryType() {
+        return Optional.ofNullable(this.telemetryType);
+    }
+
     private StoreArgs() {}
 
     private StoreArgs(StoreArgs $) {
@@ -165,6 +180,7 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.retentionPeriod = $.retentionPeriod;
         this.shardCount = $.shardCount;
+        this.telemetryType = $.telemetryType;
     }
 
     public static Builder builder() {
@@ -372,6 +388,27 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder shardCount(Integer shardCount) {
             return shardCount(Output.of(shardCount));
+        }
+
+        /**
+         * @param telemetryType Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder telemetryType(@Nullable Output<String> telemetryType) {
+            $.telemetryType = telemetryType;
+            return this;
+        }
+
+        /**
+         * @param telemetryType Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder telemetryType(String telemetryType) {
+            return telemetryType(Output.of(telemetryType));
         }
 
         public StoreArgs build() {

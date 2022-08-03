@@ -217,6 +217,21 @@ func (o DeployGroupOutput) ToDeployGroupOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// The ID of the application that you want to deploy.
+func (o DeployGroupOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployGroup) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The name of the instance group that you want to create.
+func (o DeployGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+func (o DeployGroupOutput) GroupType() pulumi.IntOutput {
+	return o.ApplyT(func(v *DeployGroup) pulumi.IntOutput { return v.GroupType }).(pulumi.IntOutput)
+}
+
 type DeployGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (DeployGroupArrayOutput) ElementType() reflect.Type {

@@ -257,6 +257,26 @@ func (o ConfigMapOutput) ToConfigMapOutputWithContext(ctx context.Context) Confi
 	return o
 }
 
+// ConfigMap instance data.
+func (o ConfigMapOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigMap) pulumi.StringOutput { return v.Data }).(pulumi.StringOutput)
+}
+
+// The Description of ConfigMap.
+func (o ConfigMapOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigMap) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// ConfigMap instance name.
+func (o ConfigMapOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigMap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+func (o ConfigMapOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigMap) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
 type ConfigMapArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapArrayOutput) ElementType() reflect.Type {

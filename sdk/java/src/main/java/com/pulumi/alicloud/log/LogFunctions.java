@@ -31,6 +31,40 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .lang(&#34;cn&#34;)
+     *             .type(&#34;user&#34;)
+     *             .build());
+     * 
+     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .project(&#34;test-alert-tf&#34;)
+     *             .type(&#34;project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlertResourceResult> getAlertResource(GetAlertResourceArgs args) {
@@ -44,6 +78,40 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .lang(&#34;cn&#34;)
+     *             .type(&#34;user&#34;)
+     *             .build());
+     * 
+     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .project(&#34;test-alert-tf&#34;)
+     *             .type(&#34;project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertResourceResult> getAlertResourcePlain(GetAlertResourcePlainArgs args) {
@@ -57,6 +125,40 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .lang(&#34;cn&#34;)
+     *             .type(&#34;user&#34;)
+     *             .build());
+     * 
+     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .project(&#34;test-alert-tf&#34;)
+     *             .type(&#34;project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlertResourceResult> getAlertResource(GetAlertResourceArgs args, InvokeOptions options) {
@@ -70,6 +172,40 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .lang(&#34;cn&#34;)
+     *             .type(&#34;user&#34;)
+     *             .build());
+     * 
+     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
+     *             .project(&#34;test-alert-tf&#34;)
+     *             .type(&#34;project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertResourceResult> getAlertResourcePlain(GetAlertResourcePlainArgs args, InvokeOptions options) {
@@ -137,6 +273,34 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = LogFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -150,6 +314,34 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = LogFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -163,6 +355,34 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = LogFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -176,6 +396,34 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = LogFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -189,6 +437,34 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = LogFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -202,6 +478,34 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = LogFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -214,6 +518,38 @@ public final class LogFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
+     *             .project(&#34;the_project_name&#34;)
+     *             .ids(&#34;the_store_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStoresResult> getStores(GetStoresArgs args) {
         return getStores(args, InvokeOptions.Empty);
@@ -224,6 +560,38 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
+     *             .project(&#34;the_project_name&#34;)
+     *             .ids(&#34;the_store_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStoresResult> getStoresPlain(GetStoresPlainArgs args) {
@@ -236,6 +604,38 @@ public final class LogFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
+     *             .project(&#34;the_project_name&#34;)
+     *             .ids(&#34;the_store_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStoresResult> getStores(GetStoresArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:log/getStores:getStores", TypeShape.of(GetStoresResult.class), args, Utilities.withVersion(options));
@@ -246,6 +646,38 @@ public final class LogFunctions {
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
+     *             .project(&#34;the_project_name&#34;)
+     *             .ids(&#34;the_store_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStoresResult> getStoresPlain(GetStoresPlainArgs args, InvokeOptions options) {

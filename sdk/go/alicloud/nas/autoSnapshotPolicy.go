@@ -294,6 +294,40 @@ func (o AutoSnapshotPolicyOutput) ToAutoSnapshotPolicyOutputWithContext(ctx cont
 	return o
 }
 
+// The name of the automatic snapshot policy. Limits:
+// - The name must be `2` to `128` characters in length,
+// - The name must start with a letter.
+// - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
+// - The value of this parameter is empty by default.
+func (o AutoSnapshotPolicyOutput) AutoSnapshotPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringPtrOutput { return v.AutoSnapshotPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// The day on which an auto snapshot is created.
+// - A maximum of 7 time points can be selected.
+// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+func (o AutoSnapshotPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.RepeatWeekdays }).(pulumi.StringArrayOutput)
+}
+
+// The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
+// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
+func (o AutoSnapshotPolicyOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The status of the automatic snapshot policy.
+func (o AutoSnapshotPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The point in time at which an auto snapshot is created.
+// - A maximum of 24 time points can be selected.
+// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+func (o AutoSnapshotPolicyOutput) TimePoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.TimePoints }).(pulumi.StringArrayOutput)
+}
+
 type AutoSnapshotPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AutoSnapshotPolicyArrayOutput) ElementType() reflect.Type {

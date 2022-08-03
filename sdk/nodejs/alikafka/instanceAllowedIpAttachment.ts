@@ -86,7 +86,9 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
      */
     public readonly allowedIp!: pulumi.Output<string>;
     /**
-     * The type of whitelist. Valid Value: `vpc`.
+     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+     * - `vpc`: IP address whitelist for VPC access.
+     * - `internet`: IP address whitelist for Internet access.
      */
     public readonly allowedType!: pulumi.Output<string>;
     /**
@@ -94,7 +96,9 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The Port range.  Valid Value: `9092/9092`.
+     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+     * - `9092/9092`: port range for a VPC whitelist.
+     * - `9093/9093`: port range for an Internet whitelist.
      */
     public readonly portRange!: pulumi.Output<string>;
 
@@ -148,7 +152,9 @@ export interface InstanceAllowedIpAttachmentState {
      */
     allowedIp?: pulumi.Input<string>;
     /**
-     * The type of whitelist. Valid Value: `vpc`.
+     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+     * - `vpc`: IP address whitelist for VPC access.
+     * - `internet`: IP address whitelist for Internet access.
      */
     allowedType?: pulumi.Input<string>;
     /**
@@ -156,7 +162,9 @@ export interface InstanceAllowedIpAttachmentState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The Port range.  Valid Value: `9092/9092`.
+     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+     * - `9092/9092`: port range for a VPC whitelist.
+     * - `9093/9093`: port range for an Internet whitelist.
      */
     portRange?: pulumi.Input<string>;
 }
@@ -170,7 +178,9 @@ export interface InstanceAllowedIpAttachmentArgs {
      */
     allowedIp: pulumi.Input<string>;
     /**
-     * The type of whitelist. Valid Value: `vpc`.
+     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+     * - `vpc`: IP address whitelist for VPC access.
+     * - `internet`: IP address whitelist for Internet access.
      */
     allowedType: pulumi.Input<string>;
     /**
@@ -178,7 +188,9 @@ export interface InstanceAllowedIpAttachmentArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The Port range.  Valid Value: `9092/9092`.
+     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+     * - `9092/9092`: port range for a VPC whitelist.
+     * - `9093/9093`: port range for an Internet whitelist.
      */
     portRange: pulumi.Input<string>;
 }

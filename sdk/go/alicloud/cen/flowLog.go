@@ -282,6 +282,36 @@ func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOu
 	return o
 }
 
+// The ID of the CEN Instance.
+func (o FlowLogOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The description of flowlog.
+func (o FlowLogOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of flowlog.
+func (o FlowLogOutput) FlowLogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.FlowLogName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the log store which is in the  `projectName` SLS project.
+func (o FlowLogOutput) LogStoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.LogStoreName }).(pulumi.StringOutput)
+}
+
+// The name of the SLS project.
+func (o FlowLogOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+func (o FlowLogOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
 type FlowLogArrayOutput struct{ *pulumi.OutputState }
 
 func (FlowLogArrayOutput) ElementType() reflect.Type {

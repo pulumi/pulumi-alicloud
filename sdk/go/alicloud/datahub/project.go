@@ -215,6 +215,26 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// Comment of the datahub project. It cannot be longer than 255 characters.
+func (o ProjectOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
+func (o ProjectOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
+func (o ProjectOutput) LastModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.LastModifyTime }).(pulumi.StringOutput)
+}
+
+// The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+func (o ProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type ProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectArrayOutput) ElementType() reflect.Type {

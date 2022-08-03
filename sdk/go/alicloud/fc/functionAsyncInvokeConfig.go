@@ -356,6 +356,53 @@ func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutputWithCo
 	return o
 }
 
+// The date this resource was created.
+func (o FunctionAsyncInvokeConfigOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
+// Configuration block with destination configuration. See below for details.
+func (o FunctionAsyncInvokeConfigOutput) DestinationConfig() FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
+		return v.DestinationConfig
+	}).(FunctionAsyncInvokeConfigDestinationConfigPtrOutput)
+}
+
+// Name of the Function Compute Function.
+func (o FunctionAsyncInvokeConfigOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// The date this resource was last modified.
+func (o FunctionAsyncInvokeConfigOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
+func (o FunctionAsyncInvokeConfigOutput) MaximumEventAgeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.IntPtrOutput { return v.MaximumEventAgeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
+func (o FunctionAsyncInvokeConfigOutput) MaximumRetryAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.IntPtrOutput { return v.MaximumRetryAttempts }).(pulumi.IntPtrOutput)
+}
+
+// Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
+func (o FunctionAsyncInvokeConfigOutput) Qualifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.StringPtrOutput { return v.Qualifier }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Function Compute Function, omitting any version or alias qualifier.
+func (o FunctionAsyncInvokeConfigOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Function Compute async job configuration. valid values true or false, default `false`
+func (o FunctionAsyncInvokeConfigOutput) StatefulInvocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.BoolPtrOutput { return v.StatefulInvocation }).(pulumi.BoolPtrOutput)
+}
+
 type FunctionAsyncInvokeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (FunctionAsyncInvokeConfigArrayOutput) ElementType() reflect.Type {

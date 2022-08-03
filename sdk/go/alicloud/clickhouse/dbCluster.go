@@ -425,6 +425,93 @@ func (o DbClusterOutput) ToDbClusterOutputWithContext(ctx context.Context) DbClu
 	return o
 }
 
+// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+func (o DbClusterOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// The db cluster access white list.
+func (o DbClusterOutput) DbClusterAccessWhiteLists() DbClusterDbClusterAccessWhiteListArrayOutput {
+	return o.ApplyT(func(v *DbCluster) DbClusterDbClusterAccessWhiteListArrayOutput { return v.DbClusterAccessWhiteLists }).(DbClusterDbClusterAccessWhiteListArrayOutput)
+}
+
+// The DBCluster class. According to the category, dbClusterClass has two value ranges:
+// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
+// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+func (o DbClusterOutput) DbClusterClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterClass }).(pulumi.StringOutput)
+}
+
+// The DBCluster description.
+func (o DbClusterOutput) DbClusterDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterDescription }).(pulumi.StringOutput)
+}
+
+// The DBCluster network type. Valid values: `vpc`.
+func (o DbClusterOutput) DbClusterNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterNetworkType }).(pulumi.StringOutput)
+}
+
+// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+func (o DbClusterOutput) DbClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterVersion }).(pulumi.StringOutput)
+}
+
+// The db node group count. The number should between 1 and 48.
+func (o DbClusterOutput) DbNodeGroupCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.IntOutput { return v.DbNodeGroupCount }).(pulumi.IntOutput)
+}
+
+// The db node storage.
+func (o DbClusterOutput) DbNodeStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbNodeStorage }).(pulumi.StringOutput)
+}
+
+// Key management service KMS key ID.
+func (o DbClusterOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
+func (o DbClusterOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
+func (o DbClusterOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
+func (o DbClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+func (o DbClusterOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+func (o DbClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
+func (o DbClusterOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// The used time of DBCluster.
+func (o DbClusterOutput) UsedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.UsedTime }).(pulumi.StringPtrOutput)
+}
+
+// The vswitch id of DBCluster.
+func (o DbClusterOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type DbClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (DbClusterArrayOutput) ElementType() reflect.Type {

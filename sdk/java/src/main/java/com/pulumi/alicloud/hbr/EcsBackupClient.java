@@ -22,6 +22,52 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.132.0+.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.hbr.EcsBackupClient;
+ * import com.pulumi.alicloud.hbr.EcsBackupClientArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .nameRegex(&#34;ecs_instance_name&#34;)
+ *             .status(&#34;Running&#34;)
+ *             .build());
+ * 
+ *         var example = new EcsBackupClient(&#34;example&#34;, EcsBackupClientArgs.builder()        
+ *             .instanceId(default_.instances()[0].id())
+ *             .useHttps(false)
+ *             .dataNetworkType(&#34;PUBLIC&#34;)
+ *             .maxCpuCore(2)
+ *             .maxWorker(4)
+ *             .dataProxySetting(&#34;USE_CONTROL_PROXY&#34;)
+ *             .proxyHost(&#34;192.168.11.101&#34;)
+ *             .proxyPort(80)
+ *             .proxyUser(&#34;user&#34;)
+ *             .proxyPassword(&#34;password&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Notice
  * 
  * &gt; **Note:** Please read the following precautions carefully before deleting a client:

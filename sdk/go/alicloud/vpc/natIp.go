@@ -316,6 +316,50 @@ func (o NatIpOutput) ToNatIpOutputWithContext(ctx context.Context) NatIpOutput {
 	return o
 }
 
+// Specifies whether to check the validity of the request without actually making the request.
+func (o NatIpOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.BoolOutput { return v.DryRun }).(pulumi.BoolOutput)
+}
+
+// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
+func (o NatIpOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
+func (o NatIpOutput) NatIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIp }).(pulumi.StringPtrOutput)
+}
+
+// NAT IP ADDRESS of the address segment.
+func (o NatIpOutput) NatIpCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpCidr }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CIDR block to which the NAT IP address belongs.
+func (o NatIpOutput) NatIpCidrId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpCidrId }).(pulumi.StringPtrOutput)
+}
+
+// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+func (o NatIpOutput) NatIpDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpDescription }).(pulumi.StringPtrOutput)
+}
+
+func (o NatIpOutput) NatIpId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatIpId }).(pulumi.StringOutput)
+}
+
+// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+func (o NatIpOutput) NatIpName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
+func (o NatIpOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type NatIpArrayOutput struct{ *pulumi.OutputState }
 
 func (NatIpArrayOutput) ElementType() reflect.Type {

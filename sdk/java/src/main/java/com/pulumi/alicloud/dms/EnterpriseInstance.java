@@ -23,6 +23,48 @@ import javax.annotation.Nullable;
  * **NOTE:** Available in 1.81.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dms.EnterpriseInstance;
+ * import com.pulumi.alicloud.dms.EnterpriseInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new EnterpriseInstance(&#34;default&#34;, EnterpriseInstanceArgs.builder()        
+ *             .databasePassword(&#34;Yourpassword123&#34;)
+ *             .databaseUser(&#34;your_user_name&#34;)
+ *             .dbaUid(&#34;1182725234xxxxxxx&#34;)
+ *             .ecsRegion(&#34;cn-shanghai&#34;)
+ *             .envType(&#34;test&#34;)
+ *             .exportTimeout(600)
+ *             .host(&#34;rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com&#34;)
+ *             .instanceName(&#34;your_alias_name&#34;)
+ *             .instanceSource(&#34;RDS&#34;)
+ *             .instanceType(&#34;MySQL&#34;)
+ *             .networkType(&#34;VPC&#34;)
+ *             .port(3306)
+ *             .queryTimeout(60)
+ *             .safeRule(&#34;自由操作&#34;)
+ *             .tid(&#34;12345&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

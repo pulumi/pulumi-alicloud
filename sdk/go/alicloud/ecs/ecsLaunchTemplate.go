@@ -726,6 +726,237 @@ func (o EcsLaunchTemplateOutput) ToEcsLaunchTemplateOutputWithContext(ctx contex
 	return o
 }
 
+// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+func (o EcsLaunchTemplateOutput) AutoReleaseTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
+}
+
+// The list of data disks created with instance.
+func (o EcsLaunchTemplateOutput) DataDisks() EcsLaunchTemplateDataDiskArrayOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(EcsLaunchTemplateDataDiskArrayOutput)
+}
+
+// The Deployment Set Id.
+func (o EcsLaunchTemplateOutput) DeploymentSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
+}
+
+// The description of the data disk.
+func (o EcsLaunchTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the instance operating system configuration.
+func (o EcsLaunchTemplateOutput) EnableVmOsConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.BoolPtrOutput { return v.EnableVmOsConfig }).(pulumi.BoolPtrOutput)
+}
+
+// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+func (o EcsLaunchTemplateOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// The Image ID.
+func (o EcsLaunchTemplateOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
+func (o EcsLaunchTemplateOutput) ImageOwnerAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.ImageOwnerAlias }).(pulumi.StringPtrOutput)
+}
+
+// Billing methods. Valid values: `PostPaid`, `PrePaid`.
+func (o EcsLaunchTemplateOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+func (o EcsLaunchTemplateOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
+func (o EcsLaunchTemplateOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
+func (o EcsLaunchTemplateOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
+func (o EcsLaunchTemplateOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
+}
+
+// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
+func (o EcsLaunchTemplateOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
+}
+
+// Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
+func (o EcsLaunchTemplateOutput) IoOptimized() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
+}
+
+// The name of the key pair.
+// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+// - The password logon method for Linux instances is set to forbidden upon initialization.
+func (o EcsLaunchTemplateOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// The name of Launch Template.
+func (o EcsLaunchTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.LaunchTemplateName }).(pulumi.StringOutput)
+}
+
+// The name of the data disk.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
+func (o EcsLaunchTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of network interfaces created with instance.
+func (o EcsLaunchTemplateOutput) NetworkInterfaces() EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateNetworkInterfacesPtrOutput { return v.NetworkInterfaces }).(EcsLaunchTemplateNetworkInterfacesPtrOutput)
+}
+
+// Network type of the instance. Valid values: `classic`, `vpc`.
+func (o EcsLaunchTemplateOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use the password preset by the mirror.
+func (o EcsLaunchTemplateOutput) PasswordInherit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
+}
+
+// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
+// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
+// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+func (o EcsLaunchTemplateOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The private IP address of the instance.
+func (o EcsLaunchTemplateOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
+func (o EcsLaunchTemplateOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
+func (o EcsLaunchTemplateOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
+func (o EcsLaunchTemplateOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The security group ID must be one in the same VPC.
+func (o EcsLaunchTemplateOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of security group N to which to assign the instance.
+func (o EcsLaunchTemplateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
+func (o EcsLaunchTemplateOutput) SpotDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SpotDuration }).(pulumi.StringPtrOutput)
+}
+
+// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+func (o EcsLaunchTemplateOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+func (o EcsLaunchTemplateOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The System Disk.
+func (o EcsLaunchTemplateOutput) SystemDisk() EcsLaunchTemplateSystemDiskOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateSystemDiskOutput { return v.SystemDisk }).(EcsLaunchTemplateSystemDiskOutput)
+}
+
+// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o EcsLaunchTemplateOutput) SystemDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o EcsLaunchTemplateOutput) SystemDiskDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskDescription }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o EcsLaunchTemplateOutput) SystemDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskName }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o EcsLaunchTemplateOutput) SystemDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.SystemDiskSize }).(pulumi.IntOutput)
+}
+
+// A mapping of tags to assign to instance, block storage, and elastic network.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o EcsLaunchTemplateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The template resource group id.
+func (o EcsLaunchTemplateOutput) TemplateResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.TemplateResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the launch template.
+func (o EcsLaunchTemplateOutput) TemplateTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.MapOutput { return v.TemplateTags }).(pulumi.MapOutput)
+}
+
+// The User Data.
+func (o EcsLaunchTemplateOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
+func (o EcsLaunchTemplateOutput) Userdata() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.Userdata }).(pulumi.StringOutput)
+}
+
+// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+func (o EcsLaunchTemplateOutput) VersionDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.VersionDescription }).(pulumi.StringPtrOutput)
+}
+
+func (o EcsLaunchTemplateOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+func (o EcsLaunchTemplateOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID of the instance.
+func (o EcsLaunchTemplateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type EcsLaunchTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsLaunchTemplateArrayOutput) ElementType() reflect.Type {

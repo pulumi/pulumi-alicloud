@@ -225,6 +225,27 @@ func (o CiphertextOutput) ToCiphertextOutputWithContext(ctx context.Context) Cip
 	return o
 }
 
+// The ciphertext of the data key encrypted with the primary CMK version.
+func (o CiphertextOutput) CiphertextBlob() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ciphertext) pulumi.StringOutput { return v.CiphertextBlob }).(pulumi.StringOutput)
+}
+
+// -
+// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+func (o CiphertextOutput) EncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Ciphertext) pulumi.StringMapOutput { return v.EncryptionContext }).(pulumi.StringMapOutput)
+}
+
+// The globally unique ID of the CMK.
+func (o CiphertextOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ciphertext) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The plaintext to be encrypted which must be encoded in Base64.
+func (o CiphertextOutput) Plaintext() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ciphertext) pulumi.StringOutput { return v.Plaintext }).(pulumi.StringOutput)
+}
+
 type CiphertextArrayOutput struct{ *pulumi.OutputState }
 
 func (CiphertextArrayOutput) ElementType() reflect.Type {

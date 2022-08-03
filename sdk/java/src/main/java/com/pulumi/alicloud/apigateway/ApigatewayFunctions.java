@@ -27,6 +27,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apis of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetApisResult> getApis() {
@@ -36,6 +65,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apis of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApisResult> getApisPlain() {
@@ -45,6 +103,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apis of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetApisResult> getApis(GetApisArgs args) {
@@ -54,6 +141,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apis of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApisResult> getApisPlain(GetApisPlainArgs args) {
@@ -63,6 +179,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apis of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetApisResult> getApis(GetApisArgs args, InvokeOptions options) {
@@ -72,6 +217,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apis of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApisResult> getApisPlain(GetApisPlainArgs args, InvokeOptions options) {
@@ -81,6 +255,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apps of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
+     *             .outputFile(&#34;outapps&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAppsResult> getApps() {
@@ -90,6 +293,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apps of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
+     *             .outputFile(&#34;outapps&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppsResult> getAppsPlain() {
@@ -99,6 +331,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apps of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
+     *             .outputFile(&#34;outapps&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAppsResult> getApps(GetAppsArgs args) {
@@ -108,6 +369,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apps of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
+     *             .outputFile(&#34;outapps&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args) {
@@ -117,6 +407,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apps of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
+     *             .outputFile(&#34;outapps&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
@@ -126,6 +445,35 @@ public final class ApigatewayFunctions {
      * This data source provides the apps of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
+     *             .outputFile(&#34;outapps&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
@@ -135,6 +483,35 @@ public final class ApigatewayFunctions {
      * This data source provides the api groups of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
+     *             .outputFile(&#34;outgroups&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups() {
@@ -144,6 +521,35 @@ public final class ApigatewayFunctions {
      * This data source provides the api groups of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
+     *             .outputFile(&#34;outgroups&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -153,6 +559,35 @@ public final class ApigatewayFunctions {
      * This data source provides the api groups of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
+     *             .outputFile(&#34;outgroups&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -162,6 +597,35 @@ public final class ApigatewayFunctions {
      * This data source provides the api groups of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
+     *             .outputFile(&#34;outgroups&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -171,6 +635,35 @@ public final class ApigatewayFunctions {
      * This data source provides the api groups of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
+     *             .outputFile(&#34;outgroups&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -180,6 +673,35 @@ public final class ApigatewayFunctions {
      * This data source provides the api groups of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
+     *             .outputFile(&#34;outgroups&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -193,6 +715,34 @@ public final class ApigatewayFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -206,6 +756,34 @@ public final class ApigatewayFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -219,6 +797,34 @@ public final class ApigatewayFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -232,6 +838,34 @@ public final class ApigatewayFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -245,6 +879,34 @@ public final class ApigatewayFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -258,6 +920,34 @@ public final class ApigatewayFunctions {
      * &gt; **NOTE:** Available in v1.96.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

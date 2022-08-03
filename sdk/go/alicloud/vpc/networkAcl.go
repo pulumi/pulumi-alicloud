@@ -248,6 +248,48 @@ func (o NetworkAclOutput) ToNetworkAclOutputWithContext(ctx context.Context) Net
 	return o
 }
 
+// The description of egress entries.
+func (o NetworkAclOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+func (o NetworkAclOutput) EgressAclEntries() NetworkAclEgressAclEntryArrayOutput {
+	return o.ApplyT(func(v *NetworkAcl) NetworkAclEgressAclEntryArrayOutput { return v.EgressAclEntries }).(NetworkAclEgressAclEntryArrayOutput)
+}
+
+// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+func (o NetworkAclOutput) IngressAclEntries() NetworkAclIngressAclEntryArrayOutput {
+	return o.ApplyT(func(v *NetworkAcl) NetworkAclIngressAclEntryArrayOutput { return v.IngressAclEntries }).(NetworkAclIngressAclEntryArrayOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
+func (o NetworkAclOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the network acl.
+func (o NetworkAclOutput) NetworkAclName() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.NetworkAclName }).(pulumi.StringOutput)
+}
+
+// The associated resources.
+func (o NetworkAclOutput) Resources() NetworkAclResourceArrayOutput {
+	return o.ApplyT(func(v *NetworkAcl) NetworkAclResourceArrayOutput { return v.Resources }).(NetworkAclResourceArrayOutput)
+}
+
+// (Available in 1.122.0+) The status of the network acl.
+func (o NetworkAclOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The vpcId of the network acl, the field can't be changed.
+func (o NetworkAclOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type NetworkAclArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclArrayOutput) ElementType() reflect.Type {

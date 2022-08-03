@@ -29,6 +29,103 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.MountTarget;
+ * import com.pulumi.alicloud.nas.MountTargetArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ehpc.Cluster;
+ * import com.pulumi.alicloud.ehpc.ClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var storageType = config.get(&#34;storageType&#34;).orElse(&#34;Performance&#34;);
+ *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *             .storageType(storageType)
+ *             .protocolType(&#34;NFS&#34;)
+ *             .build());
+ * 
+ *         var defaultMountTarget = new MountTarget(&#34;defaultMountTarget&#34;, MountTargetArgs.builder()        
+ *             .fileSystemId(defaultFileSystem.id())
+ *             .accessGroupName(&#34;DEFAULT_VPC_GROUP_NAME&#34;)
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^centos_7_6_x64*&#34;)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *             .clusterName(&#34;example_value&#34;)
+ *             .deployMode(&#34;Simple&#34;)
+ *             .description(&#34;example_description&#34;)
+ *             .haEnable(false)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .imageOwnerAlias(&#34;system&#34;)
+ *             .volumeProtocol(&#34;nfs&#34;)
+ *             .volumeId(defaultFileSystem.id())
+ *             .volumeMountpoint(defaultMountTarget.mountTargetDomain())
+ *             .computeCount(1)
+ *             .computeInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .loginCount(1)
+ *             .loginInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .managerCount(1)
+ *             .managerInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .osTag(&#34;CentOS_7.6_64&#34;)
+ *             .schedulerType(&#34;pbs&#34;)
+ *             .password(&#34;your-password123&#34;)
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Ehpc Cluster can be imported using the id, e.g.

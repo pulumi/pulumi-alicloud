@@ -27,6 +27,100 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.slb.LoadBalancer;
+ * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.sae.Namespace;
+ * import com.pulumi.alicloud.sae.NamespaceArgs;
+ * import com.pulumi.alicloud.sae.Application;
+ * import com.pulumi.alicloud.sae.ApplicationArgs;
+ * import com.pulumi.alicloud.sae.Ingress;
+ * import com.pulumi.alicloud.sae.IngressArgs;
+ * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
+ *             .specification(&#34;slb.s2.small&#34;)
+ *             .vswitchId(data.alicloud_vswitches().default().ids()[0])
+ *             .build());
+ * 
+ *         final var namespaceId = config.get(&#34;namespaceId&#34;).orElse(&#34;cn-hangzhou:yourname&#34;);
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .namespaceId(namespaceId)
+ *             .namespaceName(name)
+ *             .namespaceDescription(name)
+ *             .build());
+ * 
+ *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *             .appDescription(&#34;your_app_description&#34;)
+ *             .appName(&#34;your_app_name&#34;)
+ *             .namespaceId(&#34;your_namespace_id&#34;)
+ *             .packageUrl(&#34;your_package_url&#34;)
+ *             .packageType(&#34;your_package_url&#34;)
+ *             .jdk(&#34;jdk_specifications&#34;)
+ *             .vswitchId(data.alicloud_vswitches().default().ids()[0])
+ *             .replicas(&#34;your_replicas&#34;)
+ *             .cpu(&#34;cpu_specifications&#34;)
+ *             .memory(&#34;memory_specifications&#34;)
+ *             .build());
+ * 
+ *         var defaultIngress = new Ingress(&#34;defaultIngress&#34;, IngressArgs.builder()        
+ *             .slbId(defaultLoadBalancer.id())
+ *             .namespaceId(defaultNamespace.id())
+ *             .listenerPort(&#34;your_listener_port&#34;)
+ *             .rules(IngressRuleArgs.builder()
+ *                 .appId(defaultApplication.id())
+ *                 .containerPort(&#34;your_container_port&#34;)
+ *                 .domain(&#34;your_domain&#34;)
+ *                 .appName(&#34;your_name&#34;)
+ *                 .path(&#34;your_path&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless App Engine (SAE) Ingress can be imported using the id, e.g.

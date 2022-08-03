@@ -10,6 +10,7 @@ export * from "./ecsBackupPlan";
 export * from "./getBackupJobs";
 export * from "./getEcsBackupClients";
 export * from "./getEcsBackupPlans";
+export * from "./getHanaBackupPlans";
 export * from "./getHanaInstances";
 export * from "./getNasBackupPlans";
 export * from "./getOssBackupPlans";
@@ -20,6 +21,7 @@ export * from "./getRestoreJobs";
 export * from "./getServerBackupPlans";
 export * from "./getSnapshots";
 export * from "./getVaults";
+export * from "./hanaBackupPlan";
 export * from "./hanaInstance";
 export * from "./nasBackupPlan";
 export * from "./ossBackupPlan";
@@ -32,6 +34,7 @@ export * from "./vault";
 // Import resources to register:
 import { EcsBackupClient } from "./ecsBackupClient";
 import { EcsBackupPlan } from "./ecsBackupPlan";
+import { HanaBackupPlan } from "./hanaBackupPlan";
 import { HanaInstance } from "./hanaInstance";
 import { NasBackupPlan } from "./nasBackupPlan";
 import { OssBackupPlan } from "./ossBackupPlan";
@@ -49,6 +52,8 @@ const _module = {
                 return new EcsBackupClient(name, <any>undefined, { urn })
             case "alicloud:hbr/ecsBackupPlan:EcsBackupPlan":
                 return new EcsBackupPlan(name, <any>undefined, { urn })
+            case "alicloud:hbr/hanaBackupPlan:HanaBackupPlan":
+                return new HanaBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/hanaInstance:HanaInstance":
                 return new HanaInstance(name, <any>undefined, { urn })
             case "alicloud:hbr/nasBackupPlan:NasBackupPlan":
@@ -72,6 +77,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupClient", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupPlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/nasBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ossBackupPlan", _module)

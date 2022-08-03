@@ -24,6 +24,138 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** There are two types ECS instances in a scaling group: &#34;AutoCreated&#34; and &#34;Attached&#34;. The total number of them can not larger than the scaling group &#34;MaxSize&#34;.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingConfiguration;
+ * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ess.Attachment;
+ * import com.pulumi.alicloud.ess.AttachmentArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;essattachmentconfig&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
+ *             .type(&#34;ingress&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .nicType(&#34;intranet&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .portRange(&#34;22/22&#34;)
+ *             .priority(1)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(0)
+ *             .maxSize(2)
+ *             .scalingGroupName(name)
+ *             .removalPolicies(            
+ *                 &#34;OldestInstance&#34;,
+ *                 &#34;NewestInstance&#34;)
+ *             .vswitchIds(defaultSwitch.id())
+ *             .build());
+ * 
+ *         var defaultScalingConfiguration = new ScalingConfiguration(&#34;defaultScalingConfiguration&#34;, ScalingConfigurationArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .forceDelete(true)
+ *             .active(true)
+ *             .enable(true)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+ *                 .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .securityGroups(defaultSecurityGroup.id())
+ *                 .internetChargeType(&#34;PayByTraffic&#34;)
+ *                 .internetMaxBandwidthOut(&#34;10&#34;)
+ *                 .instanceChargeType(&#34;PostPaid&#34;)
+ *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *                 .vswitchId(defaultSwitch.id())
+ *                 .instanceName(name)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultAttachment = new Attachment(&#34;defaultAttachment&#34;, AttachmentArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .instanceIds(            
+ *                 defaultInstance[0].id(),
+ *                 defaultInstance[1].id())
+ *             .force(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

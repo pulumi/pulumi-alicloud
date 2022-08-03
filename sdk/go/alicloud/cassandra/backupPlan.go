@@ -230,6 +230,36 @@ func (o BackupPlanOutput) ToBackupPlanOutputWithContext(ctx context.Context) Bac
 	return o
 }
 
+// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
+func (o BackupPlanOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
+func (o BackupPlanOutput) BackupPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.BackupPeriod }).(pulumi.StringOutput)
+}
+
+// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+func (o BackupPlanOutput) BackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
+}
+
+// The ID of the cluster for the backup.
+func (o BackupPlanOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the data center for the backup in the cluster.
+func (o BackupPlanOutput) DataCenterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.DataCenterId }).(pulumi.StringOutput)
+}
+
+// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
+func (o BackupPlanOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.IntOutput { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
 type BackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanArrayOutput) ElementType() reflect.Type {

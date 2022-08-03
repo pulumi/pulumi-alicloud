@@ -18,6 +18,76 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
+ * import com.pulumi.alicloud.kvstore.BackupPolicy;
+ * import com.pulumi.alicloud.kvstore.BackupPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;KVStore&#34;);
+ *         final var multiAz = config.get(&#34;multiAz&#34;).orElse(&#34;false&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;kvstorebackuppolicyvpc&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceClass(&#34;Memcache&#34;)
+ *             .instanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .privateIp(&#34;172.16.0.10&#34;)
+ *             .securityIps(&#34;10.0.0.1&#34;)
+ *             .instanceType(&#34;memcache.master.small.default&#34;)
+ *             .engineVersion(&#34;2.8&#34;)
+ *             .build());
+ * 
+ *         var defaultBackupPolicy = new BackupPolicy(&#34;defaultBackupPolicy&#34;, BackupPolicyArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .backupPeriods(            
+ *                 &#34;Tuesday&#34;,
+ *                 &#34;Wednesday&#34;)
+ *             .backupTime(&#34;10:00Z-11:00Z&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * KVStore backup policy can be imported using the id, e.g.

@@ -171,6 +171,20 @@ public class Store extends com.pulumi.resources.CustomResource {
     public Output<List<StoreShard>> shards() {
         return this.shards;
     }
+    /**
+     * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     * 
+     */
+    @Export(name="telemetryType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> telemetryType;
+
+    /**
+     * @return Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     * 
+     */
+    public Output<Optional<String>> telemetryType() {
+        return Codegen.optional(this.telemetryType);
+    }
 
     /**
      *

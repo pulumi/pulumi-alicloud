@@ -436,6 +436,72 @@ func (o FileSystemOutput) ToFileSystemOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
+// The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
+// Unit: gib; **Note**: The minimum value is 100.
+func (o FileSystemOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
+}
+
+// The File System description.
+func (o FileSystemOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+// * Valid values:
+func (o FileSystemOutput) EncryptType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.IntPtrOutput { return v.EncryptType }).(pulumi.IntPtrOutput)
+}
+
+// the type of the file system.
+// Valid values:
+// `standard` (Default),
+// `extreme`,
+// `cpfs`.
+func (o FileSystemOutput) FileSystemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.FileSystemType }).(pulumi.StringPtrOutput)
+}
+
+// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
+func (o FileSystemOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+// The protocol type of the file system.
+// Valid values:
+// `NFS`,
+// `SMB` (Available when the `fileSystemType` is `standard`),
+// `cpfs` (Available when the `fileSystemType` is `cpfs`).
+func (o FileSystemOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The storage type of the file System.
+// * Valid values:
+func (o FileSystemOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o FileSystemOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+func (o FileSystemOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+func (o FileSystemOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
+func (o FileSystemOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type FileSystemArrayOutput struct{ *pulumi.OutputState }
 
 func (FileSystemArrayOutput) ElementType() reflect.Type {

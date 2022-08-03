@@ -21,6 +21,55 @@ public final class VodFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vod.Domain;
+     * import com.pulumi.alicloud.vod.DomainArgs;
+     * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
+     * import com.pulumi.alicloud.vod.VodFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .scope(&#34;domestic&#34;)
+     *             .sources(DomainSourceArgs.builder()
+     *                 .sourceType(&#34;domain&#34;)
+     *                 .sourceContent(&#34;your_source_content&#34;)
+     *                 .sourcePort(&#34;80&#34;)
+     *                 .build())
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDomainsResult> getDomains() {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +80,55 @@ public final class VodFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vod.Domain;
+     * import com.pulumi.alicloud.vod.DomainArgs;
+     * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
+     * import com.pulumi.alicloud.vod.VodFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .scope(&#34;domestic&#34;)
+     *             .sources(DomainSourceArgs.builder()
+     *                 .sourceType(&#34;domain&#34;)
+     *                 .sourceContent(&#34;your_source_content&#34;)
+     *                 .sourcePort(&#34;80&#34;)
+     *                 .build())
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -43,6 +141,55 @@ public final class VodFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vod.Domain;
+     * import com.pulumi.alicloud.vod.DomainArgs;
+     * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
+     * import com.pulumi.alicloud.vod.VodFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .scope(&#34;domestic&#34;)
+     *             .sources(DomainSourceArgs.builder()
+     *                 .sourceType(&#34;domain&#34;)
+     *                 .sourceContent(&#34;your_source_content&#34;)
+     *                 .sourcePort(&#34;80&#34;)
+     *                 .build())
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
         return getDomains(args, InvokeOptions.Empty);
@@ -53,6 +200,55 @@ public final class VodFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vod.Domain;
+     * import com.pulumi.alicloud.vod.DomainArgs;
+     * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
+     * import com.pulumi.alicloud.vod.VodFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .scope(&#34;domestic&#34;)
+     *             .sources(DomainSourceArgs.builder()
+     *                 .sourceType(&#34;domain&#34;)
+     *                 .sourceContent(&#34;your_source_content&#34;)
+     *                 .sourcePort(&#34;80&#34;)
+     *                 .build())
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -65,6 +261,55 @@ public final class VodFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vod.Domain;
+     * import com.pulumi.alicloud.vod.DomainArgs;
+     * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
+     * import com.pulumi.alicloud.vod.VodFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .scope(&#34;domestic&#34;)
+     *             .sources(DomainSourceArgs.builder()
+     *                 .sourceType(&#34;domain&#34;)
+     *                 .sourceContent(&#34;your_source_content&#34;)
+     *                 .sourcePort(&#34;80&#34;)
+     *                 .build())
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vod/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
@@ -75,6 +320,55 @@ public final class VodFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vod.Domain;
+     * import com.pulumi.alicloud.vod.DomainArgs;
+     * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
+     * import com.pulumi.alicloud.vod.VodFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .scope(&#34;domestic&#34;)
+     *             .sources(DomainSourceArgs.builder()
+     *                 .sourceType(&#34;domain&#34;)
+     *                 .sourceContent(&#34;your_source_content&#34;)
+     *                 .sourcePort(&#34;80&#34;)
+     *                 .build())
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {

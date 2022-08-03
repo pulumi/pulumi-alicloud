@@ -26,6 +26,41 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eventbridge.EventSource;
+ * import com.pulumi.alicloud.eventbridge.EventSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new EventSource(&#34;example&#34;, EventSourceArgs.builder()        
+ *             .description(&#34;tf-test&#34;)
+ *             .eventBusName(&#34;bus_name&#34;)
+ *             .eventSourceName(&#34;tftest&#34;)
+ *             .externalSourceConfig(Map.of(&#34;QueueName&#34;, &#34;mns_queuqe_name&#34;))
+ *             .externalSourceType(&#34;MNS&#34;)
+ *             .linkedExternalSource(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Event Bridge Event Source can be imported using the id, e.g.

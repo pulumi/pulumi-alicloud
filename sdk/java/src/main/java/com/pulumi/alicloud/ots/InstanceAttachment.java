@@ -17,6 +17,68 @@ import javax.annotation.Nullable;
  * This resource will help you to bind a VPC to an OTS instance.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ots.Instance;
+ * import com.pulumi.alicloud.ots.InstanceArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ots.InstanceAttachment;
+ * import com.pulumi.alicloud.ots.InstanceAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+ *             .description(&#34;for table&#34;)
+ *             .accessedBy(&#34;Vpc&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;Building table&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(fooNetwork.id())
+ *             .vswitchName(&#34;for-ots-instance&#34;)
+ *             .cidrBlock(&#34;172.16.1.0/24&#34;)
+ *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var fooInstanceAttachment = new InstanceAttachment(&#34;fooInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceName(fooInstance.name())
+ *             .vpcName(&#34;attachment1&#34;)
+ *             .vswitchId(fooSwitch.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="alicloud:ots/instanceAttachment:InstanceAttachment")

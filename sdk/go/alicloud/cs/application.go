@@ -205,6 +205,50 @@ func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o ApplicationOutput) BlueGreen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.BlueGreen }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApplicationOutput) BlueGreenConfirm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.BlueGreenConfirm }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApplicationOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+func (o ApplicationOutput) DefaultDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.DefaultDomain }).(pulumi.StringOutput)
+}
+
+func (o ApplicationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ApplicationOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v *Application) pulumi.MapOutput { return v.Environment }).(pulumi.MapOutput)
+}
+
+func (o ApplicationOutput) LatestImage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.LatestImage }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApplicationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ApplicationOutput) Services() ApplicationServiceArrayOutput {
+	return o.ApplyT(func(v *Application) ApplicationServiceArrayOutput { return v.Services }).(ApplicationServiceArrayOutput)
+}
+
+func (o ApplicationOutput) Template() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Template }).(pulumi.StringOutput)
+}
+
+func (o ApplicationOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type ApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationArrayOutput) ElementType() reflect.Type {

@@ -262,6 +262,60 @@ func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The dry run.
+func (o ServerGroupOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The configuration of health checks.
+func (o ServerGroupOutput) HealthCheckConfig() ServerGroupHealthCheckConfigPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupHealthCheckConfigPtrOutput { return v.HealthCheckConfig }).(ServerGroupHealthCheckConfigPtrOutput)
+}
+
+// The server protocol. Valid values: `  HTTPS `, `HTTP`.
+func (o ServerGroupOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o ServerGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+func (o ServerGroupOutput) Scheduler() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Scheduler }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o ServerGroupOutput) ServerGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.ServerGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The backend server.
+func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
+}
+
+// The status of the resource.
+func (o ServerGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The configuration of the sticky session.
+func (o ServerGroupOutput) StickySessionConfig() ServerGroupStickySessionConfigPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupStickySessionConfigPtrOutput { return v.StickySessionConfig }).(ServerGroupStickySessionConfigPtrOutput)
+}
+
+func (o ServerGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC that you want to access.
+func (o ServerGroupOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
 type ServerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupArrayOutput) ElementType() reflect.Type {

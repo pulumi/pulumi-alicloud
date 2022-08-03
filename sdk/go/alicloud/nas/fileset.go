@@ -279,6 +279,36 @@ func (o FilesetOutput) ToFilesetOutputWithContext(ctx context.Context) FilesetOu
 	return o
 }
 
+// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+func (o FilesetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The dry run.
+func (o FilesetOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the file system.
+func (o FilesetOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The path of the fileset.
+func (o FilesetOutput) FileSystemPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.FileSystemPath }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o FilesetOutput) FilesetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.FilesetId }).(pulumi.StringOutput)
+}
+
+// The status of the fileset.
+func (o FilesetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type FilesetArrayOutput struct{ *pulumi.OutputState }
 
 func (FilesetArrayOutput) ElementType() reflect.Type {

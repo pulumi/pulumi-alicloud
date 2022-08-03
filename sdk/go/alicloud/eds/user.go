@@ -243,6 +243,31 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// The email of the user email.
+func (o UserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
+func (o UserOutput) EndUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.EndUserId }).(pulumi.StringOutput)
+}
+
+// The password of the user password.
+func (o UserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The phone of the mobile phone number.
+func (o UserOutput) Phone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Phone }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource. Valid values: `Unlocked`, `Locked`.
+func (o UserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

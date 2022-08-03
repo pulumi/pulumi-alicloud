@@ -285,6 +285,41 @@ func (o AlarmContactOutput) ToAlarmContactOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The name of the alarm contact. The length should between 2 and 40 characters.
+func (o AlarmContactOutput) AlarmContactName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlarmContact) pulumi.StringOutput { return v.AlarmContactName }).(pulumi.StringOutput)
+}
+
+// The TradeManager ID of the alarm contact.
+func (o AlarmContactOutput) ChannelsAliim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmContact) pulumi.StringPtrOutput { return v.ChannelsAliim }).(pulumi.StringPtrOutput)
+}
+
+// The webhook URL of the DingTalk chatbot.
+func (o AlarmContactOutput) ChannelsDingWebHook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmContact) pulumi.StringPtrOutput { return v.ChannelsDingWebHook }).(pulumi.StringPtrOutput)
+}
+
+// The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
+func (o AlarmContactOutput) ChannelsMail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmContact) pulumi.StringPtrOutput { return v.ChannelsMail }).(pulumi.StringPtrOutput)
+}
+
+// The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
+func (o AlarmContactOutput) ChannelsSms() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmContact) pulumi.StringPtrOutput { return v.ChannelsSms }).(pulumi.StringPtrOutput)
+}
+
+// The description of the alarm contact.
+func (o AlarmContactOutput) Describe() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlarmContact) pulumi.StringOutput { return v.Describe }).(pulumi.StringOutput)
+}
+
+// The language type of the alarm. Valid values: `en`, `zh-cn`.
+func (o AlarmContactOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmContact) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
 type AlarmContactArrayOutput struct{ *pulumi.OutputState }
 
 func (AlarmContactArrayOutput) ElementType() reflect.Type {

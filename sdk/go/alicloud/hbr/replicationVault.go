@@ -289,6 +289,36 @@ func (o ReplicationVaultOutput) ToReplicationVaultOutputWithContext(ctx context.
 	return o
 }
 
+// The description of the backup vault. The description must be 0 to 255 characters in length.
+func (o ReplicationVaultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the region where the source vault resides.
+func (o ReplicationVaultOutput) ReplicationSourceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.ReplicationSourceRegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the source vault.
+func (o ReplicationVaultOutput) ReplicationSourceVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.ReplicationSourceVaultId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o ReplicationVaultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the backup vault. The name must be 1 to 64 characters in length.
+func (o ReplicationVaultOutput) VaultName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.VaultName }).(pulumi.StringOutput)
+}
+
+// The storage type of the backup vault. Valid values: `STANDARD`.
+func (o ReplicationVaultOutput) VaultStorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.VaultStorageClass }).(pulumi.StringOutput)
+}
+
 type ReplicationVaultArrayOutput struct{ *pulumi.OutputState }
 
 func (ReplicationVaultArrayOutput) ElementType() reflect.Type {

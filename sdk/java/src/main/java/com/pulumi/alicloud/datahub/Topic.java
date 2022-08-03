@@ -22,6 +22,82 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * 
+ * - BLob Topic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.datahub.Topic;
+ * import com.pulumi.alicloud.datahub.TopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .comment(&#34;created by terraform&#34;)
+ *             .lifeCycle(7)
+ *             .projectName(&#34;tf_datahub_project&#34;)
+ *             .recordType(&#34;BLOB&#34;)
+ *             .shardCount(3)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * - Tuple Topic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.datahub.Topic;
+ * import com.pulumi.alicloud.datahub.TopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .comment(&#34;created by terraform&#34;)
+ *             .lifeCycle(7)
+ *             .projectName(&#34;tf_datahub_project&#34;)
+ *             .recordSchema(Map.ofEntries(
+ *                 Map.entry(&#34;bigint_field&#34;, &#34;BIGINT&#34;),
+ *                 Map.entry(&#34;boolean_field&#34;, &#34;BOOLEAN&#34;),
+ *                 Map.entry(&#34;double_field&#34;, &#34;DOUBLE&#34;),
+ *                 Map.entry(&#34;string_field&#34;, &#34;STRING&#34;),
+ *                 Map.entry(&#34;timestamp_field&#34;, &#34;TIMESTAMP&#34;)
+ *             ))
+ *             .recordType(&#34;TUPLE&#34;)
+ *             .shardCount(3)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Datahub topic can be imported using the ID, e.g.

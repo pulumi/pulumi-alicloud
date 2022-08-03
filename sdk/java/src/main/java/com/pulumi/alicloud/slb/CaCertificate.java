@@ -25,6 +25,72 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * * using CA certificate content
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.CaCertificate;
+ * import com.pulumi.alicloud.slb.CaCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new CaCertificate(&#34;foo&#34;, CaCertificateArgs.builder()        
+ *             .caCertificate(&#34;&#34;&#34;
+ * -----BEGIN CERTIFICATE-----
+ * MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
+ * -----END CERTIFICATE-----
+ *             &#34;&#34;&#34;)
+ *             .caCertificateName(&#34;tf-testAccSlbCACertificate&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * * using CA certificate file
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.CaCertificate;
+ * import com.pulumi.alicloud.slb.CaCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo_file = new CaCertificate(&#34;foo-file&#34;, CaCertificateArgs.builder()        
+ *             .caCertificateName(&#34;tf-testAccSlbCACertificate&#34;)
+ *             .caCertificate(Files.readString(Paths.get(String.format(&#34;%s/ca_certificate.pem&#34;, path.module()))))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Server Load balancer CA Certificate can be imported using the id, e.g.

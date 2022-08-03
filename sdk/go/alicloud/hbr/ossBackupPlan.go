@@ -309,6 +309,46 @@ func (o OssBackupPlanOutput) ToOssBackupPlanOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Backup type. Valid values: `COMPLETE`.
+func (o OssBackupPlanOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The name of OSS bucket.
+func (o OssBackupPlanOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Whether to disable the backup task. Valid values: `true`, `false`.
+func (o OssBackupPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+func (o OssBackupPlanOutput) OssBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringOutput { return v.OssBackupPlanName }).(pulumi.StringOutput)
+}
+
+// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
+func (o OssBackupPlanOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringPtrOutput { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Backup retention days, the minimum is 1.
+func (o OssBackupPlanOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
+}
+
+// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+func (o OssBackupPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The ID of backup vault.
+func (o OssBackupPlanOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringOutput { return v.VaultId }).(pulumi.StringOutput)
+}
+
 type OssBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (OssBackupPlanArrayOutput) ElementType() reflect.Type {

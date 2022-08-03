@@ -24,6 +24,69 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.Fileset;
+ * import com.pulumi.alicloud.nas.FilesetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;cpfs&#34;)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .build());
+ * 
+ *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *             .protocolType(&#34;cpfs&#34;)
+ *             .storageType(&#34;advance_200&#34;)
+ *             .fileSystemType(&#34;cpfs&#34;)
+ *             .capacity(3600)
+ *             .description(&#34;tf-testacc&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultFileset = new Fileset(&#34;defaultFileset&#34;, FilesetArgs.builder()        
+ *             .fileSystemId(defaultFileSystem.id())
+ *             .fileSystemPath(&#34;/example_path/&#34;)
+ *             .description(&#34;tf-testacc&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Network Attached Storage (NAS) Fileset can be imported using the id, e.g.

@@ -26,6 +26,254 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Audit;
+ * import com.pulumi.alicloud.log.AuditArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
+ *             .aliuid(&#34;12345678&#34;)
+ *             .displayName(&#34;tf-audit-test&#34;)
+ *             .variableMap(Map.ofEntries(
+ *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;actiontrail_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;apigateway_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;apigateway_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;apigateway_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;appconnect_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;appconnect_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;bastion_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;bastion_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;bastion_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;cloudfirewall_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;cloudfirewall_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;cloudfirewall_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;cps_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;cps_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;cps_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;ddos_bgp_access_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;ddos_bgp_access_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;ddos_coo_access_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;ddos_coo_access_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;ddos_coo_access_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;ddos_dip_access_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;ddos_dip_access_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;ddos_dip_access_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;drds_audit_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;drds_audit_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;drds_audit_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;drds_audit_ttl&#34;, &#34;7&#34;),
+ *                 Map.entry(&#34;drds_sync_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;drds_sync_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;k8s_audit_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;k8s_audit_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;k8s_audit_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;k8s_event_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;k8s_event_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;k8s_event_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;k8s_ingress_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;k8s_ingress_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;k8s_ingress_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;nas_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;nas_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;nas_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;oss_access_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;7&#34;),
+ *                 Map.entry(&#34;oss_metering_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;oss_metering_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;oss_sync_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;oss_sync_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;polardb_audit_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;polardb_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;polardb_perf_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;polardb_perf_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;polardb_perf_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;polardb_slow_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;polardb_slow_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;polardb_slow_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;polardb_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;polardb_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;rds_audit_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;rds_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;rds_perf_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;rds_perf_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;rds_perf_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;rds_slow_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;rds_slow_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;rds_slow_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;rds_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;rds_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;sas_crack_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_dns_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_http_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_local_dns_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_login_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_network_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_process_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_security_alert_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_security_hc_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_security_vul_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_session_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_snapshot_account_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_snapshot_port_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_snapshot_process_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;sas_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;sas_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;slb_access_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;slb_access_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;slb_access_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;slb_access_ttl&#34;, &#34;7&#34;),
+ *                 Map.entry(&#34;slb_sync_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;slb_sync_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;vpc_flow_collection_policy&#34;, &#34;&#34;),
+ *                 Map.entry(&#34;vpc_flow_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;vpc_flow_ttl&#34;, &#34;7&#34;),
+ *                 Map.entry(&#34;vpc_sync_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;vpc_sync_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;waf_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;waf_ti_enabled&#34;, &#34;false&#34;),
+ *                 Map.entry(&#34;waf_ttl&#34;, &#34;180&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * Multiple accounts Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Audit;
+ * import com.pulumi.alicloud.log.AuditArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
+ *             .aliuid(&#34;12345678&#34;)
+ *             .displayName(&#34;tf-audit-test&#34;)
+ *             .multiAccounts(            
+ *                 &#34;123456789123&#34;,
+ *                 &#34;12345678912300123&#34;)
+ *             .variableMap(Map.ofEntries(
+ *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;180&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * Resource Directory Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Audit;
+ * import com.pulumi.alicloud.log.AuditArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
+ *             .aliuid(&#34;12345678&#34;)
+ *             .displayName(&#34;tf-audit-test&#34;)
+ *             .resourceDirectoryType(&#34;all&#34;)
+ *             .variableMap(Map.ofEntries(
+ *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;180&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Audit;
+ * import com.pulumi.alicloud.log.AuditArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
+ *             .aliuid(&#34;12345678&#34;)
+ *             .displayName(&#34;tf-audit-test&#34;)
+ *             .multiAccounts(            
+ *                 &#34;123456789123&#34;,
+ *                 &#34;12345678912300123&#34;)
+ *             .resourceDirectoryType(&#34;custom&#34;)
+ *             .variableMap(Map.ofEntries(
+ *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
+ *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;180&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Log audit can be imported using the id, e.g.

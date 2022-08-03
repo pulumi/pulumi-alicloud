@@ -283,6 +283,46 @@ func (o TrafficMarkingPolicyOutput) ToTrafficMarkingPolicyOutputWithContext(ctx 
 	return o
 }
 
+// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+func (o TrafficMarkingPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The dry run.
+func (o TrafficMarkingPolicyOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+func (o TrafficMarkingPolicyOutput) MarkingDscp() pulumi.IntOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.IntOutput { return v.MarkingDscp }).(pulumi.IntOutput)
+}
+
+// The Priority of the Traffic Marking Policy. Value range: 1~100.
+func (o TrafficMarkingPolicyOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The status of the resource.
+func (o TrafficMarkingPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the Traffic Marking Policy.
+func (o TrafficMarkingPolicyOutput) TrafficMarkingPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringOutput { return v.TrafficMarkingPolicyId }).(pulumi.StringOutput)
+}
+
+// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+func (o TrafficMarkingPolicyOutput) TrafficMarkingPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringPtrOutput { return v.TrafficMarkingPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the transit router.
+func (o TrafficMarkingPolicyOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
 type TrafficMarkingPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (TrafficMarkingPolicyArrayOutput) ElementType() reflect.Type {

@@ -28,6 +28,99 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Set bucket replication configuration
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oss.BucketReplication;
+ * import com.pulumi.alicloud.oss.BucketReplicationArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketReplicationDestinationArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketReplicationPrefixSetArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketReplicationEncryptionConfigurationArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketReplicationSourceSelectionCriteriaArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cross_region_replication = new BucketReplication(&#34;cross-region-replication&#34;, BucketReplicationArgs.builder()        
+ *             .action(&#34;ALL&#34;)
+ *             .bucket(&#34;bucket-in-hangzhou&#34;)
+ *             .destination(BucketReplicationDestinationArgs.builder()
+ *                 .bucket(&#34;bucket-in-beijing&#34;)
+ *                 .location(&#34;oss-cn-beijing&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var same_region_replication = new BucketReplication(&#34;same-region-replication&#34;, BucketReplicationArgs.builder()        
+ *             .action(&#34;ALL&#34;)
+ *             .bucket(&#34;bucket-in-hangzhou&#34;)
+ *             .destination(BucketReplicationDestinationArgs.builder()
+ *                 .bucket(&#34;bucket-in-hangzhou-1&#34;)
+ *                 .location(&#34;oss-cn-hangzhou&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var replication_with_prefix = new BucketReplication(&#34;replication-with-prefix&#34;, BucketReplicationArgs.builder()        
+ *             .action(&#34;ALL&#34;)
+ *             .bucket(&#34;bucket-1&#34;)
+ *             .destination(BucketReplicationDestinationArgs.builder()
+ *                 .bucket(&#34;bucket-2&#34;)
+ *                 .location(&#34;oss-cn-hangzhou&#34;)
+ *                 .build())
+ *             .historicalObjectReplication(&#34;disabled&#34;)
+ *             .prefixSet(BucketReplicationPrefixSetArgs.builder()
+ *                 .prefixes(                
+ *                     &#34;prefix1/&#34;,
+ *                     &#34;prefix2/&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var replication_with_specific_action = new BucketReplication(&#34;replication-with-specific-action&#34;, BucketReplicationArgs.builder()        
+ *             .action(&#34;PUT&#34;)
+ *             .bucket(&#34;bucket-1&#34;)
+ *             .destination(BucketReplicationDestinationArgs.builder()
+ *                 .bucket(&#34;bucket-2&#34;)
+ *                 .location(&#34;oss-cn-hangzhou&#34;)
+ *                 .build())
+ *             .historicalObjectReplication(&#34;disabled&#34;)
+ *             .build());
+ * 
+ *         var replication_with_kms_encryption = new BucketReplication(&#34;replication-with-kms-encryption&#34;, BucketReplicationArgs.builder()        
+ *             .action(&#34;ALL&#34;)
+ *             .bucket(&#34;bucket-1&#34;)
+ *             .destination(BucketReplicationDestinationArgs.builder()
+ *                 .bucket(&#34;bucket-2&#34;)
+ *                 .location(&#34;oss-cn-hangzhou&#34;)
+ *                 .build())
+ *             .encryptionConfiguration(BucketReplicationEncryptionConfigurationArgs.builder()
+ *                 .replicaKmsKeyId(&#34;&lt;your kms key id&gt;&#34;)
+ *                 .build())
+ *             .historicalObjectReplication(&#34;disabled&#34;)
+ *             .sourceSelectionCriteria(BucketReplicationSourceSelectionCriteriaArgs.builder()
+ *                 .sseKmsEncryptedObjects(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs.builder()
+ *                     .status(&#34;Enabled&#34;)
+ *                     .build())
+ *                 .build())
+ *             .syncRole(&#34;&lt;your ram role&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).

@@ -227,6 +227,46 @@ func (o AutoscalingConfigOutput) ToAutoscalingConfigOutputWithContext(ctx contex
 	return o
 }
 
+// The id of kubernetes cluster.
+func (o AutoscalingConfigOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+func (o AutoscalingConfigOutput) CoolDownDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.CoolDownDuration }).(pulumi.StringPtrOutput)
+}
+
+// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+func (o AutoscalingConfigOutput) Expander() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.Expander }).(pulumi.StringPtrOutput)
+}
+
+// The scale-in threshold for GPU instance. Default is `0.5`.
+func (o AutoscalingConfigOutput) GpuUtilizationThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.GpuUtilizationThreshold }).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to allow the scale-in of nodes. Default is `true`.
+func (o AutoscalingConfigOutput) ScaleDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.ScaleDownEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
+func (o AutoscalingConfigOutput) ScanInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.ScanInterval }).(pulumi.StringPtrOutput)
+}
+
+// The unneeded duration. Default is `10m`.
+func (o AutoscalingConfigOutput) UnneededDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.UnneededDuration }).(pulumi.StringPtrOutput)
+}
+
+// The scale-in threshold. Default is `0.5`.
+func (o AutoscalingConfigOutput) UtilizationThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.UtilizationThreshold }).(pulumi.StringPtrOutput)
+}
+
 type AutoscalingConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingConfigArrayOutput) ElementType() reflect.Type {

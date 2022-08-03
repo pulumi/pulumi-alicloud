@@ -268,6 +268,21 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+func (o BackupPolicyOutput) BackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// Backup time, in the format of HH:mmZ- HH:mm Z
+func (o BackupPolicyOutput) BackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringPtrOutput { return v.BackupTime }).(pulumi.StringPtrOutput)
+}
+
+// The id of ApsaraDB for Redis or Memcache intance.
+func (o BackupPolicyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type BackupPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyArrayOutput) ElementType() reflect.Type {

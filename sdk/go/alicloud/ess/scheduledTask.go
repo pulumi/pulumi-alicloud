@@ -344,6 +344,83 @@ func (o ScheduledTaskOutput) ToScheduledTaskOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
+func (o ScheduledTaskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+func (o ScheduledTaskOutput) DesiredCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+func (o ScheduledTaskOutput) LaunchExpirationTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.IntPtrOutput { return v.LaunchExpirationTime }).(pulumi.IntPtrOutput)
+}
+
+// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
+// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
+// If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
+// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
+func (o ScheduledTaskOutput) LaunchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringPtrOutput { return v.LaunchTime }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+func (o ScheduledTaskOutput) MaxValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.IntPtrOutput { return v.MaxValue }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+func (o ScheduledTaskOutput) MinValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.IntPtrOutput { return v.MinValue }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
+func (o ScheduledTaskOutput) RecurrenceEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.RecurrenceEndTime }).(pulumi.StringOutput)
+}
+
+// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
+// - Daily: The scheduled task is executed once every specified number of days.
+// - Weekly: The scheduled task is executed on each specified day of a week.
+// - Monthly: The scheduled task is executed on each specified day of a month.
+// - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+func (o ScheduledTaskOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
+// - Daily: You can enter one value. Valid values: 1 to 31.
+// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
+// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
+// - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+func (o ScheduledTaskOutput) RecurrenceValue() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.RecurrenceValue }).(pulumi.StringOutput)
+}
+
+// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
+func (o ScheduledTaskOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
+func (o ScheduledTaskOutput) ScheduledAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringPtrOutput { return v.ScheduledAction }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
+func (o ScheduledTaskOutput) ScheduledTaskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.StringPtrOutput { return v.ScheduledTaskName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to start the scheduled task. Default to true.
+func (o ScheduledTaskOutput) TaskEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduledTask) pulumi.BoolPtrOutput { return v.TaskEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type ScheduledTaskArrayOutput struct{ *pulumi.OutputState }
 
 func (ScheduledTaskArrayOutput) ElementType() reflect.Type {

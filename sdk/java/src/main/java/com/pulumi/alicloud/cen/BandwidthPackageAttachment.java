@@ -18,6 +18,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackage;
+ * import com.pulumi.alicloud.cen.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
+ *             .description(&#34;tf-testAccCenBandwidthPackageAttachmentDescription&#34;)
+ *             .build());
+ * 
+ *         var bwp = new BandwidthPackage(&#34;bwp&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(20)
+ *             .geographicRegionIds(            
+ *                 &#34;China&#34;,
+ *                 &#34;Asia-Pacific&#34;)
+ *             .build());
+ * 
+ *         var foo = new BandwidthPackageAttachment(&#34;foo&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .bandwidthPackageId(bwp.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN bandwidth package attachment resource can be imported using the id, e.g.

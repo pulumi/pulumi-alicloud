@@ -28,6 +28,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.elasticsearch.Instance;
+ * import com.pulumi.alicloud.elasticsearch.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .clientNodeAmount(&#34;2&#34;)
+ *             .clientNodeSpec(&#34;elasticsearch.sn2ne.large&#34;)
+ *             .dataNodeAmount(&#34;2&#34;)
+ *             .dataNodeDiskSize(&#34;20&#34;)
+ *             .dataNodeDiskType(&#34;cloud_ssd&#34;)
+ *             .dataNodeSpec(&#34;elasticsearch.sn2ne.large&#34;)
+ *             .description(&#34;description&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .password(&#34;Your password&#34;)
+ *             .protocol(&#34;HTTPS&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+ *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+ *             ))
+ *             .version(&#34;5.5.3_with_X-Pack&#34;)
+ *             .vswitchId(&#34;some vswitch id&#34;)
+ *             .zoneCount(&#34;2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Elasticsearch can be imported using the id, e.g.

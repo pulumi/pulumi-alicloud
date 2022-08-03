@@ -272,6 +272,21 @@ func (o NetworkAclEntriesOutput) ToNetworkAclEntriesOutputWithContext(ctx contex
 	return o
 }
 
+// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+func (o NetworkAclEntriesOutput) Egresses() NetworkAclEntriesEgressArrayOutput {
+	return o.ApplyT(func(v *NetworkAclEntries) NetworkAclEntriesEgressArrayOutput { return v.Egresses }).(NetworkAclEntriesEgressArrayOutput)
+}
+
+// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+func (o NetworkAclEntriesOutput) Ingresses() NetworkAclEntriesIngressArrayOutput {
+	return o.ApplyT(func(v *NetworkAclEntries) NetworkAclEntriesIngressArrayOutput { return v.Ingresses }).(NetworkAclEntriesIngressArrayOutput)
+}
+
+// The id of the network acl, the field can't be changed.
+func (o NetworkAclEntriesOutput) NetworkAclId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAclEntries) pulumi.StringOutput { return v.NetworkAclId }).(pulumi.StringOutput)
+}
+
 type NetworkAclEntriesArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclEntriesArrayOutput) ElementType() reflect.Type {

@@ -240,6 +240,31 @@ func (o VpcEndpointServiceConnectionOutput) ToVpcEndpointServiceConnectionOutput
 	return o
 }
 
+// The Bandwidth.
+func (o VpcEndpointServiceConnectionOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The dry run.
+func (o VpcEndpointServiceConnectionOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Vpc Endpoint.
+func (o VpcEndpointServiceConnectionOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpc Endpoint Service.
+func (o VpcEndpointServiceConnectionOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The status of Vpc Endpoint Connection.
+func (o VpcEndpointServiceConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type VpcEndpointServiceConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceConnectionArrayOutput) ElementType() reflect.Type {

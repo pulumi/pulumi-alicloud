@@ -26,6 +26,56 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.eds.AdConnectorOfficeSite;
+ * import com.pulumi.alicloud.eds.AdConnectorOfficeSiteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(var_.name())
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var defaultAdConnectorOfficeSite = new AdConnectorOfficeSite(&#34;defaultAdConnectorOfficeSite&#34;, AdConnectorOfficeSiteArgs.builder()        
+ *             .adConnectorOfficeSiteName(var_.name())
+ *             .bandwidth(100)
+ *             .cenId(defaultInstance.id())
+ *             .cidrBlock(&#34;10.0.0.0/12&#34;)
+ *             .desktopAccessType(&#34;INTERNET&#34;)
+ *             .dnsAddresses(&#34;127.0.0.2&#34;)
+ *             .domainName(&#34;example1234.com&#34;)
+ *             .domainPassword(&#34;YourPassword1234&#34;)
+ *             .domainUserName(&#34;Administrator&#34;)
+ *             .enableAdminAccess(true)
+ *             .enableInternetAccess(true)
+ *             .mfaEnabled(false)
+ *             .subDomainDnsAddresses(&#34;127.0.0.3&#34;)
+ *             .subDomainName(&#34;child.example1234.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECD Ad Connector Office Site can be imported using the id, e.g.

@@ -245,6 +245,46 @@ func (o ForwardingRuleOutput) ToForwardingRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the Global Accelerator instance.
+func (o ForwardingRuleOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// Forwarding Policy ID.
+func (o ForwardingRuleOutput) ForwardingRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.ForwardingRuleId }).(pulumi.StringOutput)
+}
+
+// Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
+func (o ForwardingRuleOutput) ForwardingRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.ForwardingRuleName }).(pulumi.StringPtrOutput)
+}
+
+// Forwarding Policy Status.
+func (o ForwardingRuleOutput) ForwardingRuleStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.ForwardingRuleStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the listener.
+func (o ForwardingRuleOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// Forwarding policy priority.
+func (o ForwardingRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Forward action.
+func (o ForwardingRuleOutput) RuleActions() ForwardingRuleRuleActionArrayOutput {
+	return o.ApplyT(func(v *ForwardingRule) ForwardingRuleRuleActionArrayOutput { return v.RuleActions }).(ForwardingRuleRuleActionArrayOutput)
+}
+
+// Forwarding condition list.
+func (o ForwardingRuleOutput) RuleConditions() ForwardingRuleRuleConditionArrayOutput {
+	return o.ApplyT(func(v *ForwardingRule) ForwardingRuleRuleConditionArrayOutput { return v.RuleConditions }).(ForwardingRuleRuleConditionArrayOutput)
+}
+
 type ForwardingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleArrayOutput) ElementType() reflect.Type {

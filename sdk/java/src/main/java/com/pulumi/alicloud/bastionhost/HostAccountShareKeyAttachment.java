@@ -22,6 +22,74 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.bastionhost.HostShareKey;
+ * import com.pulumi.alicloud.bastionhost.HostShareKeyArgs;
+ * import com.pulumi.alicloud.bastionhost.Host;
+ * import com.pulumi.alicloud.bastionhost.HostArgs;
+ * import com.pulumi.alicloud.bastionhost.HostAccount;
+ * import com.pulumi.alicloud.bastionhost.HostAccountArgs;
+ * import com.pulumi.alicloud.bastionhost.HostAccountShareKeyAttachment;
+ * import com.pulumi.alicloud.bastionhost.HostAccountShareKeyAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfacc_host_account_share_key_attachment&#34;);
+ *         final var defaultInstances = BastionhostFunctions.getInstances();
+ * 
+ *         var defaultHostShareKey = new HostShareKey(&#34;defaultHostShareKey&#34;, HostShareKeyArgs.builder()        
+ *             .hostShareKeyName(&#34;example_name&#34;)
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *             .passPhrase(&#34;example_value&#34;)
+ *             .privateKey(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *         var defaultHost = new Host(&#34;defaultHost&#34;, HostArgs.builder()        
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .hostName(name)
+ *             .activeAddressType(&#34;Private&#34;)
+ *             .hostPrivateAddress(&#34;172.16.0.10&#34;)
+ *             .osType(&#34;Linux&#34;)
+ *             .source(&#34;Local&#34;)
+ *             .build());
+ * 
+ *         var defaultHostAccount = new HostAccount(&#34;defaultHostAccount&#34;, HostAccountArgs.builder()        
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .hostAccountName(name)
+ *             .hostId(defaultHost.hostId())
+ *             .protocolName(&#34;SSH&#34;)
+ *             .password(&#34;YourPassword12345&#34;)
+ *             .build());
+ * 
+ *         var defaultHostAccountShareKeyAttachment = new HostAccountShareKeyAttachment(&#34;defaultHostAccountShareKeyAttachment&#34;, HostAccountShareKeyAttachmentArgs.builder()        
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *             .hostShareKeyId(defaultHostShareKey.hostShareKeyId())
+ *             .hostAccountId(defaultHostAccount.hostAccountId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Bastion Host Account Share Key Attachment can be imported using the id, e.g.

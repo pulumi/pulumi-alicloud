@@ -30,6 +30,35 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getInstanceTypes();
+     * 
+     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes() {
         return getInstanceTypes(GetInstanceTypesArgs.Empty, InvokeOptions.Empty);
@@ -40,6 +69,35 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getInstanceTypes();
+     * 
+     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain() {
@@ -52,6 +110,35 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getInstanceTypes();
+     * 
+     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args) {
         return getInstanceTypes(args, InvokeOptions.Empty);
@@ -62,6 +149,35 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getInstanceTypes();
+     * 
+     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args) {
@@ -74,6 +190,35 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getInstanceTypes();
+     * 
+     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecp/getInstanceTypes:getInstanceTypes", TypeShape.of(GetInstanceTypesResult.class), args, Utilities.withVersion(options));
@@ -84,6 +229,35 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getInstanceTypes();
+     * 
+     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args, InvokeOptions options) {
@@ -150,6 +324,40 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcpFunctions.getKeyPairs();
+     * 
+     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs() {
         return getKeyPairs(GetKeyPairsArgs.Empty, InvokeOptions.Empty);
@@ -160,6 +368,40 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcpFunctions.getKeyPairs();
+     * 
+     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain() {
@@ -172,6 +414,40 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcpFunctions.getKeyPairs();
+     * 
+     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args) {
         return getKeyPairs(args, InvokeOptions.Empty);
@@ -182,6 +458,40 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcpFunctions.getKeyPairs();
+     * 
+     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args) {
@@ -194,6 +504,40 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcpFunctions.getKeyPairs();
+     * 
+     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecp/getKeyPairs:getKeyPairs", TypeShape.of(GetKeyPairsResult.class), args, Utilities.withVersion(options));
@@ -204,6 +548,40 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcpFunctions.getKeyPairs();
+     * 
+     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args, InvokeOptions options) {
@@ -216,6 +594,35 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -226,6 +633,35 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -238,6 +674,35 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -248,6 +713,35 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -260,6 +754,35 @@ public final class EcpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecp/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -270,6 +793,35 @@ public final class EcpFunctions {
      * &gt; **NOTE:** Available in v1.158.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecp.EcpFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcpFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -297,6 +297,45 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
+// Replaced by `groupName` after version 1.98.0.
+//
+// Deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
+func (o GroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+func (o GroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+func (o GroupOutput) GroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.GroupType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the ONS Instance that owns the groups.
+func (o GroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
+func (o GroupOutput) ReadEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.ReadEnable }).(pulumi.BoolPtrOutput)
+}
+
+// This attribute is a concise description of group. The length cannot exceed 256.
+func (o GroupOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o GroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Group) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type GroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupArrayOutput) ElementType() reflect.Type {

@@ -211,6 +211,26 @@ func (o HostGroupAccountUserGroupAttachmentOutput) ToHostGroupAccountUserGroupAt
 	return o
 }
 
+// A list names of the host account.
+func (o HostGroupAccountUserGroupAttachmentOutput) HostAccountNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostGroupAccountUserGroupAttachment) pulumi.StringArrayOutput { return v.HostAccountNames }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the host group.
+func (o HostGroupAccountUserGroupAttachmentOutput) HostGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostGroupAccountUserGroupAttachment) pulumi.StringOutput { return v.HostGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
+func (o HostGroupAccountUserGroupAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostGroupAccountUserGroupAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
+func (o HostGroupAccountUserGroupAttachmentOutput) UserGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostGroupAccountUserGroupAttachment) pulumi.StringOutput { return v.UserGroupId }).(pulumi.StringOutput)
+}
+
 type HostGroupAccountUserGroupAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (HostGroupAccountUserGroupAttachmentArrayOutput) ElementType() reflect.Type {

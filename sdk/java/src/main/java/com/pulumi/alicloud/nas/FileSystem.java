@@ -28,6 +28,125 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new FileSystem(&#34;foo&#34;, FileSystemArgs.builder()        
+ *             .description(&#34;tf-testAccNasConfig&#34;)
+ *             .encryptType(&#34;1&#34;)
+ *             .protocolType(&#34;NFS&#34;)
+ *             .storageType(&#34;Performance&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new FileSystem(&#34;foo&#34;, FileSystemArgs.builder()        
+ *             .capacity(&#34;100&#34;)
+ *             .description(&#34;tf-testAccNasConfig&#34;)
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .protocolType(&#34;NFS&#34;)
+ *             .storageType(&#34;standard&#34;)
+ *             .zoneId(&#34;cn-hangzhou-f&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;cpfs&#34;)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .build());
+ * 
+ *         var foo = new FileSystem(&#34;foo&#34;, FileSystemArgs.builder()        
+ *             .protocolType(&#34;cpfs&#34;)
+ *             .storageType(&#34;advance_200&#34;)
+ *             .fileSystemType(&#34;cpfs&#34;)
+ *             .capacity(3600)
+ *             .description(&#34;tf-testacc&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Nas File System can be imported using the id, e.g.

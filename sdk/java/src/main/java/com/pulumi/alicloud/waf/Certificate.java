@@ -23,6 +23,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.waf.Certificate;
+ * import com.pulumi.alicloud.waf.CertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .certificate(&#34;your_certificate&#34;)
+ *             .certificateName(&#34;your_certificate_name&#34;)
+ *             .domain(&#34;your_domain_name&#34;)
+ *             .instanceId(&#34;your_instance_id&#34;)
+ *             .privateKey(&#34;your_private_key&#34;)
+ *             .build());
+ * 
+ *         var default2 = new Certificate(&#34;default2&#34;, CertificateArgs.builder()        
+ *             .certificateId(&#34;your_certificate_id&#34;)
+ *             .domain(&#34;your_domain_name&#34;)
+ *             .instanceId(&#34;your_instance_id&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * WAF Certificate can be imported using the id, e.g.

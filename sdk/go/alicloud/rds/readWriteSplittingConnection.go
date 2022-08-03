@@ -83,7 +83,7 @@ import (
 // 			EngineVersion:      defaultInstance.EngineVersion,
 // 			InstanceType:       defaultInstance.InstanceType,
 // 			InstanceStorage:    pulumi.Int(30),
-// 			InstanceName:       pulumi.String(fmt.Sprintf("%v%v", name, "ro")),
+// 			InstanceName:       pulumi.String(fmt.Sprintf("%vro", name)),
 // 			VswitchId:          defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
@@ -320,6 +320,41 @@ func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutput
 
 func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput {
 	return o
+}
+
+// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
+func (o ReadWriteSplittingConnectionOutput) ConnectionPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.StringPtrOutput { return v.ConnectionPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Connection instance string.
+func (o ReadWriteSplittingConnectionOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
+func (o ReadWriteSplittingConnectionOutput) DistributionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.StringOutput { return v.DistributionType }).(pulumi.StringOutput)
+}
+
+// The Id of instance that can run database.
+func (o ReadWriteSplittingConnectionOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
+func (o ReadWriteSplittingConnectionOutput) MaxDelayTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.IntOutput { return v.MaxDelayTime }).(pulumi.IntOutput)
+}
+
+// Intranet connection port. Valid value: [3001-3999]. Default to 3306.
+func (o ReadWriteSplittingConnectionOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
+func (o ReadWriteSplittingConnectionOutput) Weight() pulumi.MapOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.MapOutput { return v.Weight }).(pulumi.MapOutput)
 }
 
 type ReadWriteSplittingConnectionArrayOutput struct{ *pulumi.OutputState }

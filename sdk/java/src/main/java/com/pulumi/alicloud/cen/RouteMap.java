@@ -28,6 +28,110 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.pulumi.providers.alicloud;
+ * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.cen.RouteMap;
+ * import com.pulumi.alicloud.cen.RouteMapArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;);
+ * 
+ *         var vpc00Region = new Provider(&#34;vpc00Region&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         var vpc01Region = new Provider(&#34;vpc01Region&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-shanghai&#34;)
+ *             .build());
+ * 
+ *         var vpc00 = new Network(&#34;vpc00&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.vpc00_region())
+ *                 .build());
+ * 
+ *         var vpc01 = new Network(&#34;vpc01&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.vpc01_region())
+ *                 .build());
+ * 
+ *         var default00 = new InstanceAttachment(&#34;default00&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .childInstanceId(vpc00.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         var default01 = new InstanceAttachment(&#34;default01&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .childInstanceId(vpc01.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(&#34;cn-shanghai&#34;)
+ *             .build());
+ * 
+ *         var defaultRouteMap = new RouteMap(&#34;defaultRouteMap&#34;, RouteMapArgs.builder()        
+ *             .cenRegionId(&#34;cn-hangzhou&#34;)
+ *             .cenId(alicloud_cen_instance.cen().id())
+ *             .description(&#34;test-desc&#34;)
+ *             .priority(&#34;1&#34;)
+ *             .transmitDirection(&#34;RegionIn&#34;)
+ *             .mapResult(&#34;Permit&#34;)
+ *             .nextPriority(&#34;1&#34;)
+ *             .sourceRegionIds(&#34;cn-hangzhou&#34;)
+ *             .sourceInstanceIds(vpc00.id())
+ *             .sourceInstanceIdsReverseMatch(&#34;false&#34;)
+ *             .destinationInstanceIds(vpc01.id())
+ *             .destinationInstanceIdsReverseMatch(&#34;false&#34;)
+ *             .sourceRouteTableIds(vpc00.routeTableId())
+ *             .destinationRouteTableIds(vpc01.routeTableId())
+ *             .sourceChildInstanceTypes(&#34;VPC&#34;)
+ *             .destinationChildInstanceTypes(&#34;VPC&#34;)
+ *             .destinationCidrBlocks(vpc01.cidrBlock())
+ *             .cidrMatchMode(&#34;Include&#34;)
+ *             .routeTypes(&#34;System&#34;)
+ *             .matchAsns(&#34;65501&#34;)
+ *             .asPathMatchMode(&#34;Include&#34;)
+ *             .matchCommunitySets(&#34;65501:1&#34;)
+ *             .communityMatchMode(&#34;Include&#34;)
+ *             .communityOperateMode(&#34;Additive&#34;)
+ *             .operateCommunitySets(&#34;65501:1&#34;)
+ *             .preference(&#34;20&#34;)
+ *             .prependAsPaths(&#34;65501&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     default00,
+ *                     default01)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN RouteMap can be imported using the id, e.g.

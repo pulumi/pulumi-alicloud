@@ -279,6 +279,36 @@ func (o BgpPeerOutput) ToBgpPeerOutputWithContext(ctx context.Context) BgpPeerOu
 	return o
 }
 
+// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
+func (o BgpPeerOutput) BfdMultiHop() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.IntPtrOutput { return v.BfdMultiHop }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the BGP group.
+func (o BgpPeerOutput) BgpGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.BgpGroupId }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
+func (o BgpPeerOutput) EnableBfd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.BoolPtrOutput { return v.EnableBfd }).(pulumi.BoolPtrOutput)
+}
+
+// The IP version.
+func (o BgpPeerOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// The IP address of the BGP peer.
+func (o BgpPeerOutput) PeerIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.StringPtrOutput { return v.PeerIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The status of the BGP peer.
+func (o BgpPeerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type BgpPeerArrayOutput struct{ *pulumi.OutputState }
 
 func (BgpPeerArrayOutput) ElementType() reflect.Type {

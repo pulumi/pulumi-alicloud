@@ -23,6 +23,43 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.bastionhost.HostShareKey;
+ * import com.pulumi.alicloud.bastionhost.HostShareKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultInstances = BastionhostFunctions.getInstances();
+ * 
+ *         var defaultHostShareKey = new HostShareKey(&#34;defaultHostShareKey&#34;, HostShareKeyArgs.builder()        
+ *             .hostShareKeyName(&#34;example_name&#34;)
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *             .passPhrase(&#34;example_value&#34;)
+ *             .privateKey(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Bastion Host Share Key can be imported using the id, e.g.

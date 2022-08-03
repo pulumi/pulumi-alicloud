@@ -230,6 +230,32 @@ func (o ConfigurationRecorderOutput) ToConfigurationRecorderOutputWithContext(ct
 	return o
 }
 
+func (o ConfigurationRecorderOutput) EnterpriseEdition() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ConfigurationRecorder) pulumi.BoolOutput { return v.EnterpriseEdition }).(pulumi.BoolOutput)
+}
+
+// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+func (o ConfigurationRecorderOutput) OrganizationEnableStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationRecorder) pulumi.StringOutput { return v.OrganizationEnableStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the Enterprise management account.
+func (o ConfigurationRecorderOutput) OrganizationMasterId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ConfigurationRecorder) pulumi.IntOutput { return v.OrganizationMasterId }).(pulumi.IntOutput)
+}
+
+// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+// * If you use an enterprise account, the `resourceTypes` does not support updating.
+func (o ConfigurationRecorderOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigurationRecorder) pulumi.StringArrayOutput { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+func (o ConfigurationRecorderOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationRecorder) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ConfigurationRecorderArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationRecorderArrayOutput) ElementType() reflect.Type {

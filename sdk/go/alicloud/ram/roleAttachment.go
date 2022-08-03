@@ -175,6 +175,16 @@ func (o RoleAttachmentOutput) ToRoleAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The list of ECS instance's IDs.
+func (o RoleAttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoleAttachment) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+func (o RoleAttachmentOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAttachment) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
+}
+
 type RoleAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RoleAttachmentArrayOutput) ElementType() reflect.Type {

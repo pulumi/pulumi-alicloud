@@ -323,6 +323,53 @@ func (o BundleOutput) ToBundleOutputWithContext(ctx context.Context) BundleOutpu
 	return o
 }
 
+// The name of the bundle.
+func (o BundleOutput) BundleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.BundleName }).(pulumi.StringPtrOutput)
+}
+
+// The description of the bundle.
+func (o BundleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The desktop type. You can call `eds.getDesktopTypes` to query desktop type.
+func (o BundleOutput) DesktopType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringOutput { return v.DesktopType }).(pulumi.StringOutput)
+}
+
+// The ID of the image.
+func (o BundleOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
+func (o BundleOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+// The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+func (o BundleOutput) RootDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.RootDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The root disk size gib.
+func (o BundleOutput) RootDiskSizeGib() pulumi.IntOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.IntOutput { return v.RootDiskSizeGib }).(pulumi.IntOutput)
+}
+
+// The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+func (o BundleOutput) UserDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.UserDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
+// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
+// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
+func (o BundleOutput) UserDiskSizeGibs() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.IntArrayOutput { return v.UserDiskSizeGibs }).(pulumi.IntArrayOutput)
+}
+
 type BundleArrayOutput struct{ *pulumi.OutputState }
 
 func (BundleArrayOutput) ElementType() reflect.Type {

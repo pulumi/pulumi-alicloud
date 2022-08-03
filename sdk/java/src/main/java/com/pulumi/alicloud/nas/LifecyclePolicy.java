@@ -23,6 +23,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.LifecyclePolicy;
+ * import com.pulumi.alicloud.nas.LifecyclePolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
+ *             .protocolType(&#34;NFS&#34;)
+ *             .storageType(&#34;Capacity&#34;)
+ *             .build());
+ * 
+ *         var exampleLifecyclePolicy = new LifecyclePolicy(&#34;exampleLifecyclePolicy&#34;, LifecyclePolicyArgs.builder()        
+ *             .fileSystemId(exampleFileSystem.id())
+ *             .lifecyclePolicyName(&#34;my-LifecyclePolicy&#34;)
+ *             .lifecycleRuleName(&#34;DEFAULT_ATIME_14&#34;)
+ *             .storageType(&#34;InfrequentAccess&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.

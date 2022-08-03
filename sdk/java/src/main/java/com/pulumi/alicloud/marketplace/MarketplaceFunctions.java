@@ -23,6 +23,37 @@ public final class MarketplaceFunctions {
      * &gt; **NOTE:** Available in 1.69.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
+     *             .productCode(&#34;cmapi022206&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
+     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProductResult> getProduct(GetProductArgs args) {
@@ -34,6 +65,37 @@ public final class MarketplaceFunctions {
      * &gt; **NOTE:** Available in 1.69.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
+     *             .productCode(&#34;cmapi022206&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
+     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProductResult> getProductPlain(GetProductPlainArgs args) {
@@ -45,6 +107,37 @@ public final class MarketplaceFunctions {
      * &gt; **NOTE:** Available in 1.69.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
+     *             .productCode(&#34;cmapi022206&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
+     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProductResult> getProduct(GetProductArgs args, InvokeOptions options) {
@@ -56,6 +149,37 @@ public final class MarketplaceFunctions {
      * &gt; **NOTE:** Available in 1.69.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
+     *             .productCode(&#34;cmapi022206&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
+     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProductResult> getProductPlain(GetProductPlainArgs args, InvokeOptions options) {

@@ -360,6 +360,79 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// Indicates the name of the certificate if the HTTPS protocol is enabled.
+func (o DomainOutput) CertName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertName }).(pulumi.StringOutput)
+}
+
+// The type of the certificate. Valid values:
+// `free`: a free certificate.
+// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
+// `upload`: a user uploaded certificate.
+func (o DomainOutput) CertType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CertType }).(pulumi.StringPtrOutput)
+}
+
+// The URL that is used to test the accessibility of the origin.
+func (o DomainOutput) CheckUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CheckUrl }).(pulumi.StringPtrOutput)
+}
+
+// The name of the accelerated domain.
+func (o DomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+func (o DomainOutput) ForceSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.ForceSet }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o DomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The acceleration region.
+func (o DomainOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The top-level domain name.
+func (o DomainOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SecurityToken }).(pulumi.StringPtrOutput)
+}
+
+// The origin information.
+func (o DomainOutput) Sources() DomainSourceArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainSourceArrayOutput { return v.Sources }).(DomainSourceArrayOutput)
+}
+
+// The private key. Specify this parameter only if you enable the SSL certificate.
+func (o DomainOutput) SslPri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SslPri }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+func (o DomainOutput) SslProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SslProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+func (o DomainOutput) SslPub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SslPub }).(pulumi.StringPtrOutput)
+}
+
+// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+func (o DomainOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The top-level domain name.
+func (o DomainOutput) TopLevelDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.TopLevelDomain }).(pulumi.StringPtrOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

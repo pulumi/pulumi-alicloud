@@ -343,6 +343,41 @@ func (o IngressOutput) ToIngressOutputWithContext(ctx context.Context) IngressOu
 	return o
 }
 
+// Cert Id.
+func (o IngressOutput) CertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.StringPtrOutput { return v.CertId }).(pulumi.StringPtrOutput)
+}
+
+// Default Rule.
+func (o IngressOutput) DefaultRule() IngressDefaultRulePtrOutput {
+	return o.ApplyT(func(v *Ingress) IngressDefaultRulePtrOutput { return v.DefaultRule }).(IngressDefaultRulePtrOutput)
+}
+
+// Description.
+func (o IngressOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// SLB listening port.
+func (o IngressOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.IntOutput { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+func (o IngressOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+func (o IngressOutput) Rules() IngressRuleArrayOutput {
+	return o.ApplyT(func(v *Ingress) IngressRuleArrayOutput { return v.Rules }).(IngressRuleArrayOutput)
+}
+
+// SLB ID.
+func (o IngressOutput) SlbId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
+}
+
 type IngressArrayOutput struct{ *pulumi.OutputState }
 
 func (IngressArrayOutput) ElementType() reflect.Type {

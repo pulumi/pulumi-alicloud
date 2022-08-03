@@ -316,6 +316,56 @@ func (o TunnelOutput) ToTunnelOutputWithContext(ctx context.Context) TunnelOutpu
 	return o
 }
 
+// The channels of OTS tunnel. Each element contains the following attributes:
+func (o TunnelOutput) Channels() TunnelChannelArrayOutput {
+	return o.ApplyT(func(v *Tunnel) TunnelChannelArrayOutput { return v.Channels }).(TunnelChannelArrayOutput)
+}
+
+// The creation time of the Tunnel.
+func (o TunnelOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// Whether the tunnel has expired.
+func (o TunnelOutput) Expired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.BoolOutput { return v.Expired }).(pulumi.BoolOutput)
+}
+
+// The name of the OTS instance in which table will located.
+func (o TunnelOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The name of the OTS table. If changed, a new table would be created.
+func (o TunnelOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.TableName }).(pulumi.StringOutput)
+}
+
+// The tunnel id of the OTS which could not be changed.
+func (o TunnelOutput) TunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+// The name of the OTS tunnel. If changed, a new tunnel would be created.
+func (o TunnelOutput) TunnelName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.TunnelName }).(pulumi.StringOutput)
+}
+
+// The latest consumption time of the tunnel, unix time in nanosecond.
+func (o TunnelOutput) TunnelRpo() pulumi.IntOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.IntOutput { return v.TunnelRpo }).(pulumi.IntOutput)
+}
+
+// The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
+func (o TunnelOutput) TunnelStage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.TunnelStage }).(pulumi.StringOutput)
+}
+
+// The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
+func (o TunnelOutput) TunnelType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.TunnelType }).(pulumi.StringOutput)
+}
+
 type TunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (TunnelArrayOutput) ElementType() reflect.Type {

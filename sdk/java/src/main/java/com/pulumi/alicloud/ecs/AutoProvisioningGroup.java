@@ -25,6 +25,91 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.79.0+
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
+ * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
+ * import com.pulumi.alicloud.ecs.AutoProvisioningGroup;
+ * import com.pulumi.alicloud.ecs.AutoProvisioningGroupArgs;
+ * import com.pulumi.alicloud.ecs.inputs.AutoProvisioningGroupLaunchTemplateConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;auto_provisioning_group&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var template = new EcsLaunchTemplate(&#34;template&#34;, EcsLaunchTemplateArgs.builder()        
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(&#34;ecs.n1.tiny&#34;)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var defaultAutoProvisioningGroup = new AutoProvisioningGroup(&#34;defaultAutoProvisioningGroup&#34;, AutoProvisioningGroupArgs.builder()        
+ *             .launchTemplateId(template.id())
+ *             .totalTargetCapacity(&#34;4&#34;)
+ *             .payAsYouGoTargetCapacity(&#34;1&#34;)
+ *             .spotTargetCapacity(&#34;2&#34;)
+ *             .launchTemplateConfigs(AutoProvisioningGroupLaunchTemplateConfigArgs.builder()
+ *                 .instanceType(&#34;ecs.n1.small&#34;)
+ *                 .vswitchId(defaultSwitch.id())
+ *                 .weightedCapacity(&#34;2&#34;)
+ *                 .maxPrice(&#34;2&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Block config
  * 
  * The config mapping supports the following:

@@ -30,6 +30,65 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.Account;
+     * import com.pulumi.alicloud.clickhouse.AccountArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
+     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbClusterDescription(name)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountName(name)
+     *             .accountPassword(pwd)
+     *             .build());
+     * 
+     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .ids(defaultAccount.id())
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
         return getAccounts(args, InvokeOptions.Empty);
@@ -40,6 +99,65 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.Account;
+     * import com.pulumi.alicloud.clickhouse.AccountArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
+     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbClusterDescription(name)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountName(name)
+     *             .accountPassword(pwd)
+     *             .build());
+     * 
+     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .ids(defaultAccount.id())
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -52,6 +170,65 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.Account;
+     * import com.pulumi.alicloud.clickhouse.AccountArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
+     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbClusterDescription(name)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountName(name)
+     *             .accountPassword(pwd)
+     *             .build());
+     * 
+     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .ids(defaultAccount.id())
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:clickhouse/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
@@ -62,6 +239,65 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.Account;
+     * import com.pulumi.alicloud.clickhouse.AccountArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
+     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbClusterDescription(name)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountName(name)
+     *             .accountPassword(pwd)
+     *             .build());
+     * 
+     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .ids(defaultAccount.id())
+     *             .dbClusterId(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -74,6 +310,37 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
+     *             .dbClusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBackupPoliciesResult> getBackupPolicies(GetBackupPoliciesArgs args) {
         return getBackupPolicies(args, InvokeOptions.Empty);
@@ -84,6 +351,37 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
+     *             .dbClusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBackupPoliciesResult> getBackupPoliciesPlain(GetBackupPoliciesPlainArgs args) {
@@ -96,6 +394,37 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
+     *             .dbClusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBackupPoliciesResult> getBackupPolicies(GetBackupPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", TypeShape.of(GetBackupPoliciesResult.class), args, Utilities.withVersion(options));
@@ -106,6 +435,37 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetBackupPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
+     *             .dbClusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBackupPoliciesResult> getBackupPoliciesPlain(GetBackupPoliciesPlainArgs args, InvokeOptions options) {
@@ -118,6 +478,51 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *             .ids(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDbClustersResult> getDbClusters() {
         return getDbClusters(GetDbClustersArgs.Empty, InvokeOptions.Empty);
@@ -128,6 +533,51 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *             .ids(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDbClustersResult> getDbClustersPlain() {
@@ -140,6 +590,51 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *             .ids(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDbClustersResult> getDbClusters(GetDbClustersArgs args) {
         return getDbClusters(args, InvokeOptions.Empty);
@@ -150,6 +645,51 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *             .ids(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDbClustersResult> getDbClustersPlain(GetDbClustersPlainArgs args) {
@@ -162,6 +702,51 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *             .ids(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDbClustersResult> getDbClusters(GetDbClustersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:clickhouse/getDbClusters:getDbClusters", TypeShape.of(GetDbClustersResult.class), args, Utilities.withVersion(options));
@@ -172,6 +757,51 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.DbCluster;
+     * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetDbClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+     *             .category(&#34;Basic&#34;)
+     *             .dbClusterClass(&#34;S8&#34;)
+     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *             .dbNodeGroupCount(&#34;1&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .dbNodeStorage(&#34;500&#34;)
+     *             .storageType(&#34;cloud_essd&#34;)
+     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .build());
+     * 
+     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *             .ids(defaultDbCluster.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDbClustersResult> getDbClustersPlain(GetDbClustersPlainArgs args, InvokeOptions options) {
@@ -184,6 +814,40 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default1 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRegionsResult> getRegions() {
         return getRegions(GetRegionsArgs.Empty, InvokeOptions.Empty);
@@ -194,6 +858,40 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default1 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -206,6 +904,40 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default1 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
         return getRegions(args, InvokeOptions.Empty);
@@ -216,6 +948,40 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default1 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -228,6 +994,40 @@ public final class ClickhouseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default1 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:clickhouse/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
@@ -238,6 +1038,40 @@ public final class ClickhouseFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default1 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {

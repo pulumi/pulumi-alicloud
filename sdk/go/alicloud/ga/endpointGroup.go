@@ -418,6 +418,86 @@ func (o EndpointGroupOutput) ToEndpointGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of the Global Accelerator instance to which the endpoint group will be added.
+func (o EndpointGroupOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The description of the endpoint group.
+func (o EndpointGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The endpointConfigurations of the endpoint group.
+func (o EndpointGroupOutput) EndpointConfigurations() EndpointGroupEndpointConfigurationArrayOutput {
+	return o.ApplyT(func(v *EndpointGroup) EndpointGroupEndpointConfigurationArrayOutput { return v.EndpointConfigurations }).(EndpointGroupEndpointConfigurationArrayOutput)
+}
+
+// The ID of the region where the endpoint group is deployed.
+func (o EndpointGroupOutput) EndpointGroupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.EndpointGroupRegion }).(pulumi.StringOutput)
+}
+
+// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+func (o EndpointGroupOutput) EndpointGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.EndpointGroupType }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+func (o EndpointGroupOutput) EndpointRequestProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.EndpointRequestProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The interval between two consecutive health checks. Unit: seconds.
+func (o EndpointGroupOutput) HealthCheckIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.IntPtrOutput { return v.HealthCheckIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The path specified as the destination of the targets for health checks.
+func (o EndpointGroupOutput) HealthCheckPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
+}
+
+// The port that is used for health checks.
+func (o EndpointGroupOutput) HealthCheckPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.IntPtrOutput { return v.HealthCheckPort }).(pulumi.IntPtrOutput)
+}
+
+// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+func (o EndpointGroupOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the listener that is associated with the endpoint group.
+func (o EndpointGroupOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The name of the endpoint group.
+func (o EndpointGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mapping between listening port and forwarding port of boarding point.
+func (o EndpointGroupOutput) PortOverrides() EndpointGroupPortOverridesPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) EndpointGroupPortOverridesPtrOutput { return v.PortOverrides }).(EndpointGroupPortOverridesPtrOutput)
+}
+
+// The status of the endpoint group.
+func (o EndpointGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+func (o EndpointGroupOutput) ThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.IntPtrOutput { return v.ThresholdCount }).(pulumi.IntPtrOutput)
+}
+
+// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+func (o EndpointGroupOutput) TrafficPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.IntPtrOutput { return v.TrafficPercentage }).(pulumi.IntPtrOutput)
+}
+
 type EndpointGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointGroupArrayOutput) ElementType() reflect.Type {

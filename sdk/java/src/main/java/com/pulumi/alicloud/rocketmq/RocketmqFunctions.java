@@ -29,6 +29,55 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-onsGroupDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .groupName(groupName)
+     *             .instanceId(defaultInstance.id())
+     *             .remark(&#34;dafault_ons_group_remark&#34;)
+     *             .build());
+     * 
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
+     *             .nameRegex(var_.group_id())
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult).applyValue(groupsDs -&gt; groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -40,6 +89,55 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-onsGroupDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .groupName(groupName)
+     *             .instanceId(defaultInstance.id())
+     *             .remark(&#34;dafault_ons_group_remark&#34;)
+     *             .build());
+     * 
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
+     *             .nameRegex(var_.group_id())
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult).applyValue(groupsDs -&gt; groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -51,6 +149,55 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-onsGroupDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .groupName(groupName)
+     *             .instanceId(defaultInstance.id())
+     *             .remark(&#34;dafault_ons_group_remark&#34;)
+     *             .build());
+     * 
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
+     *             .nameRegex(var_.group_id())
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult).applyValue(groupsDs -&gt; groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -62,6 +209,55 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-onsGroupDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .groupName(groupName)
+     *             .instanceId(defaultInstance.id())
+     *             .remark(&#34;dafault_ons_group_remark&#34;)
+     *             .build());
+     * 
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
+     *             .nameRegex(var_.group_id())
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult).applyValue(groupsDs -&gt; groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -73,6 +269,45 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.52.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(default_.id())
+     *             .nameRegex(default_.name())
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -84,6 +319,45 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.52.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(default_.id())
+     *             .nameRegex(default_.name())
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -95,6 +369,45 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.52.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(default_.id())
+     *             .nameRegex(default_.name())
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -106,6 +419,45 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.52.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(default_.id())
+     *             .nameRegex(default_.name())
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -117,6 +469,45 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.52.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(default_.id())
+     *             .nameRegex(default_.name())
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -128,6 +519,45 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.52.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(default_.id())
+     *             .nameRegex(default_.name())
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -141,6 +571,34 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -154,6 +612,34 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -167,6 +653,34 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -180,6 +694,34 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -193,6 +735,34 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -206,6 +776,34 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -217,6 +815,56 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Topic;
+     * import com.pulumi.alicloud.rocketmq.TopicArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *             .topicName(topic)
+     *             .instanceId(defaultInstance.id())
+     *             .messageType(0)
+     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .build());
+     * 
+     *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
+     *             .instanceId(defaultTopic.instanceId())
+     *             .nameRegex(topic)
+     *             .outputFile(&#34;topics.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args) {
@@ -228,6 +876,56 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Topic;
+     * import com.pulumi.alicloud.rocketmq.TopicArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *             .topicName(topic)
+     *             .instanceId(defaultInstance.id())
+     *             .messageType(0)
+     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .build());
+     * 
+     *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
+     *             .instanceId(defaultTopic.instanceId())
+     *             .nameRegex(topic)
+     *             .outputFile(&#34;topics.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args) {
@@ -239,6 +937,56 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Topic;
+     * import com.pulumi.alicloud.rocketmq.TopicArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *             .topicName(topic)
+     *             .instanceId(defaultInstance.id())
+     *             .messageType(0)
+     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .build());
+     * 
+     *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
+     *             .instanceId(defaultTopic.instanceId())
+     *             .nameRegex(topic)
+     *             .outputFile(&#34;topics.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOptions options) {
@@ -250,6 +998,56 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Topic;
+     * import com.pulumi.alicloud.rocketmq.TopicArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .instanceName(name)
+     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .build());
+     * 
+     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *             .topicName(topic)
+     *             .instanceId(defaultInstance.id())
+     *             .messageType(0)
+     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .build());
+     * 
+     *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
+     *             .instanceId(defaultTopic.instanceId())
+     *             .nameRegex(topic)
+     *             .outputFile(&#34;topics.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args, InvokeOptions options) {

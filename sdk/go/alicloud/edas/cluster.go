@@ -247,6 +247,31 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The name of the cluster that you want to create.
+func (o ClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
+func (o ClusterOutput) ClusterType() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ClusterType }).(pulumi.IntOutput)
+}
+
+// The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
+func (o ClusterOutput) LogicalRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.LogicalRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
+func (o ClusterOutput) NetworkMode() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.NetworkMode }).(pulumi.IntOutput)
+}
+
+// The ID of the Virtual Private Cloud (VPC) for the cluster.
+func (o ClusterOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {

@@ -463,6 +463,108 @@ func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupOutputWithContext(ct
 	return o
 }
 
+// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
+func (o AutoProvisioningGroupOutput) AutoProvisioningGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringOutput { return v.AutoProvisioningGroupName }).(pulumi.StringOutput)
+}
+
+// The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
+func (o AutoProvisioningGroupOutput) AutoProvisioningGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.AutoProvisioningGroupType }).(pulumi.StringPtrOutput)
+}
+
+// The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
+func (o AutoProvisioningGroupOutput) DefaultTargetCapacityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.DefaultTargetCapacityType }).(pulumi.StringPtrOutput)
+}
+
+// The description of the auto provisioning group.
+func (o AutoProvisioningGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
+func (o AutoProvisioningGroupOutput) ExcessCapacityTerminationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.ExcessCapacityTerminationPolicy }).(pulumi.StringPtrOutput)
+}
+
+// DataDisk mappings to attach to ecs instance. See Block config below for details.
+func (o AutoProvisioningGroupOutput) LaunchTemplateConfigs() AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
+		return v.LaunchTemplateConfigs
+	}).(AutoProvisioningGroupLaunchTemplateConfigArrayOutput)
+}
+
+// The ID of the instance launch template associated with the auto provisioning group.
+func (o AutoProvisioningGroupOutput) LaunchTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringOutput { return v.LaunchTemplateId }).(pulumi.StringOutput)
+}
+
+// The version of the instance launch template associated with the auto provisioning group.
+func (o AutoProvisioningGroupOutput) LaunchTemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringOutput { return v.LaunchTemplateVersion }).(pulumi.StringOutput)
+}
+
+// The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
+func (o AutoProvisioningGroupOutput) MaxSpotPrice() pulumi.Float64Output {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.Float64Output { return v.MaxSpotPrice }).(pulumi.Float64Output)
+}
+
+// The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
+func (o AutoProvisioningGroupOutput) PayAsYouGoAllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.PayAsYouGoAllocationStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The target capacity of pay-as-you-go instances in the auto provisioning group.
+func (o AutoProvisioningGroupOutput) PayAsYouGoTargetCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.PayAsYouGoTargetCapacity }).(pulumi.StringPtrOutput)
+}
+
+// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
+func (o AutoProvisioningGroupOutput) SpotAllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.SpotAllocationStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+func (o AutoProvisioningGroupOutput) SpotInstanceInterruptionBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.SpotInstanceInterruptionBehavior }).(pulumi.StringPtrOutput)
+}
+
+// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
+func (o AutoProvisioningGroupOutput) SpotInstancePoolsToUseCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.IntOutput { return v.SpotInstancePoolsToUseCount }).(pulumi.IntOutput)
+}
+
+// The target capacity of preemptible instances in the auto provisioning group.
+func (o AutoProvisioningGroupOutput) SpotTargetCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.SpotTargetCapacity }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
+func (o AutoProvisioningGroupOutput) TerminateInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.BoolPtrOutput { return v.TerminateInstances }).(pulumi.BoolPtrOutput)
+}
+
+// The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
+func (o AutoProvisioningGroupOutput) TerminateInstancesWithExpiration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.BoolPtrOutput { return v.TerminateInstancesWithExpiration }).(pulumi.BoolPtrOutput)
+}
+
+// The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
+func (o AutoProvisioningGroupOutput) TotalTargetCapacity() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringOutput { return v.TotalTargetCapacity }).(pulumi.StringOutput)
+}
+
+// The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
+func (o AutoProvisioningGroupOutput) ValidFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringOutput { return v.ValidFrom }).(pulumi.StringOutput)
+}
+
+// The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
+func (o AutoProvisioningGroupOutput) ValidUntil() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringOutput { return v.ValidUntil }).(pulumi.StringOutput)
+}
+
 type AutoProvisioningGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AutoProvisioningGroupArrayOutput) ElementType() reflect.Type {

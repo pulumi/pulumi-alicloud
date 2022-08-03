@@ -49,7 +49,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = ecs.NewInstance(ctx, "backend", &ecs.InstanceArgs{
-// 			UserData: pulumi.String(fmt.Sprintf("%v%v", "config_service.sh --portrange=", ingressRulesDs.Rules[0].PortRange)),
+// 			UserData: pulumi.String(fmt.Sprintf("config_service.sh --portrange=%v", ingressRulesDs.Rules[0].PortRange)),
 // 		})
 // 		if err != nil {
 // 			return err

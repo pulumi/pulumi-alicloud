@@ -95,11 +95,15 @@ type InstanceAllowedIpAttachment struct {
 
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp pulumi.StringOutput `pulumi:"allowedIp"`
-	// The type of whitelist. Valid Value: `vpc`.
+	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+	// - `vpc`: IP address whitelist for VPC access.
+	// - `internet`: IP address whitelist for Internet access.
 	AllowedType pulumi.StringOutput `pulumi:"allowedType"`
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The Port range.  Valid Value: `9092/9092`.
+	// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+	// - `9092/9092`: port range for a VPC whitelist.
+	// - `9093/9093`: port range for an Internet whitelist.
 	PortRange pulumi.StringOutput `pulumi:"portRange"`
 }
 
@@ -146,22 +150,30 @@ func GetInstanceAllowedIpAttachment(ctx *pulumi.Context,
 type instanceAllowedIpAttachmentState struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp *string `pulumi:"allowedIp"`
-	// The type of whitelist. Valid Value: `vpc`.
+	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+	// - `vpc`: IP address whitelist for VPC access.
+	// - `internet`: IP address whitelist for Internet access.
 	AllowedType *string `pulumi:"allowedType"`
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The Port range.  Valid Value: `9092/9092`.
+	// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+	// - `9092/9092`: port range for a VPC whitelist.
+	// - `9093/9093`: port range for an Internet whitelist.
 	PortRange *string `pulumi:"portRange"`
 }
 
 type InstanceAllowedIpAttachmentState struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp pulumi.StringPtrInput
-	// The type of whitelist. Valid Value: `vpc`.
+	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+	// - `vpc`: IP address whitelist for VPC access.
+	// - `internet`: IP address whitelist for Internet access.
 	AllowedType pulumi.StringPtrInput
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
-	// The Port range.  Valid Value: `9092/9092`.
+	// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+	// - `9092/9092`: port range for a VPC whitelist.
+	// - `9093/9093`: port range for an Internet whitelist.
 	PortRange pulumi.StringPtrInput
 }
 
@@ -172,11 +184,15 @@ func (InstanceAllowedIpAttachmentState) ElementType() reflect.Type {
 type instanceAllowedIpAttachmentArgs struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp string `pulumi:"allowedIp"`
-	// The type of whitelist. Valid Value: `vpc`.
+	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+	// - `vpc`: IP address whitelist for VPC access.
+	// - `internet`: IP address whitelist for Internet access.
 	AllowedType string `pulumi:"allowedType"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The Port range.  Valid Value: `9092/9092`.
+	// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+	// - `9092/9092`: port range for a VPC whitelist.
+	// - `9093/9093`: port range for an Internet whitelist.
 	PortRange string `pulumi:"portRange"`
 }
 
@@ -184,11 +200,15 @@ type instanceAllowedIpAttachmentArgs struct {
 type InstanceAllowedIpAttachmentArgs struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp pulumi.StringInput
-	// The type of whitelist. Valid Value: `vpc`.
+	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+	// - `vpc`: IP address whitelist for VPC access.
+	// - `internet`: IP address whitelist for Internet access.
 	AllowedType pulumi.StringInput
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
-	// The Port range.  Valid Value: `9092/9092`.
+	// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+	// - `9092/9092`: port range for a VPC whitelist.
+	// - `9093/9093`: port range for an Internet whitelist.
 	PortRange pulumi.StringInput
 }
 
@@ -277,6 +297,30 @@ func (o InstanceAllowedIpAttachmentOutput) ToInstanceAllowedIpAttachmentOutput()
 
 func (o InstanceAllowedIpAttachmentOutput) ToInstanceAllowedIpAttachmentOutputWithContext(ctx context.Context) InstanceAllowedIpAttachmentOutput {
 	return o
+}
+
+// The allowed ip. It can be a CIDR block.
+func (o InstanceAllowedIpAttachmentOutput) AllowedIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAllowedIpAttachment) pulumi.StringOutput { return v.AllowedIp }).(pulumi.StringOutput)
+}
+
+// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+// - `vpc`: IP address whitelist for VPC access.
+// - `internet`: IP address whitelist for Internet access.
+func (o InstanceAllowedIpAttachmentOutput) AllowedType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAllowedIpAttachment) pulumi.StringOutput { return v.AllowedType }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o InstanceAllowedIpAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAllowedIpAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
+// - `9092/9092`: port range for a VPC whitelist.
+// - `9093/9093`: port range for an Internet whitelist.
+func (o InstanceAllowedIpAttachmentOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAllowedIpAttachment) pulumi.StringOutput { return v.PortRange }).(pulumi.StringOutput)
 }
 
 type InstanceAllowedIpAttachmentArrayOutput struct{ *pulumi.OutputState }

@@ -299,6 +299,41 @@ func (o RouteServiceOutput) ToRouteServiceOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The region of the network instances that access the cloud services.
+func (o RouteServiceOutput) AccessRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteService) pulumi.StringOutput { return v.AccessRegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN instance.
+func (o RouteServiceOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteService) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The description of the cloud service.
+func (o RouteServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The domain name or IP address of the cloud service.
+func (o RouteServiceOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteService) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// The region of the cloud service.
+func (o RouteServiceOutput) HostRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteService) pulumi.StringOutput { return v.HostRegionId }).(pulumi.StringOutput)
+}
+
+// The VPC associated with the cloud service.
+func (o RouteServiceOutput) HostVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteService) pulumi.StringOutput { return v.HostVpcId }).(pulumi.StringOutput)
+}
+
+// The status of the cloud service.
+func (o RouteServiceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteService) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type RouteServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteServiceArrayOutput) ElementType() reflect.Type {

@@ -264,6 +264,36 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// Certificate file content.
+func (o CertificateOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
+func (o CertificateOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// Certificate file name.
+func (o CertificateOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// The domain that you want to add to WAF.
+func (o CertificateOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the WAF instance.
+func (o CertificateOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The private key.
+func (o CertificateOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
 type CertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (CertificateArrayOutput) ElementType() reflect.Type {

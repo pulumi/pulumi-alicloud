@@ -14,6 +14,8 @@ export * from "./getAlarmContacts";
 export * from "./getDynamicTagGroups";
 export * from "./getGroupMetricRules";
 export * from "./getHybridMonitorDatas";
+export * from "./getHybridMonitorFcTasks";
+export * from "./getHybridMonitorSlsTasks";
 export * from "./getMetricRuleTemplates";
 export * from "./getMonitorGroupInstances";
 export * from "./getMonitorGroups";
@@ -21,6 +23,8 @@ export * from "./getNamespaces";
 export * from "./getService";
 export * from "./getSlsGroups";
 export * from "./groupMetricRule";
+export * from "./hybridMonitorFcTask";
+export * from "./hybridMonitorSlsTask";
 export * from "./metricRuleTemplate";
 export * from "./monitorGroup";
 export * from "./monitorGroupInstances";
@@ -34,6 +38,8 @@ import { AlarmContact } from "./alarmContact";
 import { AlarmContactGroup } from "./alarmContactGroup";
 import { DynamicTagGroup } from "./dynamicTagGroup";
 import { GroupMetricRule } from "./groupMetricRule";
+import { HybridMonitorFcTask } from "./hybridMonitorFcTask";
+import { HybridMonitorSlsTask } from "./hybridMonitorSlsTask";
 import { MetricRuleTemplate } from "./metricRuleTemplate";
 import { MonitorGroup } from "./monitorGroup";
 import { MonitorGroupInstances } from "./monitorGroupInstances";
@@ -55,6 +61,10 @@ const _module = {
                 return new DynamicTagGroup(name, <any>undefined, { urn })
             case "alicloud:cms/groupMetricRule:GroupMetricRule":
                 return new GroupMetricRule(name, <any>undefined, { urn })
+            case "alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask":
+                return new HybridMonitorFcTask(name, <any>undefined, { urn })
+            case "alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask":
+                return new HybridMonitorSlsTask(name, <any>undefined, { urn })
             case "alicloud:cms/metricRuleTemplate:MetricRuleTemplate":
                 return new MetricRuleTemplate(name, <any>undefined, { urn })
             case "alicloud:cms/monitorGroup:MonitorGroup":
@@ -77,6 +87,8 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/dynamicTagGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorFcTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorSlsTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/metricRuleTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroupInstances", _module)

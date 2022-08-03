@@ -272,6 +272,36 @@ func (o RamDirectoryOutput) ToRamDirectoryOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
+func (o RamDirectoryOutput) DesktopAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RamDirectory) pulumi.StringOutput { return v.DesktopAccessType }).(pulumi.StringOutput)
+}
+
+// Whether to enable public network access.
+func (o RamDirectoryOutput) EnableAdminAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RamDirectory) pulumi.BoolOutput { return v.EnableAdminAccess }).(pulumi.BoolOutput)
+}
+
+// Whether to grant local administrator rights to users who use cloud desktops.
+func (o RamDirectoryOutput) EnableInternetAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RamDirectory) pulumi.BoolOutput { return v.EnableInternetAccess }).(pulumi.BoolOutput)
+}
+
+// The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+func (o RamDirectoryOutput) RamDirectoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RamDirectory) pulumi.StringOutput { return v.RamDirectoryName }).(pulumi.StringOutput)
+}
+
+// The status of directory.
+func (o RamDirectoryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RamDirectory) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of VSwitch IDs in the directory.
+func (o RamDirectoryOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RamDirectory) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
 type RamDirectoryArrayOutput struct{ *pulumi.OutputState }
 
 func (RamDirectoryArrayOutput) ElementType() reflect.Type {

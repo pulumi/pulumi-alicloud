@@ -249,6 +249,44 @@ func (o DeliveryChannelOutput) ToDeliveryChannelOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+func (o DeliveryChannelOutput) DeliveryChannelAssumeRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryChannel) pulumi.StringOutput { return v.DeliveryChannelAssumeRoleArn }).(pulumi.StringOutput)
+}
+
+// The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
+func (o DeliveryChannelOutput) DeliveryChannelCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryChannel) pulumi.StringOutput { return v.DeliveryChannelCondition }).(pulumi.StringOutput)
+}
+
+// The name of the delivery channel.
+func (o DeliveryChannelOutput) DeliveryChannelName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryChannel) pulumi.StringOutput { return v.DeliveryChannelName }).(pulumi.StringOutput)
+}
+
+// - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+// - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
+// - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
+// - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+func (o DeliveryChannelOutput) DeliveryChannelTargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryChannel) pulumi.StringOutput { return v.DeliveryChannelTargetArn }).(pulumi.StringOutput)
+}
+
+// - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+func (o DeliveryChannelOutput) DeliveryChannelType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryChannel) pulumi.StringOutput { return v.DeliveryChannelType }).(pulumi.StringOutput)
+}
+
+// The description of the delivery method.
+func (o DeliveryChannelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryChannel) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
+func (o DeliveryChannelOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *DeliveryChannel) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
 type DeliveryChannelArrayOutput struct{ *pulumi.OutputState }
 
 func (DeliveryChannelArrayOutput) ElementType() reflect.Type {

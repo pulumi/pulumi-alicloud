@@ -201,6 +201,26 @@ func (o TransitRouterRouteTablePropagationOutput) ToTransitRouterRouteTablePropa
 	return o
 }
 
+// The dry run.
+func (o TransitRouterRouteTablePropagationOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTablePropagation) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the network.
+func (o TransitRouterRouteTablePropagationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTablePropagation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID the transit router attachment.
+func (o TransitRouterRouteTablePropagationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTablePropagation) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// The ID of the transit router route table.
+func (o TransitRouterRouteTablePropagationOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTablePropagation) pulumi.StringOutput { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
+}
+
 type TransitRouterRouteTablePropagationArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTablePropagationArrayOutput) ElementType() reflect.Type {

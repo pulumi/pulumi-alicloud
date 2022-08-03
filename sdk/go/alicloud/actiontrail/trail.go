@@ -349,6 +349,77 @@ func (o TrailOutput) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 	return o
 }
 
+// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+func (o TrailOutput) EventRw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.EventRw }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+func (o TrailOutput) IsOrganizationTrail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.BoolPtrOutput { return v.IsOrganizationTrail }).(pulumi.BoolPtrOutput)
+}
+
+// Field `mnsTopicArn` has been deprecated from version 1.118.0.
+//
+// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
+func (o TrailOutput) MnsTopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.MnsTopicArn }).(pulumi.StringPtrOutput)
+}
+
+// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
+func (o TrailOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+func (o TrailOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.OssBucketName }).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the specified OSS bucket name. This parameter can be left empty.
+func (o TrailOutput) OssKeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.OssKeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The unique ARN of the Oss role.
+func (o TrailOutput) OssWriteRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.OssWriteRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Field `name` has been deprecated from version 1.118.0.
+//
+// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
+func (o TrailOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
+func (o TrailOutput) SlsProjectArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.SlsProjectArn }).(pulumi.StringPtrOutput)
+}
+
+// The unique ARN of the Log Service role.
+func (o TrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
+}
+
+// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
+func (o TrailOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The name of the trail to be created, which must be unique for an account.
+func (o TrailOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.TrailName }).(pulumi.StringOutput)
+}
+
+// The regions to which the trail is applied. Default to `All`.
+func (o TrailOutput) TrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.TrailRegion }).(pulumi.StringOutput)
+}
+
 type TrailArrayOutput struct{ *pulumi.OutputState }
 
 func (TrailArrayOutput) ElementType() reflect.Type {

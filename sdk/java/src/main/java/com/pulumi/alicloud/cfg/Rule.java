@@ -29,6 +29,41 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** If you use custom rules, you need to create your own rule functions in advance. Please refer to the link for [Create a custom rule.](https://www.alibabacloud.com/help/en/doc-detail/127405.htm)
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cfg.Rule;
+ * import com.pulumi.alicloud.cfg.RuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Rule(&#34;example&#34;, RuleArgs.builder()        
+ *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
+ *             .description(&#34;ecs instances in vpc&#34;)
+ *             .inputParameters(Map.of(&#34;vpcIds&#34;, &#34;vpc-uf6gksw4ctjd******&#34;))
+ *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .riskLevel(1)
+ *             .ruleName(&#34;instances-in-vpc&#34;)
+ *             .sourceIdentifier(&#34;ecs-instances-in-vpc&#34;)
+ *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

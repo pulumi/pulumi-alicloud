@@ -304,6 +304,41 @@ func (o PbrRouteEntryOutput) ToPbrRouteEntryOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The next hop of the policy-based route.
+func (o PbrRouteEntryOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.StringOutput { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// Whether to issue the destination route to the VPC.
+func (o PbrRouteEntryOutput) PublishVpc() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.BoolOutput { return v.PublishVpc }).(pulumi.BoolOutput)
+}
+
+// The destination CIDR block of the policy-based route.
+func (o PbrRouteEntryOutput) RouteDest() pulumi.StringOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.StringOutput { return v.RouteDest }).(pulumi.StringOutput)
+}
+
+// The source CIDR block of the policy-based route.
+func (o PbrRouteEntryOutput) RouteSource() pulumi.StringOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.StringOutput { return v.RouteSource }).(pulumi.StringOutput)
+}
+
+// The status of the vpn pbr route entry.
+func (o PbrRouteEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the vpn gateway.
+func (o PbrRouteEntryOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
+}
+
+// The weight of the policy-based route. Valid values: 0 and 100.
+func (o PbrRouteEntryOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *PbrRouteEntry) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type PbrRouteEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (PbrRouteEntryArrayOutput) ElementType() reflect.Type {

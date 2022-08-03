@@ -437,6 +437,109 @@ func (o AdConnectorOfficeSiteOutput) ToAdConnectorOfficeSiteOutputWithContext(ct
 	return o
 }
 
+// The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
+func (o AdConnectorOfficeSiteOutput) AdConnectorOfficeSiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringOutput { return v.AdConnectorOfficeSiteName }).(pulumi.StringOutput)
+}
+
+// The ad hostname.
+func (o AdConnectorOfficeSiteOutput) AdHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringPtrOutput { return v.AdHostname }).(pulumi.StringPtrOutput)
+}
+
+// The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
+func (o AdConnectorOfficeSiteOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the CEN instance.
+func (o AdConnectorOfficeSiteOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The cen owner id.
+func (o AdConnectorOfficeSiteOutput) CenOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringPtrOutput { return v.CenOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+func (o AdConnectorOfficeSiteOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+// - `INTERNET`: connects clients to cloud desktops only over the Internet.
+// - `VPC`: connects clients to cloud desktops only over a VPC.
+// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
+func (o AdConnectorOfficeSiteOutput) DesktopAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringOutput { return v.DesktopAccessType }).(pulumi.StringOutput)
+}
+
+// The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
+func (o AdConnectorOfficeSiteOutput) DnsAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringArrayOutput { return v.DnsAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The domain name of the enterprise AD system. You can register each domain name only once.
+func (o AdConnectorOfficeSiteOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The password of the domain administrator. The password can be up to 64 characters in length.
+func (o AdConnectorOfficeSiteOutput) DomainPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringPtrOutput { return v.DomainPassword }).(pulumi.StringPtrOutput)
+}
+
+// The username of the domain administrator. The username can be up to 64 characters in length.
+func (o AdConnectorOfficeSiteOutput) DomainUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringPtrOutput { return v.DomainUserName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
+func (o AdConnectorOfficeSiteOutput) EnableAdminAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.BoolOutput { return v.EnableAdminAccess }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to enable Internet access.
+func (o AdConnectorOfficeSiteOutput) EnableInternetAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.BoolOutput { return v.EnableInternetAccess }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to enable multi-factor authentication (MFA).
+func (o AdConnectorOfficeSiteOutput) MfaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.BoolPtrOutput { return v.MfaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The protocol type. Valid values: `ASP`, `HDX`.
+func (o AdConnectorOfficeSiteOutput) ProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringPtrOutput { return v.ProtocolType }).(pulumi.StringPtrOutput)
+}
+
+// The AD Connector specifications. Valid values: `1`, `2`.
+func (o AdConnectorOfficeSiteOutput) Specification() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.IntPtrOutput { return v.Specification }).(pulumi.IntPtrOutput)
+}
+
+// The resource State.
+func (o AdConnectorOfficeSiteOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+func (o AdConnectorOfficeSiteOutput) SubDomainDnsAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringArrayOutput { return v.SubDomainDnsAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The domain name of the enterprise AD subdomain.
+func (o AdConnectorOfficeSiteOutput) SubDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringPtrOutput { return v.SubDomainName }).(pulumi.StringPtrOutput)
+}
+
+// The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
+func (o AdConnectorOfficeSiteOutput) VerifyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringPtrOutput { return v.VerifyCode }).(pulumi.StringPtrOutput)
+}
+
 type AdConnectorOfficeSiteArrayOutput struct{ *pulumi.OutputState }
 
 func (AdConnectorOfficeSiteArrayOutput) ElementType() reflect.Type {

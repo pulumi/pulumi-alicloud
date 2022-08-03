@@ -300,6 +300,85 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 	return o
 }
 
+// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+func (o NetworkOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The VPC description. Defaults to null.
+func (o NetworkOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+func (o NetworkOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+func (o NetworkOutput) EnableIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+func (o NetworkOutput) Ipv6CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+func (o NetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the VPC belongs.
+func (o NetworkOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The route table ID of the router created by default on VPC creation.
+func (o NetworkOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// The ID of the router created by default on VPC creation.
+func (o NetworkOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+//
+// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
+func (o NetworkOutput) RouterTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterTableId }).(pulumi.StringOutput)
+}
+
+// The secondary CIDR blocks for the VPC.
+func (o NetworkOutput) SecondaryCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.SecondaryCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The status of the VPC.
+func (o NetworkOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o NetworkOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Network) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The user cidrs of the VPC.
+func (o NetworkOutput) UserCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.UserCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The name of the VPC. Defaults to null.
+func (o NetworkOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.VpcName }).(pulumi.StringOutput)
+}
+
 type NetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkArrayOutput) ElementType() reflect.Type {

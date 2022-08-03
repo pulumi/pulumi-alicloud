@@ -19,6 +19,53 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+ *             .description(&#34;this is a role test.&#34;)
+ *             .document(&#34;&#34;&#34;
+ *   {
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *         &#34;Effect&#34;: &#34;Allow&#34;,
+ *         &#34;Principal&#34;: {
+ *           &#34;Service&#34;: [
+ *             &#34;apigateway.aliyuncs.com&#34;, 
+ *             &#34;ecs.aliyuncs.com&#34;
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

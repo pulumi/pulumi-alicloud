@@ -367,6 +367,63 @@ func (o ForwardEntryOutput) ToForwardEntryOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+func (o ForwardEntryOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+// The external port, valid value is 1~65535|any.
+func (o ForwardEntryOutput) ExternalPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ExternalPort }).(pulumi.StringOutput)
+}
+
+// The id of the forward entry on the server.
+func (o ForwardEntryOutput) ForwardEntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ForwardEntryId }).(pulumi.StringOutput)
+}
+
+// The name of forward entry.
+func (o ForwardEntryOutput) ForwardEntryName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ForwardEntryName }).(pulumi.StringOutput)
+}
+
+// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+func (o ForwardEntryOutput) ForwardTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.ForwardTableId }).(pulumi.StringOutput)
+}
+
+// The internal ip, must a private ip.
+func (o ForwardEntryOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+// The internal port, valid value is 1~65535|any.
+func (o ForwardEntryOutput) InternalPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.InternalPort }).(pulumi.StringOutput)
+}
+
+// The ip protocol, valid value is tcp|udp|any.
+func (o ForwardEntryOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
+func (o ForwardEntryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether to remove limits on the port range. Default value is `false`.
+func (o ForwardEntryOutput) PortBreak() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.BoolPtrOutput { return v.PortBreak }).(pulumi.BoolPtrOutput)
+}
+
+// (Available in 1.119.1+) The status of forward entry.
+func (o ForwardEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ForwardEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (ForwardEntryArrayOutput) ElementType() reflect.Type {

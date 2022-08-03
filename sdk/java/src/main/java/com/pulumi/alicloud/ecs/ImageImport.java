@@ -26,6 +26,45 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.69.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.ImageImport;
+ * import com.pulumi.alicloud.ecs.ImageImportArgs;
+ * import com.pulumi.alicloud.ecs.inputs.ImageImportDiskDeviceMappingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new ImageImport(&#34;this&#34;, ImageImportArgs.builder()        
+ *             .architecture(&#34;x86_64&#34;)
+ *             .description(&#34;test import image&#34;)
+ *             .diskDeviceMappings(ImageImportDiskDeviceMappingArgs.builder()
+ *                 .diskImageSize(5)
+ *                 .ossBucket(&#34;testimportimage&#34;)
+ *                 .ossObject(&#34;root.img&#34;)
+ *                 .build())
+ *             .imageName(&#34;test-import-image&#34;)
+ *             .licenseType(&#34;Auto&#34;)
+ *             .osType(&#34;linux&#34;)
+ *             .platform(&#34;Ubuntu&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Attributes Reference0
  * 
  *  The following attributes are exported:

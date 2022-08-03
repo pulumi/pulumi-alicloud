@@ -233,6 +233,31 @@ func (o SamlProviderOutput) ToSamlProviderOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Alibaba Cloud Resource Name (ARN) of the IdP.
+func (o SamlProviderOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The description of SAML Provider.
+func (o SamlProviderOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlProvider) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+func (o SamlProviderOutput) EncodedsamlMetadataDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlProvider) pulumi.StringPtrOutput { return v.EncodedsamlMetadataDocument }).(pulumi.StringPtrOutput)
+}
+
+// The name of SAML Provider.
+func (o SamlProviderOutput) SamlProviderName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.SamlProviderName }).(pulumi.StringOutput)
+}
+
+// The update time.
+func (o SamlProviderOutput) UpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.UpdateDate }).(pulumi.StringOutput)
+}
+
 type SamlProviderArrayOutput struct{ *pulumi.OutputState }
 
 func (SamlProviderArrayOutput) ElementType() reflect.Type {

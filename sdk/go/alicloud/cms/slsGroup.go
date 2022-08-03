@@ -236,6 +236,21 @@ func (o SlsGroupOutput) ToSlsGroupOutputWithContext(ctx context.Context) SlsGrou
 	return o
 }
 
+// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block slsGroupConfig`.
+func (o SlsGroupOutput) SlsGroupConfigs() SlsGroupSlsGroupConfigArrayOutput {
+	return o.ApplyT(func(v *SlsGroup) SlsGroupSlsGroupConfigArrayOutput { return v.SlsGroupConfigs }).(SlsGroupSlsGroupConfigArrayOutput)
+}
+
+// The Description of the Sls Group.
+func (o SlsGroupOutput) SlsGroupDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsGroup) pulumi.StringPtrOutput { return v.SlsGroupDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
+func (o SlsGroupOutput) SlsGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlsGroup) pulumi.StringOutput { return v.SlsGroupName }).(pulumi.StringOutput)
+}
+
 type SlsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (SlsGroupArrayOutput) ElementType() reflect.Type {

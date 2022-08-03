@@ -189,6 +189,11 @@ func (o ServiceLinkedRoleOutput) ToServiceLinkedRoleOutputWithContext(ctx contex
 	return o
 }
 
+// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
+func (o ServiceLinkedRoleOutput) Status() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.BoolOutput { return v.Status }).(pulumi.BoolOutput)
+}
+
 type ServiceLinkedRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceLinkedRoleArrayOutput) ElementType() reflect.Type {

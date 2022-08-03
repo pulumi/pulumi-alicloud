@@ -24,6 +24,37 @@ public final class TsdbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -34,6 +65,37 @@ public final class TsdbFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -46,6 +108,37 @@ public final class TsdbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -56,6 +149,37 @@ public final class TsdbFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -68,6 +192,37 @@ public final class TsdbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:tsdb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -78,6 +233,37 @@ public final class TsdbFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -90,6 +276,35 @@ public final class TsdbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -100,6 +315,35 @@ public final class TsdbFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -112,6 +356,35 @@ public final class TsdbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -122,6 +395,35 @@ public final class TsdbFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -134,6 +436,35 @@ public final class TsdbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:tsdb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -144,6 +475,35 @@ public final class TsdbFunctions {
      * &gt; **NOTE:** Available in v1.112.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tsdb.TsdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = TsdbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

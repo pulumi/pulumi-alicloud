@@ -82,7 +82,7 @@ import (
 // 			EngineVersion:      defaultInstance.EngineVersion,
 // 			InstanceType:       defaultInstance.InstanceType,
 // 			InstanceStorage:    pulumi.Int(30),
-// 			InstanceName:       pulumi.String(fmt.Sprintf("%v%v", name, "ro")),
+// 			InstanceName:       pulumi.String(fmt.Sprintf("%vro", name)),
 // 			VswitchId:          defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
@@ -685,6 +685,183 @@ func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutpu
 
 func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput {
 	return o
+}
+
+// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+// - cert
+// - perfer
+// - verify-ca
+// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+func (o ReadOnlyInstanceOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
+}
+
+// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
+// - aliyun: a cloud certificate
+// - custom: a custom certificate
+func (o ReadOnlyInstanceOutput) CaType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.CaType }).(pulumi.StringOutput)
+}
+
+// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+func (o ReadOnlyInstanceOutput) ClientCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.ClientCaCert }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
+// - 1: enables the public key
+// - 0: disables the public key
+func (o ReadOnlyInstanceOutput) ClientCaEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.IntPtrOutput { return v.ClientCaEnabled }).(pulumi.IntPtrOutput)
+}
+
+// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+func (o ReadOnlyInstanceOutput) ClientCertRevocationList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.ClientCertRevocationList }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+// - 1: enables the CRL
+// - 0: disables the CRL
+func (o ReadOnlyInstanceOutput) ClientCrlEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.IntPtrOutput { return v.ClientCrlEnabled }).(pulumi.IntPtrOutput)
+}
+
+// RDS database connection string.
+func (o ReadOnlyInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The switch of delete protection. Valid values:
+// - true: delete protect.
+// - false: no delete protect.
+func (o ReadOnlyInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Database type.
+func (o ReadOnlyInstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+func (o ReadOnlyInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Set it to true to make some parameter efficient when modifying them. Default to false.
+func (o ReadOnlyInstanceOutput) ForceRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.ForceRestart }).(pulumi.BoolPtrOutput)
+}
+
+// The name of DB instance. It a string of 2 to 256 characters.
+func (o ReadOnlyInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+func (o ReadOnlyInstanceOutput) InstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.IntOutput { return v.InstanceStorage }).(pulumi.IntOutput)
+}
+
+// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+func (o ReadOnlyInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// ID of the master instance.
+func (o ReadOnlyInstanceOutput) MasterDbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.MasterDbInstanceId }).(pulumi.StringOutput)
+}
+
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+func (o ReadOnlyInstanceOutput) Parameters() ReadOnlyInstanceParameterArrayOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) ReadOnlyInstanceParameterArrayOutput { return v.Parameters }).(ReadOnlyInstanceParameterArrayOutput)
+}
+
+// RDS database connection port.
+func (o ReadOnlyInstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+// - cert
+// - perfer
+// - verify-ca
+// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+func (o ReadOnlyInstanceOutput) ReplicationAcl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.ReplicationAcl }).(pulumi.StringOutput)
+}
+
+// The ID of resource group which the DB read-only instance belongs.
+func (o ReadOnlyInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+func (o ReadOnlyInstanceOutput) ServerCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.ServerCert }).(pulumi.StringOutput)
+}
+
+// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+func (o ReadOnlyInstanceOutput) ServerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.ServerKey }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable or disable SSL encryption. Valid values:
+// - 1: enables SSL encryption
+// - 0: disables SSL encryption
+func (o ReadOnlyInstanceOutput) SslEnabled() pulumi.IntOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.IntOutput { return v.SslEnabled }).(pulumi.IntOutput)
+}
+
+// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+func (o ReadOnlyInstanceOutput) SwitchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.SwitchTime }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o ReadOnlyInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+// - rds: The instance runs RDS Basic or High-availability Edition.
+// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+func (o ReadOnlyInstanceOutput) TargetMinorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.TargetMinorVersion }).(pulumi.StringOutput)
+}
+
+// Whether to upgrade a minor version of the kernel. Valid values:
+// - true: upgrade
+// - false: not to upgrade
+func (o ReadOnlyInstanceOutput) UpgradeDbInstanceKernelVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.UpgradeDbInstanceKernelVersion }).(pulumi.BoolPtrOutput)
+}
+
+// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+// - Immediate: The minor engine version is immediately updated.
+// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+func (o ReadOnlyInstanceOutput) UpgradeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.UpgradeTime }).(pulumi.StringPtrOutput)
+}
+
+// The virtual switch ID to launch DB instances in one VPC.
+func (o ReadOnlyInstanceOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the DB instance.
+func (o ReadOnlyInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ReadOnlyInstanceArrayOutput struct{ *pulumi.OutputState }

@@ -204,6 +204,31 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Cluster backup retention days, Fixed for 7 days, not modified.
+func (o BackupPolicyOutput) BackupRetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupRetentionPeriod }).(pulumi.StringOutput)
+}
+
+// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+func (o BackupPolicyOutput) BackupRetentionPolicyOnClusterDeletion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupRetentionPolicyOnClusterDeletion }).(pulumi.StringOutput)
+}
+
+// The Id of cluster that can run database.
+func (o BackupPolicyOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
+func (o BackupPolicyOutput) PreferredBackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.PreferredBackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+func (o BackupPolicyOutput) PreferredBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringPtrOutput { return v.PreferredBackupTime }).(pulumi.StringPtrOutput)
+}
+
 type BackupPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyArrayOutput) ElementType() reflect.Type {

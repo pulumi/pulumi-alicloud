@@ -379,6 +379,101 @@ func (o ChangeSetOutput) ToChangeSetOutputWithContext(ctx context.Context) Chang
 	return o
 }
 
+// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+func (o ChangeSetOutput) ChangeSetName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringOutput { return v.ChangeSetName }).(pulumi.StringOutput)
+}
+
+// The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
+func (o ChangeSetOutput) ChangeSetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.ChangeSetType }).(pulumi.StringPtrOutput)
+}
+
+// The description of the change set. The description can be up to 1,024 bytes in length.
+func (o ChangeSetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+func (o ChangeSetOutput) DisableRollback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.BoolPtrOutput { return v.DisableRollback }).(pulumi.BoolPtrOutput)
+}
+
+// The notification urls.
+func (o ChangeSetOutput) NotificationUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringArrayOutput { return v.NotificationUrls }).(pulumi.StringArrayOutput)
+}
+
+// Parameters.
+func (o ChangeSetOutput) Parameters() ChangeSetParameterArrayOutput {
+	return o.ApplyT(func(v *ChangeSet) ChangeSetParameterArrayOutput { return v.Parameters }).(ChangeSetParameterArrayOutput)
+}
+
+// The ram role name.
+func (o ChangeSetOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The replacement option.
+func (o ChangeSetOutput) ReplacementOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.ReplacementOption }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+func (o ChangeSetOutput) StackId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringOutput { return v.StackId }).(pulumi.StringOutput)
+}
+
+// The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+func (o ChangeSetOutput) StackName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.StackName }).(pulumi.StringPtrOutput)
+}
+
+// The stack policy body.
+func (o ChangeSetOutput) StackPolicyBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.StackPolicyBody }).(pulumi.StringPtrOutput)
+}
+
+// The stack policy during update body.
+func (o ChangeSetOutput) StackPolicyDuringUpdateBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.StackPolicyDuringUpdateBody }).(pulumi.StringPtrOutput)
+}
+
+// The stack policy during update url.
+func (o ChangeSetOutput) StackPolicyDuringUpdateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.StackPolicyDuringUpdateUrl }).(pulumi.StringPtrOutput)
+}
+
+// The stack policy url.
+func (o ChangeSetOutput) StackPolicyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.StackPolicyUrl }).(pulumi.StringPtrOutput)
+}
+
+// The status of the change set.
+func (o ChangeSetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
+func (o ChangeSetOutput) TemplateBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.TemplateBody }).(pulumi.StringPtrOutput)
+}
+
+// The template url.
+func (o ChangeSetOutput) TemplateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.StringPtrOutput { return v.TemplateUrl }).(pulumi.StringPtrOutput)
+}
+
+// Timeout In Minutes.
+func (o ChangeSetOutput) TimeoutInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.IntOutput { return v.TimeoutInMinutes }).(pulumi.IntOutput)
+}
+
+// The use previous parameters.
+func (o ChangeSetOutput) UsePreviousParameters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ChangeSet) pulumi.BoolPtrOutput { return v.UsePreviousParameters }).(pulumi.BoolPtrOutput)
+}
+
 type ChangeSetArrayOutput struct{ *pulumi.OutputState }
 
 func (ChangeSetArrayOutput) ElementType() reflect.Type {

@@ -39,6 +39,37 @@ public final class KvstoreFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
         return getAccounts(args, InvokeOptions.Empty);
@@ -49,6 +80,37 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.102.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -61,6 +123,37 @@ public final class KvstoreFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:kvstore/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
@@ -71,6 +164,37 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.102.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -118,6 +242,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.49.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args) {
@@ -129,6 +292,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.49.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args) {
@@ -140,6 +342,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.49.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args, InvokeOptions options) {
@@ -151,6 +392,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.49.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args, InvokeOptions options) {
@@ -162,6 +442,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.51.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args) {
@@ -173,6 +492,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.51.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args) {
@@ -184,6 +542,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.51.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOptions options) {
@@ -195,6 +592,45 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.51.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .build());
+     * 
+     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .engine(&#34;Redis&#34;)
+     *             .engineVersion(&#34;5.0&#34;)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args, InvokeOptions options) {
@@ -205,6 +641,35 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;testname&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -215,6 +680,35 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;testname&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -225,6 +719,35 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;testname&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -235,6 +758,35 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;testname&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -245,6 +797,35 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;testname&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -255,6 +836,35 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;testname&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -270,6 +880,34 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.128.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPermissionResult> getPermission() {
@@ -285,6 +923,34 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.128.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPermissionResult> getPermissionPlain() {
@@ -300,6 +966,34 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.128.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPermissionResult> getPermission(GetPermissionArgs args) {
@@ -315,6 +1009,34 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.128.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPermissionResult> getPermissionPlain(GetPermissionPlainArgs args) {
@@ -330,6 +1052,34 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.128.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPermissionResult> getPermission(GetPermissionArgs args, InvokeOptions options) {
@@ -345,6 +1095,34 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.128.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPermissionResult> getPermissionPlain(GetPermissionPlainArgs args, InvokeOptions options) {
@@ -356,6 +1134,38 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.Instance;
+     * import com.pulumi.alicloud.kvstore.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = KvstoreFunctions.getZones();
+     * 
+     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -367,6 +1177,38 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.Instance;
+     * import com.pulumi.alicloud.kvstore.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = KvstoreFunctions.getZones();
+     * 
+     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -378,6 +1220,38 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.Instance;
+     * import com.pulumi.alicloud.kvstore.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = KvstoreFunctions.getZones();
+     * 
+     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -389,6 +1263,38 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.Instance;
+     * import com.pulumi.alicloud.kvstore.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = KvstoreFunctions.getZones();
+     * 
+     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -400,6 +1306,38 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.Instance;
+     * import com.pulumi.alicloud.kvstore.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = KvstoreFunctions.getZones();
+     * 
+     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -411,6 +1349,38 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.Instance;
+     * import com.pulumi.alicloud.kvstore.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = KvstoreFunctions.getZones();
+     * 
+     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

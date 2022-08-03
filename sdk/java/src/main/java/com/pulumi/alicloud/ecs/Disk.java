@@ -20,6 +20,40 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Disk;
+ * import com.pulumi.alicloud.ecs.DiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ecsDisk = new Disk(&#34;ecsDisk&#34;, DiskArgs.builder()        
+ *             .availabilityZone(&#34;cn-beijing-b&#34;)
+ *             .category(&#34;cloud_efficiency&#34;)
+ *             .description(&#34;Hello ecs disk.&#34;)
+ *             .encrypted(true)
+ *             .kmsKeyId(&#34;2a6767f0-a16c-4679-a60f-13bf*****&#34;)
+ *             .size(&#34;30&#34;)
+ *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

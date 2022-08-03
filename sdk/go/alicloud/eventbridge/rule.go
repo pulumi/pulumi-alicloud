@@ -285,6 +285,36 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+// The description of rule.
+func (o RuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of event bus.
+func (o RuleOutput) EventBusName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.EventBusName }).(pulumi.StringOutput)
+}
+
+// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
+func (o RuleOutput) FilterPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.FilterPattern }).(pulumi.StringOutput)
+}
+
+// The name of rule.
+func (o RuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+func (o RuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The target of rule.
+func (o RuleOutput) Targets() RuleTargetArrayOutput {
+	return o.ApplyT(func(v *Rule) RuleTargetArrayOutput { return v.Targets }).(RuleTargetArrayOutput)
+}
+
 type RuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleArrayOutput) ElementType() reflect.Type {

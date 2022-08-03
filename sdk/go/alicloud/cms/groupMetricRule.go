@@ -403,6 +403,91 @@ func (o GroupMetricRuleOutput) ToGroupMetricRuleOutputWithContext(ctx context.Co
 	return o
 }
 
+// The abbreviation of the service name.
+func (o GroupMetricRuleOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// Alarm contact group.
+func (o GroupMetricRuleOutput) ContactGroups() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.ContactGroups }).(pulumi.StringOutput)
+}
+
+// The dimensions that specify the resources to be associated with the alert rule.
+func (o GroupMetricRuleOutput) Dimensions() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.Dimensions }).(pulumi.StringOutput)
+}
+
+// The time period during which the alert rule is effective.
+func (o GroupMetricRuleOutput) EffectiveInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringPtrOutput { return v.EffectiveInterval }).(pulumi.StringPtrOutput)
+}
+
+// The subject of the alert notification email.                                         .
+func (o GroupMetricRuleOutput) EmailSubject() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.EmailSubject }).(pulumi.StringOutput)
+}
+
+// Alarm level. See the block for escalations.
+func (o GroupMetricRuleOutput) Escalations() GroupMetricRuleEscalationsOutput {
+	return o.ApplyT(func(v *GroupMetricRule) GroupMetricRuleEscalationsOutput { return v.Escalations }).(GroupMetricRuleEscalationsOutput)
+}
+
+// The ID of the application group.
+func (o GroupMetricRuleOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The name of the alert rule.
+func (o GroupMetricRuleOutput) GroupMetricRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.GroupMetricRuleName }).(pulumi.StringOutput)
+}
+
+// The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
+func (o GroupMetricRuleOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringPtrOutput { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// The name of the metric.
+func (o GroupMetricRuleOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The namespace of the service.
+func (o GroupMetricRuleOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The time period during which the alert rule is ineffective.
+func (o GroupMetricRuleOutput) NoEffectiveInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringPtrOutput { return v.NoEffectiveInterval }).(pulumi.StringPtrOutput)
+}
+
+// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
+func (o GroupMetricRuleOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the alert rule.
+func (o GroupMetricRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
+func (o GroupMetricRuleOutput) SilenceTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.IntPtrOutput { return v.SilenceTime }).(pulumi.IntPtrOutput)
+}
+
+// The status of Group Metric Rule.
+func (o GroupMetricRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The callback URL.
+func (o GroupMetricRuleOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringPtrOutput { return v.Webhook }).(pulumi.StringPtrOutput)
+}
+
 type GroupMetricRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleArrayOutput) ElementType() reflect.Type {

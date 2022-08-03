@@ -27,6 +27,45 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.quotas.QuotaApplication;
+ * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
+ * import com.pulumi.alicloud.quotas.inputs.QuotaApplicationDimensionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new QuotaApplication(&#34;example&#34;, QuotaApplicationArgs.builder()        
+ *             .desireValue(&#34;100&#34;)
+ *             .dimensions(QuotaApplicationDimensionArgs.builder()
+ *                 .key(&#34;regionId&#34;)
+ *                 .value(&#34;cn-hangzhou&#34;)
+ *                 .build())
+ *             .noticeType(&#34;0&#34;)
+ *             .productCode(&#34;ess&#34;)
+ *             .quotaActionCode(&#34;q_db_instance&#34;)
+ *             .reason(&#34;For Terraform Test&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Quotas Application Info can be imported using the id, e.g.

@@ -25,6 +25,41 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mhub.App;
+ * import com.pulumi.alicloud.mhub.AppArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+ *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
+ *             .appName(name)
+ *             .productId(alicloud_mhub_product.default().id())
+ *             .packageName(&#34;com.test.android&#34;)
+ *             .type(&#34;Android&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * MHUB App can be imported using the id, e.g.

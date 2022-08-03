@@ -225,6 +225,21 @@ func (o UserAttachmentOutput) ToUserAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Specifies the user group to add the user's bastion host ID of.
+func (o UserAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Specifies the user group to which you want to add the user ID.
+func (o UserAttachmentOutput) UserGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.UserGroupId }).(pulumi.StringOutput)
+}
+
+// Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
+func (o UserAttachmentOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 type UserAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (UserAttachmentArrayOutput) ElementType() reflect.Type {

@@ -436,6 +436,140 @@ func (o ShardingInstanceOutput) ToShardingInstanceOutputWithContext(ctx context.
 	return o
 }
 
+// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+func (o ShardingInstanceOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// Auto renew for prepaid, true of false. Default is false.
+func (o ShardingInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+func (o ShardingInstanceOutput) BackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+func (o ShardingInstanceOutput) BackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
+}
+
+// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+func (o ShardingInstanceOutput) ConfigServerLists() ShardingInstanceConfigServerListArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceConfigServerListArrayOutput { return v.ConfigServerLists }).(ShardingInstanceConfigServerListArrayOutput)
+}
+
+// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+func (o ShardingInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+func (o ShardingInstanceOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
+func (o ShardingInstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o ShardingInstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The mongo-node count can be purchased is in range of [2, 32].
+func (o ShardingInstanceOutput) MongoLists() ShardingInstanceMongoListArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceMongoListArrayOutput { return v.MongoLists }).(ShardingInstanceMongoListArrayOutput)
+}
+
+// The name of DB instance. It a string of 2 to 256 characters.
+func (o ShardingInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+func (o ShardingInstanceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+// * UPGRADE: The specifications are upgraded.
+// * DOWNGRADE: The specifications are downgraded.
+//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+func (o ShardingInstanceOutput) OrderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
+}
+
+// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+func (o ShardingInstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+func (o ShardingInstanceOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The ID of the Resource Group.
+func (o ShardingInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+func (o ShardingInstanceOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
+// The Security Group ID of ECS.
+func (o ShardingInstanceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+func (o ShardingInstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
+}
+
+// the shard-node count can be purchased is in range of [2, 32].
+func (o ShardingInstanceOutput) ShardLists() ShardingInstanceShardListArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceShardListArrayOutput { return v.ShardLists }).(ShardingInstanceShardListArrayOutput)
+}
+
+// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+func (o ShardingInstanceOutput) StorageEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.StorageEngine }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ShardingInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+func (o ShardingInstanceOutput) TdeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+func (o ShardingInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The virtual switch ID to launch DB instances in one VPC.
+func (o ShardingInstanceOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+func (o ShardingInstanceOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type ShardingInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceArrayOutput) ElementType() reflect.Type {

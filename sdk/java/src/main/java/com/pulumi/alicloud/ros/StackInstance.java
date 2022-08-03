@@ -26,6 +26,66 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ros.RosFunctions;
+ * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.ros.StackGroup;
+ * import com.pulumi.alicloud.ros.StackGroupArgs;
+ * import com.pulumi.alicloud.ros.inputs.StackGroupParameterArgs;
+ * import com.pulumi.alicloud.ros.StackInstance;
+ * import com.pulumi.alicloud.ros.StackInstanceArgs;
+ * import com.pulumi.alicloud.ros.inputs.StackInstanceParameterOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleRegions = RosFunctions.getRegions();
+ * 
+ *         var exampleStackGroup = new StackGroup(&#34;exampleStackGroup&#34;, StackGroupArgs.builder()        
+ *             .stackGroupName(var_.name())
+ *             .templateBody(&#34;{\&#34;ROSTemplateFormatVersion\&#34;:\&#34;2015-09-01\&#34;, \&#34;Parameters\&#34;: {\&#34;VpcName\&#34;: {\&#34;Type\&#34;: \&#34;String\&#34;},\&#34;InstanceType\&#34;: {\&#34;Type\&#34;: \&#34;String\&#34;}}}&#34;)
+ *             .description(&#34;test for stack groups&#34;)
+ *             .parameters(            
+ *                 StackGroupParameterArgs.builder()
+ *                     .parameterKey(&#34;VpcName&#34;)
+ *                     .parameterValue(&#34;VpcName&#34;)
+ *                     .build(),
+ *                 StackGroupParameterArgs.builder()
+ *                     .parameterKey(&#34;InstanceType&#34;)
+ *                     .parameterValue(&#34;InstanceType&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         var exampleStackInstance = new StackInstance(&#34;exampleStackInstance&#34;, StackInstanceArgs.builder()        
+ *             .stackGroupName(exampleStackGroup.stackGroupName())
+ *             .stackInstanceAccountId(&#34;example_value&#34;)
+ *             .stackInstanceRegionId(exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()))
+ *             .operationPreferences(&#34;{\&#34;FailureToleranceCount\&#34;: 1, \&#34;MaxConcurrentCount\&#34;: 2}&#34;)
+ *             .parameterOverrides(StackInstanceParameterOverrideArgs.builder()
+ *                 .parameterValue(&#34;VpcName&#34;)
+ *                 .parameterKey(&#34;VpcName&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ROS Stack Instance can be imported using the id, e.g.

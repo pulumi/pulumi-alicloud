@@ -318,6 +318,64 @@ func (o SslVpnServerOutput) ToSslVpnServerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+// * `AES-128-CBC` - the AES-128-CBC algorithm.
+// * `AES-192-CBC` - the AES-192-CBC algorithm.
+// * `AES-256-CBC` - the AES-256-CBC algorithm.
+func (o SslVpnServerOutput) Cipher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.StringPtrOutput { return v.Cipher }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
+func (o SslVpnServerOutput) ClientIpPool() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.StringOutput { return v.ClientIpPool }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
+func (o SslVpnServerOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.BoolPtrOutput { return v.Compress }).(pulumi.BoolPtrOutput)
+}
+
+// The number of current connections.
+func (o SslVpnServerOutput) Connections() pulumi.IntOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.IntOutput { return v.Connections }).(pulumi.IntOutput)
+}
+
+// The internet IP of the SSL-VPN server.
+func (o SslVpnServerOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
+func (o SslVpnServerOutput) LocalSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.StringOutput { return v.LocalSubnet }).(pulumi.StringOutput)
+}
+
+// The maximum number of connections.
+func (o SslVpnServerOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.IntOutput { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// The name of the SSL-VPN server.
+func (o SslVpnServerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+func (o SslVpnServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
+func (o SslVpnServerOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPN gateway.
+func (o SslVpnServerOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnServer) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
+}
+
 type SslVpnServerArrayOutput struct{ *pulumi.OutputState }
 
 func (SslVpnServerArrayOutput) ElementType() reflect.Type {

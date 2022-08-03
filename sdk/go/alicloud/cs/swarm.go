@@ -250,6 +250,83 @@ func (o SwarmOutput) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
 	return o
 }
 
+func (o SwarmOutput) AgentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.AgentVersion }).(pulumi.StringOutput)
+}
+
+func (o SwarmOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o SwarmOutput) DiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringPtrOutput { return v.DiskCategory }).(pulumi.StringPtrOutput)
+}
+
+func (o SwarmOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+func (o SwarmOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+func (o SwarmOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+func (o SwarmOutput) IsOutdated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.BoolPtrOutput { return v.IsOutdated }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwarmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SwarmOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o SwarmOutput) NeedSlb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.BoolPtrOutput { return v.NeedSlb }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwarmOutput) NodeNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.IntPtrOutput { return v.NodeNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o SwarmOutput) Nodes() SwarmNodeArrayOutput {
+	return o.ApplyT(func(v *Swarm) SwarmNodeArrayOutput { return v.Nodes }).(SwarmNodeArrayOutput)
+}
+
+func (o SwarmOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o SwarmOutput) ReleaseEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.BoolPtrOutput { return v.ReleaseEip }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwarmOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+func (o SwarmOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.IntPtrOutput { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+func (o SwarmOutput) SlbId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
+}
+
+func (o SwarmOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func (o SwarmOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Swarm) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type SwarmArrayOutput struct{ *pulumi.OutputState }
 
 func (SwarmArrayOutput) ElementType() reflect.Type {

@@ -666,6 +666,202 @@ func (o SynchronizationJobOutput) ToSynchronizationJobOutputWithContext(ctx cont
 	return o
 }
 
+// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
+func (o SynchronizationJobOutput) Checkpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Checkpoint }).(pulumi.StringOutput)
+}
+
+// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
+func (o SynchronizationJobOutput) DataInitialization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.BoolOutput { return v.DataInitialization }).(pulumi.BoolOutput)
+}
+
+// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
+func (o SynchronizationJobOutput) DataSynchronization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.BoolOutput { return v.DataSynchronization }).(pulumi.BoolOutput)
+}
+
+// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
+func (o SynchronizationJobOutput) DbList() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DbList }).(pulumi.StringOutput)
+}
+
+// The delay notice. Valid values: `true`, `false`.
+func (o SynchronizationJobOutput) DelayNotice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.BoolPtrOutput { return v.DelayNotice }).(pulumi.BoolPtrOutput)
+}
+
+// The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
+func (o SynchronizationJobOutput) DelayPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DelayPhone }).(pulumi.StringPtrOutput)
+}
+
+// The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+func (o SynchronizationJobOutput) DelayRuleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DelayRuleTime }).(pulumi.StringPtrOutput)
+}
+
+// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
+func (o SynchronizationJobOutput) DestinationEndpointDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+func (o SynchronizationJobOutput) DestinationEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
+// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+func (o SynchronizationJobOutput) DestinationEndpointInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+func (o SynchronizationJobOutput) DestinationEndpointInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DestinationEndpointInstanceType }).(pulumi.StringOutput)
+}
+
+// The IP of source endpoint. When `destinationEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+func (o SynchronizationJobOutput) DestinationEndpointIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointIp }).(pulumi.StringPtrOutput)
+}
+
+// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+func (o SynchronizationJobOutput) DestinationEndpointOracleSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointOracleSid }).(pulumi.StringPtrOutput)
+}
+
+// The password of database account.
+func (o SynchronizationJobOutput) DestinationEndpointPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointPassword }).(pulumi.StringPtrOutput)
+}
+
+// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
+func (o SynchronizationJobOutput) DestinationEndpointPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointPort }).(pulumi.StringPtrOutput)
+}
+
+// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
+func (o SynchronizationJobOutput) DestinationEndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRegion }).(pulumi.StringPtrOutput)
+}
+
+// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+func (o SynchronizationJobOutput) DestinationEndpointUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointUserName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
+func (o SynchronizationJobOutput) DtsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DtsInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of synchronization job.
+func (o SynchronizationJobOutput) DtsJobName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DtsJobName }).(pulumi.StringOutput)
+}
+
+// The error notice. Valid values: `true`, `false`.
+func (o SynchronizationJobOutput) ErrorNotice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.BoolPtrOutput { return v.ErrorNotice }).(pulumi.BoolPtrOutput)
+}
+
+// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
+func (o SynchronizationJobOutput) ErrorPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.ErrorPhone }).(pulumi.StringPtrOutput)
+}
+
+// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+func (o SynchronizationJobOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+func (o SynchronizationJobOutput) Reserve() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Reserve }).(pulumi.StringOutput)
+}
+
+// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
+func (o SynchronizationJobOutput) SourceEndpointDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+func (o SynchronizationJobOutput) SourceEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
+// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+func (o SynchronizationJobOutput) SourceEndpointInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+func (o SynchronizationJobOutput) SourceEndpointInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.SourceEndpointInstanceType }).(pulumi.StringOutput)
+}
+
+// The IP of source endpoint. When `sourceEndpointInstanceType` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
+func (o SynchronizationJobOutput) SourceEndpointIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointIp }).(pulumi.StringPtrOutput)
+}
+
+// The SID of Oracle database. When the value of SourceEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+func (o SynchronizationJobOutput) SourceEndpointOracleSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointOracleSid }).(pulumi.StringPtrOutput)
+}
+
+// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `sourceEndpointRole` parameter.
+func (o SynchronizationJobOutput) SourceEndpointOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The password of database account.
+func (o SynchronizationJobOutput) SourceEndpointPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointPassword }).(pulumi.StringPtrOutput)
+}
+
+// The port of source endpoint. When the source instance is a self-built database, this parameter is available and must be passed in.
+func (o SynchronizationJobOutput) SourceEndpointPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointPort }).(pulumi.StringPtrOutput)
+}
+
+// Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
+func (o SynchronizationJobOutput) SourceEndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointRegion }).(pulumi.StringPtrOutput)
+}
+
+// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
+func (o SynchronizationJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
+}
+
+// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+func (o SynchronizationJobOutput) SourceEndpointUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointUserName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+func (o SynchronizationJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
+func (o SynchronizationJobOutput) StructureInitialization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.BoolOutput { return v.StructureInitialization }).(pulumi.BoolOutput)
+}
+
+// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
+func (o SynchronizationJobOutput) SynchronizationDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.SynchronizationDirection }).(pulumi.StringOutput)
+}
+
 type SynchronizationJobArrayOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationJobArrayOutput) ElementType() reflect.Type {

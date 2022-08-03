@@ -216,6 +216,31 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The ID of the firewall rule.
+func (o FirewallRuleOutput) FirewallRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.FirewallRuleId }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud simple application server instance ID.
+func (o FirewallRuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `<start port number>/<end port number>`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
+func (o FirewallRuleOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The remarks of the firewall rule.
+func (o FirewallRuleOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
+func (o FirewallRuleOutput) RuleProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.RuleProtocol }).(pulumi.StringOutput)
+}
+
 type FirewallRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallRuleArrayOutput) ElementType() reflect.Type {

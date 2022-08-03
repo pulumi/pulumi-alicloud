@@ -298,6 +298,45 @@ func (o ParameterOutput) ToParameterOutputWithContext(ctx context.Context) Param
 	return o
 }
 
+// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
+// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
+// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
+// * `MinLength`: The minimum length of the common parameter.
+// * `MaxLength`: The maximum length of the common parameter.
+func (o ParameterOutput) Constraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringPtrOutput { return v.Constraints }).(pulumi.StringPtrOutput)
+}
+
+// The description of the common parameter. The description must be `1` to `200` characters in length.
+func (o ParameterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
+func (o ParameterOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+// The ID of the Resource Group.
+func (o ParameterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ParameterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The data type of the common parameter. Valid values: `String` and `StringList`.
+func (o ParameterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the common parameter. The value must be `1` to `4096` characters in length.
+func (o ParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type ParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (ParameterArrayOutput) ElementType() reflect.Type {

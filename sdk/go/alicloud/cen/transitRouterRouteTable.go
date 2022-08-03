@@ -222,6 +222,41 @@ func (o TransitRouterRouteTableOutput) ToTransitRouterRouteTableOutputWithContex
 	return o
 }
 
+// The dry run.
+func (o TransitRouterRouteTableOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the Transit Router.
+func (o TransitRouterRouteTableOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the transit router.
+func (o TransitRouterRouteTableOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+// The description of the transit router route table.
+func (o TransitRouterRouteTableOutput) TransitRouterRouteTableDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.StringOutput { return v.TransitRouterRouteTableDescription }).(pulumi.StringOutput)
+}
+
+// The id of the transit router route table.
+func (o TransitRouterRouteTableOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.StringOutput { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
+}
+
+// The name of the transit router route table.
+func (o TransitRouterRouteTableOutput) TransitRouterRouteTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.StringPtrOutput { return v.TransitRouterRouteTableName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the transit router route table. Valid values: `Custom`, `System`.
+func (o TransitRouterRouteTableOutput) TransitRouterRouteTableType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.StringOutput { return v.TransitRouterRouteTableType }).(pulumi.StringOutput)
+}
+
 type TransitRouterRouteTableArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTableArrayOutput) ElementType() reflect.Type {

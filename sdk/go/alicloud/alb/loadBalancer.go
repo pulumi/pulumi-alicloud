@@ -331,6 +331,85 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Access Logging Configuration Structure.
+func (o LoadBalancerOutput) AccessLogConfig() LoadBalancerAccessLogConfigPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerAccessLogConfigPtrOutput { return v.AccessLogConfig }).(LoadBalancerAccessLogConfigPtrOutput)
+}
+
+// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
+// *`Fixed`: The ALB instance uses a fixed IP address.
+// *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
+func (o LoadBalancerOutput) AddressAllocatedMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.AddressAllocatedMode }).(pulumi.StringPtrOutput)
+}
+
+// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+func (o LoadBalancerOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AddressType }).(pulumi.StringOutput)
+}
+
+// The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
+func (o LoadBalancerOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+func (o LoadBalancerOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// Specifies whether to precheck the API request. Valid values: `true` and `false`.
+func (o LoadBalancerOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The configuration of the billing method.
+func (o LoadBalancerOutput) LoadBalancerBillingConfig() LoadBalancerLoadBalancerBillingConfigOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerLoadBalancerBillingConfigOutput { return v.LoadBalancerBillingConfig }).(LoadBalancerLoadBalancerBillingConfigOutput)
+}
+
+// The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+func (o LoadBalancerOutput) LoadBalancerEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerEdition }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerName }).(pulumi.StringOutput)
+}
+
+// Modify the Protection Configuration.
+func (o LoadBalancerOutput) ModificationProtectionConfig() LoadBalancerModificationProtectionConfigOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerModificationProtectionConfigOutput {
+		return v.ModificationProtectionConfig
+	}).(LoadBalancerModificationProtectionConfigOutput)
+}
+
+// The ID of the resource group.
+func (o LoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+func (o LoadBalancerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o LoadBalancerOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+func (o LoadBalancerOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The zones and vSwitches. You must specify at least two zones.
+func (o LoadBalancerOutput) ZoneMappings() LoadBalancerZoneMappingArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerZoneMappingArrayOutput { return v.ZoneMappings }).(LoadBalancerZoneMappingArrayOutput)
+}
+
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerArrayOutput) ElementType() reflect.Type {

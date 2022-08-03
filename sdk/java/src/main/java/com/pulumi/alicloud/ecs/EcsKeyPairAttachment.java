@@ -25,6 +25,37 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsKeyPairAttachment;
+ * import com.pulumi.alicloud.ecs.EcsKeyPairAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new EcsKeyPairAttachment(&#34;example&#34;, EcsKeyPairAttachmentArgs.builder()        
+ *             .keyPairName(&#34;key_pair_name&#34;)
+ *             .instanceIds(i_gw80pxxxxxxxxxx)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Key Pair Attachment can be imported using the id, e.g.

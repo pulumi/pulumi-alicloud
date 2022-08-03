@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Waf
     ///     {
     ///         var @default = new AliCloud.Waf.Certificate("default", new AliCloud.Waf.CertificateArgs
     ///         {
-    ///             Certificate = "your_certificate",
+    ///             CertificateContents = "your_certificate",
     ///             CertificateName = "your_certificate_name",
     ///             Domain = "your_domain_name",
     ///             InstanceId = "your_instance_id",

@@ -669,6 +669,242 @@ func (o EcsInstanceSetOutput) ToEcsInstanceSetOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The number of instances that you want to create. Valid values: `1` to `100`.
+func (o EcsInstanceSetOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntPtrOutput { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// The automatic release time of the `PostPaid` instance.
+func (o EcsInstanceSetOutput) AutoReleaseTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+func (o EcsInstanceSetOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+func (o EcsInstanceSetOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Indicate how to check instance ready to use.
+// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+func (o EcsInstanceSetOutput) BootCheckOsWithAssistant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.BootCheckOsWithAssistant }).(pulumi.BoolPtrOutput)
+}
+
+// The list of data disks created with instance. See the following `Block dataDisks`.
+func (o EcsInstanceSetOutput) DataDisks() EcsInstanceSetDataDiskArrayOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetDataDiskArrayOutput { return v.DataDisks }).(EcsInstanceSetDataDiskArrayOutput)
+}
+
+// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
+func (o EcsInstanceSetOutput) DedicatedHostId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.DedicatedHostId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable release protection for the instance.
+func (o EcsInstanceSetOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The ID of the deployment set to which to deploy the instance.
+func (o EcsInstanceSetOutput) DeploymentSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
+}
+
+// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
+func (o EcsInstanceSetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+func (o EcsInstanceSetOutput) ExcludeInstanceFilter() EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetExcludeInstanceFilterPtrOutput { return v.ExcludeInstanceFilter }).(EcsInstanceSetExcludeInstanceFilterPtrOutput)
+}
+
+// The hostname of instance.
+func (o EcsInstanceSetOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+func (o EcsInstanceSetOutput) HpcClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.HpcClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The Image to use for the instance.
+func (o EcsInstanceSetOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
+func (o EcsInstanceSetOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// A list of ECS Instance ID.
+func (o EcsInstanceSetOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
+func (o EcsInstanceSetOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The type of instance to start.
+func (o EcsInstanceSetOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+func (o EcsInstanceSetOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+func (o EcsInstanceSetOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
+}
+
+// The name of key pair that can login ECS instance successfully without password.
+func (o EcsInstanceSetOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the launch template.
+func (o EcsInstanceSetOutput) LaunchTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
+func (o EcsInstanceSetOutput) LaunchTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The version of the launch template.
+func (o EcsInstanceSetOutput) LaunchTemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.LaunchTemplateVersion }).(pulumi.StringPtrOutput)
+}
+
+// A list of NetworkInterface. See the following `Block networkInterfaces`.
+func (o EcsInstanceSetOutput) NetworkInterfaces() EcsInstanceSetNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(EcsInstanceSetNetworkInterfaceArrayOutput)
+}
+
+// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
+func (o EcsInstanceSetOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use the password preset in the image.
+func (o EcsInstanceSetOutput) PasswordInherit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
+}
+
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+func (o EcsInstanceSetOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+func (o EcsInstanceSetOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// The Instance RAM role name.
+func (o EcsInstanceSetOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of resource group which the instance belongs.
+func (o EcsInstanceSetOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The security enhancement strategy.
+// - `Active`: Enable security enhancement strategy, it only works on system images.
+// - `Deactive`: Disable security enhancement strategy, it works on all images.
+func (o EcsInstanceSetOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
+}
+
+// A list of security group ids to associate with.
+func (o EcsInstanceSetOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+func (o EcsInstanceSetOutput) SpotPriceLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.Float64Output { return v.SpotPriceLimit }).(pulumi.Float64Output)
+}
+
+// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+// - `NoSpot`: A regular Pay-As-You-Go instance.
+// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+func (o EcsInstanceSetOutput) SpotStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
+}
+
+// The ID of the automatic snapshot policy applied to the system disk.
+func (o EcsInstanceSetOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+func (o EcsInstanceSetOutput) SystemDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
+}
+
+// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+func (o EcsInstanceSetOutput) SystemDiskDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.SystemDiskDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the system disk.
+func (o EcsInstanceSetOutput) SystemDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.SystemDiskName }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+func (o EcsInstanceSetOutput) SystemDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringOutput)
+}
+
+// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+func (o EcsInstanceSetOutput) SystemDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntOutput { return v.SystemDiskSize }).(pulumi.IntOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o EcsInstanceSetOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
+func (o EcsInstanceSetOutput) UniqueSuffix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.UniqueSuffix }).(pulumi.BoolPtrOutput)
+}
+
+// The virtual switch ID to launch in VPC.
+func (o EcsInstanceSetOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the zone in which to create the instance.
+func (o EcsInstanceSetOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type EcsInstanceSetArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsInstanceSetArrayOutput) ElementType() reflect.Type {

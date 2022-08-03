@@ -25,6 +25,49 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsParameterGroup;
+ * import com.pulumi.alicloud.rds.RdsParameterGroupArgs;
+ * import com.pulumi.alicloud.rds.inputs.RdsParameterGroupParamDetailArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RdsParameterGroup(&#34;default&#34;, RdsParameterGroupArgs.builder()        
+ *             .engine(&#34;mysql&#34;)
+ *             .engineVersion(&#34;5.7&#34;)
+ *             .paramDetails(            
+ *                 RdsParameterGroupParamDetailArgs.builder()
+ *                     .paramName(&#34;back_log&#34;)
+ *                     .paramValue(&#34;4000&#34;)
+ *                     .build(),
+ *                 RdsParameterGroupParamDetailArgs.builder()
+ *                     .paramName(&#34;wait_timeout&#34;)
+ *                     .paramValue(&#34;86460&#34;)
+ *                     .build())
+ *             .parameterGroupDesc(&#34;test&#34;)
+ *             .parameterGroupName(&#34;test1234&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * RDS Parameter Group can be imported using the id, e.g.

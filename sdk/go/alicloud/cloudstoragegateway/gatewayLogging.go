@@ -305,6 +305,26 @@ func (o GatewayLoggingOutput) ToGatewayLoggingOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the Gateway.
+func (o GatewayLoggingOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayLogging) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The name of the Log Store.
+func (o GatewayLoggingOutput) SlsLogstore() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayLogging) pulumi.StringOutput { return v.SlsLogstore }).(pulumi.StringOutput)
+}
+
+// The name of the Project.
+func (o GatewayLoggingOutput) SlsProject() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayLogging) pulumi.StringOutput { return v.SlsProject }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Enabled`, `Disable`.
+func (o GatewayLoggingOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayLogging) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type GatewayLoggingArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayLoggingArrayOutput) ElementType() reflect.Type {

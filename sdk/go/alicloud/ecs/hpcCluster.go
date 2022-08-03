@@ -205,6 +205,16 @@ func (o HpcClusterOutput) ToHpcClusterOutputWithContext(ctx context.Context) Hpc
 	return o
 }
 
+// The description of ECS Hpc Cluster.
+func (o HpcClusterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HpcCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of ECS Hpc Cluster.
+func (o HpcClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HpcCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type HpcClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (HpcClusterArrayOutput) ElementType() reflect.Type {

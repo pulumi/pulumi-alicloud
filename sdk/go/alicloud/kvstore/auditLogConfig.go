@@ -241,6 +241,33 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Instance Creation Time.
+func (o AuditLogConfigOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuditLogConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Indicates Whether to Enable the Audit Log.  Valid value:
+// * true: Default Value, Open.
+// * false: Closed.
+func (o AuditLogConfigOutput) DbAudit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuditLogConfig) pulumi.BoolPtrOutput { return v.DbAudit }).(pulumi.BoolPtrOutput)
+}
+
+// Instance ID, Call the Describeinstances Get.
+func (o AuditLogConfigOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuditLogConfig) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Audit Log Retention Period Value: 1~365.
+func (o AuditLogConfigOutput) Retention() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuditLogConfig) pulumi.IntPtrOutput { return v.Retention }).(pulumi.IntPtrOutput)
+}
+
+// The status of the resource.
+func (o AuditLogConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuditLogConfig) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigArrayOutput) ElementType() reflect.Type {

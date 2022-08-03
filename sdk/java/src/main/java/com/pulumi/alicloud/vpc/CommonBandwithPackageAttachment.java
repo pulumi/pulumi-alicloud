@@ -16,6 +16,51 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+ * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+ * import com.pulumi.alicloud.ecs.EipAddress;
+ * import com.pulumi.alicloud.ecs.EipAddressArgs;
+ * import com.pulumi.alicloud.vpc.CommonBandwithPackageAttachment;
+ * import com.pulumi.alicloud.vpc.CommonBandwithPackageAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+ *             .bandwidth(&#34;2&#34;)
+ *             .description(&#34;test_common_bandwidth_package&#34;)
+ *             .build());
+ * 
+ *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+ *             .bandwidth(&#34;2&#34;)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .build());
+ * 
+ *         var fooCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment(&#34;fooCommonBandwithPackageAttachment&#34;, CommonBandwithPackageAttachmentArgs.builder()        
+ *             .bandwidthPackageId(fooCommonBandwithPackage.id())
+ *             .instanceId(fooEipAddress.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The common bandwidth package attachment can be imported using the id, e.g.

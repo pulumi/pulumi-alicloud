@@ -328,6 +328,70 @@ func (o SimpleOfficeSiteOutput) ToSimpleOfficeSiteOutputWithContext(ctx context.
 	return o
 }
 
+// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+//
+// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
+func (o SimpleOfficeSiteOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Cloud Enterprise Network Instance ID.
+func (o SimpleOfficeSiteOutput) CenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.StringPtrOutput { return v.CenId }).(pulumi.StringPtrOutput)
+}
+
+// The cen owner id.
+func (o SimpleOfficeSiteOutput) CenOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.StringPtrOutput { return v.CenOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+func (o SimpleOfficeSiteOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
+func (o SimpleOfficeSiteOutput) DesktopAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.StringOutput { return v.DesktopAccessType }).(pulumi.StringOutput)
+}
+
+// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+func (o SimpleOfficeSiteOutput) EnableAdminAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.BoolOutput { return v.EnableAdminAccess }).(pulumi.BoolOutput)
+}
+
+// Enable Cross-Desktop Access.
+func (o SimpleOfficeSiteOutput) EnableCrossDesktopAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.BoolOutput { return v.EnableCrossDesktopAccess }).(pulumi.BoolOutput)
+}
+
+// Whether the Open Internet Access Function.
+//
+// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
+func (o SimpleOfficeSiteOutput) EnableInternetAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.BoolOutput { return v.EnableInternetAccess }).(pulumi.BoolOutput)
+}
+
+// Whether to Enable Multi-Factor Authentication MFA.
+func (o SimpleOfficeSiteOutput) MfaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.BoolOutput { return v.MfaEnabled }).(pulumi.BoolOutput)
+}
+
+// The office site name.
+func (o SimpleOfficeSiteOutput) OfficeSiteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.StringPtrOutput { return v.OfficeSiteName }).(pulumi.StringPtrOutput)
+}
+
+// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+func (o SimpleOfficeSiteOutput) SsoEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.BoolOutput { return v.SsoEnabled }).(pulumi.BoolOutput)
+}
+
+// Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
+func (o SimpleOfficeSiteOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SimpleOfficeSiteArrayOutput struct{ *pulumi.OutputState }
 
 func (SimpleOfficeSiteArrayOutput) ElementType() reflect.Type {

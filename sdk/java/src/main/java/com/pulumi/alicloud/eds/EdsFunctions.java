@@ -66,6 +66,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdConnectorDirectoriesResult> getAdConnectorDirectories() {
         return getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.Empty, InvokeOptions.Empty);
@@ -76,6 +107,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdConnectorDirectoriesResult> getAdConnectorDirectoriesPlain() {
@@ -88,6 +150,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdConnectorDirectoriesResult> getAdConnectorDirectories(GetAdConnectorDirectoriesArgs args) {
         return getAdConnectorDirectories(args, InvokeOptions.Empty);
@@ -98,6 +191,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdConnectorDirectoriesResult> getAdConnectorDirectoriesPlain(GetAdConnectorDirectoriesPlainArgs args) {
@@ -110,6 +234,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdConnectorDirectoriesResult> getAdConnectorDirectories(GetAdConnectorDirectoriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", TypeShape.of(GetAdConnectorDirectoriesResult.class), args, Utilities.withVersion(options));
@@ -120,6 +275,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdConnectorDirectoriesResult> getAdConnectorDirectoriesPlain(GetAdConnectorDirectoriesPlainArgs args, InvokeOptions options) {
@@ -132,6 +318,40 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSites() {
         return getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.Empty, InvokeOptions.Empty);
@@ -142,6 +362,40 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.176.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSitesPlain() {
@@ -154,6 +408,40 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs args) {
         return getAdConnectorOfficeSites(args, InvokeOptions.Empty);
@@ -164,6 +452,40 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.176.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSitesPlain(GetAdConnectorOfficeSitesPlainArgs args) {
@@ -176,6 +498,40 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", TypeShape.of(GetAdConnectorOfficeSitesResult.class), args, Utilities.withVersion(options));
@@ -186,6 +542,40 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.176.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSitesPlain(GetAdConnectorOfficeSitesPlainArgs args, InvokeOptions options) {
@@ -198,6 +588,36 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBundlesResult> getBundles() {
         return getBundles(GetBundlesArgs.Empty, InvokeOptions.Empty);
@@ -208,6 +628,36 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBundlesResult> getBundlesPlain() {
@@ -220,6 +670,36 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBundlesResult> getBundles(GetBundlesArgs args) {
         return getBundles(args, InvokeOptions.Empty);
@@ -230,6 +710,36 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBundlesResult> getBundlesPlain(GetBundlesPlainArgs args) {
@@ -242,6 +752,36 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBundlesResult> getBundles(GetBundlesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getBundles:getBundles", TypeShape.of(GetBundlesResult.class), args, Utilities.withVersion(options));
@@ -252,6 +792,36 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBundlesResult> getBundlesPlain(GetBundlesPlainArgs args, InvokeOptions options) {
@@ -264,6 +834,89 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Command;
+     * import com.pulumi.alicloud.eds.CommandArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .nameRegex(&#34;windows&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(var_.name())
+     *             .build());
+     * 
+     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+     *             .commandContent(&#34;ipconfig&#34;)
+     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getCommands();
+     * 
+     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCommandsResult> getCommands() {
         return getCommands(GetCommandsArgs.Empty, InvokeOptions.Empty);
@@ -274,6 +927,89 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Command;
+     * import com.pulumi.alicloud.eds.CommandArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .nameRegex(&#34;windows&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(var_.name())
+     *             .build());
+     * 
+     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+     *             .commandContent(&#34;ipconfig&#34;)
+     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getCommands();
+     * 
+     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain() {
@@ -286,6 +1022,89 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Command;
+     * import com.pulumi.alicloud.eds.CommandArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .nameRegex(&#34;windows&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(var_.name())
+     *             .build());
+     * 
+     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+     *             .commandContent(&#34;ipconfig&#34;)
+     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getCommands();
+     * 
+     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCommandsResult> getCommands(GetCommandsArgs args) {
         return getCommands(args, InvokeOptions.Empty);
@@ -296,6 +1115,89 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Command;
+     * import com.pulumi.alicloud.eds.CommandArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .nameRegex(&#34;windows&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(var_.name())
+     *             .build());
+     * 
+     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+     *             .commandContent(&#34;ipconfig&#34;)
+     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getCommands();
+     * 
+     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain(GetCommandsPlainArgs args) {
@@ -308,6 +1210,89 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Command;
+     * import com.pulumi.alicloud.eds.CommandArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .nameRegex(&#34;windows&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(var_.name())
+     *             .build());
+     * 
+     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+     *             .commandContent(&#34;ipconfig&#34;)
+     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getCommands();
+     * 
+     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCommandsResult> getCommands(GetCommandsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getCommands:getCommands", TypeShape.of(GetCommandsResult.class), args, Utilities.withVersion(options));
@@ -318,6 +1303,89 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Command;
+     * import com.pulumi.alicloud.eds.CommandArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .nameRegex(&#34;windows&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(var_.name())
+     *             .build());
+     * 
+     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+     *             .commandContent(&#34;ipconfig&#34;)
+     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getCommands();
+     * 
+     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain(GetCommandsPlainArgs args, InvokeOptions options) {
@@ -330,6 +1398,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCustomPropertiesResult> getCustomProperties() {
         return getCustomProperties(GetCustomPropertiesArgs.Empty, InvokeOptions.Empty);
@@ -340,6 +1439,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.176.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomPropertiesResult> getCustomPropertiesPlain() {
@@ -352,6 +1482,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCustomPropertiesResult> getCustomProperties(GetCustomPropertiesArgs args) {
         return getCustomProperties(args, InvokeOptions.Empty);
@@ -362,6 +1523,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.176.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomPropertiesResult> getCustomPropertiesPlain(GetCustomPropertiesPlainArgs args) {
@@ -374,6 +1566,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCustomPropertiesResult> getCustomProperties(GetCustomPropertiesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getCustomProperties:getCustomProperties", TypeShape.of(GetCustomPropertiesResult.class), args, Utilities.withVersion(options));
@@ -384,6 +1607,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.176.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomPropertiesResult> getCustomPropertiesPlain(GetCustomPropertiesPlainArgs args, InvokeOptions options) {
@@ -396,6 +1650,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDesktopTypesResult> getDesktopTypes() {
         return getDesktopTypes(GetDesktopTypesArgs.Empty, InvokeOptions.Empty);
@@ -406,6 +1691,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.170.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDesktopTypesResult> getDesktopTypesPlain() {
@@ -418,6 +1734,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDesktopTypesResult> getDesktopTypes(GetDesktopTypesArgs args) {
         return getDesktopTypes(args, InvokeOptions.Empty);
@@ -428,6 +1775,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.170.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDesktopTypesResult> getDesktopTypesPlain(GetDesktopTypesPlainArgs args) {
@@ -440,6 +1818,37 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDesktopTypesResult> getDesktopTypes(GetDesktopTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getDesktopTypes:getDesktopTypes", TypeShape.of(GetDesktopTypesResult.class), args, Utilities.withVersion(options));
@@ -450,6 +1859,37 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.170.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDesktopTypesResult> getDesktopTypesPlain(GetDesktopTypesPlainArgs args, InvokeOptions options) {
@@ -462,6 +1902,97 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;your_end_user_id&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .endUserIds(defaultUser.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .ids(defaultDesktop.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(defaultDesktop.desktopName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDesktopsResult> getDesktops() {
         return getDesktops(GetDesktopsArgs.Empty, InvokeOptions.Empty);
@@ -472,6 +2003,97 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;your_end_user_id&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .endUserIds(defaultUser.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .ids(defaultDesktop.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(defaultDesktop.desktopName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDesktopsResult> getDesktopsPlain() {
@@ -484,6 +2106,97 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;your_end_user_id&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .endUserIds(defaultUser.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .ids(defaultDesktop.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(defaultDesktop.desktopName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDesktopsResult> getDesktops(GetDesktopsArgs args) {
         return getDesktops(args, InvokeOptions.Empty);
@@ -494,6 +2207,97 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;your_end_user_id&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .endUserIds(defaultUser.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .ids(defaultDesktop.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(defaultDesktop.desktopName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDesktopsResult> getDesktopsPlain(GetDesktopsPlainArgs args) {
@@ -506,6 +2310,97 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;your_end_user_id&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .endUserIds(defaultUser.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .ids(defaultDesktop.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(defaultDesktop.desktopName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDesktopsResult> getDesktops(GetDesktopsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getDesktops:getDesktops", TypeShape.of(GetDesktopsResult.class), args, Utilities.withVersion(options));
@@ -516,6 +2411,97 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;your_end_user_id&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .endUserIds(defaultUser.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .ids(defaultDesktop.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(defaultDesktop.desktopName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDesktopsResult> getDesktopsPlain(GetDesktopsPlainArgs args, InvokeOptions options) {
@@ -528,6 +2514,95 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Image;
+     * import com.pulumi.alicloud.eds.ImageArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .build());
+     * 
+     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+     *             .imageName(&#34;your_image_name&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .description(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .ids(defaultImage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(defaultImage.imageName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetImagesResult> getImages() {
         return getImages(GetImagesArgs.Empty, InvokeOptions.Empty);
@@ -538,6 +2613,95 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Image;
+     * import com.pulumi.alicloud.eds.ImageArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .build());
+     * 
+     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+     *             .imageName(&#34;your_image_name&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .description(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .ids(defaultImage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(defaultImage.imageName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain() {
@@ -550,6 +2714,95 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Image;
+     * import com.pulumi.alicloud.eds.ImageArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .build());
+     * 
+     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+     *             .imageName(&#34;your_image_name&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .description(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .ids(defaultImage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(defaultImage.imageName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args) {
         return getImages(args, InvokeOptions.Empty);
@@ -560,6 +2813,95 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Image;
+     * import com.pulumi.alicloud.eds.ImageArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .build());
+     * 
+     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+     *             .imageName(&#34;your_image_name&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .description(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .ids(defaultImage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(defaultImage.imageName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
@@ -572,6 +2914,95 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Image;
+     * import com.pulumi.alicloud.eds.ImageArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .build());
+     * 
+     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+     *             .imageName(&#34;your_image_name&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .description(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .ids(defaultImage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(defaultImage.imageName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
@@ -582,6 +3013,95 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Image;
+     * import com.pulumi.alicloud.eds.ImageArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;your_policy_group_name&#34;)
+     *             .clipboard(&#34;readwrite&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;example_value&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;example_value&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .build());
+     * 
+     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+     *             .imageName(&#34;your_image_name&#34;)
+     *             .desktopId(defaultDesktop.id())
+     *             .description(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .ids(defaultImage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(defaultImage.imageName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
@@ -594,6 +3114,57 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NasFileSystem;
+     * import com.pulumi.alicloud.eds.NasFileSystemArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .enableInternetAccess(false)
+     *             .build());
+     * 
+     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
+     *             .description(&#34;your_description&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getNasFileSystems();
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNasFileSystemsResult> getNasFileSystems() {
         return getNasFileSystems(GetNasFileSystemsArgs.Empty, InvokeOptions.Empty);
@@ -604,6 +3175,57 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.141.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NasFileSystem;
+     * import com.pulumi.alicloud.eds.NasFileSystemArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .enableInternetAccess(false)
+     *             .build());
+     * 
+     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
+     *             .description(&#34;your_description&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getNasFileSystems();
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNasFileSystemsResult> getNasFileSystemsPlain() {
@@ -616,6 +3238,57 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NasFileSystem;
+     * import com.pulumi.alicloud.eds.NasFileSystemArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .enableInternetAccess(false)
+     *             .build());
+     * 
+     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
+     *             .description(&#34;your_description&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getNasFileSystems();
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNasFileSystemsResult> getNasFileSystems(GetNasFileSystemsArgs args) {
         return getNasFileSystems(args, InvokeOptions.Empty);
@@ -626,6 +3299,57 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.141.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NasFileSystem;
+     * import com.pulumi.alicloud.eds.NasFileSystemArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .enableInternetAccess(false)
+     *             .build());
+     * 
+     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
+     *             .description(&#34;your_description&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getNasFileSystems();
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNasFileSystemsResult> getNasFileSystemsPlain(GetNasFileSystemsPlainArgs args) {
@@ -638,6 +3362,57 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NasFileSystem;
+     * import com.pulumi.alicloud.eds.NasFileSystemArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .enableInternetAccess(false)
+     *             .build());
+     * 
+     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
+     *             .description(&#34;your_description&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getNasFileSystems();
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNasFileSystemsResult> getNasFileSystems(GetNasFileSystemsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getNasFileSystems:getNasFileSystems", TypeShape.of(GetNasFileSystemsResult.class), args, Utilities.withVersion(options));
@@ -648,6 +3423,57 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.141.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NasFileSystem;
+     * import com.pulumi.alicloud.eds.NasFileSystemArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *             .enableInternetAccess(false)
+     *             .build());
+     * 
+     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
+     *             .description(&#34;your_description&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getNasFileSystems();
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNasFileSystemsResult> getNasFileSystemsPlain(GetNasFileSystemsPlainArgs args, InvokeOptions options) {
@@ -660,6 +3486,52 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NetworkPackage;
+     * import com.pulumi.alicloud.eds.NetworkPackageArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *             .ids(defaultNetworkPackage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNetworkPackagesResult> getNetworkPackages() {
         return getNetworkPackages(GetNetworkPackagesArgs.Empty, InvokeOptions.Empty);
@@ -670,6 +3542,52 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NetworkPackage;
+     * import com.pulumi.alicloud.eds.NetworkPackageArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *             .ids(defaultNetworkPackage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkPackagesResult> getNetworkPackagesPlain() {
@@ -682,6 +3600,52 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NetworkPackage;
+     * import com.pulumi.alicloud.eds.NetworkPackageArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *             .ids(defaultNetworkPackage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNetworkPackagesResult> getNetworkPackages(GetNetworkPackagesArgs args) {
         return getNetworkPackages(args, InvokeOptions.Empty);
@@ -692,6 +3656,52 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NetworkPackage;
+     * import com.pulumi.alicloud.eds.NetworkPackageArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *             .ids(defaultNetworkPackage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkPackagesResult> getNetworkPackagesPlain(GetNetworkPackagesPlainArgs args) {
@@ -704,6 +3714,52 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NetworkPackage;
+     * import com.pulumi.alicloud.eds.NetworkPackageArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *             .ids(defaultNetworkPackage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNetworkPackagesResult> getNetworkPackages(GetNetworkPackagesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getNetworkPackages:getNetworkPackages", TypeShape.of(GetNetworkPackagesResult.class), args, Utilities.withVersion(options));
@@ -714,6 +3770,52 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NetworkPackage;
+     * import com.pulumi.alicloud.eds.NetworkPackageArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .desktopAccessType(&#34;Internet&#34;)
+     *             .officeSiteName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *             .ids(defaultNetworkPackage.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkPackagesResult> getNetworkPackagesPlain(GetNetworkPackagesPlainArgs args, InvokeOptions options) {
@@ -726,6 +3828,62 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;my-policy-group&#34;)
+     *             .clipboard(&#34;read&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .usbRedirect(&#34;off&#34;)
+     *             .watermark(&#34;off&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;my-description1&#34;)
+     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;my-description&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPolicyGroupsResult> getPolicyGroups() {
         return getPolicyGroups(GetPolicyGroupsArgs.Empty, InvokeOptions.Empty);
@@ -736,6 +3894,62 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;my-policy-group&#34;)
+     *             .clipboard(&#34;read&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .usbRedirect(&#34;off&#34;)
+     *             .watermark(&#34;off&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;my-description1&#34;)
+     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;my-description&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyGroupsResult> getPolicyGroupsPlain() {
@@ -748,6 +3962,62 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;my-policy-group&#34;)
+     *             .clipboard(&#34;read&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .usbRedirect(&#34;off&#34;)
+     *             .watermark(&#34;off&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;my-description1&#34;)
+     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;my-description&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPolicyGroupsResult> getPolicyGroups(GetPolicyGroupsArgs args) {
         return getPolicyGroups(args, InvokeOptions.Empty);
@@ -758,6 +4028,62 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;my-policy-group&#34;)
+     *             .clipboard(&#34;read&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .usbRedirect(&#34;off&#34;)
+     *             .watermark(&#34;off&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;my-description1&#34;)
+     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;my-description&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyGroupsResult> getPolicyGroupsPlain(GetPolicyGroupsPlainArgs args) {
@@ -770,6 +4096,62 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;my-policy-group&#34;)
+     *             .clipboard(&#34;read&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .usbRedirect(&#34;off&#34;)
+     *             .watermark(&#34;off&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;my-description1&#34;)
+     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;my-description&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPolicyGroupsResult> getPolicyGroups(GetPolicyGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getPolicyGroups:getPolicyGroups", TypeShape.of(GetPolicyGroupsResult.class), args, Utilities.withVersion(options));
@@ -780,6 +4162,62 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName(&#34;my-policy-group&#34;)
+     *             .clipboard(&#34;read&#34;)
+     *             .localDrive(&#34;read&#34;)
+     *             .usbRedirect(&#34;off&#34;)
+     *             .watermark(&#34;off&#34;)
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description(&#34;my-description1&#34;)
+     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type(&#34;inflow&#34;)
+     *                 .policy(&#34;accept&#34;)
+     *                 .description(&#34;my-description&#34;)
+     *                 .portRange(&#34;80/80&#34;)
+     *                 .ipProtocol(&#34;TCP&#34;)
+     *                 .priority(&#34;1&#34;)
+     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyGroupsResult> getPolicyGroupsPlain(GetPolicyGroupsPlainArgs args, InvokeOptions options) {
@@ -792,6 +4230,42 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRamDirectoriesResult> getRamDirectories() {
         return getRamDirectories(GetRamDirectoriesArgs.Empty, InvokeOptions.Empty);
@@ -802,6 +4276,42 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRamDirectoriesResult> getRamDirectoriesPlain() {
@@ -814,6 +4324,42 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRamDirectoriesResult> getRamDirectories(GetRamDirectoriesArgs args) {
         return getRamDirectories(args, InvokeOptions.Empty);
@@ -824,6 +4370,42 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRamDirectoriesResult> getRamDirectoriesPlain(GetRamDirectoriesPlainArgs args) {
@@ -836,6 +4418,42 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRamDirectoriesResult> getRamDirectories(GetRamDirectoriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getRamDirectories:getRamDirectories", TypeShape.of(GetRamDirectoriesResult.class), args, Utilities.withVersion(options));
@@ -846,6 +4464,42 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRamDirectoriesResult> getRamDirectoriesPlain(GetRamDirectoriesPlainArgs args, InvokeOptions options) {
@@ -858,6 +4512,38 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;REGISTERED&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSimpleOfficeSitesResult> getSimpleOfficeSites() {
         return getSimpleOfficeSites(GetSimpleOfficeSitesArgs.Empty, InvokeOptions.Empty);
@@ -868,6 +4554,38 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;REGISTERED&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSimpleOfficeSitesResult> getSimpleOfficeSitesPlain() {
@@ -880,6 +4598,38 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;REGISTERED&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSimpleOfficeSitesResult> getSimpleOfficeSites(GetSimpleOfficeSitesArgs args) {
         return getSimpleOfficeSites(args, InvokeOptions.Empty);
@@ -890,6 +4640,38 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;REGISTERED&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSimpleOfficeSitesResult> getSimpleOfficeSitesPlain(GetSimpleOfficeSitesPlainArgs args) {
@@ -902,6 +4684,38 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;REGISTERED&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSimpleOfficeSitesResult> getSimpleOfficeSites(GetSimpleOfficeSitesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", TypeShape.of(GetSimpleOfficeSitesResult.class), args, Utilities.withVersion(options));
@@ -912,6 +4726,38 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;REGISTERED&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSimpleOfficeSitesResult> getSimpleOfficeSitesPlain(GetSimpleOfficeSitesPlainArgs args, InvokeOptions options) {
@@ -924,6 +4770,35 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSnapshotsResult> getSnapshots() {
         return getSnapshots(GetSnapshotsArgs.Empty, InvokeOptions.Empty);
@@ -934,6 +4809,35 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.169.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain() {
@@ -946,6 +4850,35 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args) {
         return getSnapshots(args, InvokeOptions.Empty);
@@ -956,6 +4889,35 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.169.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args) {
@@ -968,6 +4930,35 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
@@ -978,6 +4969,35 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.169.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {
@@ -990,6 +5010,44 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;example_value&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getUsers();
+     * 
+     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUsersResult> getUsers() {
         return getUsers(GetUsersArgs.Empty, InvokeOptions.Empty);
@@ -1000,6 +5058,44 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;example_value&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getUsers();
+     * 
+     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain() {
@@ -1012,6 +5108,44 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;example_value&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getUsers();
+     * 
+     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
         return getUsers(args, InvokeOptions.Empty);
@@ -1022,6 +5156,44 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;example_value&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getUsers();
+     * 
+     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -1034,6 +5206,44 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;example_value&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getUsers();
+     * 
+     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
@@ -1044,6 +5254,44 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+     *             .endUserId(&#34;example_value&#34;)
+     *             .email(&#34;your_email&#34;)
+     *             .phone(&#34;your_phone&#34;)
+     *             .password(&#34;your_password&#34;)
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getUsers();
+     * 
+     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {
@@ -1056,6 +5304,35 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -1066,6 +5343,35 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -1078,6 +5384,35 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -1088,6 +5423,35 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -1100,6 +5464,35 @@ public final class EdsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -1110,6 +5503,35 @@ public final class EdsFunctions {
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -251,6 +251,31 @@ func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutpu
 	return o
 }
 
+// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
+func (o ConfigOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringPtrOutput { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Abnormal Alarm General Description of the Configuration Item.
+func (o ConfigOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The language of the request and response. Valid values: `zh`,`en`.
+// * `zh`: Chinese.
+// * `en`: English.
+func (o ConfigOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
+func (o ConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
+}
+
 type ConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigArrayOutput) ElementType() reflect.Type {

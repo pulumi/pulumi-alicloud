@@ -267,6 +267,50 @@ func (o SecretParameterOutput) ToSecretParameterOutputWithContext(ctx context.Co
 	return o
 }
 
+// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
+// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
+// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
+// * `MinLength`: The minimum length of the encryption parameter.
+// * `MaxLength`: The maximum length of the encryption parameter.
+func (o SecretParameterOutput) Constraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringPtrOutput { return v.Constraints }).(pulumi.StringPtrOutput)
+}
+
+// The description of the encryption parameter. The description must be `1` to `200` characters in length.
+func (o SecretParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
+func (o SecretParameterOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringPtrOutput { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Resource Group.
+func (o SecretParameterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
+func (o SecretParameterOutput) SecretParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringOutput { return v.SecretParameterName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SecretParameterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The data type of the encryption parameter. Valid values: `Secret`.
+func (o SecretParameterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
+func (o SecretParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type SecretParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretParameterArrayOutput) ElementType() reflect.Type {

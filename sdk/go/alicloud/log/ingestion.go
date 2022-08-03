@@ -61,7 +61,29 @@ import (
 // 			Interval:       pulumi.String("30m"),
 // 			RunImmediately: pulumi.Bool(true),
 // 			TimeZone:       pulumi.String("+0800"),
-// 			Source:         pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "        {\n", "          \"bucket\": \"bucket_name\",\n", "          \"compressionCodec\": \"none\",\n", "          \"encoding\": \"UTF-8\",\n", "          \"endpoint\": \"oss-cn-hangzhou-internal.aliyuncs.com\",\n", "          \"format\": {\n", "            \"escapeChar\": \"\\\\\",\n", "            \"fieldDelimiter\": \",\",\n", "            \"fieldNames\": [],\n", "            \"firstRowAsHeader\": true,\n", "            \"maxLines\": 1,\n", "            \"quoteChar\": \"\\\"\",\n", "            \"skipLeadingRows\": 0,\n", "            \"timeField\": \"\",\n", "            \"type\": \"DelimitedText\"\n", "          },\n", "          \"pattern\": \"\",\n", "          \"prefix\": \"test-prefix/\",\n", "          \"restoreObjectEnabled\": false,\n", "          \"roleARN\": \"acs:ram::1049446484210612:role/aliyunlogimportossrole\",\n", "          \"type\": \"AliyunOSS\"\n", "        }\n")),
+// 			Source: pulumi.String(fmt.Sprintf(`        {
+//           "bucket": "bucket_name",
+//           "compressionCodec": "none",
+//           "encoding": "UTF-8",
+//           "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
+//           "format": {
+//             "escapeChar": "\\",
+//             "fieldDelimiter": ",",
+//             "fieldNames": [],
+//             "firstRowAsHeader": true,
+//             "maxLines": 1,
+//             "quoteChar": "\"",
+//             "skipLeadingRows": 0,
+//             "timeField": "",
+//             "type": "DelimitedText"
+//           },
+//           "pattern": "",
+//           "prefix": "test-prefix/",
+//           "restoreObjectEnabled": false,
+//           "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
+//           "type": "AliyunOSS"
+//         }
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -324,6 +346,51 @@ func (o IngestionOutput) ToIngestionOutput() IngestionOutput {
 
 func (o IngestionOutput) ToIngestionOutputWithContext(ctx context.Context) IngestionOutput {
 	return o
+}
+
+// Ingestion job description.
+func (o IngestionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name displayed on the web page.
+func (o IngestionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Ingestion job name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
+func (o IngestionOutput) IngestionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringOutput { return v.IngestionName }).(pulumi.StringOutput)
+}
+
+// Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
+func (o IngestionOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringOutput { return v.Interval }).(pulumi.StringOutput)
+}
+
+// The name of the target logstore.
+func (o IngestionOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The name of the log project. It is the only in one Alicloud account.
+func (o IngestionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Whether to run the ingestion job immediately, if false, wait for an interval before starting the ingestion.
+func (o IngestionOutput) RunImmediately() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.BoolOutput { return v.RunImmediately }).(pulumi.BoolOutput)
+}
+
+// Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
+func (o IngestionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
+// Which time zone is the log time imported in, e.g. `+0800`.
+func (o IngestionOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ingestion) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
 type IngestionArrayOutput struct{ *pulumi.OutputState }

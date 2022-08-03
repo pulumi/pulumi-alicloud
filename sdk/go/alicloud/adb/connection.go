@@ -274,6 +274,31 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
+func (o ConnectionOutput) ConnectionPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionPrefix }).(pulumi.StringOutput)
+}
+
+// Connection cluster string.
+func (o ConnectionOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The Id of cluster that can run database.
+func (o ConnectionOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The ip address of connection string.
+func (o ConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Connection cluster port.
+func (o ConnectionOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
 type ConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (ConnectionArrayOutput) ElementType() reflect.Type {

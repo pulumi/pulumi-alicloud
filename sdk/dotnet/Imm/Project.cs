@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Imm
     ///         });
     ///         var example = new AliCloud.Imm.Project("example", new AliCloud.Imm.ProjectArgs
     ///         {
-    ///             Project = "example_name",
+    ///             ProjectName = "example_name",
     ///             ServiceRole = role.Name,
     ///         });
     ///     }

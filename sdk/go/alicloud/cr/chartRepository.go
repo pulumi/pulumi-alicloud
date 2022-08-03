@@ -263,6 +263,31 @@ func (o ChartRepositoryOutput) ToChartRepositoryOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the Container Registry instance.
+func (o ChartRepositoryOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChartRepository) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the repository that you want to create.
+func (o ChartRepositoryOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChartRepository) pulumi.StringOutput { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// The namespace to which the repository belongs.
+func (o ChartRepositoryOutput) RepoNamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChartRepository) pulumi.StringOutput { return v.RepoNamespaceName }).(pulumi.StringOutput)
+}
+
+// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
+func (o ChartRepositoryOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChartRepository) pulumi.StringOutput { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The summary about the repository.
+func (o ChartRepositoryOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChartRepository) pulumi.StringPtrOutput { return v.Summary }).(pulumi.StringPtrOutput)
+}
+
 type ChartRepositoryArrayOutput struct{ *pulumi.OutputState }
 
 func (ChartRepositoryArrayOutput) ElementType() reflect.Type {

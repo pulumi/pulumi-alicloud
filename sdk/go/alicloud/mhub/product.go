@@ -201,6 +201,11 @@ func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOu
 	return o
 }
 
+// ProductName.
+func (o ProductOutput) ProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.ProductName }).(pulumi.StringOutput)
+}
+
 type ProductArrayOutput struct{ *pulumi.OutputState }
 
 func (ProductArrayOutput) ElementType() reflect.Type {

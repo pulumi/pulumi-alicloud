@@ -49,6 +49,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the api gateway.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the api gateway group. Defaults to null.
         /// </summary>
         [Output("name")]
@@ -119,6 +125,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
+        /// The id of the api gateway.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
         /// The name of the api gateway group. Defaults to null.
         /// </summary>
         [Input("name")]
@@ -136,6 +148,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The id of the api gateway.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// The name of the api gateway group. Defaults to null.

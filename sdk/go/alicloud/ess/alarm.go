@@ -313,6 +313,81 @@ func (o AlarmOutput) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return o
 }
 
+// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+func (o AlarmOutput) AlarmActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringArrayOutput { return v.AlarmActions }).(pulumi.StringArrayOutput)
+}
+
+// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+func (o AlarmOutput) CloudMonitorGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.CloudMonitorGroupId }).(pulumi.IntPtrOutput)
+}
+
+// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+func (o AlarmOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The description for the alarm.
+func (o AlarmOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+func (o AlarmOutput) Dimensions() pulumi.MapOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Dimensions }).(pulumi.MapOutput)
+}
+
+// Whether to enable specific ess alarm. Default to true.
+func (o AlarmOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.BoolPtrOutput { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
+func (o AlarmOutput) EvaluationCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.EvaluationCount }).(pulumi.IntPtrOutput)
+}
+
+// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+func (o AlarmOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+func (o AlarmOutput) MetricType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.MetricType }).(pulumi.StringPtrOutput)
+}
+
+// The name for ess alarm.
+func (o AlarmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+func (o AlarmOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
+func (o AlarmOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// The state of specified alarm.
+func (o AlarmOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+func (o AlarmOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The value against which the specified statistics is compared.
+func (o AlarmOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Threshold }).(pulumi.StringOutput)
+}
+
 type AlarmArrayOutput struct{ *pulumi.OutputState }
 
 func (AlarmArrayOutput) ElementType() reflect.Type {

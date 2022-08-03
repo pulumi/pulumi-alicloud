@@ -23,6 +23,63 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.mse.Cluster;
+ * import com.pulumi.alicloud.mse.ClusterArgs;
+ * import com.pulumi.alicloud.mse.EngineNamespace;
+ * import com.pulumi.alicloud.mse.EngineNamespaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *             .clusterSpecification(&#34;MSE_SC_1_2_200_c&#34;)
+ *             .clusterType(&#34;Nacos-Ans&#34;)
+ *             .clusterVersion(&#34;NACOS_ANS_1_2_1&#34;)
+ *             .instanceCount(1)
+ *             .netType(&#34;privatenet&#34;)
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .pubNetworkFlow(&#34;1&#34;)
+ *             .aclEntryLists(&#34;127.0.0.1/32&#34;)
+ *             .clusterAliasName(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *         var example = new EngineNamespace(&#34;example&#34;, EngineNamespaceArgs.builder()        
+ *             .clusterId(defaultCluster.clusterId())
+ *             .namespaceShowName(&#34;example_value&#34;)
+ *             .namespaceId(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.

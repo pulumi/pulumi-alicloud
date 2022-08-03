@@ -960,6 +960,319 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
+func (o ClusterOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
+}
+
+// The additional volumes. See the following `Block additionalVolumes`.
+func (o ClusterOutput) AdditionalVolumes() ClusterAdditionalVolumeArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAdditionalVolumeArrayOutput { return v.AdditionalVolumes }).(ClusterAdditionalVolumeArrayOutput)
+}
+
+// The application. See the following `Block application`.
+func (o ClusterOutput) Applications() ClusterApplicationArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterApplicationArrayOutput { return v.Applications }).(ClusterApplicationArrayOutput)
+}
+
+// Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
+func (o ClusterOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
+func (o ClusterOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The version of the E-HPC client. By default, the parameter is set to the latest version number.
+func (o ClusterOutput) ClientVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClientVersion }).(pulumi.StringOutput)
+}
+
+// The name of the cluster. The name must be `2` to `64` characters in length.
+func (o ClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The version of the cluster. Default value: `1.0`.
+func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
+}
+
+// The number of the compute nodes. Valid values: `1` to `99`.
+func (o ClusterOutput) ComputeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ComputeCount }).(pulumi.IntOutput)
+}
+
+// Specifies whether the compute nodes support hyper-threading. Default value: `true`.
+func (o ClusterOutput) ComputeEnableHt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.ComputeEnableHt }).(pulumi.BoolPtrOutput)
+}
+
+// The instance type of the compute nodes.
+func (o ClusterOutput) ComputeInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ComputeInstanceType }).(pulumi.StringOutput)
+}
+
+// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
+func (o ClusterOutput) ComputeSpotPriceLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ComputeSpotPriceLimit }).(pulumi.StringPtrOutput)
+}
+
+// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+// - `NoSpot`: The compute nodes are pay-as-you-go instances.
+// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
+func (o ClusterOutput) ComputeSpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ComputeSpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
+func (o ClusterOutput) DeployMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeployMode }).(pulumi.StringOutput)
+}
+
+// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+func (o ClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
+func (o ClusterOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the nodes.
+func (o ClusterOutput) EcsChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EcsChargeType }).(pulumi.StringOutput)
+}
+
+// The version of E-HPC. By default, the parameter is set to the latest version number.
+func (o ClusterOutput) EhpcVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EhpcVersion }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
+func (o ClusterOutput) HaEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.HaEnable }).(pulumi.BoolOutput)
+}
+
+// The ID of the image.
+func (o ClusterOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
+func (o ClusterOutput) ImageOwnerAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ImageOwnerAlias }).(pulumi.StringOutput)
+}
+
+// The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
+func (o ClusterOutput) InputFileUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.InputFileUrl }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable auto scaling. Default value: `false`.
+func (o ClusterOutput) IsComputeEss() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsComputeEss }).(pulumi.BoolPtrOutput)
+}
+
+// The queue of the nodes to which the additional file system is attached.
+func (o ClusterOutput) JobQueue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.JobQueue }).(pulumi.StringPtrOutput)
+}
+
+// The name of the AccessKey pair.
+func (o ClusterOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// The number of the logon nodes. Valid values: `1`.
+func (o ClusterOutput) LoginCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.LoginCount }).(pulumi.IntOutput)
+}
+
+// The instance type of the logon nodes.
+func (o ClusterOutput) LoginInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.LoginInstanceType }).(pulumi.StringOutput)
+}
+
+// The number of the management nodes. Valid values: 1 and 2.
+func (o ClusterOutput) ManagerCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ManagerCount }).(pulumi.IntOutput)
+}
+
+// The instance type of the management nodes.
+func (o ClusterOutput) ManagerInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ManagerInstanceType }).(pulumi.StringOutput)
+}
+
+// The image tag of the operating system.
+func (o ClusterOutput) OsTag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.OsTag }).(pulumi.StringOutput)
+}
+
+// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+func (o ClusterOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
+// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
+// * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+// * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
+func (o ClusterOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The unit of the subscription duration. Valid values: `Year`, `Month`, `Hour`. Default value: `Month`.
+func (o ClusterOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom. The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
+// - pluginMod: the mode of the plug-in. The following modes are supported:
+// - oss: The plug-in is downloaded and decompressed from OSS to a local path. The local path is specified by the pluginLocalPath parameter.
+// - image: By default, the plug-in is stored in a pre-defined local path. The local path is specified by the pluginLocalPath parameter.
+// - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
+// - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
+func (o ClusterOutput) Plugin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Plugin }).(pulumi.StringPtrOutput)
+}
+
+// The post install script. See the following `Block postInstallScript`.
+func (o ClusterOutput) PostInstallScripts() ClusterPostInstallScriptArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterPostInstallScriptArrayOutput { return v.PostInstallScripts }).(ClusterPostInstallScriptArrayOutput)
+}
+
+// The node of the RAM role.
+func (o ClusterOutput) RamNodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.RamNodeTypes }).(pulumi.StringArrayOutput)
+}
+
+// The name of the Resource Access Management (RAM) role.
+func (o ClusterOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The release instance. Valid values: `true`.
+func (o ClusterOutput) ReleaseInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.ReleaseInstance }).(pulumi.BoolPtrOutput)
+}
+
+// The remote directory to which the additional file system is mounted.
+func (o ClusterOutput) RemoteDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.RemoteDirectory }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
+func (o ClusterOutput) RemoteVisEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.RemoteVisEnable }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the resource group.
+func (o ClusterOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
+func (o ClusterOutput) SccClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SccClusterId }).(pulumi.StringOutput)
+}
+
+// The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
+func (o ClusterOutput) SchedulerType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SchedulerType }).(pulumi.StringOutput)
+}
+
+// The ID of the security group to which the cluster belongs.
+func (o ClusterOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
+func (o ClusterOutput) SecurityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource.
+func (o ClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+func (o ClusterOutput) SystemDiskLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SystemDiskLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
+func (o ClusterOutput) SystemDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.SystemDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
+func (o ClusterOutput) SystemDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SystemDiskType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the additional file system.
+func (o ClusterOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+// The mount options of the file system.
+func (o ClusterOutput) VolumeMountOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VolumeMountOption }).(pulumi.StringPtrOutput)
+}
+
+// The mount target of the additional file system.
+func (o ClusterOutput) VolumeMountpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeMountpoint }).(pulumi.StringOutput)
+}
+
+// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+func (o ClusterOutput) VolumeProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeProtocol }).(pulumi.StringOutput)
+}
+
+// The type of the additional shared storage. Only NAS file systems are supported.
+func (o ClusterOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeType }).(pulumi.StringOutput)
+}
+
+// The ID of the virtual private cloud (VPC) to which the cluster belongs.
+func (o ClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch. E-HPC supports only VPC networks.
+func (o ClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// Specifies whether not to install the agent. Default value: `false`.
+func (o ClusterOutput) WithoutAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.WithoutAgent }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
+func (o ClusterOutput) WithoutElasticIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.WithoutElasticIp }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the zone.
+func (o ClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {

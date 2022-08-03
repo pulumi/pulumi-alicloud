@@ -261,6 +261,31 @@ func (o IpaDomainOutput) ToIpaDomainOutputWithContext(ctx context.Context) IpaDo
 	return o
 }
 
+// The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
+func (o IpaDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpaDomain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
+func (o IpaDomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpaDomain) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
+func (o IpaDomainOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpaDomain) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Sources. See the following `Block sources`.
+func (o IpaDomainOutput) Sources() IpaDomainSourceArrayOutput {
+	return o.ApplyT(func(v *IpaDomain) IpaDomainSourceArrayOutput { return v.Sources }).(IpaDomainSourceArrayOutput)
+}
+
+// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
+func (o IpaDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpaDomain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type IpaDomainArrayOutput struct{ *pulumi.OutputState }
 
 func (IpaDomainArrayOutput) ElementType() reflect.Type {

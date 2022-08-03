@@ -191,6 +191,24 @@ func (o NetworkInterfaceAttachmentOutput) ToNetworkInterfaceAttachmentOutputWith
 	return o
 }
 
+// The instance ID to attach.
+func (o NetworkInterfaceAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ENI ID to attach.
+func (o NetworkInterfaceAttachmentOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+func (o NetworkInterfaceAttachmentOutput) TrunkNetworkInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.StringPtrOutput { return v.TrunkNetworkInstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworkInterfaceAttachmentOutput) WaitForNetworkConfigurationReady() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.BoolPtrOutput { return v.WaitForNetworkConfigurationReady }).(pulumi.BoolPtrOutput)
+}
+
 type NetworkInterfaceAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkInterfaceAttachmentArrayOutput) ElementType() reflect.Type {

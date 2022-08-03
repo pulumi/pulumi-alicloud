@@ -28,6 +28,507 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * The managed cluster configuration,
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.KeyPair;
+ * import com.pulumi.alicloud.ecs.KeyPairArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-test&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .kubernetesNodeRole(&#34;Worker&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+ *             .keyPairName(name)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; (1 == true); i++) {
+ *             new ManagedKubernetes(&#34;defaultManagedKubernetes-&#34; + i, ManagedKubernetesArgs.builder()            
+ *                 .clusterSpec(&#34;ack.pro.small&#34;)
+ *                 .isEnterpriseSecurityGroup(true)
+ *                 .podCidr(&#34;172.20.0.0/16&#34;)
+ *                 .serviceCidr(&#34;172.21.0.0/20&#34;)
+ *                 .workerVswitchIds(defaultSwitch.id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * ```
+ * 
+ * Create a node pool.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .desiredSize(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * The parameter `node_count` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desired_size` instead, you can update it as follows. for more information of `desired_size`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .desiredSize(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud.cs.ManagedKubernetes`.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .desiredSize(1)
+ *             .management(NodePoolManagementArgs.builder()
+ *                 .autoRepair(true)
+ *                 .autoUpgrade(true)
+ *                 .surge(1)
+ *                 .maxUnavailable(1)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Enable automatic scaling for the node pool. `scaling_config` is required.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+ *                 .minSize(1)
+ *                 .maxSize(10)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Enable automatic scaling for managed node pool.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .management(NodePoolManagementArgs.builder()
+ *                 .autoRepair(true)
+ *                 .autoUpgrade(true)
+ *                 .surge(1)
+ *                 .maxUnavailable(1)
+ *                 .build())
+ *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+ *                 .minSize(1)
+ *                 .maxSize(10)
+ *                 .type(&#34;cpu&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(alicloud_cs_autoscaling_config.default())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Create a `PrePaid` node pool.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .instanceChargeType(&#34;PrePaid&#34;)
+ *             .period(1)
+ *             .periodUnit(&#34;Month&#34;)
+ *             .autoRenew(true)
+ *             .autoRenewPeriod(1)
+ *             .installCloudMonitor(true)
+ *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+ *                 .minSize(1)
+ *                 .maxSize(10)
+ *                 .type(&#34;cpu&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Create a node pool with spot instance.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .desiredSize(1)
+ *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
+ *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
+ *                 .instanceType(data.alicloud_instance_types().default().instance_types()[0].id())
+ *                 .priceLimit(&#34;0.70&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Use Spot instances to create a node pool with auto-scaling enabled
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .keyName(alicloud_key_pair.default().key_name())
+ *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+ *                 .minSize(1)
+ *                 .maxSize(10)
+ *                 .type(&#34;spot&#34;)
+ *                 .build())
+ *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
+ *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
+ *                 .instanceType(data.alicloud_instance_types().default().instance_types()[0].id())
+ *                 .priceLimit(&#34;0.70&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Create a node pool with platform as Windows
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .desiredSize(1)
+ *             .password(&#34;Hello1234&#34;)
+ *             .platform(&#34;Windows&#34;)
+ *             .imageId(window_image_id)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Add an existing node to the node pool
+ * 
+ * In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instances(            
+ *                 &#34;instance_id_01&#34;,
+ *                 &#34;instance_id_02&#34;,
+ *                 &#34;instance_id_03&#34;)
+ *             .formatDisk(false)
+ *             .keepInstanceName(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.

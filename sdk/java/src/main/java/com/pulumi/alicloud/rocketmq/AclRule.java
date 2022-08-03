@@ -24,6 +24,54 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rocketmq.Acl;
+ * import com.pulumi.alicloud.rocketmq.AclArgs;
+ * import com.pulumi.alicloud.rocketmq.AclRule;
+ * import com.pulumi.alicloud.rocketmq.AclRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *             .sagCount(&#34;0&#34;)
+ *             .build());
+ * 
+ *         var defaultAclRule = new AclRule(&#34;defaultAclRule&#34;, AclRuleArgs.builder()        
+ *             .aclId(defaultAcl.id())
+ *             .description(&#34;tf-testSagAclRule&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .ipProtocol(&#34;ALL&#34;)
+ *             .direction(&#34;in&#34;)
+ *             .sourceCidr(&#34;10.10.1.0/24&#34;)
+ *             .sourcePortRange(&#34;-1/-1&#34;)
+ *             .destCidr(&#34;192.168.1.0/24&#34;)
+ *             .destPortRange(&#34;-1/-1&#34;)
+ *             .priority(&#34;1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The Sag Acl Rule can be imported using the id, e.g.

@@ -269,6 +269,26 @@ func (o ZnodeOutput) ToZnodeOutputWithContext(ctx context.Context) ZnodeOutput {
 	return o
 }
 
+// The language type of the returned information. Valid values: `zh` or `en`.
+func (o ZnodeOutput) AcceptLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Znode) pulumi.StringPtrOutput { return v.AcceptLanguage }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Cluster.
+func (o ZnodeOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Znode) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The Node data.
+func (o ZnodeOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Znode) pulumi.StringPtrOutput { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The Node path. The value must start with a forward slash (/).
+func (o ZnodeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *Znode) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
 type ZnodeArrayOutput struct{ *pulumi.OutputState }
 
 func (ZnodeArrayOutput) ElementType() reflect.Type {

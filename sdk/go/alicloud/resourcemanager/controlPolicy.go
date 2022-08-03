@@ -37,7 +37,23 @@ import (
 // 			ControlPolicyName: pulumi.String("tf-testAccRDControlPolicy"),
 // 			Description:       pulumi.String("tf-testAccRDControlPolicy"),
 // 			EffectScope:       pulumi.String("RAM"),
-// 			PolicyDocument:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Version\": \"1\",\n", "    \"Statement\": [\n", "      {\n", "        \"Effect\": \"Deny\",\n", "        \"Action\": [\n", "          \"ram:UpdateRole\",\n", "          \"ram:DeleteRole\",\n", "          \"ram:AttachPolicyToRole\",\n", "          \"ram:DetachPolicyFromRole\"\n", "        ],\n", "        \"Resource\": \"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\"\n", "      }\n", "    ]\n", "  }\n", "  \n")),
+// 			PolicyDocument: pulumi.String(fmt.Sprintf(`  {
+//     "Version": "1",
+//     "Statement": [
+//       {
+//         "Effect": "Deny",
+//         "Action": [
+//           "ram:UpdateRole",
+//           "ram:DeleteRole",
+//           "ram:AttachPolicyToRole",
+//           "ram:DetachPolicyFromRole"
+//         ],
+//         "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+//       }
+//     ]
+//   }
+//
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -238,6 +254,26 @@ func (o ControlPolicyOutput) ToControlPolicyOutput() ControlPolicyOutput {
 
 func (o ControlPolicyOutput) ToControlPolicyOutputWithContext(ctx context.Context) ControlPolicyOutput {
 	return o
+}
+
+// The name of control policy.
+func (o ControlPolicyOutput) ControlPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.ControlPolicyName }).(pulumi.StringOutput)
+}
+
+// The description of control policy.
+func (o ControlPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The effect scope. Valid values `RAM`.
+func (o ControlPolicyOutput) EffectScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.EffectScope }).(pulumi.StringOutput)
+}
+
+// The policy document of control policy.
+func (o ControlPolicyOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.PolicyDocument }).(pulumi.StringOutput)
 }
 
 type ControlPolicyArrayOutput struct{ *pulumi.OutputState }

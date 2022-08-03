@@ -743,6 +743,243 @@ func (o LaunchTemplateOutput) ToLaunchTemplateOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+func (o LaunchTemplateOutput) AutoReleaseTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
+}
+
+// The list of data disks created with instance.
+func (o LaunchTemplateOutput) DataDisks() LaunchTemplateDataDiskArrayOutput {
+	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(LaunchTemplateDataDiskArrayOutput)
+}
+
+func (o LaunchTemplateOutput) DeploymentSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
+}
+
+// The description of the data disk.
+func (o LaunchTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) EnableVmOsConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolPtrOutput { return v.EnableVmOsConfig }).(pulumi.BoolPtrOutput)
+}
+
+// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+func (o LaunchTemplateOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// Image ID.
+func (o LaunchTemplateOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) ImageOwnerAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.ImageOwnerAlias }).(pulumi.StringPtrOutput)
+}
+
+// Billing methods. Optional values:
+// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
+// - PostPaid: Pay-As-You-Go.
+func (o LaunchTemplateOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+func (o LaunchTemplateOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
+func (o LaunchTemplateOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
+func (o LaunchTemplateOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
+func (o LaunchTemplateOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
+}
+
+// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
+func (o LaunchTemplateOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
+}
+
+// Whether it is an I/O-optimized instance or not. Optional values:
+// - none
+// - optimized
+func (o LaunchTemplateOutput) IoOptimized() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
+}
+
+// The name of the key pair.
+// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+// - The password logon method for Linux instances is set to forbidden upon initialization.
+func (o LaunchTemplateOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.LaunchTemplateName }).(pulumi.StringOutput)
+}
+
+// The name of the data disk.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
+func (o LaunchTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of network interfaces created with instance.
+func (o LaunchTemplateOutput) NetworkInterfaces() LaunchTemplateNetworkInterfacesPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateNetworkInterfacesPtrOutput { return v.NetworkInterfaces }).(LaunchTemplateNetworkInterfacesPtrOutput)
+}
+
+// Network type of the instance. Value options: `classic` | `vpc`.
+func (o LaunchTemplateOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) PasswordInherit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
+}
+
+func (o LaunchTemplateOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+func (o LaunchTemplateOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
+func (o LaunchTemplateOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
+func (o LaunchTemplateOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The security group ID must be one in the same VPC.
+func (o LaunchTemplateOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o LaunchTemplateOutput) SpotDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SpotDuration }).(pulumi.StringPtrOutput)
+}
+
+// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+func (o LaunchTemplateOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
+// - NoSpot: Normal Pay-As-You-Go instance.
+// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
+// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
+func (o LaunchTemplateOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) SystemDisk() LaunchTemplateSystemDiskOutput {
+	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateSystemDiskOutput { return v.SystemDisk }).(LaunchTemplateSystemDiskOutput)
+}
+
+// The category of the system disk. System disk type. Optional values:
+// - cloud: Basic cloud disk.
+// - cloud_efficiency: Ultra cloud disk.
+// - cloud_ssd: SSD cloud Disks.
+// - ephemeral_ssd: local SSD Disks
+// - cloud_essd: ESSD cloud Disks.
+//
+// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o LaunchTemplateOutput) SystemDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
+}
+
+// System disk description. It cannot begin with http:// or https://.
+//
+// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o LaunchTemplateOutput) SystemDiskDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.SystemDiskDescription }).(pulumi.StringOutput)
+}
+
+// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+//
+// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o LaunchTemplateOutput) SystemDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.SystemDiskName }).(pulumi.StringOutput)
+}
+
+// Size of the system disk, measured in GB. Value range: [20, 500].
+//
+// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+func (o LaunchTemplateOutput) SystemDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.SystemDiskSize }).(pulumi.IntOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o LaunchTemplateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o LaunchTemplateOutput) TemplateResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.TemplateResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) TemplateTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.MapOutput { return v.TemplateTags }).(pulumi.MapOutput)
+}
+
+func (o LaunchTemplateOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
+}
+
+// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+//
+// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
+func (o LaunchTemplateOutput) Userdata() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.Userdata }).(pulumi.StringOutput)
+}
+
+func (o LaunchTemplateOutput) VersionDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.VersionDescription }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+func (o LaunchTemplateOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID of the instance.
+func (o LaunchTemplateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type LaunchTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (LaunchTemplateArrayOutput) ElementType() reflect.Type {

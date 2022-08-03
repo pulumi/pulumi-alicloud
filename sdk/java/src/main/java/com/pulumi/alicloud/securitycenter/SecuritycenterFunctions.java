@@ -21,6 +21,37 @@ public final class SecuritycenterFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SecuritycenterFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;securityCenterGroups&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGroupsResult> getGroups() {
         return getGroups(GetGroupsArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +62,37 @@ public final class SecuritycenterFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SecuritycenterFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;securityCenterGroups&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -43,6 +105,37 @@ public final class SecuritycenterFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SecuritycenterFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;securityCenterGroups&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
         return getGroups(args, InvokeOptions.Empty);
@@ -53,6 +146,37 @@ public final class SecuritycenterFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SecuritycenterFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;securityCenterGroups&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -65,6 +189,37 @@ public final class SecuritycenterFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SecuritycenterFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;securityCenterGroups&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:securitycenter/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
@@ -75,6 +230,37 @@ public final class SecuritycenterFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SecuritycenterFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-Group&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;securityCenterGroups&#34;, nameRegex.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {

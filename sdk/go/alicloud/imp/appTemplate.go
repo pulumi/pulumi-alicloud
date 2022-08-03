@@ -264,6 +264,38 @@ func (o AppTemplateOutput) ToAppTemplateOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The name of the resource.
+func (o AppTemplateOutput) AppTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppTemplate) pulumi.StringOutput { return v.AppTemplateName }).(pulumi.StringOutput)
+}
+
+// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
+func (o AppTemplateOutput) ComponentLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppTemplate) pulumi.StringArrayOutput { return v.ComponentLists }).(pulumi.StringArrayOutput)
+}
+
+// Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
+func (o AppTemplateOutput) ConfigLists() AppTemplateConfigListArrayOutput {
+	return o.ApplyT(func(v *AppTemplate) AppTemplateConfigListArrayOutput { return v.ConfigLists }).(AppTemplateConfigListArrayOutput)
+}
+
+// Integration mode. Valid values:
+// * paasSDK: Integrated SDK.
+// * standardRoom: Model Room.
+func (o AppTemplateOutput) IntegrationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppTemplate) pulumi.StringPtrOutput { return v.IntegrationMode }).(pulumi.StringPtrOutput)
+}
+
+// Application Template scenario. Valid values: ["business", "classroom"].
+func (o AppTemplateOutput) Scene() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppTemplate) pulumi.StringPtrOutput { return v.Scene }).(pulumi.StringPtrOutput)
+}
+
+// Application template usage status.
+func (o AppTemplateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppTemplate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AppTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (AppTemplateArrayOutput) ElementType() reflect.Type {

@@ -326,6 +326,43 @@ func (o ShardingNetworkPrivateAddressOutput) ToShardingNetworkPrivateAddressOutp
 	return o
 }
 
+// The name of the account.
+// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+// - The permissions of this account are fixed to read-only.
+func (o ShardingNetworkPrivateAddressOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringPtrOutput { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// Account password.
+// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+// - The password must be 8 to 32 characters in length.
+func (o ShardingNetworkPrivateAddressOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// The db instance id.
+func (o ShardingNetworkPrivateAddressOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The endpoint of the instance.
+func (o ShardingNetworkPrivateAddressOutput) NetworkAddresses() ShardingNetworkPrivateAddressNetworkAddressArrayOutput {
+	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) ShardingNetworkPrivateAddressNetworkAddressArrayOutput {
+		return v.NetworkAddresses
+	}).(ShardingNetworkPrivateAddressNetworkAddressArrayOutput)
+}
+
+// The ID of the Shard node or the ConfigServer node.
+func (o ShardingNetworkPrivateAddressOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringOutput { return v.NodeId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the instance.
+func (o ShardingNetworkPrivateAddressOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ShardingNetworkPrivateAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (ShardingNetworkPrivateAddressArrayOutput) ElementType() reflect.Type {

@@ -286,6 +286,58 @@ func (o AlidnsDomainOutput) ToAlidnsDomainOutputWithContext(ctx context.Context)
 	return o
 }
 
+// A list of the dns server name.
+func (o AlidnsDomainOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// The domain ID.
+func (o AlidnsDomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+func (o AlidnsDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Id of the group in which the domain will add. If not supplied, then use default group.
+func (o AlidnsDomainOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Domain name group name.
+func (o AlidnsDomainOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// User language.
+func (o AlidnsDomainOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// Only return punycode codes for Chinese domain names.
+func (o AlidnsDomainOutput) PunyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringOutput { return v.PunyCode }).(pulumi.StringOutput)
+}
+
+// Remarks information for your domain name.
+func (o AlidnsDomainOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the dns domain belongs.
+func (o AlidnsDomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o AlidnsDomainOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type AlidnsDomainArrayOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainArrayOutput) ElementType() reflect.Type {

@@ -201,6 +201,26 @@ func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssoc
 	return o
 }
 
+// The dry run.
+func (o TransitRouterRouteTableAssociationOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the network.
+func (o TransitRouterRouteTableAssociationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID the transit router attachment.
+func (o TransitRouterRouteTableAssociationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// The ID of the transit router route table.
+func (o TransitRouterRouteTableAssociationOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
+}
+
 type TransitRouterRouteTableAssociationArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTableAssociationArrayOutput) ElementType() reflect.Type {

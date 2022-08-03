@@ -1208,6 +1208,288 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
+// Enable Node payment auto-renew, default is `false`.
+func (o NodePoolOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+func (o NodePoolOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+func (o NodePoolOutput) CisEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.CisEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The id of kubernetes cluster.
+func (o NodePoolOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+func (o NodePoolOutput) CpuPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.CpuPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The data disk configurations of worker nodes, such as the disk type and disk size.
+func (o NodePoolOutput) DataDisks() NodePoolDataDiskArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolDataDiskArrayOutput { return v.DataDisks }).(NodePoolDataDiskArrayOutput)
+}
+
+// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+func (o NodePoolOutput) DeploymentSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.DeploymentSetId }).(pulumi.StringOutput)
+}
+
+// The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+func (o NodePoolOutput) DesiredSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.DesiredSize }).(pulumi.IntOutput)
+}
+
+// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+func (o NodePoolOutput) FormatDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolOutput { return v.FormatDisk }).(pulumi.BoolOutput)
+}
+
+// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+func (o NodePoolOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+func (o NodePoolOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ImageType }).(pulumi.StringOutput)
+}
+
+// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
+func (o NodePoolOutput) InstallCloudMonitor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.InstallCloudMonitor }).(pulumi.BoolPtrOutput)
+}
+
+// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+func (o NodePoolOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The instance type of worker node.
+func (o NodePoolOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+func (o NodePoolOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+func (o NodePoolOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+func (o NodePoolOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
+}
+
+// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+func (o NodePoolOutput) KeepInstanceName() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolOutput { return v.KeepInstanceName }).(pulumi.BoolOutput)
+}
+
+// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
+func (o NodePoolOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+func (o NodePoolOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o NodePoolOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+func (o NodePoolOutput) Labels() NodePoolLabelArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolLabelArrayOutput { return v.Labels }).(NodePoolLabelArrayOutput)
+}
+
+// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
+func (o NodePoolOutput) Management() NodePoolManagementPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolManagementPtrOutput { return v.Management }).(NodePoolManagementPtrOutput)
+}
+
+// The name of node pool.
+func (o NodePoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+//
+// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
+func (o NodePoolOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+func (o NodePoolOutput) NodeNameMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.NodeNameMode }).(pulumi.StringOutput)
+}
+
+// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+func (o NodePoolOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+func (o NodePoolOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Node payment period unit, valid value: `Month`. Default is `Month`.
+func (o NodePoolOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+//
+// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
+func (o NodePoolOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
+}
+
+// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+func (o NodePoolOutput) RdsInstances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.RdsInstances }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+func (o NodePoolOutput) RuntimeName() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.RuntimeName }).(pulumi.StringOutput)
+}
+
+// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+func (o NodePoolOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+func (o NodePoolOutput) ScalingConfig() NodePoolScalingConfigPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolScalingConfigPtrOutput { return v.ScalingConfig }).(NodePoolScalingConfigPtrOutput)
+}
+
+// (Available in 1.105.0+) Id of the Scaling Group.
+func (o NodePoolOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+func (o NodePoolOutput) ScalingPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ScalingPolicy }).(pulumi.StringOutput)
+}
+
+// The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+//
+// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
+func (o NodePoolOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+func (o NodePoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+func (o NodePoolOutput) SocEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SocEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+func (o NodePoolOutput) SpotPriceLimits() NodePoolSpotPriceLimitArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolSpotPriceLimitArrayOutput { return v.SpotPriceLimits }).(NodePoolSpotPriceLimitArrayOutput)
+}
+
+// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+func (o NodePoolOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
+func (o NodePoolOutput) SystemDiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskCategory }).(pulumi.StringPtrOutput)
+}
+
+// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+func (o NodePoolOutput) SystemDiskEncryptAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskEncryptAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable system disk encryption.
+func (o NodePoolOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+func (o NodePoolOutput) SystemDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
+// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+func (o NodePoolOutput) SystemDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+func (o NodePoolOutput) SystemDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.SystemDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The system disk snapshot policy id.
+func (o NodePoolOutput) SystemDiskSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+func (o NodePoolOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// A List of Kubernetes taints to assign to the nodes.
+func (o NodePoolOutput) Taints() NodePoolTaintArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolTaintArrayOutput { return v.Taints }).(NodePoolTaintArrayOutput)
+}
+
+// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+func (o NodePoolOutput) Unschedulable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.Unschedulable }).(pulumi.BoolPtrOutput)
+}
+
+// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+func (o NodePoolOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// The VPC of the nodes in the node pool.
+func (o NodePoolOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitches used by node pool workers.
+func (o NodePoolOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
 type NodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (NodePoolArrayOutput) ElementType() reflect.Type {

@@ -306,6 +306,66 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
 }
 
+// Whether the Private Zone is ptr.
+func (o ZoneOutput) IsPtr() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Zone) pulumi.BoolOutput { return v.IsPtr }).(pulumi.BoolOutput)
+}
+
+// The language. Valid values: "zh", "en", "jp".
+func (o ZoneOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
+//
+// Deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
+func (o ZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The recursive DNS proxy. Valid values:
+// - ZONE: indicates that the recursive DNS proxy is disabled.
+// - RECORD: indicates that the recursive DNS proxy is enabled.
+//   Default to "ZONE".
+func (o ZoneOutput) ProxyPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.ProxyPattern }).(pulumi.StringPtrOutput)
+}
+
+// The count of the Private Zone Record.
+func (o ZoneOutput) RecordCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Zone) pulumi.IntOutput { return v.RecordCount }).(pulumi.IntOutput)
+}
+
+// The remark of the Private Zone.
+func (o ZoneOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the Private Zone belongs.
+func (o ZoneOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
+func (o ZoneOutput) SyncStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.SyncStatus }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the client.
+func (o ZoneOutput) UserClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.UserClientIp }).(pulumi.StringPtrOutput)
+}
+
+// The user information of the host synchronization task. The details see Block `userInfo`.
+func (o ZoneOutput) UserInfos() ZoneUserInfoArrayOutput {
+	return o.ApplyT(func(v *Zone) ZoneUserInfoArrayOutput { return v.UserInfos }).(ZoneUserInfoArrayOutput)
+}
+
+// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
+func (o ZoneOutput) ZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
+}
+
 type ZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneArrayOutput) ElementType() reflect.Type {

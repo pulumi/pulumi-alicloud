@@ -25,6 +25,59 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+ * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+ * import com.pulumi.alicloud.vpc.BgpGroup;
+ * import com.pulumi.alicloud.vpc.BgpGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections();
+ * 
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
+ *             .localGatewayIp(&#34;10.0.0.1&#34;)
+ *             .peerGatewayIp(&#34;10.0.0.2&#34;)
+ *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
+ *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .virtualBorderRouterName(var_.name())
+ *             .vlanId(120)
+ *             .minRxInterval(1000)
+ *             .minTxInterval(1000)
+ *             .detectMultiplier(10)
+ *             .build());
+ * 
+ *         var default_ = new BgpGroup(&#34;default&#34;, BgpGroupArgs.builder()        
+ *             .authKey(&#34;YourPassword+12345678&#34;)
+ *             .bgpGroupName(&#34;example_value&#34;)
+ *             .description(&#34;example_value&#34;)
+ *             .localAsn(64512)
+ *             .peerAsn(1111)
+ *             .routerId(exampleVirtualBorderRouter.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPC Bgp Group can be imported using the id, e.g.

@@ -332,6 +332,55 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
+// The accelerator id.
+func (o ListenerOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The certificates of the listener.
+func (o ListenerOutput) Certificates() ListenerCertificateArrayOutput {
+	return o.ApplyT(func(v *Listener) ListenerCertificateArrayOutput { return v.Certificates }).(ListenerCertificateArrayOutput)
+}
+
+// The clientAffinity of the listener. Default value is `NONE`. Valid values:
+// `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+// `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+func (o ListenerOutput) ClientAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ClientAffinity }).(pulumi.StringPtrOutput)
+}
+
+// The description of the listener.
+func (o ListenerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
+func (o ListenerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The portRanges of the listener.
+func (o ListenerOutput) PortRanges() ListenerPortRangeArrayOutput {
+	return o.ApplyT(func(v *Listener) ListenerPortRangeArrayOutput { return v.PortRanges }).(ListenerPortRangeArrayOutput)
+}
+
+// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+func (o ListenerOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The proxy protocol of the listener. Default value is `false`. Valid value:
+// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+// `false`: keep client source IP function is not turned on.
+func (o ListenerOutput) ProxyProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.ProxyProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// The status of the listener.
+func (o ListenerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ListenerArrayOutput struct{ *pulumi.OutputState }
 
 func (ListenerArrayOutput) ElementType() reflect.Type {

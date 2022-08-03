@@ -21,6 +21,49 @@ public final class GraphdatabaseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.graphdatabase.GraphdatabaseFunctions;
+     * import com.pulumi.alicloud.graphdatabase.inputs.GetDbInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDbInstancesResult> getDbInstances() {
         return getDbInstances(GetDbInstancesArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +74,49 @@ public final class GraphdatabaseFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.graphdatabase.GraphdatabaseFunctions;
+     * import com.pulumi.alicloud.graphdatabase.inputs.GetDbInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDbInstancesResult> getDbInstancesPlain() {
@@ -43,6 +129,49 @@ public final class GraphdatabaseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.graphdatabase.GraphdatabaseFunctions;
+     * import com.pulumi.alicloud.graphdatabase.inputs.GetDbInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDbInstancesResult> getDbInstances(GetDbInstancesArgs args) {
         return getDbInstances(args, InvokeOptions.Empty);
@@ -53,6 +182,49 @@ public final class GraphdatabaseFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.graphdatabase.GraphdatabaseFunctions;
+     * import com.pulumi.alicloud.graphdatabase.inputs.GetDbInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDbInstancesResult> getDbInstancesPlain(GetDbInstancesPlainArgs args) {
@@ -65,6 +237,49 @@ public final class GraphdatabaseFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.graphdatabase.GraphdatabaseFunctions;
+     * import com.pulumi.alicloud.graphdatabase.inputs.GetDbInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDbInstancesResult> getDbInstances(GetDbInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:graphdatabase/getDbInstances:getDbInstances", TypeShape.of(GetDbInstancesResult.class), args, Utilities.withVersion(options));
@@ -75,6 +290,49 @@ public final class GraphdatabaseFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.graphdatabase.GraphdatabaseFunctions;
+     * import com.pulumi.alicloud.graphdatabase.inputs.GetDbInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDbInstancesResult> getDbInstancesPlain(GetDbInstancesPlainArgs args, InvokeOptions options) {

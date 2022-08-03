@@ -264,6 +264,31 @@ func (o PortOutput) ToPortOutputWithContext(ctx context.Context) PortOutput {
 	return o
 }
 
+// The port of the origin server. Valid values: [1~65535].
+func (o PortOutput) BackendPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringPtrOutput { return v.BackendPort }).(pulumi.StringPtrOutput)
+}
+
+// The forwarding port. Valid values: [1~65535].
+func (o PortOutput) FrontendPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.FrontendPort }).(pulumi.StringOutput)
+}
+
+// The forwarding protocol. Valid values `tcp` and `udp`.
+func (o PortOutput) FrontendProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.FrontendProtocol }).(pulumi.StringOutput)
+}
+
+// The ID of Ddoscoo instance.
+func (o PortOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// List of source IP addresses.
+func (o PortOutput) RealServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.RealServers }).(pulumi.StringArrayOutput)
+}
+
 type PortArrayOutput struct{ *pulumi.OutputState }
 
 func (PortArrayOutput) ElementType() reflect.Type {

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cms
     ///     {
     ///         var example = new AliCloud.Cms.Namespace("example", new AliCloud.Cms.NamespaceArgs
     ///         {
-    ///             Namespace = "example_value",
+    ///             NamespaceName = "example_value",
     ///             Specification = "cms.s1.large",
     ///         });
     ///     }

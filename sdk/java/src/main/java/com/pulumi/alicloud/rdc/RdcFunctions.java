@@ -21,6 +21,51 @@ public final class RdcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rdc.Organization;
+     * import com.pulumi.alicloud.rdc.OrganizationArgs;
+     * import com.pulumi.alicloud.rdc.RdcFunctions;
+     * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
+     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *             .organizationName(name)
+     *             .source(name)
+     *             .build());
+     * 
+     *         final var ids = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetOrganizationsResult> getOrganizations() {
         return getOrganizations(GetOrganizationsArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +76,51 @@ public final class RdcFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rdc.Organization;
+     * import com.pulumi.alicloud.rdc.OrganizationArgs;
+     * import com.pulumi.alicloud.rdc.RdcFunctions;
+     * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
+     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *             .organizationName(name)
+     *             .source(name)
+     *             .build());
+     * 
+     *         final var ids = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetOrganizationsResult> getOrganizationsPlain() {
@@ -43,6 +133,51 @@ public final class RdcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rdc.Organization;
+     * import com.pulumi.alicloud.rdc.OrganizationArgs;
+     * import com.pulumi.alicloud.rdc.RdcFunctions;
+     * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
+     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *             .organizationName(name)
+     *             .source(name)
+     *             .build());
+     * 
+     *         final var ids = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetOrganizationsResult> getOrganizations(GetOrganizationsArgs args) {
         return getOrganizations(args, InvokeOptions.Empty);
@@ -53,6 +188,51 @@ public final class RdcFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rdc.Organization;
+     * import com.pulumi.alicloud.rdc.OrganizationArgs;
+     * import com.pulumi.alicloud.rdc.RdcFunctions;
+     * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
+     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *             .organizationName(name)
+     *             .source(name)
+     *             .build());
+     * 
+     *         final var ids = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetOrganizationsResult> getOrganizationsPlain(GetOrganizationsPlainArgs args) {
@@ -65,6 +245,51 @@ public final class RdcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rdc.Organization;
+     * import com.pulumi.alicloud.rdc.OrganizationArgs;
+     * import com.pulumi.alicloud.rdc.RdcFunctions;
+     * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
+     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *             .organizationName(name)
+     *             .source(name)
+     *             .build());
+     * 
+     *         final var ids = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetOrganizationsResult> getOrganizations(GetOrganizationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:rdc/getOrganizations:getOrganizations", TypeShape.of(GetOrganizationsResult.class), args, Utilities.withVersion(options));
@@ -75,6 +300,51 @@ public final class RdcFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rdc.Organization;
+     * import com.pulumi.alicloud.rdc.OrganizationArgs;
+     * import com.pulumi.alicloud.rdc.RdcFunctions;
+     * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
+     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *             .organizationName(name)
+     *             .source(name)
+     *             .build());
+     * 
+     *         final var ids = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetOrganizationsResult> getOrganizationsPlain(GetOrganizationsPlainArgs args, InvokeOptions options) {

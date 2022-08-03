@@ -18,6 +18,40 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mns.Queue;
+ * import com.pulumi.alicloud.mns.QueueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var queue = new Queue(&#34;queue&#34;, QueueArgs.builder()        
+ *             .delaySeconds(0)
+ *             .maximumMessageSize(65536)
+ *             .messageRetentionPeriod(345600)
+ *             .pollingWaitSeconds(0)
+ *             .visibilityTimeout(30)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * MNS QUEUE can be imported using the id or name, e.g.

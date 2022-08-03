@@ -242,6 +242,26 @@ func (o ChartNamespaceOutput) ToChartNamespaceOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Specifies whether to automatically create repositories in the namespace. Valid values:
+func (o ChartNamespaceOutput) AutoCreateRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ChartNamespace) pulumi.BoolOutput { return v.AutoCreateRepo }).(pulumi.BoolOutput)
+}
+
+// DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
+func (o ChartNamespaceOutput) DefaultRepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChartNamespace) pulumi.StringOutput { return v.DefaultRepoType }).(pulumi.StringOutput)
+}
+
+// The ID of the Container Registry instance.
+func (o ChartNamespaceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChartNamespace) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the namespace that you want to create.
+func (o ChartNamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChartNamespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
 type ChartNamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (ChartNamespaceArrayOutput) ElementType() reflect.Type {

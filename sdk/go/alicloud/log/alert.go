@@ -731,6 +731,153 @@ func (o AlertOutput) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
 	return o
 }
 
+// Alert description.
+func (o AlertOutput) AlertDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.AlertDescription }).(pulumi.StringPtrOutput)
+}
+
+// Alert displayname.
+func (o AlertOutput) AlertDisplayname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.AlertDisplayname }).(pulumi.StringOutput)
+}
+
+// Name of logstore for configuring alarm service.
+func (o AlertOutput) AlertName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.AlertName }).(pulumi.StringOutput)
+}
+
+// Annotations for new alert.
+func (o AlertOutput) Annotations() AlertAnnotationArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertAnnotationArrayOutput { return v.Annotations }).(AlertAnnotationArrayOutput)
+}
+
+// whether to add automatic annotation, default is false.
+func (o AlertOutput) AutoAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.BoolPtrOutput { return v.AutoAnnotation }).(pulumi.BoolPtrOutput)
+}
+
+// Join condition.
+//
+// Deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations
+func (o AlertOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
+func (o AlertOutput) Dashboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Dashboard }).(pulumi.StringPtrOutput)
+}
+
+// Group configuration for new alert.
+func (o AlertOutput) GroupConfiguration() AlertGroupConfigurationPtrOutput {
+	return o.ApplyT(func(v *Alert) AlertGroupConfigurationPtrOutput { return v.GroupConfiguration }).(AlertGroupConfigurationPtrOutput)
+}
+
+// Join configuration for different queries.
+func (o AlertOutput) JoinConfigurations() AlertJoinConfigurationArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertJoinConfigurationArrayOutput { return v.JoinConfigurations }).(AlertJoinConfigurationArrayOutput)
+}
+
+// Labels for new alert.
+func (o AlertOutput) Labels() AlertLabelArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertLabelArrayOutput { return v.Labels }).(AlertLabelArrayOutput)
+}
+
+// Timestamp, notifications before closing again.
+func (o AlertOutput) MuteUntil() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.IntPtrOutput { return v.MuteUntil }).(pulumi.IntPtrOutput)
+}
+
+// Switch for whether new alert fires when no data happens, default is false.
+func (o AlertOutput) NoDataFire() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.BoolPtrOutput { return v.NoDataFire }).(pulumi.BoolPtrOutput)
+}
+
+// when no data happens, the severity of new alert.
+func (o AlertOutput) NoDataSeverity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.IntPtrOutput { return v.NoDataSeverity }).(pulumi.IntPtrOutput)
+}
+
+// Alarm information notification list, Deprecated from 1.161.0+.
+//
+// Deprecated: Deprecated from 1.161.0+, use policy_configuration for notification
+func (o AlertOutput) NotificationLists() AlertNotificationListArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertNotificationListArrayOutput { return v.NotificationLists }).(AlertNotificationListArrayOutput)
+}
+
+// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+//
+// Deprecated: Deprecated from 1.161.0+, use threshold
+func (o AlertOutput) NotifyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.IntPtrOutput { return v.NotifyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Policy configuration for new alert.
+func (o AlertOutput) PolicyConfiguration() AlertPolicyConfigurationPtrOutput {
+	return o.ApplyT(func(v *Alert) AlertPolicyConfigurationPtrOutput { return v.PolicyConfiguration }).(AlertPolicyConfigurationPtrOutput)
+}
+
+// The project name.
+func (o AlertOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// Multiple conditions for configured alarm query.
+func (o AlertOutput) QueryLists() AlertQueryListArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertQueryListArrayOutput { return v.QueryLists }).(AlertQueryListArrayOutput)
+}
+
+// schedule for alert.
+func (o AlertOutput) Schedule() AlertSchedulePtrOutput {
+	return o.ApplyT(func(v *Alert) AlertSchedulePtrOutput { return v.Schedule }).(AlertSchedulePtrOutput)
+}
+
+// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+//
+// Deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
+func (o AlertOutput) ScheduleInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.ScheduleInterval }).(pulumi.StringOutput)
+}
+
+// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+//
+// Deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
+func (o AlertOutput) ScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.ScheduleType }).(pulumi.StringOutput)
+}
+
+// when new alert is resolved, whether to notify, default is false.
+func (o AlertOutput) SendResolved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.BoolPtrOutput { return v.SendResolved }).(pulumi.BoolPtrOutput)
+}
+
+// Severity configuration for new alert.
+func (o AlertOutput) SeverityConfigurations() AlertSeverityConfigurationArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertSeverityConfigurationArrayOutput { return v.SeverityConfigurations }).(AlertSeverityConfigurationArrayOutput)
+}
+
+// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+func (o AlertOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *Alert) pulumi.IntOutput { return v.Threshold }).(pulumi.IntOutput)
+}
+
+// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+//
+// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+func (o AlertOutput) Throttling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Throttling }).(pulumi.StringPtrOutput)
+}
+
+// including FixedRate,Hourly,Daily,Weekly,Cron.
+func (o AlertOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The version of alert, new alert is 2.0.
+func (o AlertOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type AlertArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertArrayOutput) ElementType() reflect.Type {

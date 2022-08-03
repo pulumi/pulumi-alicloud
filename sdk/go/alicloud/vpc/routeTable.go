@@ -258,6 +258,38 @@ func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
+// The description of the route table instance.
+func (o RouteTableOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+func (o RouteTableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the route table.
+func (o RouteTableOutput) RouteTableName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.RouteTableName }).(pulumi.StringOutput)
+}
+
+// (Available in v1.119.1+) The status of the route table.
+func (o RouteTableOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o RouteTableOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The vpcId of the route table, the field can't be changed.
+func (o RouteTableOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type RouteTableArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteTableArrayOutput) ElementType() reflect.Type {

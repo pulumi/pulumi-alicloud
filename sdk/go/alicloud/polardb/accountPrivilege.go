@@ -295,6 +295,26 @@ func (o AccountPrivilegeOutput) ToAccountPrivilegeOutputWithContext(ctx context.
 	return o
 }
 
+// A specified account name.
+func (o AccountPrivilegeOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
+func (o AccountPrivilegeOutput) AccountPrivilege() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringPtrOutput { return v.AccountPrivilege }).(pulumi.StringPtrOutput)
+}
+
+// The Id of cluster in which account belongs.
+func (o AccountPrivilegeOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// List of specified database name.
+func (o AccountPrivilegeOutput) DbNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringArrayOutput { return v.DbNames }).(pulumi.StringArrayOutput)
+}
+
 type AccountPrivilegeArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountPrivilegeArrayOutput) ElementType() reflect.Type {

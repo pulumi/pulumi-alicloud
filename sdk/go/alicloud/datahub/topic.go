@@ -331,6 +331,56 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// Comment of the datahub topic. It cannot be longer than 255 characters.
+func (o TopicOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
+func (o TopicOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
+func (o TopicOutput) LastModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.LastModifyTime }).(pulumi.StringOutput)
+}
+
+// How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
+func (o TopicOutput) LifeCycle() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntPtrOutput { return v.LifeCycle }).(pulumi.IntPtrOutput)
+}
+
+// The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+func (o TopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the datahub project that this topic belongs to. It is case-insensitive.
+func (o TopicOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
+// - BIGINT
+// - STRING
+// - BOOLEAN
+// - DOUBLE
+// - TIMESTAMP
+func (o TopicOutput) RecordSchema() pulumi.MapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.RecordSchema }).(pulumi.MapOutput)
+}
+
+// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
+func (o TopicOutput) RecordType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.RecordType }).(pulumi.StringPtrOutput)
+}
+
+// The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
+func (o TopicOutput) ShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntPtrOutput { return v.ShardCount }).(pulumi.IntPtrOutput)
+}
+
 type TopicArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicArrayOutput) ElementType() reflect.Type {

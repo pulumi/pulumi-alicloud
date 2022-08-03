@@ -25,6 +25,60 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.cen.RouteService;
+ * import com.pulumi.alicloud.cen.RouteServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-test&#34;);
+ *         final var exampleNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .isDefault(true)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;);
+ * 
+ *         var vpc = new InstanceAttachment(&#34;vpc&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .childInstanceId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()))
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].regionId()))
+ *             .build());
+ * 
+ *         var this_ = new RouteService(&#34;this&#34;, RouteServiceArgs.builder()        
+ *             .accessRegionId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].regionId()))
+ *             .hostRegionId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].regionId()))
+ *             .hostVpcId(exampleNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()))
+ *             .cenId(vpc.instanceId())
+ *             .host(&#34;100.118.28.52/32&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN Route Service can be imported using the id, e.g.

@@ -229,6 +229,26 @@ func (o ReceiversOutput) ToReceiversOutputWithContext(ctx context.Context) Recei
 	return o
 }
 
+// The description of receivers and 1-50 characters in length.
+func (o ReceiversOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Receivers) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The alias of receivers. Must email address and less than 30 characters in length.
+func (o ReceiversOutput) ReceiversAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v *Receivers) pulumi.StringOutput { return v.ReceiversAlias }).(pulumi.StringOutput)
+}
+
+// The name of the resource. The length that cannot be repeated is 1-30 characters.
+func (o ReceiversOutput) ReceiversName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Receivers) pulumi.StringOutput { return v.ReceiversName }).(pulumi.StringOutput)
+}
+
+// The status of the resource. `0` means uploading, `1` means upload completed.
+func (o ReceiversOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *Receivers) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
 type ReceiversArrayOutput struct{ *pulumi.OutputState }
 
 func (ReceiversArrayOutput) ElementType() reflect.Type {

@@ -42,6 +42,38 @@ public final class QuotasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
+     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQuotaAlarmsResult> getQuotaAlarms() {
         return getQuotaAlarms(GetQuotaAlarmsArgs.Empty, InvokeOptions.Empty);
@@ -52,6 +84,38 @@ public final class QuotasFunctions {
      * &gt; **NOTE:** Available in v1.116.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
+     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQuotaAlarmsResult> getQuotaAlarmsPlain() {
@@ -64,6 +128,38 @@ public final class QuotasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
+     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQuotaAlarmsResult> getQuotaAlarms(GetQuotaAlarmsArgs args) {
         return getQuotaAlarms(args, InvokeOptions.Empty);
@@ -74,6 +170,38 @@ public final class QuotasFunctions {
      * &gt; **NOTE:** Available in v1.116.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
+     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQuotaAlarmsResult> getQuotaAlarmsPlain(GetQuotaAlarmsPlainArgs args) {
@@ -86,6 +214,38 @@ public final class QuotasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
+     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQuotaAlarmsResult> getQuotaAlarms(GetQuotaAlarmsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", TypeShape.of(GetQuotaAlarmsResult.class), args, Utilities.withVersion(options));
@@ -96,6 +256,38 @@ public final class QuotasFunctions {
      * &gt; **NOTE:** Available in v1.116.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaAlarmsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
+     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQuotaAlarmsResult> getQuotaAlarmsPlain(GetQuotaAlarmsPlainArgs args, InvokeOptions options) {
@@ -108,6 +300,38 @@ public final class QuotasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;ess&#34;)
+     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQuotaApplicationsResult> getQuotaApplications(GetQuotaApplicationsArgs args) {
         return getQuotaApplications(args, InvokeOptions.Empty);
@@ -118,6 +342,38 @@ public final class QuotasFunctions {
      * &gt; **NOTE:** Available in v1.117.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;ess&#34;)
+     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQuotaApplicationsResult> getQuotaApplicationsPlain(GetQuotaApplicationsPlainArgs args) {
@@ -130,6 +386,38 @@ public final class QuotasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;ess&#34;)
+     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQuotaApplicationsResult> getQuotaApplications(GetQuotaApplicationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:quotas/getQuotaApplications:getQuotaApplications", TypeShape.of(GetQuotaApplicationsResult.class), args, Utilities.withVersion(options));
@@ -140,6 +428,38 @@ public final class QuotasFunctions {
      * &gt; **NOTE:** Available in v1.117.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;ess&#34;)
+     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQuotaApplicationsResult> getQuotaApplicationsPlain(GetQuotaApplicationsPlainArgs args, InvokeOptions options) {
@@ -152,6 +472,38 @@ public final class QuotasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
+     *             .productCode(&#34;ecs&#34;)
+     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQuotasResult> getQuotas(GetQuotasArgs args) {
         return getQuotas(args, InvokeOptions.Empty);
@@ -162,6 +514,38 @@ public final class QuotasFunctions {
      * &gt; **NOTE:** Available in v1.115.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
+     *             .productCode(&#34;ecs&#34;)
+     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQuotasResult> getQuotasPlain(GetQuotasPlainArgs args) {
@@ -174,6 +558,38 @@ public final class QuotasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
+     *             .productCode(&#34;ecs&#34;)
+     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQuotasResult> getQuotas(GetQuotasArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:quotas/getQuotas:getQuotas", TypeShape.of(GetQuotasResult.class), args, Utilities.withVersion(options));
@@ -184,6 +600,38 @@ public final class QuotasFunctions {
      * &gt; **NOTE:** Available in v1.115.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
+     *             .productCode(&#34;ecs&#34;)
+     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQuotasResult> getQuotasPlain(GetQuotasPlainArgs args, InvokeOptions options) {

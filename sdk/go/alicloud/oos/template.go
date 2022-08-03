@@ -30,7 +30,30 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
-// 			Content: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"FormatVersion\": \"OOS-2019-06-01\",\n", "    \"Description\": \"Update Describe instances of given status\",\n", "    \"Parameters\":{\n", "      \"Status\":{\n", "        \"Type\": \"String\",\n", "        \"Description\": \"(Required) The status of the Ecs instance.\"\n", "      }\n", "    },\n", "    \"Tasks\": [\n", "      {\n", "        \"Properties\" :{\n", "          \"Parameters\":{\n", "            \"Status\": \"{{ Status }}\"\n", "          },\n", "          \"API\": \"DescribeInstances\",\n", "          \"Service\": \"Ecs\"\n", "        },\n", "        \"Name\": \"foo\",\n", "        \"Action\": \"ACS::ExecuteApi\"\n", "      }]\n", "  }\n", "  \n")),
+// 			Content: pulumi.String(fmt.Sprintf(`  {
+//     "FormatVersion": "OOS-2019-06-01",
+//     "Description": "Update Describe instances of given status",
+//     "Parameters":{
+//       "Status":{
+//         "Type": "String",
+//         "Description": "(Required) The status of the Ecs instance."
+//       }
+//     },
+//     "Tasks": [
+//       {
+//         "Properties" :{
+//           "Parameters":{
+//             "Status": "{{ Status }}"
+//           },
+//           "API": "DescribeInstances",
+//           "Service": "Ecs"
+//         },
+//         "Name": "foo",
+//         "Action": "ACS::ExecuteApi"
+//       }]
+//   }
+//
+// `)),
 // 			Tags: pulumi.AnyMap{
 // 				"Created": pulumi.Any("TF"),
 // 				"For":     pulumi.Any("acceptance Test"),
@@ -320,6 +343,91 @@ func (o TemplateOutput) ToTemplateOutput() TemplateOutput {
 
 func (o TemplateOutput) ToTemplateOutputWithContext(ctx context.Context) TemplateOutput {
 	return o
+}
+
+// When deleting a template, whether to delete its related executions. Default to `false`.
+func (o TemplateOutput) AutoDeleteExecutions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Template) pulumi.BoolPtrOutput { return v.AutoDeleteExecutions }).(pulumi.BoolPtrOutput)
+}
+
+// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
+func (o TemplateOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
+// The creator of the template.
+func (o TemplateOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The time when the template is created.
+func (o TemplateOutput) CreatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.CreatedDate }).(pulumi.StringOutput)
+}
+
+// The description of the template.
+func (o TemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Is it triggered successfully.
+func (o TemplateOutput) HasTrigger() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Template) pulumi.BoolOutput { return v.HasTrigger }).(pulumi.BoolOutput)
+}
+
+// The ID of resource group which the template belongs.
+func (o TemplateOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
+func (o TemplateOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.ShareType }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o TemplateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Template) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
+func (o TemplateOutput) TemplateFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateFormat }).(pulumi.StringOutput)
+}
+
+// The id of OOS Template.
+func (o TemplateOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
+func (o TemplateOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.
+func (o TemplateOutput) TemplateType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateType }).(pulumi.StringOutput)
+}
+
+// The version of OOS Template.
+func (o TemplateOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+// The user who updated the template.
+func (o TemplateOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The time when the template was updated.
+func (o TemplateOutput) UpdatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.UpdatedDate }).(pulumi.StringOutput)
+}
+
+// The name of template version.
+func (o TemplateOutput) VersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringPtrOutput { return v.VersionName }).(pulumi.StringPtrOutput)
 }
 
 type TemplateArrayOutput struct{ *pulumi.OutputState }

@@ -275,6 +275,31 @@ func (o PrivateZoneOutput) ToPrivateZoneOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+func (o PrivateZoneOutput) AccessRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.AccessRegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN instance.
+func (o PrivateZoneOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+func (o PrivateZoneOutput) HostRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.HostRegionId }).(pulumi.StringOutput)
+}
+
+// The VPC that belongs to the service region.
+func (o PrivateZoneOutput) HostVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.HostVpcId }).(pulumi.StringOutput)
+}
+
+// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+func (o PrivateZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type PrivateZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (PrivateZoneArrayOutput) ElementType() reflect.Type {

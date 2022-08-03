@@ -440,6 +440,31 @@ func (o AuditOutput) ToAuditOutputWithContext(ctx context.Context) AuditOutput {
 	return o
 }
 
+// Aliuid value of your account.
+func (o AuditOutput) Aliuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Audit) pulumi.StringOutput { return v.Aliuid }).(pulumi.StringOutput)
+}
+
+// Name of SLS log audit.
+func (o AuditOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Audit) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Multi-account configuration, please fill in multiple aliuid.
+func (o AuditOutput) MultiAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Audit) pulumi.StringArrayOutput { return v.MultiAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
+func (o AuditOutput) ResourceDirectoryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Audit) pulumi.StringPtrOutput { return v.ResourceDirectoryType }).(pulumi.StringPtrOutput)
+}
+
+// Log audit detailed configuration.
+func (o AuditOutput) VariableMap() pulumi.MapOutput {
+	return o.ApplyT(func(v *Audit) pulumi.MapOutput { return v.VariableMap }).(pulumi.MapOutput)
+}
+
 type AuditArrayOutput struct{ *pulumi.OutputState }
 
 func (AuditArrayOutput) ElementType() reflect.Type {

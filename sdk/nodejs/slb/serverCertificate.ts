@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * // create a server certificate
  * const foo = new alicloud.slb.ServerCertificate("foo", {

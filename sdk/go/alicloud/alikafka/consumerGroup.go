@@ -273,6 +273,26 @@ func (o ConsumerGroupOutput) ToConsumerGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// ID of the consumer group. The length cannot exceed 64 characters.
+func (o ConsumerGroupOutput) ConsumerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.ConsumerId }).(pulumi.StringOutput)
+}
+
+// The description of the resource.
+func (o ConsumerGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// ID of the ALIKAFKA Instance that owns the groups.
+func (o ConsumerGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ConsumerGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type ConsumerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ConsumerGroupArrayOutput) ElementType() reflect.Type {

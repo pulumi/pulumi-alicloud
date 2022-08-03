@@ -282,6 +282,53 @@ func (o SiteMonitorOutput) ToSiteMonitorOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The URL or IP address monitored by the site monitoring task.
+func (o SiteMonitorOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The IDs of existing alert rules to be associated with the site monitoring task.
+func (o SiteMonitorOutput) AlertIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringArrayOutput { return v.AlertIds }).(pulumi.StringArrayOutput)
+}
+
+func (o SiteMonitorOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+func (o SiteMonitorOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.IntPtrOutput { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+func (o SiteMonitorOutput) IspCities() SiteMonitorIspCityArrayOutput {
+	return o.ApplyT(func(v *SiteMonitor) SiteMonitorIspCityArrayOutput { return v.IspCities }).(SiteMonitorIspCityArrayOutput)
+}
+
+// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+func (o SiteMonitorOutput) OptionsJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringPtrOutput { return v.OptionsJson }).(pulumi.StringPtrOutput)
+}
+
+// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+func (o SiteMonitorOutput) TaskName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.TaskName }).(pulumi.StringOutput)
+}
+
+func (o SiteMonitorOutput) TaskState() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.TaskState }).(pulumi.StringOutput)
+}
+
+// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+func (o SiteMonitorOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.TaskType }).(pulumi.StringOutput)
+}
+
+func (o SiteMonitorOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 type SiteMonitorArrayOutput struct{ *pulumi.OutputState }
 
 func (SiteMonitorArrayOutput) ElementType() reflect.Type {

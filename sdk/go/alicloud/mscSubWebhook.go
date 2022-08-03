@@ -211,6 +211,16 @@ func (o MscSubWebhookOutput) ToMscSubWebhookOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
+func (o MscSubWebhookOutput) ServerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubWebhook) pulumi.StringOutput { return v.ServerUrl }).(pulumi.StringOutput)
+}
+
+// The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
+func (o MscSubWebhookOutput) WebhookName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubWebhook) pulumi.StringOutput { return v.WebhookName }).(pulumi.StringOutput)
+}
+
 type MscSubWebhookArrayOutput struct{ *pulumi.OutputState }
 
 func (MscSubWebhookArrayOutput) ElementType() reflect.Type {

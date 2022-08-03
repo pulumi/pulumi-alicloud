@@ -16,6 +16,103 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.HAVip;
+ * import com.pulumi.alicloud.vpc.HAVipArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.vpc.HAVipAttachment;
+ * import com.pulumi.alicloud.vpc.HAVipAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;test_havip_attachment&#34;);
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(fooNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var fooHAVip = new HAVip(&#34;fooHAVip&#34;, HAVipArgs.builder()        
+ *             .vswitchId(fooSwitch.id())
+ *             .description(name)
+ *             .build());
+ * 
+ *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;foo&#34;)
+ *             .vpcId(fooNetwork.id())
+ *             .build());
+ * 
+ *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchId(fooSwitch.id())
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .internetMaxBandwidthOut(5)
+ *             .securityGroups(tfTestFoo.id())
+ *             .instanceName(name)
+ *             .userData(&#34;echo &#39;net.ipv4.ip_forward=1&#39;&gt;&gt; /etc/sysctl.conf&#34;)
+ *             .build());
+ * 
+ *         var fooHAVipAttachment = new HAVipAttachment(&#34;fooHAVipAttachment&#34;, HAVipAttachmentArgs.builder()        
+ *             .havipId(fooHAVip.id())
+ *             .instanceId(fooInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The havip attachment can be imported using the id, e.g.

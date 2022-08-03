@@ -237,6 +237,26 @@ func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourceOutputWith
 	return o
 }
 
+// The dry run.
+func (o VpcEndpointServiceResourceOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of Resource.
+func (o VpcEndpointServiceResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The Type of Resource.
+func (o VpcEndpointServiceResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The ID of Vpc Endpoint Service.
+func (o VpcEndpointServiceResourceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
 type VpcEndpointServiceResourceArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceResourceArrayOutput) ElementType() reflect.Type {

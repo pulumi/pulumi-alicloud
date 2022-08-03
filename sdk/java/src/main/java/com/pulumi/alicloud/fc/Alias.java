@@ -23,6 +23,43 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fc.Alias;
+ * import com.pulumi.alicloud.fc.AliasArgs;
+ * import com.pulumi.alicloud.fc.inputs.AliasRoutingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Alias(&#34;example&#34;, AliasArgs.builder()        
+ *             .aliasName(&#34;my_alias&#34;)
+ *             .description(&#34;a sample description&#34;)
+ *             .routingConfig(AliasRoutingConfigArgs.builder()
+ *                 .additionalVersionWeights(Map.of(&#34;2&#34;, 0.5))
+ *                 .build())
+ *             .serviceName(&#34;my_service_name&#34;)
+ *             .serviceVersion(&#34;1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Function Compute alias can be imported using the id, e.g.

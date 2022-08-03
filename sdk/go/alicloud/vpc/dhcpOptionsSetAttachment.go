@@ -242,6 +242,25 @@ func (o DhcpOptionsSetAttachmentOutput) ToDhcpOptionsSetAttachmentOutputWithCont
 	return o
 }
 
+// The ID of the DHCP options set.
+func (o DhcpOptionsSetAttachmentOutput) DhcpOptionsSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DhcpOptionsSetAttachment) pulumi.StringOutput { return v.DhcpOptionsSetId }).(pulumi.StringOutput)
+}
+
+// Specifies whether to precheck this request only. Default values: `false`. Valid values:
+func (o DhcpOptionsSetAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionsSetAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+func (o DhcpOptionsSetAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DhcpOptionsSetAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC network that is to be associated with the DHCP options set..
+func (o DhcpOptionsSetAttachmentOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DhcpOptionsSetAttachment) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type DhcpOptionsSetAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (DhcpOptionsSetAttachmentArrayOutput) ElementType() reflect.Type {

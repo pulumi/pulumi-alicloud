@@ -326,6 +326,43 @@ func (o DispatchRuleOutput) ToDispatchRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The name of the dispatch policy.
+func (o DispatchRuleOutput) DispatchRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DispatchRule) pulumi.StringOutput { return v.DispatchRuleName }).(pulumi.StringOutput)
+}
+
+// The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
+func (o DispatchRuleOutput) DispatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DispatchRule) pulumi.StringPtrOutput { return v.DispatchType }).(pulumi.StringPtrOutput)
+}
+
+// Sets the event group. See the following `Block groupRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+func (o DispatchRuleOutput) GroupRules() DispatchRuleGroupRuleArrayOutput {
+	return o.ApplyT(func(v *DispatchRule) DispatchRuleGroupRuleArrayOutput { return v.GroupRules }).(DispatchRuleGroupRuleArrayOutput)
+}
+
+// Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
+func (o DispatchRuleOutput) IsRecover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DispatchRule) pulumi.BoolPtrOutput { return v.IsRecover }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the dispatch rule. See the following `Block labelMatchExpressionGrid`.
+func (o DispatchRuleOutput) LabelMatchExpressionGrids() DispatchRuleLabelMatchExpressionGridArrayOutput {
+	return o.ApplyT(func(v *DispatchRule) DispatchRuleLabelMatchExpressionGridArrayOutput {
+		return v.LabelMatchExpressionGrids
+	}).(DispatchRuleLabelMatchExpressionGridArrayOutput)
+}
+
+// Sets the notification rule. See the following `Block notifyRules`. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
+func (o DispatchRuleOutput) NotifyRules() DispatchRuleNotifyRuleArrayOutput {
+	return o.ApplyT(func(v *DispatchRule) DispatchRuleNotifyRuleArrayOutput { return v.NotifyRules }).(DispatchRuleNotifyRuleArrayOutput)
+}
+
+// The resource status of Alert Dispatch Rule.
+func (o DispatchRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DispatchRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type DispatchRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleArrayOutput) ElementType() reflect.Type {

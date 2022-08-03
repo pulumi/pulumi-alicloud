@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///         var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new AliCloud.AliKafka.TopicArgs
     ///         {
     ///             InstanceId = defaultInstance.Id,
-    ///             Topic = topic,
+    ///             TopicName = topic,
     ///             LocalTopic = false,
     ///             CompactTopic = false,
     ///             PartitionNum = 12,

@@ -319,6 +319,93 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) AuthConfig() DomainAuthConfigPtrOutput {
+	return o.ApplyT(func(v *Domain) DomainAuthConfigPtrOutput { return v.AuthConfig }).(DomainAuthConfigPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) BlockIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.BlockIps }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) CacheConfigs() DomainCacheConfigArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainCacheConfigArrayOutput { return v.CacheConfigs }).(DomainCacheConfigArrayOutput)
+}
+
+func (o DomainOutput) CdnType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CdnType }).(pulumi.StringOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) CertificateConfig() DomainCertificateConfigPtrOutput {
+	return o.ApplyT(func(v *Domain) DomainCertificateConfigPtrOutput { return v.CertificateConfig }).(DomainCertificateConfigPtrOutput)
+}
+
+func (o DomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) HttpHeaderConfigs() DomainHttpHeaderConfigArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainHttpHeaderConfigArrayOutput { return v.HttpHeaderConfigs }).(DomainHttpHeaderConfigArrayOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) OptimizeEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.OptimizeEnable }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) Page404Config() DomainPage404ConfigPtrOutput {
+	return o.ApplyT(func(v *Domain) DomainPage404ConfigPtrOutput { return v.Page404Config }).(DomainPage404ConfigPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) PageCompressEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.PageCompressEnable }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) ParameterFilterConfig() DomainParameterFilterConfigPtrOutput {
+	return o.ApplyT(func(v *Domain) DomainParameterFilterConfigPtrOutput { return v.ParameterFilterConfig }).(DomainParameterFilterConfigPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) RangeEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.RangeEnable }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) ReferConfig() DomainReferConfigPtrOutput {
+	return o.ApplyT(func(v *Domain) DomainReferConfigPtrOutput { return v.ReferConfig }).(DomainReferConfigPtrOutput)
+}
+
+func (o DomainOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
+func (o DomainOutput) SourcePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.SourcePort }).(pulumi.IntPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
+func (o DomainOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
+func (o DomainOutput) Sources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.Sources }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
+func (o DomainOutput) VideoSeekEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.VideoSeekEnable }).(pulumi.StringPtrOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

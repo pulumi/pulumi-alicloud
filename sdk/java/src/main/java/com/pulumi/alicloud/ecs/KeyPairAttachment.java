@@ -19,6 +19,110 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.KeyPair;
+ * import com.pulumi.alicloud.ecs.KeyPairArgs;
+ * import com.pulumi.alicloud.ecs.KeyPairAttachment;
+ * import com.pulumi.alicloud.ecs.KeyPairAttachmentArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var type = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .avaiabilityZone(default_.zones()[0].id())
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var images = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;keyPairAttachmentName&#34;);
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .build());
+ * 
+ *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;New security group&#34;)
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new Instance(&#34;instance-&#34; + i, InstanceArgs.builder()            
+ *                 .instanceName(String.format(&#34;%s-%s&#34;, name,range.value() + 1))
+ *                 .imageId(images.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceType(type.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .securityGroups(group.id())
+ *                 .vswitchId(vswitch.id())
+ *                 .internetChargeType(&#34;PayByTraffic&#34;)
+ *                 .internetMaxBandwidthOut(5)
+ *                 .password(&#34;Test12345&#34;)
+ *                 .instanceChargeType(&#34;PostPaid&#34;)
+ *                 .systemDiskCategory(&#34;cloud_ssd&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var pair = new KeyPair(&#34;pair&#34;, KeyPairArgs.builder()        
+ *             .keyName(name)
+ *             .build());
+ * 
+ *         var attachment = new KeyPairAttachment(&#34;attachment&#34;, KeyPairAttachmentArgs.builder()        
+ *             .keyName(pair.id())
+ *             .instanceIds(instance.stream().map(element -&gt; element.id()).collect(toList()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:ecs/keyPairAttachment:KeyPairAttachment")
 public class KeyPairAttachment extends com.pulumi.resources.CustomResource {

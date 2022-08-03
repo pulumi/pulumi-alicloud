@@ -33,6 +33,35 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts() {
         return getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.Empty, InvokeOptions.Empty);
@@ -43,6 +72,35 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostAccountsResult> getDedicatedHostAccountsPlain() {
@@ -55,6 +113,35 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts(GetDedicatedHostAccountsArgs args) {
         return getDedicatedHostAccounts(args, InvokeOptions.Empty);
@@ -65,6 +152,35 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostAccountsResult> getDedicatedHostAccountsPlain(GetDedicatedHostAccountsPlainArgs args) {
@@ -77,6 +193,35 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts(GetDedicatedHostAccountsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", TypeShape.of(GetDedicatedHostAccountsResult.class), args, Utilities.withVersion(options));
@@ -87,6 +232,35 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostAccountsResult> getDedicatedHostAccountsPlain(GetDedicatedHostAccountsPlainArgs args, InvokeOptions options) {
@@ -99,6 +273,37 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+     *             .engine(&#34;MongoDB&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups() {
         return getDedicatedHostGroups(GetDedicatedHostGroupsArgs.Empty, InvokeOptions.Empty);
@@ -109,6 +314,37 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+     *             .engine(&#34;MongoDB&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostGroupsResult> getDedicatedHostGroupsPlain() {
@@ -121,6 +357,37 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+     *             .engine(&#34;MongoDB&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups(GetDedicatedHostGroupsArgs args) {
         return getDedicatedHostGroups(args, InvokeOptions.Empty);
@@ -131,6 +398,37 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+     *             .engine(&#34;MongoDB&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostGroupsResult> getDedicatedHostGroupsPlain(GetDedicatedHostGroupsPlainArgs args) {
@@ -143,6 +441,37 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+     *             .engine(&#34;MongoDB&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups(GetDedicatedHostGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", TypeShape.of(GetDedicatedHostGroupsResult.class), args, Utilities.withVersion(options));
@@ -153,6 +482,37 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+     *             .engine(&#34;MongoDB&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostGroupsResult> getDedicatedHostGroupsPlain(GetDedicatedHostGroupsPlainArgs args, InvokeOptions options) {
@@ -165,6 +525,76 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .allocationStatus(&#34;Allocatable&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args) {
         return getDedicatedHosts(args, InvokeOptions.Empty);
@@ -175,6 +605,76 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .allocationStatus(&#34;Allocatable&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args) {
@@ -187,6 +687,76 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .allocationStatus(&#34;Allocatable&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", TypeShape.of(GetDedicatedHostsResult.class), args, Utilities.withVersion(options));
@@ -197,6 +767,76 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .allocationStatus(&#34;Allocatable&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args, InvokeOptions options) {
@@ -245,6 +885,35 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CddcFunctions.getZones();
+     * 
+     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -255,6 +924,35 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CddcFunctions.getZones();
+     * 
+     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -267,6 +965,35 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CddcFunctions.getZones();
+     * 
+     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -277,6 +1004,35 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CddcFunctions.getZones();
+     * 
+     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -289,6 +1045,35 @@ public final class CddcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CddcFunctions.getZones();
+     * 
+     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -299,6 +1084,35 @@ public final class CddcFunctions {
      * &gt; **NOTE:** Available in v1.147.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CddcFunctions.getZones();
+     * 
+     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -223,6 +223,36 @@ func (o VbrHaOutput) ToVbrHaOutputWithContext(ctx context.Context) VbrHaOutput {
 	return o
 }
 
+// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+func (o VbrHaOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The dry run.
+func (o VbrHaOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the other VBR in the VBR failover group.
+func (o VbrHaOutput) PeerVbrId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.PeerVbrId }).(pulumi.StringOutput)
+}
+
+// The state of the VBR failover group.
+func (o VbrHaOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the VBR failover group.
+func (o VbrHaOutput) VbrHaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.StringPtrOutput { return v.VbrHaName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VBR instance.
+func (o VbrHaOutput) VbrId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHa) pulumi.StringOutput { return v.VbrId }).(pulumi.StringOutput)
+}
+
 type VbrHaArrayOutput struct{ *pulumi.OutputState }
 
 func (VbrHaArrayOutput) ElementType() reflect.Type {

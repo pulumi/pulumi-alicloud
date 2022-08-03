@@ -30,6 +30,37 @@ public final class CassandraFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args) {
         return getBackupPlans(args, InvokeOptions.Empty);
@@ -40,6 +71,37 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.128.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBackupPlansResult> getBackupPlansPlain(GetBackupPlansPlainArgs args) {
@@ -52,6 +114,37 @@ public final class CassandraFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cassandra/getBackupPlans:getBackupPlans", TypeShape.of(GetBackupPlansResult.class), args, Utilities.withVersion(options));
@@ -62,6 +155,37 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.128.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBackupPlansResult> getBackupPlansPlain(GetBackupPlansPlainArgs args, InvokeOptions options) {
@@ -74,6 +198,34 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -86,6 +238,34 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -98,6 +278,34 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -110,6 +318,34 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -122,6 +358,34 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -134,6 +398,34 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -146,6 +438,35 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
+     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDataCentersResult> getDataCenters(GetDataCentersArgs args) {
@@ -158,6 +479,35 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
+     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDataCentersResult> getDataCentersPlain(GetDataCentersPlainArgs args) {
@@ -170,6 +520,35 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
+     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDataCentersResult> getDataCenters(GetDataCentersArgs args, InvokeOptions options) {
@@ -182,6 +561,35 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
+     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDataCentersResult> getDataCentersPlain(GetDataCentersPlainArgs args, InvokeOptions options) {
@@ -193,6 +601,38 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.Cluster;
+     * import com.pulumi.alicloud.cassandra.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = CassandraFunctions.getZones();
+     * 
+     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -204,6 +644,38 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.Cluster;
+     * import com.pulumi.alicloud.cassandra.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = CassandraFunctions.getZones();
+     * 
+     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -215,6 +687,38 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.Cluster;
+     * import com.pulumi.alicloud.cassandra.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = CassandraFunctions.getZones();
+     * 
+     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -226,6 +730,38 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.Cluster;
+     * import com.pulumi.alicloud.cassandra.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = CassandraFunctions.getZones();
+     * 
+     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -237,6 +773,38 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.Cluster;
+     * import com.pulumi.alicloud.cassandra.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = CassandraFunctions.getZones();
+     * 
+     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -248,6 +816,38 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.Cluster;
+     * import com.pulumi.alicloud.cassandra.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = CassandraFunctions.getZones();
+     * 
+     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

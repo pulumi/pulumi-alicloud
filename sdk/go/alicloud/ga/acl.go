@@ -242,6 +242,31 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
+// The entries of the Acl. See the following `Block aclEntries`.
+func (o AclOutput) AclEntries() AclAclEntryArrayOutput {
+	return o.ApplyT(func(v *Acl) AclAclEntryArrayOutput { return v.AclEntries }).(AclAclEntryArrayOutput)
+}
+
+// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
+func (o AclOutput) AclName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringPtrOutput { return v.AclName }).(pulumi.StringPtrOutput)
+}
+
+// The IP version. Valid values: `IPv4` and `IPv6`.
+func (o AclOutput) AddressIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AddressIpVersion }).(pulumi.StringOutput)
+}
+
+// The dry run.
+func (o AclOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Acl) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The status of the resource.
+func (o AclOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AclArrayOutput struct{ *pulumi.OutputState }
 
 func (AclArrayOutput) ElementType() reflect.Type {

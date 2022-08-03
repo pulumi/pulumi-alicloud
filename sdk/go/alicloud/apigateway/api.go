@@ -388,6 +388,86 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
 }
 
+// The ID of the api of api gateway.
+func (o ApiOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// The authorization Type including APP and ANONYMOUS. Defaults to null.
+func (o ApiOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// constant_parameters defines the constant parameters of the api.
+func (o ApiOutput) ConstantParameters() ApiConstantParameterArrayOutput {
+	return o.ApplyT(func(v *Api) ApiConstantParameterArrayOutput { return v.ConstantParameters }).(ApiConstantParameterArrayOutput)
+}
+
+// The description of Constant parameter.
+func (o ApiOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
+func (o ApiOutput) FcServiceConfig() ApiFcServiceConfigPtrOutput {
+	return o.ApplyT(func(v *Api) ApiFcServiceConfigPtrOutput { return v.FcServiceConfig }).(ApiFcServiceConfigPtrOutput)
+}
+
+// Whether to prevent API replay attack. Default value: `false`.
+func (o ApiOutput) ForceNonceCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Api) pulumi.BoolOutput { return v.ForceNonceCheck }).(pulumi.BoolOutput)
+}
+
+// The api gateway that the api belongs to. Defaults to null.
+func (o ApiOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// http_service_config defines the config when serviceType selected 'HTTP'.
+func (o ApiOutput) HttpServiceConfig() ApiHttpServiceConfigPtrOutput {
+	return o.ApplyT(func(v *Api) ApiHttpServiceConfigPtrOutput { return v.HttpServiceConfig }).(ApiHttpServiceConfigPtrOutput)
+}
+
+// http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'.
+func (o ApiOutput) HttpVpcServiceConfig() ApiHttpVpcServiceConfigPtrOutput {
+	return o.ApplyT(func(v *Api) ApiHttpVpcServiceConfigPtrOutput { return v.HttpVpcServiceConfig }).(ApiHttpVpcServiceConfigPtrOutput)
+}
+
+// http_service_config defines the config when serviceType selected 'MOCK'.
+func (o ApiOutput) MockServiceConfig() ApiMockServiceConfigPtrOutput {
+	return o.ApplyT(func(v *Api) ApiMockServiceConfigPtrOutput { return v.MockServiceConfig }).(ApiMockServiceConfigPtrOutput)
+}
+
+// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+func (o ApiOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Request_config defines how users can send requests to your API.
+func (o ApiOutput) RequestConfig() ApiRequestConfigOutput {
+	return o.ApplyT(func(v *Api) ApiRequestConfigOutput { return v.RequestConfig }).(ApiRequestConfigOutput)
+}
+
+// request_parameters defines the request parameters of the api.
+func (o ApiOutput) RequestParameters() ApiRequestParameterArrayOutput {
+	return o.ApplyT(func(v *Api) ApiRequestParameterArrayOutput { return v.RequestParameters }).(ApiRequestParameterArrayOutput)
+}
+
+// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+func (o ApiOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+func (o ApiOutput) StageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringArrayOutput { return v.StageNames }).(pulumi.StringArrayOutput)
+}
+
+// system_parameters defines the system parameters of the api.
+func (o ApiOutput) SystemParameters() ApiSystemParameterArrayOutput {
+	return o.ApplyT(func(v *Api) ApiSystemParameterArrayOutput { return v.SystemParameters }).(ApiSystemParameterArrayOutput)
+}
+
 type ApiArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiArrayOutput) ElementType() reflect.Type {

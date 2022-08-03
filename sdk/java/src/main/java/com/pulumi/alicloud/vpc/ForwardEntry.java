@@ -20,6 +20,85 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.NatGateway;
+ * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+ * import com.pulumi.alicloud.ecs.EipAddress;
+ * import com.pulumi.alicloud.ecs.EipAddressArgs;
+ * import com.pulumi.alicloud.ecs.EipAssociation;
+ * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+ * import com.pulumi.alicloud.vpc.ForwardEntry;
+ * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-example-name&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .specification(&#34;Small&#34;)
+ *             .build());
+ * 
+ *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+ *             .addressName(name)
+ *             .build());
+ * 
+ *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+ *             .allocationId(defaultEipAddress.id())
+ *             .instanceId(defaultNatGateway.id())
+ *             .build());
+ * 
+ *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+ *             .forwardTableId(defaultNatGateway.forwardTableIds())
+ *             .externalIp(defaultEipAddress.ipAddress())
+ *             .externalPort(&#34;80&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .internalIp(&#34;172.16.0.3&#34;)
+ *             .internalPort(&#34;8080&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Forward Entry can be imported using the id, e.g.

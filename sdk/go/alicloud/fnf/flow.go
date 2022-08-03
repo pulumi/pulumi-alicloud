@@ -35,13 +35,27 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-// 			Document: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": \"sts:AssumeRole\",\n", "        \"Effect\": \"Allow\",\n", "        \"Principal\": {\n", "          \"Service\": [\n", "            \"fnf.aliyuncs.com\"\n", "          ]\n", "        }\n", "      }\n", "    ],\n", "    \"Version\": \"1\"\n", "  }\n")),
+// 			Document: pulumi.String(fmt.Sprintf(`  {
+//     "Statement": [
+//       {
+//         "Action": "sts:AssumeRole",
+//         "Effect": "Allow",
+//         "Principal": {
+//           "Service": [
+//             "fnf.aliyuncs.com"
+//           ]
+//         }
+//       }
+//     ],
+//     "Version": "1"
+//   }
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = fnf.NewFlow(ctx, "example", &fnf.FlowArgs{
-// 			Definition:  pulumi.String(fmt.Sprintf("%v%v%v%v%v", "  version: v1beta1\n", "  type: flow\n", "  steps:\n", "    - type: pass\n", "      name: helloworld\n")),
+// 			Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
 // 			RoleArn:     _default.Arn,
 // 			Description: pulumi.String("Test for terraform fnf_flow."),
 // 			Type:        pulumi.String("FDL"),
@@ -267,6 +281,41 @@ func (o FlowOutput) ToFlowOutput() FlowOutput {
 
 func (o FlowOutput) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return o
+}
+
+// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
+func (o FlowOutput) Definition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.Definition }).(pulumi.StringOutput)
+}
+
+// The description of the flow.
+func (o FlowOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique ID of the flow.
+func (o FlowOutput) FlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.FlowId }).(pulumi.StringOutput)
+}
+
+// The time when the flow was last modified.
+func (o FlowOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The name of the flow. The name must be unique in an Alibaba Cloud account.
+func (o FlowOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
+func (o FlowOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The type of the flow. Valid values are `FDL` or `DEFAULT`.
+func (o FlowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type FlowArrayOutput struct{ *pulumi.OutputState }

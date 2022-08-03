@@ -31,6 +31,40 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Available in 1.64.0+
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Image;
+ * import com.pulumi.alicloud.ecs.ImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Image(&#34;default&#34;, ImageArgs.builder()        
+ *             .architecture(&#34;x86_64&#34;)
+ *             .description(&#34;test-image&#34;)
+ *             .imageName(&#34;test-image&#34;)
+ *             .instanceId(&#34;i-bp1g6zv0ce8oghu7k***&#34;)
+ *             .platform(&#34;CentOS&#34;)
+ *             .resourceGroupId(&#34;rg-bp67acfmxazb4ph***&#34;)
+ *             .tags(Map.of(&#34;FinanceDept&#34;, &#34;FinanceDeptJoshua&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

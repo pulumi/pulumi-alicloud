@@ -228,6 +228,38 @@ func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
+// The RouteEntry's target network segment.
+func (o RouteEntryOutput) DestinationCidrblock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.DestinationCidrblock }).(pulumi.StringPtrOutput)
+}
+
+// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+func (o RouteEntryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The route entry's next hop. ECS instance ID or VPC router interface ID.
+func (o RouteEntryOutput) NexthopId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.NexthopId }).(pulumi.StringPtrOutput)
+}
+
+// The next hop type. Available values:
+func (o RouteEntryOutput) NexthopType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.NexthopType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the route table.
+func (o RouteEntryOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// This argument has been deprecated. Please use other arguments to launch a custom route entry.
+//
+// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
+func (o RouteEntryOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
 type RouteEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryArrayOutput) ElementType() reflect.Type {

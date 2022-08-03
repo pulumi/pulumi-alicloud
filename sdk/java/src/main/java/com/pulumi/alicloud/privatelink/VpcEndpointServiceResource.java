@@ -24,6 +24,38 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new VpcEndpointServiceResource(&#34;example&#34;, VpcEndpointServiceResourceArgs.builder()        
+ *             .resourceId(&#34;lb-gw8nuym5xxxxx&#34;)
+ *             .resourceType(&#34;slb&#34;)
+ *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.

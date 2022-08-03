@@ -20,6 +20,68 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.VirtualHost;
+ * import com.pulumi.alicloud.amqp.VirtualHostArgs;
+ * import com.pulumi.alicloud.amqp.Exchange;
+ * import com.pulumi.alicloud.amqp.ExchangeArgs;
+ * import com.pulumi.alicloud.amqp.Queue;
+ * import com.pulumi.alicloud.amqp.QueueArgs;
+ * import com.pulumi.alicloud.amqp.Binding;
+ * import com.pulumi.alicloud.amqp.BindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleVirtualHost = new VirtualHost(&#34;exampleVirtualHost&#34;, VirtualHostArgs.builder()        
+ *             .instanceId(&#34;amqp-abc12345&#34;)
+ *             .virtualHostName(&#34;my-VirtualHost&#34;)
+ *             .build());
+ * 
+ *         var exampleExchange = new Exchange(&#34;exampleExchange&#34;, ExchangeArgs.builder()        
+ *             .autoDeleteState(false)
+ *             .exchangeName(&#34;my-Exchange&#34;)
+ *             .exchangeType(&#34;HEADERS&#34;)
+ *             .instanceId(exampleVirtualHost.instanceId())
+ *             .internal(false)
+ *             .virtualHostName(exampleVirtualHost.virtualHostName())
+ *             .build());
+ * 
+ *         var exampleQueue = new Queue(&#34;exampleQueue&#34;, QueueArgs.builder()        
+ *             .instanceId(exampleVirtualHost.instanceId())
+ *             .queueName(&#34;my-Queue&#34;)
+ *             .virtualHostName(exampleVirtualHost.virtualHostName())
+ *             .build());
+ * 
+ *         var exampleBinding = new Binding(&#34;exampleBinding&#34;, BindingArgs.builder()        
+ *             .argument(&#34;x-match:all&#34;)
+ *             .bindingKey(exampleQueue.queueName())
+ *             .bindingType(&#34;QUEUE&#34;)
+ *             .destinationName(&#34;binding-queue&#34;)
+ *             .instanceId(exampleExchange.instanceId())
+ *             .sourceExchange(exampleExchange.exchangeName())
+ *             .virtualHostName(exampleExchange.virtualHostName())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * RabbitMQ (AMQP) Binding can be imported using the id, e.g.

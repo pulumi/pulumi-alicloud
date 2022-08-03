@@ -240,6 +240,16 @@ func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentOutputWithContext(ctx 
 	return o
 }
 
+// The id of the network acl, the field can't be changed.
+func (o NetworkAclAttachmentOutput) NetworkAclId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAclAttachment) pulumi.StringOutput { return v.NetworkAclId }).(pulumi.StringOutput)
+}
+
+// List of the resources associated with the network acl. The details see Block Resources.
+func (o NetworkAclAttachmentOutput) Resources() NetworkAclAttachmentResourceArrayOutput {
+	return o.ApplyT(func(v *NetworkAclAttachment) NetworkAclAttachmentResourceArrayOutput { return v.Resources }).(NetworkAclAttachmentResourceArrayOutput)
+}
+
 type NetworkAclAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclAttachmentArrayOutput) ElementType() reflect.Type {

@@ -327,6 +327,64 @@ func (o HostOutput) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return o
 }
 
+// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
+func (o HostOutput) ActiveAddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.ActiveAddressType }).(pulumi.StringOutput)
+}
+
+// Specify a host of notes, supports up to 500 characters.
+func (o HostOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// The host ID.
+func (o HostOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.HostId }).(pulumi.StringOutput)
+}
+
+// Specify the new create a host name of the supports up to 128 characters.
+func (o HostOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+}
+
+// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
+func (o HostOutput) HostPrivateAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.HostPrivateAddress }).(pulumi.StringPtrOutput)
+}
+
+// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
+func (o HostOutput) HostPublicAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.HostPublicAddress }).(pulumi.StringPtrOutput)
+}
+
+// Specify the new create a host where the Bastion host ID of.
+func (o HostOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The instance region id.
+func (o HostOutput) InstanceRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.InstanceRegionId }).(pulumi.StringPtrOutput)
+}
+
+// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
+func (o HostOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Specify the new create a host of source. Valid values:
+// * `Local`: localhost
+// * `Ecs`:ECS instance
+// * `Rds`:RDS exclusive cluster host.
+func (o HostOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
+// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
+func (o HostOutput) SourceInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.SourceInstanceId }).(pulumi.StringPtrOutput)
+}
+
 type HostArrayOutput struct{ *pulumi.OutputState }
 
 func (HostArrayOutput) ElementType() reflect.Type {

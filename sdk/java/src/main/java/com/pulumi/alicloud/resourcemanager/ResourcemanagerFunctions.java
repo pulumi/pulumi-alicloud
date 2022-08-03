@@ -59,6 +59,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountsResult> getAccounts() {
@@ -70,6 +97,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain() {
@@ -81,6 +135,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
@@ -92,6 +173,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -103,6 +211,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
@@ -114,6 +249,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -126,6 +288,38 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies() {
         return getControlPolicies(GetControlPoliciesArgs.Empty, InvokeOptions.Empty);
@@ -136,6 +330,38 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain() {
@@ -148,6 +374,38 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args) {
         return getControlPolicies(args, InvokeOptions.Empty);
@@ -158,6 +416,38 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args) {
@@ -170,6 +460,38 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getControlPolicies:getControlPolicies", TypeShape.of(GetControlPoliciesResult.class), args, Utilities.withVersion(options));
@@ -180,6 +502,38 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args, InvokeOptions options) {
@@ -192,6 +546,37 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
+     *             .targetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetControlPolicyAttachmentsResult> getControlPolicyAttachments(GetControlPolicyAttachmentsArgs args) {
         return getControlPolicyAttachments(args, InvokeOptions.Empty);
@@ -202,6 +587,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
+     *             .targetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetControlPolicyAttachmentsResult> getControlPolicyAttachmentsPlain(GetControlPolicyAttachmentsPlainArgs args) {
@@ -214,6 +630,37 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
+     *             .targetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetControlPolicyAttachmentsResult> getControlPolicyAttachments(GetControlPolicyAttachmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", TypeShape.of(GetControlPolicyAttachmentsResult.class), args, Utilities.withVersion(options));
@@ -224,6 +671,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
+     *             .targetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetControlPolicyAttachmentsResult> getControlPolicyAttachmentsPlain(GetControlPolicyAttachmentsPlainArgs args, InvokeOptions options) {
@@ -237,6 +715,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFoldersResult> getFolders() {
@@ -250,6 +757,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain() {
@@ -263,6 +799,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFoldersResult> getFolders(GetFoldersArgs args) {
@@ -276,6 +841,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args) {
@@ -289,6 +883,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFoldersResult> getFolders(GetFoldersArgs args, InvokeOptions options) {
@@ -302,6 +925,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args, InvokeOptions options) {
@@ -313,6 +965,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getHandshakes();
+     * 
+     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetHandshakesResult> getHandshakes() {
@@ -324,6 +1003,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getHandshakes();
+     * 
+     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHandshakesResult> getHandshakesPlain() {
@@ -335,6 +1041,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getHandshakes();
+     * 
+     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetHandshakesResult> getHandshakes(GetHandshakesArgs args) {
@@ -346,6 +1079,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getHandshakes();
+     * 
+     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHandshakesResult> getHandshakesPlain(GetHandshakesPlainArgs args) {
@@ -357,6 +1117,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getHandshakes();
+     * 
+     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetHandshakesResult> getHandshakes(GetHandshakesArgs args, InvokeOptions options) {
@@ -368,6 +1155,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getHandshakes();
+     * 
+     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHandshakesResult> getHandshakesPlain(GetHandshakesPlainArgs args, InvokeOptions options) {
@@ -379,6 +1193,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPoliciesResult> getPolicies() {
@@ -390,6 +1235,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
@@ -401,6 +1277,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args) {
@@ -412,6 +1319,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args) {
@@ -423,6 +1361,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOptions options) {
@@ -434,6 +1403,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {
@@ -445,6 +1445,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
+     * 
+     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPolicyAttachmentsResult> getPolicyAttachments() {
@@ -456,6 +1483,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
+     * 
+     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyAttachmentsResult> getPolicyAttachmentsPlain() {
@@ -467,6 +1521,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
+     * 
+     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPolicyAttachmentsResult> getPolicyAttachments(GetPolicyAttachmentsArgs args) {
@@ -478,6 +1559,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
+     * 
+     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyAttachmentsResult> getPolicyAttachmentsPlain(GetPolicyAttachmentsPlainArgs args) {
@@ -489,6 +1597,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
+     * 
+     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPolicyAttachmentsResult> getPolicyAttachments(GetPolicyAttachmentsArgs args, InvokeOptions options) {
@@ -500,6 +1635,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
+     * 
+     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyAttachmentsResult> getPolicyAttachmentsPlain(GetPolicyAttachmentsPlainArgs args, InvokeOptions options) {
@@ -511,6 +1673,36 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
+     *             .policyName(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPolicyVersionsResult> getPolicyVersions(GetPolicyVersionsArgs args) {
@@ -522,6 +1714,36 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
+     *             .policyName(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyVersionsResult> getPolicyVersionsPlain(GetPolicyVersionsPlainArgs args) {
@@ -533,6 +1755,36 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
+     *             .policyName(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPolicyVersionsResult> getPolicyVersions(GetPolicyVersionsArgs args, InvokeOptions options) {
@@ -544,6 +1796,36 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
+     *             .policyName(&#34;tftest&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPolicyVersionsResult> getPolicyVersionsPlain(GetPolicyVersionsPlainArgs args, InvokeOptions options) {
@@ -555,6 +1837,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+     * 
+     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResourceDirectoriesResult> getResourceDirectories() {
@@ -566,6 +1875,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+     * 
+     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResourceDirectoriesResult> getResourceDirectoriesPlain() {
@@ -577,6 +1913,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+     * 
+     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResourceDirectoriesResult> getResourceDirectories(GetResourceDirectoriesArgs args) {
@@ -588,6 +1951,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+     * 
+     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResourceDirectoriesResult> getResourceDirectoriesPlain(GetResourceDirectoriesPlainArgs args) {
@@ -599,6 +1989,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+     * 
+     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResourceDirectoriesResult> getResourceDirectories(GetResourceDirectoriesArgs args, InvokeOptions options) {
@@ -610,6 +2027,33 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+     * 
+     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResourceDirectoriesResult> getResourceDirectoriesPlain(GetResourceDirectoriesPlainArgs args, InvokeOptions options) {
@@ -621,6 +2065,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.84.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups() {
@@ -632,6 +2105,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.84.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain() {
@@ -643,6 +2145,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.84.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args) {
@@ -654,6 +2185,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.84.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args) {
@@ -665,6 +2225,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.84.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args, InvokeOptions options) {
@@ -676,6 +2265,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.84.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args, InvokeOptions options) {
@@ -688,6 +2306,39 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
+     *             .resourceShareOwner(&#34;Self&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetResourceSharesResult> getResourceShares(GetResourceSharesArgs args) {
         return getResourceShares(args, InvokeOptions.Empty);
@@ -698,6 +2349,39 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
+     *             .resourceShareOwner(&#34;Self&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResourceSharesResult> getResourceSharesPlain(GetResourceSharesPlainArgs args) {
@@ -710,6 +2394,39 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
+     *             .resourceShareOwner(&#34;Self&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetResourceSharesResult> getResourceShares(GetResourceSharesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getResourceShares:getResourceShares", TypeShape.of(GetResourceSharesResult.class), args, Utilities.withVersion(options));
@@ -721,6 +2438,39 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
+     *             .resourceShareOwner(&#34;Self&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetResourceSharesResult> getResourceSharesPlain(GetResourceSharesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getResourceShares:getResourceShares", TypeShape.of(GetResourceSharesResult.class), args, Utilities.withVersion(options));
@@ -731,6 +2481,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRolesResult> getRoles() {
@@ -742,6 +2521,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain() {
@@ -753,6 +2561,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRolesResult> getRoles(GetRolesArgs args) {
@@ -764,6 +2601,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args) {
@@ -775,6 +2641,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRolesResult> getRoles(GetRolesArgs args, InvokeOptions options) {
@@ -786,6 +2681,35 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args, InvokeOptions options) {
@@ -798,6 +2722,38 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(&#34;rs-V2NV******&#34;)
+     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources() {
         return getSharedResources(GetSharedResourcesArgs.Empty, InvokeOptions.Empty);
@@ -808,6 +2764,38 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(&#34;rs-V2NV******&#34;)
+     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain() {
@@ -820,6 +2808,38 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(&#34;rs-V2NV******&#34;)
+     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args) {
         return getSharedResources(args, InvokeOptions.Empty);
@@ -830,6 +2850,38 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(&#34;rs-V2NV******&#34;)
+     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain(GetSharedResourcesPlainArgs args) {
@@ -842,6 +2894,38 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(&#34;rs-V2NV******&#34;)
+     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedResources:getSharedResources", TypeShape.of(GetSharedResourcesResult.class), args, Utilities.withVersion(options));
@@ -852,6 +2936,38 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(&#34;rs-V2NV******&#34;)
+     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain(GetSharedResourcesPlainArgs args, InvokeOptions options) {
@@ -864,6 +2980,37 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(&#34;15681091********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSharedTargetsResult> getSharedTargets() {
         return getSharedTargets(GetSharedTargetsArgs.Empty, InvokeOptions.Empty);
@@ -874,6 +3021,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(&#34;15681091********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSharedTargetsResult> getSharedTargetsPlain() {
@@ -886,6 +3064,37 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(&#34;15681091********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSharedTargetsResult> getSharedTargets(GetSharedTargetsArgs args) {
         return getSharedTargets(args, InvokeOptions.Empty);
@@ -896,6 +3105,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(&#34;15681091********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSharedTargetsResult> getSharedTargetsPlain(GetSharedTargetsPlainArgs args) {
@@ -908,6 +3148,37 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(&#34;15681091********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSharedTargetsResult> getSharedTargets(GetSharedTargetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedTargets:getSharedTargets", TypeShape.of(GetSharedTargetsResult.class), args, Utilities.withVersion(options));
@@ -918,6 +3189,37 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(&#34;15681091********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSharedTargetsResult> getSharedTargetsPlain(GetSharedTargetsPlainArgs args, InvokeOptions options) {

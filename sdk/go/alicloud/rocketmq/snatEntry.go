@@ -229,6 +229,21 @@ func (o SnatEntryOutput) ToSnatEntryOutputWithContext(ctx context.Context) SnatE
 	return o
 }
 
+// The destination CIDR block.
+func (o SnatEntryOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The ID of the SAG instance.
+func (o SnatEntryOutput) SagId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SagId }).(pulumi.StringOutput)
+}
+
+// The public IP address.
+func (o SnatEntryOutput) SnatIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SnatIp }).(pulumi.StringOutput)
+}
+
 type SnatEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (SnatEntryArrayOutput) ElementType() reflect.Type {

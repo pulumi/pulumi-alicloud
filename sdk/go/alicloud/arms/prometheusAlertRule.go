@@ -317,6 +317,66 @@ func (o PrometheusAlertRuleOutput) ToPrometheusAlertRuleOutputWithContext(ctx co
 	return o
 }
 
+// The annotations of the alert rule.. See the following `Block annotations`.
+func (o PrometheusAlertRuleOutput) Annotations() PrometheusAlertRuleAnnotationArrayOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) PrometheusAlertRuleAnnotationArrayOutput { return v.Annotations }).(PrometheusAlertRuleAnnotationArrayOutput)
+}
+
+// The ID of the cluster.
+func (o PrometheusAlertRuleOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
+func (o PrometheusAlertRuleOutput) DispatchRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringPtrOutput { return v.DispatchRuleId }).(pulumi.StringPtrOutput)
+}
+
+// The duration of the alert.
+func (o PrometheusAlertRuleOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
+}
+
+// The alert rule expression that follows the PromQL syntax.
+func (o PrometheusAlertRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The labels of the resource. See the following `Block labels`.
+func (o PrometheusAlertRuleOutput) Labels() PrometheusAlertRuleLabelArrayOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) PrometheusAlertRuleLabelArrayOutput { return v.Labels }).(PrometheusAlertRuleLabelArrayOutput)
+}
+
+// The message of the alert notification.
+func (o PrometheusAlertRuleOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
+}
+
+// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+func (o PrometheusAlertRuleOutput) NotifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringPtrOutput { return v.NotifyType }).(pulumi.StringPtrOutput)
+}
+
+// The first ID of the resource.
+func (o PrometheusAlertRuleOutput) PrometheusAlertRuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.IntOutput { return v.PrometheusAlertRuleId }).(pulumi.IntOutput)
+}
+
+// The name of the resource.
+func (o PrometheusAlertRuleOutput) PrometheusAlertRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringOutput { return v.PrometheusAlertRuleName }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `0`, `1`.
+func (o PrometheusAlertRuleOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
+// The type of the alert rule.
+func (o PrometheusAlertRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusAlertRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type PrometheusAlertRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleArrayOutput) ElementType() reflect.Type {

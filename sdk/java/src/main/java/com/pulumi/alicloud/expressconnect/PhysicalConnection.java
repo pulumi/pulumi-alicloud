@@ -23,6 +23,54 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.expressconnect.PhysicalConnection;
+ * import com.pulumi.alicloud.expressconnect.PhysicalConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var domestic = new PhysicalConnection(&#34;domestic&#34;, PhysicalConnectionArgs.builder()        
+ *             .accessPointId(&#34;ap-cn-hangzhou-yh-B&#34;)
+ *             .bandwidth(100)
+ *             .description(&#34;my domestic connection&#34;)
+ *             .lineOperator(&#34;CT&#34;)
+ *             .peerLocation(&#34;example_value&#34;)
+ *             .physicalConnectionName(&#34;example_value&#34;)
+ *             .portType(&#34;1000Base-LX&#34;)
+ *             .type(&#34;VPC&#34;)
+ *             .build());
+ * 
+ *         var international = new PhysicalConnection(&#34;international&#34;, PhysicalConnectionArgs.builder()        
+ *             .accessPointId(&#34;ap-sg-singpore-A&#34;)
+ *             .bandwidth(100)
+ *             .description(&#34;my domestic connection&#34;)
+ *             .lineOperator(&#34;Other&#34;)
+ *             .peerLocation(&#34;example_value&#34;)
+ *             .physicalConnectionName(&#34;example_value&#34;)
+ *             .portType(&#34;1000Base-LX&#34;)
+ *             .type(&#34;VPC&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Express Connect Physical Connection can be imported using the id, e.g.

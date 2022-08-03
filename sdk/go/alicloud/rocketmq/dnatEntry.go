@@ -282,6 +282,41 @@ func (o DnatEntryOutput) ToDnatEntryOutputWithContext(ctx context.Context) DnatE
 	return o
 }
 
+// The external public IP address.when "type" is "Internet",automatically identify the external ip.
+func (o DnatEntryOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnatEntry) pulumi.StringPtrOutput { return v.ExternalIp }).(pulumi.StringPtrOutput)
+}
+
+// The public port.Value range: 1 to 65535 or "any".
+func (o DnatEntryOutput) ExternalPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnatEntry) pulumi.StringOutput { return v.ExternalPort }).(pulumi.StringOutput)
+}
+
+// The destination private IP address.
+func (o DnatEntryOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnatEntry) pulumi.StringOutput { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+// The destination private port.Value range: 1 to 65535 or "any".
+func (o DnatEntryOutput) InternalPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnatEntry) pulumi.StringOutput { return v.InternalPort }).(pulumi.StringOutput)
+}
+
+// The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
+func (o DnatEntryOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnatEntry) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The ID of the SAG instance.
+func (o DnatEntryOutput) SagId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnatEntry) pulumi.StringOutput { return v.SagId }).(pulumi.StringOutput)
+}
+
+// The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
+func (o DnatEntryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnatEntry) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type DnatEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (DnatEntryArrayOutput) ElementType() reflect.Type {

@@ -209,6 +209,16 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
+// The description of the resource.
+func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource.
+func (o NamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
 type NamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceArrayOutput) ElementType() reflect.Type {

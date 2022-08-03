@@ -410,6 +410,88 @@ func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentOutputWi
 	return o
 }
 
+// Auto publish route enabled. The system default value is `false`.
+func (o TransitRouterPeerAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The bandwidth of the bandwidth package.
+func (o TransitRouterPeerAttachmentOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+func (o TransitRouterPeerAttachmentOutput) BandwidthType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.BandwidthType }).(pulumi.StringOutput)
+}
+
+// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+func (o TransitRouterPeerAttachmentOutput) CenBandwidthPackageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.CenBandwidthPackageId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CEN.
+func (o TransitRouterPeerAttachmentOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+func (o TransitRouterPeerAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the peer transit router.
+func (o TransitRouterPeerAttachmentOutput) PeerTransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.PeerTransitRouterId }).(pulumi.StringOutput)
+}
+
+// The region ID of peer transit router.
+func (o TransitRouterPeerAttachmentOutput) PeerTransitRouterRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.PeerTransitRouterRegionId }).(pulumi.StringOutput)
+}
+
+// The resource type to attachment. Only support `VR` and default value is `VR`.
+func (o TransitRouterPeerAttachmentOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to association route table. System default is `false`.
+func (o TransitRouterPeerAttachmentOutput) RouteTableAssociationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.RouteTableAssociationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to propagation route table. System default is `false`.
+func (o TransitRouterPeerAttachmentOutput) RouteTablePropagationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the network.
+func (o TransitRouterPeerAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput {
+		return v.TransitRouterAttachmentDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of transit router attachment id.
+func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.TransitRouterAttachmentName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the transit router to attach.
+func (o TransitRouterPeerAttachmentOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+}
+
 type TransitRouterPeerAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPeerAttachmentArrayOutput) ElementType() reflect.Type {

@@ -27,6 +27,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetQueuesResult> getQueues() {
@@ -36,6 +65,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain() {
@@ -45,6 +103,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args) {
@@ -54,6 +141,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args) {
@@ -63,6 +179,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args, InvokeOptions options) {
@@ -72,6 +217,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args, InvokeOptions options) {
@@ -87,6 +261,34 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -102,6 +304,34 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -117,6 +347,34 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -132,6 +390,34 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -147,6 +433,34 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -162,6 +476,34 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -171,6 +513,36 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName(&#34;topic_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTopicSubscriptionsResult> getTopicSubscriptions(GetTopicSubscriptionsArgs args) {
@@ -180,6 +552,36 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName(&#34;topic_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTopicSubscriptionsResult> getTopicSubscriptionsPlain(GetTopicSubscriptionsPlainArgs args) {
@@ -189,6 +591,36 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName(&#34;topic_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTopicSubscriptionsResult> getTopicSubscriptions(GetTopicSubscriptionsArgs args, InvokeOptions options) {
@@ -198,6 +630,36 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName(&#34;topic_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTopicSubscriptionsResult> getTopicSubscriptionsPlain(GetTopicSubscriptionsPlainArgs args, InvokeOptions options) {
@@ -207,6 +669,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTopicsResult> getTopics() {
@@ -216,6 +707,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain() {
@@ -225,6 +745,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args) {
@@ -234,6 +783,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args) {
@@ -243,6 +821,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOptions options) {
@@ -252,6 +859,35 @@ public final class MnsFunctions {
      * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
+     *             .namePrefix(&#34;tf-&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args, InvokeOptions options) {

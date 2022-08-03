@@ -48,9 +48,9 @@ import (
 // 			EventMetaName:    pulumi.String("LogFileCreated"),
 // 			EventMetaVersion: pulumi.String("1.0.0"),
 // 			Notes:            pulumi.String("example_value"),
-// 			RoleArn:          pulumi.String(fmt.Sprintf("%v%v%v", "acs:ram::", defaultAccount.Id, ":role/aliyuncdneventnotificationrole")),
-// 			SourceArn:        pulumi.String(fmt.Sprintf("%v%v%v", "acs:cdn:*:", defaultAccount.Id, ":domain/example.com")),
-// 			TriggerArn:       pulumi.String(fmt.Sprintf("%v%v%v%v%v", "acs:fc:", defaultRegions.Regions[0].Id, ":", defaultAccount.Id, ":services/FCTestService/functions/printEvent/triggers/testtrigger")),
+// 			RoleArn:          pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyuncdneventnotificationrole", defaultAccount.Id)),
+// 			SourceArn:        pulumi.String(fmt.Sprintf("acs:cdn:*:%v:domain/example.com", defaultAccount.Id)),
+// 			TriggerArn:       pulumi.String(fmt.Sprintf("acs:fc:%v:%v:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultRegions.Regions[0].Id, defaultAccount.Id)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -290,6 +290,41 @@ func (o FcTriggerOutput) ToFcTriggerOutput() FcTriggerOutput {
 
 func (o FcTriggerOutput) ToFcTriggerOutputWithContext(ctx context.Context) FcTriggerOutput {
 	return o
+}
+
+// The name of the Event.
+func (o FcTriggerOutput) EventMetaName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.EventMetaName }).(pulumi.StringOutput)
+}
+
+// The version of the Event.
+func (o FcTriggerOutput) EventMetaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.EventMetaVersion }).(pulumi.StringOutput)
+}
+
+// The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
+func (o FcTriggerOutput) FunctionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FcTrigger) pulumi.StringPtrOutput { return v.FunctionArn }).(pulumi.StringPtrOutput)
+}
+
+// The Note information.
+func (o FcTriggerOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.Notes }).(pulumi.StringOutput)
+}
+
+// The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
+func (o FcTriggerOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
+func (o FcTriggerOutput) SourceArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.SourceArn }).(pulumi.StringOutput)
+}
+
+// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+func (o FcTriggerOutput) TriggerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.TriggerArn }).(pulumi.StringOutput)
 }
 
 type FcTriggerArrayOutput struct{ *pulumi.OutputState }

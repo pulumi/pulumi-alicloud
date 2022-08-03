@@ -332,6 +332,38 @@ func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerOutputWithContext(ctx 
 	return o
 }
 
+// The id of kubernetes cluster.
+func (o KubernetesAutoscalerOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAutoscaler) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The coolDownDuration option of cluster-autoscaler.
+func (o KubernetesAutoscalerOutput) CoolDownDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAutoscaler) pulumi.StringOutput { return v.CoolDownDuration }).(pulumi.StringOutput)
+}
+
+// The deferScaleInDuration option of cluster-autoscaler.
+func (o KubernetesAutoscalerOutput) DeferScaleInDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAutoscaler) pulumi.StringOutput { return v.DeferScaleInDuration }).(pulumi.StringOutput)
+}
+
+// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
+// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
+// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+func (o KubernetesAutoscalerOutput) Nodepools() KubernetesAutoscalerNodepoolArrayOutput {
+	return o.ApplyT(func(v *KubernetesAutoscaler) KubernetesAutoscalerNodepoolArrayOutput { return v.Nodepools }).(KubernetesAutoscalerNodepoolArrayOutput)
+}
+
+// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+func (o KubernetesAutoscalerOutput) UseEcsRamRoleToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesAutoscaler) pulumi.BoolPtrOutput { return v.UseEcsRamRoleToken }).(pulumi.BoolPtrOutput)
+}
+
+// The utilization option of cluster-autoscaler.
+func (o KubernetesAutoscalerOutput) Utilization() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAutoscaler) pulumi.StringOutput { return v.Utilization }).(pulumi.StringOutput)
+}
+
 type KubernetesAutoscalerArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAutoscalerArrayOutput) ElementType() reflect.Type {

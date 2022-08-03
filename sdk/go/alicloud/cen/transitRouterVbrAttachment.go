@@ -287,6 +287,73 @@ func (o TransitRouterVbrAttachmentOutput) ToTransitRouterVbrAttachmentOutputWith
 	return o
 }
 
+// Auto publish route enabled.Default value is `false`.
+func (o TransitRouterVbrAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the CEN.
+func (o TransitRouterVbrAttachmentOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The dry run.
+func (o TransitRouterVbrAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+func (o TransitRouterVbrAttachmentOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enabled route table association. The system default value is `true`.
+func (o TransitRouterVbrAttachmentOutput) RouteTableAssociationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolPtrOutput { return v.RouteTableAssociationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enabled route table propagation. The system default value is `true`.
+func (o TransitRouterVbrAttachmentOutput) RouteTablePropagationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the network.
+func (o TransitRouterVbrAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of the transit router vbr attachment.
+func (o TransitRouterVbrAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringPtrOutput {
+		return v.TransitRouterAttachmentDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The id of the transit router vbr attachment.
+func (o TransitRouterVbrAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// The name of the transit router vbr attachment.
+func (o TransitRouterVbrAttachmentOutput) TransitRouterAttachmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringPtrOutput { return v.TransitRouterAttachmentName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the transit router.
+func (o TransitRouterVbrAttachmentOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringPtrOutput { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VBR.
+func (o TransitRouterVbrAttachmentOutput) VbrId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.VbrId }).(pulumi.StringOutput)
+}
+
+// The owner id of the transit router vbr attachment.
+func (o TransitRouterVbrAttachmentOutput) VbrOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.VbrOwnerId }).(pulumi.StringOutput)
+}
+
 type TransitRouterVbrAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVbrAttachmentArrayOutput) ElementType() reflect.Type {

@@ -285,6 +285,50 @@ func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
 }
 
+// The description of Vault. Defaults to an empty string.
+func (o VaultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+// - `KMS`: Use Alibaba Cloud Kms to encryption.
+func (o VaultOutput) EncryptType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.EncryptType }).(pulumi.StringOutput)
+}
+
+// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
+func (o VaultOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+// - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
+// - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+func (o VaultOutput) RedundancyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.RedundancyType }).(pulumi.StringOutput)
+}
+
+// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+func (o VaultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of Vault.
+func (o VaultOutput) VaultName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultName }).(pulumi.StringOutput)
+}
+
+// The storage class of Vault. Valid values: `STANDARD`.
+func (o VaultOutput) VaultStorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultStorageClass }).(pulumi.StringOutput)
+}
+
+// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+func (o VaultOutput) VaultType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultType }).(pulumi.StringOutput)
+}
+
 type VaultArrayOutput struct{ *pulumi.OutputState }
 
 func (VaultArrayOutput) ElementType() reflect.Type {

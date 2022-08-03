@@ -291,6 +291,48 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// Attribute perm has been deprecated and suggest removing it from your template.
+//
+// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
+func (o DomainOutput) BizName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.BizName }).(pulumi.StringPtrOutput)
+}
+
+// Certificate Information. See the following `Block certInfos`.
+func (o DomainOutput) CertInfos() DomainCertInfoArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainCertInfoArrayOutput { return v.CertInfos }).(DomainCertInfoArrayOutput)
+}
+
+// The health check url.
+func (o DomainOutput) CheckUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CheckUrl }).(pulumi.StringPtrOutput)
+}
+
+// The name of domain.
+func (o DomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Whether to set certificate forcibly.
+func (o DomainOutput) ForceSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.ForceSet }).(pulumi.StringPtrOutput)
+}
+
+// The resource group id.
+func (o DomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// the Origin Server Information. See the following `Block sources`.
+func (o DomainOutput) Sources() DomainSourceArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainSourceArrayOutput { return v.Sources }).(DomainSourceArrayOutput)
+}
+
+// The status of the resource. Valid values: `offline`, `online`.
+func (o DomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

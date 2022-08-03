@@ -229,6 +229,26 @@ func (o AlarmContactGroupOutput) ToAlarmContactGroupOutputWithContext(ctx contex
 	return o
 }
 
+// The name of the alarm group.
+func (o AlarmContactGroupOutput) AlarmContactGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlarmContactGroup) pulumi.StringOutput { return v.AlarmContactGroupName }).(pulumi.StringOutput)
+}
+
+// The name of the alert contact.
+func (o AlarmContactGroupOutput) Contacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlarmContactGroup) pulumi.StringArrayOutput { return v.Contacts }).(pulumi.StringArrayOutput)
+}
+
+// The description of the alert group.
+func (o AlarmContactGroupOutput) Describe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmContactGroup) pulumi.StringPtrOutput { return v.Describe }).(pulumi.StringPtrOutput)
+}
+
+// Whether to open weekly subscription.
+func (o AlarmContactGroupOutput) EnableSubscribed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AlarmContactGroup) pulumi.BoolOutput { return v.EnableSubscribed }).(pulumi.BoolOutput)
+}
+
 type AlarmContactGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AlarmContactGroupArrayOutput) ElementType() reflect.Type {

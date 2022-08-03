@@ -511,6 +511,136 @@ func (o DBClusterOutput) ToDBClusterOutputWithContext(ctx context.Context) DBClu
 	return o
 }
 
+// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+func (o DBClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.IntOutput { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+func (o DBClusterOutput) ComputeResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.ComputeResource }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of the cluster.
+func (o DBClusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
+func (o DBClusterOutput) DbClusterCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.DbClusterCategory }).(pulumi.StringOutput)
+}
+
+// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+//
+// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+func (o DBClusterOutput) DbClusterClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.DbClusterClass }).(pulumi.StringPtrOutput)
+}
+
+// The db cluster version. Value options: `3.0`, Default to `3.0`.
+func (o DBClusterOutput) DbClusterVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.DbClusterVersion }).(pulumi.StringPtrOutput)
+}
+
+// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+func (o DBClusterOutput) DbNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.DbNodeClass }).(pulumi.StringOutput)
+}
+
+// The db node count.
+func (o DBClusterOutput) DbNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.IntOutput { return v.DbNodeCount }).(pulumi.IntOutput)
+}
+
+// The db node storage.
+func (o DBClusterOutput) DbNodeStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.IntOutput { return v.DbNodeStorage }).(pulumi.IntOutput)
+}
+
+// The description of DBCluster.
+func (o DBClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The elastic io resource.
+func (o DBClusterOutput) ElasticIoResource() pulumi.IntOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.IntOutput { return v.ElasticIoResource }).(pulumi.IntOutput)
+}
+
+// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
+func (o DBClusterOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+// The mode of the cluster. Valid values: `reserver`, `flexible`.
+func (o DBClusterOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The modify type.
+func (o DBClusterOutput) ModifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
+}
+
+// Field `payType` has been deprecated. New field `paymentType` instead.
+//
+// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+func (o DBClusterOutput) PayType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.PayType }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+func (o DBClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o DBClusterOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+func (o DBClusterOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o DBClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o DBClusterOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+// The status of the resource.
+func (o DBClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o DBClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The vpc ID of the resource.
+func (o DBClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o DBClusterOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID of the resource.
+func (o DBClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type DBClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (DBClusterArrayOutput) ElementType() reflect.Type {

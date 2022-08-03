@@ -361,6 +361,50 @@ func (o ApplicationScalingRuleOutput) ToApplicationScalingRuleOutputWithContext(
 	return o
 }
 
+// Application ID.
+func (o ApplicationScalingRuleOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The min ready instance ratio.
+func (o ApplicationScalingRuleOutput) MinReadyInstanceRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) pulumi.IntPtrOutput { return v.MinReadyInstanceRatio }).(pulumi.IntPtrOutput)
+}
+
+// The min ready instances.
+func (o ApplicationScalingRuleOutput) MinReadyInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) pulumi.IntPtrOutput { return v.MinReadyInstances }).(pulumi.IntPtrOutput)
+}
+
+// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
+func (o ApplicationScalingRuleOutput) ScalingRuleEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) pulumi.BoolOutput { return v.ScalingRuleEnable }).(pulumi.BoolOutput)
+}
+
+// Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
+func (o ApplicationScalingRuleOutput) ScalingRuleMetric() ApplicationScalingRuleScalingRuleMetricPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) ApplicationScalingRuleScalingRuleMetricPtrOutput {
+		return v.ScalingRuleMetric
+	}).(ApplicationScalingRuleScalingRuleMetricPtrOutput)
+}
+
+// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
+func (o ApplicationScalingRuleOutput) ScalingRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) pulumi.StringOutput { return v.ScalingRuleName }).(pulumi.StringOutput)
+}
+
+// Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
+func (o ApplicationScalingRuleOutput) ScalingRuleTimer() ApplicationScalingRuleScalingRuleTimerPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) ApplicationScalingRuleScalingRuleTimerPtrOutput {
+		return v.ScalingRuleTimer
+	}).(ApplicationScalingRuleScalingRuleTimerPtrOutput)
+}
+
+// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
+func (o ApplicationScalingRuleOutput) ScalingRuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationScalingRule) pulumi.StringOutput { return v.ScalingRuleType }).(pulumi.StringOutput)
+}
+
 type ApplicationScalingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleArrayOutput) ElementType() reflect.Type {

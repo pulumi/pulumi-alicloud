@@ -228,6 +228,36 @@ func (o ServerGroupServerAttachmentOutput) ToServerGroupServerAttachmentOutputWi
 	return o
 }
 
+// The description of the backend server.
+func (o ServerGroupServerAttachmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The port that is used by the backend server. Valid values: `1` to `65535`.
+func (o ServerGroupServerAttachmentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// The ID of the server group.
+func (o ServerGroupServerAttachmentOutput) ServerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.ServerGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
+func (o ServerGroupServerAttachmentOutput) ServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.ServerId }).(pulumi.StringOutput)
+}
+
+// The type of backend server. Valid values: `ecs`, `eni`.
+func (o ServerGroupServerAttachmentOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
+func (o ServerGroupServerAttachmentOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type ServerGroupServerAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupServerAttachmentArrayOutput) ElementType() reflect.Type {

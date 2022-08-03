@@ -365,6 +365,100 @@ func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumeOutputWithContext(ctx cont
 	return o
 }
 
+// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+func (o GatewayBlockVolumeOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+func (o GatewayBlockVolumeOutput) ChapEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.BoolOutput { return v.ChapEnabled }).(pulumi.BoolOutput)
+}
+
+// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
+func (o GatewayBlockVolumeOutput) ChapInPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringPtrOutput { return v.ChapInPassword }).(pulumi.StringPtrOutput)
+}
+
+// The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
+func (o GatewayBlockVolumeOutput) ChapInUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringPtrOutput { return v.ChapInUser }).(pulumi.StringPtrOutput)
+}
+
+// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
+func (o GatewayBlockVolumeOutput) ChunkSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.IntOutput { return v.ChunkSize }).(pulumi.IntOutput)
+}
+
+// The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
+func (o GatewayBlockVolumeOutput) GatewayBlockVolumeName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.GatewayBlockVolumeName }).(pulumi.StringOutput)
+}
+
+// The Gateway ID.
+func (o GatewayBlockVolumeOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the index.
+func (o GatewayBlockVolumeOutput) IndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.IndexId }).(pulumi.StringOutput)
+}
+
+// Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
+func (o GatewayBlockVolumeOutput) IsSourceDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.BoolPtrOutput { return v.IsSourceDeletion }).(pulumi.BoolPtrOutput)
+}
+
+// The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
+func (o GatewayBlockVolumeOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringPtrOutput { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OSS Bucket.
+func (o GatewayBlockVolumeOutput) OssBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.OssBucketName }).(pulumi.StringOutput)
+}
+
+// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+func (o GatewayBlockVolumeOutput) OssBucketSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.BoolOutput { return v.OssBucketSsl }).(pulumi.BoolOutput)
+}
+
+// The endpoint of the OSS Bucket.
+func (o GatewayBlockVolumeOutput) OssEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.OssEndpoint }).(pulumi.StringOutput)
+}
+
+// The Protocol. Valid values: `iSCSI`.
+func (o GatewayBlockVolumeOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The recovery.
+func (o GatewayBlockVolumeOutput) Recovery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.BoolPtrOutput { return v.Recovery }).(pulumi.BoolPtrOutput)
+}
+
+// The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
+func (o GatewayBlockVolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The status of volume. Valid values:
+// - `0`: Normal condition.
+// - `1`: Failed to create volume.
+// - `2`: Failed to delete volume.
+// - `3`: Failed to enable target.
+// - `4`: Failed to disable target.
+// - `5`: Database error.
+// - `6`: Failed to enable cache.
+// - `7`: Failed to disable cache.
+// - `8`: System error.
+func (o GatewayBlockVolumeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type GatewayBlockVolumeArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayBlockVolumeArrayOutput) ElementType() reflect.Type {

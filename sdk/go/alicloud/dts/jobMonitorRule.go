@@ -243,6 +243,31 @@ func (o JobMonitorRuleOutput) ToJobMonitorRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Trigger delay alarm threshold, which is measured in seconds.
+func (o JobMonitorRuleOutput) DelayRuleTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobMonitorRule) pulumi.StringOutput { return v.DelayRuleTime }).(pulumi.StringOutput)
+}
+
+// Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
+func (o JobMonitorRuleOutput) DtsJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobMonitorRule) pulumi.StringOutput { return v.DtsJobId }).(pulumi.StringOutput)
+}
+
+// The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
+func (o JobMonitorRuleOutput) Phone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobMonitorRule) pulumi.StringPtrOutput { return v.Phone }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable monitoring rules, valid values: `Y`, `N`.
+func (o JobMonitorRuleOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobMonitorRule) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
+func (o JobMonitorRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobMonitorRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type JobMonitorRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (JobMonitorRuleArrayOutput) ElementType() reflect.Type {

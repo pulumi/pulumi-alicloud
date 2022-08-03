@@ -23,6 +23,54 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.oos.Application;
+ * import com.pulumi.alicloud.oos.ApplicationArgs;
+ * import com.pulumi.alicloud.oos.ApplicationGroup;
+ * import com.pulumi.alicloud.oos.ApplicationGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .applicationName(&#34;example_value&#34;)
+ *             .description(&#34;example_value&#34;)
+ *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
+ *             .build());
+ * 
+ *         var defaultApplicationGroup = new ApplicationGroup(&#34;defaultApplicationGroup&#34;, ApplicationGroupArgs.builder()        
+ *             .applicationGroupName(var_.name())
+ *             .applicationName(defaultApplication.id())
+ *             .deployRegionId(&#34;example_value&#34;)
+ *             .description(&#34;example_value&#34;)
+ *             .importTagKey(&#34;example_value&#34;)
+ *             .importTagValue(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * OOS Application Group can be imported using the id, e.g.

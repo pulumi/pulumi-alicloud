@@ -26,6 +26,100 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.cms.AlarmContactGroup;
+ * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+ * import com.pulumi.alicloud.dns.GtmInstance;
+ * import com.pulumi.alicloud.dns.GtmInstanceArgs;
+ * import com.pulumi.alicloud.dns.inputs.GtmInstanceAlertConfigArgs;
+ * import com.pulumi.alicloud.dns.AddressPool;
+ * import com.pulumi.alicloud.dns.AddressPoolArgs;
+ * import com.pulumi.alicloud.dns.inputs.AddressPoolAddressArgs;
+ * import com.pulumi.alicloud.dns.MonitorConfig;
+ * import com.pulumi.alicloud.dns.MonitorConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;your_domain_name&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName(name)
+ *             .build());
+ * 
+ *         var defaultGtmInstance = new GtmInstance(&#34;defaultGtmInstance&#34;, GtmInstanceArgs.builder()        
+ *             .instanceName(name)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .packageEdition(&#34;ultimate&#34;)
+ *             .healthCheckTaskCount(100)
+ *             .smsNotificationCount(1000)
+ *             .publicCnameMode(&#34;SYSTEM_ASSIGN&#34;)
+ *             .ttl(60)
+ *             .cnameType(&#34;PUBLIC&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .alertGroups(defaultAlarmContactGroup.alarmContactGroupName())
+ *             .publicUserDomainName(domainName)
+ *             .alertConfigs(GtmInstanceAlertConfigArgs.builder()
+ *                 .smsNotice(true)
+ *                 .noticeType(&#34;ADDR_ALERT&#34;)
+ *                 .emailNotice(true)
+ *                 .dingtalkNotice(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultAddressPool = new AddressPool(&#34;defaultAddressPool&#34;, AddressPoolArgs.builder()        
+ *             .addressPoolName(name)
+ *             .instanceId(defaultGtmInstance.id())
+ *             .lbaStrategy(&#34;RATIO&#34;)
+ *             .type(&#34;IPV4&#34;)
+ *             .addresses(AddressPoolAddressArgs.builder()
+ *                 .attributeInfo(&#34;{\&#34;lineCodeRectifyType\&#34;:\&#34;RECTIFIED\&#34;,\&#34;lineCodes\&#34;:[\&#34;os_namerica_us\&#34;]}&#34;)
+ *                 .remark(&#34;address_remark&#34;)
+ *                 .address(&#34;1.1.1.1&#34;)
+ *                 .mode(&#34;SMART&#34;)
+ *                 .lbaWeight(1)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultMonitorConfig = new MonitorConfig(&#34;defaultMonitorConfig&#34;, MonitorConfigArgs.builder()        
+ *             .addrPoolId(defaultAddressPool.id())
+ *             .evaluationCount(&#34;1&#34;)
+ *             .interval(&#34;60&#34;)
+ *             .timeout(&#34;5000&#34;)
+ *             .protocolType(&#34;TCP&#34;)
+ *             .monitorExtendInfo(&#34;{\&#34;failureRate\&#34;=50,\&#34;port\&#34;=80}&#34;)
+ *             .ispCityNodes(MonitorConfigIspCityNodeArgs.builder()
+ *                 .cityCode(&#34;503&#34;)
+ *                 .ispCode(&#34;465&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DNS Monitor Config can be imported using the id, e.g.

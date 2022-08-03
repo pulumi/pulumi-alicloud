@@ -23,6 +23,101 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.pulumi.providers.alicloud;
+ * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackage;
+ * import com.pulumi.alicloud.cen.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterPeerAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterPeerAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAcccExample&#34;);
+ *         var us = new Provider(&#34;us&#34;, ProviderArgs.builder()        
+ *             .region(&#34;us-east-1&#34;)
+ *             .build());
+ * 
+ *         var cn = new Provider(&#34;cn&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.cn())
+ *                 .build());
+ * 
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(5)
+ *             .cenBandwidthPackageName(name)
+ *             .geographicRegionAId(&#34;China&#34;)
+ *             .geographicRegionBId(&#34;North-America&#34;)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.cn())
+ *                 .build());
+ * 
+ *         var cnTransitRouter = new TransitRouter(&#34;cnTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.cn())
+ *                 .dependsOn(defaultBandwidthPackageAttachment)
+ *                 .build());
+ * 
+ *         var usTransitRouter = new TransitRouter(&#34;usTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.us())
+ *                 .dependsOn(alicloud_cen_transit_router.default_0())
+ *                 .build());
+ * 
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .transitRouterId(cnTransitRouter.transitRouterId())
+ *             .peerTransitRouterRegionId(&#34;us-east-1&#34;)
+ *             .peerTransitRouterId(usTransitRouter.transitRouterId())
+ *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
+ *             .bandwidth(5)
+ *             .transitRouterAttachmentDescription(name)
+ *             .transitRouterAttachmentName(name)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.cn())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN instance can be imported using the id, e.g.

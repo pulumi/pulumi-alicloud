@@ -310,6 +310,56 @@ func (o QosCarOutput) ToQosCarOutputWithContext(ctx context.Context) QosCarOutpu
 	return o
 }
 
+// The description of the QoS speed limiting rule.
+func (o QosCarOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The speed limiting method. Valid values: Absolute, Percent.
+func (o QosCarOutput) LimitType() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.StringOutput { return v.LimitType }).(pulumi.StringOutput)
+}
+
+// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
+func (o QosCarOutput) MaxBandwidthAbs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.IntPtrOutput { return v.MaxBandwidthAbs }).(pulumi.IntPtrOutput)
+}
+
+// The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
+func (o QosCarOutput) MaxBandwidthPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.IntPtrOutput { return v.MaxBandwidthPercent }).(pulumi.IntPtrOutput)
+}
+
+// The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
+func (o QosCarOutput) MinBandwidthAbs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.IntPtrOutput { return v.MinBandwidthAbs }).(pulumi.IntPtrOutput)
+}
+
+// The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
+func (o QosCarOutput) MinBandwidthPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.IntPtrOutput { return v.MinBandwidthPercent }).(pulumi.IntPtrOutput)
+}
+
+// The name of the QoS speed limiting rule..
+func (o QosCarOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
+func (o QosCarOutput) PercentSourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.StringPtrOutput { return v.PercentSourceType }).(pulumi.StringPtrOutput)
+}
+
+// The priority of the specified stream.
+func (o QosCarOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The instance ID of the QoS.
+func (o QosCarOutput) QosId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosCar) pulumi.StringOutput { return v.QosId }).(pulumi.StringOutput)
+}
+
 type QosCarArrayOutput struct{ *pulumi.OutputState }
 
 func (QosCarArrayOutput) ElementType() reflect.Type {

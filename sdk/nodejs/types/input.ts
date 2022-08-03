@@ -383,9 +383,24 @@ export namespace alb {
 
     export interface RuleRuleActionForwardGroupConfig {
         /**
+         * The configuration of session persistence for server groups.
+         */
+        serverGroupStickySession?: pulumi.Input<inputs.alb.RuleRuleActionForwardGroupConfigServerGroupStickySession>;
+        /**
          * The destination server group to which requests are forwarded.
          */
         serverGroupTuples?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleActionForwardGroupConfigServerGroupTuple>[]>;
+    }
+
+    export interface RuleRuleActionForwardGroupConfigServerGroupStickySession {
+        /**
+         * Whether to enable session persistence.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         */
+        timeout?: pulumi.Input<number>;
     }
 
     export interface RuleRuleActionForwardGroupConfigServerGroupTuple {
@@ -718,6 +733,7 @@ export namespace alb {
          */
         stickySessionType?: pulumi.Input<string>;
     }
+
 }
 
 export namespace amqp {
@@ -1398,7 +1414,7 @@ export namespace cms {
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
         times?: pulumi.Input<number>;
     }
@@ -1417,7 +1433,7 @@ export namespace cms {
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
         times?: pulumi.Input<number>;
     }
@@ -1436,7 +1452,26 @@ export namespace cms {
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+         */
+        times?: pulumi.Input<number>;
+    }
+
+    export interface AlarmPrometheus {
+        /**
+         * The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
+         */
+        annotations?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+         */
+        level?: pulumi.Input<string>;
+        /**
+         * The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
+         */
+        promQl?: pulumi.Input<string>;
+        /**
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
         times?: pulumi.Input<number>;
     }
@@ -1522,6 +1557,109 @@ export namespace cms {
          * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<number>;
+    }
+
+    export interface HybridMonitorSlsTaskAttachLabel {
+        /**
+         * The tag key of the metric.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The tag value of the metric.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfig {
+        /**
+         * The extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        expresses?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfigExpress>[]>;
+        /**
+         * The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+         */
+        filter?: pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfigFilter>;
+        /**
+         * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+         */
+        groupBies?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfigGroupBy>[]>;
+        /**
+         * The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+         */
+        statistics?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfigStatistic>[]>;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigExpress {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias?: pulumi.Input<string>;
+        /**
+         * The extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        express?: pulumi.Input<string>;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigFilter {
+        /**
+         * The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+         */
+        filters?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilter>[]>;
+        /**
+         * The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+         */
+        relation?: pulumi.Input<string>;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
+        /**
+         * The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName?: pulumi.Input<string>;
+        /**
+         * The tag value of the metric.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigGroupBy {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias?: pulumi.Input<string>;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName?: pulumi.Input<string>;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigStatistic {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias?: pulumi.Input<string>;
+        /**
+         * The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+         */
+        function?: pulumi.Input<string>;
+        /**
+         * The value of the function that is used to aggregate logs imported from Log Service.
+         * - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+         * - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+         */
+        parameterOne?: pulumi.Input<string>;
+        /**
+         * The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+         */
+        parameterTwo?: pulumi.Input<string>;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName?: pulumi.Input<string>;
     }
 
     export interface MetricRuleTemplateAlertTemplate {
@@ -4324,21 +4462,6 @@ export namespace hbase {
 }
 
 export namespace hbr {
-    export interface GetBackupJobsFilter {
-        /**
-         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-         */
-        key?: string;
-        /**
-         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-         */
-        operator?: string;
-        /**
-         * Set of values that are accepted for the given field.
-         */
-        values?: string[];
-    }
-
     export interface GetBackupJobsFilterArgs {
         /**
          * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
@@ -4352,6 +4475,21 @@ export namespace hbr {
          * Set of values that are accepted for the given field.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetBackupJobsFilter {
+        /**
+         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+         */
+        key?: string;
+        /**
+         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+         */
+        operator?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
     }
 
     export interface GetServerBackupPlansFilterArgs {

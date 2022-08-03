@@ -33,6 +33,42 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups() {
         return getAccessGroups(GetAccessGroupsArgs.Empty, InvokeOptions.Empty);
@@ -43,6 +79,42 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain() {
@@ -55,6 +127,42 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups(GetAccessGroupsArgs args) {
         return getAccessGroups(args, InvokeOptions.Empty);
@@ -65,6 +173,42 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain(GetAccessGroupsPlainArgs args) {
@@ -77,6 +221,42 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups(GetAccessGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getAccessGroups:getAccessGroups", TypeShape.of(GetAccessGroupsResult.class), args, Utilities.withVersion(options));
@@ -87,6 +267,42 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain(GetAccessGroupsPlainArgs args, InvokeOptions options) {
@@ -99,6 +315,40 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessRulesResult> getAccessRules(GetAccessRulesArgs args) {
         return getAccessRules(args, InvokeOptions.Empty);
@@ -109,6 +359,40 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessRulesResult> getAccessRulesPlain(GetAccessRulesPlainArgs args) {
@@ -121,6 +405,40 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessRulesResult> getAccessRules(GetAccessRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getAccessRules:getAccessRules", TypeShape.of(GetAccessRulesResult.class), args, Utilities.withVersion(options));
@@ -131,6 +449,40 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessRulesResult> getAccessRulesPlain(GetAccessRulesPlainArgs args, InvokeOptions options) {
@@ -143,6 +495,42 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFileSystemsResult> getFileSystems() {
         return getFileSystems(GetFileSystemsArgs.Empty, InvokeOptions.Empty);
@@ -153,6 +541,42 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain() {
@@ -165,6 +589,42 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFileSystemsResult> getFileSystems(GetFileSystemsArgs args) {
         return getFileSystems(args, InvokeOptions.Empty);
@@ -175,6 +635,42 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain(GetFileSystemsPlainArgs args) {
@@ -187,6 +683,42 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFileSystemsResult> getFileSystems(GetFileSystemsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getFileSystems:getFileSystems", TypeShape.of(GetFileSystemsResult.class), args, Utilities.withVersion(options));
@@ -197,6 +729,42 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain(GetFileSystemsPlainArgs args, InvokeOptions options) {
@@ -209,6 +777,40 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMountPointsResult> getMountPoints(GetMountPointsArgs args) {
         return getMountPoints(args, InvokeOptions.Empty);
@@ -219,6 +821,40 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMountPointsResult> getMountPointsPlain(GetMountPointsPlainArgs args) {
@@ -231,6 +867,40 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMountPointsResult> getMountPoints(GetMountPointsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getMountPoints:getMountPoints", TypeShape.of(GetMountPointsResult.class), args, Utilities.withVersion(options));
@@ -241,6 +911,40 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMountPointsResult> getMountPointsPlain(GetMountPointsPlainArgs args, InvokeOptions options) {
@@ -253,6 +957,34 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DfsFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -263,6 +995,34 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DfsFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -275,6 +1035,34 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DfsFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -285,6 +1073,34 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DfsFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -297,6 +1113,34 @@ public final class DfsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DfsFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -307,6 +1151,34 @@ public final class DfsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DfsFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

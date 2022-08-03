@@ -341,6 +341,77 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The type of the Database file system. Valid values: `standard`.
+func (o InstanceOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+func (o InstanceOutput) DeleteSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeleteSnapshot }).(pulumi.BoolPtrOutput)
+}
+
+// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+//
+// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+func (o InstanceOutput) EcsLists() InstanceEcsListArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceEcsListArrayOutput { return v.EcsLists }).(InstanceEcsListArrayOutput)
+}
+
+// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+func (o InstanceOutput) EnableRaid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableRaid }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to encrypt the database file system. Valid values: `true` and `false`.
+func (o InstanceOutput) Encryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Encryption }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Database file system.
+func (o InstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+func (o InstanceOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+func (o InstanceOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+// The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
+func (o InstanceOutput) RaidStripeUnitNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RaidStripeUnitNumber }).(pulumi.StringPtrOutput)
+}
+
+// The size Of the Database file system. Unit: GiB.
+func (o InstanceOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The snapshot id of the Database file system.
+func (o InstanceOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The Zone ID of the Database file system.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

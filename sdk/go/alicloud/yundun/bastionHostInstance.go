@@ -210,6 +210,46 @@ func (o BastionHostInstanceOutput) ToBastionHostInstanceOutputWithContext(ctx co
 	return o
 }
 
+func (o BastionHostInstanceOutput) AdAuthServers() BastionHostInstanceAdAuthServerArrayOutput {
+	return o.ApplyT(func(v *BastionHostInstance) BastionHostInstanceAdAuthServerArrayOutput { return v.AdAuthServers }).(BastionHostInstanceAdAuthServerArrayOutput)
+}
+
+func (o BastionHostInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceOutput) EnablePublicAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.BoolOutput { return v.EnablePublicAccess }).(pulumi.BoolOutput)
+}
+
+func (o BastionHostInstanceOutput) LdapAuthServers() BastionHostInstanceLdapAuthServerArrayOutput {
+	return o.ApplyT(func(v *BastionHostInstance) BastionHostInstanceLdapAuthServerArrayOutput { return v.LdapAuthServers }).(BastionHostInstanceLdapAuthServerArrayOutput)
+}
+
+func (o BastionHostInstanceOutput) LicenseCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.LicenseCode }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+func (o BastionHostInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o BastionHostInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o BastionHostInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type BastionHostInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (BastionHostInstanceArrayOutput) ElementType() reflect.Type {

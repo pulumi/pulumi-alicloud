@@ -237,6 +237,26 @@ func (o LoginProfileOutput) ToLoginProfileOutputWithContext(ctx context.Context)
 	return o
 }
 
+// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+func (o LoginProfileOutput) MfaBindRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoginProfile) pulumi.BoolPtrOutput { return v.MfaBindRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Password of the RAM user.
+func (o LoginProfileOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoginProfile) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+func (o LoginProfileOutput) PasswordResetRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoginProfile) pulumi.BoolPtrOutput { return v.PasswordResetRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+func (o LoginProfileOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoginProfile) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
+}
+
 type LoginProfileArrayOutput struct{ *pulumi.OutputState }
 
 func (LoginProfileArrayOutput) ElementType() reflect.Type {

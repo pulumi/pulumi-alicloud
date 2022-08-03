@@ -18,6 +18,75 @@ import javax.annotation.Nullable;
  * Provides a resource to put a object(content or file) to a oss bucket.
  * 
  * ## Example Usage
+ * ### Uploading a file to a bucket
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var object_source = new BucketObject(&#34;object-source&#34;, BucketObjectArgs.builder()        
+ *             .bucket(&#34;your_bucket_name&#34;)
+ *             .key(&#34;new_object_key&#34;)
+ *             .source(&#34;path/to/file&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Uploading a content to a bucket
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Bucket(&#34;example&#34;, BucketArgs.builder()        
+ *             .bucket(&#34;your_bucket_name&#34;)
+ *             .acl(&#34;public-read&#34;)
+ *             .build());
+ * 
+ *         var object_content = new BucketObject(&#34;object-content&#34;, BucketObjectArgs.builder()        
+ *             .bucket(example.bucket())
+ *             .key(&#34;new_object_key&#34;)
+ *             .content(&#34;the content that you want to upload.&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="alicloud:oss/bucketObject:BucketObject")

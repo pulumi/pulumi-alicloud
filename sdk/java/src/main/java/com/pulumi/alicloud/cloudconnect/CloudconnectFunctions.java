@@ -22,6 +22,43 @@ public final class CloudconnectFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.cloudconnect.Network;
+     * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .isDefault(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworksResult> getNetworks() {
@@ -35,6 +72,43 @@ public final class CloudconnectFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.cloudconnect.Network;
+     * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .isDefault(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain() {
@@ -48,6 +122,43 @@ public final class CloudconnectFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.cloudconnect.Network;
+     * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .isDefault(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args) {
@@ -61,6 +172,43 @@ public final class CloudconnectFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.cloudconnect.Network;
+     * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .isDefault(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args) {
@@ -74,6 +222,43 @@ public final class CloudconnectFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.cloudconnect.Network;
+     * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .isDefault(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
@@ -87,6 +272,43 @@ public final class CloudconnectFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudconnect.CloudconnectFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.cloudconnect.Network;
+     * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .isDefault(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {

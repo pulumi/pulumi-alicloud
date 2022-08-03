@@ -30,6 +30,40 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EventbridgeFunctions.getEventBuses();
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEventBusesResult> getEventBuses() {
         return getEventBuses(GetEventBusesArgs.Empty, InvokeOptions.Empty);
@@ -40,6 +74,40 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EventbridgeFunctions.getEventBuses();
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEventBusesResult> getEventBusesPlain() {
@@ -52,6 +120,40 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EventbridgeFunctions.getEventBuses();
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEventBusesResult> getEventBuses(GetEventBusesArgs args) {
         return getEventBuses(args, InvokeOptions.Empty);
@@ -62,6 +164,40 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EventbridgeFunctions.getEventBuses();
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEventBusesResult> getEventBusesPlain(GetEventBusesPlainArgs args) {
@@ -74,6 +210,40 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EventbridgeFunctions.getEventBuses();
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEventBusesResult> getEventBuses(GetEventBusesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eventbridge/getEventBuses:getEventBuses", TypeShape.of(GetEventBusesResult.class), args, Utilities.withVersion(options));
@@ -84,6 +254,40 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EventbridgeFunctions.getEventBuses();
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEventBusesResult> getEventBusesPlain(GetEventBusesPlainArgs args, InvokeOptions options) {
@@ -96,6 +300,38 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEventSourcesResult> getEventSources() {
         return getEventSources(GetEventSourcesArgs.Empty, InvokeOptions.Empty);
@@ -106,6 +342,38 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEventSourcesResult> getEventSourcesPlain() {
@@ -118,6 +386,38 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEventSourcesResult> getEventSources(GetEventSourcesArgs args) {
         return getEventSources(args, InvokeOptions.Empty);
@@ -128,6 +428,38 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEventSourcesResult> getEventSourcesPlain(GetEventSourcesPlainArgs args) {
@@ -140,6 +472,38 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEventSourcesResult> getEventSources(GetEventSourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eventbridge/getEventSources:getEventSources", TypeShape.of(GetEventSourcesResult.class), args, Utilities.withVersion(options));
@@ -150,6 +514,38 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEventSourcesResult> getEventSourcesPlain(GetEventSourcesPlainArgs args, InvokeOptions options) {
@@ -162,6 +558,39 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
+     *             .eventBusName(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
         return getRules(args, InvokeOptions.Empty);
@@ -172,6 +601,39 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
+     *             .eventBusName(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -184,6 +646,39 @@ public final class EventbridgeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
+     *             .eventBusName(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eventbridge/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
@@ -194,6 +689,39 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
+     *             .eventBusName(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
@@ -209,6 +737,34 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -224,6 +780,34 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -239,6 +823,34 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -254,6 +866,34 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -269,6 +909,34 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -284,6 +952,34 @@ public final class EventbridgeFunctions {
      * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

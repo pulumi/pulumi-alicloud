@@ -25,6 +25,39 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+ * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
+ *             .bandwidth(5)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .desktopAccessType(&#34;Internet&#34;)
+ *             .officeSiteName(&#34;site_name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECD Simple Office Site can be imported using the id, e.g.

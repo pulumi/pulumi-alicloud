@@ -254,6 +254,36 @@ func (o HostShareKeyOutput) ToHostShareKeyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The first ID of the resource.
+func (o HostShareKeyOutput) HostShareKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostShareKey) pulumi.StringOutput { return v.HostShareKeyId }).(pulumi.StringOutput)
+}
+
+// The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
+func (o HostShareKeyOutput) HostShareKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostShareKey) pulumi.StringOutput { return v.HostShareKeyName }).(pulumi.StringOutput)
+}
+
+// The ID of the Bastion instance.
+func (o HostShareKeyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostShareKey) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The password of the private key. The value is a Base64-encoded string.
+func (o HostShareKeyOutput) PassPhrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostShareKey) pulumi.StringPtrOutput { return v.PassPhrase }).(pulumi.StringPtrOutput)
+}
+
+// The private key. The value is a Base64-encoded string.
+func (o HostShareKeyOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostShareKey) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// The fingerprint of the private key.
+func (o HostShareKeyOutput) PrivateKeyFingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostShareKey) pulumi.StringOutput { return v.PrivateKeyFingerPrint }).(pulumi.StringOutput)
+}
+
 type HostShareKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (HostShareKeyArrayOutput) ElementType() reflect.Type {

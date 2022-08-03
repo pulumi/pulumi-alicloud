@@ -20,6 +20,66 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.vpc.NetworkInterface;
+ * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfaceName&#34;);
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         var defaultNetworkInterface = new NetworkInterface(&#34;defaultNetworkInterface&#34;, NetworkInterfaceArgs.builder()        
+ *             .vswitchId(vswitch.id())
+ *             .securityGroups(group.id())
+ *             .privateIp(&#34;192.168.0.2&#34;)
+ *             .privateIpsCount(3)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

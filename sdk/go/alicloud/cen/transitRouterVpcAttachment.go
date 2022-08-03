@@ -300,6 +300,80 @@ func (o TransitRouterVpcAttachmentOutput) ToTransitRouterVpcAttachmentOutputWith
 	return o
 }
 
+// The ID of the CEN.
+func (o TransitRouterVpcAttachmentOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The dry run.
+func (o TransitRouterVpcAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The payment type of the resource. Valid values: `PayAsYouGo`.
+func (o TransitRouterVpcAttachmentOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+func (o TransitRouterVpcAttachmentOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enabled route table association. The system default value is `true`.
+func (o TransitRouterVpcAttachmentOutput) RouteTableAssociationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.BoolPtrOutput { return v.RouteTableAssociationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enabled route table propagation. The system default value is `true`.
+func (o TransitRouterVpcAttachmentOutput) RouteTablePropagationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The associating status of the network.
+func (o TransitRouterVpcAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of the transit router vbr attachment.
+func (o TransitRouterVpcAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringPtrOutput {
+		return v.TransitRouterAttachmentDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of transit router attachment.
+func (o TransitRouterVpcAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// The name of the transit router vbr attachment.
+func (o TransitRouterVpcAttachmentOutput) TransitRouterAttachmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringPtrOutput { return v.TransitRouterAttachmentName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the transit router.
+func (o TransitRouterVpcAttachmentOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringPtrOutput { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC.
+func (o TransitRouterVpcAttachmentOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The owner id of vpc.
+func (o TransitRouterVpcAttachmentOutput) VpcOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.VpcOwnerId }).(pulumi.StringOutput)
+}
+
+// The list of zone mapping of the VPC.
+func (o TransitRouterVpcAttachmentOutput) ZoneMappings() TransitRouterVpcAttachmentZoneMappingArrayOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) TransitRouterVpcAttachmentZoneMappingArrayOutput {
+		return v.ZoneMappings
+	}).(TransitRouterVpcAttachmentZoneMappingArrayOutput)
+}
+
 type TransitRouterVpcAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVpcAttachmentArrayOutput) ElementType() reflect.Type {

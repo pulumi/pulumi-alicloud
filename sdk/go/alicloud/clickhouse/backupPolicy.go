@@ -285,6 +285,31 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Data backup days. Valid values: `7` to `730`.
+func (o BackupPolicyOutput) BackupRetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntPtrOutput { return v.BackupRetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The id of the DBCluster.
+func (o BackupPolicyOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+func (o BackupPolicyOutput) PreferredBackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.PreferredBackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
+func (o BackupPolicyOutput) PreferredBackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.PreferredBackupTime }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o BackupPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type BackupPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyArrayOutput) ElementType() reflect.Type {

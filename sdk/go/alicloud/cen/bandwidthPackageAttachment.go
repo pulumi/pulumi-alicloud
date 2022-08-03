@@ -225,6 +225,16 @@ func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutputWith
 	return o
 }
 
+// The ID of the bandwidth package.
+func (o BandwidthPackageAttachmentOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN.
+func (o BandwidthPackageAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type BandwidthPackageAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageAttachmentArrayOutput) ElementType() reflect.Type {

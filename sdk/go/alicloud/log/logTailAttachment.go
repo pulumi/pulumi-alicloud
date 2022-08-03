@@ -70,7 +70,18 @@ import (
 // 			InputType:  pulumi.String("file"),
 // 			LogSample:  pulumi.String("test"),
 // 			OutputType: pulumi.String("LogService"),
-// 			InputDetail: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v", "  	{\n", "		\"logPath\": \"/logPath\",\n", "		\"filePattern\": \"access.log\",\n", "		\"logType\": \"json_log\",\n", "		\"topicFormat\": \"default\",\n", "		\"discardUnmatch\": false,\n", "		\"enableRawLog\": true,\n", "		\"fileEncoding\": \"gbk\",\n", "		\"maxDepth\": 10\n", "	}\n", "	\n")),
+// 			InputDetail: pulumi.String(fmt.Sprintf(`  	{
+// 		"logPath": "/logPath",
+// 		"filePattern": "access.log",
+// 		"logType": "json_log",
+// 		"topicFormat": "default",
+// 		"discardUnmatch": false,
+// 		"enableRawLog": true,
+// 		"fileEncoding": "gbk",
+// 		"maxDepth": 10
+// 	}
+//
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -269,6 +280,21 @@ func (o LogTailAttachmentOutput) ToLogTailAttachmentOutput() LogTailAttachmentOu
 
 func (o LogTailAttachmentOutput) ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput {
 	return o
+}
+
+// The Logtail configuration name, which is unique in the same project.
+func (o LogTailAttachmentOutput) LogtailConfigName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailAttachment) pulumi.StringOutput { return v.LogtailConfigName }).(pulumi.StringOutput)
+}
+
+// The machine group name, which is unique in the same project.
+func (o LogTailAttachmentOutput) MachineGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailAttachment) pulumi.StringOutput { return v.MachineGroupName }).(pulumi.StringOutput)
+}
+
+// The project name to the log store belongs.
+func (o LogTailAttachmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailAttachment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 type LogTailAttachmentArrayOutput struct{ *pulumi.OutputState }

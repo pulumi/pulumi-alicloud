@@ -233,6 +233,26 @@ func (o NetworkPackageOutput) ToNetworkPackageOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
+func (o NetworkPackageOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkPackage) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The internet charge type  of  package.
+func (o NetworkPackageOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkPackage) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The ID of office site.
+func (o NetworkPackageOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkPackage) pulumi.StringOutput { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+func (o NetworkPackageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkPackage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type NetworkPackageArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkPackageArrayOutput) ElementType() reflect.Type {

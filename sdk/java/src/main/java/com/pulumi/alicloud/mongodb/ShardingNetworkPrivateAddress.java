@@ -25,6 +25,82 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.mongodb.ShardingInstance;
+ * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+ * import com.pulumi.alicloud.mongodb.ShardingNetworkPrivateAddress;
+ * import com.pulumi.alicloud.mongodb.ShardingNetworkPrivateAddressArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = MongodbFunctions.getZones();
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultShardingInstance = new ShardingInstance(&#34;defaultShardingInstance&#34;, ShardingInstanceArgs.builder()        
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .engineVersion(&#34;3.4&#34;)
+ *             .mongoLists(            
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build(),
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build())
+ *             .shardLists(            
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.mid&#34;)
+ *                     .nodeStorage(10)
+ *                     .build(),
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.mid&#34;)
+ *                     .nodeStorage(10)
+ *                     .build())
+ *             .build());
+ * 
+ *         var example = new ShardingNetworkPrivateAddress(&#34;example&#34;, ShardingNetworkPrivateAddressArgs.builder()        
+ *             .dbInstanceId(defaultShardingInstance.id())
+ *             .nodeId(defaultShardingInstance.shardLists().applyValue(shardLists -&gt; shardLists[0].nodeId()))
+ *             .zoneId(defaultShardingInstance.zoneId())
+ *             .accountName(&#34;example_value&#34;)
+ *             .accountPassword(&#34;YourPassword+12345&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * MongoDB Sharding Network Private Address can be imported using the id, e.g.

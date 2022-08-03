@@ -243,6 +243,31 @@ func (o Ipv6GatewayOutput) ToIpv6GatewayOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+func (o Ipv6GatewayOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+func (o Ipv6GatewayOutput) Ipv6GatewayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringPtrOutput { return v.Ipv6GatewayName }).(pulumi.StringPtrOutput)
+}
+
+// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+func (o Ipv6GatewayOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+func (o Ipv6GatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
+func (o Ipv6GatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type Ipv6GatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6GatewayArrayOutput) ElementType() reflect.Type {

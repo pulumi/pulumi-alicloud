@@ -23,6 +23,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+ * import com.pulumi.alicloud.vpc.Ipv6InternetBandwidth;
+ * import com.pulumi.alicloud.vpc.Ipv6InternetBandwidthArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .nameRegex(&#34;ecs_with_ipv6_address&#34;)
+ *             .status(&#34;Running&#34;)
+ *             .build());
+ * 
+ *         final var exampleIpv6Addresses = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+ *             .associatedInstanceId(exampleInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *             .status(&#34;Available&#34;)
+ *             .build());
+ * 
+ *         var exampleIpv6InternetBandwidth = new Ipv6InternetBandwidth(&#34;exampleIpv6InternetBandwidth&#34;, Ipv6InternetBandwidthArgs.builder()        
+ *             .ipv6AddressId(exampleIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()))
+ *             .ipv6GatewayId(exampleIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].ipv6GatewayId()))
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .bandwidth(&#34;20&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.

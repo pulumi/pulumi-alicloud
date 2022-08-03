@@ -265,6 +265,41 @@ func (o CommandOutput) ToCommandOutputWithContext(ctx context.Context) CommandOu
 	return o
 }
 
+// The Base64-encoded content of the command.
+func (o CommandOutput) CommandContent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringOutput { return v.CommandContent }).(pulumi.StringOutput)
+}
+
+// The description of command.
+func (o CommandOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use custom parameters in the command to be created. Default to: false.
+func (o CommandOutput) EnableParameter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Command) pulumi.BoolPtrOutput { return v.EnableParameter }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the command, which supports all character sets. It can be up to 128 characters in length.
+func (o CommandOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
+func (o CommandOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Command) pulumi.IntPtrOutput { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
+func (o CommandOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The execution path of the command in the ECS instance.
+func (o CommandOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Command) pulumi.StringPtrOutput { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
 type CommandArrayOutput struct{ *pulumi.OutputState }
 
 func (CommandArrayOutput) ElementType() reflect.Type {

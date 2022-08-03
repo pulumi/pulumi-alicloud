@@ -272,6 +272,39 @@ func (o TopicSubscriptionOutput) ToTopicSubscriptionOutputWithContext(ctx contex
 	return o
 }
 
+// The endpoint has three format. Available values format:
+// - `HTTP Format`: http://xxx.com/xxx
+// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+// - `Email Format`: mail:directmail:{MailAddress}
+func (o TopicSubscriptionOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicSubscription) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The length should be shorter than 16.
+func (o TopicSubscriptionOutput) FilterTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSubscription) pulumi.StringPtrOutput { return v.FilterTag }).(pulumi.StringPtrOutput)
+}
+
+// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+func (o TopicSubscriptionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicSubscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
+func (o TopicSubscriptionOutput) NotifyContentFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSubscription) pulumi.StringPtrOutput { return v.NotifyContentFormat }).(pulumi.StringPtrOutput)
+}
+
+// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
+func (o TopicSubscriptionOutput) NotifyStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicSubscription) pulumi.StringPtrOutput { return v.NotifyStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+func (o TopicSubscriptionOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicSubscription) pulumi.StringOutput { return v.TopicName }).(pulumi.StringOutput)
+}
+
 type TopicSubscriptionArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicSubscriptionArrayOutput) ElementType() reflect.Type {

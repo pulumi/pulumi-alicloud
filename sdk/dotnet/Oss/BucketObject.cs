@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         var example = new AliCloud.Oss.Bucket("example", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "your_bucket_name",
+    ///             BucketName = "your_bucket_name",
     ///             Acl = "public-read",
     ///         });
     ///         var object_content = new AliCloud.Oss.BucketObject("object-content", new AliCloud.Oss.BucketObjectArgs

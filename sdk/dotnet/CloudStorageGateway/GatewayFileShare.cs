@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     ///         });
     ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "example_value",
+    ///             BucketName = "example_value",
     ///         });
     ///         var defaultGatewayFileShare = new AliCloud.CloudStorageGateway.GatewayFileShare("defaultGatewayFileShare", new AliCloud.CloudStorageGateway.GatewayFileShareArgs
     ///         {

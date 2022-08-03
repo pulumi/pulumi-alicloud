@@ -236,6 +236,26 @@ func (o LoadBalancerIntranetOutput) ToLoadBalancerIntranetOutputWithContext(ctx 
 	return o
 }
 
+// The target application ID that needs to be bound to the SLB.
+func (o LoadBalancerIntranetOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerIntranet) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Use designated private network SLBs that have been purchased to support non-shared instances.
+func (o LoadBalancerIntranetOutput) IntranetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerIntranet) pulumi.StringOutput { return v.IntranetIp }).(pulumi.StringOutput)
+}
+
+// The intranet SLB ID.
+func (o LoadBalancerIntranetOutput) IntranetSlbId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerIntranet) pulumi.StringPtrOutput { return v.IntranetSlbId }).(pulumi.StringPtrOutput)
+}
+
+// The bound private network SLB. See the following `Block intranet`.
+func (o LoadBalancerIntranetOutput) Intranets() LoadBalancerIntranetIntranetArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerIntranet) LoadBalancerIntranetIntranetArrayOutput { return v.Intranets }).(LoadBalancerIntranetIntranetArrayOutput)
+}
+
 type LoadBalancerIntranetArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerIntranetArrayOutput) ElementType() reflect.Type {

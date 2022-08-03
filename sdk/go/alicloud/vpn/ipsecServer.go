@@ -332,6 +332,56 @@ func (o IpsecServerOutput) ToIpsecServerOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
+func (o IpsecServerOutput) ClientIpPool() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.StringOutput { return v.ClientIpPool }).(pulumi.StringOutput)
+}
+
+// The dry run.
+func (o IpsecServerOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether you want the configuration to immediately take effect.
+func (o IpsecServerOutput) EffectImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.BoolPtrOutput { return v.EffectImmediately }).(pulumi.BoolPtrOutput)
+}
+
+// The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+func (o IpsecServerOutput) IkeConfigs() IpsecServerIkeConfigArrayOutput {
+	return o.ApplyT(func(v *IpsecServer) IpsecServerIkeConfigArrayOutput { return v.IkeConfigs }).(IpsecServerIkeConfigArrayOutput)
+}
+
+// The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+func (o IpsecServerOutput) IpsecConfigs() IpsecServerIpsecConfigArrayOutput {
+	return o.ApplyT(func(v *IpsecServer) IpsecServerIpsecConfigArrayOutput { return v.IpsecConfigs }).(IpsecServerIpsecConfigArrayOutput)
+}
+
+// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
+func (o IpsecServerOutput) IpsecServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.StringPtrOutput { return v.IpsecServerName }).(pulumi.StringPtrOutput)
+}
+
+// The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
+func (o IpsecServerOutput) LocalSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.StringOutput { return v.LocalSubnet }).(pulumi.StringOutput)
+}
+
+// The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
+func (o IpsecServerOutput) Psk() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.StringOutput { return v.Psk }).(pulumi.StringOutput)
+}
+
+// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+func (o IpsecServerOutput) PskEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.BoolPtrOutput { return v.PskEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the VPN gateway.
+func (o IpsecServerOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecServer) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
+}
+
 type IpsecServerArrayOutput struct{ *pulumi.OutputState }
 
 func (IpsecServerArrayOutput) ElementType() reflect.Type {

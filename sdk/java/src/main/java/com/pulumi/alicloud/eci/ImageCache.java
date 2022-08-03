@@ -26,6 +26,40 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eci.ImageCache;
+ * import com.pulumi.alicloud.eci.ImageCacheArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ImageCache(&#34;example&#34;, ImageCacheArgs.builder()        
+ *             .eipInstanceId(&#34;eip-uf60c7cqb2pcrkgxhxxxx&#34;)
+ *             .imageCacheName(&#34;tf-test&#34;)
+ *             .images(&#34;registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest&#34;)
+ *             .securityGroupId(&#34;sg-2zeef68b66fxxxx&#34;)
+ *             .vswitchId(&#34;vsw-2zef9k7ng82xxxx&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECI Image Cache can be imported using the id, e.g.

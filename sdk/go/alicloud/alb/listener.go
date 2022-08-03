@@ -360,6 +360,98 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
+// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+func (o ListenerOutput) AccessLogRecordCustomizedHeadersEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.AccessLogRecordCustomizedHeadersEnabled }).(pulumi.BoolOutput)
+}
+
+// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+func (o ListenerOutput) AccessLogTracingConfig() ListenerAccessLogTracingConfigPtrOutput {
+	return o.ApplyT(func(v *Listener) ListenerAccessLogTracingConfigPtrOutput { return v.AccessLogTracingConfig }).(ListenerAccessLogTracingConfigPtrOutput)
+}
+
+// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+//
+// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
+func (o ListenerOutput) AclConfig() ListenerAclConfigOutput {
+	return o.ApplyT(func(v *Listener) ListenerAclConfigOutput { return v.AclConfig }).(ListenerAclConfigOutput)
+}
+
+// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+func (o ListenerOutput) Certificates() ListenerCertificatesPtrOutput {
+	return o.ApplyT(func(v *Listener) ListenerCertificatesPtrOutput { return v.Certificates }).(ListenerCertificatesPtrOutput)
+}
+
+// The Default Rule Action List. See the following `Block defaultActions`.
+func (o ListenerOutput) DefaultActions() ListenerDefaultActionArrayOutput {
+	return o.ApplyT(func(v *Listener) ListenerDefaultActionArrayOutput { return v.DefaultActions }).(ListenerDefaultActionArrayOutput)
+}
+
+// The dry run.
+func (o ListenerOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+func (o ListenerOutput) GzipEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.GzipEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+func (o ListenerOutput) Http2Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.Http2Enabled }).(pulumi.BoolOutput)
+}
+
+// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+func (o ListenerOutput) IdleTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.IdleTimeout }).(pulumi.IntOutput)
+}
+
+// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
+func (o ListenerOutput) ListenerDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ListenerDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+func (o ListenerOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+func (o ListenerOutput) ListenerProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ListenerProtocol }).(pulumi.StringOutput)
+}
+
+// The ALB Instance Id.
+func (o ListenerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+func (o ListenerOutput) QuicConfig() ListenerQuicConfigOutput {
+	return o.ApplyT(func(v *Listener) ListenerQuicConfigOutput { return v.QuicConfig }).(ListenerQuicConfigOutput)
+}
+
+// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+func (o ListenerOutput) RequestTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.RequestTimeout }).(pulumi.IntOutput)
+}
+
+// Security Policy.
+func (o ListenerOutput) SecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
+}
+
+// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+func (o ListenerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+func (o ListenerOutput) XForwardedForConfig() ListenerXForwardedForConfigOutput {
+	return o.ApplyT(func(v *Listener) ListenerXForwardedForConfigOutput { return v.XForwardedForConfig }).(ListenerXForwardedForConfigOutput)
+}
+
 type ListenerArrayOutput struct{ *pulumi.OutputState }
 
 func (ListenerArrayOutput) ElementType() reflect.Type {

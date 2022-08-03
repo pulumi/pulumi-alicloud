@@ -328,6 +328,83 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+func (o DomainOutput) CertName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertName }).(pulumi.StringOutput)
+}
+
+// The URL that is used for health checks.
+func (o DomainOutput) CheckUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CheckUrl }).(pulumi.StringPtrOutput)
+}
+
+// The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
+func (o DomainOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
+}
+
+// The description of the domain name for CDN.
+func (o DomainOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
+func (o DomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o DomainOutput) GmtCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.GmtCreated }).(pulumi.StringOutput)
+}
+
+// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o DomainOutput) GmtModified() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.GmtModified }).(pulumi.StringOutput)
+}
+
+// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+func (o DomainOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+func (o DomainOutput) Sources() DomainSourceArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainSourceArrayOutput { return v.Sources }).(DomainSourceArrayOutput)
+}
+
+// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+func (o DomainOutput) SslProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SslProtocol }).(pulumi.StringOutput)
+}
+
+// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+func (o DomainOutput) SslPub() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SslPub }).(pulumi.StringOutput)
+}
+
+// The status of the domain name for CDN. Value values:
+func (o DomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+// * `Value`: It can be up to 128 characters in length. It can be a null string.
+func (o DomainOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The top-level domain name.
+func (o DomainOutput) TopLevelDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.TopLevelDomain }).(pulumi.StringPtrOutput)
+}
+
+// The weight of the origin server.
+func (o DomainOutput) Weight() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Weight }).(pulumi.StringOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

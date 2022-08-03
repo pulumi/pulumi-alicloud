@@ -24,6 +24,56 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cms.MonitorGroup;
+ * import com.pulumi.alicloud.cms.MonitorGroupArgs;
+ * import com.pulumi.alicloud.cms.MonitorGroupInstances;
+ * import com.pulumi.alicloud.cms.MonitorGroupInstancesArgs;
+ * import com.pulumi.alicloud.cms.inputs.MonitorGroupInstancesInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf-testacc-vpcname&#34;)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
+ *             .monitorGroupName(&#34;tf-testaccmonitorgroup&#34;)
+ *             .build());
+ * 
+ *         var example = new MonitorGroupInstances(&#34;example&#34;, MonitorGroupInstancesArgs.builder()        
+ *             .groupId(defaultMonitorGroup.id())
+ *             .instances(MonitorGroupInstancesInstanceArgs.builder()
+ *                 .instanceId(defaultNetwork.id())
+ *                 .instanceName(&#34;tf-testacc-vpcname&#34;)
+ *                 .regionId(&#34;cn-hangzhou&#34;)
+ *                 .category(&#34;vpc&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.

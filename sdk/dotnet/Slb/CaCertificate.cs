@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Slb
     ///         // create a CA certificate
     ///         var foo = new AliCloud.Slb.CaCertificate("foo", new AliCloud.Slb.CaCertificateArgs
     ///         {
-    ///             CaCertificate = @"-----BEGIN CERTIFICATE-----
+    ///             Certificate = @"-----BEGIN CERTIFICATE-----
     /// MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Slb
     ///         var foo_file = new AliCloud.Slb.CaCertificate("foo-file", new AliCloud.Slb.CaCertificateArgs
     ///         {
     ///             CaCertificateName = "tf-testAccSlbCACertificate",
-    ///             CaCertificate = File.ReadAllText($"{path.Module}/ca_certificate.pem"),
+    ///             Certificate = File.ReadAllText($"{path.Module}/ca_certificate.pem"),
     ///         });
     ///     }
     /// 

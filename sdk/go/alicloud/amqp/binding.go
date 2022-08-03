@@ -339,6 +339,48 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
+// X-match Attributes. Valid Values:
+// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
+// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+func (o BindingOutput) Argument() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Argument }).(pulumi.StringOutput)
+}
+
+// The Binding Key.
+// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+//   The binding key must be 1 to 255 characters in length.
+// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+//   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+//   The binding key must be 1 to 255 characters in length.
+func (o BindingOutput) BindingKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.BindingKey }).(pulumi.StringOutput)
+}
+
+// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+func (o BindingOutput) BindingType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.BindingType }).(pulumi.StringOutput)
+}
+
+// The Target Queue Or Exchange of the Name.
+func (o BindingOutput) DestinationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.DestinationName }).(pulumi.StringOutput)
+}
+
+// Instance Id.
+func (o BindingOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The Source Exchange Name.
+func (o BindingOutput) SourceExchange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.SourceExchange }).(pulumi.StringOutput)
+}
+
+// Virtualhost Name.
+func (o BindingOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
 type BindingArrayOutput struct{ *pulumi.OutputState }
 
 func (BindingArrayOutput) ElementType() reflect.Type {

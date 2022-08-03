@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///         var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new AliCloud.AliKafka.TopicArgs
     ///         {
     ///             InstanceId = defaultInstance.Id,
-    ///             Topic = "test-topic",
+    ///             TopicName = "test-topic",
     ///             Remark = "topic-remark",
     ///         });
     ///         var defaultSaslUser = new AliCloud.AliKafka.SaslUser("defaultSaslUser", new AliCloud.AliKafka.SaslUserArgs

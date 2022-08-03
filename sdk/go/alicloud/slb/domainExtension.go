@@ -224,6 +224,31 @@ func (o DomainExtensionOutput) ToDomainExtensionOutputWithContext(ctx context.Co
 	return o
 }
 
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (o DomainExtensionOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainExtension) pulumi.BoolPtrOutput { return v.DeleteProtectionValidation }).(pulumi.BoolPtrOutput)
+}
+
+// The domain name.
+func (o DomainExtensionOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainExtension) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+func (o DomainExtensionOutput) FrontendPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *DomainExtension) pulumi.IntOutput { return v.FrontendPort }).(pulumi.IntOutput)
+}
+
+// The ID of the SLB instance.
+func (o DomainExtensionOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainExtension) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// The ID of the certificate used by the domain name.
+func (o DomainExtensionOutput) ServerCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainExtension) pulumi.StringOutput { return v.ServerCertificateId }).(pulumi.StringOutput)
+}
+
 type DomainExtensionArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainExtensionArrayOutput) ElementType() reflect.Type {

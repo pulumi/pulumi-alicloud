@@ -129,8 +129,13 @@ export class Alarm extends pulumi.CustomResource {
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     */
+    public readonly prometheuses!: pulumi.Output<outputs.cms.AlarmPrometheus[] | undefined>;
     /**
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
      */
@@ -195,6 +200,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["operator"] = state ? state.operator : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["prometheuses"] = state ? state.prometheuses : undefined;
             resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
             resourceInputs["startTime"] = state ? state.startTime : undefined;
             resourceInputs["statistics"] = state ? state.statistics : undefined;
@@ -227,6 +233,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["operator"] = args ? args.operator : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["prometheuses"] = args ? args.prometheuses : undefined;
             resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
             resourceInputs["statistics"] = args ? args.statistics : undefined;
@@ -304,8 +311,13 @@ export interface AlarmState {
     period?: pulumi.Input<number>;
     /**
      * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     */
+    prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
     /**
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
      */
@@ -408,8 +420,13 @@ export interface AlarmArgs {
     period?: pulumi.Input<number>;
     /**
      * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
     project: pulumi.Input<string>;
+    /**
+     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     */
+    prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
     /**
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
      */

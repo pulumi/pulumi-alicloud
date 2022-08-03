@@ -23,6 +23,77 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.fnf.Flow;
+ * import com.pulumi.alicloud.fnf.FlowArgs;
+ * import com.pulumi.alicloud.fnf.Execution;
+ * import com.pulumi.alicloud.fnf.ExecutionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-fnfflow&#34;);
+ *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ *   {
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *         &#34;Effect&#34;: &#34;Allow&#34;,
+ *         &#34;Principal&#34;: {
+ *           &#34;Service&#34;: [
+ *             &#34;fnf.aliyuncs.com&#34;
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var defaultFlow = new Flow(&#34;defaultFlow&#34;, FlowArgs.builder()        
+ *             .definition(&#34;&#34;&#34;
+ *   version: v1beta1
+ *   type: flow
+ *   steps:
+ *     - type: wait
+ *       name: custom_wait
+ *       duration: $.wait
+ *             &#34;&#34;&#34;)
+ *             .roleArn(defaultRole.arn())
+ *             .description(&#34;Test for terraform fnf_flow.&#34;)
+ *             .type(&#34;FDL&#34;)
+ *             .build());
+ * 
+ *         var defaultExecution = new Execution(&#34;defaultExecution&#34;, ExecutionArgs.builder()        
+ *             .executionName(name)
+ *             .flowName(defaultFlow.name())
+ *             .input(&#34;{\&#34;wait\&#34;: 600}&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless Workflow Execution can be imported using the id, e.g.

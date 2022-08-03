@@ -364,6 +364,46 @@ func (o MonitorConfigOutput) ToMonitorConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of the address pool.
+func (o MonitorConfigOutput) AddrPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorConfig) pulumi.StringOutput { return v.AddrPoolId }).(pulumi.StringOutput)
+}
+
+// The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
+func (o MonitorConfigOutput) EvaluationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *MonitorConfig) pulumi.IntOutput { return v.EvaluationCount }).(pulumi.IntOutput)
+}
+
+// The health check interval. Unit: seconds. Valid values: `60`.
+func (o MonitorConfigOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v *MonitorConfig) pulumi.IntOutput { return v.Interval }).(pulumi.IntOutput)
+}
+
+// The Monitoring node. See the following `Block ispCityNode`.
+func (o MonitorConfigOutput) IspCityNodes() MonitorConfigIspCityNodeArrayOutput {
+	return o.ApplyT(func(v *MonitorConfig) MonitorConfigIspCityNodeArrayOutput { return v.IspCityNodes }).(MonitorConfigIspCityNodeArrayOutput)
+}
+
+// The lang.
+func (o MonitorConfigOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorConfig) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+func (o MonitorConfigOutput) MonitorExtendInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorConfig) pulumi.StringOutput { return v.MonitorExtendInfo }).(pulumi.StringOutput)
+}
+
+// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
+func (o MonitorConfigOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorConfig) pulumi.StringOutput { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
+func (o MonitorConfigOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *MonitorConfig) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
+}
+
 type MonitorConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorConfigArrayOutput) ElementType() reflect.Type {

@@ -25,6 +25,91 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
+ * import com.pulumi.alicloud.fc.CustomDomain;
+ * import com.pulumi.alicloud.fc.CustomDomainArgs;
+ * import com.pulumi.alicloud.fc.inputs.CustomDomainRouteConfigArgs;
+ * import com.pulumi.alicloud.fc.inputs.CustomDomainCertConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccalicloudfcservice&#34;);
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(String.format(&#34;%s-description&#34;, name))
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;fc/hello.zip&#34;)
+ *             .content(&#34;&#34;&#34;
+ * 		# -*- coding: utf-8 -*-
+ * 	def handler(event, context):
+ * 		print &#34;hello world&#34;
+ * 		return &#39;hello world&#39;
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *             .service(defaultService.name())
+ *             .ossBucket(defaultBucket.id())
+ *             .ossKey(defaultBucketObject.key())
+ *             .memorySize(512)
+ *             .runtime(&#34;python2.7&#34;)
+ *             .handler(&#34;hello.handler&#34;)
+ *             .build());
+ * 
+ *         var defaultCustomDomain = new CustomDomain(&#34;defaultCustomDomain&#34;, CustomDomainArgs.builder()        
+ *             .domainName(&#34;terraform.functioncompute.com&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .routeConfigs(CustomDomainRouteConfigArgs.builder()
+ *                 .path(&#34;/login/*&#34;)
+ *                 .serviceName(defaultService.name())
+ *                 .functionName(defaultFunction.name())
+ *                 .qualifier(&#34;v1&#34;)
+ *                 .methods(                
+ *                     &#34;GET&#34;,
+ *                     &#34;POST&#34;)
+ *                 .build())
+ *             .certConfig(CustomDomainCertConfigArgs.builder()
+ *                 .certName(&#34;your certificate name&#34;)
+ *                 .privateKey(&#34;your private key&#34;)
+ *                 .certificate(&#34;your certificate data&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Function Compute custom domain can be imported using the id or the domain name, e.g.

@@ -23,6 +23,40 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.TlsCipherPolicy;
+ * import com.pulumi.alicloud.slb.TlsCipherPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new TlsCipherPolicy(&#34;example&#34;, TlsCipherPolicyArgs.builder()        
+ *             .ciphers(            
+ *                 &#34;AES256-SHA256&#34;,
+ *                 &#34;AES128-GCM-SHA256&#34;)
+ *             .tlsCipherPolicyName(&#34;Test-example_value&#34;)
+ *             .tlsVersions(&#34;TLSv1.2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * SLB Tls Cipher Policy can be imported using the id, e.g.

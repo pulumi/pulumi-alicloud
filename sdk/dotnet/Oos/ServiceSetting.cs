@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Oos
     ///         var name = config.Get("name") ?? "tf-testaccoossetting";
     ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = name,
+    ///             BucketName = name,
     ///             Acl = "public-read-write",
     ///         });
     ///         var defaultProject = new AliCloud.Log.Project("defaultProject", new AliCloud.Log.ProjectArgs

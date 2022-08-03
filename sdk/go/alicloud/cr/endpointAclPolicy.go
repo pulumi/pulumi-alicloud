@@ -220,6 +220,31 @@ func (o EndpointAclPolicyOutput) ToEndpointAclPolicyOutputWithContext(ctx contex
 	return o
 }
 
+// The description of the entry.
+func (o EndpointAclPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAclPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The type of endpoint. Valid values: `internet`.
+func (o EndpointAclPolicyOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAclPolicy) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The IP segment that allowed to access.
+func (o EndpointAclPolicyOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAclPolicy) pulumi.StringOutput { return v.Entry }).(pulumi.StringOutput)
+}
+
+// The ID of the CR Instance.
+func (o EndpointAclPolicyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAclPolicy) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The module that needs to set the access policy. Valid values: `Registry`.
+func (o EndpointAclPolicyOutput) ModuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAclPolicy) pulumi.StringPtrOutput { return v.ModuleName }).(pulumi.StringPtrOutput)
+}
+
 type EndpointAclPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointAclPolicyArrayOutput) ElementType() reflect.Type {

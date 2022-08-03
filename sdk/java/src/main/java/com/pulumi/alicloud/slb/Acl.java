@@ -44,6 +44,47 @@ import javax.annotation.Nullable;
  * For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.Acl;
+ * import com.pulumi.alicloud.slb.AclArgs;
+ * import com.pulumi.alicloud.slb.inputs.AclEntryListArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraformslbaclconfig&#34;);
+ *         final var ipVersion = config.get(&#34;ipVersion&#34;).orElse(&#34;ipv4&#34;);
+ *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
+ *             .ipVersion(ipVersion)
+ *             .entryLists(            
+ *                 AclEntryListArgs.builder()
+ *                     .entry(&#34;10.10.10.0/24&#34;)
+ *                     .comment(&#34;first&#34;)
+ *                     .build(),
+ *                 AclEntryListArgs.builder()
+ *                     .entry(&#34;168.10.10.0/24&#34;)
+ *                     .comment(&#34;second&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Entry Block
  * 
  * The entry mapping supports the following:

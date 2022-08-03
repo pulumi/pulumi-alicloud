@@ -27,6 +27,71 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpn.Gateway;
+ * import com.pulumi.alicloud.vpn.GatewayArgs;
+ * import com.pulumi.alicloud.vpn.IpsecServer;
+ * import com.pulumi.alicloud.vpn.IpsecServerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var vswitchId = defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
+ * 
+ *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .bandwidth(10)
+ *             .enableSsl(true)
+ *             .enableIpsec(true)
+ *             .sslConnections(5)
+ *             .instanceChargeType(&#34;PrePaid&#34;)
+ *             .vswitchId(vswitchId)
+ *             .build());
+ * 
+ *         var example = new IpsecServer(&#34;example&#34;, IpsecServerArgs.builder()        
+ *             .clientIpPool(&#34;example_value&#34;)
+ *             .ipsecServerName(&#34;example_value&#34;)
+ *             .localSubnet(&#34;example_value&#34;)
+ *             .vpnGatewayId(defaultGateway.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPN Ipsec Server can be imported using the id, e.g.

@@ -23,6 +23,37 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.edas.InstanceClusterAttachment;
+ * import com.pulumi.alicloud.edas.InstanceClusterAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new InstanceClusterAttachment(&#34;default&#34;, InstanceClusterAttachmentArgs.builder()        
+ *             .clusterId(var_.cluster_id())
+ *             .instanceIds(var_.instance_ids())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment")
 public class InstanceClusterAttachment extends com.pulumi.resources.CustomResource {

@@ -347,6 +347,57 @@ func (o NasBackupPlanOutput) ToNasBackupPlanOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Backup type. Valid values: `COMPLETE`.
+func (o NasBackupPlanOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+//
+// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
+func (o NasBackupPlanOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether to disable the backup task. Valid values: `true`, `false`.
+func (o NasBackupPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The File System ID of Nas.
+func (o NasBackupPlanOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+func (o NasBackupPlanOutput) NasBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.NasBackupPlanName }).(pulumi.StringOutput)
+}
+
+func (o NasBackupPlanOutput) Options() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
+}
+
+// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
+func (o NasBackupPlanOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringArrayOutput { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Backup retention days, the minimum is 1.
+func (o NasBackupPlanOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
+}
+
+// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+func (o NasBackupPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The ID of Backup vault.
+func (o NasBackupPlanOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.VaultId }).(pulumi.StringOutput)
+}
+
 type NasBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (NasBackupPlanArrayOutput) ElementType() reflect.Type {

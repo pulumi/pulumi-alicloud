@@ -507,6 +507,161 @@ func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Start time in Unix timestamp format.
+func (o MigrationJobOutput) Checkpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Checkpoint }).(pulumi.StringOutput)
+}
+
+// Whether to execute DTS supports schema migration.
+func (o MigrationJobOutput) DataInitialization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.BoolOutput { return v.DataInitialization }).(pulumi.BoolOutput)
+}
+
+// Whether to perform incremental data migration.
+func (o MigrationJobOutput) DataSynchronization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.BoolOutput { return v.DataSynchronization }).(pulumi.BoolOutput)
+}
+
+// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+func (o MigrationJobOutput) DbList() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DbList }).(pulumi.StringOutput)
+}
+
+// The name of migrate the database.
+func (o MigrationJobOutput) DestinationEndpointDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+func (o MigrationJobOutput) DestinationEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The ID of destination instance.
+func (o MigrationJobOutput) DestinationEndpointInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+func (o MigrationJobOutput) DestinationEndpointInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DestinationEndpointInstanceType }).(pulumi.StringOutput)
+}
+
+// The ip of source endpoint.
+func (o MigrationJobOutput) DestinationEndpointIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointIp }).(pulumi.StringPtrOutput)
+}
+
+// The SID of Oracle database.
+func (o MigrationJobOutput) DestinationEndpointOracleSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointOracleSid }).(pulumi.StringPtrOutput)
+}
+
+// The password of database account.
+func (o MigrationJobOutput) DestinationEndpointPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointPassword }).(pulumi.StringPtrOutput)
+}
+
+// The port of source endpoint.
+func (o MigrationJobOutput) DestinationEndpointPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointPort }).(pulumi.StringPtrOutput)
+}
+
+// The region of destination instance.
+func (o MigrationJobOutput) DestinationEndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRegion }).(pulumi.StringPtrOutput)
+}
+
+// The username of database account.
+func (o MigrationJobOutput) DestinationEndpointUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointUserName }).(pulumi.StringPtrOutput)
+}
+
+// The Migration instance ID. The ID of `dts.MigrationInstance`.
+func (o MigrationJobOutput) DtsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DtsInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of migration job.
+func (o MigrationJobOutput) DtsJobName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DtsJobName }).(pulumi.StringOutput)
+}
+
+// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+func (o MigrationJobOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+// The name of migrate the database.
+func (o MigrationJobOutput) SourceEndpointDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+func (o MigrationJobOutput) SourceEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The ID of source instance.
+func (o MigrationJobOutput) SourceEndpointInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+func (o MigrationJobOutput) SourceEndpointInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.SourceEndpointInstanceType }).(pulumi.StringOutput)
+}
+
+// The ip of source endpoint.
+func (o MigrationJobOutput) SourceEndpointIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointIp }).(pulumi.StringPtrOutput)
+}
+
+// The SID of Oracle database.
+func (o MigrationJobOutput) SourceEndpointOracleSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointOracleSid }).(pulumi.StringPtrOutput)
+}
+
+// The Alibaba Cloud account ID to which the source instance belongs.
+func (o MigrationJobOutput) SourceEndpointOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The password of database account.
+func (o MigrationJobOutput) SourceEndpointPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointPassword }).(pulumi.StringPtrOutput)
+}
+
+// The port of source endpoint.
+func (o MigrationJobOutput) SourceEndpointPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointPort }).(pulumi.StringPtrOutput)
+}
+
+// The region of source instance.
+func (o MigrationJobOutput) SourceEndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointRegion }).(pulumi.StringPtrOutput)
+}
+
+// The name of the role configured for the cloud account to which the source instance belongs.
+func (o MigrationJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
+}
+
+// The username of database account.
+func (o MigrationJobOutput) SourceEndpointUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointUserName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+func (o MigrationJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to perform a database table structure to migrate.
+func (o MigrationJobOutput) StructureInitialization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.BoolOutput { return v.StructureInitialization }).(pulumi.BoolOutput)
+}
+
 type MigrationJobArrayOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobArrayOutput) ElementType() reflect.Type {

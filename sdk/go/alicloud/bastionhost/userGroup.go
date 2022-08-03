@@ -229,6 +229,26 @@ func (o UserGroupOutput) ToUserGroupOutputWithContext(ctx context.Context) UserG
 	return o
 }
 
+// Specify the New Group of Remark Information. Supports up to 500 Characters.
+func (o UserGroupOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserGroup) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Specify the New Group of the Bastion Host of Instance Id.
+func (o UserGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserGroup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The User Group self ID.
+func (o UserGroupOutput) UserGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserGroup) pulumi.StringOutput { return v.UserGroupId }).(pulumi.StringOutput)
+}
+
+// Specify the New Group Name. Supports up to 128 Characters.
+func (o UserGroupOutput) UserGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserGroup) pulumi.StringOutput { return v.UserGroupName }).(pulumi.StringOutput)
+}
+
 type UserGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (UserGroupArrayOutput) ElementType() reflect.Type {

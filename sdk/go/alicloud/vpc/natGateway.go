@@ -331,6 +331,100 @@ func (o NatGatewayOutput) ToNatGatewayOutputWithContext(ctx context.Context) Nat
 	return o
 }
 
+// Whether enable the deletion protection or not. Default value: `false`.
+// - true: Enable deletion protection.
+// - false: Disable deletion protection.
+func (o NatGatewayOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
+func (o NatGatewayOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o NatGatewayOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+func (o NatGatewayOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The nat gateway will auto create a forward item.
+func (o NatGatewayOutput) ForwardTableIds() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.ForwardTableIds }).(pulumi.StringOutput)
+}
+
+// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+func (o NatGatewayOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+func (o NatGatewayOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+func (o NatGatewayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+func (o NatGatewayOutput) NatGatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.NatGatewayName }).(pulumi.StringOutput)
+}
+
+// The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+func (o NatGatewayOutput) NatType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.NatType }).(pulumi.StringOutput)
+}
+
+// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+func (o NatGatewayOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+func (o NatGatewayOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o NatGatewayOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The nat gateway will auto create a snat item.
+func (o NatGatewayOutput) SnatTableIds() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.SnatTableIds }).(pulumi.StringOutput)
+}
+
+// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
+func (o NatGatewayOutput) Specification() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
+}
+
+// (Available in 1.121.0+) The status of NAT gateway.
+func (o NatGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags of NAT gateway.
+func (o NatGatewayOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The VPC ID.
+func (o NatGatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The id of VSwitch.
+func (o NatGatewayOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type NatGatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (NatGatewayArrayOutput) ElementType() reflect.Type {

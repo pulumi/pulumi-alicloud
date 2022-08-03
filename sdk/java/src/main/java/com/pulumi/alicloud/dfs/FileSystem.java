@@ -24,6 +24,48 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dfs.DfsFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.dfs.FileSystem;
+ * import com.pulumi.alicloud.dfs.FileSystemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccFileSystem&#34;);
+ *         final var defaultZones = DfsFunctions.getZones();
+ * 
+ *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *             .storageType(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].options()[0].storageType()))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .protocolType(&#34;HDFS&#34;)
+ *             .description(name)
+ *             .fileSystemName(name)
+ *             .throughputMode(&#34;Standard&#34;)
+ *             .spaceCapacity(&#34;1024&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DFS File System can be imported using the id, e.g.

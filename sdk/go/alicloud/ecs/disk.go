@@ -426,6 +426,133 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
 }
 
+func (o DiskOutput) AdvancedFeatures() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.AdvancedFeatures }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to create the disk in.
+//
+// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+func (o DiskOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+func (o DiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o DiskOutput) DedicatedBlockStorageClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.DedicatedBlockStorageClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+func (o DiskOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the disk is released together with the instance: Default value: false.
+func (o DiskOutput) DeleteWithInstance() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.DeleteWithInstance }).(pulumi.BoolOutput)
+}
+
+// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+func (o DiskOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DiskOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.DiskName }).(pulumi.StringOutput)
+}
+
+func (o DiskOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+func (o DiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
+}
+
+func (o DiskOutput) EncryptAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.EncryptAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// If true, the disk will be encrypted, conflict with `snapshotId`.
+func (o DiskOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+func (o DiskOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+func (o DiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
+func (o DiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DiskOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+func (o DiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the disk belongs.
+// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+func (o DiskOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+func (o DiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.IntPtrOutput { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+func (o DiskOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+// The disk status.
+func (o DiskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o DiskOutput) StorageSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.StorageSetId }).(pulumi.StringPtrOutput)
+}
+
+func (o DiskOutput) StorageSetPartitionNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.IntPtrOutput { return v.StorageSetPartitionNumber }).(pulumi.IntPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o DiskOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Disk) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o DiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o DiskOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type DiskArrayOutput struct{ *pulumi.OutputState }
 
 func (DiskArrayOutput) ElementType() reflect.Type {

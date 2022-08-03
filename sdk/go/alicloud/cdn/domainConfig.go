@@ -265,6 +265,31 @@ func (o DomainConfigOutput) ToDomainConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
+// (Available in 1.132.0+) The ID of the domain config function.
+func (o DomainConfigOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+func (o DomainConfigOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainConfig) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The args of the domain config.
+func (o DomainConfigOutput) FunctionArgs() DomainConfigFunctionArgArrayOutput {
+	return o.ApplyT(func(v *DomainConfig) DomainConfigFunctionArgArrayOutput { return v.FunctionArgs }).(DomainConfigFunctionArgArrayOutput)
+}
+
+// The name of the domain config.
+func (o DomainConfigOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainConfig) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+func (o DomainConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainConfig) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type DomainConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigArrayOutput) ElementType() reflect.Type {

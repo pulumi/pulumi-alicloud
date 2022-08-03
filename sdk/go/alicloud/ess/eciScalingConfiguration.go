@@ -589,6 +589,160 @@ func (o EciScalingConfigurationOutput) ToEciScalingConfigurationOutputWithContex
 	return o
 }
 
+// Whether active current eci scaling configuration in the specified scaling group. Note that only
+// one configuration can be active. Default to `false`.
+func (o EciScalingConfigurationOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// Whether create eip automatically.
+func (o EciScalingConfigurationOutput) AutoCreateEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.AutoCreateEip }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the container group.
+func (o EciScalingConfigurationOutput) ContainerGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The list of containers.See Block container below for details.
+func (o EciScalingConfigurationOutput) Containers() EciScalingConfigurationContainerArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationContainerArrayOutput { return v.Containers }).(EciScalingConfigurationContainerArrayOutput)
+}
+
+// The amount of CPU resources allocated to the container.
+func (o EciScalingConfigurationOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
+// 256 characters in length and cannot start with http:// or https://.
+func (o EciScalingConfigurationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// dns policy of contain group.
+func (o EciScalingConfigurationOutput) DnsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.DnsPolicy }).(pulumi.StringPtrOutput)
+}
+
+// egress bandwidth.
+func (o EciScalingConfigurationOutput) EgressBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.EgressBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Eip bandwidth.
+func (o EciScalingConfigurationOutput) EipBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.EipBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Enable sls log service.
+func (o EciScalingConfigurationOutput) EnableSls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.EnableSls }).(pulumi.BoolPtrOutput)
+}
+
+// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
+// Default to false.
+func (o EciScalingConfigurationOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
+}
+
+// HostAliases.See Block hostAlias below for details.
+func (o EciScalingConfigurationOutput) HostAliases() EciScalingConfigurationHostAliasArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationHostAliasArrayOutput { return v.HostAliases }).(EciScalingConfigurationHostAliasArrayOutput)
+}
+
+// Hostname of an ECI instance.
+func (o EciScalingConfigurationOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// The image registry credential. The details see
+// Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+// details.
+func (o EciScalingConfigurationOutput) ImageRegistryCredentials() EciScalingConfigurationImageRegistryCredentialArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationImageRegistryCredentialArrayOutput {
+		return v.ImageRegistryCredentials
+	}).(EciScalingConfigurationImageRegistryCredentialArrayOutput)
+}
+
+// Ingress bandwidth.
+func (o EciScalingConfigurationOutput) IngressBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.IngressBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The list of initContainers.See Block initContainer below for
+// details.
+func (o EciScalingConfigurationOutput) InitContainers() EciScalingConfigurationInitContainerArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationInitContainerArrayOutput {
+		return v.InitContainers
+	}).(EciScalingConfigurationInitContainerArrayOutput)
+}
+
+// The amount of memory resources allocated to the container.
+func (o EciScalingConfigurationOutput) Memory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
+func (o EciScalingConfigurationOutput) RamRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
+}
+
+// ID of resource group.
+func (o EciScalingConfigurationOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The restart policy of the container group. Default to `Always`.
+func (o EciScalingConfigurationOutput) RestartPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.RestartPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Name shown for the scheduled task. which must contain 2-64 characters (
+// English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number,
+// underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
+// EciScalingConfigurationId.
+func (o EciScalingConfigurationOutput) ScalingConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringOutput { return v.ScalingConfigurationName }).(pulumi.StringOutput)
+}
+
+// ID of the scaling group of a eci scaling configuration.
+func (o EciScalingConfigurationOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// ID of the security group used to create new instance. It is conflict
+// with `securityGroupIds`.
+func (o EciScalingConfigurationOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The maximum price hourly for spot instance.
+func (o EciScalingConfigurationOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
+// , `SpotWithPriceLimit`.
+func (o EciScalingConfigurationOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
+//   be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
+//   a null string.
+func (o EciScalingConfigurationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The list of volumes.See Block volume below for details.
+func (o EciScalingConfigurationOutput) Volumes() EciScalingConfigurationVolumeArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationVolumeArrayOutput { return v.Volumes }).(EciScalingConfigurationVolumeArrayOutput)
+}
+
 type EciScalingConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationArrayOutput) ElementType() reflect.Type {

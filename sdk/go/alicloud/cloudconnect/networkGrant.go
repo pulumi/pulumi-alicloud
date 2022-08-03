@@ -256,6 +256,21 @@ func (o NetworkGrantOutput) ToNetworkGrantOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The ID of the CCN instance.
+func (o NetworkGrantOutput) CcnId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkGrant) pulumi.StringOutput { return v.CcnId }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN instance.
+func (o NetworkGrantOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkGrant) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The ID of the account to which the CEN instance belongs.
+func (o NetworkGrantOutput) CenUid() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkGrant) pulumi.StringOutput { return v.CenUid }).(pulumi.StringOutput)
+}
+
 type NetworkGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkGrantArrayOutput) ElementType() reflect.Type {

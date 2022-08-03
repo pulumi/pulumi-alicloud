@@ -36,6 +36,42 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointsResult> getEndpoints() {
         return getEndpoints(GetEndpointsArgs.Empty, InvokeOptions.Empty);
@@ -46,6 +82,42 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain() {
@@ -58,6 +130,42 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args) {
         return getEndpoints(args, InvokeOptions.Empty);
@@ -68,6 +176,42 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args) {
@@ -80,6 +224,42 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:pvtz/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
@@ -90,6 +270,42 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args, InvokeOptions options) {
@@ -102,6 +318,37 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetResolverZonesResult> getResolverZones() {
         return getResolverZones(GetResolverZonesArgs.Empty, InvokeOptions.Empty);
@@ -112,6 +359,37 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResolverZonesResult> getResolverZonesPlain() {
@@ -124,6 +402,37 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetResolverZonesResult> getResolverZones(GetResolverZonesArgs args) {
         return getResolverZones(args, InvokeOptions.Empty);
@@ -134,6 +443,37 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResolverZonesResult> getResolverZonesPlain(GetResolverZonesPlainArgs args) {
@@ -146,6 +486,37 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetResolverZonesResult> getResolverZones(GetResolverZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:pvtz/getResolverZones:getResolverZones", TypeShape.of(GetResolverZonesResult.class), args, Utilities.withVersion(options));
@@ -156,6 +527,37 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResolverZonesResult> getResolverZonesPlain(GetResolverZonesPlainArgs args, InvokeOptions options) {
@@ -168,6 +570,40 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getRules();
+     * 
+     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules() {
         return getRules(GetRulesArgs.Empty, InvokeOptions.Empty);
@@ -178,6 +614,40 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getRules();
+     * 
+     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain() {
@@ -190,6 +660,40 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getRules();
+     * 
+     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
         return getRules(args, InvokeOptions.Empty);
@@ -200,6 +704,40 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getRules();
+     * 
+     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -212,6 +750,40 @@ public final class PvtzFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getRules();
+     * 
+     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:pvtz/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
@@ -222,6 +794,40 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getRules();
+     * 
+     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
@@ -235,6 +841,34 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -248,6 +882,34 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -261,6 +923,34 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -274,6 +964,34 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -287,6 +1005,34 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -300,6 +1046,34 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -309,6 +1083,36 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .keyword(alicloud_pvtz_zone_record.foo().value())
+     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZoneRecordsResult> getZoneRecords(GetZoneRecordsArgs args) {
@@ -318,6 +1122,36 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .keyword(alicloud_pvtz_zone_record.foo().value())
+     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZoneRecordsResult> getZoneRecordsPlain(GetZoneRecordsPlainArgs args) {
@@ -327,6 +1161,36 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .keyword(alicloud_pvtz_zone_record.foo().value())
+     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZoneRecordsResult> getZoneRecords(GetZoneRecordsArgs args, InvokeOptions options) {
@@ -336,6 +1200,36 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .keyword(alicloud_pvtz_zone_record.foo().value())
+     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZoneRecordsResult> getZoneRecordsPlain(GetZoneRecordsPlainArgs args, InvokeOptions options) {
@@ -345,6 +1239,35 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -354,6 +1277,35 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -363,6 +1315,35 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -372,6 +1353,35 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -381,6 +1391,35 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -390,6 +1429,35 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

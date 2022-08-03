@@ -21,6 +21,37 @@ public final class ImmFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imm.ImmFunctions;
+     * import com.pulumi.alicloud.imm.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetProjectsResult> getProjects() {
         return getProjects(GetProjectsArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +62,37 @@ public final class ImmFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imm.ImmFunctions;
+     * import com.pulumi.alicloud.imm.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain() {
@@ -43,6 +105,37 @@ public final class ImmFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imm.ImmFunctions;
+     * import com.pulumi.alicloud.imm.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args) {
         return getProjects(args, InvokeOptions.Empty);
@@ -53,6 +146,37 @@ public final class ImmFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imm.ImmFunctions;
+     * import com.pulumi.alicloud.imm.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args) {
@@ -65,6 +189,37 @@ public final class ImmFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imm.ImmFunctions;
+     * import com.pulumi.alicloud.imm.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:imm/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
@@ -75,6 +230,37 @@ public final class ImmFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imm.ImmFunctions;
+     * import com.pulumi.alicloud.imm.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {

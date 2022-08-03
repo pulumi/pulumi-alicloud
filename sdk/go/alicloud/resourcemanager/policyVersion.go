@@ -29,14 +29,30 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		examplePolicy, err := resourcemanager.NewPolicy(ctx, "examplePolicy", &resourcemanager.PolicyArgs{
 // 			PolicyName: pulumi.String("tftest"),
-// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "		{\n", "			\"Statement\": [{\n", "				\"Action\": [\"oss:*\"],\n", "				\"Effect\": \"Allow\",\n", "				\"Resource\": [\"acs:oss:*:*:*\"]\n", "			}],\n", "			\"Version\": \"1\"\n", "		}\n")),
+// 			PolicyDocument: pulumi.String(fmt.Sprintf(`		{
+// 			"Statement": [{
+// 				"Action": ["oss:*"],
+// 				"Effect": "Allow",
+// 				"Resource": ["acs:oss:*:*:*"]
+// 			}],
+// 			"Version": "1"
+// 		}
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = resourcemanager.NewPolicyVersion(ctx, "examplePolicyVersion", &resourcemanager.PolicyVersionArgs{
 // 			PolicyName: examplePolicy.PolicyName,
-// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "		{\n", "			\"Statement\": [{\n", "				\"Action\": [\"oss:*\"],\n", "				\"Effect\": \"Allow\",\n", "				\"Resource\": [\"acs:oss:*:*:myphotos\"]\n", "			}],\n", "			\"Version\": \"1\"\n", "		}\n")),
+// 			PolicyDocument: pulumi.String(fmt.Sprintf(`		{
+// 			"Statement": [{
+// 				"Action": ["oss:*"],
+// 				"Effect": "Allow",
+// 				"Resource": ["acs:oss:*:*:myphotos"]
+// 			}],
+// 			"Version": "1"
+// 		}
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -234,6 +250,23 @@ func (o PolicyVersionOutput) ToPolicyVersionOutput() PolicyVersionOutput {
 
 func (o PolicyVersionOutput) ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput {
 	return o
+}
+
+// Specifies whether to set the policy version as the default version. Default to `false`.
+//
+// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
+func (o PolicyVersionOutput) IsDefaultVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyVersion) pulumi.BoolPtrOutput { return v.IsDefaultVersion }).(pulumi.BoolPtrOutput)
+}
+
+// The content of the policy. The content must be 1 to 2,048 characters in length.
+func (o PolicyVersionOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyVersion) pulumi.StringOutput { return v.PolicyDocument }).(pulumi.StringOutput)
+}
+
+// The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+func (o PolicyVersionOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyVersion) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 type PolicyVersionArrayOutput struct{ *pulumi.OutputState }

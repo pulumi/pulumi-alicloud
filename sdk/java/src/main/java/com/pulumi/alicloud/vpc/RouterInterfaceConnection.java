@@ -27,6 +27,85 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.RouterInterface;
+ * import com.pulumi.alicloud.vpc.RouterInterfaceArgs;
+ * import com.pulumi.alicloud.vpc.RouterInterfaceConnection;
+ * import com.pulumi.alicloud.vpc.RouterInterfaceConnectionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;alicloudRouterInterfaceConnectionBasic&#34;);
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var barNetwork = new Network(&#34;barNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud)
+ *                 .build());
+ * 
+ *         var initiate = new RouterInterface(&#34;initiate&#34;, RouterInterfaceArgs.builder()        
+ *             .oppositeRegion(region)
+ *             .routerType(&#34;VRouter&#34;)
+ *             .routerId(fooNetwork.routerId())
+ *             .role(&#34;InitiatingSide&#34;)
+ *             .specification(&#34;Large.2&#34;)
+ *             .description(name)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .build());
+ * 
+ *         var opposite = new RouterInterface(&#34;opposite&#34;, RouterInterfaceArgs.builder()        
+ *             .oppositeRegion(region)
+ *             .routerType(&#34;VRouter&#34;)
+ *             .routerId(barNetwork.routerId())
+ *             .role(&#34;AcceptingSide&#34;)
+ *             .specification(&#34;Large.1&#34;)
+ *             .description(String.format(&#34;%s-opposite&#34;, name))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud)
+ *                 .build());
+ * 
+ *         var barRouterInterfaceConnection = new RouterInterfaceConnection(&#34;barRouterInterfaceConnection&#34;, RouterInterfaceConnectionArgs.builder()        
+ *             .interfaceId(opposite.id())
+ *             .oppositeInterfaceId(initiate.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud)
+ *                 .build());
+ * 
+ *         var fooRouterInterfaceConnection = new RouterInterfaceConnection(&#34;fooRouterInterfaceConnection&#34;, RouterInterfaceConnectionArgs.builder()        
+ *             .interfaceId(initiate.id())
+ *             .oppositeInterfaceId(opposite.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(barRouterInterfaceConnection)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

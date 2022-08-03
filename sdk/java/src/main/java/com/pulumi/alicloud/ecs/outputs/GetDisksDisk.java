@@ -119,6 +119,37 @@ public final class GetDisksDisk {
     private final String status;
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     private final Map<String,Object> tags;
@@ -390,6 +421,37 @@ public final class GetDisksDisk {
     }
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Map<String,Object> tags() {

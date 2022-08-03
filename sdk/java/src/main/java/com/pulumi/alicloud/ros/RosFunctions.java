@@ -39,6 +39,39 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
+     *             .stackId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetChangeSetsResult> getChangeSets(GetChangeSetsArgs args) {
         return getChangeSets(args, InvokeOptions.Empty);
@@ -49,6 +82,39 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.105.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
+     *             .stackId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetChangeSetsResult> getChangeSetsPlain(GetChangeSetsPlainArgs args) {
@@ -61,6 +127,39 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
+     *             .stackId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetChangeSetsResult> getChangeSets(GetChangeSetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getChangeSets:getChangeSets", TypeShape.of(GetChangeSetsResult.class), args, Utilities.withVersion(options));
@@ -71,6 +170,39 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.105.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
+     *             .stackId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetChangeSetsResult> getChangeSetsPlain(GetChangeSetsPlainArgs args, InvokeOptions options) {
@@ -83,6 +215,35 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = RosFunctions.getRegions();
+     * 
+     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRegionsResult> getRegions() {
         return getRegions(GetRegionsArgs.Empty, InvokeOptions.Empty);
@@ -93,6 +254,35 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = RosFunctions.getRegions();
+     * 
+     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -105,6 +295,35 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = RosFunctions.getRegions();
+     * 
+     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
         return getRegions(args, InvokeOptions.Empty);
@@ -115,6 +334,35 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = RosFunctions.getRegions();
+     * 
+     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -127,6 +375,35 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = RosFunctions.getRegions();
+     * 
+     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
@@ -137,6 +414,35 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = RosFunctions.getRegions();
+     * 
+     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
@@ -149,6 +455,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStackGroupsResult> getStackGroups() {
         return getStackGroups(GetStackGroupsArgs.Empty, InvokeOptions.Empty);
@@ -159,6 +497,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.107.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStackGroupsResult> getStackGroupsPlain() {
@@ -171,6 +541,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStackGroupsResult> getStackGroups(GetStackGroupsArgs args) {
         return getStackGroups(args, InvokeOptions.Empty);
@@ -181,6 +583,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.107.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStackGroupsResult> getStackGroupsPlain(GetStackGroupsPlainArgs args) {
@@ -193,6 +627,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStackGroupsResult> getStackGroups(GetStackGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getStackGroups:getStackGroups", TypeShape.of(GetStackGroupsResult.class), args, Utilities.withVersion(options));
@@ -203,6 +669,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.107.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStackGroupsResult> getStackGroupsPlain(GetStackGroupsPlainArgs args, InvokeOptions options) {
@@ -215,6 +713,62 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .status(&#34;CURRENT&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStackInstancesResult> getStackInstances(GetStackInstancesArgs args) {
         return getStackInstances(args, InvokeOptions.Empty);
@@ -225,6 +779,62 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .status(&#34;CURRENT&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStackInstancesResult> getStackInstancesPlain(GetStackInstancesPlainArgs args) {
@@ -237,6 +847,62 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .status(&#34;CURRENT&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStackInstancesResult> getStackInstances(GetStackInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getStackInstances:getStackInstances", TypeShape.of(GetStackInstancesResult.class), args, Utilities.withVersion(options));
@@ -247,6 +913,62 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .status(&#34;CURRENT&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStackInstancesResult> getStackInstancesPlain(GetStackInstancesPlainArgs args, InvokeOptions options) {
@@ -259,6 +981,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStacksResult> getStacks() {
         return getStacks(GetStacksArgs.Empty, InvokeOptions.Empty);
@@ -269,6 +1023,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.106.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStacksResult> getStacksPlain() {
@@ -281,6 +1067,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStacksResult> getStacks(GetStacksArgs args) {
         return getStacks(args, InvokeOptions.Empty);
@@ -291,6 +1109,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.106.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStacksResult> getStacksPlain(GetStacksPlainArgs args) {
@@ -303,6 +1153,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStacksResult> getStacks(GetStacksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getStacks:getStacks", TypeShape.of(GetStacksResult.class), args, Utilities.withVersion(options));
@@ -313,6 +1195,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.106.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStacksResult> getStacksPlain(GetStacksPlainArgs args, InvokeOptions options) {
@@ -325,6 +1239,47 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTemplateScratchesResult> getTemplateScratches() {
         return getTemplateScratches(GetTemplateScratchesArgs.Empty, InvokeOptions.Empty);
@@ -335,6 +1290,47 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.151.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplateScratchesResult> getTemplateScratchesPlain() {
@@ -347,6 +1343,47 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTemplateScratchesResult> getTemplateScratches(GetTemplateScratchesArgs args) {
         return getTemplateScratches(args, InvokeOptions.Empty);
@@ -357,6 +1394,47 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.151.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplateScratchesResult> getTemplateScratchesPlain(GetTemplateScratchesPlainArgs args) {
@@ -369,6 +1447,47 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTemplateScratchesResult> getTemplateScratches(GetTemplateScratchesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getTemplateScratches:getTemplateScratches", TypeShape.of(GetTemplateScratchesResult.class), args, Utilities.withVersion(options));
@@ -379,6 +1498,47 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.151.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplateScratchesResult> getTemplateScratchesPlain(GetTemplateScratchesPlainArgs args, InvokeOptions options) {
@@ -391,6 +1551,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTemplatesResult> getTemplates() {
         return getTemplates(GetTemplatesArgs.Empty, InvokeOptions.Empty);
@@ -401,6 +1593,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.108.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain() {
@@ -413,6 +1637,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args) {
         return getTemplates(args, InvokeOptions.Empty);
@@ -423,6 +1679,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.108.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args) {
@@ -435,6 +1723,38 @@ public final class RosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getTemplates:getTemplates", TypeShape.of(GetTemplatesResult.class), args, Utilities.withVersion(options));
@@ -445,6 +1765,38 @@ public final class RosFunctions {
      * &gt; **NOTE:** Available in v1.108.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args, InvokeOptions options) {

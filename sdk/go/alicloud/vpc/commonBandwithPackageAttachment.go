@@ -222,6 +222,16 @@ func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachment
 	return o
 }
 
+// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
+func (o CommonBandwithPackageAttachmentOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// The instanceId of the common bandwidth package attachment, the field can't be changed.
+func (o CommonBandwithPackageAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type CommonBandwithPackageAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageAttachmentArrayOutput) ElementType() reflect.Type {

@@ -387,6 +387,91 @@ func (o ControlPolicyOutput) ToControlPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+func (o ControlPolicyOutput) AclAction() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.AclAction }).(pulumi.StringOutput)
+}
+
+// (Available in v1.148.0+) The unique ID of the access control policy.
+func (o ControlPolicyOutput) AclUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.AclUuid }).(pulumi.StringOutput)
+}
+
+// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+func (o ControlPolicyOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// The description of the access control policy.
+func (o ControlPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The destination port defined in the access control policy.
+func (o ControlPolicyOutput) DestPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestPort }).(pulumi.StringOutput)
+}
+
+// The destination port address book defined in the access control policy.
+func (o ControlPolicyOutput) DestPortGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestPortGroup }).(pulumi.StringOutput)
+}
+
+// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+func (o ControlPolicyOutput) DestPortType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestPortType }).(pulumi.StringOutput)
+}
+
+// The destination address defined in the access control policy.
+func (o ControlPolicyOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
+}
+
+// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+func (o ControlPolicyOutput) DestinationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestinationType }).(pulumi.StringOutput)
+}
+
+// Direction. Valid values: `in`, `out`.
+func (o ControlPolicyOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The ip version.
+func (o ControlPolicyOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
+}
+
+// DestPortGroupPorts. Valid values: `en`, `zh`.
+func (o ControlPolicyOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+func (o ControlPolicyOutput) Proto() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Proto }).(pulumi.StringOutput)
+}
+
+// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+func (o ControlPolicyOutput) Release() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Release }).(pulumi.StringOutput)
+}
+
+// Source.
+func (o ControlPolicyOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
+// The source ip.
+func (o ControlPolicyOutput) SourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.SourceIp }).(pulumi.StringOutput)
+}
+
+// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+func (o ControlPolicyOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
+}
+
 type ControlPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyArrayOutput) ElementType() reflect.Type {

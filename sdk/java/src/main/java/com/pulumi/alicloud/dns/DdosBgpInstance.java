@@ -24,6 +24,39 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ddos.DdosBgpInstance;
+ * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DdosBgpInstance(&#34;instance&#34;, DdosBgpInstanceArgs.builder()        
+ *             .bandwidth(&#34;201&#34;)
+ *             .baseBandwidth(&#34;20&#34;)
+ *             .ipCount(&#34;100&#34;)
+ *             .ipType(&#34;IPv4&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Ddosbgp instance can be imported using the id, e.g.

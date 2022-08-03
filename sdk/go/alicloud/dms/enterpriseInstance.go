@@ -527,6 +527,155 @@ func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutputWithContext(ctx cont
 	return o
 }
 
+// Cross-database query datalink name.
+func (o EnterpriseInstanceOutput) DataLinkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringPtrOutput { return v.DataLinkName }).(pulumi.StringPtrOutput)
+}
+
+// Database access password.
+func (o EnterpriseInstanceOutput) DatabasePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.DatabasePassword }).(pulumi.StringOutput)
+}
+
+// Database access account.
+func (o EnterpriseInstanceOutput) DatabaseUser() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.DatabaseUser }).(pulumi.StringOutput)
+}
+
+// The dba id of the database instance.
+func (o EnterpriseInstanceOutput) DbaId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.DbaId }).(pulumi.StringOutput)
+}
+
+// The instance dba nickname.
+func (o EnterpriseInstanceOutput) DbaNickName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.DbaNickName }).(pulumi.StringOutput)
+}
+
+// The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
+func (o EnterpriseInstanceOutput) DbaUid() pulumi.IntOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntOutput { return v.DbaUid }).(pulumi.IntOutput)
+}
+
+// Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
+func (o EnterpriseInstanceOutput) DdlOnline() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntPtrOutput { return v.DdlOnline }).(pulumi.IntPtrOutput)
+}
+
+// ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
+func (o EnterpriseInstanceOutput) EcsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.EcsInstanceId }).(pulumi.StringOutput)
+}
+
+// The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
+func (o EnterpriseInstanceOutput) EcsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringPtrOutput { return v.EcsRegion }).(pulumi.StringPtrOutput)
+}
+
+// Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
+func (o EnterpriseInstanceOutput) EnvType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.EnvType }).(pulumi.StringOutput)
+}
+
+// Export timeout, unit: s (seconds).
+func (o EnterpriseInstanceOutput) ExportTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntOutput { return v.ExportTimeout }).(pulumi.IntOutput)
+}
+
+// Host address of the target database.
+func (o EnterpriseInstanceOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
+//
+// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
+func (o EnterpriseInstanceOutput) InstanceAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.InstanceAlias }).(pulumi.StringOutput)
+}
+
+// The instance id of the database instance.
+func (o EnterpriseInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Instance name, to help users quickly distinguish positioning.
+func (o EnterpriseInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
+func (o EnterpriseInstanceOutput) InstanceSource() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.InstanceSource }).(pulumi.StringOutput)
+}
+
+// Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
+func (o EnterpriseInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Network type. Valid values: `CLASSIC`, `VPC`.
+func (o EnterpriseInstanceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// Access port of the target database.
+func (o EnterpriseInstanceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Query timeout time, unit: s (seconds).
+func (o EnterpriseInstanceOutput) QueryTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntOutput { return v.QueryTimeout }).(pulumi.IntOutput)
+}
+
+// The security rule of the instance is passed into the name of the security rule in the enterprise.
+func (o EnterpriseInstanceOutput) SafeRule() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.SafeRule }).(pulumi.StringOutput)
+}
+
+// The safe rule id of the database instance.
+func (o EnterpriseInstanceOutput) SafeRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.SafeRuleId }).(pulumi.StringOutput)
+}
+
+// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
+func (o EnterpriseInstanceOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringPtrOutput { return v.Sid }).(pulumi.StringPtrOutput)
+}
+
+// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+func (o EnterpriseInstanceOutput) SkipTest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.BoolPtrOutput { return v.SkipTest }).(pulumi.BoolPtrOutput)
+}
+
+// It has been deprecated from provider version 1.100.0 and 'status' instead.
+//
+// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
+func (o EnterpriseInstanceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The instance status.
+func (o EnterpriseInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tenant ID.
+func (o EnterpriseInstanceOutput) Tid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntPtrOutput { return v.Tid }).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
+func (o EnterpriseInstanceOutput) UseDsql() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntPtrOutput { return v.UseDsql }).(pulumi.IntPtrOutput)
+}
+
+// VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
+func (o EnterpriseInstanceOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
 type EnterpriseInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstanceArrayOutput) ElementType() reflect.Type {

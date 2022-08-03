@@ -26,6 +26,142 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.alb.Acl;
+ * import com.pulumi.alicloud.alb.AclArgs;
+ * import com.pulumi.alicloud.alb.inputs.AclAclEntryArgs;
+ * import com.pulumi.alicloud.alb.AlbFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.alb.LoadBalancer;
+ * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerModificationProtectionConfigArgs;
+ * import com.pulumi.alicloud.alb.ServerGroup;
+ * import com.pulumi.alicloud.alb.ServerGroupArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
+ * import com.pulumi.alicloud.alb.Listener;
+ * import com.pulumi.alicloud.alb.ListenerArgs;
+ * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionArgs;
+ * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionForwardGroupConfigArgs;
+ * import com.pulumi.alicloud.alb.ListenerAclAttachment;
+ * import com.pulumi.alicloud.alb.ListenerAclAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *             .aclName(&#34;example_value&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .aclEntries(AclAclEntryArgs.builder()
+ *                 .description(&#34;description&#34;)
+ *                 .entry(&#34;10.0.0.0/24&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         final var defaultZones = AlbFunctions.getZones();
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var default1 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var default2 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .addressType(&#34;Internet&#34;)
+ *             .addressAllocatedMode(&#34;Fixed&#34;)
+ *             .loadBalancerName(&#34;example_value&#34;)
+ *             .loadBalancerEdition(&#34;Standard&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+ *                 .payType(&#34;PayAsYouGo&#34;)
+ *                 .build())
+ *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(default1.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(default2.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *                     .build())
+ *             .modificationProtectionConfig(LoadBalancerModificationProtectionConfigArgs.builder()
+ *                 .status(&#34;NonProtection&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+ *             .protocol(&#34;HTTP&#34;)
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()))
+ *             .serverGroupName(&#34;example_value&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+ *                 .healthCheckEnabled(&#34;false&#34;)
+ *                 .build())
+ *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+ *                 .stickySessionEnabled(&#34;false&#34;)
+ *                 .build())
+ *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
+ *             .build());
+ * 
+ *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *             .loadBalancerId(defaultLoadBalancer.id())
+ *             .listenerProtocol(&#34;HTTP&#34;)
+ *             .listenerPort(80)
+ *             .listenerDescription(&#34;example_value&#34;)
+ *             .defaultActions(ListenerDefaultActionArgs.builder()
+ *                 .type(&#34;ForwardGroup&#34;)
+ *                 .forwardGroupConfig(ListenerDefaultActionForwardGroupConfigArgs.builder()
+ *                     .serverGroupTuples(ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs.builder()
+ *                         .serverGroupId(defaultServerGroup.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultListenerAclAttachment = new ListenerAclAttachment(&#34;defaultListenerAclAttachment&#34;, ListenerAclAttachmentArgs.builder()        
+ *             .aclId(defaultAcl.id())
+ *             .listenerId(defaultListener.id())
+ *             .aclType(&#34;White&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Application Load Balancer (ALB) Listener Acl Attachment can be imported using the id, e.g.

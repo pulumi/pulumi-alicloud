@@ -221,6 +221,16 @@ func (o AlertContactGroupOutput) ToAlertContactGroupOutputWithContext(ctx contex
 	return o
 }
 
+// The name of the resource.
+func (o AlertContactGroupOutput) AlertContactGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertContactGroup) pulumi.StringOutput { return v.AlertContactGroupName }).(pulumi.StringOutput)
+}
+
+// The list id of alert contact.
+func (o AlertContactGroupOutput) ContactIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertContactGroup) pulumi.StringArrayOutput { return v.ContactIds }).(pulumi.StringArrayOutput)
+}
+
 type AlertContactGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertContactGroupArrayOutput) ElementType() reflect.Type {

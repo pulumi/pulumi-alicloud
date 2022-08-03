@@ -24,6 +24,50 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dfs.AccessGroup;
+ * import com.pulumi.alicloud.dfs.AccessGroupArgs;
+ * import com.pulumi.alicloud.dfs.AccessRule;
+ * import com.pulumi.alicloud.dfs.AccessRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_name&#34;);
+ *         var defaultAccessGroup = new AccessGroup(&#34;defaultAccessGroup&#34;, AccessGroupArgs.builder()        
+ *             .networkType(&#34;VPC&#34;)
+ *             .accessGroupName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *         var defaultAccessRule = new AccessRule(&#34;defaultAccessRule&#34;, AccessRuleArgs.builder()        
+ *             .networkSegment(&#34;192.0.2.0/24&#34;)
+ *             .accessGroupId(defaultAccessGroup.id())
+ *             .description(name)
+ *             .rwAccessType(&#34;RDWR&#34;)
+ *             .priority(&#34;10&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DFS Access Rule can be imported using the id, e.g.

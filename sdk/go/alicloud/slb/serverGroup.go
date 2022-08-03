@@ -232,6 +232,28 @@ func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (o ServerGroupOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.DeleteProtectionValidation }).(pulumi.BoolPtrOutput)
+}
+
+// The Load Balancer ID which is used to launch a new virtual server group.
+func (o ServerGroupOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+func (o ServerGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+//
+// Deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
+func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
+}
+
 type ServerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupArrayOutput) ElementType() reflect.Type {

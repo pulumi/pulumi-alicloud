@@ -20,6 +20,82 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.pulumi.providers.alicloud;
+ * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cen.InstanceGrant;
+ * import com.pulumi.alicloud.cen.InstanceGrantArgs;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         var account1 = new Provider(&#34;account1&#34;, ProviderArgs.builder()        
+ *             .accessKey(&#34;access123&#34;)
+ *             .secretKey(&#34;secret123&#34;)
+ *             .build());
+ * 
+ *         var account2 = new Provider(&#34;account2&#34;, ProviderArgs.builder()        
+ *             .accessKey(&#34;access456&#34;)
+ *             .secretKey(&#34;secret456&#34;)
+ *             .build());
+ * 
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenInstanceGrantBasic&#34;);
+ *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(alicloud.account2())
+ *             .build());
+ * 
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.account1())
+ *                 .build());
+ * 
+ *         var fooInstanceGrant = new InstanceGrant(&#34;fooInstanceGrant&#34;, InstanceGrantArgs.builder()        
+ *             .cenId(cen.id())
+ *             .childInstanceId(vpc.id())
+ *             .cenOwnerId(&#34;uid2&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.account1())
+ *                 .build());
+ * 
+ *         var fooInstanceAttachment = new InstanceAttachment(&#34;fooInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .childInstanceId(vpc.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(&#34;cn-qingdao&#34;)
+ *             .childInstanceOwnerId(&#34;uid1&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.account2())
+ *                 .dependsOn(fooInstanceGrant)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN instance can be imported using the id, e.g.

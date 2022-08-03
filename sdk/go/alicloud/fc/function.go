@@ -366,6 +366,111 @@ func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) Functio
 	return o
 }
 
+// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
+func (o FunctionOutput) CaPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.CaPort }).(pulumi.IntPtrOutput)
+}
+
+// The checksum (crc64) of the function code.
+func (o FunctionOutput) CodeChecksum() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.CodeChecksum }).(pulumi.StringOutput)
+}
+
+// The configuration for custom container runtime.
+func (o FunctionOutput) CustomContainerConfig() FunctionCustomContainerConfigPtrOutput {
+	return o.ApplyT(func(v *Function) FunctionCustomContainerConfigPtrOutput { return v.CustomContainerConfig }).(FunctionCustomContainerConfigPtrOutput)
+}
+
+// The Function Compute function description.
+func (o FunctionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A map that defines environment variables for the function.
+func (o FunctionOutput) EnvironmentVariables() pulumi.MapOutput {
+	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.EnvironmentVariables }).(pulumi.MapOutput)
+}
+
+// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
+func (o FunctionOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Filename }).(pulumi.StringPtrOutput)
+}
+
+// The Function Compute service ID.
+func (o FunctionOutput) FunctionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.FunctionId }).(pulumi.StringOutput)
+}
+
+// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
+func (o FunctionOutput) Handler() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Handler }).(pulumi.StringOutput)
+}
+
+// The maximum length of time, in seconds, that the function's initialization should be run for.
+func (o FunctionOutput) InitializationTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.InitializationTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
+func (o FunctionOutput) Initializer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Initializer }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of requests can be executed concurrently within the single function instance.
+func (o FunctionOutput) InstanceConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.InstanceConcurrency }).(pulumi.IntPtrOutput)
+}
+
+// The instance type of the function.
+func (o FunctionOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The date this resource was last modified.
+func (o FunctionOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
+func (o FunctionOutput) MemorySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.MemorySize }).(pulumi.IntPtrOutput)
+}
+
+// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
+func (o FunctionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Setting a prefix to get a only function name. It is conflict with "name".
+func (o FunctionOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
+func (o FunctionOutput) OssBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.OssBucket }).(pulumi.StringPtrOutput)
+}
+
+// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
+func (o FunctionOutput) OssKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.OssKey }).(pulumi.StringPtrOutput)
+}
+
+// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+func (o FunctionOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// The Function Compute service name.
+func (o FunctionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// The amount of time your function has to run in seconds.
+func (o FunctionOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
 type FunctionArrayOutput struct{ *pulumi.OutputState }
 
 func (FunctionArrayOutput) ElementType() reflect.Type {

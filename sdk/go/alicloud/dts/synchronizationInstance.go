@@ -353,6 +353,81 @@ func (o SynchronizationInstanceOutput) ToSynchronizationInstanceOutputWithContex
 	return o
 }
 
+// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+func (o SynchronizationInstanceOutput) AutoPay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringPtrOutput { return v.AutoPay }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+func (o SynchronizationInstanceOutput) AutoStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringPtrOutput { return v.AutoStart }).(pulumi.StringPtrOutput)
+}
+
+// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
+func (o SynchronizationInstanceOutput) ComputeUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.IntPtrOutput { return v.ComputeUnit }).(pulumi.IntPtrOutput)
+}
+
+// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
+func (o SynchronizationInstanceOutput) DatabaseCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.IntPtrOutput { return v.DatabaseCount }).(pulumi.IntPtrOutput)
+}
+
+// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+func (o SynchronizationInstanceOutput) DestinationEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
+func (o SynchronizationInstanceOutput) DestinationEndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.DestinationEndpointRegion }).(pulumi.StringOutput)
+}
+
+// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+func (o SynchronizationInstanceOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
+func (o SynchronizationInstanceOutput) PaymentDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.IntPtrOutput { return v.PaymentDuration }).(pulumi.IntPtrOutput)
+}
+
+// The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+func (o SynchronizationInstanceOutput) PaymentDurationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringPtrOutput { return v.PaymentDurationUnit }).(pulumi.StringPtrOutput)
+}
+
+// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
+func (o SynchronizationInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The number of instances purchased.
+func (o SynchronizationInstanceOutput) Quantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.IntPtrOutput { return v.Quantity }).(pulumi.IntPtrOutput)
+}
+
+// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+func (o SynchronizationInstanceOutput) SourceEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The region of source instance.
+func (o SynchronizationInstanceOutput) SourceEndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.SourceEndpointRegion }).(pulumi.StringOutput)
+}
+
+// The status.
+func (o SynchronizationInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The sync architecture. Valid values: `oneway`, `bidirectional`.
+func (o SynchronizationInstanceOutput) SyncArchitecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringPtrOutput { return v.SyncArchitecture }).(pulumi.StringPtrOutput)
+}
+
 type SynchronizationInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationInstanceArrayOutput) ElementType() reflect.Type {
