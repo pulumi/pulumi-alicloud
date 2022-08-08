@@ -1156,6 +1156,7 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Markdown: []byte(" "),
 				},
+				DeprecationMessage: "This resource has been deprecated and replaced by the Switch resource.",
 			},
 			"alicloud_vpc":                          {Tok: resource(vpcMod, "Network")},
 			"alicloud_vswitch":                      {Tok: resource(vpcMod, "Switch")},
