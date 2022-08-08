@@ -380,6 +380,72 @@ func (o PhysicalConnectionOutput) ToPhysicalConnectionOutputWithContext(ctx cont
 	return o
 }
 
+// The Physical Leased Line Access Point ID.
+func (o PhysicalConnectionOutput) AccessPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.AccessPointId }).(pulumi.StringOutput)
+}
+
+// On the Bandwidth of the ECC Service and Physical Connection.
+func (o PhysicalConnectionOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// Operators for Physical Connection Circuit Provided Coding.
+func (o PhysicalConnectionOutput) CircuitCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.CircuitCode }).(pulumi.StringPtrOutput)
+}
+
+// The Physical Connection to Which the Description.
+func (o PhysicalConnectionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Provides Access to the Physical Line Operator. Valid values:
+// * CT: China Telecom
+// * CU: China Unicom
+// * CM: china Mobile
+// * CO: Other Chinese
+// * Equinix: Equinix
+// * Other: Other Overseas.
+func (o PhysicalConnectionOutput) LineOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.LineOperator }).(pulumi.StringOutput)
+}
+
+// and an on-Premises Data Center Location.
+func (o PhysicalConnectionOutput) PeerLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.PeerLocation }).(pulumi.StringOutput)
+}
+
+// on Behalf of the Resource Name of the Resources-Attribute Field.
+func (o PhysicalConnectionOutput) PhysicalConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PhysicalConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// The Physical Leased Line Access Port Type. Valid value:
+// * 100Base-T: Fast Electrical Ports
+// * 1000Base-T: gigabit Electrical Ports
+// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
+// * 10GBase-T: Gigabit Electrical Port
+// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+func (o PhysicalConnectionOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PortType }).(pulumi.StringPtrOutput)
+}
+
+// Redundant Physical Connection to Which the ID.
+func (o PhysicalConnectionOutput) RedundantPhysicalConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.RedundantPhysicalConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+func (o PhysicalConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Physical Private Line of Type. Default Value: VPC.
+func (o PhysicalConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type PhysicalConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (PhysicalConnectionArrayOutput) ElementType() reflect.Type {

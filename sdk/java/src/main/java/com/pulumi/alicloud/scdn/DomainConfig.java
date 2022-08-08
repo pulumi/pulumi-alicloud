@@ -22,6 +22,60 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in v1.131.0+.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.scdn.Domain;
+ * import com.pulumi.alicloud.scdn.DomainArgs;
+ * import com.pulumi.alicloud.scdn.inputs.DomainSourceArgs;
+ * import com.pulumi.alicloud.scdn.DomainConfig;
+ * import com.pulumi.alicloud.scdn.DomainConfigArgs;
+ * import com.pulumi.alicloud.scdn.inputs.DomainConfigFunctionArgArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
+ *             .domainName(&#34;mydomain.xiaozhu.com&#34;)
+ *             .cdnType(&#34;web&#34;)
+ *             .scope(&#34;overseas&#34;)
+ *             .sources(DomainSourceArgs.builder()
+ *                 .content(&#34;1.1.1.1&#34;)
+ *                 .type(&#34;ipaddr&#34;)
+ *                 .priority(&#34;20&#34;)
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var config = new DomainConfig(&#34;config&#34;, DomainConfigArgs.builder()        
+ *             .domainName(domain.domainName())
+ *             .functionName(&#34;ip_allow_list_set&#34;)
+ *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+ *                 .argName(&#34;ip_list&#34;)
+ *                 .argValue(&#34;110.110.110.110&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * SCDN domain config can be imported using the id, e.g.

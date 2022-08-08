@@ -27,6 +27,39 @@ public final class WafFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .ids(&#34;your_certificate_id&#34;)
+     *             .instanceId(&#34;your_instance_id&#34;)
+     *             .domain(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args) {
         return getCertificates(args, InvokeOptions.Empty);
@@ -37,6 +70,39 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .ids(&#34;your_certificate_id&#34;)
+     *             .instanceId(&#34;your_instance_id&#34;)
+     *             .domain(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args) {
@@ -49,6 +115,39 @@ public final class WafFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .ids(&#34;your_certificate_id&#34;)
+     *             .instanceId(&#34;your_instance_id&#34;)
+     *             .domain(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:waf/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
@@ -59,6 +158,39 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .ids(&#34;your_certificate_id&#34;)
+     *             .instanceId(&#34;your_instance_id&#34;)
+     *             .domain(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {
@@ -72,6 +204,34 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.86.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
@@ -85,6 +245,34 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.86.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -98,6 +286,34 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.86.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
@@ -111,6 +327,34 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.86.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -124,6 +368,38 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.90.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;waf-cn-09k********&#34;)
+     *             .status(&#34;1&#34;)
+     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
+     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -137,6 +413,38 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.90.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;waf-cn-09k********&#34;)
+     *             .status(&#34;1&#34;)
+     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
+     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -150,6 +458,38 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.90.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;waf-cn-09k********&#34;)
+     *             .status(&#34;1&#34;)
+     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
+     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -163,6 +503,38 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.90.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;waf-cn-09k********&#34;)
+     *             .status(&#34;1&#34;)
+     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
+     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -176,6 +548,38 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.90.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;waf-cn-09k********&#34;)
+     *             .status(&#34;1&#34;)
+     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
+     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -189,6 +593,38 @@ public final class WafFunctions {
      * &gt; **NOTE:** Available in 1.90.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.waf.WafFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;waf-cn-09k********&#34;)
+     *             .status(&#34;1&#34;)
+     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
+     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {

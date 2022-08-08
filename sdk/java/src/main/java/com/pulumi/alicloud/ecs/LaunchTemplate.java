@@ -25,6 +25,90 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.LaunchTemplate;
+ * import com.pulumi.alicloud.ecs.LaunchTemplateArgs;
+ * import com.pulumi.alicloud.ecs.inputs.LaunchTemplateNetworkInterfacesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.LaunchTemplateDataDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var images = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         final var instances = EcsFunctions.getInstances();
+ * 
+ *         var template = new LaunchTemplate(&#34;template&#34;, LaunchTemplateArgs.builder()        
+ *             .description(&#34;test1&#34;)
+ *             .imageId(images.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .hostName(&#34;tf-test-host&#34;)
+ *             .instanceChargeType(&#34;PrePaid&#34;)
+ *             .instanceName(&#34;tf-instance-name&#34;)
+ *             .instanceType(instances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceType()))
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .internetMaxBandwidthIn(5)
+ *             .internetMaxBandwidthOut(0)
+ *             .ioOptimized(&#34;none&#34;)
+ *             .keyPairName(&#34;test-key-pair&#34;)
+ *             .ramRoleName(&#34;xxxxx&#34;)
+ *             .networkType(&#34;vpc&#34;)
+ *             .securityEnhancementStrategy(&#34;Active&#34;)
+ *             .spotPriceLimit(5)
+ *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
+ *             .securityGroupId(&#34;sg-zxcvj0lasdf102350asdf9a&#34;)
+ *             .systemDiskCategory(&#34;cloud_ssd&#34;)
+ *             .systemDiskDescription(&#34;test disk&#34;)
+ *             .systemDiskName(&#34;hello&#34;)
+ *             .systemDiskSize(40)
+ *             .resourceGroupId(&#34;rg-zkdfjahg9zxncv0&#34;)
+ *             .userdata(&#34;xxxxxxxxxxxxxx&#34;)
+ *             .vswitchId(&#34;sw-ljkngaksdjfj0nnasdf&#34;)
+ *             .vpcId(&#34;vpc-asdfnbg0as8dfk1nb2&#34;)
+ *             .zoneId(&#34;beijing-a&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;tag1&#34;, &#34;hello&#34;),
+ *                 Map.entry(&#34;tag2&#34;, &#34;world&#34;)
+ *             ))
+ *             .networkInterfaces(LaunchTemplateNetworkInterfacesArgs.builder()
+ *                 .name(&#34;eth0&#34;)
+ *                 .description(&#34;hello1&#34;)
+ *                 .primaryIp(&#34;10.0.0.2&#34;)
+ *                 .securityGroupId(&#34;xxxx&#34;)
+ *                 .vswitchId(&#34;xxxxxxx&#34;)
+ *                 .build())
+ *             .dataDisks(            
+ *                 LaunchTemplateDataDiskArgs.builder()
+ *                     .name(&#34;disk1&#34;)
+ *                     .description(&#34;test1&#34;)
+ *                     .build(),
+ *                 LaunchTemplateDataDiskArgs.builder()
+ *                     .name(&#34;disk2&#34;)
+ *                     .description(&#34;test2&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

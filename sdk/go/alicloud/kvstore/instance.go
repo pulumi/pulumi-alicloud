@@ -940,6 +940,323 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default to `false`.
+func (o InstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid value: [1~12], Default to `1`.
+func (o InstanceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether to use a coupon. Default to: `false`.
+func (o InstanceOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+//
+// Deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
+func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The ID of the backup file of the source instance.
+func (o InstanceOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.BackupId }).(pulumi.StringPtrOutput)
+}
+
+// Backup period.
+func (o InstanceOutput) BackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+func (o InstanceOutput) BackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
+}
+
+// The bandwidth.
+func (o InstanceOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The ID of the event or the business information.
+func (o InstanceOutput) BusinessInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.BusinessInfo }).(pulumi.StringPtrOutput)
+}
+
+// The storage capacity of the KVStore DBInstance. Unit: MB.
+func (o InstanceOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
+}
+
+// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+func (o InstanceOutput) Config() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
+}
+
+func (o InstanceOutput) ConnectionDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionDomain }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
+func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+//
+// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
+func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The coupon code. Default to: `youhuiquanPromotionOptionIdForBlank`.
+func (o InstanceOutput) CouponNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CouponNo }).(pulumi.StringPtrOutput)
+}
+
+// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
+func (o InstanceOutput) DbInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceName }).(pulumi.StringOutput)
+}
+
+// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+func (o InstanceOutput) DedicatedHostGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DedicatedHostGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to precheck the request. Valid values:
+// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+// * false: checks the request. After the request passes the check, an instance is created.
+func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+func (o InstanceOutput) EnableBackupLog() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.EnableBackupLog }).(pulumi.IntPtrOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+//
+// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
+func (o InstanceOutput) EnablePublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnablePublic }).(pulumi.BoolOutput)
+}
+
+// The expiration time of the prepaid instance.
+func (o InstanceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
+func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Specifies whether to forcibly change the type. Default to: `true`.
+func (o InstanceOutput) ForceUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to create a distributed cache. Default to: `false`.
+func (o InstanceOutput) GlobalInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.GlobalInstance }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of distributed cache.
+func (o InstanceOutput) GlobalInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.GlobalInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+//
+// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
+func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) InstanceClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceClass }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+//
+// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
+func (o InstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// Whether to open the release protection.
+func (o InstanceOutput) InstanceReleaseProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.InstanceReleaseProtection }).(pulumi.BoolOutput)
+}
+
+// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+func (o InstanceOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
+func (o InstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
+func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+func (o InstanceOutput) ModifyMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ModifyMode }).(pulumi.IntPtrOutput)
+}
+
+// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+//
+// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+func (o InstanceOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and `config` instead..
+//
+// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
+func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
+}
+
+// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+func (o InstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+func (o InstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+func (o InstanceOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+func (o InstanceOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Private network connection port, used to modify the private network connection port.
+func (o InstanceOutput) PrivateConnectionPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivateConnectionPort }).(pulumi.StringOutput)
+}
+
+// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
+func (o InstanceOutput) PrivateConnectionPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PrivateConnectionPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The internal IP address of the instance.
+func (o InstanceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// Theoretical maximum QPS value.
+func (o InstanceOutput) Qps() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Qps }).(pulumi.IntOutput)
+}
+
+// The ID of resource group which the resource belongs.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The point in time of a backup file.
+func (o InstanceOutput) RestoreTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RestoreTime }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+func (o InstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of security groups.
+func (o InstanceOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+func (o InstanceOutput) SecurityIpGroupAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityIpGroupAttribute }).(pulumi.StringPtrOutput)
+}
+
+// The name of the whitelist group.
+func (o InstanceOutput) SecurityIpGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityIpGroupName }).(pulumi.StringOutput)
+}
+
+// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
+func (o InstanceOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the source instance.
+func (o InstanceOutput) SrcdbInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SrcdbInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
+func (o InstanceOutput) SslEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SslEnable }).(pulumi.StringPtrOutput)
+}
+
+// The status of KVStore DBInstance.
+// * `connectionDomain`- Intranet connection address of the KVStore instance.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+func (o InstanceOutput) VpcAuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VpcAuthMode }).(pulumi.StringPtrOutput)
+}
+
+// The ID of VSwitch.
+func (o InstanceOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the zone.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

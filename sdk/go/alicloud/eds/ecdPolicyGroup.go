@@ -392,6 +392,105 @@ func (o EcdPolicyGroupOutput) ToEcdPolicyGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The rule of authorize access rule.
+func (o EcdPolicyGroupOutput) AuthorizeAccessPolicyRules() EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput {
+		return v.AuthorizeAccessPolicyRules
+	}).(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput)
+}
+
+// The policy rule.
+func (o EcdPolicyGroupOutput) AuthorizeSecurityPolicyRules() EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput {
+		return v.AuthorizeSecurityPolicyRules
+	}).(EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput)
+}
+
+// Whether to enable local camera redirection. Valid values: `on`, `off`.
+func (o EcdPolicyGroupOutput) CameraRedirect() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.CameraRedirect }).(pulumi.StringOutput)
+}
+
+// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
+func (o EcdPolicyGroupOutput) Clipboard() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.Clipboard }).(pulumi.StringOutput)
+}
+
+// The list of domain.
+func (o EcdPolicyGroupOutput) DomainList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.DomainList }).(pulumi.StringPtrOutput)
+}
+
+// The access of html5. Valid values: `off`, `on`.
+func (o EcdPolicyGroupOutput) HtmlAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.HtmlAccess }).(pulumi.StringOutput)
+}
+
+// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
+func (o EcdPolicyGroupOutput) HtmlFileTransfer() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.HtmlFileTransfer }).(pulumi.StringOutput)
+}
+
+// Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+func (o EcdPolicyGroupOutput) LocalDrive() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.LocalDrive }).(pulumi.StringOutput)
+}
+
+// The name of policy group.
+func (o EcdPolicyGroupOutput) PolicyGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.PolicyGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+func (o EcdPolicyGroupOutput) Recording() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.Recording }).(pulumi.StringOutput)
+}
+
+// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+func (o EcdPolicyGroupOutput) RecordingEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.RecordingEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+func (o EcdPolicyGroupOutput) RecordingFps() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.IntOutput { return v.RecordingFps }).(pulumi.IntOutput)
+}
+
+// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+func (o EcdPolicyGroupOutput) RecordingStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.RecordingStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The status of policy.
+func (o EcdPolicyGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The usb redirect policy. Valid values: `off`, `on`.
+func (o EcdPolicyGroupOutput) UsbRedirect() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.UsbRedirect }).(pulumi.StringOutput)
+}
+
+// The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
+func (o EcdPolicyGroupOutput) VisualQuality() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.VisualQuality }).(pulumi.StringOutput)
+}
+
+// The watermark policy. Valid values: `off`, `on`.
+func (o EcdPolicyGroupOutput) Watermark() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.Watermark }).(pulumi.StringOutput)
+}
+
+// The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
+func (o EcdPolicyGroupOutput) WatermarkTransparency() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.WatermarkTransparency }).(pulumi.StringOutput)
+}
+
+// The type of watemark. Valid values: `EndUserId`, `HostName`.
+func (o EcdPolicyGroupOutput) WatermarkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.WatermarkType }).(pulumi.StringOutput)
+}
+
 type EcdPolicyGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (EcdPolicyGroupArrayOutput) ElementType() reflect.Type {

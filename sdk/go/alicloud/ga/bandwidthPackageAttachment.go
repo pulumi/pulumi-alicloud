@@ -244,6 +244,26 @@ func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutputWith
 	return o
 }
 
+// The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+func (o BandwidthPackageAttachmentOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// Accelerators bound with current Bandwidth Package.
+func (o BandwidthPackageAttachmentOutput) Accelerators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringArrayOutput { return v.Accelerators }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the bandwidth plan to disassociate.
+func (o BandwidthPackageAttachmentOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// State of Bandwidth Package.
+func (o BandwidthPackageAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type BandwidthPackageAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageAttachmentArrayOutput) ElementType() reflect.Type {

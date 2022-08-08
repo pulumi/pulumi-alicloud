@@ -232,6 +232,26 @@ func (o EcsKeyPairAttachmentOutput) ToEcsKeyPairAttachmentOutputWithContext(ctx 
 	return o
 }
 
+// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+func (o EcsKeyPairAttachmentOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The list of ECS instance's IDs.
+func (o EcsKeyPairAttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+func (o EcsKeyPairAttachmentOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The name of key pair used to bind.
+func (o EcsKeyPairAttachmentOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringOutput { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
 type EcsKeyPairAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairAttachmentArrayOutput) ElementType() reflect.Type {

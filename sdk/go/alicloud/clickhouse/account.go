@@ -365,6 +365,68 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
+func (o AccountOutput) AccountDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountDescription }).(pulumi.StringPtrOutput)
+}
+
+// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
+func (o AccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+func (o AccountOutput) AccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+}
+
+// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+func (o AccountOutput) AllowDatabases() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AllowDatabases }).(pulumi.StringOutput)
+}
+
+// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+func (o AccountOutput) AllowDictionaries() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AllowDictionaries }).(pulumi.StringOutput)
+}
+
+// The db cluster id.
+func (o AccountOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+// -`true`: grants DDL permissions to the database account.
+// -`false`: does not grant DDL permissions to the database account.
+func (o AccountOutput) DdlAuthority() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.DdlAuthority }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
+func (o AccountOutput) DmlAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DmlAuthority }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
+func (o AccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The list of all databases. Separate databases with commas (,).
+func (o AccountOutput) TotalDatabases() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.TotalDatabases }).(pulumi.StringOutput)
+}
+
+// The list of all dictionaries. Separate dictionaries with commas (,).
+func (o AccountOutput) TotalDictionaries() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.TotalDictionaries }).(pulumi.StringOutput)
+}
+
+// The type of the database account. Valid values: `Normal` or `Super`.
+func (o AccountOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type AccountArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountArrayOutput) ElementType() reflect.Type {

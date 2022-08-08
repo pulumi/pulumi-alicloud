@@ -211,6 +211,21 @@ func (o ResourceShareOutput) ToResourceShareOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The name of resource share.
+func (o ResourceShareOutput) ResourceShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceShareName }).(pulumi.StringOutput)
+}
+
+// The owner of resource share.
+func (o ResourceShareOutput) ResourceShareOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceShareOwner }).(pulumi.StringOutput)
+}
+
+// The status of resource share.
+func (o ResourceShareOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ResourceShareArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourceShareArrayOutput) ElementType() reflect.Type {

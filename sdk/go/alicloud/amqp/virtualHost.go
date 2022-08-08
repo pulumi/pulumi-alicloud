@@ -213,6 +213,16 @@ func (o VirtualHostOutput) ToVirtualHostOutputWithContext(ctx context.Context) V
 	return o
 }
 
+// InstanceId.
+func (o VirtualHostOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualHost) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// VirtualHostName.
+func (o VirtualHostOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualHost) pulumi.StringOutput { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
 type VirtualHostArrayOutput struct{ *pulumi.OutputState }
 
 func (VirtualHostArrayOutput) ElementType() reflect.Type {

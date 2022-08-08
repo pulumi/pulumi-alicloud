@@ -35,7 +35,21 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": \"sts:AssumeRole\",\n", "        \"Effect\": \"Allow\",\n", "        \"Principal\": {\n", "          \"Service\": [\n", "            \"imm.aliyuncs.com\"\n", "          ]\n", "        }\n", "      }\n", "    ],\n", "    \"Version\": \"1\"\n", "  }\n")),
+// 			Document: pulumi.String(fmt.Sprintf(`  {
+//     "Statement": [
+//       {
+//         "Action": "sts:AssumeRole",
+//         "Effect": "Allow",
+//         "Principal": {
+//           "Service": [
+//             "imm.aliyuncs.com"
+//           ]
+//         }
+//       }
+//     ],
+//     "Version": "1"
+//   }
+// `)),
 // 			Description: pulumi.String("this is a role test."),
 // 			Force:       pulumi.Bool(true),
 // 		})
@@ -219,6 +233,16 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
+}
+
+// The name of Project.
+func (o ProjectOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `ram.Role`.
+func (o ProjectOutput) ServiceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ServiceRole }).(pulumi.StringOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

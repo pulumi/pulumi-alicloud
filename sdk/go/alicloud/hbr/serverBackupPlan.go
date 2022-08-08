@@ -279,6 +279,36 @@ func (o ServerBackupPlanOutput) ToServerBackupPlanOutputWithContext(ctx context.
 	return o
 }
 
+// ECS server backup plan details.
+func (o ServerBackupPlanOutput) Details() ServerBackupPlanDetailArrayOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) ServerBackupPlanDetailArrayOutput { return v.Details }).(ServerBackupPlanDetailArrayOutput)
+}
+
+// Whether to disable the backup task. Valid values: `true`, `false`.
+func (o ServerBackupPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+func (o ServerBackupPlanOutput) EcsServerBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.StringOutput { return v.EcsServerBackupPlanName }).(pulumi.StringOutput)
+}
+
+// The ID of ECS instance.
+func (o ServerBackupPlanOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Backup retention days, the minimum is 1.
+func (o ServerBackupPlanOutput) Retention() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.IntOutput { return v.Retention }).(pulumi.IntOutput)
+}
+
+// Backup strategy. Optional format: `I|{startTime}|{interval}`
+func (o ServerBackupPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
+}
+
 type ServerBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerBackupPlanArrayOutput) ElementType() reflect.Type {

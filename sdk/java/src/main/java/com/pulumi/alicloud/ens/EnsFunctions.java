@@ -21,6 +21,38 @@ public final class EnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .version(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args) {
         return getKeyPairs(args, InvokeOptions.Empty);
@@ -31,6 +63,38 @@ public final class EnsFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .version(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args) {
@@ -43,6 +107,38 @@ public final class EnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .version(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ens/getKeyPairs:getKeyPairs", TypeShape.of(GetKeyPairsResult.class), args, Utilities.withVersion(options));
@@ -53,6 +149,38 @@ public final class EnsFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ens.EnsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .version(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args, InvokeOptions options) {

@@ -24,6 +24,40 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.quickbi.User;
+ * import com.pulumi.alicloud.quickbi.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new User(&#34;example&#34;, UserArgs.builder()        
+ *             .accountName(&#34;example_value&#34;)
+ *             .adminUser(false)
+ *             .authAdminUser(false)
+ *             .nickName(&#34;example_value&#34;)
+ *             .userType(&#34;Analyst&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Quick BI User can be imported using the id, e.g.

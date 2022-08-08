@@ -215,6 +215,16 @@ func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
 }
 
+// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
+func (o AliasOutput) AliasName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.AliasName }).(pulumi.StringOutput)
+}
+
+// The id of the key.
+func (o AliasOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
+}
+
 type AliasArrayOutput struct{ *pulumi.OutputState }
 
 func (AliasArrayOutput) ElementType() reflect.Type {

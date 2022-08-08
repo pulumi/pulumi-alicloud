@@ -239,6 +239,26 @@ func (o MscSubContractOutput) ToMscSubContractOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
+func (o MscSubContractOutput) ContactName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubContract) pulumi.StringOutput { return v.ContactName }).(pulumi.StringOutput)
+}
+
+// The User's Contact Email Address.
+func (o MscSubContractOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubContract) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The User's Telephone.
+func (o MscSubContractOutput) Mobile() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubContract) pulumi.StringOutput { return v.Mobile }).(pulumi.StringOutput)
+}
+
+// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+func (o MscSubContractOutput) Position() pulumi.StringOutput {
+	return o.ApplyT(func(v *MscSubContract) pulumi.StringOutput { return v.Position }).(pulumi.StringOutput)
+}
+
 type MscSubContractArrayOutput struct{ *pulumi.OutputState }
 
 func (MscSubContractArrayOutput) ElementType() reflect.Type {

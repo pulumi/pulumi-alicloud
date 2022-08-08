@@ -25,6 +25,76 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * * using server_certificate/private content as string example
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.ServerCertificate;
+ * import com.pulumi.alicloud.slb.ServerCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ServerCertificate(&#34;foo&#34;, ServerCertificateArgs.builder()        
+ *             .privateKey(&#34;&#34;&#34;
+ * -----BEGIN RSA PRIVATE KEY-----
+ * MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=
+ * -----END RSA PRIVATE KEY-----
+ *             &#34;&#34;&#34;)
+ *             .serverCertificate(&#34;&#34;&#34;
+ * -----BEGIN CERTIFICATE-----
+ * MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
+ * -----END CERTIFICATE-----
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * * using server_certificate/private file example
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.ServerCertificate;
+ * import com.pulumi.alicloud.slb.ServerCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ServerCertificate(&#34;foo&#34;, ServerCertificateArgs.builder()        
+ *             .serverCertificate(Files.readString(Paths.get(String.format(&#34;%s/server_certificate.pem&#34;, path.module()))))
+ *             .privateKey(Files.readString(Paths.get(String.format(&#34;%s/private_key.pem&#34;, path.module()))))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Server Load balancer Server Certificate can be imported using the id, e.g.

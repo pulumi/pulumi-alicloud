@@ -290,6 +290,53 @@ func (o EnterpriseUserOutput) ToEnterpriseUserOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Maximum number of inquiries on the day.
+func (o EnterpriseUserOutput) MaxExecuteCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.IntPtrOutput { return v.MaxExecuteCount }).(pulumi.IntPtrOutput)
+}
+
+// Query the maximum number of rows on the day.
+func (o EnterpriseUserOutput) MaxResultCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.IntPtrOutput { return v.MaxResultCount }).(pulumi.IntPtrOutput)
+}
+
+// The DingTalk number or mobile number of the user.
+func (o EnterpriseUserOutput) Mobile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.StringPtrOutput { return v.Mobile }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from 1.100.0 and use `userName` instead.
+//
+// Deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
+func (o EnterpriseUserOutput) NickName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.StringOutput { return v.NickName }).(pulumi.StringOutput)
+}
+
+// The roles that the user plays.
+func (o EnterpriseUserOutput) RoleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.StringArrayOutput { return v.RoleNames }).(pulumi.StringArrayOutput)
+}
+
+// The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
+func (o EnterpriseUserOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID.
+func (o EnterpriseUserOutput) Tid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.IntPtrOutput { return v.Tid }).(pulumi.IntPtrOutput)
+}
+
+// The Alibaba Cloud unique ID (UID) of the user to add.
+func (o EnterpriseUserOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The nickname of the user.
+func (o EnterpriseUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseUser) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
+}
+
 type EnterpriseUserArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseUserArrayOutput) ElementType() reflect.Type {

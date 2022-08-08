@@ -9,24 +9,6 @@ import * as utilities from "../utilities";
  * This data source provides the Eais Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.eais.getInstances({
- *     id: ["example_id"],
- * });
- * export const eaisInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
- * const nameRegex = alicloud.eais.getInstances({
- *     nameRegex: "^my-Instance",
- * });
- * export const eaisInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

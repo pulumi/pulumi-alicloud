@@ -58,6 +58,35 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .type(&#34;propayasgo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAckServiceResult> getAckService(GetAckServiceArgs args) {
@@ -71,6 +100,35 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .type(&#34;propayasgo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAckServiceResult> getAckServicePlain(GetAckServicePlainArgs args) {
@@ -84,6 +142,35 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .type(&#34;propayasgo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAckServiceResult> getAckService(GetAckServiceArgs args, InvokeOptions options) {
@@ -97,6 +184,35 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .type(&#34;propayasgo&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAckServiceResult> getAckServicePlain(GetAckServicePlainArgs args, InvokeOptions options) {
@@ -108,6 +224,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters() {
@@ -119,6 +265,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEdgeKubernetesClustersResult> getEdgeKubernetesClustersPlain() {
@@ -130,6 +306,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs args) {
@@ -141,6 +347,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEdgeKubernetesClustersResult> getEdgeKubernetesClustersPlain(GetEdgeKubernetesClustersPlainArgs args) {
@@ -152,6 +388,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs args, InvokeOptions options) {
@@ -163,6 +429,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEdgeKubernetesClustersResult> getEdgeKubernetesClustersPlain(GetEdgeKubernetesClustersPlainArgs args, InvokeOptions options) {
@@ -174,6 +470,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(var_.cluster_id())
+     *             .name(&#34;nginx-ingress-controller&#34;)
+     *             .version(&#34;v1.1.2-aliyun.2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args) {
@@ -185,6 +512,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(var_.cluster_id())
+     *             .name(&#34;nginx-ingress-controller&#34;)
+     *             .version(&#34;v1.1.2-aliyun.2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args) {
@@ -196,6 +554,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(var_.cluster_id())
+     *             .name(&#34;nginx-ingress-controller&#34;)
+     *             .version(&#34;v1.1.2-aliyun.2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args, InvokeOptions options) {
@@ -207,6 +596,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(var_.cluster_id())
+     *             .name(&#34;nginx-ingress-controller&#34;)
+     *             .version(&#34;v1.1.2-aliyun.2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args, InvokeOptions options) {
@@ -219,6 +639,35 @@ public final class CsFunctions {
      * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;addons&#34;, default_.addons());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args) {
@@ -231,6 +680,35 @@ public final class CsFunctions {
      * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;addons&#34;, default_.addons());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesAddonsResult> getKubernetesAddonsPlain(GetKubernetesAddonsPlainArgs args) {
@@ -243,6 +721,35 @@ public final class CsFunctions {
      * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;addons&#34;, default_.addons());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args, InvokeOptions options) {
@@ -255,6 +762,35 @@ public final class CsFunctions {
      * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;addons&#34;, default_.addons());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesAddonsResult> getKubernetesAddonsPlain(GetKubernetesAddonsPlainArgs args, InvokeOptions options) {
@@ -268,6 +804,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesClustersResult> getKubernetesClusters() {
@@ -281,6 +848,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain() {
@@ -294,6 +892,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesClustersResult> getKubernetesClusters(GetKubernetesClustersArgs args) {
@@ -307,6 +936,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain(GetKubernetesClustersPlainArgs args) {
@@ -320,6 +980,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesClustersResult> getKubernetesClusters(GetKubernetesClustersArgs args, InvokeOptions options) {
@@ -333,6 +1024,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain(GetKubernetesClustersPlainArgs args, InvokeOptions options) {
@@ -344,6 +1066,41 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .nameRegex(&#34;your_user_name&#34;)
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesPermissionResult> getKubernetesPermission(GetKubernetesPermissionArgs args) {
@@ -355,6 +1112,41 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .nameRegex(&#34;your_user_name&#34;)
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesPermissionResult> getKubernetesPermissionPlain(GetKubernetesPermissionPlainArgs args) {
@@ -366,6 +1158,41 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .nameRegex(&#34;your_user_name&#34;)
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesPermissionResult> getKubernetesPermission(GetKubernetesPermissionArgs args, InvokeOptions options) {
@@ -377,6 +1204,41 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .nameRegex(&#34;your_user_name&#34;)
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesPermissionResult> getKubernetesPermissionPlain(GetKubernetesPermissionPlainArgs args, InvokeOptions options) {
@@ -388,6 +1250,130 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;Kubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Serverless&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
+     *             .profile(&#34;Edge&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesVersionResult> getKubernetesVersion(GetKubernetesVersionArgs args) {
@@ -399,6 +1385,130 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;Kubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Serverless&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
+     *             .profile(&#34;Edge&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesVersionResult> getKubernetesVersionPlain(GetKubernetesVersionPlainArgs args) {
@@ -410,6 +1520,130 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;Kubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Serverless&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
+     *             .profile(&#34;Edge&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKubernetesVersionResult> getKubernetesVersion(GetKubernetesVersionArgs args, InvokeOptions options) {
@@ -421,6 +1655,130 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;Kubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Default&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
+     *             .profile(&#34;Serverless&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType(&#34;ManagedKubernetes&#34;)
+     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
+     *             .profile(&#34;Edge&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKubernetesVersionResult> getKubernetesVersionPlain(GetKubernetesVersionPlainArgs args, InvokeOptions options) {
@@ -434,6 +1792,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters() {
@@ -447,6 +1836,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetManagedKubernetesClustersResult> getManagedKubernetesClustersPlain() {
@@ -460,6 +1880,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters(GetManagedKubernetesClustersArgs args) {
@@ -473,6 +1924,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetManagedKubernetesClustersResult> getManagedKubernetesClustersPlain(GetManagedKubernetesClustersPlainArgs args) {
@@ -486,6 +1968,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters(GetManagedKubernetesClustersArgs args, InvokeOptions options) {
@@ -499,6 +2012,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetManagedKubernetesClustersResult> getManagedKubernetesClustersPlain(GetManagedKubernetesClustersPlainArgs args, InvokeOptions options) {
@@ -510,6 +2054,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex(&#34;my-instances&#34;)
+     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances() {
@@ -521,6 +2095,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex(&#34;my-instances&#34;)
+     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstancesPlain() {
@@ -532,6 +2136,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex(&#34;my-instances&#34;)
+     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs args) {
@@ -543,6 +2177,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex(&#34;my-instances&#34;)
+     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstancesPlain(GetRegistryEnterpriseInstancesPlainArgs args) {
@@ -554,6 +2218,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex(&#34;my-instances&#34;)
+     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs args, InvokeOptions options) {
@@ -565,6 +2259,36 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex(&#34;my-instances&#34;)
+     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstancesPlain(GetRegistryEnterpriseInstancesPlainArgs args, InvokeOptions options) {
@@ -576,6 +2300,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs args) {
@@ -587,6 +2342,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespacesPlain(GetRegistryEnterpriseNamespacesPlainArgs args) {
@@ -598,6 +2384,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs args, InvokeOptions options) {
@@ -609,6 +2426,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .nameRegex(&#34;my-namespace&#34;)
+     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespacesPlain(GetRegistryEnterpriseNamespacesPlainArgs args, InvokeOptions options) {
@@ -620,6 +2468,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .instanceId(&#34;cri-xx&#34;)
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseReposResult> getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs args) {
@@ -631,6 +2510,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .instanceId(&#34;cri-xx&#34;)
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseReposResult> getRegistryEnterpriseReposPlain(GetRegistryEnterpriseReposPlainArgs args) {
@@ -642,6 +2552,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .instanceId(&#34;cri-xx&#34;)
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseReposResult> getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs args, InvokeOptions options) {
@@ -653,6 +2594,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .instanceId(&#34;cri-xx&#34;)
+     *             .nameRegex(&#34;my-repos&#34;)
+     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseReposResult> getRegistryEnterpriseReposPlain(GetRegistryEnterpriseReposPlainArgs args, InvokeOptions options) {
@@ -664,6 +2636,39 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .namespaceName(&#34;test-namespace&#34;)
+     *             .repoName(&#34;test-repo&#34;)
+     *             .targetInstanceId(&#34;cri-yyy&#34;)
+     *             .nameRegex(&#34;test-rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs args) {
@@ -675,6 +2680,39 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .namespaceName(&#34;test-namespace&#34;)
+     *             .repoName(&#34;test-repo&#34;)
+     *             .targetInstanceId(&#34;cri-yyy&#34;)
+     *             .nameRegex(&#34;test-rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRulesPlain(GetRegistryEnterpriseSyncRulesPlainArgs args) {
@@ -686,6 +2724,39 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .namespaceName(&#34;test-namespace&#34;)
+     *             .repoName(&#34;test-repo&#34;)
+     *             .targetInstanceId(&#34;cri-yyy&#34;)
+     *             .nameRegex(&#34;test-rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs args, InvokeOptions options) {
@@ -697,6 +2768,39 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
+     *             .instanceId(&#34;cri-xxx&#34;)
+     *             .namespaceName(&#34;test-namespace&#34;)
+     *             .repoName(&#34;test-repo&#34;)
+     *             .targetInstanceId(&#34;cri-yyy&#34;)
+     *             .nameRegex(&#34;test-rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRulesPlain(GetRegistryEnterpriseSyncRulesPlainArgs args, InvokeOptions options) {
@@ -710,6 +2814,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters() {
@@ -723,6 +2858,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerlessKubernetesClustersResult> getServerlessKubernetesClustersPlain() {
@@ -736,6 +2902,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs args) {
@@ -749,6 +2946,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerlessKubernetesClustersResult> getServerlessKubernetesClustersPlain(GetServerlessKubernetesClustersPlainArgs args) {
@@ -762,6 +2990,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs args, InvokeOptions options) {
@@ -775,6 +3034,37 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex(&#34;my-first-k8s&#34;)
+     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerlessKubernetesClustersResult> getServerlessKubernetesClustersPlain(GetServerlessKubernetesClustersPlainArgs args, InvokeOptions options) {

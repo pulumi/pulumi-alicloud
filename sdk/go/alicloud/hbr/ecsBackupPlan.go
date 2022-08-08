@@ -403,6 +403,78 @@ func (o EcsBackupPlanOutput) ToEcsBackupPlanOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Backup type. Valid values: `COMPLETE`.
+func (o EcsBackupPlanOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The detail of the backup plan.
+func (o EcsBackupPlanOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringPtrOutput { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable the backup task. Valid values: `true`, `false`.
+func (o EcsBackupPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+func (o EcsBackupPlanOutput) EcsBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringOutput { return v.EcsBackupPlanName }).(pulumi.StringOutput)
+}
+
+// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
+func (o EcsBackupPlanOutput) Exclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringPtrOutput { return v.Exclude }).(pulumi.StringPtrOutput)
+}
+
+// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
+func (o EcsBackupPlanOutput) Include() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringPtrOutput { return v.Include }).(pulumi.StringPtrOutput)
+}
+
+// The ID of ECS instance. The ecs backup client must have been installed on the host.
+func (o EcsBackupPlanOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
+func (o EcsBackupPlanOutput) Options() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
+}
+
+// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
+func (o EcsBackupPlanOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringArrayOutput { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Backup retention days, the minimum is 1.
+func (o EcsBackupPlanOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
+}
+
+// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+func (o EcsBackupPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+func (o EcsBackupPlanOutput) SpeedLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringPtrOutput { return v.SpeedLimit }).(pulumi.StringPtrOutput)
+}
+
+// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+//
+// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+func (o EcsBackupPlanOutput) UpdatePaths() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.BoolPtrOutput { return v.UpdatePaths }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of Backup vault.
+func (o EcsBackupPlanOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringOutput { return v.VaultId }).(pulumi.StringOutput)
+}
+
 type EcsBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupPlanArrayOutput) ElementType() reflect.Type {

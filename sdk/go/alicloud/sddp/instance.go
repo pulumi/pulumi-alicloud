@@ -388,6 +388,109 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Whether the required RAM authorization is configured.
+func (o InstanceOutput) Authed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.Authed }).(pulumi.BoolOutput)
+}
+
+// The dataphin. Valid values: `yes`,`no`.
+func (o InstanceOutput) Dataphin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Dataphin }).(pulumi.StringPtrOutput)
+}
+
+// The dataphin count. Valid values: 1 to 20.
+func (o InstanceOutput) DataphinCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DataphinCount }).(pulumi.StringPtrOutput)
+}
+
+// The number of instances.
+func (o InstanceOutput) InstanceNum() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceNum }).(pulumi.StringOutput)
+}
+
+// The logistics.
+func (o InstanceOutput) Logistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Logistics }).(pulumi.StringPtrOutput)
+}
+
+// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
+func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
+}
+
+// Whether the authorized MaxCompute (ODPS) assets.
+func (o InstanceOutput) OdpsSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.OdpsSet }).(pulumi.BoolOutput)
+}
+
+// Whether the authorized oss assets.
+func (o InstanceOutput) OssBucketSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.OssBucketSet }).(pulumi.BoolOutput)
+}
+
+func (o InstanceOutput) OssSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.OssSize }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource. Valid values: `Subscription`.
+func (o InstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
+func (o InstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// Whether the authorized rds assets.
+func (o InstanceOutput) RdsSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.RdsSet }).(pulumi.BoolOutput)
+}
+
+func (o InstanceOutput) RemainDays() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RemainDays }).(pulumi.StringOutput)
+}
+
+// Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
+func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// Whether to use the database. Valid values:`yes`,`no`.
+func (o InstanceOutput) SdCbool() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SdCbool }).(pulumi.StringOutput)
+}
+
+// The number of instances.
+func (o InstanceOutput) Sdc() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Sdc }).(pulumi.StringOutput)
+}
+
+// The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
+func (o InstanceOutput) SddpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SddpVersion }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to use OSS. Valid values: `yes`,`no`.
+func (o InstanceOutput) UdCbool() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.UdCbool }).(pulumi.StringOutput)
+}
+
+// OSS Size.
+func (o InstanceOutput) Udc() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Udc }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

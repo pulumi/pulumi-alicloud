@@ -25,6 +25,73 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_test_foo&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(&#34;tf-testAccCsgName&#34;)
+ *             .build());
+ * 
+ *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+ *             .storageBundleName(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .description(&#34;tf-acctestDesalone&#34;)
+ *             .gatewayClass(&#34;Standard&#34;)
+ *             .type(&#34;File&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .releaseAfterExpiration(false)
+ *             .publicNetworkBandwidth(40)
+ *             .storageBundleId(example.id())
+ *             .location(&#34;Cloud&#34;)
+ *             .gatewayName(&#34;tf-acctestGatewayName&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Storage Gateway Gateway can be imported using the id, e.g.

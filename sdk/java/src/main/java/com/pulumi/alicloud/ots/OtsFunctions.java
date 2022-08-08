@@ -30,6 +30,37 @@ public final class OtsFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;testvpc&#34;)
+     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args) {
@@ -39,6 +70,37 @@ public final class OtsFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;testvpc&#34;)
+     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args) {
@@ -48,6 +110,37 @@ public final class OtsFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;testvpc&#34;)
+     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions options) {
@@ -57,6 +150,37 @@ public final class OtsFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;testvpc&#34;)
+     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args, InvokeOptions options) {
@@ -66,6 +190,36 @@ public final class OtsFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;sample-instance&#34;)
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -75,6 +229,36 @@ public final class OtsFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;sample-instance&#34;)
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -84,6 +268,36 @@ public final class OtsFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;sample-instance&#34;)
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -93,6 +307,36 @@ public final class OtsFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;sample-instance&#34;)
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -102,6 +346,36 @@ public final class OtsFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;sample-instance&#34;)
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -111,6 +385,36 @@ public final class OtsFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;sample-instance&#34;)
+     *             .outputFile(&#34;instances.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -124,6 +428,34 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -137,6 +469,34 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -150,6 +510,34 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -163,6 +551,34 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -176,6 +592,34 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -189,6 +633,34 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -200,6 +672,37 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-table&#34;)
+     *             .outputFile(&#34;tables.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args) {
@@ -211,6 +714,37 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-table&#34;)
+     *             .outputFile(&#34;tables.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args) {
@@ -222,6 +756,37 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-table&#34;)
+     *             .outputFile(&#34;tables.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
@@ -233,6 +798,37 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-table&#34;)
+     *             .outputFile(&#34;tables.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args, InvokeOptions options) {
@@ -246,6 +842,38 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.172.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTunnelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-tunnel&#34;)
+     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .tableName(&#34;sample-table&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTunnelsResult> getTunnels(GetTunnelsArgs args) {
@@ -259,6 +887,38 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.172.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTunnelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-tunnel&#34;)
+     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .tableName(&#34;sample-table&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTunnelsResult> getTunnelsPlain(GetTunnelsPlainArgs args) {
@@ -272,6 +932,38 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.172.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTunnelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-tunnel&#34;)
+     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .tableName(&#34;sample-table&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTunnelsResult> getTunnels(GetTunnelsArgs args, InvokeOptions options) {
@@ -285,6 +977,38 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.172.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTunnelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
+     *             .instanceName(&#34;sample-instance&#34;)
+     *             .nameRegex(&#34;sample-tunnel&#34;)
+     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .tableName(&#34;sample-table&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTunnelsResult> getTunnelsPlain(GetTunnelsPlainArgs args, InvokeOptions options) {

@@ -326,6 +326,57 @@ func (o EcsInvocationOutput) ToEcsInvocationOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of the command.
+func (o EcsInvocationOutput) CommandId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringOutput { return v.CommandId }).(pulumi.StringOutput)
+}
+
+// The schedule on which the recurring execution of the command takes place. Take note of the following items:
+// * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
+// * When you set Timed to true, you must specify Frequency.
+// * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
+func (o EcsInvocationOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// The list of instances to execute the command. You can specify up to 50 instance IDs.
+func (o EcsInvocationOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
+func (o EcsInvocationOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+}
+
+// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
+func (o EcsInvocationOutput) RepeatMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringOutput { return v.RepeatMode }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o EcsInvocationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Specifies whether to periodically run the command. Default value: `false`.
+func (o EcsInvocationOutput) Timed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.BoolOutput { return v.Timed }).(pulumi.BoolOutput)
+}
+
+// The username that is used to run the command on the ECS instance.
+// * For Linux instances, the root username is used.
+// * For Windows instances, the System username is used.
+// * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
+func (o EcsInvocationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
+// The name of the password used to run the command on a Windows instance.
+func (o EcsInvocationOutput) WindowsPasswordName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringPtrOutput { return v.WindowsPasswordName }).(pulumi.StringPtrOutput)
+}
+
 type EcsInvocationArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsInvocationArrayOutput) ElementType() reflect.Type {

@@ -24,6 +24,55 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fnf.Flow;
+ * import com.pulumi.alicloud.fnf.FlowArgs;
+ * import com.pulumi.alicloud.fnf.Schedule;
+ * import com.pulumi.alicloud.fnf.ScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleFlow = new Flow(&#34;exampleFlow&#34;, FlowArgs.builder()        
+ *             .definition(&#34;&#34;&#34;
+ *   version: v1beta1
+ *   type: flow
+ *   steps:
+ *     - type: pass
+ *       name: helloworld
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;tf-testaccFnFFlow983041&#34;)
+ *             .type(&#34;FDL&#34;)
+ *             .build());
+ * 
+ *         var exampleSchedule = new Schedule(&#34;exampleSchedule&#34;, ScheduleArgs.builder()        
+ *             .cronExpression(&#34;30 9 * * * *&#34;)
+ *             .description(&#34;tf-testaccFnFSchedule983041&#34;)
+ *             .enable(&#34;true&#34;)
+ *             .flowName(exampleFlow.name())
+ *             .payload(&#34;{\&#34;tf-test\&#34;: \&#34;test success\&#34;}&#34;)
+ *             .scheduleName(&#34;tf-testaccFnFSchedule983041&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless Workflow Schedule can be imported using the id, e.g.

@@ -200,6 +200,26 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Cluster backup retention days, Fixed for 7 days, not modified.
+func (o BackupPolicyOutput) BackupRetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupRetentionPeriod }).(pulumi.StringOutput)
+}
+
+// The Id of cluster that can run database.
+func (o BackupPolicyOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
+func (o BackupPolicyOutput) PreferredBackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.PreferredBackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
+func (o BackupPolicyOutput) PreferredBackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.PreferredBackupTime }).(pulumi.StringOutput)
+}
+
 type BackupPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyArrayOutput) ElementType() reflect.Type {

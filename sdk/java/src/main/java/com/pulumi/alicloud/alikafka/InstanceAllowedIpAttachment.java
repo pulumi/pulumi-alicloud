@@ -22,6 +22,70 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.alikafka.Instance;
+ * import com.pulumi.alicloud.alikafka.InstanceArgs;
+ * import com.pulumi.alicloud.alikafka.InstanceAllowedIpAttachment;
+ * import com.pulumi.alicloud.alikafka.InstanceAllowedIpAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tftest&#34;);
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .topicQuota(50)
+ *             .diskType(1)
+ *             .diskSize(500)
+ *             .deployType(5)
+ *             .ioMax(20)
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .securityGroup(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var defaultInstanceAllowedIpAttachment = new InstanceAllowedIpAttachment(&#34;defaultInstanceAllowedIpAttachment&#34;, InstanceAllowedIpAttachmentArgs.builder()        
+ *             .allowedIp(&#34;114.237.9.78/32&#34;)
+ *             .allowedType(&#34;vpc&#34;)
+ *             .instanceId(defaultInstance.id())
+ *             .portRange(&#34;9092/9092&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * AliKafka Instance Allowed Ip Attachment can be imported using the id, e.g.
@@ -48,14 +112,18 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
         return this.allowedIp;
     }
     /**
-     * The type of whitelist. Valid Value: `vpc`.
+     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * - `vpc`: IP address whitelist for VPC access.
+     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     @Export(name="allowedType", type=String.class, parameters={})
     private Output<String> allowedType;
 
     /**
-     * @return The type of whitelist. Valid Value: `vpc`.
+     * @return The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * - `vpc`: IP address whitelist for VPC access.
+     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     public Output<String> allowedType() {
@@ -76,14 +144,18 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
         return this.instanceId;
     }
     /**
-     * The Port range.  Valid Value: `9092/9092`.
+     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+     * - `9092/9092`: port range for a VPC whitelist.
+     * - `9093/9093`: port range for an Internet whitelist.
      * 
      */
     @Export(name="portRange", type=String.class, parameters={})
     private Output<String> portRange;
 
     /**
-     * @return The Port range.  Valid Value: `9092/9092`.
+     * @return The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+     * - `9092/9092`: port range for a VPC whitelist.
+     * - `9093/9093`: port range for an Internet whitelist.
      * 
      */
     public Output<String> portRange() {

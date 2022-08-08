@@ -255,6 +255,41 @@ func (o AnycastEipAddressOutput) ToAnycastEipAddressOutputWithContext(ctx contex
 	return o
 }
 
+// Anycast EIP instance name.
+func (o AnycastEipAddressOutput) AnycastEipAddressName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.AnycastEipAddressName }).(pulumi.StringPtrOutput)
+}
+
+// The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internetChargeType is `PayByBandwidth` and the default value is 200.
+func (o AnycastEipAddressOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Anycast EIP instance description.
+func (o AnycastEipAddressOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+func (o AnycastEipAddressOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+func (o AnycastEipAddressOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+func (o AnycastEipAddressOutput) ServiceLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringOutput { return v.ServiceLocation }).(pulumi.StringOutput)
+}
+
+// The IP status.
+func (o AnycastEipAddressOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AnycastEipAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressArrayOutput) ElementType() reflect.Type {

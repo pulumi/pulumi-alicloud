@@ -380,6 +380,96 @@ func (o EipAddressOutput) ToEipAddressOutputWithContext(ctx context.Context) Eip
 	return o
 }
 
+// The activity id.
+func (o EipAddressOutput) ActivityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.ActivityId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+func (o EipAddressOutput) AddressName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.AddressName }).(pulumi.StringOutput)
+}
+
+// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+func (o EipAddressOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+func (o EipAddressOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// Whether enable the deletion protection or not. Default value: `false`.
+func (o EipAddressOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The description of the EIP.
+func (o EipAddressOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+//
+// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+func (o EipAddressOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// The metering method of the EIP.
+// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `paymentType` is "Subscription".
+func (o EipAddressOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The address of the EIP.
+func (o EipAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+func (o EipAddressOutput) Isp() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+func (o EipAddressOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the network. Valid value is `public` (Internet).
+func (o EipAddressOutput) Netmode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.Netmode }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+func (o EipAddressOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+func (o EipAddressOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the resource group.
+func (o EipAddressOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+func (o EipAddressOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o EipAddressOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type EipAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (EipAddressArrayOutput) ElementType() reflect.Type {

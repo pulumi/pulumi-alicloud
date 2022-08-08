@@ -24,6 +24,65 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.cen.PrivateZone;
+ * import com.pulumi.alicloud.cen.PrivateZoneArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;);
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;test_name&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var defaultInstanceAttachment = new InstanceAttachment(&#34;defaultInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .childInstanceId(defaultNetwork.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     defaultInstance,
+ *                     defaultNetwork)
+ *                 .build());
+ * 
+ *         var defaultPrivateZone = new PrivateZone(&#34;defaultPrivateZone&#34;, PrivateZoneArgs.builder()        
+ *             .accessRegionId(&#34;cn-hangzhou&#34;)
+ *             .cenId(defaultInstance.id())
+ *             .hostRegionId(&#34;cn-hangzhou&#34;)
+ *             .hostVpcId(defaultNetwork.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultInstanceAttachment)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN Private Zone can be imported using the id, e.g.

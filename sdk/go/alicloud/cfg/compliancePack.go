@@ -318,6 +318,43 @@ func (o CompliancePackOutput) ToCompliancePackOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+func (o CompliancePackOutput) CompliancePackName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompliancePack) pulumi.StringOutput { return v.CompliancePackName }).(pulumi.StringOutput)
+}
+
+// Compliance Package Template Id.
+func (o CompliancePackOutput) CompliancePackTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CompliancePack) pulumi.StringPtrOutput { return v.CompliancePackTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// A list of Config Rule IDs.
+func (o CompliancePackOutput) ConfigRuleIds() CompliancePackConfigRuleIdArrayOutput {
+	return o.ApplyT(func(v *CompliancePack) CompliancePackConfigRuleIdArrayOutput { return v.ConfigRuleIds }).(CompliancePackConfigRuleIdArrayOutput)
+}
+
+// A list of Config Rules.
+//
+// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+func (o CompliancePackOutput) ConfigRules() CompliancePackConfigRuleArrayOutput {
+	return o.ApplyT(func(v *CompliancePack) CompliancePackConfigRuleArrayOutput { return v.ConfigRules }).(CompliancePackConfigRuleArrayOutput)
+}
+
+// The Description of compliance pack.
+func (o CompliancePackOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompliancePack) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+func (o CompliancePackOutput) RiskLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v *CompliancePack) pulumi.IntOutput { return v.RiskLevel }).(pulumi.IntOutput)
+}
+
+// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+func (o CompliancePackOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompliancePack) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type CompliancePackArrayOutput struct{ *pulumi.OutputState }
 
 func (CompliancePackArrayOutput) ElementType() reflect.Type {

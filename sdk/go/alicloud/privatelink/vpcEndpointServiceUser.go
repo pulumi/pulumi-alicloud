@@ -223,6 +223,21 @@ func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserOutputWithContext(
 	return o
 }
 
+// The dry run.
+func (o VpcEndpointServiceUserOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceUser) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The Id of Vpc Endpoint Service.
+func (o VpcEndpointServiceUserOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceUser) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The Id of Ram User.
+func (o VpcEndpointServiceUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceUser) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 type VpcEndpointServiceUserArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceUserArrayOutput) ElementType() reflect.Type {

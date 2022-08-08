@@ -316,6 +316,66 @@ func (o ImageCacheOutput) ToImageCacheOutputWithContext(ctx context.Context) Ima
 	return o
 }
 
+// The ID of the container group job that is used to create the image cache.
+// * `status` -The status of the image cache.
+func (o ImageCacheOutput) ContainerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.ContainerGroupId }).(pulumi.StringOutput)
+}
+
+// The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+func (o ImageCacheOutput) EipInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringPtrOutput { return v.EipInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the image cache.
+func (o ImageCacheOutput) ImageCacheName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.ImageCacheName }).(pulumi.StringOutput)
+}
+
+// The size of the image cache. Default to `20`. Unit: GiB.
+func (o ImageCacheOutput) ImageCacheSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.IntPtrOutput { return v.ImageCacheSize }).(pulumi.IntPtrOutput)
+}
+
+// The Image Registry parameters about the image to be cached.
+func (o ImageCacheOutput) ImageRegistryCredentials() ImageCacheImageRegistryCredentialArrayOutput {
+	return o.ApplyT(func(v *ImageCache) ImageCacheImageRegistryCredentialArrayOutput { return v.ImageRegistryCredentials }).(ImageCacheImageRegistryCredentialArrayOutput)
+}
+
+// The images to be cached. The image name must be versioned.
+func (o ImageCacheOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringArrayOutput { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the resource group.
+func (o ImageCacheOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+func (o ImageCacheOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the security group. You do not need to specify the same security group as the container group.
+func (o ImageCacheOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+func (o ImageCacheOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+func (o ImageCacheOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone id to cache image.
+func (o ImageCacheOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageCache) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type ImageCacheArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageCacheArrayOutput) ElementType() reflect.Type {

@@ -14,6 +14,8 @@ from .get_alarm_contacts import *
 from .get_dynamic_tag_groups import *
 from .get_group_metric_rules import *
 from .get_hybrid_monitor_datas import *
+from .get_hybrid_monitor_fc_tasks import *
+from .get_hybrid_monitor_sls_tasks import *
 from .get_metric_rule_templates import *
 from .get_monitor_group_instances import *
 from .get_monitor_groups import *
@@ -21,6 +23,8 @@ from .get_namespaces import *
 from .get_service import *
 from .get_sls_groups import *
 from .group_metric_rule import *
+from .hybrid_monitor_fc_task import *
+from .hybrid_monitor_sls_task import *
 from .metric_rule_template import *
 from .monitor_group import *
 from .monitor_group_instances import *

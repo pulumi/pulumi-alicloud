@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         {
     ///             DbClusterId = cluster.Id,
     ///             AccountName = account.AccountName,
-    ///             AccountPrivilege = "ReadOnly",
+    ///             Privilege = "ReadOnly",
     ///             DbNames = 
     ///             {
     ///                 db.DbName,

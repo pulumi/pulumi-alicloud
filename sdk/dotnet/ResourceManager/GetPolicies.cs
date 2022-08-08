@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:**  Available in 1.86.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetPolicies.InvokeAsync(new AliCloud.ResourceManager.GetPoliciesArgs
-        ///         {
-        ///             DescriptionRegex = "tftest_policy",
-        ///             NameRegex = "tftest",
-        ///             PolicyType = "Custom",
-        ///         }));
-        ///         this.FirstPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
-        /// 
-        ///     [Output("firstPolicyId")]
-        ///     public Output&lt;string&gt; FirstPolicyId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:**  Available in 1.86.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetPolicies.InvokeAsync(new AliCloud.ResourceManager.GetPoliciesArgs
-        ///         {
-        ///             DescriptionRegex = "tftest_policy",
-        ///             NameRegex = "tftest",
-        ///             PolicyType = "Custom",
-        ///         }));
-        ///         this.FirstPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
-        /// 
-        ///     [Output("firstPolicyId")]
-        ///     public Output&lt;string&gt; FirstPolicyId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());

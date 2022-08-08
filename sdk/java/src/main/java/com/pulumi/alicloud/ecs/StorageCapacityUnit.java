@@ -24,6 +24,38 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.StorageCapacityUnit;
+ * import com.pulumi.alicloud.ecs.StorageCapacityUnitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new StorageCapacityUnit(&#34;default&#34;, StorageCapacityUnitArgs.builder()        
+ *             .capacity(20)
+ *             .description(&#34;tftestdescription&#34;)
+ *             .storageCapacityUnitName(&#34;tftestname&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Storage Capacity Unit can be imported using the id, e.g.

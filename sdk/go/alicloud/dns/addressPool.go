@@ -226,6 +226,31 @@ func (o AddressPoolOutput) ToAddressPoolOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The name of the address pool.
+func (o AddressPoolOutput) AddressPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressPool) pulumi.StringOutput { return v.AddressPoolName }).(pulumi.StringOutput)
+}
+
+// The address that you want to add to the address pool.
+func (o AddressPoolOutput) Addresses() AddressPoolAddressArrayOutput {
+	return o.ApplyT(func(v *AddressPool) AddressPoolAddressArrayOutput { return v.Addresses }).(AddressPoolAddressArrayOutput)
+}
+
+// The ID of the instance.
+func (o AddressPoolOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressPool) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
+func (o AddressPoolOutput) LbaStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressPool) pulumi.StringOutput { return v.LbaStrategy }).(pulumi.StringOutput)
+}
+
+// The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
+func (o AddressPoolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressPool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type AddressPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (AddressPoolArrayOutput) ElementType() reflect.Type {

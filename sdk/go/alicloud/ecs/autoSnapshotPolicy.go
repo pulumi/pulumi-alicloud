@@ -341,6 +341,61 @@ func (o AutoSnapshotPolicyOutput) ToAutoSnapshotPolicyOutputWithContext(ctx cont
 	return o
 }
 
+// The retention period of the snapshot copied across regions.
+// - -1: The snapshot is permanently retained.
+// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+//   Default value: -1.
+func (o AutoSnapshotPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntPtrOutput { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether to enable the system to automatically copy snapshots across regions.
+func (o AutoSnapshotPolicyOutput) EnableCrossRegionCopy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.BoolPtrOutput { return v.EnableCrossRegionCopy }).(pulumi.BoolPtrOutput)
+}
+
+// The snapshot policy name.
+func (o AutoSnapshotPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
+// - A maximum of seven time points can be selected.
+// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+func (o AutoSnapshotPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.RepeatWeekdays }).(pulumi.StringArrayOutput)
+}
+
+// The snapshot retention time, and the unit of measurement is day. Optional values:
+// - -1: The automatic snapshots are retained permanently.
+// - [1, 65536]: The number of days retained.
+//   Default value: -1.
+func (o AutoSnapshotPolicyOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The status of Auto Snapshot Policy.
+func (o AutoSnapshotPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o AutoSnapshotPolicyOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The destination region to which the snapshot is copied. You can set a destination region.
+func (o AutoSnapshotPolicyOutput) TargetCopyRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.TargetCopyRegions }).(pulumi.StringArrayOutput)
+}
+
+// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
+// - A maximum of 24 time points can be selected.
+// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+func (o AutoSnapshotPolicyOutput) TimePoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.TimePoints }).(pulumi.StringArrayOutput)
+}
+
 type AutoSnapshotPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AutoSnapshotPolicyArrayOutput) ElementType() reflect.Type {

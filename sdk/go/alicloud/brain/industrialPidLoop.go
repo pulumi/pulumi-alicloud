@@ -283,6 +283,46 @@ func (o IndustrialPidLoopOutput) ToIndustrialPidLoopOutputWithContext(ctx contex
 	return o
 }
 
+// The Pid Loop Configuration.
+func (o IndustrialPidLoopOutput) PidLoopConfiguration() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.StringOutput { return v.PidLoopConfiguration }).(pulumi.StringOutput)
+}
+
+// The dcs type of Pid Loop. Valid values: `standard`.
+func (o IndustrialPidLoopOutput) PidLoopDcsType() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.StringOutput { return v.PidLoopDcsType }).(pulumi.StringOutput)
+}
+
+// The desc of Pid Loop.
+func (o IndustrialPidLoopOutput) PidLoopDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.StringPtrOutput { return v.PidLoopDesc }).(pulumi.StringPtrOutput)
+}
+
+// Whether is crucial Pid Loop.
+func (o IndustrialPidLoopOutput) PidLoopIsCrucial() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.BoolOutput { return v.PidLoopIsCrucial }).(pulumi.BoolOutput)
+}
+
+// The name of Pid Loop.
+func (o IndustrialPidLoopOutput) PidLoopName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.StringOutput { return v.PidLoopName }).(pulumi.StringOutput)
+}
+
+// The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
+func (o IndustrialPidLoopOutput) PidLoopType() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.StringOutput { return v.PidLoopType }).(pulumi.StringOutput)
+}
+
+// The pid project id.
+func (o IndustrialPidLoopOutput) PidProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.StringOutput { return v.PidProjectId }).(pulumi.StringOutput)
+}
+
+// The status of Pid Loop.
+func (o IndustrialPidLoopOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidLoop) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type IndustrialPidLoopArrayOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidLoopArrayOutput) ElementType() reflect.Type {

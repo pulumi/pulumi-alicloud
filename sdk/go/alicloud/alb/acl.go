@@ -261,6 +261,38 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
+// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+//
+// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
+func (o AclOutput) AclEntries() AclAclEntryArrayOutput {
+	return o.ApplyT(func(v *Acl) AclAclEntryArrayOutput { return v.AclEntries }).(AclAclEntryArrayOutput)
+}
+
+// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+func (o AclOutput) AclName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclName }).(pulumi.StringOutput)
+}
+
+// Specifies whether to precheck the API request.
+func (o AclOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Acl) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the resource group.
+func (o AclOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+func (o AclOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o AclOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Acl) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type AclArrayOutput struct{ *pulumi.OutputState }
 
 func (AclArrayOutput) ElementType() reflect.Type {

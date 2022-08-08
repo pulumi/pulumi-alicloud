@@ -555,6 +555,179 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The Elasticsearch cluster's client node quantity, between 2 and 25.
+func (o InstanceOutput) ClientNodeAmount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ClientNodeAmount }).(pulumi.IntPtrOutput)
+}
+
+// The client node spec. If specified, client node will be created.
+func (o InstanceOutput) ClientNodeSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ClientNodeSpec }).(pulumi.StringPtrOutput)
+}
+
+// The Elasticsearch cluster's data node quantity, between 2 and 50.
+func (o InstanceOutput) DataNodeAmount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DataNodeAmount }).(pulumi.IntOutput)
+}
+
+// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+func (o InstanceOutput) DataNodeDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DataNodeDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The single data node storage space.
+// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
+func (o InstanceOutput) DataNodeDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DataNodeDiskSize }).(pulumi.IntOutput)
+}
+
+// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
+func (o InstanceOutput) DataNodeDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DataNodeDiskType }).(pulumi.StringOutput)
+}
+
+// The data node specifications of the Elasticsearch instance.
+func (o InstanceOutput) DataNodeSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DataNodeSpec }).(pulumi.StringOutput)
+}
+
+// The description of instance. It a string of 0 to 30 characters.
+func (o InstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Instance connection domain (only VPC network access supported).
+func (o InstanceOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Bool, default to false. When it set to true, the instance can close kibana private network access。
+func (o InstanceOutput) EnableKibanaPrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableKibanaPrivateNetwork }).(pulumi.BoolPtrOutput)
+}
+
+// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+func (o InstanceOutput) EnableKibanaPublicNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableKibanaPublicNetwork }).(pulumi.BoolPtrOutput)
+}
+
+// Bool, default to false. When it set to true, the instance can enable public network access。
+func (o InstanceOutput) EnablePublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnablePublic }).(pulumi.BoolPtrOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// Kibana console domain (Internet access supported).
+func (o InstanceOutput) KibanaDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KibanaDomain }).(pulumi.StringOutput)
+}
+
+// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+func (o InstanceOutput) KibanaNodeSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KibanaNodeSpec }).(pulumi.StringOutput)
+}
+
+// Kibana console port.
+func (o InstanceOutput) KibanaPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.KibanaPort }).(pulumi.IntOutput)
+}
+
+// Set the Kibana's IP whitelist in private network.
+func (o InstanceOutput) KibanaPrivateWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.KibanaPrivateWhitelists }).(pulumi.StringArrayOutput)
+}
+
+// Set the Kibana's IP whitelist in internet network.
+func (o InstanceOutput) KibanaWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.KibanaWhitelists }).(pulumi.StringArrayOutput)
+}
+
+// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
+func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The dedicated master node spec. If specified, dedicated master node will be created.
+func (o InstanceOutput) MasterNodeSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MasterNodeSpec }).(pulumi.StringPtrOutput)
+}
+
+// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+func (o InstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Instance connection port.
+func (o InstanceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Set the instance's IP whitelist in VPC network.
+func (o InstanceOutput) PrivateWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.PrivateWhitelists }).(pulumi.StringArrayOutput)
+}
+
+// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Set the instance's IP whitelist in internet network.
+func (o InstanceOutput) PublicWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.PublicWhitelists }).(pulumi.StringArrayOutput)
+}
+
+// The Id of resource group which the Elasticsearch instance belongs.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+func (o InstanceOutput) SettingConfig() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.SettingConfig }).(pulumi.MapOutput)
+}
+
+// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+func (o InstanceOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// The ID of VSwitch.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+func (o InstanceOutput) ZoneCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ZoneCount }).(pulumi.IntPtrOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

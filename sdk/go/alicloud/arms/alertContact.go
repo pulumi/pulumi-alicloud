@@ -238,6 +238,31 @@ func (o AlertContactOutput) ToAlertContactOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The name of the alert contact.
+func (o AlertContactOutput) AlertContactName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertContact) pulumi.StringPtrOutput { return v.AlertContactName }).(pulumi.StringPtrOutput)
+}
+
+// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+func (o AlertContactOutput) DingRobotWebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertContact) pulumi.StringPtrOutput { return v.DingRobotWebhookUrl }).(pulumi.StringPtrOutput)
+}
+
+// The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+func (o AlertContactOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertContact) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+func (o AlertContactOutput) PhoneNum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertContact) pulumi.StringPtrOutput { return v.PhoneNum }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
+func (o AlertContactOutput) SystemNoc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertContact) pulumi.BoolPtrOutput { return v.SystemNoc }).(pulumi.BoolPtrOutput)
+}
+
 type AlertContactArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertContactArrayOutput) ElementType() reflect.Type {

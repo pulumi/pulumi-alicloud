@@ -223,6 +223,21 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
+// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+func (o NamespaceOutput) AutoCreate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.BoolOutput { return v.AutoCreate }).(pulumi.BoolOutput)
+}
+
+// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+func (o NamespaceOutput) DefaultVisibility() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.DefaultVisibility }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry namespace.
+func (o NamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type NamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceArrayOutput) ElementType() reflect.Type {

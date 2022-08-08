@@ -25,6 +25,60 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.cen.VbrHealthCheck;
+ * import com.pulumi.alicloud.cen.VbrHealthCheckArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;test_name&#34;)
+ *             .build());
+ * 
+ *         var defaultInstanceAttachment = new InstanceAttachment(&#34;defaultInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .childInstanceId(&#34;vbr-xxxxx&#34;)
+ *             .childInstanceType(&#34;VBR&#34;)
+ *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         var defaultVbrHealthCheck = new VbrHealthCheck(&#34;defaultVbrHealthCheck&#34;, VbrHealthCheckArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .healthCheckSourceIp(&#34;192.168.1.2&#34;)
+ *             .healthCheckTargetIp(&#34;10.0.0.2&#34;)
+ *             .vbrInstanceId(&#34;vbr-xxxxx&#34;)
+ *             .vbrInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .healthCheckInterval(2)
+ *             .healthyThreshold(8)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultInstanceAttachment)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN VBR HealthCheck can be imported using the id, e.g.

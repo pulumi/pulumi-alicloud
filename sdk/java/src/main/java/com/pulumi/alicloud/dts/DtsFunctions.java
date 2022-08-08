@@ -30,6 +30,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetConsumerChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getConsumerChannels();
+     * 
+     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetConsumerChannelsResult> getConsumerChannels(GetConsumerChannelsArgs args) {
         return getConsumerChannels(args, InvokeOptions.Empty);
@@ -40,6 +69,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetConsumerChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getConsumerChannels();
+     * 
+     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConsumerChannelsResult> getConsumerChannelsPlain(GetConsumerChannelsPlainArgs args) {
@@ -52,6 +110,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetConsumerChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getConsumerChannels();
+     * 
+     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetConsumerChannelsResult> getConsumerChannels(GetConsumerChannelsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dts/getConsumerChannels:getConsumerChannels", TypeShape.of(GetConsumerChannelsResult.class), args, Utilities.withVersion(options));
@@ -62,6 +149,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetConsumerChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getConsumerChannels();
+     * 
+     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConsumerChannelsResult> getConsumerChannelsPlain(GetConsumerChannelsPlainArgs args, InvokeOptions options) {
@@ -74,6 +190,37 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
+     *             .ids(&#34;dts_job_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMigrationJobsResult> getMigrationJobs() {
         return getMigrationJobs(GetMigrationJobsArgs.Empty, InvokeOptions.Empty);
@@ -84,6 +231,37 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
+     *             .ids(&#34;dts_job_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMigrationJobsResult> getMigrationJobsPlain() {
@@ -96,6 +274,37 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
+     *             .ids(&#34;dts_job_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMigrationJobsResult> getMigrationJobs(GetMigrationJobsArgs args) {
         return getMigrationJobs(args, InvokeOptions.Empty);
@@ -106,6 +315,37 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
+     *             .ids(&#34;dts_job_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMigrationJobsResult> getMigrationJobsPlain(GetMigrationJobsPlainArgs args) {
@@ -118,6 +358,37 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
+     *             .ids(&#34;dts_job_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMigrationJobsResult> getMigrationJobs(GetMigrationJobsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dts/getMigrationJobs:getMigrationJobs", TypeShape.of(GetMigrationJobsResult.class), args, Utilities.withVersion(options));
@@ -128,6 +399,37 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
+     *             .ids(&#34;dts_job_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMigrationJobsResult> getMigrationJobsPlain(GetMigrationJobsPlainArgs args, InvokeOptions options) {
@@ -140,6 +442,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     * 
+     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSubscriptionJobsResult> getSubscriptionJobs() {
         return getSubscriptionJobs(GetSubscriptionJobsArgs.Empty, InvokeOptions.Empty);
@@ -150,6 +481,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     * 
+     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSubscriptionJobsResult> getSubscriptionJobsPlain() {
@@ -162,6 +522,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     * 
+     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSubscriptionJobsResult> getSubscriptionJobs(GetSubscriptionJobsArgs args) {
         return getSubscriptionJobs(args, InvokeOptions.Empty);
@@ -172,6 +561,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     * 
+     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSubscriptionJobsResult> getSubscriptionJobsPlain(GetSubscriptionJobsPlainArgs args) {
@@ -184,6 +602,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     * 
+     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSubscriptionJobsResult> getSubscriptionJobs(GetSubscriptionJobsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", TypeShape.of(GetSubscriptionJobsResult.class), args, Utilities.withVersion(options));
@@ -194,6 +641,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     * 
+     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSubscriptionJobsResult> getSubscriptionJobsPlain(GetSubscriptionJobsPlainArgs args, InvokeOptions options) {
@@ -206,6 +682,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     * 
+     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSynchronizationJobsResult> getSynchronizationJobs() {
         return getSynchronizationJobs(GetSynchronizationJobsArgs.Empty, InvokeOptions.Empty);
@@ -216,6 +721,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     * 
+     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSynchronizationJobsResult> getSynchronizationJobsPlain() {
@@ -228,6 +762,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     * 
+     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSynchronizationJobsResult> getSynchronizationJobs(GetSynchronizationJobsArgs args) {
         return getSynchronizationJobs(args, InvokeOptions.Empty);
@@ -238,6 +801,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     * 
+     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSynchronizationJobsResult> getSynchronizationJobsPlain(GetSynchronizationJobsPlainArgs args) {
@@ -250,6 +842,35 @@ public final class DtsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     * 
+     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSynchronizationJobsResult> getSynchronizationJobs(GetSynchronizationJobsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", TypeShape.of(GetSynchronizationJobsResult.class), args, Utilities.withVersion(options));
@@ -260,6 +881,35 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     * 
+     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSynchronizationJobsResult> getSynchronizationJobsPlain(GetSynchronizationJobsPlainArgs args, InvokeOptions options) {

@@ -23,6 +23,38 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.SamlProvider;
+ * import com.pulumi.alicloud.ram.SamlProviderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new SamlProvider(&#34;example&#34;, SamlProviderArgs.builder()        
+ *             .description(&#34;For Terraform Test&#34;)
+ *             .encodedsamlMetadataDocument(&#34;your encodedsaml metadata document&#34;)
+ *             .samlProviderName(&#34;tf-testAcc&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * RAM SAML Provider can be imported using the id, e.g.

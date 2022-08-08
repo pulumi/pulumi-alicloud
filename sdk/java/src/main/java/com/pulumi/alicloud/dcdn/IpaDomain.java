@@ -24,6 +24,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.dcdn.IpaDomain;
+ * import com.pulumi.alicloud.dcdn.IpaDomainArgs;
+ * import com.pulumi.alicloud.dcdn.inputs.IpaDomainSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .nameRegex(&#34;default&#34;)
+ *             .build());
+ * 
+ *         var example = new IpaDomain(&#34;example&#34;, IpaDomainArgs.builder()        
+ *             .domainName(&#34;example.com&#34;)
+ *             .resourceGroupId(default_.groups()[0].id())
+ *             .sources(IpaDomainSourceArgs.builder()
+ *                 .content(&#34;1.1.1.1&#34;)
+ *                 .port(80)
+ *                 .priority(&#34;20&#34;)
+ *                 .type(&#34;ipaddr&#34;)
+ *                 .weight(10)
+ *                 .build())
+ *             .scope(&#34;overseas&#34;)
+ *             .status(&#34;online&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DCDN Ipa Domain can be imported using the id, e.g.

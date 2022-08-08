@@ -274,6 +274,41 @@ func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
+func (o SecurityPolicyOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringArrayOutput { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// The dry run.
+func (o SecurityPolicyOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the resource group.
+func (o SecurityPolicyOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+func (o SecurityPolicyOutput) SecurityPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.SecurityPolicyName }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o SecurityPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SecurityPolicyOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
+func (o SecurityPolicyOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringArrayOutput { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
 type SecurityPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyArrayOutput) ElementType() reflect.Type {

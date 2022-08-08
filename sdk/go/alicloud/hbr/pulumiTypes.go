@@ -1548,6 +1548,190 @@ func (o GetEcsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetEcsBackupP
 	}).(GetEcsBackupPlansPlanOutput)
 }
 
+type GetHanaBackupPlansPlan struct {
+	// The backup prefix.
+	BackupPrefix string `pulumi:"backupPrefix"`
+	// The backup type.
+	BackupType string `pulumi:"backupType"`
+	// The ID of the SAP HANA instance.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the database.
+	DatabaseName string `pulumi:"databaseName"`
+	// The ID of the resource.
+	Id        string `pulumi:"id"`
+	PageTotal string `pulumi:"pageTotal"`
+	// The ID of the backup plan.
+	PlanId string `pulumi:"planId"`
+	// The name of the backup plan.
+	PlanName string `pulumi:"planName"`
+	// The backup policy.
+	Schedule string `pulumi:"schedule"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The ID of the backup vault.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetHanaBackupPlansPlanInput is an input type that accepts GetHanaBackupPlansPlanArgs and GetHanaBackupPlansPlanOutput values.
+// You can construct a concrete instance of `GetHanaBackupPlansPlanInput` via:
+//
+//          GetHanaBackupPlansPlanArgs{...}
+type GetHanaBackupPlansPlanInput interface {
+	pulumi.Input
+
+	ToGetHanaBackupPlansPlanOutput() GetHanaBackupPlansPlanOutput
+	ToGetHanaBackupPlansPlanOutputWithContext(context.Context) GetHanaBackupPlansPlanOutput
+}
+
+type GetHanaBackupPlansPlanArgs struct {
+	// The backup prefix.
+	BackupPrefix pulumi.StringInput `pulumi:"backupPrefix"`
+	// The backup type.
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The ID of the SAP HANA instance.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// The ID of the resource.
+	Id        pulumi.StringInput `pulumi:"id"`
+	PageTotal pulumi.StringInput `pulumi:"pageTotal"`
+	// The ID of the backup plan.
+	PlanId pulumi.StringInput `pulumi:"planId"`
+	// The name of the backup plan.
+	PlanName pulumi.StringInput `pulumi:"planName"`
+	// The backup policy.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the backup vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetHanaBackupPlansPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHanaBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetHanaBackupPlansPlanArgs) ToGetHanaBackupPlansPlanOutput() GetHanaBackupPlansPlanOutput {
+	return i.ToGetHanaBackupPlansPlanOutputWithContext(context.Background())
+}
+
+func (i GetHanaBackupPlansPlanArgs) ToGetHanaBackupPlansPlanOutputWithContext(ctx context.Context) GetHanaBackupPlansPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupPlansPlanOutput)
+}
+
+// GetHanaBackupPlansPlanArrayInput is an input type that accepts GetHanaBackupPlansPlanArray and GetHanaBackupPlansPlanArrayOutput values.
+// You can construct a concrete instance of `GetHanaBackupPlansPlanArrayInput` via:
+//
+//          GetHanaBackupPlansPlanArray{ GetHanaBackupPlansPlanArgs{...} }
+type GetHanaBackupPlansPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetHanaBackupPlansPlanArrayOutput() GetHanaBackupPlansPlanArrayOutput
+	ToGetHanaBackupPlansPlanArrayOutputWithContext(context.Context) GetHanaBackupPlansPlanArrayOutput
+}
+
+type GetHanaBackupPlansPlanArray []GetHanaBackupPlansPlanInput
+
+func (GetHanaBackupPlansPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHanaBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetHanaBackupPlansPlanArray) ToGetHanaBackupPlansPlanArrayOutput() GetHanaBackupPlansPlanArrayOutput {
+	return i.ToGetHanaBackupPlansPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetHanaBackupPlansPlanArray) ToGetHanaBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetHanaBackupPlansPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupPlansPlanArrayOutput)
+}
+
+type GetHanaBackupPlansPlanOutput struct{ *pulumi.OutputState }
+
+func (GetHanaBackupPlansPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHanaBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetHanaBackupPlansPlanOutput) ToGetHanaBackupPlansPlanOutput() GetHanaBackupPlansPlanOutput {
+	return o
+}
+
+func (o GetHanaBackupPlansPlanOutput) ToGetHanaBackupPlansPlanOutputWithContext(ctx context.Context) GetHanaBackupPlansPlanOutput {
+	return o
+}
+
+// The backup prefix.
+func (o GetHanaBackupPlansPlanOutput) BackupPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.BackupPrefix }).(pulumi.StringOutput)
+}
+
+// The backup type.
+func (o GetHanaBackupPlansPlanOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The ID of the SAP HANA instance.
+func (o GetHanaBackupPlansPlanOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the database.
+func (o GetHanaBackupPlansPlanOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
+func (o GetHanaBackupPlansPlanOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHanaBackupPlansPlanOutput) PageTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.PageTotal }).(pulumi.StringOutput)
+}
+
+// The ID of the backup plan.
+func (o GetHanaBackupPlansPlanOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// The name of the backup plan.
+func (o GetHanaBackupPlansPlanOutput) PlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.PlanName }).(pulumi.StringOutput)
+}
+
+// The backup policy.
+func (o GetHanaBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetHanaBackupPlansPlanOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the backup vault.
+func (o GetHanaBackupPlansPlanOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupPlansPlan) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetHanaBackupPlansPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHanaBackupPlansPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHanaBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetHanaBackupPlansPlanArrayOutput) ToGetHanaBackupPlansPlanArrayOutput() GetHanaBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetHanaBackupPlansPlanArrayOutput) ToGetHanaBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetHanaBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetHanaBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetHanaBackupPlansPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHanaBackupPlansPlan {
+		return vs[0].([]GetHanaBackupPlansPlan)[vs[1].(int)]
+	}).(GetHanaBackupPlansPlanOutput)
+}
+
 type GetHanaInstancesInstance struct {
 	// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
 	AlertSetting string `pulumi:"alertSetting"`
@@ -4299,6 +4483,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupClientsClientArrayInput)(nil)).Elem(), GetEcsBackupClientsClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupPlansPlanInput)(nil)).Elem(), GetEcsBackupPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupPlansPlanArrayInput)(nil)).Elem(), GetEcsBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaBackupPlansPlanInput)(nil)).Elem(), GetHanaBackupPlansPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaBackupPlansPlanArrayInput)(nil)).Elem(), GetHanaBackupPlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaInstancesInstanceInput)(nil)).Elem(), GetHanaInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaInstancesInstanceArrayInput)(nil)).Elem(), GetHanaInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasBackupPlansPlanInput)(nil)).Elem(), GetNasBackupPlansPlanArgs{})
@@ -4341,6 +4527,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsBackupClientsClientArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetHanaBackupPlansPlanOutput{})
+	pulumi.RegisterOutputType(GetHanaBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetHanaInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetHanaInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetNasBackupPlansPlanOutput{})

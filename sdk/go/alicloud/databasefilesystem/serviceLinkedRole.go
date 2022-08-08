@@ -203,6 +203,16 @@ func (o ServiceLinkedRoleOutput) ToServiceLinkedRoleOutputWithContext(ctx contex
 	return o
 }
 
+// The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
+func (o ServiceLinkedRoleOutput) ProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringOutput { return v.ProductName }).(pulumi.StringOutput)
+}
+
+// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
+func (o ServiceLinkedRoleOutput) Status() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.BoolOutput { return v.Status }).(pulumi.BoolOutput)
+}
+
 type ServiceLinkedRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceLinkedRoleArrayOutput) ElementType() reflect.Type {

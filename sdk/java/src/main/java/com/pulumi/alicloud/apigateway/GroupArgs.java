@@ -31,6 +31,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the api gateway.
+     * 
+     */
+    @Import(name="instanceId")
+    private @Nullable Output<String> instanceId;
+
+    /**
+     * @return The id of the api gateway.
+     * 
+     */
+    public Optional<Output<String>> instanceId() {
+        return Optional.ofNullable(this.instanceId);
+    }
+
+    /**
      * The name of the api gateway group. Defaults to null.
      * 
      */
@@ -49,6 +64,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
 
     private GroupArgs(GroupArgs $) {
         this.description = $.description;
+        this.instanceId = $.instanceId;
         this.name = $.name;
     }
 
@@ -89,6 +105,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param instanceId The id of the api gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(@Nullable Output<String> instanceId) {
+            $.instanceId = instanceId;
+            return this;
+        }
+
+        /**
+         * @param instanceId The id of the api gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(String instanceId) {
+            return instanceId(Output.of(instanceId));
         }
 
         /**

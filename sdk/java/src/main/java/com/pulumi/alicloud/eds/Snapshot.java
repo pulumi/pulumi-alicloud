@@ -23,6 +23,88 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+ * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+ * import com.pulumi.alicloud.eds.EdsFunctions;
+ * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+ * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+ * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+ * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+ * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+ * import com.pulumi.alicloud.eds.Desktop;
+ * import com.pulumi.alicloud.eds.DesktopArgs;
+ * import com.pulumi.alicloud.eds.Snapshot;
+ * import com.pulumi.alicloud.eds.SnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+ *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .desktopAccessType(&#34;Internet&#34;)
+ *             .officeSiteName(name)
+ *             .enableInternetAccess(false)
+ *             .build());
+ * 
+ *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+ *             .bundleType(&#34;SYSTEM&#34;)
+ *             .build());
+ * 
+ *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+ *             .policyGroupName(name)
+ *             .clipboard(&#34;readwrite&#34;)
+ *             .localDrive(&#34;read&#34;)
+ *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+ *                 .description(&#34;example_value&#34;)
+ *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+ *                 .build())
+ *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+ *                 .type(&#34;inflow&#34;)
+ *                 .policy(&#34;accept&#34;)
+ *                 .description(&#34;example_value&#34;)
+ *                 .portRange(&#34;80/80&#34;)
+ *                 .ipProtocol(&#34;TCP&#34;)
+ *                 .priority(&#34;1&#34;)
+ *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+ *             .officeSiteId(defaultSimpleOfficeSite.id())
+ *             .policyGroupId(defaultEcdPolicyGroup.id())
+ *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+ *             .desktopName(name)
+ *             .build());
+ * 
+ *         var defaultSnapshot = new Snapshot(&#34;defaultSnapshot&#34;, SnapshotArgs.builder()        
+ *             .description(name)
+ *             .desktopId(defaultDesktop.id())
+ *             .snapshotName(name)
+ *             .sourceDiskType(&#34;SYSTEM&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECD Snapshot can be imported using the id, e.g.

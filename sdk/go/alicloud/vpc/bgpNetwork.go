@@ -238,6 +238,21 @@ func (o BgpNetworkOutput) ToBgpNetworkOutputWithContext(ctx context.Context) Bgp
 	return o
 }
 
+// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
+func (o BgpNetworkOutput) DstCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpNetwork) pulumi.StringOutput { return v.DstCidrBlock }).(pulumi.StringOutput)
+}
+
+// The ID of the vRouter associated with the router interface.
+func (o BgpNetworkOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpNetwork) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The state of the advertised BGP network.
+func (o BgpNetworkOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpNetwork) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type BgpNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (BgpNetworkArrayOutput) ElementType() reflect.Type {

@@ -282,6 +282,61 @@ func (o TrafficMirrorSessionOutput) ToTrafficMirrorSessionOutputWithContext(ctx 
 	return o
 }
 
+// The dry run.
+func (o TrafficMirrorSessionOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to enable traffic mirror sessions. default to `false`.
+func (o TrafficMirrorSessionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
+func (o TrafficMirrorSessionOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+func (o TrafficMirrorSessionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the filter.
+func (o TrafficMirrorSessionOutput) TrafficMirrorFilterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringOutput { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
+}
+
+// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+func (o TrafficMirrorSessionOutput) TrafficMirrorSessionDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringPtrOutput { return v.TrafficMirrorSessionDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+func (o TrafficMirrorSessionOutput) TrafficMirrorSessionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringPtrOutput { return v.TrafficMirrorSessionName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+func (o TrafficMirrorSessionOutput) TrafficMirrorSourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringArrayOutput { return v.TrafficMirrorSourceIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+func (o TrafficMirrorSessionOutput) TrafficMirrorTargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringOutput { return v.TrafficMirrorTargetId }).(pulumi.StringOutput)
+}
+
+// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+func (o TrafficMirrorSessionOutput) TrafficMirrorTargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringOutput { return v.TrafficMirrorTargetType }).(pulumi.StringOutput)
+}
+
+// The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
+func (o TrafficMirrorSessionOutput) VirtualNetworkId() pulumi.IntOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.IntOutput { return v.VirtualNetworkId }).(pulumi.IntOutput)
+}
+
 type TrafficMirrorSessionArrayOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorSessionArrayOutput) ElementType() reflect.Type {

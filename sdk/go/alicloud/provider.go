@@ -219,6 +219,98 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+// console.
+func (o ProviderOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+// Alibaba Cloud console.
+func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Use this to mark a terraform configuration file source.
+func (o ProviderOutput) ConfigurationSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigurationSource }).(pulumi.StringPtrOutput)
+}
+
+// The URI of sidecar credentials service.
+func (o ProviderOutput) CredentialsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CredentialsUri }).(pulumi.StringPtrOutput)
+}
+
+// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
+// of the Alibaba Cloud console.
+func (o ProviderOutput) EcsRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.EcsRoleName }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
+func (o ProviderOutput) Fc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Fc }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
+func (o ProviderOutput) LogEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LogEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
+func (o ProviderOutput) MnsEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MnsEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
+func (o ProviderOutput) OtsInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OtsInstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
+func (o ProviderOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
+func (o ProviderOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+// console.
+func (o ProviderOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// The security transport for the assume role invoking.
+func (o ProviderOutput) SecureTransport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecureTransport }).(pulumi.StringPtrOutput)
+}
+
+// security token. A security token is only required if you are using Security Token Service.
+func (o ProviderOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecurityToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) SecurityTransport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecurityTransport }).(pulumi.StringPtrOutput)
+}
+
+// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+func (o ProviderOutput) SharedCredentialsFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SharedCredentialsFile }).(pulumi.StringPtrOutput)
+}
+
+// The source ip for the assume role invoking.
+func (o ProviderOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SourceIp }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

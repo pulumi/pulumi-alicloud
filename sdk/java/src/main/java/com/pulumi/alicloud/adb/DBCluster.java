@@ -27,6 +27,78 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.adb.DBCluster;
+ * import com.pulumi.alicloud.adb.DBClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;adbClusterconfig&#34;);
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;ADB&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var this_ = new DBCluster(&#34;this&#34;, DBClusterArgs.builder()        
+ *             .dbClusterCategory(&#34;Cluster&#34;)
+ *             .dbClusterClass(&#34;C8&#34;)
+ *             .dbNodeCount(&#34;4&#34;)
+ *             .dbNodeStorage(&#34;400&#34;)
+ *             .mode(&#34;reserver&#34;)
+ *             .dbClusterVersion(&#34;3.0&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .description(&#34;Test new adb again.&#34;)
+ *             .maintainTime(&#34;23:00Z-00:00Z&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF-update&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;acceptance-test-update&#34;)
+ *             ))
+ *             .resourceGroupId(&#34;rg-aek2s7ylxx6****&#34;)
+ *             .securityIps(            
+ *                 &#34;10.168.1.12&#34;,
+ *                 &#34;10.168.1.11&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.

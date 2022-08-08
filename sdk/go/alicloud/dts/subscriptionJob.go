@@ -554,6 +554,201 @@ func (o SubscriptionJobOutput) ToSubscriptionJobOutputWithContext(ctx context.Co
 	return o
 }
 
+// Subscription start time in Unix timestamp format.
+func (o SubscriptionJobOutput) Checkpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.Checkpoint }).(pulumi.StringOutput)
+}
+
+// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
+func (o SubscriptionJobOutput) ComputeUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.IntPtrOutput { return v.ComputeUnit }).(pulumi.IntPtrOutput)
+}
+
+// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
+func (o SubscriptionJobOutput) DatabaseCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.IntPtrOutput { return v.DatabaseCount }).(pulumi.IntPtrOutput)
+}
+
+// Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
+func (o SubscriptionJobOutput) DbList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.DbList }).(pulumi.StringPtrOutput)
+}
+
+// This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
+func (o SubscriptionJobOutput) DelayNotice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.BoolPtrOutput { return v.DelayNotice }).(pulumi.BoolPtrOutput)
+}
+
+// The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
+func (o SubscriptionJobOutput) DelayPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.DelayPhone }).(pulumi.StringPtrOutput)
+}
+
+// When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
+func (o SubscriptionJobOutput) DelayRuleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.DelayRuleTime }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
+func (o SubscriptionJobOutput) DestinationEndpointEngineName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.DestinationEndpointEngineName }).(pulumi.StringPtrOutput)
+}
+
+// The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
+func (o SubscriptionJobOutput) DestinationRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.DestinationRegion }).(pulumi.StringPtrOutput)
+}
+
+// The ID of subscription instance.
+func (o SubscriptionJobOutput) DtsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.DtsInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of subscription task.
+func (o SubscriptionJobOutput) DtsJobName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.DtsJobName }).(pulumi.StringPtrOutput)
+}
+
+// This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
+func (o SubscriptionJobOutput) ErrorNotice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.BoolPtrOutput { return v.ErrorNotice }).(pulumi.BoolPtrOutput)
+}
+
+// The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
+func (o SubscriptionJobOutput) ErrorPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.ErrorPhone }).(pulumi.StringPtrOutput)
+}
+
+// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
+func (o SubscriptionJobOutput) InstanceClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.InstanceClass }).(pulumi.StringPtrOutput)
+}
+
+// The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+func (o SubscriptionJobOutput) PaymentDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.IntPtrOutput { return v.PaymentDuration }).(pulumi.IntPtrOutput)
+}
+
+// The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+func (o SubscriptionJobOutput) PaymentDurationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.PaymentDurationUnit }).(pulumi.StringPtrOutput)
+}
+
+// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
+func (o SubscriptionJobOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
+func (o SubscriptionJobOutput) Reserve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.Reserve }).(pulumi.StringPtrOutput)
+}
+
+// To subscribe to the name of the database.
+func (o SubscriptionJobOutput) SourceEndpointDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
+func (o SubscriptionJobOutput) SourceEndpointEngineName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointEngineName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
+func (o SubscriptionJobOutput) SourceEndpointInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+func (o SubscriptionJobOutput) SourceEndpointInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointInstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The IP of source endpoint.
+func (o SubscriptionJobOutput) SourceEndpointIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointIp }).(pulumi.StringPtrOutput)
+}
+
+// The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+func (o SubscriptionJobOutput) SourceEndpointOracleSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointOracleSid }).(pulumi.StringPtrOutput)
+}
+
+// The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
+func (o SubscriptionJobOutput) SourceEndpointOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The password of source database instance account.
+func (o SubscriptionJobOutput) SourceEndpointPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointPassword }).(pulumi.StringPtrOutput)
+}
+
+// The port of source database.
+func (o SubscriptionJobOutput) SourceEndpointPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointPort }).(pulumi.StringPtrOutput)
+}
+
+// The region of source database.
+func (o SubscriptionJobOutput) SourceEndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointRegion }).(pulumi.StringPtrOutput)
+}
+
+// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
+func (o SubscriptionJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
+}
+
+// The username of source database instance account.
+func (o SubscriptionJobOutput) SourceEndpointUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointUserName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
+func (o SubscriptionJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
+func (o SubscriptionJobOutput) SubscriptionDataTypeDdl() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.BoolOutput { return v.SubscriptionDataTypeDdl }).(pulumi.BoolOutput)
+}
+
+// Whether to subscribe the DML type of data. Valid values: `true`, `false`.
+func (o SubscriptionJobOutput) SubscriptionDataTypeDml() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.BoolOutput { return v.SubscriptionDataTypeDml }).(pulumi.BoolOutput)
+}
+
+// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
+func (o SubscriptionJobOutput) SubscriptionInstanceNetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SubscriptionInstanceNetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
+func (o SubscriptionJobOutput) SubscriptionInstanceVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SubscriptionInstanceVpcId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
+func (o SubscriptionJobOutput) SubscriptionInstanceVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SubscriptionInstanceVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The sync architecture. Valid values: `bidirectional`, `oneway`.
+func (o SubscriptionJobOutput) SyncArchitecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SyncArchitecture }).(pulumi.StringPtrOutput)
+}
+
+// The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
+func (o SubscriptionJobOutput) SynchronizationDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SynchronizationDirection }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SubscriptionJobOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type SubscriptionJobArrayOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionJobArrayOutput) ElementType() reflect.Type {

@@ -261,6 +261,36 @@ func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return o
 }
 
+// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+func (o RepoOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringPtrOutput { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// The repository domain list.
+func (o RepoOutput) DomainList() RepoDomainListOutput {
+	return o.ApplyT(func(v *Repo) RepoDomainListOutput { return v.DomainList }).(RepoDomainListOutput)
+}
+
+// Name of container registry repository.
+func (o RepoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of container registry namespace where repository is located.
+func (o RepoOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// `PUBLIC` or `PRIVATE`, repo's visibility.
+func (o RepoOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The repository general information. It can contain 1 to 80 characters.
+func (o RepoOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Summary }).(pulumi.StringOutput)
+}
+
 type RepoArrayOutput struct{ *pulumi.OutputState }
 
 func (RepoArrayOutput) ElementType() reflect.Type {

@@ -103,6 +103,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<string>;
     /**
+     * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     */
+    public readonly cloneDataPoint!: pulumi.Output<string | undefined>;
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     public readonly collectorStatus!: pulumi.Output<string>;
@@ -110,6 +115,16 @@ export class Cluster extends pulumi.CustomResource {
      * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     */
+    public readonly creationCategory!: pulumi.Output<string>;
+    /**
+     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+     */
+    public readonly creationOption!: pulumi.Output<string>;
     /**
      * db_cluster_ip_array defines how users can send requests to your API.
      */
@@ -123,7 +138,7 @@ export class Cluster extends pulumi.CustomResource {
      * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
-    public readonly dbNodeCount!: pulumi.Output<number | undefined>;
+    public readonly dbNodeCount!: pulumi.Output<number>;
     /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
@@ -146,6 +161,11 @@ export class Cluster extends pulumi.CustomResource {
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     public readonly encryptNewTables!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the global database network (GDN).
+     * > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+     */
+    public readonly gdnId!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -187,6 +207,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
+     * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     */
+    public readonly sourceResourceId!: pulumi.Output<string | undefined>;
+    /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */
     public readonly subCategory!: pulumi.Output<string>;
@@ -226,8 +250,11 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
+            resourceInputs["cloneDataPoint"] = state ? state.cloneDataPoint : undefined;
             resourceInputs["collectorStatus"] = state ? state.collectorStatus : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["creationCategory"] = state ? state.creationCategory : undefined;
+            resourceInputs["creationOption"] = state ? state.creationOption : undefined;
             resourceInputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
             resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
@@ -236,6 +263,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionLock"] = state ? state.deletionLock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
+            resourceInputs["gdnId"] = state ? state.gdnId : undefined;
             resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
@@ -246,6 +274,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
@@ -264,7 +293,10 @@ export class Cluster extends pulumi.CustomResource {
             }
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
+            resourceInputs["cloneDataPoint"] = args ? args.cloneDataPoint : undefined;
             resourceInputs["collectorStatus"] = args ? args.collectorStatus : undefined;
+            resourceInputs["creationCategory"] = args ? args.creationCategory : undefined;
+            resourceInputs["creationOption"] = args ? args.creationOption : undefined;
             resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
             resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
@@ -273,6 +305,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionLock"] = args ? args.deletionLock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
+            resourceInputs["gdnId"] = args ? args.gdnId : undefined;
             resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
@@ -283,6 +316,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
             resourceInputs["subCategory"] = args ? args.subCategory : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
@@ -308,6 +342,11 @@ export interface ClusterState {
      */
     backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
     /**
+     * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     */
+    cloneDataPoint?: pulumi.Input<string>;
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     collectorStatus?: pulumi.Input<string>;
@@ -315,6 +354,16 @@ export interface ClusterState {
      * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
      */
     connectionString?: pulumi.Input<string>;
+    /**
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     */
+    creationCategory?: pulumi.Input<string>;
+    /**
+     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+     */
+    creationOption?: pulumi.Input<string>;
     /**
      * db_cluster_ip_array defines how users can send requests to your API.
      */
@@ -351,6 +400,11 @@ export interface ClusterState {
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     encryptNewTables?: pulumi.Input<string>;
+    /**
+     * The ID of the global database network (GDN).
+     * > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+     */
+    gdnId?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -391,6 +445,10 @@ export interface ClusterState {
      * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     */
+    sourceResourceId?: pulumi.Input<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */
@@ -430,9 +488,24 @@ export interface ClusterArgs {
      */
     backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
     /**
+     * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     */
+    cloneDataPoint?: pulumi.Input<string>;
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     collectorStatus?: pulumi.Input<string>;
+    /**
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     */
+    creationCategory?: pulumi.Input<string>;
+    /**
+     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+     */
+    creationOption?: pulumi.Input<string>;
     /**
      * db_cluster_ip_array defines how users can send requests to your API.
      */
@@ -469,6 +542,11 @@ export interface ClusterArgs {
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     encryptNewTables?: pulumi.Input<string>;
+    /**
+     * The ID of the global database network (GDN).
+     * > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+     */
+    gdnId?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -509,6 +587,10 @@ export interface ClusterArgs {
      * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     */
+    sourceResourceId?: pulumi.Input<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */

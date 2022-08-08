@@ -272,6 +272,36 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
+// The resource ID of Access Group.
+func (o AccessRuleOutput) AccessGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Access Rule.
+func (o AccessRuleOutput) AccessRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessRuleId }).(pulumi.StringOutput)
+}
+
+// The Description of the Access Rule.
+func (o AccessRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The NetworkSegment of the Access Rule.
+func (o AccessRuleOutput) NetworkSegment() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.NetworkSegment }).(pulumi.StringOutput)
+}
+
+// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+func (o AccessRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+func (o AccessRuleOutput) RwAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.RwAccessType }).(pulumi.StringOutput)
+}
+
 type AccessRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleArrayOutput) ElementType() reflect.Type {

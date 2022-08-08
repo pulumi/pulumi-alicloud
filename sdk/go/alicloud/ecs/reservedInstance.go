@@ -297,6 +297,60 @@ func (o ReservedInstanceOutput) ToReservedInstanceOutputWithContext(ctx context.
 	return o
 }
 
+// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+func (o ReservedInstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
+func (o ReservedInstanceOutput) InstanceAmount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.IntOutput { return v.InstanceAmount }).(pulumi.IntOutput)
+}
+
+// Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
+func (o ReservedInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+func (o ReservedInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+func (o ReservedInstanceOutput) OfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.OfferingType }).(pulumi.StringPtrOutput)
+}
+
+func (o ReservedInstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Term unit. Optional value: Year.
+func (o ReservedInstanceOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
+func (o ReservedInstanceOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
+}
+
+// Resource group ID.
+func (o ReservedInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
+func (o ReservedInstanceOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
+func (o ReservedInstanceOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type ReservedInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ReservedInstanceArrayOutput) ElementType() reflect.Type {

@@ -114,6 +114,42 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpGroupsResult> getBgpGroups() {
         return getBgpGroups(GetBgpGroupsArgs.Empty, InvokeOptions.Empty);
@@ -124,6 +160,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpGroupsResult> getBgpGroupsPlain() {
@@ -136,6 +208,42 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpGroupsResult> getBgpGroups(GetBgpGroupsArgs args) {
         return getBgpGroups(args, InvokeOptions.Empty);
@@ -146,6 +254,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpGroupsResult> getBgpGroupsPlain(GetBgpGroupsPlainArgs args) {
@@ -158,6 +302,42 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpGroupsResult> getBgpGroups(GetBgpGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getBgpGroups:getBgpGroups", TypeShape.of(GetBgpGroupsResult.class), args, Utilities.withVersion(options));
@@ -168,6 +348,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpGroupsResult> getBgpGroupsPlain(GetBgpGroupsPlainArgs args, InvokeOptions options) {
@@ -180,6 +396,47 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpNetworksResult> getBgpNetworks() {
         return getBgpNetworks(GetBgpNetworksArgs.Empty, InvokeOptions.Empty);
@@ -190,6 +447,47 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpNetworksResult> getBgpNetworksPlain() {
@@ -202,6 +500,47 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpNetworksResult> getBgpNetworks(GetBgpNetworksArgs args) {
         return getBgpNetworks(args, InvokeOptions.Empty);
@@ -212,6 +551,47 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpNetworksResult> getBgpNetworksPlain(GetBgpNetworksPlainArgs args) {
@@ -224,6 +604,47 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpNetworksResult> getBgpNetworks(GetBgpNetworksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getBgpNetworks:getBgpNetworks", TypeShape.of(GetBgpNetworksResult.class), args, Utilities.withVersion(options));
@@ -234,6 +655,47 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpNetworksResult> getBgpNetworksPlain(GetBgpNetworksPlainArgs args, InvokeOptions options) {
@@ -246,6 +708,54 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpPeersResult> getBgpPeers() {
         return getBgpPeers(GetBgpPeersArgs.Empty, InvokeOptions.Empty);
@@ -256,6 +766,54 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpPeersResult> getBgpPeersPlain() {
@@ -268,6 +826,54 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpPeersResult> getBgpPeers(GetBgpPeersArgs args) {
         return getBgpPeers(args, InvokeOptions.Empty);
@@ -278,6 +884,54 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBgpPeersResult> getBgpPeersPlain(GetBgpPeersPlainArgs args) {
@@ -290,6 +944,54 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBgpPeersResult> getBgpPeers(GetBgpPeersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getBgpPeers:getBgpPeers", TypeShape.of(GetBgpPeersResult.class), args, Utilities.withVersion(options));
@@ -301,6 +1003,54 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .routerId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetBgpPeersResult> getBgpPeersPlain(GetBgpPeersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getBgpPeers:getBgpPeers", TypeShape.of(GetBgpPeersResult.class), args, Utilities.withVersion(options));
@@ -311,6 +1061,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+     *             .bandwidth(&#34;2&#34;)
+     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *             .build());
+     * 
+     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
+     *             .ids(fooCommonBandwithPackage.id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -329,6 +1115,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+     *             .bandwidth(&#34;2&#34;)
+     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *             .build());
+     * 
+     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
+     *             .ids(fooCommonBandwithPackage.id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -347,6 +1169,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+     *             .bandwidth(&#34;2&#34;)
+     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *             .build());
+     * 
+     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
+     *             .ids(fooCommonBandwithPackage.id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -365,6 +1223,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+     *             .bandwidth(&#34;2&#34;)
+     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *             .build());
+     * 
+     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
+     *             .ids(fooCommonBandwithPackage.id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -383,6 +1277,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+     *             .bandwidth(&#34;2&#34;)
+     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *             .build());
+     * 
+     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
+     *             .ids(fooCommonBandwithPackage.id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -401,6 +1331,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+     *             .bandwidth(&#34;2&#34;)
+     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *             .build());
+     * 
+     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
+     *             .ids(fooCommonBandwithPackage.id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -420,6 +1386,59 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .domainName(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDhcpOptionsSetsResult> getDhcpOptionsSets() {
         return getDhcpOptionsSets(GetDhcpOptionsSetsArgs.Empty, InvokeOptions.Empty);
@@ -430,6 +1449,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .domainName(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDhcpOptionsSetsResult> getDhcpOptionsSetsPlain() {
@@ -442,6 +1514,59 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .domainName(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDhcpOptionsSetsResult> getDhcpOptionsSets(GetDhcpOptionsSetsArgs args) {
         return getDhcpOptionsSets(args, InvokeOptions.Empty);
@@ -452,6 +1577,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .domainName(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDhcpOptionsSetsResult> getDhcpOptionsSetsPlain(GetDhcpOptionsSetsPlainArgs args) {
@@ -464,6 +1642,59 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .domainName(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDhcpOptionsSetsResult> getDhcpOptionsSets(GetDhcpOptionsSetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", TypeShape.of(GetDhcpOptionsSetsResult.class), args, Utilities.withVersion(options));
@@ -474,6 +1705,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .domainName(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDhcpOptionsSetsResult> getDhcpOptionsSetsPlain(GetDhcpOptionsSetsPlainArgs args, InvokeOptions options) {
@@ -503,6 +1787,89 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.ForwardEntry;
+     * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchName(name)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(defaultEipAddress.id())
+     *             .instanceId(defaultNatGateway.id())
+     *             .build());
+     * 
+     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .externalIp(defaultEipAddress.ipAddress())
+     *             .externalPort(&#34;80&#34;)
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .internalIp(&#34;172.16.0.3&#34;)
+     *             .internalPort(&#34;8080&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .build());
+     * 
+     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *             .forwardTableId(defaultForwardEntry.forwardTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetForwardEntriesResult> getForwardEntries(GetForwardEntriesArgs args) {
@@ -514,6 +1881,89 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.ForwardEntry;
+     * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchName(name)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(defaultEipAddress.id())
+     *             .instanceId(defaultNatGateway.id())
+     *             .build());
+     * 
+     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .externalIp(defaultEipAddress.ipAddress())
+     *             .externalPort(&#34;80&#34;)
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .internalIp(&#34;172.16.0.3&#34;)
+     *             .internalPort(&#34;8080&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .build());
+     * 
+     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *             .forwardTableId(defaultForwardEntry.forwardTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetForwardEntriesResult> getForwardEntriesPlain(GetForwardEntriesPlainArgs args) {
@@ -525,6 +1975,89 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.ForwardEntry;
+     * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchName(name)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(defaultEipAddress.id())
+     *             .instanceId(defaultNatGateway.id())
+     *             .build());
+     * 
+     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .externalIp(defaultEipAddress.ipAddress())
+     *             .externalPort(&#34;80&#34;)
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .internalIp(&#34;172.16.0.3&#34;)
+     *             .internalPort(&#34;8080&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .build());
+     * 
+     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *             .forwardTableId(defaultForwardEntry.forwardTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetForwardEntriesResult> getForwardEntries(GetForwardEntriesArgs args, InvokeOptions options) {
@@ -536,6 +2069,89 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.ForwardEntry;
+     * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchName(name)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(defaultEipAddress.id())
+     *             .instanceId(defaultNatGateway.id())
+     *             .build());
+     * 
+     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .externalIp(defaultEipAddress.ipAddress())
+     *             .externalPort(&#34;80&#34;)
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .internalIp(&#34;172.16.0.3&#34;)
+     *             .internalPort(&#34;8080&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .build());
+     * 
+     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *             .forwardTableId(defaultForwardEntry.forwardTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetForwardEntriesResult> getForwardEntriesPlain(GetForwardEntriesPlainArgs args, InvokeOptions options) {
@@ -548,6 +2164,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHavipsResult> getHavips() {
         return getHavips(GetHavipsArgs.Empty, InvokeOptions.Empty);
@@ -558,6 +2206,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHavipsResult> getHavipsPlain() {
@@ -570,6 +2250,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHavipsResult> getHavips(GetHavipsArgs args) {
         return getHavips(args, InvokeOptions.Empty);
@@ -580,6 +2292,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHavipsResult> getHavipsPlain(GetHavipsPlainArgs args) {
@@ -592,6 +2336,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHavipsResult> getHavips(GetHavipsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getHavips:getHavips", TypeShape.of(GetHavipsResult.class), args, Utilities.withVersion(options));
@@ -602,6 +2378,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHavipsResult> getHavipsPlain(GetHavipsPlainArgs args, InvokeOptions options) {
@@ -614,6 +2422,42 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpsecServersResult> getIpsecServers() {
         return getIpsecServers(GetIpsecServersArgs.Empty, InvokeOptions.Empty);
@@ -624,6 +2468,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpsecServersResult> getIpsecServersPlain() {
@@ -636,6 +2516,42 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpsecServersResult> getIpsecServers(GetIpsecServersArgs args) {
         return getIpsecServers(args, InvokeOptions.Empty);
@@ -646,6 +2562,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpsecServersResult> getIpsecServersPlain(GetIpsecServersPlainArgs args) {
@@ -658,6 +2610,42 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpsecServersResult> getIpsecServers(GetIpsecServersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpsecServers:getIpsecServers", TypeShape.of(GetIpsecServersResult.class), args, Utilities.withVersion(options));
@@ -668,6 +2656,42 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
+     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpsecServersResult> getIpsecServersPlain(GetIpsecServersPlainArgs args, InvokeOptions options) {
@@ -680,6 +2704,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6AddressesResult> getIpv6Addresses() {
         return getIpv6Addresses(GetIpv6AddressesArgs.Empty, InvokeOptions.Empty);
@@ -690,6 +2760,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6AddressesResult> getIpv6AddressesPlain() {
@@ -702,6 +2818,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6AddressesResult> getIpv6Addresses(GetIpv6AddressesArgs args) {
         return getIpv6Addresses(args, InvokeOptions.Empty);
@@ -712,6 +2874,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6AddressesResult> getIpv6AddressesPlain(GetIpv6AddressesPlainArgs args) {
@@ -724,6 +2932,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6AddressesResult> getIpv6Addresses(GetIpv6AddressesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", TypeShape.of(GetIpv6AddressesResult.class), args, Utilities.withVersion(options));
@@ -734,6 +2988,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6AddressesResult> getIpv6AddressesPlain(GetIpv6AddressesPlainArgs args, InvokeOptions options) {
@@ -746,6 +3046,58 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6EgressRulesResult> getIpv6EgressRules(GetIpv6EgressRulesArgs args) {
         return getIpv6EgressRules(args, InvokeOptions.Empty);
@@ -756,6 +3108,58 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6EgressRulesResult> getIpv6EgressRulesPlain(GetIpv6EgressRulesPlainArgs args) {
@@ -768,6 +3172,58 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6EgressRulesResult> getIpv6EgressRules(GetIpv6EgressRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", TypeShape.of(GetIpv6EgressRulesResult.class), args, Utilities.withVersion(options));
@@ -778,6 +3234,58 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
+     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6EgressRulesResult> getIpv6EgressRulesPlain(GetIpv6EgressRulesPlainArgs args, InvokeOptions options) {
@@ -790,6 +3298,54 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6GatewaysResult> getIpv6Gateways() {
         return getIpv6Gateways(GetIpv6GatewaysArgs.Empty, InvokeOptions.Empty);
@@ -800,6 +3356,54 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6GatewaysResult> getIpv6GatewaysPlain() {
@@ -812,6 +3416,54 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6GatewaysResult> getIpv6Gateways(GetIpv6GatewaysArgs args) {
         return getIpv6Gateways(args, InvokeOptions.Empty);
@@ -822,6 +3474,54 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6GatewaysResult> getIpv6GatewaysPlain(GetIpv6GatewaysPlainArgs args) {
@@ -834,6 +3534,54 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6GatewaysResult> getIpv6Gateways(GetIpv6GatewaysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", TypeShape.of(GetIpv6GatewaysResult.class), args, Utilities.withVersion(options));
@@ -844,6 +3592,54 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6GatewaysResult> getIpv6GatewaysPlain(GetIpv6GatewaysPlainArgs args, InvokeOptions options) {
@@ -856,6 +3652,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .status(&#34;Normal&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidths() {
         return getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.Empty, InvokeOptions.Empty);
@@ -866,6 +3708,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .status(&#34;Normal&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidthsPlain() {
@@ -878,6 +3766,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .status(&#34;Normal&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs args) {
         return getIpv6InternetBandwidths(args, InvokeOptions.Empty);
@@ -888,6 +3822,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .status(&#34;Normal&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidthsPlain(GetIpv6InternetBandwidthsPlainArgs args) {
@@ -900,6 +3880,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .status(&#34;Normal&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", TypeShape.of(GetIpv6InternetBandwidthsResult.class), args, Utilities.withVersion(options));
@@ -911,6 +3937,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
+     *             .status(&#34;Normal&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidthsPlain(GetIpv6InternetBandwidthsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", TypeShape.of(GetIpv6InternetBandwidthsResult.class), args, Utilities.withVersion(options));
@@ -921,6 +3993,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .natGateName(name)
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .ids(fooNatGateway.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNatGatewaysResult> getNatGateways() {
@@ -932,6 +4057,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .natGateName(name)
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .ids(fooNatGateway.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNatGatewaysResult> getNatGatewaysPlain() {
@@ -943,6 +4121,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .natGateName(name)
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .ids(fooNatGateway.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNatGatewaysResult> getNatGateways(GetNatGatewaysArgs args) {
@@ -954,6 +4185,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .natGateName(name)
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .ids(fooNatGateway.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNatGatewaysResult> getNatGatewaysPlain(GetNatGatewaysPlainArgs args) {
@@ -965,6 +4249,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .natGateName(name)
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .ids(fooNatGateway.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNatGatewaysResult> getNatGateways(GetNatGatewaysArgs args, InvokeOptions options) {
@@ -976,6 +4313,59 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .natGateName(name)
+     *             .specification(&#34;Small&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .ids(fooNatGateway.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNatGatewaysResult> getNatGatewaysPlain(GetNatGatewaysPlainArgs args, InvokeOptions options) {
@@ -988,6 +4378,65 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNatIpCidrsResult> getNatIpCidrs(GetNatIpCidrsArgs args) {
         return getNatIpCidrs(args, InvokeOptions.Empty);
@@ -998,6 +4447,65 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNatIpCidrsResult> getNatIpCidrsPlain(GetNatIpCidrsPlainArgs args) {
@@ -1010,6 +4518,65 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNatIpCidrsResult> getNatIpCidrs(GetNatIpCidrsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", TypeShape.of(GetNatIpCidrsResult.class), args, Utilities.withVersion(options));
@@ -1020,6 +4587,65 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value-1&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNatIpCidrsResult> getNatIpCidrsPlain(GetNatIpCidrsPlainArgs args, InvokeOptions options) {
@@ -1032,6 +4658,74 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidr(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpNames(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpIds(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNatIpsResult> getNatIps(GetNatIpsArgs args) {
         return getNatIps(args, InvokeOptions.Empty);
@@ -1042,6 +4736,74 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidr(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpNames(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpIds(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNatIpsResult> getNatIpsPlain(GetNatIpsPlainArgs args) {
@@ -1054,6 +4816,74 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidr(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpNames(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpIds(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNatIpsResult> getNatIps(GetNatIpsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getNatIps:getNatIps", TypeShape.of(GetNatIpsResult.class), args, Utilities.withVersion(options));
@@ -1064,6 +4894,74 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natIpCidr(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpNames(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .natIpIds(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
+     *             .natGatewayId(&#34;example_value&#34;)
+     *             .ids(&#34;example_value&#34;)
+     *             .status(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNatIpsResult> getNatIpsPlain(GetNatIpsPlainArgs args, InvokeOptions options) {
@@ -1076,6 +4974,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNetworkAclsResult> getNetworkAcls() {
         return getNetworkAcls(GetNetworkAclsArgs.Empty, InvokeOptions.Empty);
@@ -1086,6 +5016,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkAclsResult> getNetworkAclsPlain() {
@@ -1098,6 +5060,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNetworkAclsResult> getNetworkAcls(GetNetworkAclsArgs args) {
         return getNetworkAcls(args, InvokeOptions.Empty);
@@ -1108,6 +5102,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkAclsResult> getNetworkAclsPlain(GetNetworkAclsPlainArgs args) {
@@ -1120,6 +5146,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNetworkAclsResult> getNetworkAcls(GetNetworkAclsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getNetworkAcls:getNetworkAcls", TypeShape.of(GetNetworkAclsResult.class), args, Utilities.withVersion(options));
@@ -1131,6 +5189,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetNetworkAclsResult> getNetworkAclsPlain(GetNetworkAclsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getNetworkAcls:getNetworkAcls", TypeShape.of(GetNetworkAclsResult.class), args, Utilities.withVersion(options));
@@ -1139,6 +5229,37 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworksResult> getNetworks() {
@@ -1148,6 +5269,37 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain() {
@@ -1157,6 +5309,37 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args) {
@@ -1166,6 +5349,37 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args) {
@@ -1175,6 +5389,37 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
@@ -1184,6 +5429,37 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {
@@ -1195,6 +5471,36 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
+     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPbrRouteEntriesResult> getPbrRouteEntries(GetPbrRouteEntriesArgs args) {
@@ -1206,6 +5512,36 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
+     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPbrRouteEntriesResult> getPbrRouteEntriesPlain(GetPbrRouteEntriesPlainArgs args) {
@@ -1217,6 +5553,36 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
+     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPbrRouteEntriesResult> getPbrRouteEntries(GetPbrRouteEntriesArgs args, InvokeOptions options) {
@@ -1228,6 +5594,36 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
+     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPbrRouteEntriesResult> getPbrRouteEntriesPlain(GetPbrRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -1239,6 +5635,116 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.RouteEntry;
+     * import com.pulumi.alicloud.vpc.RouteEntryArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .description(&#34;foo&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .allocatePublicIp(true)
+     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceName(name)
+     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .internetMaxBandwidthOut(5)
+     *             .securityGroups(tfTestFoo.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(fooSwitch.id())
+     *             .build());
+     * 
+     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopId(fooInstance.id())
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .routeTableId(fooNetwork.routeTableId())
+     *             .build());
+     * 
+     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;intranet&#34;)
+     *             .policy(&#34;accept&#34;)
+     *             .portRange(&#34;22/22&#34;)
+     *             .priority(1)
+     *             .securityGroupId(tfTestFoo.id())
+     *             .type(&#34;ingress&#34;)
+     *             .build());
+     * 
+     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .routeTableId(fooRouteEntry.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args) {
@@ -1250,6 +5756,116 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.RouteEntry;
+     * import com.pulumi.alicloud.vpc.RouteEntryArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .description(&#34;foo&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .allocatePublicIp(true)
+     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceName(name)
+     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .internetMaxBandwidthOut(5)
+     *             .securityGroups(tfTestFoo.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(fooSwitch.id())
+     *             .build());
+     * 
+     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopId(fooInstance.id())
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .routeTableId(fooNetwork.routeTableId())
+     *             .build());
+     * 
+     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;intranet&#34;)
+     *             .policy(&#34;accept&#34;)
+     *             .portRange(&#34;22/22&#34;)
+     *             .priority(1)
+     *             .securityGroupId(tfTestFoo.id())
+     *             .type(&#34;ingress&#34;)
+     *             .build());
+     * 
+     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .routeTableId(fooRouteEntry.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args) {
@@ -1261,6 +5877,116 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.RouteEntry;
+     * import com.pulumi.alicloud.vpc.RouteEntryArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .description(&#34;foo&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .allocatePublicIp(true)
+     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceName(name)
+     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .internetMaxBandwidthOut(5)
+     *             .securityGroups(tfTestFoo.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(fooSwitch.id())
+     *             .build());
+     * 
+     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopId(fooInstance.id())
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .routeTableId(fooNetwork.routeTableId())
+     *             .build());
+     * 
+     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;intranet&#34;)
+     *             .policy(&#34;accept&#34;)
+     *             .portRange(&#34;22/22&#34;)
+     *             .priority(1)
+     *             .securityGroupId(tfTestFoo.id())
+     *             .type(&#34;ingress&#34;)
+     *             .build());
+     * 
+     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .routeTableId(fooRouteEntry.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args, InvokeOptions options) {
@@ -1272,6 +5998,116 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.RouteEntry;
+     * import com.pulumi.alicloud.vpc.RouteEntryArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .description(&#34;foo&#34;)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .allocatePublicIp(true)
+     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceName(name)
+     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .internetMaxBandwidthOut(5)
+     *             .securityGroups(tfTestFoo.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(fooSwitch.id())
+     *             .build());
+     * 
+     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopId(fooInstance.id())
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .routeTableId(fooNetwork.routeTableId())
+     *             .build());
+     * 
+     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;intranet&#34;)
+     *             .policy(&#34;accept&#34;)
+     *             .portRange(&#34;22/22&#34;)
+     *             .priority(1)
+     *             .securityGroupId(tfTestFoo.id())
+     *             .type(&#34;ingress&#34;)
+     *             .build());
+     * 
+     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .routeTableId(fooRouteEntry.routeTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -1283,6 +6119,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.RouteTable;
+     * import com.pulumi.alicloud.vpc.RouteTableArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *             .description(name)
+     *             .routeTableName(name)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *             .ids(fooRouteTable.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteTablesResult> getRouteTables() {
@@ -1294,6 +6176,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.RouteTable;
+     * import com.pulumi.alicloud.vpc.RouteTableArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *             .description(name)
+     *             .routeTableName(name)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *             .ids(fooRouteTable.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteTablesResult> getRouteTablesPlain() {
@@ -1305,6 +6233,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.RouteTable;
+     * import com.pulumi.alicloud.vpc.RouteTableArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *             .description(name)
+     *             .routeTableName(name)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *             .ids(fooRouteTable.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteTablesResult> getRouteTables(GetRouteTablesArgs args) {
@@ -1316,6 +6290,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.RouteTable;
+     * import com.pulumi.alicloud.vpc.RouteTableArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *             .description(name)
+     *             .routeTableName(name)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *             .ids(fooRouteTable.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteTablesResult> getRouteTablesPlain(GetRouteTablesPlainArgs args) {
@@ -1327,6 +6347,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.RouteTable;
+     * import com.pulumi.alicloud.vpc.RouteTableArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *             .description(name)
+     *             .routeTableName(name)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *             .ids(fooRouteTable.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteTablesResult> getRouteTables(GetRouteTablesArgs args, InvokeOptions options) {
@@ -1338,6 +6404,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.RouteTable;
+     * import com.pulumi.alicloud.vpc.RouteTableArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *             .description(name)
+     *             .routeTableName(name)
+     *             .vpcId(fooNetwork.id())
+     *             .build());
+     * 
+     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *             .ids(fooRouteTable.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteTablesResult> getRouteTablesPlain(GetRouteTablesPlainArgs args, InvokeOptions options) {
@@ -1348,6 +6460,36 @@ public final class VpcFunctions {
      * that connect VPCs together.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .nameRegex(&#34;^testenv&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces() {
@@ -1358,6 +6500,36 @@ public final class VpcFunctions {
      * that connect VPCs together.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .nameRegex(&#34;^testenv&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain() {
@@ -1368,6 +6540,36 @@ public final class VpcFunctions {
      * that connect VPCs together.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .nameRegex(&#34;^testenv&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args) {
@@ -1378,6 +6580,36 @@ public final class VpcFunctions {
      * that connect VPCs together.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .nameRegex(&#34;^testenv&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args) {
@@ -1388,6 +6620,36 @@ public final class VpcFunctions {
      * that connect VPCs together.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .nameRegex(&#34;^testenv&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args, InvokeOptions options) {
@@ -1398,6 +6660,36 @@ public final class VpcFunctions {
      * that connect VPCs together.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .nameRegex(&#34;^testenv&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args, InvokeOptions options) {
@@ -1409,6 +6701,85 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .build());
+     * 
+     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(fooEipAddress.id())
+     *             .instanceId(fooNatGateway.id())
+     *             .build());
+     * 
+     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *             .snatTableId(fooNatGateway.snatTableIds())
+     *             .sourceVswitchId(fooSwitch.id())
+     *             .snatIp(fooEipAddress.ipAddress())
+     *             .build());
+     * 
+     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *             .snatTableId(fooSnatEntry.snatTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSnatEntriesResult> getSnatEntries(GetSnatEntriesArgs args) {
@@ -1420,6 +6791,85 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .build());
+     * 
+     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(fooEipAddress.id())
+     *             .instanceId(fooNatGateway.id())
+     *             .build());
+     * 
+     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *             .snatTableId(fooNatGateway.snatTableIds())
+     *             .sourceVswitchId(fooSwitch.id())
+     *             .snatIp(fooEipAddress.ipAddress())
+     *             .build());
+     * 
+     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *             .snatTableId(fooSnatEntry.snatTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSnatEntriesResult> getSnatEntriesPlain(GetSnatEntriesPlainArgs args) {
@@ -1431,6 +6881,85 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .build());
+     * 
+     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(fooEipAddress.id())
+     *             .instanceId(fooNatGateway.id())
+     *             .build());
+     * 
+     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *             .snatTableId(fooNatGateway.snatTableIds())
+     *             .sourceVswitchId(fooSwitch.id())
+     *             .snatIp(fooEipAddress.ipAddress())
+     *             .build());
+     * 
+     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *             .snatTableId(fooSnatEntry.snatTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSnatEntriesResult> getSnatEntries(GetSnatEntriesArgs args, InvokeOptions options) {
@@ -1442,6 +6971,85 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .build());
+     * 
+     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *             .allocationId(fooEipAddress.id())
+     *             .instanceId(fooNatGateway.id())
+     *             .build());
+     * 
+     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *             .snatTableId(fooNatGateway.snatTableIds())
+     *             .sourceVswitchId(fooSwitch.id())
+     *             .snatIp(fooEipAddress.ipAddress())
+     *             .build());
+     * 
+     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *             .snatTableId(fooSnatEntry.snatTableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSnatEntriesResult> getSnatEntriesPlain(GetSnatEntriesPlainArgs args, InvokeOptions options) {
@@ -1451,6 +7059,37 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
+     *             .ids(&#34;fake-cert-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSslVpnClientCertsResult> getSslVpnClientCerts() {
@@ -1460,6 +7099,37 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
+     *             .ids(&#34;fake-cert-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSslVpnClientCertsResult> getSslVpnClientCertsPlain() {
@@ -1469,6 +7139,37 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
+     *             .ids(&#34;fake-cert-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSslVpnClientCertsResult> getSslVpnClientCerts(GetSslVpnClientCertsArgs args) {
@@ -1478,6 +7179,37 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
+     *             .ids(&#34;fake-cert-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSslVpnClientCertsResult> getSslVpnClientCertsPlain(GetSslVpnClientCertsPlainArgs args) {
@@ -1487,6 +7219,37 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
+     *             .ids(&#34;fake-cert-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSslVpnClientCertsResult> getSslVpnClientCerts(GetSslVpnClientCertsArgs args, InvokeOptions options) {
@@ -1496,6 +7259,37 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
+     *             .ids(&#34;fake-cert-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSslVpnClientCertsResult> getSslVpnClientCertsPlain(GetSslVpnClientCertsPlainArgs args, InvokeOptions options) {
@@ -1505,6 +7299,37 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
+     *             .ids(&#34;fake-server-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSslVpnServersResult> getSslVpnServers() {
@@ -1514,6 +7339,37 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
+     *             .ids(&#34;fake-server-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSslVpnServersResult> getSslVpnServersPlain() {
@@ -1523,6 +7379,37 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
+     *             .ids(&#34;fake-server-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSslVpnServersResult> getSslVpnServers(GetSslVpnServersArgs args) {
@@ -1532,6 +7419,37 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
+     *             .ids(&#34;fake-server-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSslVpnServersResult> getSslVpnServersPlain(GetSslVpnServersPlainArgs args) {
@@ -1541,6 +7459,37 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
+     *             .ids(&#34;fake-server-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSslVpnServersResult> getSslVpnServers(GetSslVpnServersArgs args, InvokeOptions options) {
@@ -1550,6 +7499,37 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
+     *             .ids(&#34;fake-server-id&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSslVpnServersResult> getSslVpnServersPlain(GetSslVpnServersPlainArgs args, InvokeOptions options) {
@@ -1559,6 +7539,56 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones();
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .nameRegex(vswitch.vswitchName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSwitchesResult> getSwitches() {
@@ -1568,6 +7598,56 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones();
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .nameRegex(vswitch.vswitchName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSwitchesResult> getSwitchesPlain() {
@@ -1577,6 +7657,56 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones();
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .nameRegex(vswitch.vswitchName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSwitchesResult> getSwitches(GetSwitchesArgs args) {
@@ -1586,6 +7716,56 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones();
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .nameRegex(vswitch.vswitchName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSwitchesResult> getSwitchesPlain(GetSwitchesPlainArgs args) {
@@ -1595,6 +7775,56 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones();
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .nameRegex(vswitch.vswitchName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSwitchesResult> getSwitches(GetSwitchesArgs args, InvokeOptions options) {
@@ -1604,6 +7834,56 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones();
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .nameRegex(vswitch.vswitchName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSwitchesResult> getSwitchesPlain(GetSwitchesPlainArgs args, InvokeOptions options) {
@@ -1616,6 +7896,45 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs args) {
         return getTrafficMirrorFilterEgressRules(args, InvokeOptions.Empty);
@@ -1626,6 +7945,45 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRulesPlain(GetTrafficMirrorFilterEgressRulesPlainArgs args) {
@@ -1638,6 +7996,45 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", TypeShape.of(GetTrafficMirrorFilterEgressRulesResult.class), args, Utilities.withVersion(options));
@@ -1648,6 +8045,45 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRulesPlain(GetTrafficMirrorFilterEgressRulesPlainArgs args, InvokeOptions options) {
@@ -1660,6 +8096,45 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs args) {
         return getTrafficMirrorFilterIngressRules(args, InvokeOptions.Empty);
@@ -1670,6 +8145,45 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRulesPlain(GetTrafficMirrorFilterIngressRulesPlainArgs args) {
@@ -1682,6 +8196,45 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", TypeShape.of(GetTrafficMirrorFilterIngressRulesResult.class), args, Utilities.withVersion(options));
@@ -1692,6 +8245,45 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
+     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRulesPlain(GetTrafficMirrorFilterIngressRulesPlainArgs args, InvokeOptions options) {
@@ -1704,6 +8296,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorFiltersResult> getTrafficMirrorFilters() {
         return getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.Empty, InvokeOptions.Empty);
@@ -1714,6 +8352,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFiltersResult> getTrafficMirrorFiltersPlain() {
@@ -1726,6 +8410,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorFiltersResult> getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs args) {
         return getTrafficMirrorFilters(args, InvokeOptions.Empty);
@@ -1736,6 +8466,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFiltersResult> getTrafficMirrorFiltersPlain(GetTrafficMirrorFiltersPlainArgs args) {
@@ -1748,6 +8524,52 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorFiltersResult> getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", TypeShape.of(GetTrafficMirrorFiltersResult.class), args, Utilities.withVersion(options));
@@ -1758,6 +8580,52 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
+     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFiltersResult> getTrafficMirrorFiltersPlain(GetTrafficMirrorFiltersPlainArgs args, InvokeOptions options) {
@@ -1771,6 +8639,34 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTrafficMirrorServiceResult> getTrafficMirrorService() {
@@ -1784,6 +8680,34 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorServiceResult> getTrafficMirrorServicePlain() {
@@ -1797,6 +8721,34 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTrafficMirrorServiceResult> getTrafficMirrorService(GetTrafficMirrorServiceArgs args) {
@@ -1810,6 +8762,34 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorServiceResult> getTrafficMirrorServicePlain(GetTrafficMirrorServicePlainArgs args) {
@@ -1823,6 +8803,34 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTrafficMirrorServiceResult> getTrafficMirrorService(GetTrafficMirrorServiceArgs args, InvokeOptions options) {
@@ -1836,6 +8844,34 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.141.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorServiceResult> getTrafficMirrorServicePlain(GetTrafficMirrorServicePlainArgs args, InvokeOptions options) {
@@ -1848,6 +8884,84 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .enabled(&#34;false&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .priority(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorSessionsResult> getTrafficMirrorSessions() {
         return getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.Empty, InvokeOptions.Empty);
@@ -1858,6 +8972,84 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .enabled(&#34;false&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .priority(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorSessionsResult> getTrafficMirrorSessionsPlain() {
@@ -1870,6 +9062,84 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .enabled(&#34;false&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .priority(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorSessionsResult> getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs args) {
         return getTrafficMirrorSessions(args, InvokeOptions.Empty);
@@ -1880,6 +9150,84 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .enabled(&#34;false&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .priority(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorSessionsResult> getTrafficMirrorSessionsPlain(GetTrafficMirrorSessionsPlainArgs args) {
@@ -1892,6 +9240,84 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .enabled(&#34;false&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .priority(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMirrorSessionsResult> getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", TypeShape.of(GetTrafficMirrorSessionsResult.class), args, Utilities.withVersion(options));
@@ -1902,6 +9328,84 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .enabled(&#34;false&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .priority(&#34;1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .status(&#34;Created&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMirrorSessionsResult> getTrafficMirrorSessionsPlain(GetTrafficMirrorSessionsPlainArgs args, InvokeOptions options) {
@@ -1914,6 +9418,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcFlowLogsResult> getVpcFlowLogs() {
         return getVpcFlowLogs(GetVpcFlowLogsArgs.Empty, InvokeOptions.Empty);
@@ -1924,6 +9460,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcFlowLogsResult> getVpcFlowLogsPlain() {
@@ -1936,6 +9504,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcFlowLogsResult> getVpcFlowLogs(GetVpcFlowLogsArgs args) {
         return getVpcFlowLogs(args, InvokeOptions.Empty);
@@ -1946,6 +9546,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcFlowLogsResult> getVpcFlowLogsPlain(GetVpcFlowLogsPlainArgs args) {
@@ -1958,6 +9590,38 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcFlowLogsResult> getVpcFlowLogs(GetVpcFlowLogsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", TypeShape.of(GetVpcFlowLogsResult.class), args, Utilities.withVersion(options));
@@ -1968,6 +9632,38 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcFlowLogsResult> getVpcFlowLogsPlain(GetVpcFlowLogsPlainArgs args, InvokeOptions options) {

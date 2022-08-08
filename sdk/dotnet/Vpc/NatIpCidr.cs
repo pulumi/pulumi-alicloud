@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         {
     ///             NatGatewayId = exampleNatGateway.Id,
     ///             NatIpCidrName = "example_value",
-    ///             NatIpCidr = "example_value",
+    ///             NatIpCidrBlock = "example_value",
     ///         });
     ///     }
     /// 

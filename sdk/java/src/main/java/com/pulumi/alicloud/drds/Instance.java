@@ -26,6 +26,39 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.drds.Instance;
+ * import com.pulumi.alicloud.drds.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .description(&#34;drds instance&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instanceSeries(&#34;drds.sn1.4c8g&#34;)
+ *             .specification(&#34;drds.sn1.4c8g.8C16G&#34;)
+ *             .vswitchId(&#34;vsw-bp1jlu3swk8rq2yoi40ey&#34;)
+ *             .zoneId(&#34;cn-hangzhou-e&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

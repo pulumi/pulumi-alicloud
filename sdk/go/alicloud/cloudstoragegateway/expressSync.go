@@ -336,6 +336,31 @@ func (o ExpressSyncOutput) ToExpressSyncOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// The name of the OSS Bucket.
+func (o ExpressSyncOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressSync) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The prefix of the OSS Bucket.
+func (o ExpressSyncOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressSync) pulumi.StringPtrOutput { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The region of the OSS Bucket.
+func (o ExpressSyncOutput) BucketRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressSync) pulumi.StringOutput { return v.BucketRegion }).(pulumi.StringOutput)
+}
+
+// The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
+func (o ExpressSyncOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressSync) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
+func (o ExpressSyncOutput) ExpressSyncName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressSync) pulumi.StringOutput { return v.ExpressSyncName }).(pulumi.StringOutput)
+}
+
 type ExpressSyncArrayOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncArrayOutput) ElementType() reflect.Type {

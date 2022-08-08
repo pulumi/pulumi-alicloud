@@ -340,6 +340,71 @@ func (o DbInstanceOutput) ToDbInstanceOutputWithContext(ctx context.Context) DbI
 	return o
 }
 
+// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
+func (o DbInstanceOutput) DbInstanceCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.DbInstanceCategory }).(pulumi.StringOutput)
+}
+
+// According to the practical example or notes.
+func (o DbInstanceOutput) DbInstanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
+}
+
+// IP ADDRESS whitelist for the instance group list. See the following `Block dbInstanceIpArray`.
+func (o DbInstanceOutput) DbInstanceIpArrays() DbInstanceDbInstanceIpArrayArrayOutput {
+	return o.ApplyT(func(v *DbInstance) DbInstanceDbInstanceIpArrayArrayOutput { return v.DbInstanceIpArrays }).(DbInstanceDbInstanceIpArrayArrayOutput)
+}
+
+// The network type of the db instance. Valid values: `vpc`.
+func (o DbInstanceOutput) DbInstanceNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.DbInstanceNetworkType }).(pulumi.StringOutput)
+}
+
+// Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
+func (o DbInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
+// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
+func (o DbInstanceOutput) DbNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.DbNodeClass }).(pulumi.StringOutput)
+}
+
+// Instance storage space, which is measured in GB.
+func (o DbInstanceOutput) DbNodeStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.IntOutput { return v.DbNodeStorage }).(pulumi.IntOutput)
+}
+
+// Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
+func (o DbInstanceOutput) DbVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.DbVersion }).(pulumi.StringOutput)
+}
+
+// The paymen type of the resource. Valid values: `PayAsYouGo`.
+func (o DbInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+func (o DbInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// ID of the VPC.
+func (o DbInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of attaching vswitch to instance.
+func (o DbInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the resource.
+func (o DbInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type DbInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceArrayOutput) ElementType() reflect.Type {

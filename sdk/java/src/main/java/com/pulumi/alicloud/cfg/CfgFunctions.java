@@ -45,6 +45,39 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregateCompliancePacksResult> getAggregateCompliancePacks(GetAggregateCompliancePacksArgs args) {
         return getAggregateCompliancePacks(args, InvokeOptions.Empty);
@@ -55,6 +88,39 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregateCompliancePacksResult> getAggregateCompliancePacksPlain(GetAggregateCompliancePacksPlainArgs args) {
@@ -67,6 +133,39 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregateCompliancePacksResult> getAggregateCompliancePacks(GetAggregateCompliancePacksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", TypeShape.of(GetAggregateCompliancePacksResult.class), args, Utilities.withVersion(options));
@@ -77,6 +176,39 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregateCompliancePacksResult> getAggregateCompliancePacksPlain(GetAggregateCompliancePacksPlainArgs args, InvokeOptions options) {
@@ -89,6 +221,39 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cr-5154626622af0034****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregateConfigRulesResult> getAggregateConfigRules(GetAggregateConfigRulesArgs args) {
         return getAggregateConfigRules(args, InvokeOptions.Empty);
@@ -99,6 +264,39 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cr-5154626622af0034****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregateConfigRulesResult> getAggregateConfigRulesPlain(GetAggregateConfigRulesPlainArgs args) {
@@ -111,6 +309,39 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cr-5154626622af0034****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregateConfigRulesResult> getAggregateConfigRules(GetAggregateConfigRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", TypeShape.of(GetAggregateConfigRulesResult.class), args, Utilities.withVersion(options));
@@ -121,6 +352,39 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
+     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
+     *             .ids(&#34;cr-5154626622af0034****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregateConfigRulesResult> getAggregateConfigRulesPlain(GetAggregateConfigRulesPlainArgs args, InvokeOptions options) {
@@ -133,6 +397,40 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
+     *             .aggregatorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregateDeliveriesResult> getAggregateDeliveries(GetAggregateDeliveriesArgs args) {
         return getAggregateDeliveries(args, InvokeOptions.Empty);
@@ -143,6 +441,40 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.172.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
+     *             .aggregatorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregateDeliveriesResult> getAggregateDeliveriesPlain(GetAggregateDeliveriesPlainArgs args) {
@@ -155,6 +487,40 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
+     *             .aggregatorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregateDeliveriesResult> getAggregateDeliveries(GetAggregateDeliveriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", TypeShape.of(GetAggregateDeliveriesResult.class), args, Utilities.withVersion(options));
@@ -165,6 +531,40 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.172.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
+     *             .aggregatorId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregateDeliveriesResult> getAggregateDeliveriesPlain(GetAggregateDeliveriesPlainArgs args, InvokeOptions options) {
@@ -177,6 +577,38 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
+     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregatorsResult> getAggregators() {
         return getAggregators(GetAggregatorsArgs.Empty, InvokeOptions.Empty);
@@ -187,6 +619,38 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
+     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregatorsResult> getAggregatorsPlain() {
@@ -199,6 +663,38 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
+     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregatorsResult> getAggregators(GetAggregatorsArgs args) {
         return getAggregators(args, InvokeOptions.Empty);
@@ -209,6 +705,38 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
+     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregatorsResult> getAggregatorsPlain(GetAggregatorsPlainArgs args) {
@@ -221,6 +749,38 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
+     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAggregatorsResult> getAggregators(GetAggregatorsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getAggregators:getAggregators", TypeShape.of(GetAggregatorsResult.class), args, Utilities.withVersion(options));
@@ -231,6 +791,38 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
+     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAggregatorsResult> getAggregatorsPlain(GetAggregatorsPlainArgs args, InvokeOptions options) {
@@ -243,6 +835,38 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCompliancePacksResult> getCompliancePacks() {
         return getCompliancePacks(GetCompliancePacksArgs.Empty, InvokeOptions.Empty);
@@ -253,6 +877,38 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCompliancePacksResult> getCompliancePacksPlain() {
@@ -265,6 +921,38 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCompliancePacksResult> getCompliancePacks(GetCompliancePacksArgs args) {
         return getCompliancePacks(args, InvokeOptions.Empty);
@@ -275,6 +963,38 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCompliancePacksResult> getCompliancePacksPlain(GetCompliancePacksPlainArgs args) {
@@ -287,6 +1007,38 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCompliancePacksResult> getCompliancePacks(GetCompliancePacksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getCompliancePacks:getCompliancePacks", TypeShape.of(GetCompliancePacksResult.class), args, Utilities.withVersion(options));
@@ -297,6 +1049,38 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.124.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
+     *             .ids(&#34;cp-152a626622af00bc****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCompliancePacksResult> getCompliancePacksPlain(GetCompliancePacksPlainArgs args, InvokeOptions options) {
@@ -310,6 +1094,33 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getConfigurationRecorders();
+     * 
+     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetConfigurationRecordersResult> getConfigurationRecorders() {
@@ -323,6 +1134,33 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getConfigurationRecorders();
+     * 
+     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigurationRecordersResult> getConfigurationRecordersPlain() {
@@ -336,6 +1174,33 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getConfigurationRecorders();
+     * 
+     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetConfigurationRecordersResult> getConfigurationRecorders(GetConfigurationRecordersArgs args) {
@@ -349,6 +1214,33 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getConfigurationRecorders();
+     * 
+     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigurationRecordersResult> getConfigurationRecordersPlain(GetConfigurationRecordersPlainArgs args) {
@@ -362,6 +1254,33 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getConfigurationRecorders();
+     * 
+     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetConfigurationRecordersResult> getConfigurationRecorders(GetConfigurationRecordersArgs args, InvokeOptions options) {
@@ -375,6 +1294,33 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getConfigurationRecorders();
+     * 
+     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigurationRecordersResult> getConfigurationRecordersPlain(GetConfigurationRecordersPlainArgs args, InvokeOptions options) {
@@ -387,6 +1333,37 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDeliveriesResult> getDeliveries() {
         return getDeliveries(GetDeliveriesArgs.Empty, InvokeOptions.Empty);
@@ -397,6 +1374,37 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.171.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDeliveriesResult> getDeliveriesPlain() {
@@ -409,6 +1417,37 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDeliveriesResult> getDeliveries(GetDeliveriesArgs args) {
         return getDeliveries(args, InvokeOptions.Empty);
@@ -419,6 +1458,37 @@ public final class CfgFunctions {
      * &gt; **NOTE:** Available in v1.171.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDeliveriesResult> getDeliveriesPlain(GetDeliveriesPlainArgs args) {
@@ -431,6 +1501,37 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDeliveriesResult> getDeliveries(GetDeliveriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getDeliveries:getDeliveries", TypeShape.of(GetDeliveriesResult.class), args, Utilities.withVersion(options));
@@ -442,12 +1543,73 @@ public final class CfgFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetDeliveriesResult> getDeliveriesPlain(GetDeliveriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cfg/getDeliveries:getDeliveries", TypeShape.of(GetDeliveriesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
+     *             .ids(&#34;cdc-49a2ad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDeliveryChannelsResult> getDeliveryChannels() {
@@ -455,6 +1617,36 @@ public final class CfgFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
+     *             .ids(&#34;cdc-49a2ad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDeliveryChannelsResult> getDeliveryChannelsPlain() {
@@ -462,6 +1654,36 @@ public final class CfgFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
+     *             .ids(&#34;cdc-49a2ad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDeliveryChannelsResult> getDeliveryChannels(GetDeliveryChannelsArgs args) {
@@ -469,6 +1691,36 @@ public final class CfgFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
+     *             .ids(&#34;cdc-49a2ad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDeliveryChannelsResult> getDeliveryChannelsPlain(GetDeliveryChannelsPlainArgs args) {
@@ -476,6 +1728,36 @@ public final class CfgFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
+     *             .ids(&#34;cdc-49a2ad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDeliveryChannelsResult> getDeliveryChannels(GetDeliveryChannelsArgs args, InvokeOptions options) {
@@ -483,6 +1765,36 @@ public final class CfgFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
+     *             .ids(&#34;cdc-49a2ad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDeliveryChannelsResult> getDeliveryChannelsPlain(GetDeliveryChannelsPlainArgs args, InvokeOptions options) {
@@ -496,6 +1808,36 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;cr-ed4bad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRulesResult> getRules() {
@@ -509,6 +1851,36 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;cr-ed4bad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain() {
@@ -522,6 +1894,36 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;cr-ed4bad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
@@ -535,6 +1937,36 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;cr-ed4bad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -548,6 +1980,36 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;cr-ed4bad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
@@ -561,6 +2023,36 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;cr-ed4bad756057********&#34;)
+     *             .nameRegex(&#34;tftest&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {

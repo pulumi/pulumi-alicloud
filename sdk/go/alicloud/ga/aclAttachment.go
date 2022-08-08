@@ -226,6 +226,33 @@ func (o AclAttachmentOutput) ToAclAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of an ACL.
+func (o AclAttachmentOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The type of the ACL. Valid values: `white`, `black`.
+// - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
+// - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+func (o AclAttachmentOutput) AclType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.AclType }).(pulumi.StringOutput)
+}
+
+// The dry run.
+func (o AclAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AclAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the listener.
+func (o AclAttachmentOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o AclAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AclAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AclAttachmentArrayOutput) ElementType() reflect.Type {

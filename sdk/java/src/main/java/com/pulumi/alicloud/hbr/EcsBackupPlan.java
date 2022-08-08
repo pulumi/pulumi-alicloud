@@ -24,6 +24,66 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.132.0+.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.hbr.EcsBackupPlan;
+ * import com.pulumi.alicloud.hbr.EcsBackupPlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;valut-name&#34;);
+ *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
+ *             .vaultName(name)
+ *             .build());
+ * 
+ *         final var defaultInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .nameRegex(&#34;no-deleteing-hbr-ecs-backup-plan&#34;)
+ *             .status(&#34;Running&#34;)
+ *             .build());
+ * 
+ *         var example = new EcsBackupPlan(&#34;example&#34;, EcsBackupPlanArgs.builder()        
+ *             .ecsBackupPlanName(&#34;example_value&#34;)
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *             .vaultId(defaultVault.id())
+ *             .retention(&#34;1&#34;)
+ *             .schedule(&#34;I|1602673264|PT2H&#34;)
+ *             .backupType(&#34;COMPLETE&#34;)
+ *             .speedLimit(&#34;0:24:5120&#34;)
+ *             .paths(            
+ *                 &#34;/home&#34;,
+ *                 &#34;/var&#34;)
+ *             .exclude(&#34;&#34;&#34;
+ *   [&#34;/home/exclude&#34;]
+ *             &#34;&#34;&#34;)
+ *             .include(&#34;&#34;&#34;
+ *   [&#34;/home/include&#34;]
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Notice
  * 
  * **About Backup path rules:**

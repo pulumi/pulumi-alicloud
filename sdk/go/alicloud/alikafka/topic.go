@@ -306,6 +306,41 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+func (o TopicOutput) CompactTopic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.BoolPtrOutput { return v.CompactTopic }).(pulumi.BoolPtrOutput)
+}
+
+// InstanceId of your Kafka resource, the topic will create in this instance.
+func (o TopicOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Whether the topic is localTopic or not.
+func (o TopicOutput) LocalTopic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.BoolPtrOutput { return v.LocalTopic }).(pulumi.BoolPtrOutput)
+}
+
+// The number of partitions of the topic. The number should between 1 and 48.
+func (o TopicOutput) PartitionNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntPtrOutput { return v.PartitionNum }).(pulumi.IntPtrOutput)
+}
+
+// This attribute is a concise description of topic. The length cannot exceed 64.
+func (o TopicOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Remark }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o TopicOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+func (o TopicOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
+}
+
 type TopicArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicArrayOutput) ElementType() reflect.Type {

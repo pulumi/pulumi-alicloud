@@ -177,6 +177,11 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
+// Name of the domain group.
+func (o GroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type GroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupArrayOutput) ElementType() reflect.Type {

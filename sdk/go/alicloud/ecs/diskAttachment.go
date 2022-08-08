@@ -262,6 +262,36 @@ func (o DiskAttachmentOutput) ToDiskAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DiskAttachmentOutput) Bootable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DiskAttachment) pulumi.BoolPtrOutput { return v.Bootable }).(pulumi.BoolPtrOutput)
+}
+
+func (o DiskAttachmentOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DiskAttachment) pulumi.BoolPtrOutput { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+}
+
+func (o DiskAttachmentOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskAttachment) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
+}
+
+// ID of the Disk to be attached.
+func (o DiskAttachmentOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskAttachment) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// ID of the Instance to attach to.
+func (o DiskAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o DiskAttachmentOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskAttachment) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+func (o DiskAttachmentOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskAttachment) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
 type DiskAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (DiskAttachmentArrayOutput) ElementType() reflect.Type {

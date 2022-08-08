@@ -315,6 +315,46 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
+// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
+func (o TableOutput) DeviationCellVersionInSec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.DeviationCellVersionInSec }).(pulumi.StringPtrOutput)
+}
+
+// Whether enable OTS server side encryption. Default value is false.
+func (o TableOutput) EnableSse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.EnableSse }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the OTS instance in which table will located.
+func (o TableOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The maximum number of versions stored in this table. The valid value is 1-2147483647.
+func (o TableOutput) MaxVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.MaxVersion }).(pulumi.IntOutput)
+}
+
+// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+func (o TableOutput) PrimaryKeys() TablePrimaryKeyArrayOutput {
+	return o.ApplyT(func(v *Table) TablePrimaryKeyArrayOutput { return v.PrimaryKeys }).(TablePrimaryKeyArrayOutput)
+}
+
+// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+func (o TableOutput) SseKeyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.SseKeyType }).(pulumi.StringPtrOutput)
+}
+
+// The table name of the OTS instance. If changed, a new table would be created.
+func (o TableOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.TableName }).(pulumi.StringOutput)
+}
+
+// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
+func (o TableOutput) TimeToLive() pulumi.IntOutput {
+	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.TimeToLive }).(pulumi.IntOutput)
+}
+
 type TableArrayOutput struct{ *pulumi.OutputState }
 
 func (TableArrayOutput) ElementType() reflect.Type {

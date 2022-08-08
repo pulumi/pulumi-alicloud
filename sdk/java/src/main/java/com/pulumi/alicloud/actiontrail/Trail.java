@@ -25,6 +25,38 @@ import javax.annotation.Nullable;
  * - Deliver events to OSS: A bucket is created in OSS.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.actiontrail.Trail;
+ * import com.pulumi.alicloud.actiontrail.TrailArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Trail(&#34;default&#34;, TrailArgs.builder()        
+ *             .eventRw(&#34;All&#34;)
+ *             .ossBucketName(&#34;bucket_name&#34;)
+ *             .ossWriteRoleArn(&#34;acs:ram::1182725xxxxxxxxxxx&#34;)
+ *             .trailName(&#34;action-trail&#34;)
+ *             .trailRegion(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

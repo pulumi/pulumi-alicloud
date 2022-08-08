@@ -30,6 +30,37 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAlertContactGroupsResult> getAlertContactGroups() {
         return getAlertContactGroups(GetAlertContactGroupsArgs.Empty, InvokeOptions.Empty);
@@ -40,6 +71,37 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertContactGroupsResult> getAlertContactGroupsPlain() {
@@ -52,6 +114,37 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAlertContactGroupsResult> getAlertContactGroups(GetAlertContactGroupsArgs args) {
         return getAlertContactGroups(args, InvokeOptions.Empty);
@@ -62,6 +155,37 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertContactGroupsResult> getAlertContactGroupsPlain(GetAlertContactGroupsPlainArgs args) {
@@ -74,6 +198,37 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAlertContactGroupsResult> getAlertContactGroups(GetAlertContactGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getAlertContactGroups:getAlertContactGroups", TypeShape.of(GetAlertContactGroupsResult.class), args, Utilities.withVersion(options));
@@ -84,6 +239,37 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertContactGroupsResult> getAlertContactGroupsPlain(GetAlertContactGroupsPlainArgs args, InvokeOptions options) {
@@ -96,6 +282,40 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getAlertContacts();
+     * 
+     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAlertContactsResult> getAlertContacts() {
         return getAlertContacts(GetAlertContactsArgs.Empty, InvokeOptions.Empty);
@@ -106,6 +326,40 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getAlertContacts();
+     * 
+     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertContactsResult> getAlertContactsPlain() {
@@ -118,6 +372,40 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getAlertContacts();
+     * 
+     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAlertContactsResult> getAlertContacts(GetAlertContactsArgs args) {
         return getAlertContacts(args, InvokeOptions.Empty);
@@ -128,6 +416,40 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getAlertContacts();
+     * 
+     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertContactsResult> getAlertContactsPlain(GetAlertContactsPlainArgs args) {
@@ -140,6 +462,40 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getAlertContacts();
+     * 
+     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAlertContactsResult> getAlertContacts(GetAlertContactsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getAlertContacts:getAlertContacts", TypeShape.of(GetAlertContactsResult.class), args, Utilities.withVersion(options));
@@ -150,6 +506,40 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getAlertContacts();
+     * 
+     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlertContactsResult> getAlertContactsPlain(GetAlertContactsPlainArgs args, InvokeOptions options) {
@@ -162,6 +552,40 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getDispatchRules();
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDispatchRulesResult> getDispatchRules() {
         return getDispatchRules(GetDispatchRulesArgs.Empty, InvokeOptions.Empty);
@@ -172,6 +596,40 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getDispatchRules();
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain() {
@@ -184,6 +642,40 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getDispatchRules();
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDispatchRulesResult> getDispatchRules(GetDispatchRulesArgs args) {
         return getDispatchRules(args, InvokeOptions.Empty);
@@ -194,6 +686,40 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getDispatchRules();
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain(GetDispatchRulesPlainArgs args) {
@@ -206,6 +732,40 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getDispatchRules();
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDispatchRulesResult> getDispatchRules(GetDispatchRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getDispatchRules:getDispatchRules", TypeShape.of(GetDispatchRulesResult.class), args, Utilities.withVersion(options));
@@ -216,6 +776,40 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getDispatchRules();
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain(GetDispatchRulesPlainArgs args, InvokeOptions options) {
@@ -228,6 +822,46 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPrometheusAlertRulesResult> getPrometheusAlertRules(GetPrometheusAlertRulesArgs args) {
         return getPrometheusAlertRules(args, InvokeOptions.Empty);
@@ -238,6 +872,46 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrometheusAlertRulesResult> getPrometheusAlertRulesPlain(GetPrometheusAlertRulesPlainArgs args) {
@@ -250,6 +924,46 @@ public final class ArmsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPrometheusAlertRulesResult> getPrometheusAlertRules(GetPrometheusAlertRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", TypeShape.of(GetPrometheusAlertRulesResult.class), args, Utilities.withVersion(options));
@@ -260,6 +974,46 @@ public final class ArmsFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrometheusAlertRulesResult> getPrometheusAlertRulesPlain(GetPrometheusAlertRulesPlainArgs args, InvokeOptions options) {

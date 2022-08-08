@@ -398,6 +398,91 @@ func (o AggregateConfigRuleOutput) ToAggregateConfigRuleOutputWithContext(ctx co
 	return o
 }
 
+// The name of the rule.
+func (o AggregateConfigRuleOutput) AggregateConfigRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.AggregateConfigRuleName }).(pulumi.StringOutput)
+}
+
+// The Aggregator Id.
+func (o AggregateConfigRuleOutput) AggregatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.AggregatorId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
+func (o AggregateConfigRuleOutput) ConfigRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.ConfigRuleId }).(pulumi.StringOutput)
+}
+
+// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+func (o AggregateConfigRuleOutput) ConfigRuleTriggerTypes() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.ConfigRuleTriggerTypes }).(pulumi.StringOutput)
+}
+
+// The description of the rule.
+func (o AggregateConfigRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
+func (o AggregateConfigRuleOutput) ExcludeResourceIdsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringPtrOutput { return v.ExcludeResourceIdsScope }).(pulumi.StringPtrOutput)
+}
+
+// The settings map of the input parameters for the rule.
+func (o AggregateConfigRuleOutput) InputParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.MapOutput { return v.InputParameters }).(pulumi.MapOutput)
+}
+
+// The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
+func (o AggregateConfigRuleOutput) MaximumExecutionFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.MaximumExecutionFrequency }).(pulumi.StringOutput)
+}
+
+// The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
+func (o AggregateConfigRuleOutput) RegionIdsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringPtrOutput { return v.RegionIdsScope }).(pulumi.StringPtrOutput)
+}
+
+// The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+func (o AggregateConfigRuleOutput) ResourceGroupIdsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringPtrOutput { return v.ResourceGroupIdsScope }).(pulumi.StringPtrOutput)
+}
+
+// Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+func (o AggregateConfigRuleOutput) ResourceTypesScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringArrayOutput { return v.ResourceTypesScopes }).(pulumi.StringArrayOutput)
+}
+
+// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
+func (o AggregateConfigRuleOutput) RiskLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.IntOutput { return v.RiskLevel }).(pulumi.IntOutput)
+}
+
+// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+func (o AggregateConfigRuleOutput) SourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.SourceIdentifier }).(pulumi.StringOutput)
+}
+
+// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+func (o AggregateConfigRuleOutput) SourceOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.SourceOwner }).(pulumi.StringOutput)
+}
+
+// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+func (o AggregateConfigRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The rule monitors the tag key, only applies to rules created based on managed rules.
+func (o AggregateConfigRuleOutput) TagKeyScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringPtrOutput { return v.TagKeyScope }).(pulumi.StringPtrOutput)
+}
+
+// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
+func (o AggregateConfigRuleOutput) TagValueScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringPtrOutput { return v.TagValueScope }).(pulumi.StringPtrOutput)
+}
+
 type AggregateConfigRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AggregateConfigRuleArrayOutput) ElementType() reflect.Type {

@@ -233,6 +233,41 @@ func (o ChainOutput) ToChainOutputWithContext(ctx context.Context) ChainOutput {
 	return o
 }
 
+// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+func (o ChainOutput) ChainConfigs() ChainChainConfigArrayOutput {
+	return o.ApplyT(func(v *Chain) ChainChainConfigArrayOutput { return v.ChainConfigs }).(ChainChainConfigArrayOutput)
+}
+
+// Delivery chain ID.
+func (o ChainOutput) ChainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Chain) pulumi.StringOutput { return v.ChainId }).(pulumi.StringOutput)
+}
+
+// The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
+func (o ChainOutput) ChainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Chain) pulumi.StringOutput { return v.ChainName }).(pulumi.StringOutput)
+}
+
+// The description delivery chain.
+func (o ChainOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Chain) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of CR Enterprise Edition instance.
+func (o ChainOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Chain) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
+func (o ChainOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Chain) pulumi.StringPtrOutput { return v.RepoName }).(pulumi.StringPtrOutput)
+}
+
+// The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+func (o ChainOutput) RepoNamespaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Chain) pulumi.StringPtrOutput { return v.RepoNamespaceName }).(pulumi.StringPtrOutput)
+}
+
 type ChainArrayOutput struct{ *pulumi.OutputState }
 
 func (ChainArrayOutput) ElementType() reflect.Type {

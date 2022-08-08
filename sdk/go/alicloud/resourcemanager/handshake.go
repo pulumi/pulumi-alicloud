@@ -257,6 +257,51 @@ func (o HandshakeOutput) ToHandshakeOutputWithContext(ctx context.Context) Hands
 	return o
 }
 
+// The expiration time of the invitation.
+func (o HandshakeOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Resource account master account ID.
+func (o HandshakeOutput) MasterAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.MasterAccountId }).(pulumi.StringOutput)
+}
+
+// The name of the main account of the resource directory.
+func (o HandshakeOutput) MasterAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.MasterAccountName }).(pulumi.StringOutput)
+}
+
+// The modification time of the invitation.
+func (o HandshakeOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// Remarks. The maximum length is 1024 characters.
+func (o HandshakeOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringPtrOutput { return v.Note }).(pulumi.StringPtrOutput)
+}
+
+// Resource directory ID.
+func (o HandshakeOutput) ResourceDirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.ResourceDirectoryId }).(pulumi.StringOutput)
+}
+
+// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+func (o HandshakeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Invited account ID or login email.
+func (o HandshakeOutput) TargetEntity() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.TargetEntity }).(pulumi.StringOutput)
+}
+
+// Type of account being invited. Valid values: `Account`, `Email`.
+func (o HandshakeOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.TargetType }).(pulumi.StringOutput)
+}
+
 type HandshakeArrayOutput struct{ *pulumi.OutputState }
 
 func (HandshakeArrayOutput) ElementType() reflect.Type {

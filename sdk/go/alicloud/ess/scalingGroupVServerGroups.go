@@ -224,6 +224,23 @@ func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutputWithCo
 	return o
 }
 
+// If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
+func (o ScalingGroupVServerGroupsOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingGroupVServerGroups) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the scaling group.
+func (o ScalingGroupVServerGroupsOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingGroupVServerGroups) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
+func (o ScalingGroupVServerGroupsOutput) VserverGroups() ScalingGroupVServerGroupsVserverGroupArrayOutput {
+	return o.ApplyT(func(v *ScalingGroupVServerGroups) ScalingGroupVServerGroupsVserverGroupArrayOutput {
+		return v.VserverGroups
+	}).(ScalingGroupVServerGroupsVserverGroupArrayOutput)
+}
+
 type ScalingGroupVServerGroupsArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsArrayOutput) ElementType() reflect.Type {

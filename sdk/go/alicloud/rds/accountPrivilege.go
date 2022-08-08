@@ -233,6 +233,31 @@ func (o AccountPrivilegeOutput) ToAccountPrivilegeOutputWithContext(ctx context.
 	return o
 }
 
+// A specified account name.
+func (o AccountPrivilegeOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// List of specified database name.
+func (o AccountPrivilegeOutput) DbNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringArrayOutput { return v.DbNames }).(pulumi.StringArrayOutput)
+}
+
+// The Id of instance in which account belongs.
+func (o AccountPrivilegeOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The privilege of one account access database. Valid values:
+// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+func (o AccountPrivilegeOutput) Privilege() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringPtrOutput { return v.Privilege }).(pulumi.StringPtrOutput)
+}
+
 type AccountPrivilegeArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountPrivilegeArrayOutput) ElementType() reflect.Type {

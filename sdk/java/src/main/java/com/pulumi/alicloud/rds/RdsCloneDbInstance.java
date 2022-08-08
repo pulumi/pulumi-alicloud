@@ -27,6 +27,75 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.149.0+.
  * 
  * ## Example Usage
+ * ### Create a RDS MySQL clone instance
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.RdsCloneDbInstance;
+ * import com.pulumi.alicloud.rds.RdsCloneDbInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccdbinstance&#34;);
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;5.6&#34;)
+ *             .instanceType(&#34;rds.mysql.s2.large&#34;)
+ *             .instanceStorage(&#34;30&#34;)
+ *             .instanceChargeType(&#34;Postpaid&#34;)
+ *             .instanceName(name)
+ *             .vswitchId(exampleSwitch.id())
+ *             .monitoringPeriod(&#34;60&#34;)
+ *             .build());
+ * 
+ *         var exampleRdsCloneDbInstance = new RdsCloneDbInstance(&#34;exampleRdsCloneDbInstance&#34;, RdsCloneDbInstanceArgs.builder()        
+ *             .sourceDbInstanceId(exampleInstance.id())
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .restoreTime(&#34;2021-11-24T11:25:00Z&#34;)
+ *             .dbInstanceStorage(&#34;30&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

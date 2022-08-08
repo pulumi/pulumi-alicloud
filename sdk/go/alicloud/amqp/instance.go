@@ -378,6 +378,83 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The instance name.
+func (o InstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+func (o InstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) Logistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Logistics }).(pulumi.StringPtrOutput)
+}
+
+// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
+func (o InstanceOutput) MaxEipTps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MaxEipTps }).(pulumi.StringPtrOutput)
+}
+
+// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+func (o InstanceOutput) MaxTps() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaxTps }).(pulumi.StringOutput)
+}
+
+// The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
+}
+
+// The payment type. Valid values: `Subscription`.
+func (o InstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The queue capacity. The smallest value is 50 and the step size 5.
+func (o InstanceOutput) QueueCapacity() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.QueueCapacity }).(pulumi.StringOutput)
+}
+
+// RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+func (o InstanceOutput) RenewalDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RenewalDuration }).(pulumi.IntPtrOutput)
+}
+
+// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+func (o InstanceOutput) RenewalDurationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalDurationUnit }).(pulumi.StringPtrOutput)
+}
+
+// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+// - `AutoRenewal`: Auto renewal.
+// - `ManualRenewal`: Manual renewal.
+// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage size. It is valid when `instanceType` is vip.
+func (o InstanceOutput) StorageSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.StorageSize }).(pulumi.StringPtrOutput)
+}
+
+// Whether to support EIP.
+func (o InstanceOutput) SupportEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SupportEip }).(pulumi.BoolOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

@@ -260,6 +260,36 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
+// Permission group name.
+func (o AccessRuleOutput) AccessGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessGroupName }).(pulumi.StringOutput)
+}
+
+// The nas access rule ID.
+func (o AccessRuleOutput) AccessRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessRuleId }).(pulumi.StringOutput)
+}
+
+// Priority level. Range: 1-100. Default value: `1`.
+func (o AccessRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Read-write permission type: `RDWR` (default), `RDONLY`.
+func (o AccessRuleOutput) RwAccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.RwAccessType }).(pulumi.StringPtrOutput)
+}
+
+// Address or address segment.
+func (o AccessRuleOutput) SourceCidrIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.SourceCidrIp }).(pulumi.StringOutput)
+}
+
+// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+func (o AccessRuleOutput) UserAccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.UserAccessType }).(pulumi.StringPtrOutput)
+}
+
 type AccessRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleArrayOutput) ElementType() reflect.Type {

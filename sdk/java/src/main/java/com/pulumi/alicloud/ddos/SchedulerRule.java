@@ -24,6 +24,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ddos.SchedulerRule;
+ * import com.pulumi.alicloud.ddos.SchedulerRuleArgs;
+ * import com.pulumi.alicloud.ddos.inputs.SchedulerRuleRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new SchedulerRule(&#34;example&#34;, SchedulerRuleArgs.builder()        
+ *             .ruleName(&#34;tf-testacc7929727&#34;)
+ *             .ruleType(3)
+ *             .rules(            
+ *                 SchedulerRuleRuleArgs.builder()
+ *                     .priority(100)
+ *                     .regionId(&#34;cn-hangzhou&#34;)
+ *                     .type(&#34;A&#34;)
+ *                     .value(&#34;127.0.0.1&#34;)
+ *                     .valueType(3)
+ *                     .build(),
+ *                 SchedulerRuleRuleArgs.builder()
+ *                     .priority(50)
+ *                     .regionId(&#34;cn-hangzhou&#34;)
+ *                     .type(&#34;A&#34;)
+ *                     .value(&#34;127.0.0.0&#34;)
+ *                     .valueType(1)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.

@@ -238,6 +238,21 @@ func (o ControlPolicyOrderOutput) ToControlPolicyOrderOutputWithContext(ctx cont
 	return o
 }
 
+// The unique ID of the access control policy.
+func (o ControlPolicyOrderOutput) AclUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.StringOutput { return v.AclUuid }).(pulumi.StringOutput)
+}
+
+// Direction. Valid values: `in`, `out`.
+func (o ControlPolicyOrderOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+func (o ControlPolicyOrderOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.IntPtrOutput { return v.Order }).(pulumi.IntPtrOutput)
+}
+
 type ControlPolicyOrderArrayOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyOrderArrayOutput) ElementType() reflect.Type {

@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.FC
     ///         });
     ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = name,
+    ///             BucketName = name,
     ///         });
     ///         var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new AliCloud.Oss.BucketObjectArgs
     ///         {

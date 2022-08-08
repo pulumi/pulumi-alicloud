@@ -209,6 +209,47 @@ func (o CopyImageOutput) ToCopyImageOutputWithContext(ctx context.Context) CopyI
 	return o
 }
 
+func (o CopyImageOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.BoolPtrOutput { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
+}
+
+func (o CopyImageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o CopyImageOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+func (o CopyImageOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+func (o CopyImageOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)
+}
+
+func (o CopyImageOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+func (o CopyImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CopyImageOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+func (o CopyImageOutput) SourceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.SourceRegionId }).(pulumi.StringOutput)
+}
+
+func (o CopyImageOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type CopyImageArrayOutput struct{ *pulumi.OutputState }
 
 func (CopyImageArrayOutput) ElementType() reflect.Type {

@@ -12,56 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.174.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "servicemesh";
- * const defaultVersions = alicloud.servicemesh.getVersions({
- *     edition: "Default",
- * });
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
- * }));
- * const defaultUser = new alicloud.ram.User("defaultUser", {});
- * const default1 = new alicloud.servicemesh.ServiceMesh("default1", {
- *     serviceMeshName: name,
- *     edition: "Default",
- *     version: defaultVersions.then(defaultVersions => defaultVersions.versions?[0]?.version),
- *     clusterSpec: "standard",
- *     network: {
- *         vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
- *         vswitcheList: [defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0])],
- *     },
- *     loadBalancer: {
- *         pilotPublicEip: false,
- *         apiServerPublicEip: false,
- *     },
- * });
- * const example = new alicloud.servicemesh.UserPermission("example", {
- *     subAccountUserId: defaultUser.id,
- *     permissions: [{
- *         roleName: "istio-admin",
- *         serviceMeshId: default1.id,
- *         roleType: "custom",
- *         isCustom: true,
- *         isRamRole: false,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Service Mesh User Permission can be imported using the id, e.g.

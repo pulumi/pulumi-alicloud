@@ -257,6 +257,54 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The AD auth server of the Instance. See the following `Block adAuthServer`.
+func (o InstanceOutput) AdAuthServers() InstanceAdAuthServerArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceAdAuthServerArrayOutput { return v.AdAuthServers }).(InstanceAdAuthServerArrayOutput)
+}
+
+// Description of the instance. This name can have a string of 1 to 63 characters.
+func (o InstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+func (o InstanceOutput) EnablePublicAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnablePublicAccess }).(pulumi.BoolOutput)
+}
+
+// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+func (o InstanceOutput) LdapAuthServers() InstanceLdapAuthServerArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceLdapAuthServerArrayOutput { return v.LdapAuthServers }).(InstanceLdapAuthServerArrayOutput)
+}
+
+// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+func (o InstanceOutput) LicenseCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LicenseCode }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// VSwitch ID configured to Bastionhost.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

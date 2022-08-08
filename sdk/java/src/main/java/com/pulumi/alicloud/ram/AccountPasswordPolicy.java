@@ -18,6 +18,70 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Empty resource sets defaults values for every property.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.AccountPasswordPolicy;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new AccountPasswordPolicy(&#34;default&#34;);
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.AccountPasswordPolicy;
+ * import com.pulumi.alicloud.ram.AccountPasswordPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var corporate = new AccountPasswordPolicy(&#34;corporate&#34;, AccountPasswordPolicyArgs.builder()        
+ *             .hardExpiry(true)
+ *             .maxLoginAttempts(3)
+ *             .maxPasswordAge(12)
+ *             .minimumPasswordLength(9)
+ *             .passwordReusePrevention(5)
+ *             .requireLowercaseCharacters(false)
+ *             .requireNumbers(false)
+ *             .requireSymbols(false)
+ *             .requireUppercaseCharacters(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * For not specified values sets defaults.
+ * 
  * ## Import
  * 
  * RAM account password policy can be imported using the `id`, e.g. bash

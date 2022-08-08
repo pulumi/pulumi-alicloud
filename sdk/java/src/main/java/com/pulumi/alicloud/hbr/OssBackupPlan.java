@@ -24,6 +24,56 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.hbr.OssBackupPlan;
+ * import com.pulumi.alicloud.hbr.OssBackupPlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-test112358&#34;);
+ *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
+ *             .vaultName(name)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .build());
+ * 
+ *         var defaultOssBackupPlan = new OssBackupPlan(&#34;defaultOssBackupPlan&#34;, OssBackupPlanArgs.builder()        
+ *             .ossBackupPlanName(name)
+ *             .prefix(&#34;/&#34;)
+ *             .bucket(defaultBucket.bucket())
+ *             .vaultId(defaultVault.id())
+ *             .schedule(&#34;I|1602673264|PT2H&#34;)
+ *             .backupType(&#34;COMPLETE&#34;)
+ *             .retention(&#34;2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * HBR Oss Backup Plan can be imported using the id, e.g.

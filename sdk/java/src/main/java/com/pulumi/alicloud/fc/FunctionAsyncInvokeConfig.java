@@ -24,6 +24,143 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.100.0+
  * 
  * ## Example Usage
+ * ### Destination Configuration
+ * 
+ * &gt; **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
+ * import com.pulumi.alicloud.fc.inputs.FunctionAsyncInvokeConfigDestinationConfigArgs;
+ * import com.pulumi.alicloud.fc.inputs.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs;
+ * import com.pulumi.alicloud.fc.inputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
+ *             .serviceName(alicloud_fc_service.example().name())
+ *             .functionName(alicloud_fc_function.example().name())
+ *             .destinationConfig(FunctionAsyncInvokeConfigDestinationConfigArgs.builder()
+ *                 .onFailure(FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs.builder()
+ *                     .destination(the_example_mns_queue_arn)
+ *                     .build())
+ *                 .onSuccess(FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs.builder()
+ *                     .destination(the_example_mns_topic_arn)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Error Handling Configuration
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
+ *             .serviceName(alicloud_fc_service.example().name())
+ *             .functionName(alicloud_fc_function.example().name())
+ *             .maximumEventAgeInSeconds(60)
+ *             .maximumRetryAttempts(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Async Job Configuration
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
+ *             .serviceName(alicloud_fc_service.example().name())
+ *             .functionName(alicloud_fc_function.example().name())
+ *             .statefulInvocation(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Configuration for Function Latest Unpublished Version
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
+ * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
+ *             .serviceName(alicloud_fc_service.example().name())
+ *             .functionName(alicloud_fc_function.example().name())
+ *             .qualifier(&#34;LATEST&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

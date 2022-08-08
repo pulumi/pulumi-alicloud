@@ -26,6 +26,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Acl;
+ * import com.pulumi.alicloud.ga.AclArgs;
+ * import com.pulumi.alicloud.ga.inputs.AclAclEntryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
+ *             .aclEntries(AclAclEntryArgs.builder()
+ *                 .entry(&#34;192.168.1.0/24&#34;)
+ *                 .entryDescription(&#34;tf-test1&#34;)
+ *                 .build())
+ *             .aclName(&#34;tf-testAccAcl&#34;)
+ *             .addressIpVersion(&#34;IPv4&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Global Accelerator (GA) Acl can be imported using the id, e.g.

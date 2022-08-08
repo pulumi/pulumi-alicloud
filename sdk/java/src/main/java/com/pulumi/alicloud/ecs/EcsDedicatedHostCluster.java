@@ -26,6 +26,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsDedicatedHostCluster;
+ * import com.pulumi.alicloud.ecs.EcsDedicatedHostClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleZones = AlicloudFunctions.getZones();
+ * 
+ *         var exampleEcsDedicatedHostCluster = new EcsDedicatedHostCluster(&#34;exampleEcsDedicatedHostCluster&#34;, EcsDedicatedHostClusterArgs.builder()        
+ *             .dedicatedHostClusterName(&#34;example_value&#34;)
+ *             .description(&#34;example_value&#34;)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Create&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;DDH_Cluster_Test&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Dedicated Host Cluster can be imported using the id, e.g.

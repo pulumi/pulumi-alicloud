@@ -418,6 +418,83 @@ func (o RdsAccountOutput) ToRdsAccountOutputWithContext(ctx context.Context) Rds
 	return o
 }
 
+// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+func (o RdsAccountOutput) AccountDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountDescription }).(pulumi.StringOutput)
+}
+
+// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+func (o RdsAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+func (o RdsAccountOutput) AccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+}
+
+// Privilege type of account. Default to `Normal`.
+// `Normal`: Common privilege.
+// `Super`: High privilege.
+func (o RdsAccountOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
+}
+
+// The Id of instance in which account belongs.
+func (o RdsAccountOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+//
+// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
+func (o RdsAccountOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+//
+// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
+func (o RdsAccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+func (o RdsAccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o RdsAccountOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
+func (o RdsAccountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+//
+// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
+func (o RdsAccountOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Available`, `Unavailable`.
+func (o RdsAccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+//
+// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
+func (o RdsAccountOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type RdsAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsAccountArrayOutput) ElementType() reflect.Type {

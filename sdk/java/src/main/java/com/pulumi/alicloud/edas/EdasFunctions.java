@@ -32,6 +32,36 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;application.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetApplicationsResult> getApplications() {
@@ -43,6 +73,36 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;application.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain() {
@@ -54,6 +114,36 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;application.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args) {
@@ -65,6 +155,36 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;application.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args) {
@@ -76,6 +196,36 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;application.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOptions options) {
@@ -87,6 +237,36 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;application.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
@@ -98,6 +278,37 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
+     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
+     *             .ids(&#34;addfs-dfsasd&#34;)
+     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -109,6 +320,37 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
+     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
+     *             .ids(&#34;addfs-dfsasd&#34;)
+     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -120,6 +362,37 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
+     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
+     *             .ids(&#34;addfs-dfsasd&#34;)
+     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -131,6 +404,37 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
+     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
+     *             .ids(&#34;addfs-dfsasd&#34;)
+     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -143,6 +447,38 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId(&#34;xxx&#34;)
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args) {
         return getDeployGroups(args, InvokeOptions.Empty);
@@ -153,6 +489,38 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId(&#34;xxx&#34;)
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args) {
@@ -165,6 +533,38 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId(&#34;xxx&#34;)
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getDeployGroups:getDeployGroups", TypeShape.of(GetDeployGroupsResult.class), args, Utilities.withVersion(options));
@@ -175,6 +575,38 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId(&#34;xxx&#34;)
+     *             .ids(&#34;xxx&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args, InvokeOptions options) {
@@ -187,6 +619,42 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
         return getNamespaces(GetNamespacesArgs.Empty, InvokeOptions.Empty);
@@ -197,6 +665,42 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -209,6 +713,42 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
         return getNamespaces(args, InvokeOptions.Empty);
@@ -219,6 +759,42 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -231,6 +807,42 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
@@ -241,6 +853,42 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
@@ -256,6 +904,34 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -271,6 +947,34 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -286,6 +990,34 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -301,6 +1033,34 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -316,6 +1076,34 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -331,6 +1119,34 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

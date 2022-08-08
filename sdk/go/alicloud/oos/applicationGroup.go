@@ -281,6 +281,37 @@ func (o ApplicationGroupOutput) ToApplicationGroupOutputWithContext(ctx context.
 	return o
 }
 
+// The name of the Application group.
+func (o ApplicationGroupOutput) ApplicationGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.ApplicationGroupName }).(pulumi.StringOutput)
+}
+
+// The name of the Application.
+func (o ApplicationGroupOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// The region ID of the deployment.
+func (o ApplicationGroupOutput) DeployRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.DeployRegionId }).(pulumi.StringOutput)
+}
+
+// Application group description information.
+func (o ApplicationGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is app-{ApplicationName} (application name).
+func (o ApplicationGroupOutput) ImportTagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.ImportTagKey }).(pulumi.StringOutput)
+}
+
+// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is application group name.
+// .
+func (o ApplicationGroupOutput) ImportTagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.ImportTagValue }).(pulumi.StringOutput)
+}
+
 type ApplicationGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationGroupArrayOutput) ElementType() reflect.Type {

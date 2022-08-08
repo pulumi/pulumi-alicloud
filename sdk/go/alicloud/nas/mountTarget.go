@@ -269,6 +269,36 @@ func (o MountTargetOutput) ToMountTargetOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// The name of the permission group that applies to the mount target.
+func (o MountTargetOutput) AccessGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringPtrOutput { return v.AccessGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the file system.
+func (o MountTargetOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+func (o MountTargetOutput) MountTargetDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.MountTargetDomain }).(pulumi.StringOutput)
+}
+
+// The ID of security group.
+func (o MountTargetOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+func (o MountTargetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch in the VPC where the mount target resides.
+func (o MountTargetOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountTarget) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type MountTargetArrayOutput struct{ *pulumi.OutputState }
 
 func (MountTargetArrayOutput) ElementType() reflect.Type {

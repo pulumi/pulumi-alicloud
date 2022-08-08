@@ -31,7 +31,23 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
-// 			AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "     {\n", "          \"Statement\": [\n", "               {\n", "                    \"Action\": \"sts:AssumeRole\",\n", "                    \"Effect\": \"Allow\",\n", "                    \"Principal\": {\n", "                        \"RAM\":[\n", "                                \"acs:ram::103755469187****:root\"，\n", "                                \"acs:ram::104408977069****:root\"\n", "                        ]\n", "                    }\n", "                }\n", "          ],\n", "          \"Version\": \"1\"\n", "     }\n", "	 \n")),
+// 			AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf(`     {
+//           "Statement": [
+//                {
+//                     "Action": "sts:AssumeRole",
+//                     "Effect": "Allow",
+//                     "Principal": {
+//                         "RAM":[
+//                                 "acs:ram::103755469187****:root"，
+//                                 "acs:ram::104408977069****:root"
+//                         ]
+//                     }
+//                 }
+//           ],
+//           "Version": "1"
+//      }
+//
+// `)),
 // 			RoleName: pulumi.String("testrd"),
 // 		})
 // 		if err != nil {
@@ -251,6 +267,42 @@ func (o RoleOutput) ToRoleOutput() RoleOutput {
 
 func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
+}
+
+// The resource descriptor of the role.
+// * `createDate` (Removed form v1.114.0) - Role creation time.
+func (o RoleOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The content of the permissions strategy that plays a role.
+func (o RoleOutput) AssumeRolePolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.AssumeRolePolicyDocument }).(pulumi.StringOutput)
+}
+
+// The description of the Resource Manager role.
+func (o RoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
+func (o RoleOutput) MaxSessionDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.IntPtrOutput { return v.MaxSessionDuration }).(pulumi.IntPtrOutput)
+}
+
+// This ID of Resource Manager role. The value is set to `roleName`.
+func (o RoleOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+func (o RoleOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// Role update time.
+func (o RoleOutput) UpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.UpdateDate }).(pulumi.StringOutput)
 }
 
 type RoleArrayOutput struct{ *pulumi.OutputState }

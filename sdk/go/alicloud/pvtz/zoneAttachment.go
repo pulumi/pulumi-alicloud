@@ -367,6 +367,31 @@ func (o ZoneAttachmentOutput) ToZoneAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The language of code.
+func (o ZoneAttachmentOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneAttachment) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The user custom IP address.
+func (o ZoneAttachmentOutput) UserClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneAttachment) pulumi.StringPtrOutput { return v.UserClientIp }).(pulumi.StringPtrOutput)
+}
+
+// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
+func (o ZoneAttachmentOutput) VpcIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneAttachment) pulumi.StringArrayOutput { return v.VpcIds }).(pulumi.StringArrayOutput)
+}
+
+// The List of the VPC:
+func (o ZoneAttachmentOutput) Vpcs() ZoneAttachmentVpcArrayOutput {
+	return o.ApplyT(func(v *ZoneAttachment) ZoneAttachmentVpcArrayOutput { return v.Vpcs }).(ZoneAttachmentVpcArrayOutput)
+}
+
+// The name of the Private Zone Record.
+func (o ZoneAttachmentOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneAttachment) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ZoneAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentArrayOutput) ElementType() reflect.Type {

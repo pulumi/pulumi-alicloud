@@ -315,6 +315,71 @@ func (o RegistryEnterpriseInstanceOutput) ToRegistryEnterpriseInstanceOutputWith
 	return o
 }
 
+// Time of Container Registry Enterprise Edition instance creation.
+func (o RegistryEnterpriseInstanceOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
+// Name of your customized oss bucket. Use this bucket as instance storage if set.
+func (o RegistryEnterpriseInstanceOutput) CustomOssBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.CustomOssBucket }).(pulumi.StringPtrOutput)
+}
+
+// Time of Container Registry Enterprise Edition instance expiration.
+func (o RegistryEnterpriseInstanceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition instance.
+func (o RegistryEnterpriseInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+func (o RegistryEnterpriseInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
+func (o RegistryEnterpriseInstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o RegistryEnterpriseInstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+func (o RegistryEnterpriseInstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+func (o RegistryEnterpriseInstanceOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+func (o RegistryEnterpriseInstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+func (o RegistryEnterpriseInstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+func (o RegistryEnterpriseInstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.RenewalStatus }).(pulumi.StringPtrOutput)
+}
+
+// Status of Container Registry Enterprise Edition instance.
+func (o RegistryEnterpriseInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type RegistryEnterpriseInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseInstanceArrayOutput) ElementType() reflect.Type {

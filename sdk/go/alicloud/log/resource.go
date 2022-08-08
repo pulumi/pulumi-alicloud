@@ -245,6 +245,31 @@ func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) Resourc
 	return o
 }
 
+// The meta store's description.
+func (o ResourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ext info of meta store.
+func (o ResourceOutput) ExtInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringPtrOutput { return v.ExtInfo }).(pulumi.StringPtrOutput)
+}
+
+// The meta store's name, can be used as table name.
+func (o ResourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The meta store's schema info, which is json string format, used to define table's fields.
+func (o ResourceOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The meta store's type, userdefine e.g.
+func (o ResourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type ResourceArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourceArrayOutput) ElementType() reflect.Type {

@@ -311,6 +311,55 @@ func (o BasicDefenseThresholdOutput) ToBasicDefenseThresholdOutputWithContext(ct
 	return o
 }
 
+// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
+func (o BasicDefenseThresholdOutput) Bps() pulumi.IntOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.IntOutput { return v.Bps }).(pulumi.IntOutput)
+}
+
+// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+// -`defense` - scrubbing threshold.
+// -`blackhole` - DDoS mitigation threshold.
+func (o BasicDefenseThresholdOutput) DdosType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.StringOutput { return v.DdosType }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o BasicDefenseThresholdOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
+func (o BasicDefenseThresholdOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The Internet IP address.
+func (o BasicDefenseThresholdOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// Whether it is the system default threshold. Value:
+// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
+// - `false`: indicates no, that is, you manually set the cleaning threshold.
+func (o BasicDefenseThresholdOutput) IsAuto() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.BoolOutput { return v.IsAuto }).(pulumi.BoolOutput)
+}
+
+// The maximum traffic scrubbing threshold. Unit: Mbit/s.
+func (o BasicDefenseThresholdOutput) MaxBps() pulumi.IntOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.IntOutput { return v.MaxBps }).(pulumi.IntOutput)
+}
+
+// The maximum packet scrubbing threshold. Unit: pps.
+func (o BasicDefenseThresholdOutput) MaxPps() pulumi.IntOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.IntOutput { return v.MaxPps }).(pulumi.IntOutput)
+}
+
+// The current message number cleaning threshold. Unit: pps.
+func (o BasicDefenseThresholdOutput) Pps() pulumi.IntOutput {
+	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.IntOutput { return v.Pps }).(pulumi.IntOutput)
+}
+
 type BasicDefenseThresholdArrayOutput struct{ *pulumi.OutputState }
 
 func (BasicDefenseThresholdArrayOutput) ElementType() reflect.Type {

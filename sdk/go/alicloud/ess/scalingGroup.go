@@ -436,6 +436,121 @@ func (o ScalingGroupOutput) ToScalingGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
+// - The specified RDS instance must be in running status.
+// - The specified RDS instance’s whitelist must have room for more IP addresses.
+func (o ScalingGroupOutput) DbInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.DbInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
+func (o ScalingGroupOutput) DefaultCooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntPtrOutput { return v.DefaultCooldown }).(pulumi.IntPtrOutput)
+}
+
+// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+func (o ScalingGroupOutput) DesiredCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+func (o ScalingGroupOutput) GroupDeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolPtrOutput { return v.GroupDeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+func (o ScalingGroupOutput) GroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.GroupType }).(pulumi.StringOutput)
+}
+
+// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+func (o ScalingGroupOutput) LaunchTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+func (o ScalingGroupOutput) LaunchTemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.LaunchTemplateVersion }).(pulumi.StringPtrOutput)
+}
+
+// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
+// - The Server Load Balancer instance must be enabled.
+// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
+//   targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
+// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+func (o ScalingGroupOutput) LoadbalancerIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.LoadbalancerIds }).(pulumi.StringArrayOutput)
+}
+
+// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+func (o ScalingGroupOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+func (o ScalingGroupOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+func (o ScalingGroupOutput) MultiAzPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.MultiAzPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
+func (o ScalingGroupOutput) OnDemandBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.OnDemandBaseCapacity }).(pulumi.IntOutput)
+}
+
+// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
+func (o ScalingGroupOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.IntOutput)
+}
+
+// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
+// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
+func (o ScalingGroupOutput) RemovalPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.RemovalPolicies }).(pulumi.StringArrayOutput)
+}
+
+// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
+func (o ScalingGroupOutput) ScalingGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.ScalingGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
+func (o ScalingGroupOutput) SpotInstancePools() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.SpotInstancePools }).(pulumi.IntOutput)
+}
+
+// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+func (o ScalingGroupOutput) SpotInstanceRemedy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolOutput { return v.SpotInstanceRemedy }).(pulumi.BoolOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o ScalingGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+//
+// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
+func (o ScalingGroupOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// List of virtual switch IDs in which the ecs instances to be launched.
+func (o ScalingGroupOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
 type ScalingGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupArrayOutput) ElementType() reflect.Type {

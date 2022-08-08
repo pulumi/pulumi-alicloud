@@ -34,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := slb.NewCaCertificate(ctx, "foo", &slb.CaCertificateArgs{
-// 			CaCertificate:     pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN CERTIFICATE-----\n", "MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=\n", "-----END CERTIFICATE-----\n")),
+// 			CaCertificate:     pulumi.String(fmt.Sprintf("-----BEGIN CERTIFICATE-----\nMIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=\n-----END CERTIFICATE-----\n")),
 // 			CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
 // 		})
 // 		if err != nil {
@@ -70,7 +70,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := slb.NewCaCertificate(ctx, "foo-file", &slb.CaCertificateArgs{
 // 			CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
-// 			CaCertificate:     readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/ca_certificate.pem")),
+// 			CaCertificate:     readFileOrPanic(fmt.Sprintf("%v/ca_certificate.pem", path.Module)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -285,6 +285,33 @@ func (o CaCertificateOutput) ToCaCertificateOutput() CaCertificateOutput {
 
 func (o CaCertificateOutput) ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput {
 	return o
+}
+
+// the content of the CA certificate.
+func (o CaCertificateOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaCertificate) pulumi.StringOutput { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Name of the CA Certificate.
+func (o CaCertificateOutput) CaCertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaCertificate) pulumi.StringOutput { return v.CaCertificateName }).(pulumi.StringOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
+func (o CaCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the slbCa certificate belongs.
+func (o CaCertificateOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaCertificate) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o CaCertificateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *CaCertificate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type CaCertificateArrayOutput struct{ *pulumi.OutputState }

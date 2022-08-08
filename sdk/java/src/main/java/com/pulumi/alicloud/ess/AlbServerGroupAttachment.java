@@ -29,6 +29,110 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` is available in 1.158.0+.
  * 
+ * ## Example Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.alb.ServerGroup;
+ * import com.pulumi.alicloud.alb.ServerGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingConfiguration;
+ * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
+ * import com.pulumi.alicloud.ess.AlbServerGroupAttachment;
+ * import com.pulumi.alicloud.ess.AlbServerGroupAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;testAccEssAlbServerGroupsAttachment&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+ *             .loadBalancerId(alicloud_slb_load_balancer.default().id())
+ *             .name(&#34;test&#34;)
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(&#34;2&#34;)
+ *             .maxSize(&#34;2&#34;)
+ *             .scalingGroupName(name)
+ *             .vswitchIds(defaultSwitch.id())
+ *             .build());
+ * 
+ *         var defaultScalingConfiguration = new ScalingConfiguration(&#34;defaultScalingConfiguration&#34;, ScalingConfigurationArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .imageId(data.alicloud_images().default().images()[0].id())
+ *             .instanceType(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .securityGroupId(alicloud_security_group.default().id())
+ *             .forceDelete(true)
+ *             .active(true)
+ *             .enable(true)
+ *             .build());
+ * 
+ *         var defaultAlb_serverGroupServerGroup = new ServerGroup(&#34;defaultAlb/serverGroupServerGroup&#34;, ServerGroupArgs.builder()        
+ *             .serverGroupName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+ *                 .healthCheckEnabled(&#34;false&#34;)
+ *                 .build())
+ *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+ *                 .stickySessionEnabled(true)
+ *                 .cookie(&#34;tf-testAcc&#34;)
+ *                 .stickySessionType(&#34;Server&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultAlbServerGroupAttachment = new AlbServerGroupAttachment(&#34;defaultAlbServerGroupAttachment&#34;, AlbServerGroupAttachmentArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .albServerGroupId(defaultServerGroup.id())
+ *             .port(9000)
+ *             .weight(50)
+ *             .forceAttach(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(&#34;alicloud_ess_scaling_configuration.default&#34;)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ESS alb server groups can be imported using the id, e.g.

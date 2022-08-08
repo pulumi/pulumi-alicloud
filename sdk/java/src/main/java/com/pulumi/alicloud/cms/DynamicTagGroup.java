@@ -25,6 +25,50 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cms.AlarmContactGroup;
+ * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+ * import com.pulumi.alicloud.cms.DynamicTagGroup;
+ * import com.pulumi.alicloud.cms.DynamicTagGroupArgs;
+ * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName(&#34;example_value&#34;)
+ *             .describe(&#34;example_value&#34;)
+ *             .enableSubscribed(true)
+ *             .build());
+ * 
+ *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+ *             .contactGroupLists(defaultAlarmContactGroup.id())
+ *             .tagKey(&#34;your_tag_key&#34;)
+ *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
+ *                 .tagValue(&#34;your_tag_value&#34;)
+ *                 .tagValueMatchFunction(&#34;all&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.

@@ -380,6 +380,91 @@ func (o BandwidthPackageOutput) ToBandwidthPackageOutputWithContext(ctx context.
 	return o
 }
 
+// Whether to pay automatically. Valid values:
+// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+// `true`: Enable automatic payment, automatic payment order.
+func (o BandwidthPackageOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+func (o BandwidthPackageOutput) AutoRenewDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
+}
+
+// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+func (o BandwidthPackageOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
+}
+
+// The bandwidth value of bandwidth packet.
+func (o BandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The name of the bandwidth packet.
+func (o BandwidthPackageOutput) BandwidthPackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.BandwidthPackageName }).(pulumi.StringPtrOutput)
+}
+
+// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+func (o BandwidthPackageOutput) BandwidthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.BandwidthType }).(pulumi.StringPtrOutput)
+}
+
+// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+func (o BandwidthPackageOutput) BillingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.BillingType }).(pulumi.StringPtrOutput)
+}
+
+// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+func (o BandwidthPackageOutput) CbnGeographicRegionIda() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.CbnGeographicRegionIda }).(pulumi.StringPtrOutput)
+}
+
+// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+func (o BandwidthPackageOutput) CbnGeographicRegionIdb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.CbnGeographicRegionIdb }).(pulumi.StringPtrOutput)
+}
+
+// The description of bandwidth package.
+func (o BandwidthPackageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
+func (o BandwidthPackageOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+func (o BandwidthPackageOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+func (o BandwidthPackageOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntPtrOutput { return v.Ratio }).(pulumi.IntPtrOutput)
+}
+
+// Whether to renew a bandwidth packet. automatically or not. Valid values:
+// - `AutoRenewal`: Enable auto renewal.
+// - `Normal`: Disable auto renewal.
+// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+func (o BandwidthPackageOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The status of the bandwidth plan.
+func (o BandwidthPackageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
+func (o BandwidthPackageOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type BandwidthPackageArrayOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageArrayOutput) ElementType() reflect.Type {

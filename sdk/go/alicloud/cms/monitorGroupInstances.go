@@ -234,6 +234,16 @@ func (o MonitorGroupInstancesOutput) ToMonitorGroupInstancesOutputWithContext(ct
 	return o
 }
 
+// The id of Cms Group.
+func (o MonitorGroupInstancesOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorGroupInstances) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Instance information added to the Cms Group.
+func (o MonitorGroupInstancesOutput) Instances() MonitorGroupInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v *MonitorGroupInstances) MonitorGroupInstancesInstanceArrayOutput { return v.Instances }).(MonitorGroupInstancesInstanceArrayOutput)
+}
+
 type MonitorGroupInstancesArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorGroupInstancesArrayOutput) ElementType() reflect.Type {

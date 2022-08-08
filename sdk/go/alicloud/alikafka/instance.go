@@ -418,6 +418,93 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+func (o InstanceOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
+}
+
+// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+// - 4: eip/vpc instance
+// - 5: vpc instance.
+func (o InstanceOutput) DeployType() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DeployType }).(pulumi.IntOutput)
+}
+
+// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+func (o InstanceOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+func (o InstanceOutput) DiskType() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DiskType }).(pulumi.IntOutput)
+}
+
+// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
+func (o InstanceOutput) EipMax() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.EipMax }).(pulumi.IntOutput)
+}
+
+// The EndPoint to access the kafka instance.
+func (o InstanceOutput) EndPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndPoint }).(pulumi.StringOutput)
+}
+
+// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+func (o InstanceOutput) IoMax() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IoMax }).(pulumi.IntOutput)
+}
+
+// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+func (o InstanceOutput) PaidType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PaidType }).(pulumi.StringPtrOutput)
+}
+
+// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroup }).(pulumi.StringOutput)
+}
+
+// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+func (o InstanceOutput) ServiceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceVersion }).(pulumi.StringOutput)
+}
+
+// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+func (o InstanceOutput) SpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpecType }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+func (o InstanceOutput) TopicQuota() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicQuota }).(pulumi.IntOutput)
+}
+
+// The ID of attaching VPC to instance.
+func (o InstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of attaching vswitch to instance.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone to launch the kafka instance.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

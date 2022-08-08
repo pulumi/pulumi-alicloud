@@ -387,6 +387,101 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
+func (o InstanceOutput) BandWidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.BandWidth }).(pulumi.IntOutput)
+}
+
+// Whether to use log audit. Valid values: `true`, `false`.
+func (o InstanceOutput) CfwLog() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.CfwLog }).(pulumi.BoolOutput)
+}
+
+// The log storage capacity.
+func (o InstanceOutput) CfwLogStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.CfwLogStorage }).(pulumi.IntOutput)
+}
+
+// Whether to use expert service. Valid values: `true`, `false`.
+func (o InstanceOutput) CfwService() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.CfwService }).(pulumi.BoolOutput)
+}
+
+// The creation time.
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The end time.
+func (o InstanceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The number of protected VPCs. Valid values between 2 and 500.
+func (o InstanceOutput) FwVpcNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.FwVpcNumber }).(pulumi.IntPtrOutput)
+}
+
+// The number of assets.
+func (o InstanceOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// The number of public IPs that can be protected. Valid values: 20 to 4000.
+func (o InstanceOutput) IpNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IpNumber }).(pulumi.IntOutput)
+}
+
+// The logistics.
+func (o InstanceOutput) Logistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Logistics }).(pulumi.StringPtrOutput)
+}
+
+// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
+}
+
+// The payment type of the resource. Valid values: `Subscription`.
+func (o InstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+func (o InstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// The release time.
+func (o InstanceOutput) ReleaseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReleaseTime }).(pulumi.StringOutput)
+}
+
+// Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Automatic renewal period unit. Valid values: `Month`,`Year`.
+func (o InstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalDurationUnit }).(pulumi.StringOutput)
+}
+
+// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+func (o InstanceOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of Instance.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

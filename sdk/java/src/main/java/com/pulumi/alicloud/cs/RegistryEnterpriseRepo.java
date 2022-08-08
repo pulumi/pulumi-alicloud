@@ -25,6 +25,48 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_namespace = new RegistryEnterpriseNamespace(&#34;my-namespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *             .instanceId(&#34;cri-xxx&#34;)
+ *             .autoCreate(false)
+ *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .build());
+ * 
+ *         var my_repo = new RegistryEnterpriseRepo(&#34;my-repo&#34;, RegistryEnterpriseRepoArgs.builder()        
+ *             .instanceId(my_namespace.instanceId())
+ *             .namespace(my_namespace.name())
+ *             .summary(&#34;this is summary of my new repo&#34;)
+ *             .repoType(&#34;PUBLIC&#34;)
+ *             .detail(&#34;this is a public repo&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.

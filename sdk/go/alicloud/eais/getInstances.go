@@ -13,41 +13,6 @@ import (
 // This data source provides the Eais Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.137.0+.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eais"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := eais.GetInstances(ctx, &eais.GetInstancesArgs{
-// 			Id: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("eaisInstanceId1", ids.Instances[0].Id)
-// 		nameRegex, err := eais.GetInstances(ctx, &eais.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("^my-Instance"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("eaisInstanceId2", nameRegex.Instances[0].Id)
-// 		return nil
-// 	})
-// }
-// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:eais/getInstances:getInstances", args, &rv, opts...)

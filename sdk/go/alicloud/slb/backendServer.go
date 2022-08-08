@@ -201,6 +201,21 @@ func (o BackendServerOutput) ToBackendServerOutputWithContext(ctx context.Contex
 	return o
 }
 
+// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+func (o BackendServerOutput) BackendServers() BackendServerBackendServerArrayOutput {
+	return o.ApplyT(func(v *BackendServer) BackendServerBackendServerArrayOutput { return v.BackendServers }).(BackendServerBackendServerArrayOutput)
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (o BackendServerOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendServer) pulumi.BoolPtrOutput { return v.DeleteProtectionValidation }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the load balancer.
+func (o BackendServerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendServer) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
 type BackendServerArrayOutput struct{ *pulumi.OutputState }
 
 func (BackendServerArrayOutput) ElementType() reflect.Type {

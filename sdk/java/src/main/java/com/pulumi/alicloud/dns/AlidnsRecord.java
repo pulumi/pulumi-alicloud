@@ -23,6 +23,39 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dns.AlidnsRecord;
+ * import com.pulumi.alicloud.dns.AlidnsRecordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var record = new AlidnsRecord(&#34;record&#34;, AlidnsRecordArgs.builder()        
+ *             .domainName(&#34;domainname&#34;)
+ *             .remark(&#34;Test new alidns record.&#34;)
+ *             .rr(&#34;@&#34;)
+ *             .status(&#34;ENABLE&#34;)
+ *             .type(&#34;A&#34;)
+ *             .value(&#34;192.168.99.99&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

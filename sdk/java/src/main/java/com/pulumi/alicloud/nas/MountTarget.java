@@ -28,6 +28,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.AccessGroup;
+ * import com.pulumi.alicloud.nas.AccessGroupArgs;
+ * import com.pulumi.alicloud.nas.MountTarget;
+ * import com.pulumi.alicloud.nas.MountTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
+ *             .protocolType(&#34;NFS&#34;)
+ *             .storageType(&#34;Performance&#34;)
+ *             .description(&#34;test file system&#34;)
+ *             .build());
+ * 
+ *         var exampleAccessGroup = new AccessGroup(&#34;exampleAccessGroup&#34;, AccessGroupArgs.builder()        
+ *             .accessGroupName(&#34;test_name&#34;)
+ *             .accessGroupType(&#34;Classic&#34;)
+ *             .description(&#34;test access group&#34;)
+ *             .build());
+ * 
+ *         var exampleMountTarget = new MountTarget(&#34;exampleMountTarget&#34;, MountTargetArgs.builder()        
+ *             .fileSystemId(exampleFileSystem.id())
+ *             .accessGroupName(exampleAccessGroup.accessGroupName())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * NAS MountTarget

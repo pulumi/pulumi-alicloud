@@ -18,6 +18,63 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Disk;
+ * import com.pulumi.alicloud.ecs.DiskArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.DiskAttachment;
+ * import com.pulumi.alicloud.ecs.DiskAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ecsSg = new SecurityGroup(&#34;ecsSg&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;New security group&#34;)
+ *             .build());
+ * 
+ *         var ecsDisk = new Disk(&#34;ecsDisk&#34;, DiskArgs.builder()        
+ *             .availabilityZone(&#34;cn-beijing-a&#34;)
+ *             .size(&#34;50&#34;)
+ *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-disk&#34;))
+ *             .build());
+ * 
+ *         var ecsInstance = new Instance(&#34;ecsInstance&#34;, InstanceArgs.builder()        
+ *             .imageId(&#34;ubuntu_18_04_64_20G_alibase_20190624.vhd&#34;)
+ *             .instanceType(&#34;ecs.n4.small&#34;)
+ *             .availabilityZone(&#34;cn-beijing-a&#34;)
+ *             .securityGroups(ecsSg.id())
+ *             .instanceName(&#34;Hello&#34;)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-instance&#34;))
+ *             .build());
+ * 
+ *         var ecsDiskAtt = new DiskAttachment(&#34;ecsDiskAtt&#34;, DiskAttachmentArgs.builder()        
+ *             .diskId(ecsDisk.id())
+ *             .instanceId(ecsInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The disk attachment can be imported using the id, e.g.

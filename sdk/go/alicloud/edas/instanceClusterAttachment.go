@@ -221,6 +221,31 @@ func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentOutputWithCo
 	return o
 }
 
+// The ID of the cluster that you want to create the application.
+func (o InstanceClusterAttachmentOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceClusterAttachment) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
+func (o InstanceClusterAttachmentOutput) ClusterMemberIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceClusterAttachment) pulumi.StringMapOutput { return v.ClusterMemberIds }).(pulumi.StringMapOutput)
+}
+
+// The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
+func (o InstanceClusterAttachmentOutput) EcuMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceClusterAttachment) pulumi.StringMapOutput { return v.EcuMap }).(pulumi.StringMapOutput)
+}
+
+// The ID of instance. Type: list.
+func (o InstanceClusterAttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceClusterAttachment) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+func (o InstanceClusterAttachmentOutput) StatusMap() pulumi.IntMapOutput {
+	return o.ApplyT(func(v *InstanceClusterAttachment) pulumi.IntMapOutput { return v.StatusMap }).(pulumi.IntMapOutput)
+}
+
 type InstanceClusterAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterAttachmentArrayOutput) ElementType() reflect.Type {

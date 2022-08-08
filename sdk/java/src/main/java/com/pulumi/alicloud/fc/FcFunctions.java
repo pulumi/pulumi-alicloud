@@ -35,6 +35,35 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains() {
@@ -46,6 +75,35 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain() {
@@ -57,6 +115,35 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args) {
@@ -68,6 +155,35 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args) {
@@ -79,6 +195,35 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args, InvokeOptions options) {
@@ -90,6 +235,35 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args, InvokeOptions options) {
@@ -99,6 +273,36 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFunctionsResult> getFunctions(GetFunctionsArgs args) {
@@ -108,6 +312,36 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFunctionsResult> getFunctionsPlain(GetFunctionsPlainArgs args) {
@@ -117,6 +351,36 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFunctionsResult> getFunctions(GetFunctionsArgs args, InvokeOptions options) {
@@ -126,6 +390,36 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFunctionsResult> getFunctionsPlain(GetFunctionsPlainArgs args, InvokeOptions options) {
@@ -139,6 +433,34 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.112.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = FcFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -152,6 +474,34 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.112.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = FcFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -165,6 +515,34 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.112.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = FcFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -178,6 +556,34 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.112.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = FcFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -191,6 +597,34 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.112.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = FcFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -204,6 +638,34 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.112.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = FcFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -213,6 +675,35 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
+     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServicesResult> getServices() {
@@ -222,6 +713,35 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
+     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain() {
@@ -231,6 +751,35 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
+     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServicesResult> getServices(GetServicesArgs args) {
@@ -240,6 +789,35 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
+     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args) {
@@ -249,6 +827,35 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
+     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServicesResult> getServices(GetServicesArgs args, InvokeOptions options) {
@@ -258,6 +865,35 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
+     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args, InvokeOptions options) {
@@ -267,6 +903,37 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .functionName(&#34;sample_function&#34;)
+     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTriggersResult> getTriggers(GetTriggersArgs args) {
@@ -276,6 +943,37 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .functionName(&#34;sample_function&#34;)
+     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTriggersResult> getTriggersPlain(GetTriggersPlainArgs args) {
@@ -285,6 +983,37 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .functionName(&#34;sample_function&#34;)
+     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTriggersResult> getTriggers(GetTriggersArgs args, InvokeOptions options) {
@@ -294,6 +1023,37 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .functionName(&#34;sample_function&#34;)
+     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName(&#34;sample_service&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTriggersResult> getTriggersPlain(GetTriggersPlainArgs args, InvokeOptions options) {
@@ -305,6 +1065,32 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = FcFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -316,6 +1102,32 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = FcFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -327,6 +1139,32 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = FcFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -338,6 +1176,32 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = FcFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -349,6 +1213,32 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = FcFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -360,6 +1250,32 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = FcFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -449,6 +449,110 @@ func (o ElasticInstanceOutput) ToElasticInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+// ADB PG instance connection string.
+func (o ElasticInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+func (o ElasticInstanceOutput) DbInstanceCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.DbInstanceCategory }).(pulumi.StringOutput)
+}
+
+// The description of ADB PG instance. It is a string of 2 to 256 characters.
+func (o ElasticInstanceOutput) DbInstanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+func (o ElasticInstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+func (o ElasticInstanceOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// Database engine: `gpdb`.
+func (o ElasticInstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Database version. Valid value is `6.0`.
+func (o ElasticInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The network type of ADB PG instance. Only `VPC` supported now.
+func (o ElasticInstanceOutput) InstanceNetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.InstanceNetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The specification of segment nodes.
+// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+func (o ElasticInstanceOutput) InstanceSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.InstanceSpec }).(pulumi.StringOutput)
+}
+
+// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+func (o ElasticInstanceOutput) PaymentDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.IntPtrOutput { return v.PaymentDuration }).(pulumi.IntPtrOutput)
+}
+
+// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+// **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+func (o ElasticInstanceOutput) PaymentDurationUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.PaymentDurationUnit }).(pulumi.StringPtrOutput)
+}
+
+// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
+func (o ElasticInstanceOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o ElasticInstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
+}
+
+// The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
+func (o ElasticInstanceOutput) SegNodeNum() pulumi.IntOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.IntOutput { return v.SegNodeNum }).(pulumi.IntOutput)
+}
+
+// The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
+func (o ElasticInstanceOutput) SegStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.SegStorageType }).(pulumi.StringOutput)
+}
+
+// Instance status.
+func (o ElasticInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
+func (o ElasticInstanceOutput) StorageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.IntOutput { return v.StorageSize }).(pulumi.IntOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ElasticInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The virtual switch ID to launch ADB PG instances in one VPC.
+func (o ElasticInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
+func (o ElasticInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ElasticInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ElasticInstanceArrayOutput) ElementType() reflect.Type {

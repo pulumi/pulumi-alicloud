@@ -239,6 +239,26 @@ func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutputWi
 	return o
 }
 
+// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+func (o RegistryEnterpriseNamespaceOutput) AutoCreate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.BoolOutput { return v.AutoCreate }).(pulumi.BoolOutput)
+}
+
+// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+func (o RegistryEnterpriseNamespaceOutput) DefaultVisibility() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.StringOutput { return v.DefaultVisibility }).(pulumi.StringOutput)
+}
+
+// ID of Container Registry Enterprise Edition instance.
+func (o RegistryEnterpriseNamespaceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+func (o RegistryEnterpriseNamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type RegistryEnterpriseNamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseNamespaceArrayOutput) ElementType() reflect.Type {

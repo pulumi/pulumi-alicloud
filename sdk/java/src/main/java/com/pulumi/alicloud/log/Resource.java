@@ -23,6 +23,39 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Resource;
+ * import com.pulumi.alicloud.log.ResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Resource(&#34;example&#34;, ResourceArgs.builder()        
+ *             .description(&#34;user tf test resource desc&#34;)
+ *             .extInfo(&#34;{}&#34;)
+ *             .schema(&#34;{\&#34;schema\&#34;:[{\&#34;column\&#34;:\&#34;col1\&#34;,\&#34;desc\&#34;:\&#34;col1 desc\&#34;,\&#34;ext_info\&#34;:{},\&#34;required\&#34;:true,\&#34;type\&#34;:\&#34;string\&#34;},{\&#34;column\&#34;:\&#34;col2\&#34;,\&#34;desc\&#34;:\&#34;col2 desc\&#34;,\&#34;ext_info\&#34;:\&#34;optional\&#34;,\&#34;required\&#34;:true,\&#34;type\&#34;:\&#34;string\&#34;}]}&#34;)
+ *             .type(&#34;userdefine&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Log resource can be imported using the id, e.g.

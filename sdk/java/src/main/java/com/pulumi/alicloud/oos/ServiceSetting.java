@@ -24,6 +24,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.oos.ServiceSetting;
+ * import com.pulumi.alicloud.oos.ServiceSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccoossetting&#34;);
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .acl(&#34;public-read-write&#34;)
+ *             .build());
+ * 
+ *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ * 
+ *         var defaultServiceSetting = new ServiceSetting(&#34;defaultServiceSetting&#34;, ServiceSettingArgs.builder()        
+ *             .deliveryOssEnabled(true)
+ *             .deliveryOssKeyPrefix(&#34;path1/&#34;)
+ *             .deliveryOssBucketName(defaultBucket.bucket())
+ *             .deliverySlsEnabled(true)
+ *             .deliverySlsProjectName(defaultProject.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * OOS Service Setting can be imported using the id, e.g.

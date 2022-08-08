@@ -24,6 +24,68 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackage;
+ * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.ga.AcceleratorSpareIpAttachment;
+ * import com.pulumi.alicloud.ga.AcceleratorSpareIpAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .spec(&#34;1&#34;)
+ *             .acceleratorName(var_.name())
+ *             .autoUseCoupon(true)
+ *             .description(var_.name())
+ *             .build());
+ * 
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(100)
+ *             .type(&#34;Basic&#34;)
+ *             .bandwidthType(&#34;Basic&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .billingType(&#34;PayBy95&#34;)
+ *             .ratio(30)
+ *             .bandwidthPackageName(var_.name())
+ *             .autoPay(true)
+ *             .autoUseCoupon(true)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *             .build());
+ * 
+ *         var defaultAcceleratorSpareIpAttachment = new AcceleratorSpareIpAttachment(&#34;defaultAcceleratorSpareIpAttachment&#34;, AcceleratorSpareIpAttachmentArgs.builder()        
+ *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+ *             .spareIp(&#34;127.0.0.1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.

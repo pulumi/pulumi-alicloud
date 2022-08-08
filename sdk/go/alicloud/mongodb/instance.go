@@ -498,6 +498,169 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+func (o InstanceOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// Auto renew for prepaid, true of false. Default is false.
+// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+func (o InstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+func (o InstanceOutput) BackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+func (o InstanceOutput) BackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
+}
+
+// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+func (o InstanceOutput) DbInstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceClass }).(pulumi.StringOutput)
+}
+
+// User-defined DB instance storage space.Unit: GB. Value range:
+// - Custom storage space.
+// - 10-GB increments.
+func (o InstanceOutput) DbInstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DbInstanceStorage }).(pulumi.IntOutput)
+}
+
+// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
+func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+func (o InstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// The name of DB instance. It a string of 2 to 256 characters.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+func (o InstanceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
+// * UPGRADE: The specifications are upgraded.
+// * DOWNGRADE: The specifications are downgraded.
+//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
+}
+
+// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+func (o InstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// The name of the mongo replica set
+func (o InstanceOutput) ReplicaSetName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReplicaSetName }).(pulumi.StringOutput)
+}
+
+// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+func (o InstanceOutput) ReplicaSets() InstanceReplicaSetArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceReplicaSetArrayOutput { return v.ReplicaSets }).(InstanceReplicaSetArrayOutput)
+}
+
+// Number of replica set nodes. Valid values: [1, 3, 5, 7]
+func (o InstanceOutput) ReplicationFactor() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ReplicationFactor }).(pulumi.IntOutput)
+}
+
+// The ID of the Resource Group.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Instance log backup retention days. Available in 1.42.0+.
+func (o InstanceOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
+// The Security Group ID of ECS.
+func (o InstanceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o InstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
+}
+
+// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+func (o InstanceOutput) SslAction() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslAction }).(pulumi.StringOutput)
+}
+
+// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+func (o InstanceOutput) SslStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslStatus }).(pulumi.StringOutput)
+}
+
+// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+func (o InstanceOutput) StorageEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StorageEngine }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The TDE(Transparent Data Encryption) status.
+func (o InstanceOutput) TdeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+func (o InstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The virtual switch ID to launch DB instances in one VPC.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone to launch the DB instance. it supports multiple zone.
+// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

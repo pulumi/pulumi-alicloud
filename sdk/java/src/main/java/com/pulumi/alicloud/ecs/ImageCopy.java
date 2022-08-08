@@ -29,6 +29,38 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.66.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.ImageCopy;
+ * import com.pulumi.alicloud.ecs.ImageCopyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ImageCopy(&#34;default&#34;, ImageCopyArgs.builder()        
+ *             .description(&#34;test-image&#34;)
+ *             .imageName(&#34;test-image&#34;)
+ *             .sourceImageId(&#34;m-bp1gxyhdswlsn18tu***&#34;)
+ *             .sourceRegionId(&#34;cn-hangzhou&#34;)
+ *             .tags(Map.of(&#34;FinanceDept&#34;, &#34;FinanceDeptJoshua&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Attributes Reference0
  * 
  *  The following attributes are exported:

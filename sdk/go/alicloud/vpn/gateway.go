@@ -314,6 +314,84 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// Whether to pay automatically. Default value: `true`. Valid values:
+// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+// `true`: Enable automatic payment, automatic payment order.
+func (o GatewayOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewayOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The business status of the VPN gateway.
+func (o GatewayOutput) BusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.BusinessStatus }).(pulumi.StringOutput)
+}
+
+// The description of the VPN instance.
+func (o GatewayOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
+func (o GatewayOutput) EnableIpsec() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.EnableIpsec }).(pulumi.BoolPtrOutput)
+}
+
+// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+func (o GatewayOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
+}
+
+// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
+// Default to PostPaid.
+func (o GatewayOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The internet ip of the VPN.
+func (o GatewayOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// The name of the VPN. Defaults to null.
+func (o GatewayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
+func (o GatewayOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
+// This field is ignored when enableSsl is false.
+func (o GatewayOutput) SslConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntPtrOutput { return v.SslConnections }).(pulumi.IntPtrOutput)
+}
+
+// The status of the VPN gateway.
+func (o GatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags of VPN gateway.
+func (o GatewayOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The VPN belongs the vpc_id, the field can't be changed.
+func (o GatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The VPN belongs the vswitch_id, the field can't be changed.
+func (o GatewayOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type GatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayArrayOutput) ElementType() reflect.Type {

@@ -252,6 +252,31 @@ func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
 }
 
+// Name for the alias you are creating.
+func (o AliasOutput) AliasName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.AliasName }).(pulumi.StringOutput)
+}
+
+// Description of the alias.
+func (o AliasOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Function Compute alias' route configuration settings. Fields documented below.
+func (o AliasOutput) RoutingConfig() AliasRoutingConfigPtrOutput {
+	return o.ApplyT(func(v *Alias) AliasRoutingConfigPtrOutput { return v.RoutingConfig }).(AliasRoutingConfigPtrOutput)
+}
+
+// The Function Compute service name.
+func (o AliasOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
+func (o AliasOutput) ServiceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.ServiceVersion }).(pulumi.StringOutput)
+}
+
 type AliasArrayOutput struct{ *pulumi.OutputState }
 
 func (AliasArrayOutput) ElementType() reflect.Type {

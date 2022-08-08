@@ -220,6 +220,31 @@ func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
+func (o CustomImageOutput) CustomImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.CustomImageName }).(pulumi.StringOutput)
+}
+
+// The description of the Custom Image.
+func (o CustomImageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the instance.
+func (o CustomImageOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+func (o CustomImageOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the system snapshot.
+func (o CustomImageOutput) SystemSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.SystemSnapshotId }).(pulumi.StringOutput)
+}
+
 type CustomImageArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomImageArrayOutput) ElementType() reflect.Type {

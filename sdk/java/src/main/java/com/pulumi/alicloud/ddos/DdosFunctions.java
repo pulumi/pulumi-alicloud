@@ -29,6 +29,35 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in 1.57.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddosbgp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances() {
@@ -40,6 +69,35 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in 1.57.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddosbgp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain() {
@@ -51,6 +109,35 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in 1.57.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddosbgp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances(GetDdosBgpInstancesArgs args) {
@@ -62,6 +149,35 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in 1.57.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddosbgp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain(GetDdosBgpInstancesPlainArgs args) {
@@ -73,6 +189,35 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in 1.57.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddosbgp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances(GetDdosBgpInstancesArgs args, InvokeOptions options) {
@@ -84,6 +229,35 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in 1.57.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddosbgp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain(GetDdosBgpInstancesPlainArgs args, InvokeOptions options) {
@@ -96,6 +270,37 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
+     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDdosCooDomainResourcesResult> getDdosCooDomainResources() {
         return getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.Empty, InvokeOptions.Empty);
@@ -106,6 +311,37 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in v1.123.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
+     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosCooDomainResourcesResult> getDdosCooDomainResourcesPlain() {
@@ -118,6 +354,37 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
+     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDdosCooDomainResourcesResult> getDdosCooDomainResources(GetDdosCooDomainResourcesArgs args) {
         return getDdosCooDomainResources(args, InvokeOptions.Empty);
@@ -128,6 +395,37 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in v1.123.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
+     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosCooDomainResourcesResult> getDdosCooDomainResourcesPlain(GetDdosCooDomainResourcesPlainArgs args) {
@@ -140,6 +438,37 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
+     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDdosCooDomainResourcesResult> getDdosCooDomainResources(GetDdosCooDomainResourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", TypeShape.of(GetDdosCooDomainResourcesResult.class), args, Utilities.withVersion(options));
@@ -151,6 +480,37 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
+     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetDdosCooDomainResourcesResult> getDdosCooDomainResourcesPlain(GetDdosCooDomainResourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", TypeShape.of(GetDdosCooDomainResourcesResult.class), args, Utilities.withVersion(options));
@@ -159,6 +519,35 @@ public final class DdosFunctions {
      * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDdosCooInstancesResult> getDdosCooInstances() {
@@ -168,6 +557,35 @@ public final class DdosFunctions {
      * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosCooInstancesResult> getDdosCooInstancesPlain() {
@@ -177,6 +595,35 @@ public final class DdosFunctions {
      * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDdosCooInstancesResult> getDdosCooInstances(GetDdosCooInstancesArgs args) {
@@ -186,6 +633,35 @@ public final class DdosFunctions {
      * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosCooInstancesResult> getDdosCooInstancesPlain(GetDdosCooInstancesPlainArgs args) {
@@ -195,6 +671,35 @@ public final class DdosFunctions {
      * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDdosCooInstancesResult> getDdosCooInstances(GetDdosCooInstancesArgs args, InvokeOptions options) {
@@ -204,6 +709,35 @@ public final class DdosFunctions {
      * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosCooInstancesResult> getDdosCooInstancesPlain(GetDdosCooInstancesPlainArgs args, InvokeOptions options) {
@@ -216,6 +750,38 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
+     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
+     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDdosCooPortsResult> getDdosCooPorts(GetDdosCooPortsArgs args) {
         return getDdosCooPorts(args, InvokeOptions.Empty);
@@ -226,6 +792,38 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in v1.123.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
+     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
+     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosCooPortsResult> getDdosCooPortsPlain(GetDdosCooPortsPlainArgs args) {
@@ -238,6 +836,38 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
+     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
+     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDdosCooPortsResult> getDdosCooPorts(GetDdosCooPortsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", TypeShape.of(GetDdosCooPortsResult.class), args, Utilities.withVersion(options));
@@ -248,6 +878,38 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in v1.123.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
+     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
+     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDdosCooPortsResult> getDdosCooPortsPlain(GetDdosCooPortsPlainArgs args, InvokeOptions options) {

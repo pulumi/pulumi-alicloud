@@ -61,7 +61,7 @@ import (
 // 			BufferInterval: pulumi.Int(300),
 // 			BufferSize:     pulumi.Int(250),
 // 			CompressType:   pulumi.String("none"),
-// 			PathFormat:     pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v", "%", "Y/", "%", "m/", "%", "d/", "%", "H/", "%", "M")),
+// 			PathFormat:     pulumi.String(fmt.Sprintf("%vY/%vm/%vd/%vH/%vM", "%", "%", "%", "%", "%")),
 // 			Format:         pulumi.String("json"),
 // 			JsonEnableTag:  pulumi.Bool(true),
 // 		})
@@ -459,6 +459,107 @@ func (o OssShipperOutput) ToOssShipperOutput() OssShipperOutput {
 
 func (o OssShipperOutput) ToOssShipperOutputWithContext(ctx context.Context) OssShipperOutput {
 	return o
+}
+
+// How often is it delivered every interval.
+func (o OssShipperOutput) BufferInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.IntOutput { return v.BufferInterval }).(pulumi.IntOutput)
+}
+
+// Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
+func (o OssShipperOutput) BufferSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.IntOutput { return v.BufferSize }).(pulumi.IntOutput)
+}
+
+// OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
+func (o OssShipperOutput) CompressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringPtrOutput { return v.CompressType }).(pulumi.StringPtrOutput)
+}
+
+func (o OssShipperOutput) CsvConfigColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringArrayOutput { return v.CsvConfigColumns }).(pulumi.StringArrayOutput)
+}
+
+func (o OssShipperOutput) CsvConfigDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringPtrOutput { return v.CsvConfigDelimiter }).(pulumi.StringPtrOutput)
+}
+
+func (o OssShipperOutput) CsvConfigHeader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.BoolPtrOutput { return v.CsvConfigHeader }).(pulumi.BoolPtrOutput)
+}
+
+func (o OssShipperOutput) CsvConfigLinefeed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringPtrOutput { return v.CsvConfigLinefeed }).(pulumi.StringPtrOutput)
+}
+
+func (o OssShipperOutput) CsvConfigNullidentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringPtrOutput { return v.CsvConfigNullidentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o OssShipperOutput) CsvConfigQuote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringPtrOutput { return v.CsvConfigQuote }).(pulumi.StringPtrOutput)
+}
+
+// Storage format, only supports three types: `json`, `parquet`, `csv`.
+// **According to the different format, please select the following parameters**
+// - format = `json`
+//   `jsonEnableTag` - (Optional) Whether to deliver the label.
+// - format = `csv`
+//   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+//   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+//   `csvConfigNullidentifier` - (Optional) Invalid field content.
+//   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+//   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+//   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+// - format = `parquet`
+//   `parquetConfig` - (Optional) Configure to use parquet storage format.
+//   `name` - (Required) The name of the key.
+//   `type` - (Required) Type of configuration name.
+func (o OssShipperOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
+}
+
+func (o OssShipperOutput) JsonEnableTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.BoolPtrOutput { return v.JsonEnableTag }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the log logstore.
+func (o OssShipperOutput) LogstoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.LogstoreName }).(pulumi.StringOutput)
+}
+
+// The name of the oss bucket.
+func (o OssShipperOutput) OssBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.OssBucket }).(pulumi.StringOutput)
+}
+
+// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
+func (o OssShipperOutput) OssPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringPtrOutput { return v.OssPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o OssShipperOutput) ParquetConfigs() OssShipperParquetConfigArrayOutput {
+	return o.ApplyT(func(v *OssShipper) OssShipperParquetConfigArrayOutput { return v.ParquetConfigs }).(OssShipperParquetConfigArrayOutput)
+}
+
+// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+func (o OssShipperOutput) PathFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.PathFormat }).(pulumi.StringOutput)
+}
+
+// The name of the log project. It is the only in one Alicloud account.
+func (o OssShipperOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
+func (o OssShipperOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
+func (o OssShipperOutput) ShipperName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.ShipperName }).(pulumi.StringOutput)
 }
 
 type OssShipperArrayOutput struct{ *pulumi.OutputState }

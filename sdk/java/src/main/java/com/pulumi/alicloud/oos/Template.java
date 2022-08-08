@@ -23,6 +23,64 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.92.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oos.Template;
+ * import com.pulumi.alicloud.oos.TemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Template(&#34;example&#34;, TemplateArgs.builder()        
+ *             .content(&#34;&#34;&#34;
+ *   {
+ *     &#34;FormatVersion&#34;: &#34;OOS-2019-06-01&#34;,
+ *     &#34;Description&#34;: &#34;Update Describe instances of given status&#34;,
+ *     &#34;Parameters&#34;:{
+ *       &#34;Status&#34;:{
+ *         &#34;Type&#34;: &#34;String&#34;,
+ *         &#34;Description&#34;: &#34;(Required) The status of the Ecs instance.&#34;
+ *       }
+ *     },
+ *     &#34;Tasks&#34;: [
+ *       {
+ *         &#34;Properties&#34; :{
+ *           &#34;Parameters&#34;:{
+ *             &#34;Status&#34;: &#34;{{ Status }}&#34;
+ *           },
+ *           &#34;API&#34;: &#34;DescribeInstances&#34;,
+ *           &#34;Service&#34;: &#34;Ecs&#34;
+ *         },
+ *         &#34;Name&#34;: &#34;foo&#34;,
+ *         &#34;Action&#34;: &#34;ACS::ExecuteApi&#34;
+ *       }]
+ *   }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;acceptance Test&#34;)
+ *             ))
+ *             .templateName(&#34;test-name&#34;)
+ *             .versionName(&#34;test&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

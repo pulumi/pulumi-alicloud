@@ -415,6 +415,101 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+func (o DomainOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.ClusterType }).(pulumi.StringPtrOutput)
+}
+
+// The CNAME record assigned by the WAF instance to the specified domain.
+func (o DomainOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
+}
+
+// The connection timeout for WAF exclusive clusters. Unit: seconds.
+func (o DomainOutput) ConnectionTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.ConnectionTime }).(pulumi.IntPtrOutput)
+}
+
+// Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
+//
+// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
+func (o DomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
+func (o DomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// List of the HTTP 2.0 ports.
+func (o DomainOutput) Http2Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.Http2Ports }).(pulumi.StringArrayOutput)
+}
+
+// List of the HTTP ports.
+func (o DomainOutput) HttpPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.HttpPorts }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
+// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
+func (o DomainOutput) HttpToUserIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.HttpToUserIp }).(pulumi.StringPtrOutput)
+}
+
+// List of the HTTPS ports.
+func (o DomainOutput) HttpsPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.HttpsPorts }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
+func (o DomainOutput) HttpsRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.HttpsRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the WAF instance.
+func (o DomainOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
+func (o DomainOutput) IsAccessProduct() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.IsAccessProduct }).(pulumi.StringOutput)
+}
+
+// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+func (o DomainOutput) LoadBalancing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.LoadBalancing }).(pulumi.StringPtrOutput)
+}
+
+// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+// * key: The key of label
+// * value: The value of label
+func (o DomainOutput) LogHeaders() DomainLogHeaderArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainLogHeaderArrayOutput { return v.LogHeaders }).(DomainLogHeaderArrayOutput)
+}
+
+// The read timeout of a WAF exclusive cluster. Unit: seconds.
+func (o DomainOutput) ReadTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.ReadTime }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
+func (o DomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// List of the IP address or domain of the origin server to which the specified domain points.
+func (o DomainOutput) SourceIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.SourceIps }).(pulumi.StringArrayOutput)
+}
+
+// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+func (o DomainOutput) WriteTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.WriteTime }).(pulumi.IntPtrOutput)
+}
+
 type DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainArrayOutput) ElementType() reflect.Type {

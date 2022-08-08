@@ -35,6 +35,160 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.54.0+
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+ * import com.pulumi.alicloud.vpc.NetworkInterface;
+ * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+ * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+ * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+ * import com.pulumi.alicloud.slb.MasterSlaveServerGroup;
+ * import com.pulumi.alicloud.slb.MasterSlaveServerGroupArgs;
+ * import com.pulumi.alicloud.slb.inputs.MasterSlaveServerGroupServerArgs;
+ * import com.pulumi.alicloud.slb.Listener;
+ * import com.pulumi.alicloud.slb.ListenerArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .eniAmount(2)
+ *             .build());
+ * 
+ *         final var image = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccSlbMasterSlaveServerGroupVpc&#34;);
+ *         final var number = config.get(&#34;number&#34;).orElse(&#34;1&#34;);
+ *         var mainNetwork = new Network(&#34;mainNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var mainSwitch = new Switch(&#34;mainSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(mainNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var groupSecurityGroup = new SecurityGroup(&#34;groupSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(mainNetwork.id())
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; &#34;2&#34;; i++) {
+ *             new Instance(&#34;instanceInstance-&#34; + i, InstanceArgs.builder()            
+ *                 .imageId(image.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .instanceName(name)
+ *                 .securityGroups(groupSecurityGroup.id())
+ *                 .internetChargeType(&#34;PayByTraffic&#34;)
+ *                 .internetMaxBandwidthOut(&#34;10&#34;)
+ *                 .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .instanceChargeType(&#34;PostPaid&#34;)
+ *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *                 .vswitchId(mainSwitch.id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var instanceApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;instanceApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(name)
+ *             .vswitchId(mainSwitch.id())
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; number; i++) {
+ *             new NetworkInterface(&#34;defaultNetworkInterface-&#34; + i, NetworkInterfaceArgs.builder()            
+ *                 .vswitchId(mainSwitch.id())
+ *                 .securityGroups(groupSecurityGroup.id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; number; i++) {
+ *             new NetworkInterfaceAttachment(&#34;defaultNetworkInterfaceAttachment-&#34; + i, NetworkInterfaceAttachmentArgs.builder()            
+ *                 .instanceId(instanceInstance[0].id())
+ *                 .networkInterfaceId(defaultNetworkInterface.stream().map(element -&gt; element.id()).collect(toList())[range.index()])
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var groupMasterSlaveServerGroup = new MasterSlaveServerGroup(&#34;groupMasterSlaveServerGroup&#34;, MasterSlaveServerGroupArgs.builder()        
+ *             .loadBalancerId(instanceApplicationLoadBalancer.id())
+ *             .servers(            
+ *                 MasterSlaveServerGroupServerArgs.builder()
+ *                     .serverId(instanceInstance[0].id())
+ *                     .port(100)
+ *                     .weight(100)
+ *                     .serverType(&#34;Master&#34;)
+ *                     .build(),
+ *                 MasterSlaveServerGroupServerArgs.builder()
+ *                     .serverId(instanceInstance[1].id())
+ *                     .port(100)
+ *                     .weight(100)
+ *                     .serverType(&#34;Slave&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         var tcp = new Listener(&#34;tcp&#34;, ListenerArgs.builder()        
+ *             .loadBalancerId(instanceApplicationLoadBalancer.id())
+ *             .masterSlaveServerGroupId(groupMasterSlaveServerGroup.id())
+ *             .frontendPort(&#34;22&#34;)
+ *             .protocol(&#34;tcp&#34;)
+ *             .bandwidth(&#34;10&#34;)
+ *             .healthCheckType(&#34;tcp&#34;)
+ *             .persistenceTimeout(3600)
+ *             .healthyThreshold(8)
+ *             .unhealthyThreshold(8)
+ *             .healthCheckTimeout(8)
+ *             .healthCheckInterval(5)
+ *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+ *             .healthCheckConnectPort(20)
+ *             .healthCheckUri(&#34;/console&#34;)
+ *             .establishedTimeout(600)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Block servers
  * 
  * The servers mapping supports the following:

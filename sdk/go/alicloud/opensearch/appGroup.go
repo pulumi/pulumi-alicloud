@@ -313,6 +313,61 @@ func (o AppGroupOutput) ToAppGroupOutputWithContext(ctx context.Context) AppGrou
 	return o
 }
 
+// Application Group Name.
+func (o AppGroupOutput) AppGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.AppGroupName }).(pulumi.StringOutput)
+}
+
+// Billing model. Valid values:`computeResource` and `qps`.
+func (o AppGroupOutput) ChargeWay() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.ChargeWay }).(pulumi.StringOutput)
+}
+
+// The version of Application Group Name.
+func (o AppGroupOutput) CurrentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringPtrOutput { return v.CurrentVersion }).(pulumi.StringPtrOutput)
+}
+
+// The description of the resource.
+func (o AppGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The instance id.
+func (o AppGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
+func (o AppGroupOutput) OrderType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.OrderType }).(pulumi.StringOutput)
+}
+
+// Order cycle information. The details see Block order.
+func (o AppGroupOutput) Orders() AppGroupOrderArrayOutput {
+	return o.ApplyT(func(v *AppGroup) AppGroupOrderArrayOutput { return v.Orders }).(AppGroupOrderArrayOutput)
+}
+
+// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
+func (o AppGroupOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Quota information.  The details see Block quota.
+func (o AppGroupOutput) Quota() AppGroupQuotaOutput {
+	return o.ApplyT(func(v *AppGroup) AppGroupQuotaOutput { return v.Quota }).(AppGroupQuotaOutput)
+}
+
+// The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
+func (o AppGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Application type. Valid Values: `standard`, `enhanced`.
+func (o AppGroupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type AppGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AppGroupArrayOutput) ElementType() reflect.Type {

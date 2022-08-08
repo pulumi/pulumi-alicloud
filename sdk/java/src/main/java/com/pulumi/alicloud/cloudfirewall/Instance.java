@@ -25,6 +25,43 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudfirewall.Instance;
+ * import com.pulumi.alicloud.cloudfirewall.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .bandWidth(10)
+ *             .cfwLog(false)
+ *             .cfwLogStorage(1000)
+ *             .cfwService(false)
+ *             .ipNumber(20)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(6)
+ *             .spec(&#34;premium_version&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Firewall Instance can be imported using the id, e.g.

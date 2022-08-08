@@ -217,6 +217,31 @@ func (o GreyTagRouteOutput) ToGreyTagRouteOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The ID  of the SAE Application.
+func (o GreyTagRouteOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreyTagRoute) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The description of GreyTagRoute.
+func (o GreyTagRouteOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GreyTagRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The grayscale rule created for Dubbo Application. The details see Block `dubboRules`.
+func (o GreyTagRouteOutput) DubboRules() GreyTagRouteDubboRuleArrayOutput {
+	return o.ApplyT(func(v *GreyTagRoute) GreyTagRouteDubboRuleArrayOutput { return v.DubboRules }).(GreyTagRouteDubboRuleArrayOutput)
+}
+
+// The name of GreyTagRoute.
+func (o GreyTagRouteOutput) GreyTagRouteName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreyTagRoute) pulumi.StringOutput { return v.GreyTagRouteName }).(pulumi.StringOutput)
+}
+
+// The grayscale rule created for SpringCloud Application. The details see Block `scRules`.
+func (o GreyTagRouteOutput) ScRules() GreyTagRouteScRuleArrayOutput {
+	return o.ApplyT(func(v *GreyTagRoute) GreyTagRouteScRuleArrayOutput { return v.ScRules }).(GreyTagRouteScRuleArrayOutput)
+}
+
 type GreyTagRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (GreyTagRouteArrayOutput) ElementType() reflect.Type {

@@ -28,6 +28,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cdn.DomainNew;
+ * import com.pulumi.alicloud.cdn.DomainNewArgs;
+ * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
+ *             .cdnType(&#34;web&#34;)
+ *             .domainName(&#34;terraform.test.com&#34;)
+ *             .scope(&#34;overseas&#34;)
+ *             .sources(DomainNewSourceArgs.builder()
+ *                 .content(&#34;1.1.1.1&#34;)
+ *                 .port(80)
+ *                 .priority(20)
+ *                 .type(&#34;ipaddr&#34;)
+ *                 .weight(10)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CDN domain can be imported using the id, e.g.

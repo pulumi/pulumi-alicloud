@@ -274,6 +274,36 @@ func (o IpSetOutput) ToIpSetOutputWithContext(ctx context.Context) IpSetOutput {
 	return o
 }
 
+// The ID of an acceleration region.
+func (o IpSetOutput) AccelerateRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.StringOutput { return v.AccelerateRegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the Global Accelerator (GA) instance.
+func (o IpSetOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The bandwidth allocated to the acceleration region.
+func (o IpSetOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The list of accelerated IP addresses in the acceleration region.
+func (o IpSetOutput) IpAddressLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.StringArrayOutput { return v.IpAddressLists }).(pulumi.StringArrayOutput)
+}
+
+// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+func (o IpSetOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
+}
+
+// The status of the acceleration region.
+func (o IpSetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type IpSetArrayOutput struct{ *pulumi.OutputState }
 
 func (IpSetArrayOutput) ElementType() reflect.Type {

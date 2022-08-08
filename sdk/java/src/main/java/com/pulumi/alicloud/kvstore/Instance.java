@@ -25,6 +25,144 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
+ *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *             ))
+ *             .dbInstanceName(&#34;tf-test-basic&#34;)
+ *             .engineVersion(&#34;4.0&#34;)
+ *             .instanceClass(&#34;redis.master.large.default&#34;)
+ *             .instanceType(&#34;Redis&#34;)
+ *             .resourceGroupId(&#34;rg-123456&#34;)
+ *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;Test&#34;)
+ *             ))
+ *             .vswitchId(&#34;vsw-123456&#34;)
+ *             .zoneId(&#34;cn-beijing-h&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Transform To PrePaid
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
+ *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *             ))
+ *             .dbInstanceName(&#34;tf-test-basic&#34;)
+ *             .engineVersion(&#34;4.0&#34;)
+ *             .instanceClass(&#34;redis.master.large.default&#34;)
+ *             .instanceType(&#34;Redis&#34;)
+ *             .paymentType(&#34;PrePaid&#34;)
+ *             .period(&#34;12&#34;)
+ *             .resourceGroupId(&#34;rg-123456&#34;)
+ *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;Test&#34;)
+ *             ))
+ *             .vswitchId(&#34;vsw-123456&#34;)
+ *             .zoneId(&#34;cn-beijing-h&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Modify Private Connection String
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
+ *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *             ))
+ *             .dbInstanceName(&#34;tf-test-basic&#34;)
+ *             .engineVersion(&#34;4.0&#34;)
+ *             .instanceClass(&#34;redis.master.large.default&#34;)
+ *             .instanceType(&#34;Redis&#34;)
+ *             .privateConnectionPrefix(&#34;privateconnectionstringprefix&#34;)
+ *             .resourceGroupId(&#34;rg-123456&#34;)
+ *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;Test&#34;)
+ *             ))
+ *             .vswitchId(&#34;vsw-123456&#34;)
+ *             .zoneId(&#34;cn-beijing-h&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * KVStore instance can be imported using the id, e.g.

@@ -336,6 +336,66 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// The backup vswitch id.
+func (o GatewayOutput) BackupVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.BackupVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to delete the SLB purchased on behalf of the gateway at the same time.
+func (o GatewayOutput) DeleteSlb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.DeleteSlb }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the enterprise security group type.
+func (o GatewayOutput) EnterpriseSecurityGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.EnterpriseSecurityGroup }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Gateway .
+func (o GatewayOutput) GatewayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.GatewayName }).(pulumi.StringPtrOutput)
+}
+
+// Public network SLB specifications.
+func (o GatewayOutput) InternetSlbSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.InternetSlbSpec }).(pulumi.StringPtrOutput)
+}
+
+// Number of Gateway Nodes.
+func (o GatewayOutput) Replica() pulumi.IntOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.Replica }).(pulumi.IntOutput)
+}
+
+// A list of gateway Slb.
+func (o GatewayOutput) SlbLists() GatewaySlbListArrayOutput {
+	return o.ApplyT(func(v *Gateway) GatewaySlbListArrayOutput { return v.SlbLists }).(GatewaySlbListArrayOutput)
+}
+
+// Private network SLB specifications.
+func (o GatewayOutput) SlbSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.SlbSpec }).(pulumi.StringPtrOutput)
+}
+
+// Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
+func (o GatewayOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of the gateway.
+func (o GatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the vpc.
+func (o GatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vswitch.
+func (o GatewayOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type GatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayArrayOutput) ElementType() reflect.Type {

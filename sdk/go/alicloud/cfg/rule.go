@@ -420,6 +420,102 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+func (o RuleOutput) ConfigRuleTriggerTypes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ConfigRuleTriggerTypes }).(pulumi.StringOutput)
+}
+
+// The description of the Config Rule.
+func (o RuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+func (o RuleOutput) ExcludeResourceIdsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.ExcludeResourceIdsScope }).(pulumi.StringPtrOutput)
+}
+
+// Threshold value for managed rule triggering.
+func (o RuleOutput) InputParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *Rule) pulumi.MapOutput { return v.InputParameters }).(pulumi.MapOutput)
+}
+
+// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+func (o RuleOutput) MaximumExecutionFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.MaximumExecutionFrequency }).(pulumi.StringOutput)
+}
+
+// The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
+func (o RuleOutput) RegionIdsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.RegionIdsScope }).(pulumi.StringPtrOutput)
+}
+
+// The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+func (o RuleOutput) ResourceGroupIdsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.ResourceGroupIdsScope }).(pulumi.StringPtrOutput)
+}
+
+// Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+func (o RuleOutput) ResourceTypesScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringArrayOutput { return v.ResourceTypesScopes }).(pulumi.StringArrayOutput)
+}
+
+// The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+func (o RuleOutput) RiskLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.RiskLevel }).(pulumi.IntOutput)
+}
+
+// The name of the Config Rule.
+func (o RuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// Field `scopeComplianceResourceTypes` has been deprecated from provider version 1.124.1. New field `resourceTypesScope` instead.
+//
+// Deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+func (o RuleOutput) ScopeComplianceResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringArrayOutput { return v.ScopeComplianceResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Field `sourceDetailMessageType` has been deprecated from provider version 1.124.1. New field `configRuleTriggerTypes` instead.
+//
+// Deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+func (o RuleOutput) SourceDetailMessageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.SourceDetailMessageType }).(pulumi.StringOutput)
+}
+
+// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+func (o RuleOutput) SourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.SourceIdentifier }).(pulumi.StringOutput)
+}
+
+// Field `sourceMaximumExecutionFrequency` has been deprecated from provider version 1.124.1. New field `maximumExecutionFrequency` instead.
+//
+// Deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+func (o RuleOutput) SourceMaximumExecutionFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.SourceMaximumExecutionFrequency }).(pulumi.StringOutput)
+}
+
+// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+func (o RuleOutput) SourceOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.SourceOwner }).(pulumi.StringOutput)
+}
+
+// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+func (o RuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The rule monitors the tag key, only applies to rules created based on managed rules.
+func (o RuleOutput) TagKeyScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.TagKeyScope }).(pulumi.StringPtrOutput)
+}
+
+// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
+func (o RuleOutput) TagValueScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.TagValueScope }).(pulumi.StringPtrOutput)
+}
+
 type RuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleArrayOutput) ElementType() reflect.Type {

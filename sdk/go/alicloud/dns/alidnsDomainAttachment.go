@@ -212,6 +212,16 @@ func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentOutputWithContext(
 	return o
 }
 
+// The domain names bound to the DNS instance.
+func (o AlidnsDomainAttachmentOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlidnsDomainAttachment) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
+}
+
+// The id of the DNS instance.
+func (o AlidnsDomainAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlidnsDomainAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type AlidnsDomainAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainAttachmentArrayOutput) ElementType() reflect.Type {

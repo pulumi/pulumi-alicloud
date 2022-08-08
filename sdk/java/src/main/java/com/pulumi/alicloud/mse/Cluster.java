@@ -22,6 +22,42 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.94.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mse.Cluster;
+ * import com.pulumi.alicloud.mse.ClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Cluster(&#34;example&#34;, ClusterArgs.builder()        
+ *             .aclEntryLists(&#34;127.0.0.1/32&#34;)
+ *             .clusterAliasName(&#34;tf-testAccMseCluster&#34;)
+ *             .clusterSpecification(&#34;MSE_SC_1_2_200_c&#34;)
+ *             .clusterType(&#34;Nacos-Ans&#34;)
+ *             .clusterVersion(&#34;NACOS_ANS_1_2_1&#34;)
+ *             .instanceCount(1)
+ *             .netType(&#34;privatenet&#34;)
+ *             .pubNetworkFlow(&#34;1&#34;)
+ *             .vswitchId(&#34;vsw-123456&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

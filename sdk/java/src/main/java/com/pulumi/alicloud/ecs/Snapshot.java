@@ -20,6 +20,36 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Snapshot;
+ * import com.pulumi.alicloud.ecs.SnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
+ *             .diskId(alicloud_disk_attachment.instance-attachment().disk_id())
+ *             .description(&#34;this snapshot is created for testing&#34;)
+ *             .tags(Map.of(&#34;version&#34;, &#34;1.2&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

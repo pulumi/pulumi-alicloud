@@ -39,6 +39,48 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostAccountsResult> getHostAccounts(GetHostAccountsArgs args) {
         return getHostAccounts(args, InvokeOptions.Empty);
@@ -49,6 +91,48 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostAccountsResult> getHostAccountsPlain(GetHostAccountsPlainArgs args) {
@@ -61,6 +145,48 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostAccountsResult> getHostAccounts(GetHostAccountsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bastionhost/getHostAccounts:getHostAccounts", TypeShape.of(GetHostAccountsResult.class), args, Utilities.withVersion(options));
@@ -71,6 +197,48 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
+     *             .hostId(&#34;15&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostAccountsResult> getHostAccountsPlain(GetHostAccountsPlainArgs args, InvokeOptions options) {
@@ -83,6 +251,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostGroupsResult> getHostGroups(GetHostGroupsArgs args) {
         return getHostGroups(args, InvokeOptions.Empty);
@@ -93,6 +301,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostGroupsResult> getHostGroupsPlain(GetHostGroupsPlainArgs args) {
@@ -105,6 +353,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostGroupsResult> getHostGroups(GetHostGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bastionhost/getHostGroups:getHostGroups", TypeShape.of(GetHostGroupsResult.class), args, Utilities.withVersion(options));
@@ -115,6 +403,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostGroupsResult> getHostGroupsPlain(GetHostGroupsPlainArgs args, InvokeOptions options) {
@@ -127,6 +455,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostShareKeysResult> getHostShareKeys(GetHostShareKeysArgs args) {
         return getHostShareKeys(args, InvokeOptions.Empty);
@@ -137,6 +505,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.165.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostShareKeysResult> getHostShareKeysPlain(GetHostShareKeysPlainArgs args) {
@@ -149,6 +557,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostShareKeysResult> getHostShareKeys(GetHostShareKeysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", TypeShape.of(GetHostShareKeysResult.class), args, Utilities.withVersion(options));
@@ -159,6 +607,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.165.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostShareKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostShareKeysResult> getHostShareKeysPlain(GetHostShareKeysPlainArgs args, InvokeOptions options) {
@@ -171,6 +659,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args) {
         return getHosts(args, InvokeOptions.Empty);
@@ -181,6 +709,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args) {
@@ -193,6 +761,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bastionhost/getHosts:getHosts", TypeShape.of(GetHostsResult.class), args, Utilities.withVersion(options));
@@ -203,6 +811,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args, InvokeOptions options) {
@@ -216,6 +864,35 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -229,6 +906,35 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -242,6 +948,35 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -255,6 +990,35 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -268,6 +1032,35 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -281,6 +1074,35 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -293,6 +1115,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUserGroupsResult> getUserGroups(GetUserGroupsArgs args) {
         return getUserGroups(args, InvokeOptions.Empty);
@@ -303,6 +1165,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserGroupsResult> getUserGroupsPlain(GetUserGroupsPlainArgs args) {
@@ -315,6 +1217,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUserGroupsResult> getUserGroups(GetUserGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bastionhost/getUserGroups:getUserGroups", TypeShape.of(GetUserGroupsResult.class), args, Utilities.withVersion(options));
@@ -325,6 +1267,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUserGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
+     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserGroupsResult> getUserGroupsPlain(GetUserGroupsPlainArgs args, InvokeOptions options) {
@@ -337,6 +1319,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;10&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
         return getUsers(args, InvokeOptions.Empty);
@@ -347,6 +1369,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;10&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -359,6 +1421,46 @@ public final class BastionhostFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;10&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bastionhost/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
@@ -369,6 +1471,46 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;1&#34;,
+     *                 &#34;10&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-User&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

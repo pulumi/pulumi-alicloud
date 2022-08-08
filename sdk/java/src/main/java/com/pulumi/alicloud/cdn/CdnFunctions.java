@@ -30,6 +30,36 @@ public final class CdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
+     *             .language(&#34;zh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBlockedRegionsResult> getBlockedRegions(GetBlockedRegionsArgs args) {
         return getBlockedRegions(args, InvokeOptions.Empty);
@@ -40,6 +70,36 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
+     *             .language(&#34;zh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBlockedRegionsResult> getBlockedRegionsPlain(GetBlockedRegionsPlainArgs args) {
@@ -52,6 +112,36 @@ public final class CdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
+     *             .language(&#34;zh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBlockedRegionsResult> getBlockedRegions(GetBlockedRegionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cdn/getBlockedRegions:getBlockedRegions", TypeShape.of(GetBlockedRegionsResult.class), args, Utilities.withVersion(options));
@@ -62,6 +152,36 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
+     *             .language(&#34;zh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBlockedRegionsResult> getBlockedRegionsPlain(GetBlockedRegionsPlainArgs args, InvokeOptions options) {
@@ -74,6 +194,36 @@ public final class CdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
+     *             .ip(&#34;114.114.114.114&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpInfoResult> getIpInfo(GetIpInfoArgs args) {
         return getIpInfo(args, InvokeOptions.Empty);
@@ -84,6 +234,36 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
+     *             .ip(&#34;114.114.114.114&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpInfoResult> getIpInfoPlain(GetIpInfoPlainArgs args) {
@@ -96,6 +276,36 @@ public final class CdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
+     *             .ip(&#34;114.114.114.114&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpInfoResult> getIpInfo(GetIpInfoArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cdn/getIpInfo:getIpInfo", TypeShape.of(GetIpInfoResult.class), args, Utilities.withVersion(options));
@@ -106,6 +316,36 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
+     *             .ip(&#34;114.114.114.114&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpInfoResult> getIpInfoPlain(GetIpInfoPlainArgs args, InvokeOptions options) {
@@ -118,6 +358,37 @@ public final class CdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
+     *             .domain(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs args) {
         return getRealTimeLogDeliveries(args, InvokeOptions.Empty);
@@ -128,6 +399,37 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
+     *             .domain(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveriesPlain(GetRealTimeLogDeliveriesPlainArgs args) {
@@ -140,6 +442,37 @@ public final class CdnFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
+     *             .domain(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", TypeShape.of(GetRealTimeLogDeliveriesResult.class), args, Utilities.withVersion(options));
@@ -150,6 +483,37 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
+     *             .domain(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveriesPlain(GetRealTimeLogDeliveriesPlainArgs args, InvokeOptions options) {
@@ -163,6 +527,35 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -176,6 +569,35 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -189,6 +611,35 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -202,6 +653,35 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -215,6 +695,35 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -228,6 +737,35 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available in v1.98.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

@@ -274,6 +274,41 @@ func (o EcsImageComponentOutput) ToEcsImageComponentOutputWithContext(ctx contex
 	return o
 }
 
+// The type of the image component. Only image building components are supported. Valid values: `Build`.
+func (o EcsImageComponentOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// The content of the image component. The content can consist of up to 127 commands.
+func (o EcsImageComponentOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
+// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+func (o EcsImageComponentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+func (o EcsImageComponentOutput) ImageComponentName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.ImageComponentName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which to assign the image component.
+func (o EcsImageComponentOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+func (o EcsImageComponentOutput) SystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.SystemType }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o EcsImageComponentOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type EcsImageComponentArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsImageComponentArrayOutput) ElementType() reflect.Type {

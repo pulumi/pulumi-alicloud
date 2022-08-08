@@ -20,6 +20,38 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kvstore.Connection;
+ * import com.pulumi.alicloud.kvstore.ConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
+ *             .connectionStringPrefix(&#34;allocatetestupdate&#34;)
+ *             .instanceId(&#34;r-abc123456&#34;)
+ *             .port(&#34;6370&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * KVStore connection can be imported using the id, e.g.

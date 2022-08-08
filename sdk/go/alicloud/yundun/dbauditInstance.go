@@ -222,6 +222,35 @@ func (o DBAuditInstanceOutput) ToDBAuditInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+// Description of the instance. This name can have a string of 1 to 63 characters.
+func (o DBAuditInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBAuditInstance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o DBAuditInstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *DBAuditInstance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
+func (o DBAuditInstanceOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBAuditInstance) pulumi.StringOutput { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+func (o DBAuditInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBAuditInstance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o DBAuditInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *DBAuditInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// vSwtich ID configured to audit
+func (o DBAuditInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBAuditInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type DBAuditInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (DBAuditInstanceArrayOutput) ElementType() reflect.Type {

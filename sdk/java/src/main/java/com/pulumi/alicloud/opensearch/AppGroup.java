@@ -26,6 +26,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.opensearch.AppGroup;
+ * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+ * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;name&#34;);
+ *         var default_ = new AppGroup(&#34;default&#34;, AppGroupArgs.builder()        
+ *             .appGroupName(name)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .type(&#34;standard&#34;)
+ *             .quota(AppGroupQuotaArgs.builder()
+ *                 .docSize(1)
+ *                 .computeResource(20)
+ *                 .spec(&#34;opensearch.share.common&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Open Search App Group can be imported using the id, e.g.

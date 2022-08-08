@@ -336,6 +336,86 @@ func (o QuotaApplicationOutput) ToQuotaApplicationOutputWithContext(ctx context.
 	return o
 }
 
+// The approve value of the quota application.
+func (o QuotaApplicationOutput) ApproveValue() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.ApproveValue }).(pulumi.StringOutput)
+}
+
+// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+func (o QuotaApplicationOutput) AuditMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringPtrOutput { return v.AuditMode }).(pulumi.StringPtrOutput)
+}
+
+// The audit reason.
+func (o QuotaApplicationOutput) AuditReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.AuditReason }).(pulumi.StringOutput)
+}
+
+// The desire value of the quota application.
+func (o QuotaApplicationOutput) DesireValue() pulumi.Float64Output {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.Float64Output { return v.DesireValue }).(pulumi.Float64Output)
+}
+
+// The quota dimensions.
+func (o QuotaApplicationOutput) Dimensions() QuotaApplicationDimensionArrayOutput {
+	return o.ApplyT(func(v *QuotaApplication) QuotaApplicationDimensionArrayOutput { return v.Dimensions }).(QuotaApplicationDimensionArrayOutput)
+}
+
+// The effective time of the quota application.
+func (o QuotaApplicationOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// The expire time of the quota application.
+func (o QuotaApplicationOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The notice type. Valid values: `0`, `1`, `2`, `3`.
+func (o QuotaApplicationOutput) NoticeType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.IntPtrOutput { return v.NoticeType }).(pulumi.IntPtrOutput)
+}
+
+// The product code.
+func (o QuotaApplicationOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The ID of quota action.
+func (o QuotaApplicationOutput) QuotaActionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.QuotaActionCode }).(pulumi.StringOutput)
+}
+
+// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+func (o QuotaApplicationOutput) QuotaCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringPtrOutput { return v.QuotaCategory }).(pulumi.StringPtrOutput)
+}
+
+// The description of the quota application.
+func (o QuotaApplicationOutput) QuotaDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.QuotaDescription }).(pulumi.StringOutput)
+}
+
+// The name of the quota application.
+func (o QuotaApplicationOutput) QuotaName() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.QuotaName }).(pulumi.StringOutput)
+}
+
+// The unit of the quota application.
+func (o QuotaApplicationOutput) QuotaUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.QuotaUnit }).(pulumi.StringOutput)
+}
+
+// The reason of the quota application.
+func (o QuotaApplicationOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.Reason }).(pulumi.StringOutput)
+}
+
+// The status of the quota application.
+func (o QuotaApplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type QuotaApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (QuotaApplicationArrayOutput) ElementType() reflect.Type {

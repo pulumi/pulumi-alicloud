@@ -25,6 +25,189 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in v1.120.0+.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackage;
+ * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.ga.Listener;
+ * import com.pulumi.alicloud.ga.ListenerArgs;
+ * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+ * import com.pulumi.alicloud.ga.IpSet;
+ * import com.pulumi.alicloud.ga.IpSetArgs;
+ * import com.pulumi.alicloud.ecs.EipAddress;
+ * import com.pulumi.alicloud.ecs.EipAddressArgs;
+ * import com.pulumi.alicloud.ga.EndpointGroup;
+ * import com.pulumi.alicloud.ga.EndpointGroupArgs;
+ * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
+ * import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
+ * import com.pulumi.alicloud.ga.ForwardingRule;
+ * import com.pulumi.alicloud.ga.ForwardingRuleArgs;
+ * import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleConditionArgs;
+ * import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleConditionPathConfigArgs;
+ * import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleActionArgs;
+ * import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleActionForwardGroupConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAccelerator = new Accelerator(&#34;exampleAccelerator&#34;, AcceleratorArgs.builder()        
+ *             .duration(3)
+ *             .spec(&#34;2&#34;)
+ *             .acceleratorName(&#34;ga-tf&#34;)
+ *             .autoUseCoupon(false)
+ *             .description(&#34;ga-tf description&#34;)
+ *             .autoRenewDuration(&#34;2&#34;)
+ *             .renewalStatus(&#34;AutoRenewal&#34;)
+ *             .build());
+ * 
+ *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .type(&#34;Basic&#34;)
+ *             .bandwidth(20)
+ *             .bandwidthType(&#34;Basic&#34;)
+ *             .duration(1)
+ *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .autoPay(true)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .billingType(&#34;PayByTraffic&#34;)
+ *             .ratio(40)
+ *             .autoUseCoupon(false)
+ *             .bandwidthPackageName(&#34;bandwidth_package_name_tf&#34;)
+ *             .description(&#34;bandwidth_package_name_tf_description&#34;)
+ *             .build());
+ * 
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(exampleAccelerator.id())
+ *             .bandwidthPackageId(exampleBandwidthPackage.id())
+ *             .build());
+ * 
+ *         var exampleListener = new Listener(&#34;exampleListener&#34;, ListenerArgs.builder()        
+ *             .acceleratorId(exampleAccelerator.id())
+ *             .portRanges(ListenerPortRangeArgs.builder()
+ *                 .fromPort(60)
+ *                 .toPort(60)
+ *                 .build())
+ *             .clientAffinity(&#34;SOURCE_IP&#34;)
+ *             .description(&#34;alicloud_ga_listener_description&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .proxyProtocol(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exampleBandwidthPackageAttachment)
+ *                 .build());
+ * 
+ *         var exampleIpSet = new IpSet(&#34;exampleIpSet&#34;, IpSetArgs.builder()        
+ *             .accelerateRegionId(&#34;cn-shanghai&#34;)
+ *             .acceleratorId(exampleAccelerator.id())
+ *             .bandwidth(&#34;20&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exampleBandwidthPackageAttachment)
+ *                 .build());
+ * 
+ *         var exampleEipAddress = new EipAddress(&#34;exampleEipAddress&#34;, EipAddressArgs.builder()        
+ *             .bandwidth(&#34;10&#34;)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .build());
+ * 
+ *         var default_ = new EndpointGroup(&#34;default&#34;, EndpointGroupArgs.builder()        
+ *             .acceleratorId(exampleAccelerator.id())
+ *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+ *                 .endpoint(exampleEipAddress.ipAddress())
+ *                 .type(&#34;PublicIp&#34;)
+ *                 .weight(&#34;20&#34;)
+ *                 .enableClientipPreservation(true)
+ *                 .build())
+ *             .endpointGroupRegion(&#34;cn-shanghai&#34;)
+ *             .listenerId(exampleListener.id())
+ *             .description(&#34;alicloud_ga_endpoint_group_description&#34;)
+ *             .endpointGroupType(&#34;default&#34;)
+ *             .endpointRequestProtocol(&#34;HTTPS&#34;)
+ *             .healthCheckIntervalSeconds(4)
+ *             .healthCheckPath(&#34;/path&#34;)
+ *             .thresholdCount(4)
+ *             .trafficPercentage(20)
+ *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
+ *                 .endpointPort(80)
+ *                 .listenerPort(60)
+ *                 .build())
+ *             .build());
+ * 
+ *         var virtual = new EndpointGroup(&#34;virtual&#34;, EndpointGroupArgs.builder()        
+ *             .acceleratorId(exampleAccelerator.id())
+ *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+ *                 .endpoint(exampleEipAddress.ipAddress())
+ *                 .type(&#34;PublicIp&#34;)
+ *                 .weight(&#34;20&#34;)
+ *                 .enableClientipPreservation(true)
+ *                 .build())
+ *             .endpointGroupRegion(&#34;cn-shanghai&#34;)
+ *             .listenerId(exampleListener.id())
+ *             .description(&#34;alicloud_ga_endpoint_group_description&#34;)
+ *             .endpointGroupType(&#34;virtual&#34;)
+ *             .endpointRequestProtocol(&#34;HTTPS&#34;)
+ *             .healthCheckIntervalSeconds(4)
+ *             .healthCheckPath(&#34;/path&#34;)
+ *             .thresholdCount(4)
+ *             .trafficPercentage(20)
+ *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
+ *                 .endpointPort(80)
+ *                 .listenerPort(60)
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleForwardingRule = new ForwardingRule(&#34;exampleForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .acceleratorId(exampleAccelerator.id())
+ *             .listenerId(exampleListener.id())
+ *             .ruleConditions(            
+ *                 ForwardingRuleRuleConditionArgs.builder()
+ *                     .ruleConditionType(&#34;Path&#34;)
+ *                     .pathConfig(ForwardingRuleRuleConditionPathConfigArgs.builder()
+ *                         .values(&#34;/testpathconfig&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 ForwardingRuleRuleConditionArgs.builder()
+ *                     .ruleConditionType(&#34;Host&#34;)
+ *                     .hostConfigs(ForwardingRuleRuleConditionHostConfigArgs.builder()
+ *                         .values(&#34;www.test.com&#34;)
+ *                         .build())
+ *                     .build())
+ *             .ruleActions(ForwardingRuleRuleActionArgs.builder()
+ *                 .order(&#34;40&#34;)
+ *                 .ruleActionType(&#34;ForwardGroup&#34;)
+ *                 .forwardGroupConfig(ForwardingRuleRuleActionForwardGroupConfigArgs.builder()
+ *                     .serverGroupTuples(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs.builder()
+ *                         .endpointGroupId(default_.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .priority(2)
+ *             .forwardingRuleName(&#34;forwarding_rule_name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Ga Forwarding Rule can be imported using the id, e.g.

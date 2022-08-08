@@ -22,6 +22,73 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.71.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.adb.Cluster;
+ * import com.pulumi.alicloud.adb.ClusterArgs;
+ * import com.pulumi.alicloud.adb.Account;
+ * import com.pulumi.alicloud.adb.AccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;ADB&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;adbaccountmysql&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .dbClusterVersion(&#34;3.0&#34;)
+ *             .dbClusterCategory(&#34;Cluster&#34;)
+ *             .dbNodeClass(&#34;C8&#34;)
+ *             .dbNodeCount(2)
+ *             .dbNodeStorage(200)
+ *             .payType(&#34;PostPaid&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .description(name)
+ *             .build());
+ * 
+ *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *             .dbClusterId(cluster.id())
+ *             .accountName(&#34;tftestnormal&#34;)
+ *             .accountPassword(&#34;Test12345&#34;)
+ *             .accountDescription(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -310,6 +310,49 @@ func (o DdosCooInstanceOutput) ToDdosCooInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+func (o DdosCooInstanceOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+func (o DdosCooInstanceOutput) BaseBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.BaseBandwidth }).(pulumi.StringOutput)
+}
+
+// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+func (o DdosCooInstanceOutput) DomainCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.DomainCount }).(pulumi.StringOutput)
+}
+
+// Name of the instance. This name can have a string of 1 to 63 characters.
+func (o DdosCooInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+func (o DdosCooInstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+func (o DdosCooInstanceOutput) PortCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.PortCount }).(pulumi.StringOutput)
+}
+
+// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+// - ddoscoo: Only supports domestic account.
+// - ddoscoo_intl: Only supports to international account.
+//   Default to ddoscoo.
+func (o DdosCooInstanceOutput) ProductType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
+}
+
+// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+func (o DdosCooInstanceOutput) ServiceBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.ServiceBandwidth }).(pulumi.StringOutput)
+}
+
 type DdosCooInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (DdosCooInstanceArrayOutput) ElementType() reflect.Type {

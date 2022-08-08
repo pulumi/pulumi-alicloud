@@ -216,6 +216,31 @@ func (o EcsNetworkInterfacePermissionOutput) ToEcsNetworkInterfacePermissionOutp
 	return o
 }
 
+// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
+func (o EcsNetworkInterfacePermissionOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfacePermission) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Whether to force deletion of Network Interface Permission. Default value: `true`.
+func (o EcsNetworkInterfacePermissionOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfacePermission) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the network interface.
+func (o EcsNetworkInterfacePermissionOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfacePermission) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
+func (o EcsNetworkInterfacePermissionOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfacePermission) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
+}
+
+// The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
+func (o EcsNetworkInterfacePermissionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfacePermission) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type EcsNetworkInterfacePermissionArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfacePermissionArrayOutput) ElementType() reflect.Type {

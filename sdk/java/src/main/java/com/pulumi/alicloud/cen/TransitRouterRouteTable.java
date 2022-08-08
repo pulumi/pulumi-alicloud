@@ -20,6 +20,54 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in 1.126.0+
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenTransitRouter&#34;);
+ *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
+ *             .description(&#34;terraform01&#34;)
+ *             .build());
+ * 
+ *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .name(name)
+ *             .cenId(cen.id())
+ *             .build());
+ * 
+ *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable(&#34;defaultTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN transit router route table

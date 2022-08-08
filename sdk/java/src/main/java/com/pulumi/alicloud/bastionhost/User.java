@@ -23,6 +23,51 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.bastionhost.User;
+ * import com.pulumi.alicloud.bastionhost.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var local = new User(&#34;local&#34;, UserArgs.builder()        
+ *             .instanceId(&#34;example_value&#34;)
+ *             .mobile(&#34;13312345678&#34;)
+ *             .mobileCountryCode(&#34;CN&#34;)
+ *             .password(&#34;YourPassword-123&#34;)
+ *             .source(&#34;Local&#34;)
+ *             .userName(&#34;my-local-user&#34;)
+ *             .build());
+ * 
+ *         var ram = new User(&#34;ram&#34;, UserArgs.builder()        
+ *             .instanceId(&#34;example_value&#34;)
+ *             .mobile(&#34;13312345678&#34;)
+ *             .mobileCountryCode(&#34;CN&#34;)
+ *             .password(&#34;YourPassword-123&#34;)
+ *             .source(&#34;Ram&#34;)
+ *             .sourceUserId(&#34;1234567890&#34;)
+ *             .userName(&#34;my-ram-user&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Bastion Host User can be imported using the id, e.g.

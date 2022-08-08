@@ -272,6 +272,44 @@ func (o ClientUserOutput) ToClientUserOutputWithContext(ctx context.Context) Cli
 	return o
 }
 
+// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
+func (o ClientUserOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
+func (o ClientUserOutput) ClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.StringPtrOutput { return v.ClientIp }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientUserOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientUserOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
+func (o ClientUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// The ID of the SAG instance created for the SAG APP.
+func (o ClientUserOutput) SagId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.StringOutput { return v.SagId }).(pulumi.StringOutput)
+}
+
+// The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
+func (o ClientUserOutput) UserMail() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.StringOutput { return v.UserMail }).(pulumi.StringOutput)
+}
+
+// The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
+func (o ClientUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
+}
+
 type ClientUserArrayOutput struct{ *pulumi.OutputState }
 
 func (ClientUserArrayOutput) ElementType() reflect.Type {

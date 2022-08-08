@@ -25,6 +25,71 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.polardb.Cluster;
+ * import com.pulumi.alicloud.polardb.ClusterArgs;
+ * import com.pulumi.alicloud.polardb.Endpoint;
+ * import com.pulumi.alicloud.polardb.EndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;PolarDB&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;polardbconnectionbasic&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *             .dbType(&#34;MySQL&#34;)
+ *             .dbVersion(&#34;8.0&#34;)
+ *             .payType(&#34;PostPaid&#34;)
+ *             .dbNodeClass(&#34;polar.mysql.x4.large&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .description(name)
+ *             .build());
+ * 
+ *         var endpoint = new Endpoint(&#34;endpoint&#34;, EndpointArgs.builder()        
+ *             .dbClusterId(defaultCluster.id())
+ *             .endpointType(&#34;Custom&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Argument Reference
  * 
  * The following arguments are supported:

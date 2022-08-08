@@ -195,6 +195,11 @@ func (o QosOutput) ToQosOutputWithContext(ctx context.Context) QosOutput {
 	return o
 }
 
+// The name of the QoS policy to be created. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+func (o QosOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Qos) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type QosArrayOutput struct{ *pulumi.OutputState }
 
 func (QosArrayOutput) ElementType() reflect.Type {

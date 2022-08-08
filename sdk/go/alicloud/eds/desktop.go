@@ -440,6 +440,101 @@ func (o DesktopOutput) ToDesktopOutputWithContext(ctx context.Context) DesktopOu
 	return o
 }
 
+// The amount of the Desktop.
+func (o DesktopOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.IntPtrOutput { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
+func (o DesktopOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
+func (o DesktopOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The bundle id of the Desktop.
+func (o DesktopOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.BundleId }).(pulumi.StringOutput)
+}
+
+// The desktop name of the Desktop.
+func (o DesktopOutput) DesktopName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringPtrOutput { return v.DesktopName }).(pulumi.StringPtrOutput)
+}
+
+// The desktop type of the Desktop.
+func (o DesktopOutput) DesktopType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.DesktopType }).(pulumi.StringOutput)
+}
+
+// The desktop end user id of the Desktop.
+func (o DesktopOutput) EndUserIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringArrayOutput { return v.EndUserIds }).(pulumi.StringArrayOutput)
+}
+
+// The hostname of the Desktop.
+func (o DesktopOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Simple Office Site.
+func (o DesktopOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
+func (o DesktopOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The period of the Desktop.
+func (o DesktopOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The period unit of the Desktop.
+func (o DesktopOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// The policy group id of the Desktop.
+func (o DesktopOutput) PolicyGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.PolicyGroupId }).(pulumi.StringOutput)
+}
+
+// The root disk size gib of the Desktop.
+func (o DesktopOutput) RootDiskSizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.IntPtrOutput { return v.RootDiskSizeGib }).(pulumi.IntPtrOutput)
+}
+
+// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+func (o DesktopOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The stopped mode of the Desktop.
+func (o DesktopOutput) StoppedMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.StoppedMode }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o DesktopOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
+func (o DesktopOutput) UserAssignMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringOutput { return v.UserAssignMode }).(pulumi.StringOutput)
+}
+
+// The user disk size gib of the Desktop.
+func (o DesktopOutput) UserDiskSizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.IntPtrOutput { return v.UserDiskSizeGib }).(pulumi.IntPtrOutput)
+}
+
 type DesktopArrayOutput struct{ *pulumi.OutputState }
 
 func (DesktopArrayOutput) ElementType() reflect.Type {

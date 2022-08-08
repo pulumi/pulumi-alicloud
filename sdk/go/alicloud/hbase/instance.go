@@ -481,6 +481,144 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The account of the cluster web ui. Size [0-128].
+func (o InstanceOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Account }).(pulumi.StringPtrOutput)
+}
+
+// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
+func (o InstanceOutput) AutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
+}
+
+// 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+func (o InstanceOutput) ColdStorageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ColdStorageSize }).(pulumi.IntPtrOutput)
+}
+
+// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+// - Custom storage space, value range: [20, 64000].
+// - Cluster [400, 64000], step:40-GB increments.
+// - Single [20-500GB], step:1-GB increments.
+func (o InstanceOutput) CoreDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
+func (o InstanceOutput) CoreDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CoreDiskType }).(pulumi.StringPtrOutput)
+}
+
+// Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
+func (o InstanceOutput) CoreInstanceQuantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreInstanceQuantity }).(pulumi.IntPtrOutput)
+}
+
+// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+func (o InstanceOutput) CoreInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CoreInstanceType }).(pulumi.StringOutput)
+}
+
+// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
+func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+func (o InstanceOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Duration }).(pulumi.IntOutput)
+}
+
+// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
+func (o InstanceOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+func (o InstanceOutput) ImmediateDeleteFlag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ImmediateDeleteFlag }).(pulumi.BoolPtrOutput)
+}
+
+// The white ip list of the cluster.
+func (o InstanceOutput) IpWhite() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IpWhite }).(pulumi.StringOutput)
+}
+
+// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
+func (o InstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
+func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// Count nodes of the master node.
+func (o InstanceOutput) MasterInstanceQuantity() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MasterInstanceQuantity }).(pulumi.IntOutput)
+}
+
+// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+func (o InstanceOutput) MasterInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MasterInstanceType }).(pulumi.StringOutput)
+}
+
+// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password of the cluster web ui account. Size [0-128].
+func (o InstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
+func (o InstanceOutput) PayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PayType }).(pulumi.StringPtrOutput)
+}
+
+// The security group resource of the cluster.
+func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// (Available in 1.105.0+) The slb service addresses of the cluster.
+func (o InstanceOutput) SlbConnAddrs() InstanceSlbConnAddrArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceSlbConnAddrArrayOutput { return v.SlbConnAddrs }).(InstanceSlbConnAddrArrayOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+func (o InstanceOutput) UiProxyConnAddrs() InstanceUiProxyConnAddrArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceUiProxyConnAddrArrayOutput { return v.UiProxyConnAddrs }).(InstanceUiProxyConnAddrArrayOutput)
+}
+
+// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
+func (o InstanceOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.105.0+) The zookeeper addresses of the cluster.
+func (o InstanceOutput) ZkConnAddrs() InstanceZkConnAddrArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceZkConnAddrArrayOutput { return v.ZkConnAddrs }).(InstanceZkConnAddrArrayOutput)
+}
+
+// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

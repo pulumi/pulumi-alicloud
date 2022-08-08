@@ -220,6 +220,16 @@ func (o ImageSharePermissionOutput) ToImageSharePermissionOutputWithContext(ctx 
 	return o
 }
 
+// Alibaba Cloud Account ID. It is used to share images.
+func (o ImageSharePermissionOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageSharePermission) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The source image ID.
+func (o ImageSharePermissionOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageSharePermission) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
 type ImageSharePermissionArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageSharePermissionArrayOutput) ElementType() reflect.Type {

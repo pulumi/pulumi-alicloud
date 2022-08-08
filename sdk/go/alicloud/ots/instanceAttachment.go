@@ -253,6 +253,26 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// The name of the OTS instance.
+func (o InstanceAttachmentOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The ID of attaching VPC to instance.
+func (o InstanceAttachmentOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The name of attaching VPC to instance.
+func (o InstanceAttachmentOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.VpcName }).(pulumi.StringOutput)
+}
+
+// The ID of attaching VSwitch to instance.
+func (o InstanceAttachmentOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type InstanceAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceAttachmentArrayOutput) ElementType() reflect.Type {

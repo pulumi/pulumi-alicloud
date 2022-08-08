@@ -598,6 +598,156 @@ func (o RouteMapOutput) ToRouteMapOutputWithContext(ctx context.Context) RouteMa
 	return o
 }
 
+// A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
+func (o RouteMapOutput) AsPathMatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringPtrOutput { return v.AsPathMatchMode }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CEN instance.
+func (o RouteMapOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The ID of the region to which the CEN instance belongs.
+func (o RouteMapOutput) CenRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.CenRegionId }).(pulumi.StringOutput)
+}
+
+// A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
+func (o RouteMapOutput) CidrMatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringPtrOutput { return v.CidrMatchMode }).(pulumi.StringPtrOutput)
+}
+
+// A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
+func (o RouteMapOutput) CommunityMatchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringPtrOutput { return v.CommunityMatchMode }).(pulumi.StringPtrOutput)
+}
+
+// An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
+func (o RouteMapOutput) CommunityOperateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringPtrOutput { return v.CommunityOperateMode }).(pulumi.StringPtrOutput)
+}
+
+// The description of the route map.
+func (o RouteMapOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+func (o RouteMapOutput) DestinationChildInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.DestinationChildInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
+func (o RouteMapOutput) DestinationCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.DestinationCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of IDs of the destination instances.
+func (o RouteMapOutput) DestinationInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.DestinationInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
+func (o RouteMapOutput) DestinationInstanceIdsReverseMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.BoolPtrOutput { return v.DestinationInstanceIdsReverseMatch }).(pulumi.BoolPtrOutput)
+}
+
+// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
+func (o RouteMapOutput) DestinationRouteTableIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.DestinationRouteTableIds }).(pulumi.StringArrayOutput)
+}
+
+// The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
+func (o RouteMapOutput) MapResult() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.MapResult }).(pulumi.StringOutput)
+}
+
+// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
+func (o RouteMapOutput) MatchAsns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.MatchAsns }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+func (o RouteMapOutput) MatchCommunitySets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.MatchCommunitySets }).(pulumi.StringArrayOutput)
+}
+
+// The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
+func (o RouteMapOutput) NextPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.IntPtrOutput { return v.NextPriority }).(pulumi.IntPtrOutput)
+}
+
+// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+func (o RouteMapOutput) OperateCommunitySets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.OperateCommunitySets }).(pulumi.StringArrayOutput)
+}
+
+// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
+func (o RouteMapOutput) Preference() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.IntPtrOutput { return v.Preference }).(pulumi.IntPtrOutput)
+}
+
+// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
+func (o RouteMapOutput) PrependAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
+}
+
+// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
+func (o RouteMapOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// ID of the RouteMap. It is available in 1.161.0+.
+func (o RouteMapOutput) RouteMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.RouteMapId }).(pulumi.StringOutput)
+}
+
+// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
+func (o RouteMapOutput) RouteTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.RouteTypes }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
+func (o RouteMapOutput) SourceChildInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.SourceChildInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of IDs of the source instances.
+func (o RouteMapOutput) SourceInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.SourceInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
+func (o RouteMapOutput) SourceInstanceIdsReverseMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.BoolPtrOutput { return v.SourceInstanceIdsReverseMatch }).(pulumi.BoolPtrOutput)
+}
+
+// A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
+func (o RouteMapOutput) SourceRegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.SourceRegionIds }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
+func (o RouteMapOutput) SourceRouteTableIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.SourceRouteTableIds }).(pulumi.StringArrayOutput)
+}
+
+// (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
+func (o RouteMapOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+func (o RouteMapOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
+}
+
+// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
+func (o RouteMapOutput) TransmitDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.TransmitDirection }).(pulumi.StringOutput)
+}
+
 type RouteMapArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteMapArrayOutput) ElementType() reflect.Type {

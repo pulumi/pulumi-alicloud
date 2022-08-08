@@ -267,6 +267,55 @@ func (o SwitchOutput) ToSwitchOutputWithContext(ctx context.Context) SwitchOutpu
 	return o
 }
 
+// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+//
+// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+func (o SwitchOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The CIDR block for the switch.
+func (o SwitchOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The switch description. Defaults to null.
+func (o SwitchOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+func (o SwitchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Available in 1.119.0+) The status of the switch.
+func (o SwitchOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SwitchOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Switch) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The VPC ID.
+func (o SwitchOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The name of the switch. Defaults to null.
+func (o SwitchOutput) VswitchName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VswitchName }).(pulumi.StringOutput)
+}
+
+// The AZ for the switch.
+func (o SwitchOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type SwitchArrayOutput struct{ *pulumi.OutputState }
 
 func (SwitchArrayOutput) ElementType() reflect.Type {

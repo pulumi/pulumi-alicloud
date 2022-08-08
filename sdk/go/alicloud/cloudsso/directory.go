@@ -227,6 +227,28 @@ func (o DirectoryOutput) ToDirectoryOutputWithContext(ctx context.Context) Direc
 	return o
 }
 
+// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+func (o DirectoryOutput) DirectoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Directory) pulumi.StringPtrOutput { return v.DirectoryName }).(pulumi.StringPtrOutput)
+}
+
+// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+func (o DirectoryOutput) MfaAuthenticationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.MfaAuthenticationStatus }).(pulumi.StringOutput)
+}
+
+// The saml identity provider configuration.
+func (o DirectoryOutput) SamlIdentityProviderConfiguration() DirectorySamlIdentityProviderConfigurationOutput {
+	return o.ApplyT(func(v *Directory) DirectorySamlIdentityProviderConfigurationOutput {
+		return v.SamlIdentityProviderConfiguration
+	}).(DirectorySamlIdentityProviderConfigurationOutput)
+}
+
+// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+func (o DirectoryOutput) ScimSynchronizationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.ScimSynchronizationStatus }).(pulumi.StringOutput)
+}
+
 type DirectoryArrayOutput struct{ *pulumi.OutputState }
 
 func (DirectoryArrayOutput) ElementType() reflect.Type {

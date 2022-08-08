@@ -329,6 +329,76 @@ func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutpu
 	return o
 }
 
+// The Alicloud Resource Name (ARN) of the secret.
+func (o SecretOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The description of the secret.
+func (o SecretOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable automatic key rotation.
+func (o SecretOutput) EnableAutomaticRotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.BoolPtrOutput { return v.EnableAutomaticRotation }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+func (o SecretOutput) EncryptionKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.EncryptionKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+func (o SecretOutput) ForceDeleteWithoutRecovery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.BoolPtrOutput { return v.ForceDeleteWithoutRecovery }).(pulumi.BoolPtrOutput)
+}
+
+// The time when the secret is scheduled to be deleted.
+func (o SecretOutput) PlannedDeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.PlannedDeleteTime }).(pulumi.StringOutput)
+}
+
+// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
+func (o SecretOutput) RecoveryWindowInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.IntPtrOutput { return v.RecoveryWindowInDays }).(pulumi.IntPtrOutput)
+}
+
+// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+func (o SecretOutput) RotationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.RotationInterval }).(pulumi.StringPtrOutput)
+}
+
+// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+func (o SecretOutput) SecretData() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretData }).(pulumi.StringOutput)
+}
+
+// The type of the secret value. Valid values: text, binary. Default to "text".
+func (o SecretOutput) SecretDataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.SecretDataType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret.
+func (o SecretOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SecretOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The version number of the initial version. Version numbers are unique in each secret object.
+func (o SecretOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+func (o SecretOutput) VersionStages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringArrayOutput { return v.VersionStages }).(pulumi.StringArrayOutput)
+}
+
 type SecretArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretArrayOutput) ElementType() reflect.Type {

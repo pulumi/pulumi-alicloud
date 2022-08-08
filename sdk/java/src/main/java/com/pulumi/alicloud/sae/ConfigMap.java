@@ -23,6 +23,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.sae.Namespace;
+ * import com.pulumi.alicloud.sae.NamespaceArgs;
+ * import com.pulumi.alicloud.sae.ConfigMap;
+ * import com.pulumi.alicloud.sae.ConfigMapArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
+ *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+ *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
+ *             .namespaceName(&#34;example_value&#34;)
+ *             .namespaceDescription(&#34;your_description&#34;)
+ *             .build());
+ * 
+ *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+ *             .data(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
+ *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+ *                 )))
+ *             .namespaceId(exampleNamespace.namespaceId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless App Engine (SAE) Config Map can be imported using the id, e.g.

@@ -60,7 +60,7 @@ import (
 // 		exampleTrail, err := actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
 // 			TrailName: pulumi.String("example_value"),
 // 			SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v", "acs:log:", exampleRegions.Regions[0].Id, ":", exampleAccount.Id, ":project/", name), nil
+// 				return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -238,6 +238,16 @@ func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobOutput() HistoryDeliveryJo
 
 func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobOutputWithContext(ctx context.Context) HistoryDeliveryJobOutput {
 	return o
+}
+
+// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+func (o HistoryDeliveryJobOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *HistoryDeliveryJob) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
+// The name of the trail for which you want to create a historical event delivery task.
+func (o HistoryDeliveryJobOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v *HistoryDeliveryJob) pulumi.StringOutput { return v.TrailName }).(pulumi.StringOutput)
 }
 
 type HistoryDeliveryJobArrayOutput struct{ *pulumi.OutputState }

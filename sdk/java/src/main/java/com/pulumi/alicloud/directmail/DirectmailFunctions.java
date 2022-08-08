@@ -30,6 +30,49 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .status(&#34;1&#34;)
+     *             .keyWord(&#34;^my-Domain&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDomainsResult> getDomains() {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
@@ -40,6 +83,49 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .status(&#34;1&#34;)
+     *             .keyWord(&#34;^my-Domain&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -52,6 +138,49 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .status(&#34;1&#34;)
+     *             .keyWord(&#34;^my-Domain&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
         return getDomains(args, InvokeOptions.Empty);
@@ -62,6 +191,49 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .status(&#34;1&#34;)
+     *             .keyWord(&#34;^my-Domain&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -74,6 +246,49 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .status(&#34;1&#34;)
+     *             .keyWord(&#34;^my-Domain&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:directmail/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
@@ -84,6 +299,49 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .status(&#34;1&#34;)
+     *             .keyWord(&#34;^my-Domain&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -96,6 +354,37 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMailAddressesResult> getMailAddresses() {
         return getMailAddresses(GetMailAddressesArgs.Empty, InvokeOptions.Empty);
@@ -106,6 +395,37 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMailAddressesResult> getMailAddressesPlain() {
@@ -118,6 +438,37 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMailAddressesResult> getMailAddresses(GetMailAddressesArgs args) {
         return getMailAddresses(args, InvokeOptions.Empty);
@@ -128,6 +479,37 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMailAddressesResult> getMailAddressesPlain(GetMailAddressesPlainArgs args) {
@@ -140,6 +522,37 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMailAddressesResult> getMailAddresses(GetMailAddressesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:directmail/getMailAddresses:getMailAddresses", TypeShape.of(GetMailAddressesResult.class), args, Utilities.withVersion(options));
@@ -150,6 +563,37 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMailAddressesResult> getMailAddressesPlain(GetMailAddressesPlainArgs args, InvokeOptions options) {
@@ -162,6 +606,38 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
+     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetReceiversResult> getReceivers() {
         return getReceivers(GetReceiversArgs.Empty, InvokeOptions.Empty);
@@ -172,6 +648,38 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.125.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
+     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetReceiversResult> getReceiversPlain() {
@@ -184,6 +692,38 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
+     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetReceiversResult> getReceivers(GetReceiversArgs args) {
         return getReceivers(args, InvokeOptions.Empty);
@@ -194,6 +734,38 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.125.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
+     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetReceiversResult> getReceiversPlain(GetReceiversPlainArgs args) {
@@ -206,6 +778,38 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
+     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetReceiversResult> getReceivers(GetReceiversArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:directmail/getReceivers:getReceivers", TypeShape.of(GetReceiversResult.class), args, Utilities.withVersion(options));
@@ -216,6 +820,38 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.125.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
+     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetReceiversResult> getReceiversPlain(GetReceiversPlainArgs args, InvokeOptions options) {
@@ -228,6 +864,42 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTagsResult> getTags() {
         return getTags(GetTagsArgs.Empty, InvokeOptions.Empty);
@@ -238,6 +910,42 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTagsResult> getTagsPlain() {
@@ -250,6 +958,42 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTagsResult> getTags(GetTagsArgs args) {
         return getTags(args, InvokeOptions.Empty);
@@ -260,6 +1004,42 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTagsResult> getTagsPlain(GetTagsPlainArgs args) {
@@ -272,6 +1052,42 @@ public final class DirectmailFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTagsResult> getTags(GetTagsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:directmail/getTags:getTags", TypeShape.of(GetTagsResult.class), args, Utilities.withVersion(options));
@@ -282,6 +1098,42 @@ public final class DirectmailFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTagsResult> getTagsPlain(GetTagsPlainArgs args, InvokeOptions options) {

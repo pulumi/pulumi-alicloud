@@ -275,6 +275,26 @@ func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
 }
 
+// The description of the image.
+func (o ImageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The desktop id of the desktop.
+func (o ImageOutput) DesktopId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.DesktopId }).(pulumi.StringOutput)
+}
+
+// The name of the image.
+func (o ImageOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+func (o ImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ImageArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageArrayOutput) ElementType() reflect.Type {

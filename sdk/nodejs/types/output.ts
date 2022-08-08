@@ -2144,9 +2144,24 @@ export namespace alb {
 
     export interface RuleRuleActionForwardGroupConfig {
         /**
+         * The configuration of session persistence for server groups.
+         */
+        serverGroupStickySession: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupStickySession;
+        /**
          * The destination server group to which requests are forwarded.
          */
         serverGroupTuples: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupTuple[];
+    }
+
+    export interface RuleRuleActionForwardGroupConfigServerGroupStickySession {
+        /**
+         * Whether to enable session persistence.
+         */
+        enabled: boolean;
+        /**
+         * The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         */
+        timeout: number;
     }
 
     export interface RuleRuleActionForwardGroupConfigServerGroupTuple {
@@ -2479,6 +2494,7 @@ export namespace alb {
          */
         stickySessionType: string;
     }
+
 }
 
 export namespace amqp {
@@ -7461,7 +7477,7 @@ export namespace cms {
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
         times?: number;
     }
@@ -7480,7 +7496,7 @@ export namespace cms {
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
         times?: number;
     }
@@ -7499,7 +7515,26 @@ export namespace cms {
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+         */
+        times?: number;
+    }
+
+    export interface AlarmPrometheus {
+        /**
+         * The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
+         */
+        annotations?: {[key: string]: any};
+        /**
+         * The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+         */
+        level?: string;
+        /**
+         * The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
+         */
+        promQl?: string;
+        /**
+         * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
         times?: number;
     }
@@ -7814,6 +7849,257 @@ export namespace cms {
          * Label value.
          */
         value: string;
+    }
+
+    export interface GetHybridMonitorFcTasksTask {
+        /**
+         * Create the timestamp of the monitoring task. Unit: milliseconds.
+         */
+        createTime: string;
+        /**
+         * The ID of the monitoring task.
+         */
+        hybridMonitorFcTaskId: string;
+        /**
+         * The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
+         */
+        id: string;
+        /**
+         * The index warehouse where the host belongs.
+         */
+        namespace: string;
+        /**
+         * The ID of the member account.
+         */
+        targetUserId: string;
+        /**
+         * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+         */
+        yarmConfig: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTask {
+        /**
+         * The tags of the metric import task.
+         */
+        attachLabels: outputs.cms.GetHybridMonitorSlsTasksTaskAttachLabel[];
+        /**
+         * The interval between the cloud monitoring plug-in collecting host monitoring data.
+         */
+        collectInterval: number;
+        /**
+         * The address where the cloudmonitor Plug-In collects the monitoring data of the host.
+         */
+        collectTargetEndpoint: string;
+        /**
+         * When the cloud monitor Agent collects, the relative path of the collection.
+         */
+        collectTargetPath: string;
+        /**
+         * The type of the monitoring data. Valid values: Spring, Tomcat, Nginx, Tengine, JVM, Redis, MySQL, and AWS.
+         */
+        collectTargetType: string;
+        /**
+         * The timeout period for the cloudmonitor plug-in to collect host monitoring data.
+         */
+        collectTimout: number;
+        /**
+         * Create the timestamp of the monitoring task. Unit: milliseconds.
+         */
+        createTime: string;
+        /**
+         * Monitoring task description.
+         */
+        description: string;
+        /**
+         * Additional information for the instance.
+         */
+        extraInfo: string;
+        /**
+         * The ID of the application Group.
+         */
+        groupId: string;
+        /**
+         * The ID of the monitoring task.
+         */
+        hybridMonitorSlsTaskId: string;
+        /**
+         * The ID of the Hybrid Monitor Sls Task.
+         */
+        id: string;
+        /**
+         * A list of instances where monitoring data is collected in batches.
+         */
+        instances: string[];
+        /**
+         * The path where on-premises log data is stored. On-premises log data is stored in the specified path of the host where CloudMonitor is deployed.
+         */
+        logFilePath: string;
+        /**
+         * Local Log Monitoring and calculation method.
+         */
+        logProcess: string;
+        /**
+         * The sample on-premises log.
+         */
+        logSample: string;
+        /**
+         * The local log data is divided according to different matching patterns.
+         */
+        logSplit: string;
+        /**
+         * The filter condition of the instance of the monitoring task.
+         */
+        matchExpressRelation: string;
+        /**
+         * The matching condition of the instance in the application Group.
+         */
+        matchExpresses: outputs.cms.GetHybridMonitorSlsTasksTaskMatchExpress[];
+        /**
+         * The namespace to which the host belongs.
+         */
+        namespace: string;
+        /**
+         * The network type of the host.
+         */
+        networkType: string;
+        /**
+         * The configurations of the logs that are imported from Log Service.
+         */
+        slsProcess: string;
+        /**
+         * The configurations of the logs that are imported from Log Service.
+         */
+        slsProcessConfigs: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfig[];
+        /**
+         * The name of the metric import task.
+         */
+        taskName: string;
+        /**
+         * Monitoring Task type.
+         */
+        taskType: string;
+        /**
+         * The region where the host resides.
+         */
+        uploadRegion: string;
+        yarmConfig: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskAttachLabel {
+        /**
+         * The name of the instance.
+         */
+        name: string;
+        /**
+         * The value of the key that is used to filter logs imported from Log Service.
+         */
+        value: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskMatchExpress {
+        /**
+         * The function that is used to aggregate log data within a statistical period.
+         */
+        function: string;
+        /**
+         * The name of the instance.
+         */
+        name: string;
+        /**
+         * The value of the key that is used to filter logs imported from Log Service.
+         */
+        value: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskSlsProcessConfig {
+        /**
+         * The extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        expresses: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress[];
+        /**
+         * The conditions that are used to filter logs imported from Log Service.
+         */
+        filters: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter[];
+        /**
+         * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+         */
+        groupBies: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy[];
+        /**
+         * The method that is used to aggregate logs imported from Log Service.
+         */
+        statistics: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic[];
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias: string;
+        /**
+         * The extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        express: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
+        /**
+         * The conditions that are used to filter logs imported from Log Service.
+         */
+        filters: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter[];
+        /**
+         * The relationship between multiple filter conditions.
+         */
+        relation: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
+        /**
+         * The method that is used to filter logs imported from Log Service.
+         */
+        operator: string;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName: string;
+        /**
+         * The value of the key that is used to filter logs imported from Log Service.
+         */
+        value: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias: string;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName: string;
+    }
+
+    export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias: string;
+        /**
+         * The function that is used to aggregate log data within a statistical period.
+         */
+        function: string;
+        /**
+         * The value of the function that is used to aggregate logs imported from Log Service.
+         */
+        parameterOne: string;
+        /**
+         * The value of the function that is used to aggregate logs imported from Log Service.
+         */
+        parameterTwo: string;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName: string;
     }
 
     export interface GetMetricRuleTemplatesTemplate {
@@ -8155,6 +8441,109 @@ export namespace cms {
          * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: number;
+    }
+
+    export interface HybridMonitorSlsTaskAttachLabel {
+        /**
+         * The tag key of the metric.
+         */
+        name?: string;
+        /**
+         * The tag value of the metric.
+         */
+        value?: string;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfig {
+        /**
+         * The extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        expresses?: outputs.cms.HybridMonitorSlsTaskSlsProcessConfigExpress[];
+        /**
+         * The conditions that are used to filter logs imported from Log Service. See the following `Block filter`.
+         */
+        filter?: outputs.cms.HybridMonitorSlsTaskSlsProcessConfigFilter;
+        /**
+         * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See the following `Block groupBy`.
+         */
+        groupBies?: outputs.cms.HybridMonitorSlsTaskSlsProcessConfigGroupBy[];
+        /**
+         * The method that is used to aggregate logs imported from Log Service. See the following `Block statistics`.
+         */
+        statistics?: outputs.cms.HybridMonitorSlsTaskSlsProcessConfigStatistic[];
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigExpress {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias?: string;
+        /**
+         * The extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        express?: string;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigFilter {
+        /**
+         * The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
+         */
+        filters?: outputs.cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilter[];
+        /**
+         * The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+         */
+        relation?: string;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
+        /**
+         * The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+         */
+        operator?: string;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName?: string;
+        /**
+         * The tag value of the metric.
+         */
+        value?: string;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigGroupBy {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias?: string;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName?: string;
+    }
+
+    export interface HybridMonitorSlsTaskSlsProcessConfigStatistic {
+        /**
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         */
+        alias?: string;
+        /**
+         * The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+         */
+        function?: string;
+        /**
+         * The value of the function that is used to aggregate logs imported from Log Service.
+         * - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+         * - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+         */
+        parameterOne?: string;
+        /**
+         * The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+         */
+        parameterTwo?: string;
+        /**
+         * The name of the key that is used to filter logs imported from Log Service.
+         */
+        slsKeyName?: string;
     }
 
     export interface MetricRuleTemplateAlertTemplate {
@@ -22395,6 +22784,50 @@ export namespace hbr {
         updatedTime: string;
         /**
          * The ID of Backup vault.
+         */
+        vaultId: string;
+    }
+
+    export interface GetHanaBackupPlansPlan {
+        /**
+         * The backup prefix.
+         */
+        backupPrefix: string;
+        /**
+         * The backup type.
+         */
+        backupType: string;
+        /**
+         * The ID of the SAP HANA instance.
+         */
+        clusterId: string;
+        /**
+         * The name of the database.
+         */
+        databaseName: string;
+        /**
+         * The ID of the resource.
+         */
+        id: string;
+        pageTotal: string;
+        /**
+         * The ID of the backup plan.
+         */
+        planId: string;
+        /**
+         * The name of the backup plan.
+         */
+        planName: string;
+        /**
+         * The backup policy.
+         */
+        schedule: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The ID of the backup vault.
          */
         vaultId: string;
     }

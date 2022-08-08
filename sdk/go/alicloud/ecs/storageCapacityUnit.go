@@ -267,6 +267,43 @@ func (o StorageCapacityUnitOutput) ToStorageCapacityUnitOutputWithContext(ctx co
 	return o
 }
 
+// The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
+func (o StorageCapacityUnitOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *StorageCapacityUnit) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
+}
+
+// The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+func (o StorageCapacityUnitOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCapacityUnit) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The validity period of the Storage Capacity Unit. Default value: `1`.
+// * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
+// * When PeriodUnit is set to Year, Valid values: `1`, `3`, `5`.
+func (o StorageCapacityUnitOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *StorageCapacityUnit) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
+func (o StorageCapacityUnitOutput) PeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageCapacityUnit) pulumi.StringOutput { return v.PeriodUnit }).(pulumi.StringOutput)
+}
+
+// The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
+func (o StorageCapacityUnitOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageCapacityUnit) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of Storage Capacity Unit.
+func (o StorageCapacityUnitOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageCapacityUnit) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the Storage Capacity Unit.
+func (o StorageCapacityUnitOutput) StorageCapacityUnitName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageCapacityUnit) pulumi.StringOutput { return v.StorageCapacityUnitName }).(pulumi.StringOutput)
+}
+
 type StorageCapacityUnitArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageCapacityUnitArrayOutput) ElementType() reflect.Type {

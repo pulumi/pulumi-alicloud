@@ -313,6 +313,41 @@ func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
+// The next hop of the destination route.
+func (o RouteEntryOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// Whether to issue the destination route to the VPC.
+func (o RouteEntryOutput) PublishVpc() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.BoolOutput { return v.PublishVpc }).(pulumi.BoolOutput)
+}
+
+// The destination network segment of the destination route.
+func (o RouteEntryOutput) RouteDest() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouteDest }).(pulumi.StringOutput)
+}
+
+// (Available in 1.161.0+) The type of the vpn route entry.
+func (o RouteEntryOutput) RouteEntryType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouteEntryType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.161.0+) The status of the vpn route entry.
+func (o RouteEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The id of the vpn gateway.
+func (o RouteEntryOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
+}
+
+// The value should be 0 or 100.
+func (o RouteEntryOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type RouteEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryArrayOutput) ElementType() reflect.Type {

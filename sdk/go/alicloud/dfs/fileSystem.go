@@ -297,6 +297,46 @@ func (o FileSystemOutput) ToFileSystemOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
+// The description of the File system.
+func (o FileSystemOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the File system.
+func (o FileSystemOutput) FileSystemName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.FileSystemName }).(pulumi.StringOutput)
+}
+
+// The protocol type. Valid values: `HDFS`.
+func (o FileSystemOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughputMode` is `Provisioned`, this param is valid.
+func (o FileSystemOutput) ProvisionedThroughputInMiBps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.IntPtrOutput { return v.ProvisionedThroughputInMiBps }).(pulumi.IntPtrOutput)
+}
+
+// The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+func (o FileSystemOutput) SpaceCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.IntOutput { return v.SpaceCapacity }).(pulumi.IntOutput)
+}
+
+// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+func (o FileSystemOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+func (o FileSystemOutput) ThroughputMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.ThroughputMode }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID of the File system.
+func (o FileSystemOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type FileSystemArrayOutput struct{ *pulumi.OutputState }
 
 func (FileSystemArrayOutput) ElementType() reflect.Type {

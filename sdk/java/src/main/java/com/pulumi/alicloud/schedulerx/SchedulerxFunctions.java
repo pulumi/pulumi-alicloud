@@ -21,6 +21,40 @@ public final class SchedulerxFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SchedulerxFunctions.getNamespaces();
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
         return getNamespaces(GetNamespacesArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +65,40 @@ public final class SchedulerxFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SchedulerxFunctions.getNamespaces();
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -43,6 +111,40 @@ public final class SchedulerxFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SchedulerxFunctions.getNamespaces();
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
         return getNamespaces(args, InvokeOptions.Empty);
@@ -53,6 +155,40 @@ public final class SchedulerxFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SchedulerxFunctions.getNamespaces();
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -65,6 +201,40 @@ public final class SchedulerxFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SchedulerxFunctions.getNamespaces();
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:schedulerx/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
@@ -75,6 +245,40 @@ public final class SchedulerxFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SchedulerxFunctions.getNamespaces();
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {

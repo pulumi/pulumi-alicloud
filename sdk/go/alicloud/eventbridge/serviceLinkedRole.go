@@ -207,6 +207,13 @@ func (o ServiceLinkedRoleOutput) ToServiceLinkedRoleOutputWithContext(ctx contex
 	return o
 }
 
+// The product name for SLR. EventBridge can automatically create the following service-linked roles:
+// Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
+// Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+func (o ServiceLinkedRoleOutput) ProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringOutput { return v.ProductName }).(pulumi.StringOutput)
+}
+
 type ServiceLinkedRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceLinkedRoleArrayOutput) ElementType() reflect.Type {

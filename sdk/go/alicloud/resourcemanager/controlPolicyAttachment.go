@@ -43,7 +43,22 @@ import (
 // 			ControlPolicyName: pulumi.String("tf-testAccName"),
 // 			Description:       pulumi.String("tf-testAccRDControlPolicy"),
 // 			EffectScope:       pulumi.String("RAM"),
-// 			PolicyDocument:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Version\": \"1\",\n", "    \"Statement\": [\n", "      {\n", "        \"Effect\": \"Deny\",\n", "        \"Action\": [\n", "          \"ram:UpdateRole\",\n", "          \"ram:DeleteRole\",\n", "          \"ram:AttachPolicyToRole\",\n", "          \"ram:DetachPolicyFromRole\"\n", "        ],\n", "        \"Resource\": \"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\"\n", "      }\n", "    ]\n", "  }\n")),
+// 			PolicyDocument: pulumi.String(fmt.Sprintf(`  {
+//     "Version": "1",
+//     "Statement": [
+//       {
+//         "Effect": "Deny",
+//         "Action": [
+//           "ram:UpdateRole",
+//           "ram:DeleteRole",
+//           "ram:AttachPolicyToRole",
+//           "ram:DetachPolicyFromRole"
+//         ],
+//         "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+//       }
+//     ]
+//   }
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -236,6 +251,16 @@ func (o ControlPolicyAttachmentOutput) ToControlPolicyAttachmentOutput() Control
 
 func (o ControlPolicyAttachmentOutput) ToControlPolicyAttachmentOutputWithContext(ctx context.Context) ControlPolicyAttachmentOutput {
 	return o
+}
+
+// The ID of control policy.
+func (o ControlPolicyAttachmentOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicyAttachment) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The ID of target.
+func (o ControlPolicyAttachmentOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicyAttachment) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
 }
 
 type ControlPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

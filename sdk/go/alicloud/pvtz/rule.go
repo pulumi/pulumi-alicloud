@@ -223,6 +223,31 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+// The ID of the Endpoint.
+func (o RuleOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// Forwarding target. See the following `Block forwardIp`.
+func (o RuleOutput) ForwardIps() RuleForwardIpArrayOutput {
+	return o.ApplyT(func(v *Rule) RuleForwardIpArrayOutput { return v.ForwardIps }).(RuleForwardIpArrayOutput)
+}
+
+// The name of the resource.
+func (o RuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The type of the rule. Valid values: `OUTBOUND`.
+func (o RuleOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The name of the forwarding zone.
+func (o RuleOutput) ZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
+}
+
 type RuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleArrayOutput) ElementType() reflect.Type {

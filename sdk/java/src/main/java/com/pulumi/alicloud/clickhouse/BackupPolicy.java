@@ -27,6 +27,75 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+ * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.clickhouse.DbCluster;
+ * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
+ * import com.pulumi.alicloud.clickhouse.BackupPolicy;
+ * import com.pulumi.alicloud.clickhouse.BackupPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultRegions = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zoneIds()[0].zoneId()))
+ *             .build());
+ * 
+ *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
+ *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+ *             .status(&#34;Running&#34;)
+ *             .category(&#34;Basic&#34;)
+ *             .dbClusterClass(&#34;S8&#34;)
+ *             .dbClusterNetworkType(&#34;vpc&#34;)
+ *             .dbClusterDescription(var_.name())
+ *             .dbNodeGroupCount(&#34;1&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .dbNodeStorage(&#34;500&#34;)
+ *             .storageType(&#34;cloud_essd&#34;)
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.vswitches()[0].id()))
+ *             .build());
+ * 
+ *         var example = new BackupPolicy(&#34;example&#34;, BackupPolicyArgs.builder()        
+ *             .dbClusterId(defaultDbCluster.id())
+ *             .preferredBackupPeriods(            
+ *                 &#34;Monday&#34;,
+ *                 &#34;Friday&#34;)
+ *             .preferredBackupTime(&#34;00:00Z-01:00Z&#34;)
+ *             .backupRetentionPeriod(7)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Click House Backup Policy can be imported using the id, e.g.

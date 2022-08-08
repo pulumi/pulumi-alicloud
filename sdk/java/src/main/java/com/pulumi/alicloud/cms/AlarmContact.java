@@ -21,6 +21,68 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cms.AlarmContact;
+ * import com.pulumi.alicloud.cms.AlarmContactArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new AlarmContact(&#34;example&#34;, AlarmContactArgs.builder()        
+ *             .alarmContactName(&#34;zhangsan&#34;)
+ *             .channelsMail(&#34;terraform.test.com&#34;)
+ *             .describe(&#34;For Test&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cms.AlarmContact;
+ * import com.pulumi.alicloud.cms.AlarmContactArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new AlarmContact(&#34;example&#34;, AlarmContactArgs.builder()        
+ *             .alarmContactName(&#34;zhangsan&#34;)
+ *             .describe(&#34;For Test&#34;)
+ *             .channelsMail(&#34;terraform.test.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Alarm contact can be imported using the id, e.g.

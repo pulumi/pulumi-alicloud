@@ -357,6 +357,65 @@ func (o BucketReplicationOutput) ToBucketReplicationOutputWithContext(ctx contex
 	return o
 }
 
+// The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
+func (o BucketReplicationOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplication) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The name of the bucket.
+func (o BucketReplicationOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketReplication) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Specifies the destination for the rule(See the following block `destination`).
+func (o BucketReplicationOutput) Destination() BucketReplicationDestinationOutput {
+	return o.ApplyT(func(v *BucketReplication) BucketReplicationDestinationOutput { return v.Destination }).(BucketReplicationDestinationOutput)
+}
+
+// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+func (o BucketReplicationOutput) EncryptionConfiguration() BucketReplicationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *BucketReplication) BucketReplicationEncryptionConfigurationPtrOutput {
+		return v.EncryptionConfiguration
+	}).(BucketReplicationEncryptionConfigurationPtrOutput)
+}
+
+// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
+func (o BucketReplicationOutput) HistoricalObjectReplication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplication) pulumi.StringPtrOutput { return v.HistoricalObjectReplication }).(pulumi.StringPtrOutput)
+}
+
+// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+func (o BucketReplicationOutput) PrefixSet() BucketReplicationPrefixSetPtrOutput {
+	return o.ApplyT(func(v *BucketReplication) BucketReplicationPrefixSetPtrOutput { return v.PrefixSet }).(BucketReplicationPrefixSetPtrOutput)
+}
+
+// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+func (o BucketReplicationOutput) Progress() BucketReplicationProgressOutput {
+	return o.ApplyT(func(v *BucketReplication) BucketReplicationProgressOutput { return v.Progress }).(BucketReplicationProgressOutput)
+}
+
+// The ID of the data replication rule.
+func (o BucketReplicationOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketReplication) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+func (o BucketReplicationOutput) SourceSelectionCriteria() BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return o.ApplyT(func(v *BucketReplication) BucketReplicationSourceSelectionCriteriaPtrOutput {
+		return v.SourceSelectionCriteria
+	}).(BucketReplicationSourceSelectionCriteriaPtrOutput)
+}
+
+// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+func (o BucketReplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketReplication) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
+func (o BucketReplicationOutput) SyncRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplication) pulumi.StringPtrOutput { return v.SyncRole }).(pulumi.StringPtrOutput)
+}
+
 type BucketReplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketReplicationArrayOutput) ElementType() reflect.Type {

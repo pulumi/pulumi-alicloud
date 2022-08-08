@@ -302,6 +302,52 @@ func (o DedicatedHostGroupOutput) ToDedicatedHostGroupOutputWithContext(ctx cont
 	return o
 }
 
+// AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
+func (o DedicatedHostGroupOutput) AllocationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.StringOutput { return v.AllocationPolicy }).(pulumi.StringOutput)
+}
+
+// The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
+func (o DedicatedHostGroupOutput) CpuAllocationRatio() pulumi.IntOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.IntOutput { return v.CpuAllocationRatio }).(pulumi.IntOutput)
+}
+
+// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+func (o DedicatedHostGroupOutput) DedicatedHostGroupDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.StringPtrOutput { return v.DedicatedHostGroupDesc }).(pulumi.StringPtrOutput)
+}
+
+// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
+func (o DedicatedHostGroupOutput) DiskAllocationRatio() pulumi.IntOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.IntOutput { return v.DiskAllocationRatio }).(pulumi.IntOutput)
+}
+
+// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+func (o DedicatedHostGroupOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
+func (o DedicatedHostGroupOutput) HostReplacePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.StringOutput { return v.HostReplacePolicy }).(pulumi.StringOutput)
+}
+
+// The Memory Allocation Ratio of the Dedicated Host Group.
+func (o DedicatedHostGroupOutput) MemAllocationRatio() pulumi.IntOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.IntOutput { return v.MemAllocationRatio }).(pulumi.IntOutput)
+}
+
+// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+// **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
+func (o DedicatedHostGroupOutput) OpenPermission() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.BoolOutput { return v.OpenPermission }).(pulumi.BoolOutput)
+}
+
+// The virtual private cloud (VPC) ID of the dedicated cluster.
+func (o DedicatedHostGroupOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type DedicatedHostGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostGroupArrayOutput) ElementType() reflect.Type {

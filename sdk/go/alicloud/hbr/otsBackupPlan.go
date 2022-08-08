@@ -348,6 +348,53 @@ func (o OtsBackupPlanOutput) ToOtsBackupPlanOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// Whether to disable the backup task. Valid values: true, false.
+func (o OtsBackupPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+func (o OtsBackupPlanOutput) OtsBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.OtsBackupPlanName }).(pulumi.StringOutput)
+}
+
+// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanOutput) OtsDetails() OtsBackupPlanOtsDetailArrayOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) OtsBackupPlanOtsDetailArrayOutput { return v.OtsDetails }).(OtsBackupPlanOtsDetailArrayOutput)
+}
+
+// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
+}
+
+// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanOutput) Rules() OtsBackupPlanRuleArrayOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) OtsBackupPlanRuleArrayOutput { return v.Rules }).(OtsBackupPlanRuleArrayOutput)
+}
+
+// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+//
+// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
+func (o OtsBackupPlanOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The ID of backup vault.
+func (o OtsBackupPlanOutput) VaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringPtrOutput { return v.VaultId }).(pulumi.StringPtrOutput)
+}
+
 type OtsBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (OtsBackupPlanArrayOutput) ElementType() reflect.Type {

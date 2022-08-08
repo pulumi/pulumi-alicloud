@@ -272,6 +272,26 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+func (o DatabaseOutput) CharacterSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.CharacterSetName }).(pulumi.StringPtrOutput)
+}
+
+// The Id of cluster that can run database.
+func (o DatabaseOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+func (o DatabaseOutput) DbDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DbDescription }).(pulumi.StringPtrOutput)
+}
+
+// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+func (o DatabaseOutput) DbName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DbName }).(pulumi.StringOutput)
+}
+
 type DatabaseArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseArrayOutput) ElementType() reflect.Type {

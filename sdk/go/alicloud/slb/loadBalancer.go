@@ -451,6 +451,115 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+func (o LoadBalancerOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
+func (o LoadBalancerOutput) AddressIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.AddressIpVersion }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
+// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
+// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
+func (o LoadBalancerOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AddressType }).(pulumi.StringOutput)
+}
+
+// Valid
+// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
+func (o LoadBalancerOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
+func (o LoadBalancerOutput) DeleteProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.DeleteProtection }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+//
+// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
+func (o LoadBalancerOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// Valid
+// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
+// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
+func (o LoadBalancerOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerName }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) LoadBalancerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
+}
+
+// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+func (o LoadBalancerOutput) MasterZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.MasterZoneId }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) ModificationProtectionReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.ModificationProtectionReason }).(pulumi.StringPtrOutput)
+}
+
+func (o LoadBalancerOutput) ModificationProtectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ModificationProtectionStatus }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
+func (o LoadBalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The Id of resource group which the SLB belongs.
+func (o LoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+func (o LoadBalancerOutput) SlaveZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.SlaveZoneId }).(pulumi.StringOutput)
+}
+
+// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+//
+// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
+func (o LoadBalancerOutput) Specification() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+func (o LoadBalancerOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+func (o LoadBalancerOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerArrayOutput) ElementType() reflect.Type {

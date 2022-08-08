@@ -256,6 +256,31 @@ func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentOutputWi
 	return o
 }
 
+// The ID of Anycast EIP.
+func (o AnycastEipAddressAttachmentOutput) AnycastId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.AnycastId }).(pulumi.StringOutput)
+}
+
+// The ID of bound instance.
+func (o AnycastEipAddressAttachmentOutput) BindInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindInstanceId }).(pulumi.StringOutput)
+}
+
+// The region ID of bound instance.
+func (o AnycastEipAddressAttachmentOutput) BindInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindInstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The type of bound instance. Valid value: `SlbInstance`.
+func (o AnycastEipAddressAttachmentOutput) BindInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindInstanceType }).(pulumi.StringOutput)
+}
+
+// The time of bound instance.
+func (o AnycastEipAddressAttachmentOutput) BindTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnycastEipAddressAttachment) pulumi.StringOutput { return v.BindTime }).(pulumi.StringOutput)
+}
+
 type AnycastEipAddressAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressAttachmentArrayOutput) ElementType() reflect.Type {

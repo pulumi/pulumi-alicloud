@@ -372,6 +372,85 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
+func (o ClusterOutput) AclEntryLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.AclEntryLists }).(pulumi.StringArrayOutput)
+}
+
+// The alias of MSE Cluster.
+func (o ClusterOutput) ClusterAliasName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterAliasName }).(pulumi.StringPtrOutput)
+}
+
+// (Available in v1.162.0+)  The id of Cluster.
+func (o ClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The engine specification of MSE Cluster. Valid values:
+// `MSE_SC_1_2_200_c`：1C2G
+// `MSE_SC_2_4_200_c`：2C4G
+// `MSE_SC_4_8_200_c`：4C8G
+// `MSE_SC_8_16_200_c`：8C16G
+func (o ClusterOutput) ClusterSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterSpecification }).(pulumi.StringOutput)
+}
+
+// The type of MSE Cluster.
+func (o ClusterOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The version of MSE Cluster.
+func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
+}
+
+// The type of Disk.
+func (o ClusterOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// The count of instance.
+func (o ClusterOutput) InstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.InstanceCount }).(pulumi.IntOutput)
+}
+
+// The version of MSE. Valid values: `mseBasic` or `msePro`.
+func (o ClusterOutput) MseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MseVersion }).(pulumi.StringOutput)
+}
+
+// The type of network. Valid values: "privatenet" and "pubnet".
+func (o ClusterOutput) NetType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NetType }).(pulumi.StringOutput)
+}
+
+// The specification of private network SLB.
+func (o ClusterOutput) PrivateSlbSpecification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PrivateSlbSpecification }).(pulumi.StringPtrOutput)
+}
+
+// The public network bandwidth. `0` means no access to the public network.
+func (o ClusterOutput) PubNetworkFlow() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PubNetworkFlow }).(pulumi.StringOutput)
+}
+
+// The specification of public network SLB.
+func (o ClusterOutput) PubSlbSpecification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PubSlbSpecification }).(pulumi.StringPtrOutput)
+}
+
+// The status of MSE Cluster.
+func (o ClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The id of VSwitch.
+func (o ClusterOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {

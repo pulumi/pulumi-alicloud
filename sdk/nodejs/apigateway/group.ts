@@ -59,6 +59,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The id of the api gateway.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * The name of the api gateway group. Defaults to null.
      */
     public readonly name!: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class Group extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["subDomain"] = state ? state.subDomain : undefined;
             resourceInputs["vpcDomain"] = state ? state.vpcDomain : undefined;
@@ -94,6 +99,7 @@ export class Group extends pulumi.CustomResource {
                 throw new Error("Missing required property 'description'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["subDomain"] = undefined /*out*/;
             resourceInputs["vpcDomain"] = undefined /*out*/;
@@ -111,6 +117,10 @@ export interface GroupState {
      * The description of the api gateway group. Defaults to null.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The id of the api gateway.
+     */
+    instanceId?: pulumi.Input<string>;
     /**
      * The name of the api gateway group. Defaults to null.
      */
@@ -133,6 +143,10 @@ export interface GroupArgs {
      * The description of the api gateway group. Defaults to null.
      */
     description: pulumi.Input<string>;
+    /**
+     * The id of the api gateway.
+     */
+    instanceId?: pulumi.Input<string>;
     /**
      * The name of the api gateway group. Defaults to null.
      */

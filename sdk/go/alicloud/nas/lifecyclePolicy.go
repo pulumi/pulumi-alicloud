@@ -261,6 +261,31 @@ func (o LifecyclePolicyOutput) ToLifecyclePolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the file system.
+func (o LifecyclePolicyOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecyclePolicy) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The name of the lifecycle management policy.
+func (o LifecyclePolicyOutput) LifecyclePolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecyclePolicy) pulumi.StringOutput { return v.LifecyclePolicyName }).(pulumi.StringOutput)
+}
+
+// The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
+func (o LifecyclePolicyOutput) LifecycleRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecyclePolicy) pulumi.StringOutput { return v.LifecycleRuleName }).(pulumi.StringOutput)
+}
+
+// The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
+func (o LifecyclePolicyOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LifecyclePolicy) pulumi.StringArrayOutput { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
+func (o LifecyclePolicyOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecyclePolicy) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
+}
+
 type LifecyclePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (LifecyclePolicyArrayOutput) ElementType() reflect.Type {

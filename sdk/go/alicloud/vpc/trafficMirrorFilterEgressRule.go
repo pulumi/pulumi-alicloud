@@ -319,6 +319,61 @@ func (o TrafficMirrorFilterEgressRuleOutput) ToTrafficMirrorFilterEgressRuleOutp
 	return o
 }
 
+// The destination CIDR block of the outbound traffic.
+func (o TrafficMirrorFilterEgressRuleOutput) DestinationCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.DestinationCidrBlock }).(pulumi.StringOutput)
+}
+
+// The destination CIDR block of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+func (o TrafficMirrorFilterEgressRuleOutput) DestinationPortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.DestinationPortRange }).(pulumi.StringOutput)
+}
+
+// Whether to pre-check this request only. Default to: `false`
+func (o TrafficMirrorFilterEgressRuleOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
+func (o TrafficMirrorFilterEgressRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
+func (o TrafficMirrorFilterEgressRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+func (o TrafficMirrorFilterEgressRuleOutput) RuleAction() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.RuleAction }).(pulumi.StringOutput)
+}
+
+// The source CIDR block of the outbound traffic.
+func (o TrafficMirrorFilterEgressRuleOutput) SourceCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.SourceCidrBlock }).(pulumi.StringOutput)
+}
+
+// The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
+func (o TrafficMirrorFilterEgressRuleOutput) SourcePortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.SourcePortRange }).(pulumi.StringOutput)
+}
+
+// The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+func (o TrafficMirrorFilterEgressRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the outbound rule.
+func (o TrafficMirrorFilterEgressRuleOutput) TrafficMirrorFilterEgressRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.TrafficMirrorFilterEgressRuleId }).(pulumi.StringOutput)
+}
+
+// The ID of the filter.
+func (o TrafficMirrorFilterEgressRuleOutput) TrafficMirrorFilterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
+}
+
 type TrafficMirrorFilterEgressRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorFilterEgressRuleArrayOutput) ElementType() reflect.Type {

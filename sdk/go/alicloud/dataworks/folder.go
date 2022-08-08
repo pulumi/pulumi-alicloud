@@ -218,6 +218,24 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+func (o FolderOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
+func (o FolderOutput) FolderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.FolderPath }).(pulumi.StringOutput)
+}
+
+// The ID of the project.
+func (o FolderOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o FolderOutput) ProjectIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringPtrOutput { return v.ProjectIdentifier }).(pulumi.StringPtrOutput)
+}
+
 type FolderArrayOutput struct{ *pulumi.OutputState }
 
 func (FolderArrayOutput) ElementType() reflect.Type {

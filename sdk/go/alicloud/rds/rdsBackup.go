@@ -292,6 +292,50 @@ func (o RdsBackupOutput) ToRdsBackupOutputWithContext(ctx context.Context) RdsBa
 	return o
 }
 
+// The backup id.
+func (o RdsBackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
+}
+
+// The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
+func (o RdsBackupOutput) BackupMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringOutput { return v.BackupMethod }).(pulumi.StringOutput)
+}
+
+// The policy that you want to use for the backup task. Valid values:
+// * **db**: specifies to perform a database-level backup.
+// * **instance**: specifies to perform an instance-level backup.
+func (o RdsBackupOutput) BackupStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringPtrOutput { return v.BackupStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The method that you want to use for the backup task. Default value: `Auto`. Valid values:
+// * **Auto**: specifies to automatically perform a full or incremental backup.
+// * **FullBackup**: specifies to perform a full backup.
+func (o RdsBackupOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The db instance id.
+func (o RdsBackupOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+func (o RdsBackupOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringPtrOutput { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
+func (o RdsBackupOutput) RemoveFromState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.BoolPtrOutput { return v.RemoveFromState }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
+func (o RdsBackupOutput) StoreStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringOutput { return v.StoreStatus }).(pulumi.StringOutput)
+}
+
 type RdsBackupArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsBackupArrayOutput) ElementType() reflect.Type {

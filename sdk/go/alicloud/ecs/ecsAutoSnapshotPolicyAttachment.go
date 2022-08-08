@@ -213,6 +213,16 @@ func (o EcsAutoSnapshotPolicyAttachmentOutput) ToEcsAutoSnapshotPolicyAttachment
 	return o
 }
 
+// The auto snapshot policy id.
+func (o EcsAutoSnapshotPolicyAttachmentOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsAutoSnapshotPolicyAttachment) pulumi.StringOutput { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
+}
+
+// The disk id.
+func (o EcsAutoSnapshotPolicyAttachmentOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsAutoSnapshotPolicyAttachment) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
+}
+
 type EcsAutoSnapshotPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsAutoSnapshotPolicyAttachmentArrayOutput) ElementType() reflect.Type {

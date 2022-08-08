@@ -24,6 +24,51 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ddos.DdosCooInstance;
+ * import com.pulumi.alicloud.ddos.DdosCooInstanceArgs;
+ * import com.pulumi.alicloud.ddos.Port;
+ * import com.pulumi.alicloud.ddos.PortArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleDdosCooInstance = new DdosCooInstance(&#34;exampleDdosCooInstance&#34;, DdosCooInstanceArgs.builder()        
+ *             .bandwidth(&#34;30&#34;)
+ *             .baseBandwidth(&#34;30&#34;)
+ *             .serviceBandwidth(&#34;100&#34;)
+ *             .portCount(&#34;50&#34;)
+ *             .domainCount(&#34;50&#34;)
+ *             .build());
+ * 
+ *         var examplePort = new Port(&#34;examplePort&#34;, PortArgs.builder()        
+ *             .instanceId(exampleDdosCooInstance.id())
+ *             .frontendPort(&#34;7001&#34;)
+ *             .frontendProtocol(&#34;tcp&#34;)
+ *             .realServers(            
+ *                 &#34;1.1.1.1&#34;,
+ *                 &#34;2.2.2.2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Anti-DDoS Pro Port can be imported using the id, e.g.

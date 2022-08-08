@@ -363,6 +363,71 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// the description of gateway.
+func (o GatewayOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+func (o GatewayOutput) GatewayClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.GatewayClass }).(pulumi.StringPtrOutput)
+}
+
+// the name of gateway.
+func (o GatewayOutput) GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayName }).(pulumi.StringOutput)
+}
+
+// gateway location. the valid values: `Cloud`, `On_Premise`.
+func (o GatewayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The Payment type of gateway. The valid value: `PayAsYouGo`.
+func (o GatewayOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+func (o GatewayOutput) PublicNetworkBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.PublicNetworkBandwidth }).(pulumi.IntOutput)
+}
+
+// The reason detail of gateway.
+func (o GatewayOutput) ReasonDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.ReasonDetail }).(pulumi.StringPtrOutput)
+}
+
+// The reason type when user deletes the gateway.
+func (o GatewayOutput) ReasonType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.ReasonType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to release the gateway due to expiration.
+func (o GatewayOutput) ReleaseAfterExpiration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.ReleaseAfterExpiration }).(pulumi.BoolPtrOutput)
+}
+
+// gateway status.
+func (o GatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// storage bundle id.
+func (o GatewayOutput) StorageBundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.StorageBundleId }).(pulumi.StringOutput)
+}
+
+// gateway type. the valid values: `Type`, `Iscsi`.
+func (o GatewayOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The vswitch id of gateway.
+func (o GatewayOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type GatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayArrayOutput) ElementType() reflect.Type {

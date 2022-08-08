@@ -30,6 +30,45 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Config;
+     * import com.pulumi.alicloud.sddp.ConfigArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+     *             .code(&#34;access_failed_cnt&#34;)
+     *             .value(10)
+     *             .build());
+     * 
+     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *             .ids(defaultConfig.id())
+     *             .outputFile(&#34;./t.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetConfigsResult> getConfigs() {
         return getConfigs(GetConfigsArgs.Empty, InvokeOptions.Empty);
@@ -40,6 +79,45 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Config;
+     * import com.pulumi.alicloud.sddp.ConfigArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+     *             .code(&#34;access_failed_cnt&#34;)
+     *             .value(10)
+     *             .build());
+     * 
+     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *             .ids(defaultConfig.id())
+     *             .outputFile(&#34;./t.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigsResult> getConfigsPlain() {
@@ -52,6 +130,45 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Config;
+     * import com.pulumi.alicloud.sddp.ConfigArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+     *             .code(&#34;access_failed_cnt&#34;)
+     *             .value(10)
+     *             .build());
+     * 
+     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *             .ids(defaultConfig.id())
+     *             .outputFile(&#34;./t.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetConfigsResult> getConfigs(GetConfigsArgs args) {
         return getConfigs(args, InvokeOptions.Empty);
@@ -62,6 +179,45 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Config;
+     * import com.pulumi.alicloud.sddp.ConfigArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+     *             .code(&#34;access_failed_cnt&#34;)
+     *             .value(10)
+     *             .build());
+     * 
+     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *             .ids(defaultConfig.id())
+     *             .outputFile(&#34;./t.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigsResult> getConfigsPlain(GetConfigsPlainArgs args) {
@@ -74,6 +230,45 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Config;
+     * import com.pulumi.alicloud.sddp.ConfigArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+     *             .code(&#34;access_failed_cnt&#34;)
+     *             .value(10)
+     *             .build());
+     * 
+     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *             .ids(defaultConfig.id())
+     *             .outputFile(&#34;./t.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetConfigsResult> getConfigs(GetConfigsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sddp/getConfigs:getConfigs", TypeShape.of(GetConfigsResult.class), args, Utilities.withVersion(options));
@@ -84,6 +279,45 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Config;
+     * import com.pulumi.alicloud.sddp.ConfigArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+     *             .code(&#34;access_failed_cnt&#34;)
+     *             .value(10)
+     *             .build());
+     * 
+     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *             .ids(defaultConfig.id())
+     *             .outputFile(&#34;./t.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigsResult> getConfigsPlain(GetConfigsPlainArgs args, InvokeOptions options) {
@@ -96,6 +330,35 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SddpFunctions.getDataLimits();
+     * 
+     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDataLimitsResult> getDataLimits() {
         return getDataLimits(GetDataLimitsArgs.Empty, InvokeOptions.Empty);
@@ -106,6 +369,35 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SddpFunctions.getDataLimits();
+     * 
+     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDataLimitsResult> getDataLimitsPlain() {
@@ -118,6 +410,35 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SddpFunctions.getDataLimits();
+     * 
+     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDataLimitsResult> getDataLimits(GetDataLimitsArgs args) {
         return getDataLimits(args, InvokeOptions.Empty);
@@ -128,6 +449,35 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SddpFunctions.getDataLimits();
+     * 
+     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDataLimitsResult> getDataLimitsPlain(GetDataLimitsPlainArgs args) {
@@ -140,6 +490,35 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SddpFunctions.getDataLimits();
+     * 
+     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDataLimitsResult> getDataLimits(GetDataLimitsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sddp/getDataLimits:getDataLimits", TypeShape.of(GetDataLimitsResult.class), args, Utilities.withVersion(options));
@@ -150,6 +529,35 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SddpFunctions.getDataLimits();
+     * 
+     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDataLimitsResult> getDataLimitsPlain(GetDataLimitsPlainArgs args, InvokeOptions options) {
@@ -162,6 +570,35 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SddpFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -172,6 +609,35 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SddpFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -184,6 +650,35 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SddpFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -194,6 +689,35 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SddpFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -206,6 +730,35 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SddpFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sddp/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -216,6 +769,35 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SddpFunctions.getInstances();
+     * 
+     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -228,6 +810,47 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Rule;
+     * import com.pulumi.alicloud.sddp.RuleArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *             .category(&#34;0&#34;)
+     *             .content(&#34;content&#34;)
+     *             .ruleName(&#34;rule_name&#34;)
+     *             .riskLevelId(&#34;4&#34;)
+     *             .productCode(&#34;ODPS&#34;)
+     *             .build());
+     * 
+     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(defaultRule.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules() {
         return getRules(GetRulesArgs.Empty, InvokeOptions.Empty);
@@ -238,6 +861,47 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Rule;
+     * import com.pulumi.alicloud.sddp.RuleArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *             .category(&#34;0&#34;)
+     *             .content(&#34;content&#34;)
+     *             .ruleName(&#34;rule_name&#34;)
+     *             .riskLevelId(&#34;4&#34;)
+     *             .productCode(&#34;ODPS&#34;)
+     *             .build());
+     * 
+     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(defaultRule.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain() {
@@ -250,6 +914,47 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Rule;
+     * import com.pulumi.alicloud.sddp.RuleArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *             .category(&#34;0&#34;)
+     *             .content(&#34;content&#34;)
+     *             .ruleName(&#34;rule_name&#34;)
+     *             .riskLevelId(&#34;4&#34;)
+     *             .productCode(&#34;ODPS&#34;)
+     *             .build());
+     * 
+     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(defaultRule.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
         return getRules(args, InvokeOptions.Empty);
@@ -260,6 +965,47 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Rule;
+     * import com.pulumi.alicloud.sddp.RuleArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *             .category(&#34;0&#34;)
+     *             .content(&#34;content&#34;)
+     *             .ruleName(&#34;rule_name&#34;)
+     *             .riskLevelId(&#34;4&#34;)
+     *             .productCode(&#34;ODPS&#34;)
+     *             .build());
+     * 
+     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(defaultRule.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -272,6 +1018,47 @@ public final class SddpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Rule;
+     * import com.pulumi.alicloud.sddp.RuleArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *             .category(&#34;0&#34;)
+     *             .content(&#34;content&#34;)
+     *             .ruleName(&#34;rule_name&#34;)
+     *             .riskLevelId(&#34;4&#34;)
+     *             .productCode(&#34;ODPS&#34;)
+     *             .build());
+     * 
+     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(defaultRule.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sddp/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
@@ -282,6 +1069,47 @@ public final class SddpFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Rule;
+     * import com.pulumi.alicloud.sddp.RuleArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *             .category(&#34;0&#34;)
+     *             .content(&#34;content&#34;)
+     *             .ruleName(&#34;rule_name&#34;)
+     *             .riskLevelId(&#34;4&#34;)
+     *             .productCode(&#34;ODPS&#34;)
+     *             .build());
+     * 
+     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(defaultRule.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {

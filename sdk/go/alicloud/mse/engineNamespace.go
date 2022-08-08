@@ -266,6 +266,26 @@ func (o EngineNamespaceOutput) ToEngineNamespaceOutputWithContext(ctx context.Co
 	return o
 }
 
+// The language type of the returned information. Valid values: `zh`, `en`.
+func (o EngineNamespaceOutput) AcceptLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringPtrOutput { return v.AcceptLanguage }).(pulumi.StringPtrOutput)
+}
+
+// The id of the cluster.
+func (o EngineNamespaceOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The id of Namespace.
+func (o EngineNamespaceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The name of the Engine Namespace.
+func (o EngineNamespaceOutput) NamespaceShowName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.NamespaceShowName }).(pulumi.StringOutput)
+}
+
 type EngineNamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (EngineNamespaceArrayOutput) ElementType() reflect.Type {

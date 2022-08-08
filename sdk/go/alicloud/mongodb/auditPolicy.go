@@ -197,6 +197,21 @@ func (o AuditPolicyOutput) ToAuditPolicyOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The status of the audit log. Valid values: `disabled`, `enable`.
+func (o AuditPolicyOutput) AuditStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.AuditStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o AuditPolicyOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+func (o AuditPolicyOutput) StoragePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuditPolicy) pulumi.IntPtrOutput { return v.StoragePeriod }).(pulumi.IntPtrOutput)
+}
+
 type AuditPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AuditPolicyArrayOutput) ElementType() reflect.Type {

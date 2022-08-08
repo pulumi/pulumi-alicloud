@@ -219,6 +219,21 @@ func (o FaceConfigOutput) ToFaceConfigOutputWithContext(ctx context.Context) Fac
 	return o
 }
 
+// Scene name.
+func (o FaceConfigOutput) BizName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FaceConfig) pulumi.StringOutput { return v.BizName }).(pulumi.StringOutput)
+}
+
+// Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
+func (o FaceConfigOutput) BizType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FaceConfig) pulumi.StringOutput { return v.BizType }).(pulumi.StringOutput)
+}
+
+// Last Modified Date.
+func (o FaceConfigOutput) GmtModified() pulumi.StringOutput {
+	return o.ApplyT(func(v *FaceConfig) pulumi.StringOutput { return v.GmtModified }).(pulumi.StringOutput)
+}
+
 type FaceConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (FaceConfigArrayOutput) ElementType() reflect.Type {

@@ -250,6 +250,83 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+func (o ClusterOutput) AgentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AgentVersion }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) DiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DiskCategory }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) IsOutdated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsOutdated }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterOutput) NeedSlb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.NeedSlb }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterOutput) NodeNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NodeNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterOutput) Nodes() ClusterNodeArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterNodeArrayOutput { return v.Nodes }).(ClusterNodeArrayOutput)
+}
+
+func (o ClusterOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) ReleaseEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.ReleaseEip }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+func (o ClusterOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterOutput) SlbId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {

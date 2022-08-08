@@ -25,6 +25,39 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Command;
+ * import com.pulumi.alicloud.ecs.CommandArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Command(&#34;example&#34;, CommandArgs.builder()        
+ *             .commandContent(&#34;bHMK&#34;)
+ *             .description(&#34;For Terraform Test&#34;)
+ *             .type(&#34;RunShellScript&#34;)
+ *             .workingDir(&#34;/root&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Command can be imported using the id, e.g.

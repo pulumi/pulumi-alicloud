@@ -27,6 +27,55 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+ * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+ * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+ * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
+ *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+ *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+ *                 .description(&#34;my-description1&#34;)
+ *                 .build())
+ *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+ *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+ *                 .description(&#34;my-description&#34;)
+ *                 .ipProtocol(&#34;TCP&#34;)
+ *                 .policy(&#34;accept&#34;)
+ *                 .portRange(&#34;80/80&#34;)
+ *                 .priority(&#34;1&#34;)
+ *                 .type(&#34;inflow&#34;)
+ *                 .build())
+ *             .clipboard(&#34;read&#34;)
+ *             .localDrive(&#34;read&#34;)
+ *             .policyGroupName(&#34;my-policy-group&#34;)
+ *             .usbRedirect(&#34;off&#34;)
+ *             .watermark(&#34;off&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.

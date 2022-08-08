@@ -22,6 +22,40 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.edas.Cluster;
+ * import com.pulumi.alicloud.edas.ClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
+ *             .clusterName(var_.cluster_name())
+ *             .clusterType(var_.cluster_type())
+ *             .networkMode(var_.network_mode())
+ *             .logicalRegionId(var_.logical_region_id())
+ *             .vpcId(var_.vpc_id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * EDAS cluster can be imported using the id, e.g.

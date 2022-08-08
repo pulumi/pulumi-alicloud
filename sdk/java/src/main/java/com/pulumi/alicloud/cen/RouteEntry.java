@@ -20,6 +20,141 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.pulumi.providers.alicloud;
+ * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.vpc.RouteEntry;
+ * import com.pulumi.alicloud.vpc.RouteEntryArgs;
+ * import com.pulumi.alicloud.cen.RouteEntry;
+ * import com.pulumi.alicloud.cen.RouteEntryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenRouteEntryConfig&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;foo&#34;)
+ *             .vpcId(vpc.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .vswitchId(defaultSwitch.id())
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .internetMaxBandwidthOut(5)
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .instanceName(name)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var cen = new Instance(&#34;cen&#34;);
+ * 
+ *         var attach = new InstanceAttachment(&#34;attach&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .childInstanceId(vpc.id())
+ *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultSwitch)
+ *                 .build());
+ * 
+ *         var route = new RouteEntry(&#34;route&#34;, RouteEntryArgs.builder()        
+ *             .routeTableId(vpc.routeTableId())
+ *             .destinationCidrblock(&#34;11.0.0.0/16&#34;)
+ *             .nexthopType(&#34;Instance&#34;)
+ *             .nexthopId(defaultInstance.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
+ * 
+ *         var foo = new RouteEntry(&#34;foo&#34;, RouteEntryArgs.builder()        
+ *             .instanceId(cen.id())
+ *             .routeTableId(vpc.routeTableId())
+ *             .cidrBlock(route.destinationCidrblock())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .dependsOn(attach)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CEN instance can be imported using the id, e.g.

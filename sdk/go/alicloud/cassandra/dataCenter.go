@@ -379,6 +379,87 @@ func (o DataCenterOutput) ToDataCenterOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
+// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
+func (o DataCenterOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
+func (o DataCenterOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Cassandra cluster id of dataCenter-2 belongs to.
+func (o DataCenterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+func (o DataCenterOutput) DataCenterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.DataCenterId }).(pulumi.StringOutput)
+}
+
+// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
+func (o DataCenterOutput) DataCenterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringPtrOutput { return v.DataCenterName }).(pulumi.StringPtrOutput)
+}
+
+// User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
+// - Custom storage space; value range: [160, 2000].
+// - 80-GB increments.
+func (o DataCenterOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
+func (o DataCenterOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringPtrOutput { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o DataCenterOutput) EnablePublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.BoolPtrOutput { return v.EnablePublic }).(pulumi.BoolPtrOutput)
+}
+
+// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
+func (o DataCenterOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The node count of Cassandra dataCenter-2, default to 2.
+func (o DataCenterOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
+func (o DataCenterOutput) PayType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.PayType }).(pulumi.StringOutput)
+}
+
+func (o DataCenterOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+func (o DataCenterOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DataCenterOutput) PublicPoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringArrayOutput { return v.PublicPoints }).(pulumi.StringArrayOutput)
+}
+
+func (o DataCenterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+func (o DataCenterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
+func (o DataCenterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type DataCenterArrayOutput struct{ *pulumi.OutputState }
 
 func (DataCenterArrayOutput) ElementType() reflect.Type {

@@ -27,6 +27,122 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.sae.Namespace;
+ * import com.pulumi.alicloud.sae.NamespaceArgs;
+ * import com.pulumi.alicloud.sae.Application;
+ * import com.pulumi.alicloud.sae.ApplicationArgs;
+ * import com.pulumi.alicloud.sae.ApplicationScalingRule;
+ * import com.pulumi.alicloud.sae.ApplicationScalingRuleArgs;
+ * import com.pulumi.alicloud.sae.inputs.ApplicationScalingRuleScalingRuleTimerArgs;
+ * import com.pulumi.alicloud.sae.inputs.ApplicationScalingRuleScalingRuleMetricArgs;
+ * import com.pulumi.alicloud.sae.inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs;
+ * import com.pulumi.alicloud.sae.inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .namespaceDescription(&#34;example_value&#34;)
+ *             .namespaceId(&#34;example_value&#34;)
+ *             .namespaceName(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *             .appDescription(&#34;example_value&#34;)
+ *             .appName(&#34;example_value&#34;)
+ *             .namespaceId(defaultNamespace.namespaceId())
+ *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+ *             .packageType(&#34;Image&#34;)
+ *             .jdk(&#34;Open JDK 8&#34;)
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .timezone(&#34;Asia/Shanghai&#34;)
+ *             .replicas(&#34;5&#34;)
+ *             .cpu(&#34;500&#34;)
+ *             .memory(&#34;2048&#34;)
+ *             .build());
+ * 
+ *         var example = new ApplicationScalingRule(&#34;example&#34;, ApplicationScalingRuleArgs.builder()        
+ *             .appId(defaultApplication.id())
+ *             .scalingRuleName(&#34;example-value&#34;)
+ *             .scalingRuleEnable(true)
+ *             .scalingRuleType(&#34;mix&#34;)
+ *             .scalingRuleTimer(ApplicationScalingRuleScalingRuleTimerArgs.builder()
+ *                 .beginDate(&#34;2022-02-25&#34;)
+ *                 .endDate(&#34;2022-03-25&#34;)
+ *                 .period(&#34;* * *&#34;)
+ *                 .schedules(                
+ *                     ApplicationScalingRuleScalingRuleTimerScheduleArgs.builder()
+ *                         .atTime(&#34;08:00&#34;)
+ *                         .maxReplicas(10)
+ *                         .minReplicas(3)
+ *                         .build(),
+ *                     ApplicationScalingRuleScalingRuleTimerScheduleArgs.builder()
+ *                         .atTime(&#34;20:00&#34;)
+ *                         .maxReplicas(50)
+ *                         .minReplicas(3)
+ *                         .build())
+ *                 .build())
+ *             .scalingRuleMetric(ApplicationScalingRuleScalingRuleMetricArgs.builder()
+ *                 .maxReplicas(50)
+ *                 .minReplicas(3)
+ *                 .metrics(                
+ *                     ApplicationScalingRuleScalingRuleMetricMetricArgs.builder()
+ *                         .metricType(&#34;CPU&#34;)
+ *                         .metricTargetAverageUtilization(20)
+ *                         .build(),
+ *                     ApplicationScalingRuleScalingRuleMetricMetricArgs.builder()
+ *                         .metricType(&#34;MEMORY&#34;)
+ *                         .metricTargetAverageUtilization(30)
+ *                         .build(),
+ *                     ApplicationScalingRuleScalingRuleMetricMetricArgs.builder()
+ *                         .metricType(&#34;tcpActiveConn&#34;)
+ *                         .metricTargetAverageUtilization(20)
+ *                         .build())
+ *                 .scaleUpRules(ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs.builder()
+ *                     .step(10)
+ *                     .disabled(false)
+ *                     .stabilizationWindowSeconds(0)
+ *                     .build())
+ *                 .scaleDownRules(ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs.builder()
+ *                     .step(10)
+ *                     .disabled(false)
+ *                     .stabilizationWindowSeconds(10)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.

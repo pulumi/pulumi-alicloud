@@ -244,6 +244,31 @@ func (o MailAddressOutput) ToMailAddressOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
+func (o MailAddressOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MailAddress) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
+func (o MailAddressOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MailAddress) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Return address.
+func (o MailAddressOutput) ReplyAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MailAddress) pulumi.StringPtrOutput { return v.ReplyAddress }).(pulumi.StringPtrOutput)
+}
+
+// Account type. Valid values: `batch`, `trigger`.
+func (o MailAddressOutput) Sendtype() pulumi.StringOutput {
+	return o.ApplyT(func(v *MailAddress) pulumi.StringOutput { return v.Sendtype }).(pulumi.StringOutput)
+}
+
+// Account Status freeze: 1, normal: 0.
+func (o MailAddressOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *MailAddress) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type MailAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (MailAddressArrayOutput) ElementType() reflect.Type {

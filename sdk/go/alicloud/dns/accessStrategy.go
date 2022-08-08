@@ -359,6 +359,96 @@ func (o AccessStrategyOutput) ToAccessStrategyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
+func (o AccessStrategyOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringOutput { return v.AccessMode }).(pulumi.StringOutput)
+}
+
+// The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
+func (o AccessStrategyOutput) DefaultAddrPoolType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringOutput { return v.DefaultAddrPoolType }).(pulumi.StringOutput)
+}
+
+// List of primary address pool collections. See the following `Block defaultAddrPools`.
+func (o AccessStrategyOutput) DefaultAddrPools() AccessStrategyDefaultAddrPoolArrayOutput {
+	return o.ApplyT(func(v *AccessStrategy) AccessStrategyDefaultAddrPoolArrayOutput { return v.DefaultAddrPools }).(AccessStrategyDefaultAddrPoolArrayOutput)
+}
+
+// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
+func (o AccessStrategyOutput) DefaultLatencyOptimization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.DefaultLatencyOptimization }).(pulumi.StringPtrOutput)
+}
+
+// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
+func (o AccessStrategyOutput) DefaultLbaStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.DefaultLbaStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
+func (o AccessStrategyOutput) DefaultMaxReturnAddrNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.IntPtrOutput { return v.DefaultMaxReturnAddrNum }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of available addresses for the primary address pool set.
+func (o AccessStrategyOutput) DefaultMinAvailableAddrNum() pulumi.IntOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.IntOutput { return v.DefaultMinAvailableAddrNum }).(pulumi.IntOutput)
+}
+
+// The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
+func (o AccessStrategyOutput) FailoverAddrPoolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.FailoverAddrPoolType }).(pulumi.StringPtrOutput)
+}
+
+// List of backup address pool sets. See the following `Block failoverAddrPools`.
+func (o AccessStrategyOutput) FailoverAddrPools() AccessStrategyFailoverAddrPoolArrayOutput {
+	return o.ApplyT(func(v *AccessStrategy) AccessStrategyFailoverAddrPoolArrayOutput { return v.FailoverAddrPools }).(AccessStrategyFailoverAddrPoolArrayOutput)
+}
+
+// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
+func (o AccessStrategyOutput) FailoverLatencyOptimization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.FailoverLatencyOptimization }).(pulumi.StringPtrOutput)
+}
+
+// The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
+func (o AccessStrategyOutput) FailoverLbaStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.FailoverLbaStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of returned addresses in the standby address pool.
+func (o AccessStrategyOutput) FailoverMaxReturnAddrNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.IntPtrOutput { return v.FailoverMaxReturnAddrNum }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of available addresses in the standby address pool.
+func (o AccessStrategyOutput) FailoverMinAvailableAddrNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.IntPtrOutput { return v.FailoverMinAvailableAddrNum }).(pulumi.IntPtrOutput)
+}
+
+// The Id of the associated instance.
+func (o AccessStrategyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The lang.
+func (o AccessStrategyOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+func (o AccessStrategyOutput) Lines() AccessStrategyLineArrayOutput {
+	return o.ApplyT(func(v *AccessStrategy) AccessStrategyLineArrayOutput { return v.Lines }).(AccessStrategyLineArrayOutput)
+}
+
+// The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
+func (o AccessStrategyOutput) StrategyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringOutput { return v.StrategyMode }).(pulumi.StringOutput)
+}
+
+// The name of the access policy.
+func (o AccessStrategyOutput) StrategyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessStrategy) pulumi.StringOutput { return v.StrategyName }).(pulumi.StringOutput)
+}
+
 type AccessStrategyArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessStrategyArrayOutput) ElementType() reflect.Type {

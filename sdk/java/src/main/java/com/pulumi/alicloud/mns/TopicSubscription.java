@@ -17,6 +17,47 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mns.Topic;
+ * import com.pulumi.alicloud.mns.TopicArgs;
+ * import com.pulumi.alicloud.mns.TopicSubscription;
+ * import com.pulumi.alicloud.mns.TopicSubscriptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .loggingEnabled(false)
+ *             .maximumMessageSize(65536)
+ *             .build());
+ * 
+ *         var subscription = new TopicSubscription(&#34;subscription&#34;, TopicSubscriptionArgs.builder()        
+ *             .endpoint(&#34;http://www.xxx.com/xxx&#34;)
+ *             .filterTag(&#34;test&#34;)
+ *             .notifyContentFormat(&#34;XML&#34;)
+ *             .notifyStrategy(&#34;BACKOFF_RETRY&#34;)
+ *             .topicName(&#34;tf-example-mnstopic&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * MNS Topic subscription can be imported using the id, e.g.

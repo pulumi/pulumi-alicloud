@@ -295,6 +295,48 @@ func (o AddressBookOutput) ToAddressBookOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The list of addresses.
+func (o AddressBookOutput) AddressLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.StringArrayOutput { return v.AddressLists }).(pulumi.StringArrayOutput)
+}
+
+// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
+func (o AddressBookOutput) AutoAddTagEcs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.IntPtrOutput { return v.AutoAddTagEcs }).(pulumi.IntPtrOutput)
+}
+
+// The description of the Address Book.
+func (o AddressBookOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of ECS tags. See the following `Block ecsTags`.
+func (o AddressBookOutput) EcsTags() AddressBookEcsTagArrayOutput {
+	return o.ApplyT(func(v *AddressBook) AddressBookEcsTagArrayOutput { return v.EcsTags }).(AddressBookEcsTagArrayOutput)
+}
+
+// The name of the Address Book.
+func (o AddressBookOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The type of the Address Book. Valid values:  `ip`, `tag`.
+func (o AddressBookOutput) GroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.GroupType }).(pulumi.StringOutput)
+}
+
+// The language of the content within the request and response. Valid values: `en`, `zh`.
+func (o AddressBookOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The logical relation among the ECS tags that to be matched. Valid values:
+// - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
+// - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+func (o AddressBookOutput) TagRelation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressBook) pulumi.StringPtrOutput { return v.TagRelation }).(pulumi.StringPtrOutput)
+}
+
 type AddressBookArrayOutput struct{ *pulumi.OutputState }
 
 func (AddressBookArrayOutput) ElementType() reflect.Type {

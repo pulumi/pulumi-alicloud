@@ -249,6 +249,31 @@ func (o MonitorGroupOutput) ToMonitorGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The alert group to which alert notifications will be sent.
+func (o MonitorGroupOutput) ContactGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MonitorGroup) pulumi.StringArrayOutput { return v.ContactGroups }).(pulumi.StringArrayOutput)
+}
+
+// The name of the application group.
+func (o MonitorGroupOutput) MonitorGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorGroup) pulumi.StringOutput { return v.MonitorGroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o MonitorGroupOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorGroup) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource group.
+func (o MonitorGroupOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorGroup) pulumi.StringPtrOutput { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o MonitorGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *MonitorGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type MonitorGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorGroupArrayOutput) ElementType() reflect.Type {

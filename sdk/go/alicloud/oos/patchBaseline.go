@@ -237,6 +237,26 @@ func (o PatchBaselineOutput) ToPatchBaselineOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+func (o PatchBaselineOutput) ApprovalRules() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.ApprovalRules }).(pulumi.StringOutput)
+}
+
+// Patches baseline description information.
+func (o PatchBaselineOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+func (o PatchBaselineOutput) OperationSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.OperationSystem }).(pulumi.StringOutput)
+}
+
+// The name of the patch baseline.
+func (o PatchBaselineOutput) PatchBaselineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.PatchBaselineName }).(pulumi.StringOutput)
+}
+
 type PatchBaselineArrayOutput struct{ *pulumi.OutputState }
 
 func (PatchBaselineArrayOutput) ElementType() reflect.Type {

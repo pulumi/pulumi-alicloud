@@ -320,6 +320,62 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
+func (o EndpointOutput) AutoAddNewNodes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.AutoAddNewNodes }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// (Available in v1.161.0+) The ID of the cluster endpoint.
+func (o EndpointOutput) DbEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.DbEndpointId }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) EndpointConfig() pulumi.MapOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.MapOutput { return v.EndpointConfig }).(pulumi.MapOutput)
+}
+
+// Type of endpoint.
+func (o EndpointOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+}
+
+func (o EndpointOutput) ReadWriteMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.ReadWriteMode }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) SslAutoRotate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.SslAutoRotate }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointOutput) SslCertificateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.SslCertificateUrl }).(pulumi.StringOutput)
+}
+
+// (Available in v1.121.0+) The SSL connection string.
+func (o EndpointOutput) SslConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.SslConnectionString }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) SslEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.SslEnabled }).(pulumi.StringPtrOutput)
+}
+
+// (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o EndpointOutput) SslExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.SslExpireTime }).(pulumi.StringOutput)
+}
+
 type EndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointArrayOutput) ElementType() reflect.Type {

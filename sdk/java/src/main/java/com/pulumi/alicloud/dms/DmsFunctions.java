@@ -26,6 +26,39 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .envType(&#34;test&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
+     *             .netType(&#34;CLASSIC&#34;)
+     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEnterpriseInstancesResult> getEnterpriseInstances() {
@@ -37,6 +70,39 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .envType(&#34;test&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
+     *             .netType(&#34;CLASSIC&#34;)
+     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnterpriseInstancesResult> getEnterpriseInstancesPlain() {
@@ -48,6 +114,39 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .envType(&#34;test&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
+     *             .netType(&#34;CLASSIC&#34;)
+     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEnterpriseInstancesResult> getEnterpriseInstances(GetEnterpriseInstancesArgs args) {
@@ -59,6 +158,39 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .envType(&#34;test&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
+     *             .netType(&#34;CLASSIC&#34;)
+     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnterpriseInstancesResult> getEnterpriseInstancesPlain(GetEnterpriseInstancesPlainArgs args) {
@@ -70,6 +202,39 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .envType(&#34;test&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
+     *             .netType(&#34;CLASSIC&#34;)
+     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEnterpriseInstancesResult> getEnterpriseInstances(GetEnterpriseInstancesArgs args, InvokeOptions options) {
@@ -81,6 +246,39 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .envType(&#34;test&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
+     *             .netType(&#34;CLASSIC&#34;)
+     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnterpriseInstancesResult> getEnterpriseInstancesPlain(GetEnterpriseInstancesPlainArgs args, InvokeOptions options) {
@@ -92,6 +290,37 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
+     *             .ids(&#34;uid&#34;)
+     *             .role(&#34;USER&#34;)
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEnterpriseUsersResult> getEnterpriseUsers() {
@@ -103,6 +332,37 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
+     *             .ids(&#34;uid&#34;)
+     *             .role(&#34;USER&#34;)
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnterpriseUsersResult> getEnterpriseUsersPlain() {
@@ -114,6 +374,37 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
+     *             .ids(&#34;uid&#34;)
+     *             .role(&#34;USER&#34;)
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEnterpriseUsersResult> getEnterpriseUsers(GetEnterpriseUsersArgs args) {
@@ -125,6 +416,37 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
+     *             .ids(&#34;uid&#34;)
+     *             .role(&#34;USER&#34;)
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnterpriseUsersResult> getEnterpriseUsersPlain(GetEnterpriseUsersPlainArgs args) {
@@ -136,6 +458,37 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
+     *             .ids(&#34;uid&#34;)
+     *             .role(&#34;USER&#34;)
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetEnterpriseUsersResult> getEnterpriseUsers(GetEnterpriseUsersArgs args, InvokeOptions options) {
@@ -147,6 +500,37 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
+     *             .ids(&#34;uid&#34;)
+     *             .role(&#34;USER&#34;)
+     *             .status(&#34;NORMAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnterpriseUsersResult> getEnterpriseUsersPlain(GetEnterpriseUsersPlainArgs args, InvokeOptions options) {
@@ -158,6 +542,35 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+     *             .status(&#34;ACTIVE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUserTenantsResult> getUserTenants() {
@@ -169,6 +582,35 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+     *             .status(&#34;ACTIVE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserTenantsResult> getUserTenantsPlain() {
@@ -180,6 +622,35 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+     *             .status(&#34;ACTIVE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUserTenantsResult> getUserTenants(GetUserTenantsArgs args) {
@@ -191,6 +662,35 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+     *             .status(&#34;ACTIVE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserTenantsResult> getUserTenantsPlain(GetUserTenantsPlainArgs args) {
@@ -202,6 +702,35 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+     *             .status(&#34;ACTIVE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUserTenantsResult> getUserTenants(GetUserTenantsArgs args, InvokeOptions options) {
@@ -213,6 +742,35 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+     *             .status(&#34;ACTIVE&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUserTenantsResult> getUserTenantsPlain(GetUserTenantsPlainArgs args, InvokeOptions options) {

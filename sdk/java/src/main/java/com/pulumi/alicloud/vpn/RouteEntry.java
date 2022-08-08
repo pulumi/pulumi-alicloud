@@ -18,6 +18,86 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpn.Gateway;
+ * import com.pulumi.alicloud.vpn.GatewayArgs;
+ * import com.pulumi.alicloud.vpn.CustomerGateway;
+ * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+ * import com.pulumi.alicloud.vpn.Connection;
+ * import com.pulumi.alicloud.vpn.ConnectionArgs;
+ * import com.pulumi.alicloud.vpn.RouteEntry;
+ * import com.pulumi.alicloud.vpn.RouteEntryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;10.1.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .bandwidth(10)
+ *             .instanceChargeType(&#34;PayByTraffic&#34;)
+ *             .enableSsl(false)
+ *             .vswitchId(defaultSwitch.id())
+ *             .build());
+ * 
+ *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *             .ipAddress(&#34;192.168.1.1&#34;)
+ *             .build());
+ * 
+ *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *             .customerGatewayId(defaultCustomerGateway.id())
+ *             .vpnGatewayId(defaultGateway.id())
+ *             .localSubnets(&#34;192.168.2.0/24&#34;)
+ *             .remoteSubnets(&#34;192.168.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultRouteEntry = new RouteEntry(&#34;defaultRouteEntry&#34;, RouteEntryArgs.builder()        
+ *             .vpnGatewayId(defaultGateway.id())
+ *             .routeDest(&#34;10.0.0.0/24&#34;)
+ *             .nextHop(defaultConnection.id())
+ *             .weight(0)
+ *             .publishVpc(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPN route entry can be imported using the id(VpnGatewayId +&#34;:&#34;+ NextHop +&#34;:&#34;+ RouteDest), e.g.

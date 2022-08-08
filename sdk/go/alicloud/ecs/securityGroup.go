@@ -254,6 +254,50 @@ func (o SecurityGroupOutput) ToSecurityGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The security group description. Defaults to null.
+func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+//
+// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+func (o SecurityGroupOutput) InnerAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.BoolOutput { return v.InnerAccess }).(pulumi.BoolOutput)
+}
+
+// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+func (o SecurityGroupOutput) InnerAccessPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.InnerAccessPolicy }).(pulumi.StringOutput)
+}
+
+// The name of the security group. Defaults to null.
+func (o SecurityGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the securityGroup belongs.
+func (o SecurityGroupOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the security group. Valid values:
+// `normal`: basic security group.
+// `enterprise`: advanced security group For more information.
+func (o SecurityGroupOutput) SecurityGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.SecurityGroupType }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SecurityGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The VPC ID.
+func (o SecurityGroupOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
 type SecurityGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (SecurityGroupArrayOutput) ElementType() reflect.Type {

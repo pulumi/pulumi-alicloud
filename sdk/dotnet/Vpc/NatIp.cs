@@ -56,14 +56,14 @@ namespace Pulumi.AliCloud.Vpc
     ///         });
     ///         var exampleNatIpCidr = new AliCloud.Vpc.NatIpCidr("exampleNatIpCidr", new AliCloud.Vpc.NatIpCidrArgs
     ///         {
-    ///             NatIpCidr = "192.168.0.0/16",
+    ///             NatIpCidrBlock = "192.168.0.0/16",
     ///             NatGatewayId = exampleNatGateway.Id,
     ///             NatIpCidrDescription = "example_value",
     ///             NatIpCidrName = "example_value",
     ///         });
     ///         var exampleNatIp = new AliCloud.Vpc.NatIp("exampleNatIp", new AliCloud.Vpc.NatIpArgs
     ///         {
-    ///             NatIp = "192.168.0.37",
+    ///             NatIpAddress = "192.168.0.37",
     ///             NatGatewayId = exampleNatGateway.Id,
     ///             NatIpDescription = "example_value",
     ///             NatIpName = "example_value",

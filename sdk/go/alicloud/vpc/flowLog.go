@@ -311,6 +311,46 @@ func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOu
 	return o
 }
 
+// The Description of the VPC Flow Log.
+func (o FlowLogOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Name of the VPC Flow Log.
+func (o FlowLogOutput) FlowLogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.FlowLogName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the logstore.
+func (o FlowLogOutput) LogStoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.LogStoreName }).(pulumi.StringOutput)
+}
+
+// The name of the project.
+func (o FlowLogOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
+func (o FlowLogOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+func (o FlowLogOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+func (o FlowLogOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
+func (o FlowLogOutput) TrafficType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
+}
+
 type FlowLogArrayOutput struct{ *pulumi.OutputState }
 
 func (FlowLogArrayOutput) ElementType() reflect.Type {

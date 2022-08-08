@@ -273,6 +273,36 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// A Name of one Access Group.
+func (o AccessGroupOutput) AccessGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.AccessGroupName }).(pulumi.StringOutput)
+}
+
+// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+func (o AccessGroupOutput) AccessGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.AccessGroupType }).(pulumi.StringOutput)
+}
+
+// The Access Group description.
+func (o AccessGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+func (o AccessGroupOutput) FileSystemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.FileSystemType }).(pulumi.StringPtrOutput)
+}
+
+// Replaced by `accessGroupName` after version 1.92.0.
+func (o AccessGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Replaced by `accessGroupType` after version 1.92.0.
+func (o AccessGroupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type AccessGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupArrayOutput) ElementType() reflect.Type {

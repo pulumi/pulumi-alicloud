@@ -328,6 +328,69 @@ func (o ZoneRecordOutput) ToZoneRecordOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
+// User language.
+func (o ZoneRecordOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
+func (o ZoneRecordOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The Private Zone Record ID.
+func (o ZoneRecordOutput) RecordId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.RecordId }).(pulumi.StringOutput)
+}
+
+// The remark of the Private Zone Record.
+func (o ZoneRecordOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+// The resource record of the Private Zone Record.
+//
+// Deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
+func (o ZoneRecordOutput) ResourceRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ResourceRecord }).(pulumi.StringOutput)
+}
+
+// The rr of the Private Zone Record.
+func (o ZoneRecordOutput) Rr() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Rr }).(pulumi.StringOutput)
+}
+
+// Resolve record status. Value:
+// - ENABLE: enable resolution.
+// - DISABLE: pause parsing.
+func (o ZoneRecordOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The ttl of the Private Zone Record. Default to `60`.
+func (o ZoneRecordOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+func (o ZoneRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ZoneRecordOutput) UserClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.UserClientIp }).(pulumi.StringPtrOutput)
+}
+
+// The value of the Private Zone Record.
+func (o ZoneRecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// The name of the Private Zone Record.
+func (o ZoneRecordOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ZoneRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneRecordArrayOutput) ElementType() reflect.Type {

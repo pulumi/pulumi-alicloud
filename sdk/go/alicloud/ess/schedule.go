@@ -212,6 +212,58 @@ func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) Schedul
 	return o
 }
 
+func (o ScheduleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o ScheduleOutput) DesiredCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
+}
+
+func (o ScheduleOutput) LaunchExpirationTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.IntPtrOutput { return v.LaunchExpirationTime }).(pulumi.IntPtrOutput)
+}
+
+func (o ScheduleOutput) LaunchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.LaunchTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ScheduleOutput) MaxValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.IntPtrOutput { return v.MaxValue }).(pulumi.IntPtrOutput)
+}
+
+func (o ScheduleOutput) MinValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.IntPtrOutput { return v.MinValue }).(pulumi.IntPtrOutput)
+}
+
+func (o ScheduleOutput) RecurrenceEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.RecurrenceEndTime }).(pulumi.StringOutput)
+}
+
+func (o ScheduleOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+func (o ScheduleOutput) RecurrenceValue() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.RecurrenceValue }).(pulumi.StringOutput)
+}
+
+func (o ScheduleOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+func (o ScheduleOutput) ScheduledAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.ScheduledAction }).(pulumi.StringPtrOutput)
+}
+
+func (o ScheduleOutput) ScheduledTaskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.ScheduledTaskName }).(pulumi.StringPtrOutput)
+}
+
+func (o ScheduleOutput) TaskEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolPtrOutput { return v.TaskEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type ScheduleArrayOutput struct{ *pulumi.OutputState }
 
 func (ScheduleArrayOutput) ElementType() reflect.Type {

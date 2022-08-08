@@ -27,6 +27,44 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsSnapshot;
+ * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new EcsSnapshot(&#34;default&#34;, EcsSnapshotArgs.builder()        
+ *             .category(&#34;standard&#34;)
+ *             .description(&#34;Test For Terraform&#34;)
+ *             .diskId(&#34;d-gw8csgxxxxxxxxx&#34;)
+ *             .retentionDays(&#34;20&#34;)
+ *             .snapshotName(&#34;tf-test&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;Acceptance-test&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Snapshot can be imported using the id, e.g.

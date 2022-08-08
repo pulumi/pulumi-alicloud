@@ -16,6 +16,36 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.apigateway.Group;
+ * import com.pulumi.alicloud.apigateway.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var apiGroup = new Group(&#34;apiGroup&#34;, GroupArgs.builder()        
+ *             .description(&#34;description of the api group&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Api gateway group can be imported using the id, e.g.
@@ -40,6 +70,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * The id of the api gateway.
+     * 
+     */
+    @Export(name="instanceId", type=String.class, parameters={})
+    private Output<String> instanceId;
+
+    /**
+     * @return The id of the api gateway.
+     * 
+     */
+    public Output<String> instanceId() {
+        return this.instanceId;
     }
     /**
      * The name of the api gateway group. Defaults to null.

@@ -276,6 +276,46 @@ func (o EcsKeyPairOutput) ToEcsKeyPairOutputWithContext(ctx context.Context) Ecs
 	return o
 }
 
+func (o EcsKeyPairOutput) FingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringOutput { return v.FingerPrint }).(pulumi.StringOutput)
+}
+
+// The key file.
+func (o EcsKeyPairOutput) KeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.KeyFile }).(pulumi.StringPtrOutput)
+}
+
+// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+//
+// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+func (o EcsKeyPairOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
+}
+
+func (o EcsKeyPairOutput) KeyNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.KeyNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+func (o EcsKeyPairOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringOutput { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
+// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
+func (o EcsKeyPairOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the key pair belongs.
+func (o EcsKeyPairOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o EcsKeyPairOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type EcsKeyPairArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairArrayOutput) ElementType() reflect.Type {

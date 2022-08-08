@@ -495,6 +495,119 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
+func (o BackupPolicyOutput) ArchiveBackupKeepCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.ArchiveBackupKeepCount }).(pulumi.IntOutput)
+}
+
+// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
+func (o BackupPolicyOutput) ArchiveBackupKeepPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.ArchiveBackupKeepPolicy }).(pulumi.StringOutput)
+}
+
+// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
+func (o BackupPolicyOutput) ArchiveBackupRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.ArchiveBackupRetentionPeriod }).(pulumi.IntOutput)
+}
+
+// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+//
+// Deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+func (o BackupPolicyOutput) BackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+func (o BackupPolicyOutput) BackupRetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntPtrOutput { return v.BackupRetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+//
+// Deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+func (o BackupPolicyOutput) BackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
+}
+
+// The compress type of instance policy. Valid values are `1`, `4`, `8`.
+func (o BackupPolicyOutput) CompressType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.CompressType }).(pulumi.StringOutput)
+}
+
+// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+func (o BackupPolicyOutput) EnableBackupLog() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.BoolOutput { return v.EnableBackupLog }).(pulumi.BoolOutput)
+}
+
+// Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
+func (o BackupPolicyOutput) HighSpaceUsageProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringPtrOutput { return v.HighSpaceUsageProtection }).(pulumi.StringPtrOutput)
+}
+
+// The Id of instance that can run database.
+func (o BackupPolicyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
+func (o BackupPolicyOutput) LocalLogRetentionHours() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.LocalLogRetentionHours }).(pulumi.IntOutput)
+}
+
+// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [0-50].
+func (o BackupPolicyOutput) LocalLogRetentionSpace() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.LocalLogRetentionSpace }).(pulumi.IntOutput)
+}
+
+// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+//
+// Deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+func (o BackupPolicyOutput) LogBackup() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.BoolOutput { return v.LogBackup }).(pulumi.BoolOutput)
+}
+
+// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+func (o BackupPolicyOutput) LogBackupFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.LogBackupFrequency }).(pulumi.StringOutput)
+}
+
+// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
+func (o BackupPolicyOutput) LogBackupRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.LogBackupRetentionPeriod }).(pulumi.IntOutput)
+}
+
+// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+//
+// Deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+func (o BackupPolicyOutput) LogRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.LogRetentionPeriod }).(pulumi.IntOutput)
+}
+
+// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+func (o BackupPolicyOutput) PreferredBackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.PreferredBackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+func (o BackupPolicyOutput) PreferredBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringPtrOutput { return v.PreferredBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+// * **None**: No archived backup files are retained.
+// * **Lastest**: Only the most recent archived backup file is retained.
+// * **All**: All archived backup files are retained.
+func (o BackupPolicyOutput) ReleasedKeepPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.ReleasedKeepPolicy }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+//
+// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+func (o BackupPolicyOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
 type BackupPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyArrayOutput) ElementType() reflect.Type {

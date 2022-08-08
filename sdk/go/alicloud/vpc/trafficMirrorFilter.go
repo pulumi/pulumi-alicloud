@@ -221,6 +221,26 @@ func (o TrafficMirrorFilterOutput) ToTrafficMirrorFilterOutputWithContext(ctx co
 	return o
 }
 
+// The dry run.
+func (o TrafficMirrorFilterOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+func (o TrafficMirrorFilterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+func (o TrafficMirrorFilterOutput) TrafficMirrorFilterDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringPtrOutput { return v.TrafficMirrorFilterDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+func (o TrafficMirrorFilterOutput) TrafficMirrorFilterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringPtrOutput { return v.TrafficMirrorFilterName }).(pulumi.StringPtrOutput)
+}
+
 type TrafficMirrorFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorFilterArrayOutput) ElementType() reflect.Type {

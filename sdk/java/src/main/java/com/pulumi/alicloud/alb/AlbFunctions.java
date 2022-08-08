@@ -42,6 +42,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls() {
         return getAcls(GetAclsArgs.Empty, InvokeOptions.Empty);
@@ -52,6 +86,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain() {
@@ -64,6 +132,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args) {
         return getAcls(args, InvokeOptions.Empty);
@@ -74,6 +176,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args) {
@@ -86,6 +222,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
@@ -96,6 +266,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getAcls();
+     * 
+     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
@@ -108,6 +312,42 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHealthCheckTemplatesResult> getHealthCheckTemplates() {
         return getHealthCheckTemplates(GetHealthCheckTemplatesArgs.Empty, InvokeOptions.Empty);
@@ -118,6 +358,42 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHealthCheckTemplatesResult> getHealthCheckTemplatesPlain() {
@@ -130,6 +406,42 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHealthCheckTemplatesResult> getHealthCheckTemplates(GetHealthCheckTemplatesArgs args) {
         return getHealthCheckTemplates(args, InvokeOptions.Empty);
@@ -140,6 +452,42 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHealthCheckTemplatesResult> getHealthCheckTemplatesPlain(GetHealthCheckTemplatesPlainArgs args) {
@@ -152,6 +500,42 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHealthCheckTemplatesResult> getHealthCheckTemplates(GetHealthCheckTemplatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", TypeShape.of(GetHealthCheckTemplatesResult.class), args, Utilities.withVersion(options));
@@ -162,6 +546,42 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.134.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHealthCheckTemplatesResult> getHealthCheckTemplatesPlain(GetHealthCheckTemplatesPlainArgs args, InvokeOptions options) {
@@ -174,6 +594,37 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetListenersResult> getListeners() {
         return getListeners(GetListenersArgs.Empty, InvokeOptions.Empty);
@@ -184,6 +635,37 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain() {
@@ -196,6 +678,37 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args) {
         return getListeners(args, InvokeOptions.Empty);
@@ -206,6 +719,37 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args) {
@@ -218,6 +762,37 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
@@ -228,6 +803,37 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args, InvokeOptions options) {
@@ -240,6 +846,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getLoadBalancers();
+     * 
+     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers() {
         return getLoadBalancers(GetLoadBalancersArgs.Empty, InvokeOptions.Empty);
@@ -250,6 +890,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getLoadBalancers();
+     * 
+     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain() {
@@ -262,6 +936,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getLoadBalancers();
+     * 
+     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args) {
         return getLoadBalancers(args, InvokeOptions.Empty);
@@ -272,6 +980,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getLoadBalancers();
+     * 
+     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args) {
@@ -284,6 +1026,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getLoadBalancers();
+     * 
+     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
@@ -294,6 +1070,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getLoadBalancers();
+     * 
+     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
@@ -306,6 +1116,42 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules() {
         return getRules(GetRulesArgs.Empty, InvokeOptions.Empty);
@@ -316,6 +1162,42 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain() {
@@ -328,6 +1210,42 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
         return getRules(args, InvokeOptions.Empty);
@@ -338,6 +1256,42 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -350,6 +1304,42 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
@@ -360,6 +1350,42 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
@@ -372,6 +1398,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getSecurityPolicies();
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSecurityPoliciesResult> getSecurityPolicies() {
         return getSecurityPolicies(GetSecurityPoliciesArgs.Empty, InvokeOptions.Empty);
@@ -382,6 +1442,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getSecurityPolicies();
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecurityPoliciesResult> getSecurityPoliciesPlain() {
@@ -394,6 +1488,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getSecurityPolicies();
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSecurityPoliciesResult> getSecurityPolicies(GetSecurityPoliciesArgs args) {
         return getSecurityPolicies(args, InvokeOptions.Empty);
@@ -404,6 +1532,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getSecurityPolicies();
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecurityPoliciesResult> getSecurityPoliciesPlain(GetSecurityPoliciesPlainArgs args) {
@@ -416,6 +1578,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getSecurityPolicies();
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSecurityPoliciesResult> getSecurityPolicies(GetSecurityPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getSecurityPolicies:getSecurityPolicies", TypeShape.of(GetSecurityPoliciesResult.class), args, Utilities.withVersion(options));
@@ -426,6 +1622,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getSecurityPolicies();
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecurityPoliciesResult> getSecurityPoliciesPlain(GetSecurityPoliciesPlainArgs args, InvokeOptions options) {
@@ -438,6 +1668,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getServerGroups();
+     * 
+     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerGroupsResult> getServerGroups() {
         return getServerGroups(GetServerGroupsArgs.Empty, InvokeOptions.Empty);
@@ -448,6 +1712,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getServerGroups();
+     * 
+     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain() {
@@ -460,6 +1758,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getServerGroups();
+     * 
+     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args) {
         return getServerGroups(args, InvokeOptions.Empty);
@@ -470,6 +1802,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getServerGroups();
+     * 
+     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain(GetServerGroupsPlainArgs args) {
@@ -482,6 +1848,40 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getServerGroups();
+     * 
+     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getServerGroups:getServerGroups", TypeShape.of(GetServerGroupsResult.class), args, Utilities.withVersion(options));
@@ -492,6 +1892,40 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlbFunctions.getServerGroups();
+     * 
+     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain(GetServerGroupsPlainArgs args, InvokeOptions options) {
@@ -504,6 +1938,35 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -514,6 +1977,35 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -526,6 +2018,35 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -536,6 +2057,35 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -548,6 +2098,35 @@ public final class AlbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:alb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -558,6 +2137,35 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlbFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

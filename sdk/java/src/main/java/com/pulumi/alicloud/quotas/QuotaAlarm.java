@@ -26,6 +26,44 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.quotas.QuotaAlarm;
+ * import com.pulumi.alicloud.quotas.QuotaAlarmArgs;
+ * import com.pulumi.alicloud.quotas.inputs.QuotaAlarmQuotaDimensionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new QuotaAlarm(&#34;example&#34;, QuotaAlarmArgs.builder()        
+ *             .productCode(&#34;ecs&#34;)
+ *             .quotaActionCode(&#34;q_prepaid-instance-count-per-once-purchase&#34;)
+ *             .quotaAlarmName(&#34;tf-testAcc&#34;)
+ *             .quotaDimensions(QuotaAlarmQuotaDimensionArgs.builder()
+ *                 .key(&#34;regionId&#34;)
+ *                 .value(&#34;cn-hangzhou&#34;)
+ *                 .build())
+ *             .threshold(&#34;100&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Quotas Quota Alarm can be imported using the id, e.g.

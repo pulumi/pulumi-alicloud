@@ -20,6 +20,37 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.99.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dns.AlidnsDomainAttachment;
+ * import com.pulumi.alicloud.dns.AlidnsDomainAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dns = new AlidnsDomainAttachment(&#34;dns&#34;, AlidnsDomainAttachmentArgs.builder()        
+ *             .domainNames(            
+ *                 &#34;test111.abc&#34;,
+ *                 &#34;test222.abc&#34;)
+ *             .instanceId(&#34;dns-cn-mp91lyq9xxxx&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

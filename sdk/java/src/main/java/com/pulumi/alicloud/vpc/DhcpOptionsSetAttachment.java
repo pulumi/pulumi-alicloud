@@ -24,6 +24,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.DhcpOptionsSet;
+ * import com.pulumi.alicloud.vpc.DhcpOptionsSetArgs;
+ * import com.pulumi.alicloud.vpc.DhcpOptionsSetAttachment;
+ * import com.pulumi.alicloud.vpc.DhcpOptionsSetAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;test&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var exampleDhcpOptionsSet = new DhcpOptionsSet(&#34;exampleDhcpOptionsSet&#34;, DhcpOptionsSetArgs.builder()        
+ *             .dhcpOptionsSetName(&#34;example_value&#34;)
+ *             .dhcpOptionsSetDescription(&#34;example_value&#34;)
+ *             .domainName(&#34;example.com&#34;)
+ *             .domainNameServers(&#34;100.100.2.136&#34;)
+ *             .build());
+ * 
+ *         var exampleDhcpOptionsSetAttachment = new DhcpOptionsSetAttachment(&#34;exampleDhcpOptionsSetAttachment&#34;, DhcpOptionsSetAttachmentArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .dhcpOptionsSetId(exampleDhcpOptionsSet.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPC Dhcp Options Set Attachment can be imported using the id, e.g.

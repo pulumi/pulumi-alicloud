@@ -66,6 +66,42 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAccessStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .strategyMode(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessStrategiesResult> getAccessStrategies(GetAccessStrategiesArgs args) {
         return getAccessStrategies(args, InvokeOptions.Empty);
@@ -76,6 +112,42 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAccessStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .strategyMode(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessStrategiesResult> getAccessStrategiesPlain(GetAccessStrategiesPlainArgs args) {
@@ -88,6 +160,42 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAccessStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .strategyMode(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccessStrategiesResult> getAccessStrategies(GetAccessStrategiesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getAccessStrategies:getAccessStrategies", TypeShape.of(GetAccessStrategiesResult.class), args, Utilities.withVersion(options));
@@ -98,6 +206,42 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAccessStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .strategyMode(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessStrategiesResult> getAccessStrategiesPlain(GetAccessStrategiesPlainArgs args, InvokeOptions options) {
@@ -110,6 +254,46 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAddressPoolsResult> getAddressPools(GetAddressPoolsArgs args) {
         return getAddressPools(args, InvokeOptions.Empty);
@@ -120,6 +304,46 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAddressPoolsResult> getAddressPoolsPlain(GetAddressPoolsPlainArgs args) {
@@ -132,6 +356,46 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAddressPoolsResult> getAddressPools(GetAddressPoolsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getAddressPools:getAddressPools", TypeShape.of(GetAddressPoolsResult.class), args, Utilities.withVersion(options));
@@ -143,6 +407,46 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetAddressPoolsResult> getAddressPoolsPlain(GetAddressPoolsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getAddressPools:getAddressPools", TypeShape.of(GetAddressPoolsResult.class), args, Utilities.withVersion(options));
@@ -153,6 +457,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
+     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups() {
@@ -164,6 +497,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
+     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsDomainGroupsResult> getAlidnsDomainGroupsPlain() {
@@ -175,6 +537,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
+     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs args) {
@@ -186,6 +577,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
+     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsDomainGroupsResult> getAlidnsDomainGroupsPlain(GetAlidnsDomainGroupsPlainArgs args) {
@@ -197,6 +617,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
+     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs args, InvokeOptions options) {
@@ -208,6 +657,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
+     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsDomainGroupsResult> getAlidnsDomainGroupsPlain(GetAlidnsDomainGroupsPlainArgs args, InvokeOptions options) {
@@ -219,6 +697,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsDomainsResult> getAlidnsDomains() {
@@ -230,6 +738,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsDomainsResult> getAlidnsDomainsPlain() {
@@ -241,6 +779,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsDomainsResult> getAlidnsDomains(GetAlidnsDomainsArgs args) {
@@ -252,6 +820,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsDomainsResult> getAlidnsDomainsPlain(GetAlidnsDomainsPlainArgs args) {
@@ -263,6 +861,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsDomainsResult> getAlidnsDomains(GetAlidnsDomainsArgs args, InvokeOptions options) {
@@ -274,6 +902,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsDomainsResult> getAlidnsDomainsPlain(GetAlidnsDomainsPlainArgs args, InvokeOptions options) {
@@ -285,6 +943,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsInstancesResult> getAlidnsInstances() {
@@ -296,6 +983,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsInstancesResult> getAlidnsInstancesPlain() {
@@ -307,6 +1023,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsInstancesResult> getAlidnsInstances(GetAlidnsInstancesArgs args) {
@@ -318,6 +1063,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsInstancesResult> getAlidnsInstancesPlain(GetAlidnsInstancesPlainArgs args) {
@@ -329,6 +1103,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsInstancesResult> getAlidnsInstances(GetAlidnsInstancesArgs args, InvokeOptions options) {
@@ -340,6 +1143,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsInstancesResult> getAlidnsInstancesPlain(GetAlidnsInstancesPlainArgs args, InvokeOptions options) {
@@ -351,6 +1183,38 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .ids(&#34;1978593525779****&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args) {
@@ -362,6 +1226,38 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .ids(&#34;1978593525779****&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsRecordsResult> getAlidnsRecordsPlain(GetAlidnsRecordsPlainArgs args) {
@@ -373,6 +1269,38 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .ids(&#34;1978593525779****&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args, InvokeOptions options) {
@@ -384,6 +1312,38 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .ids(&#34;1978593525779****&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsRecordsResult> getAlidnsRecordsPlain(GetAlidnsRecordsPlainArgs args, InvokeOptions options) {
@@ -396,6 +1356,38 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetCustomLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
+     *             .enableDetails(true)
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCustomLinesResult> getCustomLines(GetCustomLinesArgs args) {
         return getCustomLines(args, InvokeOptions.Empty);
@@ -406,6 +1398,38 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.151.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetCustomLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
+     *             .enableDetails(true)
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomLinesResult> getCustomLinesPlain(GetCustomLinesPlainArgs args) {
@@ -418,6 +1442,38 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetCustomLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
+     *             .enableDetails(true)
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCustomLinesResult> getCustomLines(GetCustomLinesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getCustomLines:getCustomLines", TypeShape.of(GetCustomLinesResult.class), args, Utilities.withVersion(options));
@@ -428,6 +1484,38 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.151.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetCustomLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
+     *             .enableDetails(true)
+     *             .domainName(&#34;your_domain_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCustomLinesResult> getCustomLinesPlain(GetCustomLinesPlainArgs args, InvokeOptions options) {
@@ -469,6 +1557,37 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainTxtGuidArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
+     *             .domainName(&#34;test111.abc&#34;)
+     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rr&#34;, this_.rr());
+     *         ctx.export(&#34;value&#34;, this_.value());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDomainTxtGuidResult> getDomainTxtGuid(GetDomainTxtGuidArgs args) {
@@ -480,6 +1599,37 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainTxtGuidArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
+     *             .domainName(&#34;test111.abc&#34;)
+     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rr&#34;, this_.rr());
+     *         ctx.export(&#34;value&#34;, this_.value());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainTxtGuidResult> getDomainTxtGuidPlain(GetDomainTxtGuidPlainArgs args) {
@@ -491,6 +1641,37 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainTxtGuidArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
+     *             .domainName(&#34;test111.abc&#34;)
+     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rr&#34;, this_.rr());
+     *         ctx.export(&#34;value&#34;, this_.value());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDomainTxtGuidResult> getDomainTxtGuid(GetDomainTxtGuidArgs args, InvokeOptions options) {
@@ -502,6 +1683,37 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainTxtGuidArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
+     *             .domainName(&#34;test111.abc&#34;)
+     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;rr&#34;, this_.rr());
+     *         ctx.export(&#34;value&#34;, this_.value());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainTxtGuidResult> getDomainTxtGuidPlain(GetDomainTxtGuidPlainArgs args, InvokeOptions options) {
@@ -509,6 +1721,36 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDomainsResult> getDomains() {
@@ -516,6 +1758,36 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -523,6 +1795,36 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
@@ -530,6 +1832,36 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -537,6 +1869,36 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
@@ -544,6 +1906,36 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
+     *             .domainNameRegex(&#34;^hegu&#34;)
+     *             .outputFile(&#34;domains.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -553,6 +1945,36 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups() {
@@ -562,6 +1984,36 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -571,6 +2023,36 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -580,6 +2062,36 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -589,6 +2101,36 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -598,6 +2140,36 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -610,6 +2182,35 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGtmInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getGtmInstances();
+     * 
+     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGtmInstancesResult> getGtmInstances() {
         return getGtmInstances(GetGtmInstancesArgs.Empty, InvokeOptions.Empty);
@@ -620,6 +2221,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.151.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGtmInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getGtmInstances();
+     * 
+     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGtmInstancesResult> getGtmInstancesPlain() {
@@ -632,6 +2262,35 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGtmInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getGtmInstances();
+     * 
+     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGtmInstancesResult> getGtmInstances(GetGtmInstancesArgs args) {
         return getGtmInstances(args, InvokeOptions.Empty);
@@ -642,6 +2301,35 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.151.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGtmInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getGtmInstances();
+     * 
+     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGtmInstancesResult> getGtmInstancesPlain(GetGtmInstancesPlainArgs args) {
@@ -654,6 +2342,35 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGtmInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getGtmInstances();
+     * 
+     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGtmInstancesResult> getGtmInstances(GetGtmInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getGtmInstances:getGtmInstances", TypeShape.of(GetGtmInstancesResult.class), args, Utilities.withVersion(options));
@@ -665,12 +2382,70 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGtmInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getGtmInstances();
+     * 
+     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetGtmInstancesResult> getGtmInstancesPlain(GetGtmInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getGtmInstances:getGtmInstances", TypeShape.of(GetGtmInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -678,6 +2453,35 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -685,6 +2489,35 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -692,6 +2525,35 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -699,6 +2561,35 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -706,6 +2597,35 @@ public final class DnsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -715,6 +2635,39 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .isLocked(false)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRecordsResult> getRecords(GetRecordsArgs args) {
@@ -724,6 +2677,39 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .isLocked(false)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRecordsResult> getRecordsPlain(GetRecordsPlainArgs args) {
@@ -733,6 +2719,39 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .isLocked(false)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRecordsResult> getRecords(GetRecordsArgs args, InvokeOptions options) {
@@ -742,6 +2761,39 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .isLocked(false)
+     *             .outputFile(&#34;records.txt&#34;)
+     *             .type(&#34;A&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRecordsResult> getRecordsPlain(GetRecordsPlainArgs args, InvokeOptions options) {
@@ -753,6 +2805,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetResolutionLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
+     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
+     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResolutionLinesResult> getResolutionLines() {
@@ -764,6 +2846,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetResolutionLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
+     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
+     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResolutionLinesResult> getResolutionLinesPlain() {
@@ -775,6 +2887,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetResolutionLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
+     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
+     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResolutionLinesResult> getResolutionLines(GetResolutionLinesArgs args) {
@@ -786,6 +2928,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetResolutionLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
+     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
+     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResolutionLinesResult> getResolutionLinesPlain(GetResolutionLinesPlainArgs args) {
@@ -797,6 +2969,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetResolutionLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
+     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
+     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetResolutionLinesResult> getResolutionLines(GetResolutionLinesArgs args, InvokeOptions options) {
@@ -808,6 +3010,36 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetResolutionLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
+     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
+     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetResolutionLinesResult> getResolutionLinesPlain(GetResolutionLinesPlainArgs args, InvokeOptions options) {

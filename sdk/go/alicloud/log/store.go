@@ -41,6 +41,8 @@ type Store struct {
 	ShardCount pulumi.IntPtrOutput `pulumi:"shardCount"`
 	// The shard attribute.
 	Shards StoreShardArrayOutput `pulumi:"shards"`
+	// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+	TelemetryType pulumi.StringPtrOutput `pulumi:"telemetryType"`
 }
 
 // NewStore registers a new resource with the given unique name, arguments, and options.
@@ -95,6 +97,8 @@ type storeState struct {
 	ShardCount *int `pulumi:"shardCount"`
 	// The shard attribute.
 	Shards []StoreShard `pulumi:"shards"`
+	// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+	TelemetryType *string `pulumi:"telemetryType"`
 }
 
 type StoreState struct {
@@ -118,6 +122,8 @@ type StoreState struct {
 	ShardCount pulumi.IntPtrInput
 	// The shard attribute.
 	Shards StoreShardArrayInput
+	// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+	TelemetryType pulumi.StringPtrInput
 }
 
 func (StoreState) ElementType() reflect.Type {
@@ -143,6 +149,8 @@ type storeArgs struct {
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount *int `pulumi:"shardCount"`
+	// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+	TelemetryType *string `pulumi:"telemetryType"`
 }
 
 // The set of arguments for constructing a Store resource.
@@ -165,6 +173,8 @@ type StoreArgs struct {
 	RetentionPeriod pulumi.IntPtrInput
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount pulumi.IntPtrInput
+	// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+	TelemetryType pulumi.StringPtrInput
 }
 
 func (StoreArgs) ElementType() reflect.Type {
@@ -252,6 +262,61 @@ func (o StoreOutput) ToStoreOutput() StoreOutput {
 
 func (o StoreOutput) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
 	return o
+}
+
+// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+func (o StoreOutput) AppendMeta() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.BoolPtrOutput { return v.AppendMeta }).(pulumi.BoolPtrOutput)
+}
+
+// Determines whether to automatically split a shard. Default to `false`.
+func (o StoreOutput) AutoSplit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.BoolPtrOutput { return v.AutoSplit }).(pulumi.BoolPtrOutput)
+}
+
+// Determines whether to enable Web Tracking. Default `false`.
+func (o StoreOutput) EnableWebTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.BoolPtrOutput { return v.EnableWebTracking }).(pulumi.BoolPtrOutput)
+}
+
+// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+func (o StoreOutput) EncryptConf() StoreEncryptConfPtrOutput {
+	return o.ApplyT(func(v *Store) StoreEncryptConfPtrOutput { return v.EncryptConf }).(StoreEncryptConfPtrOutput)
+}
+
+// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+func (o StoreOutput) MaxSplitShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.MaxSplitShardCount }).(pulumi.IntPtrOutput)
+}
+
+// The log store, which is unique in the same project.
+func (o StoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Store) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project name to the log store belongs.
+func (o StoreOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Store) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+func (o StoreOutput) RetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+func (o StoreOutput) ShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.ShardCount }).(pulumi.IntPtrOutput)
+}
+
+// The shard attribute.
+func (o StoreOutput) Shards() StoreShardArrayOutput {
+	return o.ApplyT(func(v *Store) StoreShardArrayOutput { return v.Shards }).(StoreShardArrayOutput)
+}
+
+// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+func (o StoreOutput) TelemetryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.StringPtrOutput { return v.TelemetryType }).(pulumi.StringPtrOutput)
 }
 
 type StoreArrayOutput struct{ *pulumi.OutputState }

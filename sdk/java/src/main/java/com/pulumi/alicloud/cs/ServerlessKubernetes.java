@@ -22,6 +22,85 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.ServerlessKubernetes;
+ * import com.pulumi.alicloud.cs.ServerlessKubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesAddonArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;ask-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var serverless = new ServerlessKubernetes(&#34;serverless&#34;, ServerlessKubernetesArgs.builder()        
+ *             .namePrefix(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchIds(defaultSwitch.id())
+ *             .newNatGateway(true)
+ *             .endpointPublicAccessEnabled(true)
+ *             .deletionProtection(false)
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .timeZone(&#34;Asia/Shanghai&#34;)
+ *             .serviceCidr(&#34;172.21.0.0/20&#34;)
+ *             .serviceDiscoveryTypes(&#34;PrivateZone&#34;)
+ *             .loggingType(&#34;SLS&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
+ *                 Map.entry(&#34;k-bb&#34;, &#34;v-aa&#34;)
+ *             ))
+ *             .addons(            
+ *                 ServerlessKubernetesAddonArgs.builder()
+ *                     .name(&#34;alb-ingress-controller&#34;)
+ *                     .build(),
+ *                 ServerlessKubernetesAddonArgs.builder()
+ *                     .name(&#34;metrics-server&#34;)
+ *                     .build(),
+ *                 ServerlessKubernetesAddonArgs.builder()
+ *                     .name(&#34;knative&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless Kubernetes cluster can be imported using the id, e.g.

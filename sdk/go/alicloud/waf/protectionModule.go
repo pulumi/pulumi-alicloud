@@ -346,6 +346,43 @@ func (o ProtectionModuleOutput) ToProtectionModuleOutputWithContext(ctx context.
 	return o
 }
 
+// The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
+// * `waf`: RegEx Protection Engine.
+// * `dld`: Big Data Deep Learning Engine.
+// * `acCc`: HTTP Flood Protection.
+// * `antifraud`: Data Risk Control.
+// * `normalized`: Positive Security Model.
+func (o ProtectionModuleOutput) DefenseType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProtectionModule) pulumi.StringOutput { return v.DefenseType }).(pulumi.StringOutput)
+}
+
+// The domain name that is added to WAF.
+func (o ProtectionModuleOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProtectionModule) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the WAF instance.
+func (o ProtectionModuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProtectionModule) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
+// * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
+// * The `defenseType` is `dld`. `0`: warn mode. `1`: block mode.
+// * The `defenseType` is `acCc`. `0`: prevention mode. `1`: protection-emergency mode.
+// * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
+// * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
+func (o ProtectionModuleOutput) Mode() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProtectionModule) pulumi.IntOutput { return v.Mode }).(pulumi.IntOutput)
+}
+
+// The status of the resource. Valid values: `0`, `1`.
+// * `0`: disables the protection module.
+// * `1`: enables the protection module.
+func (o ProtectionModuleOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProtectionModule) pulumi.IntPtrOutput { return v.Status }).(pulumi.IntPtrOutput)
+}
+
 type ProtectionModuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ProtectionModuleArrayOutput) ElementType() reflect.Type {

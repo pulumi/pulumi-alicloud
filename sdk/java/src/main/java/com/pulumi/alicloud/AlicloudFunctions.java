@@ -161,6 +161,35 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
+     *             .filename(&#34;exampleFileName&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFileCrc64ChecksumResult> getFileCrc64Checksum(GetFileCrc64ChecksumArgs args) {
@@ -172,6 +201,35 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
+     *             .filename(&#34;exampleFileName&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileCrc64ChecksumResult> getFileCrc64ChecksumPlain(GetFileCrc64ChecksumPlainArgs args) {
@@ -183,6 +241,35 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
+     *             .filename(&#34;exampleFileName&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFileCrc64ChecksumResult> getFileCrc64Checksum(GetFileCrc64ChecksumArgs args, InvokeOptions options) {
@@ -194,6 +281,35 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
+     *             .filename(&#34;exampleFileName&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileCrc64ChecksumResult> getFileCrc64ChecksumPlain(GetFileCrc64ChecksumPlainArgs args, InvokeOptions options) {
@@ -204,6 +320,46 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.MscSubContract;
+     * import com.pulumi.alicloud.MscSubContractArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
+     *             .contactName(&#34;example_value&#34;)
+     *             .position(&#34;CEO&#34;)
+     *             .email(&#34;123@163.com&#34;)
+     *             .mobile(&#34;153xxxxx906&#34;)
+     *             .build());
+     * 
+     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
+     *             .type(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs args) {
         return getMscSubContactVerificationMessage(args, InvokeOptions.Empty);
@@ -212,6 +368,46 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.156.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.MscSubContract;
+     * import com.pulumi.alicloud.MscSubContractArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
+     *             .contactName(&#34;example_value&#34;)
+     *             .position(&#34;CEO&#34;)
+     *             .email(&#34;123@163.com&#34;)
+     *             .mobile(&#34;153xxxxx906&#34;)
+     *             .build());
+     * 
+     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
+     *             .type(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessagePlain(GetMscSubContactVerificationMessagePlainArgs args) {
@@ -222,6 +418,46 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.MscSubContract;
+     * import com.pulumi.alicloud.MscSubContractArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
+     *             .contactName(&#34;example_value&#34;)
+     *             .position(&#34;CEO&#34;)
+     *             .email(&#34;123@163.com&#34;)
+     *             .mobile(&#34;153xxxxx906&#34;)
+     *             .build());
+     * 
+     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
+     *             .type(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", TypeShape.of(GetMscSubContactVerificationMessageResult.class), args, Utilities.withVersion(options));
@@ -230,6 +466,46 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.156.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.MscSubContract;
+     * import com.pulumi.alicloud.MscSubContractArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
+     *             .contactName(&#34;example_value&#34;)
+     *             .position(&#34;CEO&#34;)
+     *             .email(&#34;123@163.com&#34;)
+     *             .mobile(&#34;153xxxxx906&#34;)
+     *             .build());
+     * 
+     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
+     *             .type(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessagePlain(GetMscSubContactVerificationMessagePlainArgs args, InvokeOptions options) {
@@ -242,6 +518,40 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     * 
+     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubContactsResult> getMscSubContacts() {
         return getMscSubContacts(GetMscSubContactsArgs.Empty, InvokeOptions.Empty);
@@ -252,6 +562,40 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     * 
+     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubContactsResult> getMscSubContactsPlain() {
@@ -264,6 +608,40 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     * 
+     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubContactsResult> getMscSubContacts(GetMscSubContactsArgs args) {
         return getMscSubContacts(args, InvokeOptions.Empty);
@@ -274,6 +652,40 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     * 
+     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubContactsResult> getMscSubContactsPlain(GetMscSubContactsPlainArgs args) {
@@ -286,6 +698,40 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     * 
+     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubContactsResult> getMscSubContacts(GetMscSubContactsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:index/getMscSubContacts:getMscSubContacts", TypeShape.of(GetMscSubContactsResult.class), args, Utilities.withVersion(options));
@@ -296,6 +742,40 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     * 
+     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubContactsResult> getMscSubContactsPlain(GetMscSubContactsPlainArgs args, InvokeOptions options) {
@@ -308,6 +788,35 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     * 
+     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubSubscriptionsResult> getMscSubSubscriptions() {
         return getMscSubSubscriptions(GetMscSubSubscriptionsArgs.Empty, InvokeOptions.Empty);
@@ -318,6 +827,35 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     * 
+     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubSubscriptionsResult> getMscSubSubscriptionsPlain() {
@@ -330,6 +868,35 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     * 
+     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubSubscriptionsResult> getMscSubSubscriptions(GetMscSubSubscriptionsArgs args) {
         return getMscSubSubscriptions(args, InvokeOptions.Empty);
@@ -340,6 +907,35 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     * 
+     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubSubscriptionsResult> getMscSubSubscriptionsPlain(GetMscSubSubscriptionsPlainArgs args) {
@@ -352,6 +948,35 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     * 
+     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubSubscriptionsResult> getMscSubSubscriptions(GetMscSubSubscriptionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", TypeShape.of(GetMscSubSubscriptionsResult.class), args, Utilities.withVersion(options));
@@ -362,6 +987,35 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     * 
+     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubSubscriptionsResult> getMscSubSubscriptionsPlain(GetMscSubSubscriptionsPlainArgs args, InvokeOptions options) {
@@ -374,6 +1028,42 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubWebhooksResult> getMscSubWebhooks() {
         return getMscSubWebhooks(GetMscSubWebhooksArgs.Empty, InvokeOptions.Empty);
@@ -384,6 +1074,42 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.141.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubWebhooksResult> getMscSubWebhooksPlain() {
@@ -396,6 +1122,42 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubWebhooksResult> getMscSubWebhooks(GetMscSubWebhooksArgs args) {
         return getMscSubWebhooks(args, InvokeOptions.Empty);
@@ -406,6 +1168,42 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in v1.141.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMscSubWebhooksResult> getMscSubWebhooksPlain(GetMscSubWebhooksPlainArgs args) {
@@ -418,6 +1216,42 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetMscSubWebhooksResult> getMscSubWebhooks(GetMscSubWebhooksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", TypeShape.of(GetMscSubWebhooksResult.class), args, Utilities.withVersion(options));
@@ -429,6 +1263,42 @@ public final class AlicloudFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
+     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetMscSubWebhooksResult> getMscSubWebhooksPlain(GetMscSubWebhooksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", TypeShape.of(GetMscSubWebhooksResult.class), args, Utilities.withVersion(options));
@@ -437,6 +1307,35 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var currentRegionDs = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionsResult> getRegions() {
@@ -446,6 +1345,35 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var currentRegionDs = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -455,6 +1383,35 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var currentRegionDs = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
@@ -464,6 +1421,35 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var currentRegionDs = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -473,6 +1459,35 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var currentRegionDs = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
@@ -482,6 +1497,35 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var currentRegionDs = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
@@ -493,6 +1537,41 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -504,6 +1583,41 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -515,6 +1629,41 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -526,6 +1675,41 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -537,6 +1721,41 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -548,6 +1767,41 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -238,6 +238,26 @@ func (o TlsCipherPolicyOutput) ToTlsCipherPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+// The encryption algorithms supported. It depends on the value of `tlsVersions`.
+func (o TlsCipherPolicyOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TlsCipherPolicy) pulumi.StringArrayOutput { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// TLS policy instance state.
+func (o TlsCipherPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsCipherPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+func (o TlsCipherPolicyOutput) TlsCipherPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsCipherPolicy) pulumi.StringOutput { return v.TlsCipherPolicyName }).(pulumi.StringOutput)
+}
+
+// The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
+func (o TlsCipherPolicyOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TlsCipherPolicy) pulumi.StringArrayOutput { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
 type TlsCipherPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (TlsCipherPolicyArrayOutput) ElementType() reflect.Type {

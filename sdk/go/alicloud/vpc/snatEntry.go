@@ -225,6 +225,41 @@ func (o SnatEntryOutput) ToSnatEntryOutputWithContext(ctx context.Context) SnatE
 	return o
 }
 
+// The id of the snat entry on the server.
+func (o SnatEntryOutput) SnatEntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SnatEntryId }).(pulumi.StringOutput)
+}
+
+// The name of snat entry.
+func (o SnatEntryOutput) SnatEntryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringPtrOutput { return v.SnatEntryName }).(pulumi.StringPtrOutput)
+}
+
+// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+func (o SnatEntryOutput) SnatIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SnatIp }).(pulumi.StringOutput)
+}
+
+// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+func (o SnatEntryOutput) SnatTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SnatTableId }).(pulumi.StringOutput)
+}
+
+// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+func (o SnatEntryOutput) SourceCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SourceCidr }).(pulumi.StringOutput)
+}
+
+// The vswitch ID.
+func (o SnatEntryOutput) SourceVswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SourceVswitchId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.119.1+) The status of snat entry.
+func (o SnatEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SnatEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (SnatEntryArrayOutput) ElementType() reflect.Type {

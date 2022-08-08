@@ -27,6 +27,87 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.cfg.Aggregator;
+ * import com.pulumi.alicloud.cfg.AggregatorArgs;
+ * import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;
+ * import com.pulumi.alicloud.cfg.AggregateConfigRule;
+ * import com.pulumi.alicloud.cfg.AggregateConfigRuleArgs;
+ * import com.pulumi.alicloud.cfg.AggregateCompliancePack;
+ * import com.pulumi.alicloud.cfg.AggregateCompliancePackArgs;
+ * import com.pulumi.alicloud.cfg.inputs.AggregateCompliancePackConfigRuleIdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_name&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstances = EcsFunctions.getInstances();
+ * 
+ *         var defaultAggregator = new Aggregator(&#34;defaultAggregator&#34;, AggregatorArgs.builder()        
+ *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
+ *                 .accountId(&#34;140278452670****&#34;)
+ *                 .accountName(&#34;test-2&#34;)
+ *                 .accountType(&#34;ResourceDirectory&#34;)
+ *                 .build())
+ *             .aggregatorName(&#34;tf-testaccaggregator&#34;)
+ *             .description(&#34;tf-testaccaggregator&#34;)
+ *             .build());
+ * 
+ *         var defaultAggregateConfigRule = new AggregateConfigRule(&#34;defaultAggregateConfigRule&#34;, AggregateConfigRuleArgs.builder()        
+ *             .aggregatorId(defaultAggregator.id())
+ *             .aggregateConfigRuleName(name)
+ *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .sourceIdentifier(&#34;ecs-cpu-min-count-limit&#34;)
+ *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
+ *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .riskLevel(1)
+ *             .description(name)
+ *             .excludeResourceIdsScope(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .inputParameters(Map.of(&#34;cpuCount&#34;, &#34;4&#34;))
+ *             .regionIdsScope(&#34;cn-hangzhou&#34;)
+ *             .resourceGroupIdsScope(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .tagKeyScope(&#34;tFTest&#34;)
+ *             .tagValueScope(&#34;forTF 123&#34;)
+ *             .build());
+ * 
+ *         var defaultAggregateCompliancePack = new AggregateCompliancePack(&#34;defaultAggregateCompliancePack&#34;, AggregateCompliancePackArgs.builder()        
+ *             .aggregateCompliancePackName(&#34;tf-testaccConfig1234&#34;)
+ *             .aggregatorId(defaultAggregator.id())
+ *             .description(&#34;tf-testaccConfig1234&#34;)
+ *             .riskLevel(1)
+ *             .configRuleIds(AggregateCompliancePackConfigRuleIdArgs.builder()
+ *                 .configRuleId(defaultAggregateConfigRule.configRuleId())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.

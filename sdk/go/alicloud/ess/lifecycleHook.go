@@ -231,6 +231,41 @@ func (o LifecycleHookOutput) ToLifecycleHookOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+func (o LifecycleHookOutput) DefaultResult() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LifecycleHook) pulumi.StringPtrOutput { return v.DefaultResult }).(pulumi.StringPtrOutput)
+}
+
+// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
+func (o LifecycleHookOutput) HeartbeatTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LifecycleHook) pulumi.IntPtrOutput { return v.HeartbeatTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
+func (o LifecycleHookOutput) LifecycleTransition() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecycleHook) pulumi.StringOutput { return v.LifecycleTransition }).(pulumi.StringOutput)
+}
+
+// The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
+func (o LifecycleHookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecycleHook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Arn of notification target.
+func (o LifecycleHookOutput) NotificationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecycleHook) pulumi.StringOutput { return v.NotificationArn }).(pulumi.StringOutput)
+}
+
+// Additional information that you want to include when Auto Scaling sends a message to the notification target.
+func (o LifecycleHookOutput) NotificationMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecycleHook) pulumi.StringOutput { return v.NotificationMetadata }).(pulumi.StringOutput)
+}
+
+// The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
+func (o LifecycleHookOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LifecycleHook) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
 type LifecycleHookArrayOutput struct{ *pulumi.OutputState }
 
 func (LifecycleHookArrayOutput) ElementType() reflect.Type {

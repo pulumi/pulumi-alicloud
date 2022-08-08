@@ -54,6 +54,35 @@ public final class RamFunctions {
      * This data source provides an alias for the Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
+     *             .outputFile(&#34;alias.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountAliasesResult> getAccountAliases() {
@@ -63,6 +92,35 @@ public final class RamFunctions {
      * This data source provides an alias for the Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
+     *             .outputFile(&#34;alias.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountAliasesResult> getAccountAliasesPlain() {
@@ -72,6 +130,35 @@ public final class RamFunctions {
      * This data source provides an alias for the Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
+     *             .outputFile(&#34;alias.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountAliasesResult> getAccountAliases(GetAccountAliasesArgs args) {
@@ -81,6 +168,35 @@ public final class RamFunctions {
      * This data source provides an alias for the Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
+     *             .outputFile(&#34;alias.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountAliasesResult> getAccountAliasesPlain(GetAccountAliasesPlainArgs args) {
@@ -90,6 +206,35 @@ public final class RamFunctions {
      * This data source provides an alias for the Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
+     *             .outputFile(&#34;alias.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountAliasesResult> getAccountAliases(GetAccountAliasesArgs args, InvokeOptions options) {
@@ -99,6 +244,35 @@ public final class RamFunctions {
      * This data source provides an alias for the Alibaba Cloud account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAliases(GetAccountAliasesArgs.builder()
+     *             .outputFile(&#34;alias.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountAlias&#34;, aliasDs.applyValue(getAccountAliasesResult -&gt; getAccountAliasesResult.accountAlias()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountAliasesResult> getAccountAliasesPlain(GetAccountAliasesPlainArgs args, InvokeOptions options) {
@@ -108,6 +282,37 @@ public final class RamFunctions {
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups() {
@@ -117,6 +322,37 @@ public final class RamFunctions {
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -126,6 +362,37 @@ public final class RamFunctions {
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -135,6 +402,37 @@ public final class RamFunctions {
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -144,6 +442,37 @@ public final class RamFunctions {
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -153,6 +482,37 @@ public final class RamFunctions {
      * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile(&#34;groups.txt&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -162,6 +522,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .outputFile(&#34;policies.txt&#34;)
+     *             .type(&#34;System&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPoliciesResult> getPolicies() {
@@ -171,6 +563,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .outputFile(&#34;policies.txt&#34;)
+     *             .type(&#34;System&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
@@ -180,6 +604,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .outputFile(&#34;policies.txt&#34;)
+     *             .type(&#34;System&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args) {
@@ -189,6 +645,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .outputFile(&#34;policies.txt&#34;)
+     *             .type(&#34;System&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args) {
@@ -198,6 +686,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .outputFile(&#34;policies.txt&#34;)
+     *             .type(&#34;System&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOptions options) {
@@ -207,6 +727,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .outputFile(&#34;policies.txt&#34;)
+     *             .type(&#34;System&#34;)
+     *             .userName(&#34;user1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {
@@ -216,6 +768,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;.*test.*&#34;)
+     *             .outputFile(&#34;roles.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRolesResult> getRoles() {
@@ -225,6 +809,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;.*test.*&#34;)
+     *             .outputFile(&#34;roles.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain() {
@@ -234,6 +850,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;.*test.*&#34;)
+     *             .outputFile(&#34;roles.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRolesResult> getRoles(GetRolesArgs args) {
@@ -243,6 +891,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;.*test.*&#34;)
+     *             .outputFile(&#34;roles.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args) {
@@ -252,6 +932,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;.*test.*&#34;)
+     *             .outputFile(&#34;roles.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRolesResult> getRoles(GetRolesArgs args, InvokeOptions options) {
@@ -261,6 +973,38 @@ public final class RamFunctions {
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex(&#34;.*test.*&#34;)
+     *             .outputFile(&#34;roles.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args, InvokeOptions options) {
@@ -273,6 +1017,38 @@ public final class RamFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
+     *             .ids(&#34;samlProviderName&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSamlProvidersResult> getSamlProviders() {
         return getSamlProviders(GetSamlProvidersArgs.Empty, InvokeOptions.Empty);
@@ -283,6 +1059,38 @@ public final class RamFunctions {
      * &gt; **NOTE:** Available in v1.114.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
+     *             .ids(&#34;samlProviderName&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSamlProvidersResult> getSamlProvidersPlain() {
@@ -295,6 +1103,38 @@ public final class RamFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
+     *             .ids(&#34;samlProviderName&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSamlProvidersResult> getSamlProviders(GetSamlProvidersArgs args) {
         return getSamlProviders(args, InvokeOptions.Empty);
@@ -305,6 +1145,38 @@ public final class RamFunctions {
      * &gt; **NOTE:** Available in v1.114.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
+     *             .ids(&#34;samlProviderName&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSamlProvidersResult> getSamlProvidersPlain(GetSamlProvidersPlainArgs args) {
@@ -317,6 +1189,38 @@ public final class RamFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
+     *             .ids(&#34;samlProviderName&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSamlProvidersResult> getSamlProviders(GetSamlProvidersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getSamlProviders:getSamlProviders", TypeShape.of(GetSamlProvidersResult.class), args, Utilities.withVersion(options));
@@ -328,6 +1232,38 @@ public final class RamFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
+     *             .ids(&#34;samlProviderName&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetSamlProvidersResult> getSamlProvidersPlain(GetSamlProvidersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getSamlProviders:getSamlProviders", TypeShape.of(GetSamlProvidersResult.class), args, Utilities.withVersion(options));
@@ -336,6 +1272,39 @@ public final class RamFunctions {
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .nameRegex(&#34;^user&#34;)
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUsersResult> getUsers() {
@@ -345,6 +1314,39 @@ public final class RamFunctions {
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .nameRegex(&#34;^user&#34;)
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain() {
@@ -354,6 +1356,39 @@ public final class RamFunctions {
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .nameRegex(&#34;^user&#34;)
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
@@ -363,6 +1398,39 @@ public final class RamFunctions {
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .nameRegex(&#34;^user&#34;)
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -372,6 +1440,39 @@ public final class RamFunctions {
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .nameRegex(&#34;^user&#34;)
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
@@ -381,6 +1482,39 @@ public final class RamFunctions {
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .groupName(&#34;group1&#34;)
+     *             .nameRegex(&#34;^user&#34;)
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
+     *             .policyType(&#34;Custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

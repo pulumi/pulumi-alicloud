@@ -224,6 +224,26 @@ func (o CustomerGatewayOutput) ToCustomerGatewayOutputWithContext(ctx context.Co
 	return o
 }
 
+// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+func (o CustomerGatewayOutput) Asn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.StringPtrOutput { return v.Asn }).(pulumi.StringPtrOutput)
+}
+
+// The description of the VPN customer gateway instance.
+func (o CustomerGatewayOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the customer gateway.
+func (o CustomerGatewayOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The name of the VPN customer gateway. Defaults to null.
+func (o CustomerGatewayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type CustomerGatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomerGatewayArrayOutput) ElementType() reflect.Type {

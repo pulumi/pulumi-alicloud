@@ -20,6 +20,104 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * cluster-autoscaler in Kubernetes Cluster.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.cs.CsFunctions;
+ * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingConfiguration;
+ * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
+ * import com.pulumi.alicloud.cs.KubernetesAutoscaler;
+ * import com.pulumi.alicloud.cs.KubernetesAutoscalerArgs;
+ * import com.pulumi.alicloud.cs.inputs.KubernetesAutoscalerNodepoolArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;autoscaler&#34;);
+ *         final var defaultNetworks = VpcFunctions.getNetworks();
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .owners(&#34;system&#34;)
+ *             .nameRegex(&#34;^centos_7&#34;)
+ *             .mostRecent(true)
+ *             .build());
+ * 
+ *         final var defaultManagedKubernetesClusters = CsFunctions.getManagedKubernetesClusters();
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()))
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .scalingGroupName(name)
+ *             .minSize(var_.min_size())
+ *             .maxSize(var_.max_size())
+ *             .vswitchIds(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].vswitchIds()[0]))
+ *             .removalPolicies(            
+ *                 &#34;OldestInstance&#34;,
+ *                 &#34;NewestInstance&#34;)
+ *             .build());
+ * 
+ *         var defaultScalingConfiguration = new ScalingConfiguration(&#34;defaultScalingConfiguration&#34;, ScalingConfigurationArgs.builder()        
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .forceDelete(true)
+ *             .enable(true)
+ *             .active(true)
+ *             .build());
+ * 
+ *         var defaultKubernetesAutoscaler = new KubernetesAutoscaler(&#34;defaultKubernetesAutoscaler&#34;, KubernetesAutoscalerArgs.builder()        
+ *             .clusterId(defaultManagedKubernetesClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()[0].id()))
+ *             .nodepools(KubernetesAutoscalerNodepoolArgs.builder()
+ *                 .id(defaultScalingGroup.id())
+ *                 .labels(&#34;a=b&#34;)
+ *                 .build())
+ *             .utilization(var_.utilization())
+ *             .coolDownDuration(var_.cool_down_duration())
+ *             .deferScaleInDuration(var_.defer_scale_in_duration())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     alicloud_ess_scaling_group.defalut(),
+ *                     defaultScalingConfiguration)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler")
 public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {

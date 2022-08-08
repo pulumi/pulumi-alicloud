@@ -225,6 +225,31 @@ func (o PolicyAttachmentOutput) ToPolicyAttachmentOutputWithContext(ctx context.
 	return o
 }
 
+// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+func (o PolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+func (o PolicyAttachmentOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAttachment) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The name of the object to which you want to attach the policy.
+func (o PolicyAttachmentOutput) PrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAttachment) pulumi.StringOutput { return v.PrincipalName }).(pulumi.StringOutput)
+}
+
+// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+func (o PolicyAttachmentOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAttachment) pulumi.StringOutput { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
+func (o PolicyAttachmentOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAttachment) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 type PolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyAttachmentArrayOutput) ElementType() reflect.Type {

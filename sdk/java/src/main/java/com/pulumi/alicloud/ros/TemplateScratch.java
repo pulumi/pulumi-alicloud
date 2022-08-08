@@ -28,6 +28,51 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.ros.TemplateScratch;
+ * import com.pulumi.alicloud.ros.TemplateScratchArgs;
+ * import com.pulumi.alicloud.ros.inputs.TemplateScratchPreferenceParameterArgs;
+ * import com.pulumi.alicloud.ros.inputs.TemplateScratchSourceResourceGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var example = new TemplateScratch(&#34;example&#34;, TemplateScratchArgs.builder()        
+ *             .description(&#34;tf_testacc&#34;)
+ *             .templateScratchType(&#34;ResourceImport&#34;)
+ *             .preferenceParameters(TemplateScratchPreferenceParameterArgs.builder()
+ *                 .parameterKey(&#34;DeletionPolicy&#34;)
+ *                 .parameterValue(&#34;Retain&#34;)
+ *                 .build())
+ *             .sourceResourceGroup(TemplateScratchSourceResourceGroupArgs.builder()
+ *                 .resourceGroupId(default_.ids()[0])
+ *                 .resourceTypeFilters(&#34;ALIYUN::ECS::VPC&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ROS Template Scratch can be imported using the id, e.g.

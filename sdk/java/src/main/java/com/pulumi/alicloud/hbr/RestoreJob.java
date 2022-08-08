@@ -23,6 +23,107 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.hbr.HbrFunctions;
+ * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+ * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+ * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+ * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+ * import com.pulumi.alicloud.hbr.RestoreJob;
+ * import com.pulumi.alicloud.hbr.RestoreJobArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+ *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+ *             .build());
+ * 
+ *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+ *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+ *             .build());
+ * 
+ *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+ *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+ *             .build());
+ * 
+ *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+ *             .sourceType(&#34;ECS_FILE&#34;)
+ *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+ *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+ *             .build());
+ * 
+ *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+ *             .sourceType(&#34;OSS&#34;)
+ *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+ *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+ *             .build());
+ * 
+ *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+ *             .sourceType(&#34;NAS&#34;)
+ *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+ *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+ *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+ *             .build());
+ * 
+ *         var nasJob = new RestoreJob(&#34;nasJob&#34;, RestoreJobArgs.builder()        
+ *             .snapshotHash(nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
+ *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+ *             .sourceType(&#34;NAS&#34;)
+ *             .restoreType(&#34;NAS&#34;)
+ *             .snapshotId(nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
+ *             .targetFileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+ *             .targetCreateTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+ *             .targetPath(&#34;/&#34;)
+ *             .options(&#34;&#34;&#34;
+ *     {&#34;includes&#34;:[], &#34;excludes&#34;:[]}
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var ossJob = new RestoreJob(&#34;ossJob&#34;, RestoreJobArgs.builder()        
+ *             .snapshotHash(ossSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
+ *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+ *             .sourceType(&#34;OSS&#34;)
+ *             .restoreType(&#34;OSS&#34;)
+ *             .snapshotId(ossSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
+ *             .targetBucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+ *             .targetPrefix(&#34;&#34;)
+ *             .options(&#34;&#34;&#34;
+ *     {&#34;includes&#34;:[], &#34;excludes&#34;:[]}
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var ecsJob = new RestoreJob(&#34;ecsJob&#34;, RestoreJobArgs.builder()        
+ *             .snapshotHash(ecsSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
+ *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+ *             .sourceType(&#34;ECS_FILE&#34;)
+ *             .restoreType(&#34;ECS_FILE&#34;)
+ *             .snapshotId(ecsSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
+ *             .targetInstanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+ *             .targetPath(&#34;/&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * &gt; **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
+ * 
  * ## Import
  * 
  * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.

@@ -2537,6 +2537,8 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrO
 }
 
 type RuleRuleActionForwardGroupConfig struct {
+	// The configuration of session persistence for server groups.
+	ServerGroupStickySession *RuleRuleActionForwardGroupConfigServerGroupStickySession `pulumi:"serverGroupStickySession"`
 	// The destination server group to which requests are forwarded.
 	ServerGroupTuples []RuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
@@ -2553,6 +2555,8 @@ type RuleRuleActionForwardGroupConfigInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigArgs struct {
+	// The configuration of session persistence for server groups.
+	ServerGroupStickySession RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput `pulumi:"serverGroupStickySession"`
 	// The destination server group to which requests are forwarded.
 	ServerGroupTuples RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
@@ -2634,6 +2638,13 @@ func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConf
 	}).(RuleRuleActionForwardGroupConfigPtrOutput)
 }
 
+// The configuration of session persistence for server groups.
+func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
+		return v.ServerGroupStickySession
+	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
+}
+
 // The destination server group to which requests are forwarded.
 func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
@@ -2665,6 +2676,16 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) Elem() RuleRuleActionForwardG
 	}).(RuleRuleActionForwardGroupConfigOutput)
 }
 
+// The configuration of session persistence for server groups.
+func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupStickySession
+	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
+}
+
 // The destination server group to which requests are forwarded.
 func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
@@ -2673,6 +2694,162 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleA
 		}
 		return v.ServerGroupTuples
 	}).(RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupStickySession struct {
+	// Whether to enable session persistence.
+	Enabled *bool `pulumi:"enabled"`
+	// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	Timeout *int `pulumi:"timeout"`
+}
+
+// RuleRuleActionForwardGroupConfigServerGroupStickySessionInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs and RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput values.
+// You can construct a concrete instance of `RuleRuleActionForwardGroupConfigServerGroupStickySessionInput` via:
+//
+//          RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs{...}
+type RuleRuleActionForwardGroupConfigServerGroupStickySessionInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionForwardGroupConfigServerGroupStickySessionOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput
+	ToRuleRuleActionForwardGroupConfigServerGroupStickySessionOutputWithContext(context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs struct {
+	// Whether to enable session persistence.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupStickySession)(nil)).Elem()
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput {
+	return i.ToRuleRuleActionForwardGroupConfigServerGroupStickySessionOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput)
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return i.ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput).ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs, RuleRuleActionForwardGroupConfigServerGroupStickySessionPtr and RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput` via:
+//
+//          RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput
+	ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput
+}
+
+type ruleRuleActionForwardGroupConfigServerGroupStickySessionPtrType RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs
+
+func RuleRuleActionForwardGroupConfigServerGroupStickySessionPtr(v *RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput {
+	return (*ruleRuleActionForwardGroupConfigServerGroupStickySessionPtrType)(v)
+}
+
+func (*ruleRuleActionForwardGroupConfigServerGroupStickySessionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionForwardGroupConfigServerGroupStickySession)(nil)).Elem()
+}
+
+func (i *ruleRuleActionForwardGroupConfigServerGroupStickySessionPtrType) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return i.ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionForwardGroupConfigServerGroupStickySessionPtrType) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupStickySession)(nil)).Elem()
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return o.ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionForwardGroupConfigServerGroupStickySession) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
+		return &v
+	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
+}
+
+// Whether to enable session persistence.
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupStickySession) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupStickySession) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionForwardGroupConfigServerGroupStickySession)(nil)).Elem()
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) ToRuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutputWithContext(ctx context.Context) RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Elem() RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput {
+	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfigServerGroupStickySession) RuleRuleActionForwardGroupConfigServerGroupStickySession {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionForwardGroupConfigServerGroupStickySession
+		return ret
+	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput)
+}
+
+// Whether to enable session persistence.
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfigServerGroupStickySession) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfigServerGroupStickySession) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupTuple struct {
@@ -12317,6 +12494,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionFixedResponseConfigPtrInput)(nil)).Elem(), RuleRuleActionFixedResponseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigPtrInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupStickySessionInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigServerGroupTupleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigServerGroupTupleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionInsertHeaderConfigInput)(nil)).Elem(), RuleRuleActionInsertHeaderConfigArgs{})
@@ -12491,6 +12670,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleRuleActionFixedResponseConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigServerGroupTupleOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionInsertHeaderConfigOutput{})

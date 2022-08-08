@@ -40,6 +40,34 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -53,6 +81,34 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -66,6 +122,34 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -79,6 +163,34 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -92,6 +204,34 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -105,6 +245,34 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -117,6 +285,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
+     *             .serviceId(&#34;example_value&#34;)
+     *             .status(&#34;Connected&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointConnectionsResult> getVpcEndpointConnections(GetVpcEndpointConnectionsArgs args) {
         return getVpcEndpointConnections(args, InvokeOptions.Empty);
@@ -127,6 +327,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.110.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
+     *             .serviceId(&#34;example_value&#34;)
+     *             .status(&#34;Connected&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointConnectionsResult> getVpcEndpointConnectionsPlain(GetVpcEndpointConnectionsPlainArgs args) {
@@ -139,6 +371,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
+     *             .serviceId(&#34;example_value&#34;)
+     *             .status(&#34;Connected&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointConnectionsResult> getVpcEndpointConnections(GetVpcEndpointConnectionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", TypeShape.of(GetVpcEndpointConnectionsResult.class), args, Utilities.withVersion(options));
@@ -149,6 +413,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.110.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
+     *             .serviceId(&#34;example_value&#34;)
+     *             .status(&#34;Connected&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointConnectionsResult> getVpcEndpointConnectionsPlain(GetVpcEndpointConnectionsPlainArgs args, InvokeOptions options) {
@@ -161,6 +457,37 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
+     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs args) {
         return getVpcEndpointServiceResources(args, InvokeOptions.Empty);
@@ -171,6 +498,37 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.110.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
+     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResourcesPlain(GetVpcEndpointServiceResourcesPlainArgs args) {
@@ -183,6 +541,37 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
+     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", TypeShape.of(GetVpcEndpointServiceResourcesResult.class), args, Utilities.withVersion(options));
@@ -193,6 +582,37 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.110.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
+     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResourcesPlain(GetVpcEndpointServiceResourcesPlainArgs args, InvokeOptions options) {
@@ -205,6 +625,37 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
+     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs args) {
         return getVpcEndpointServiceUsers(args, InvokeOptions.Empty);
@@ -215,6 +666,37 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.110.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
+     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsersPlain(GetVpcEndpointServiceUsersPlainArgs args) {
@@ -227,6 +709,37 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
+     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers", TypeShape.of(GetVpcEndpointServiceUsersResult.class), args, Utilities.withVersion(options));
@@ -237,6 +750,37 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.110.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
+     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsersPlain(GetVpcEndpointServiceUsersPlainArgs args, InvokeOptions options) {
@@ -249,6 +793,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointServicesResult> getVpcEndpointServices() {
         return getVpcEndpointServices(GetVpcEndpointServicesArgs.Empty, InvokeOptions.Empty);
@@ -259,6 +835,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.109.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointServicesResult> getVpcEndpointServicesPlain() {
@@ -271,6 +879,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointServicesResult> getVpcEndpointServices(GetVpcEndpointServicesArgs args) {
         return getVpcEndpointServices(args, InvokeOptions.Empty);
@@ -281,6 +921,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.109.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointServicesResult> getVpcEndpointServicesPlain(GetVpcEndpointServicesPlainArgs args) {
@@ -293,6 +965,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointServicesResult> getVpcEndpointServices(GetVpcEndpointServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", TypeShape.of(GetVpcEndpointServicesResult.class), args, Utilities.withVersion(options));
@@ -303,6 +1007,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.109.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointServicesResult> getVpcEndpointServicesPlain(GetVpcEndpointServicesPlainArgs args, InvokeOptions options) {
@@ -315,6 +1051,37 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
+     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointZonesResult> getVpcEndpointZones(GetVpcEndpointZonesArgs args) {
         return getVpcEndpointZones(args, InvokeOptions.Empty);
@@ -325,6 +1092,37 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
+     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointZonesResult> getVpcEndpointZonesPlain(GetVpcEndpointZonesPlainArgs args) {
@@ -337,6 +1135,37 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
+     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointZonesResult> getVpcEndpointZones(GetVpcEndpointZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", TypeShape.of(GetVpcEndpointZonesResult.class), args, Utilities.withVersion(options));
@@ -347,6 +1176,37 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
+     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointZonesResult> getVpcEndpointZonesPlain(GetVpcEndpointZonesPlainArgs args, InvokeOptions options) {
@@ -359,6 +1219,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointsResult> getVpcEndpoints() {
         return getVpcEndpoints(GetVpcEndpointsArgs.Empty, InvokeOptions.Empty);
@@ -369,6 +1261,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.109.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointsResult> getVpcEndpointsPlain() {
@@ -381,6 +1305,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointsResult> getVpcEndpoints(GetVpcEndpointsArgs args) {
         return getVpcEndpoints(args, InvokeOptions.Empty);
@@ -391,6 +1347,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.109.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointsResult> getVpcEndpointsPlain(GetVpcEndpointsPlainArgs args) {
@@ -403,6 +1391,38 @@ public final class PrivatelinkFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVpcEndpointsResult> getVpcEndpoints(GetVpcEndpointsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", TypeShape.of(GetVpcEndpointsResult.class), args, Utilities.withVersion(options));
@@ -413,6 +1433,38 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.109.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVpcEndpointsResult> getVpcEndpointsPlain(GetVpcEndpointsPlainArgs args, InvokeOptions options) {

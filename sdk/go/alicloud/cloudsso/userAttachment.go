@@ -202,6 +202,21 @@ func (o UserAttachmentOutput) ToUserAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the Directory.
+func (o UserAttachmentOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The Group ID.
+func (o UserAttachmentOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The User ID.
+func (o UserAttachmentOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 type UserAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (UserAttachmentArrayOutput) ElementType() reflect.Type {

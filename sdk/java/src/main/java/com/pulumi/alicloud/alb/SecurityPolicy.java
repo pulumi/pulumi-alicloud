@@ -27,6 +27,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.alb.SecurityPolicy;
+ * import com.pulumi.alicloud.alb.SecurityPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;testAccSecurityPolicy&#34;);
+ *         var default_ = new SecurityPolicy(&#34;default&#34;, SecurityPolicyArgs.builder()        
+ *             .securityPolicyName(name)
+ *             .tlsVersions(&#34;TLSv1.0&#34;)
+ *             .ciphers(            
+ *                 &#34;ECDHE-ECDSA-AES128-SHA&#34;,
+ *                 &#34;AES256-SHA&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ALB Security Policy can be imported using the id, e.g.

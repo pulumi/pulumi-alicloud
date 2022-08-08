@@ -193,6 +193,21 @@ func (o SharedTargetOutput) ToSharedTargetOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The resource share ID of resource manager.
+func (o SharedTargetOutput) ResourceShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedTarget) pulumi.StringOutput { return v.ResourceShareId }).(pulumi.StringOutput)
+}
+
+// The status of shared target.
+func (o SharedTargetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedTarget) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The member account ID in resource directory.
+func (o SharedTargetOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedTarget) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
+}
+
 type SharedTargetArrayOutput struct{ *pulumi.OutputState }
 
 func (SharedTargetArrayOutput) ElementType() reflect.Type {

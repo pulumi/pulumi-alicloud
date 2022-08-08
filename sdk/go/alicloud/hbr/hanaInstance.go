@@ -346,6 +346,76 @@ func (o HanaInstanceOutput) ToHanaInstanceOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+func (o HanaInstanceOutput) AlertSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringOutput { return v.AlertSetting }).(pulumi.StringOutput)
+}
+
+// The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
+func (o HanaInstanceOutput) EcsInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringArrayOutput { return v.EcsInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The id of the Hana Instance.
+func (o HanaInstanceOutput) HanaInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringOutput { return v.HanaInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the SAP HANA instance.
+func (o HanaInstanceOutput) HanaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringPtrOutput { return v.HanaName }).(pulumi.StringPtrOutput)
+}
+
+// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+func (o HanaInstanceOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The instance number of the SAP HANA system.
+func (o HanaInstanceOutput) InstanceNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.IntPtrOutput { return v.InstanceNumber }).(pulumi.IntPtrOutput)
+}
+
+// The password that is used to connect with the SAP HANA database.
+func (o HanaInstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o HanaInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The security identifier (SID) of the SAP HANA database.
+func (o HanaInstanceOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringPtrOutput { return v.Sid }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource.
+func (o HanaInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
+func (o HanaInstanceOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.BoolPtrOutput { return v.UseSsl }).(pulumi.BoolPtrOutput)
+}
+
+// The username of the SYSTEMDB database.
+func (o HanaInstanceOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringPtrOutput { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to verify the SSL certificate of the SAP HANA database.
+func (o HanaInstanceOutput) ValidateCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.BoolPtrOutput { return v.ValidateCertificate }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the backup vault.
+func (o HanaInstanceOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HanaInstance) pulumi.StringOutput { return v.VaultId }).(pulumi.StringOutput)
+}
+
 type HanaInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (HanaInstanceArrayOutput) ElementType() reflect.Type {

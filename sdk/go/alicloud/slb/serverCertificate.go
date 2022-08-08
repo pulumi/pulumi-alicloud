@@ -33,8 +33,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
-// 			PrivateKey:        pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN RSA PRIVATE KEY-----\n", "MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=\n", "-----END RSA PRIVATE KEY-----\n")),
-// 			ServerCertificate: pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN CERTIFICATE-----\n", "MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=\n", "-----END CERTIFICATE-----\n")),
+// 			PrivateKey:        pulumi.String(fmt.Sprintf("-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=\n-----END RSA PRIVATE KEY-----\n")),
+// 			ServerCertificate: pulumi.String(fmt.Sprintf("-----BEGIN CERTIFICATE-----\nMIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=\n-----END CERTIFICATE-----\n")),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -68,8 +68,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
-// 			ServerCertificate: readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/server_certificate.pem")),
-// 			PrivateKey:        readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/private_key.pem")),
+// 			ServerCertificate: readFileOrPanic(fmt.Sprintf("%v/server_certificate.pem", path.Module)),
+// 			PrivateKey:        readFileOrPanic(fmt.Sprintf("%v/private_key.pem", path.Module)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -321,6 +321,56 @@ func (o ServerCertificateOutput) ToServerCertificateOutput() ServerCertificateOu
 
 func (o ServerCertificateOutput) ToServerCertificateOutputWithContext(ctx context.Context) ServerCertificateOutput {
 	return o
+}
+
+// Deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+func (o ServerCertificateOutput) AlicloudCertifacteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.AlicloudCertifacteId }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+func (o ServerCertificateOutput) AlicloudCertifacteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.AlicloudCertifacteName }).(pulumi.StringPtrOutput)
+}
+
+// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
+func (o ServerCertificateOutput) AlicloudCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.AlicloudCertificateId }).(pulumi.StringPtrOutput)
+}
+
+// the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
+func (o ServerCertificateOutput) AlicloudCertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.AlicloudCertificateName }).(pulumi.StringPtrOutput)
+}
+
+// the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
+func (o ServerCertificateOutput) AlicloudCertificateRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.AlicloudCertificateRegionId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Server Certificate.
+func (o ServerCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
+func (o ServerCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the slb server certificate belongs.
+func (o ServerCertificateOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
+func (o ServerCertificateOutput) ServerCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.ServerCertificate }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ServerCertificateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type ServerCertificateArrayOutput struct{ *pulumi.OutputState }

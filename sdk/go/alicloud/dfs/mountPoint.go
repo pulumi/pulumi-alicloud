@@ -252,6 +252,46 @@ func (o MountPointOutput) ToMountPointOutputWithContext(ctx context.Context) Mou
 	return o
 }
 
+// The ID of the Access Group.
+func (o MountPointOutput) AccessGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.AccessGroupId }).(pulumi.StringOutput)
+}
+
+// The description of the Mount Point.
+func (o MountPointOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the File System.
+func (o MountPointOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The ID of the Mount Point.
+func (o MountPointOutput) MountPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.MountPointId }).(pulumi.StringOutput)
+}
+
+// The network type of the Mount Point. Valid values: `VPC`.
+func (o MountPointOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+func (o MountPointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The vpc id.
+func (o MountPointOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o MountPointOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type MountPointArrayOutput struct{ *pulumi.OutputState }
 
 func (MountPointArrayOutput) ElementType() reflect.Type {

@@ -260,6 +260,26 @@ func (o AcceleratorSpareIpAttachmentOutput) ToAcceleratorSpareIpAttachmentOutput
 	return o
 }
 
+// The ID of the global acceleration instance.
+func (o AcceleratorSpareIpAttachmentOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AcceleratorSpareIpAttachment) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The dry run.
+func (o AcceleratorSpareIpAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AcceleratorSpareIpAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
+func (o AcceleratorSpareIpAttachmentOutput) SpareIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *AcceleratorSpareIpAttachment) pulumi.StringOutput { return v.SpareIp }).(pulumi.StringOutput)
+}
+
+// The status of the standby CNAME IP address.
+func (o AcceleratorSpareIpAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AcceleratorSpareIpAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AcceleratorSpareIpAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorSpareIpAttachmentArrayOutput) ElementType() reflect.Type {

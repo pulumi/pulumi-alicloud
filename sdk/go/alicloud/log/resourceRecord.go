@@ -241,6 +241,26 @@ func (o ResourceRecordOutput) ToResourceRecordOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The record's id, should be unique.
+func (o ResourceRecordOutput) RecordId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.RecordId }).(pulumi.StringOutput)
+}
+
+// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+func (o ResourceRecordOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+// The record's tag, can be used for search.
+func (o ResourceRecordOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
+}
+
+// The json value of record.
+func (o ResourceRecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type ResourceRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourceRecordArrayOutput) ElementType() reflect.Type {

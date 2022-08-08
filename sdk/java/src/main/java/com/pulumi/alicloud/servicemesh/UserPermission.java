@@ -24,6 +24,93 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+ * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.servicemesh.ServiceMesh;
+ * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshLoadBalancerArgs;
+ * import com.pulumi.alicloud.servicemesh.UserPermission;
+ * import com.pulumi.alicloud.servicemesh.UserPermissionArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.UserPermissionPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;servicemesh&#34;);
+ *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
+ *             .edition(&#34;Default&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultUser = new User(&#34;defaultUser&#34;);
+ * 
+ *         var default1 = new ServiceMesh(&#34;default1&#34;, ServiceMeshArgs.builder()        
+ *             .serviceMeshName(name)
+ *             .edition(&#34;Default&#34;)
+ *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
+ *             .clusterSpec(&#34;standard&#34;)
+ *             .network(ServiceMeshNetworkArgs.builder()
+ *                 .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *                 .vswitcheList(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *                 .build())
+ *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
+ *                 .pilotPublicEip(false)
+ *                 .apiServerPublicEip(false)
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new UserPermission(&#34;example&#34;, UserPermissionArgs.builder()        
+ *             .subAccountUserId(defaultUser.id())
+ *             .permissions(UserPermissionPermissionArgs.builder()
+ *                 .roleName(&#34;istio-admin&#34;)
+ *                 .serviceMeshId(default1.id())
+ *                 .roleType(&#34;custom&#34;)
+ *                 .isCustom(true)
+ *                 .isRamRole(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Service Mesh User Permission can be imported using the id, e.g.

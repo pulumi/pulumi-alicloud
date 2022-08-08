@@ -213,6 +213,16 @@ func (o KeyPairOutput) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOu
 	return o
 }
 
+// The Key Name.
+func (o KeyPairOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
+// The public key body.
+func (o KeyPairOutput) PublicKeyBody() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.PublicKeyBody }).(pulumi.StringOutput)
+}
+
 type KeyPairArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyPairArrayOutput) ElementType() reflect.Type {

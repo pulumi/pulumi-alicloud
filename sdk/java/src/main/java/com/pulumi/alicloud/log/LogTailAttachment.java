@@ -24,6 +24,89 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.log.MachineGroup;
+ * import com.pulumi.alicloud.log.MachineGroupArgs;
+ * import com.pulumi.alicloud.log.LogTailConfig;
+ * import com.pulumi.alicloud.log.LogTailConfigArgs;
+ * import com.pulumi.alicloud.log.LogTailAttachment;
+ * import com.pulumi.alicloud.log.LogTailAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testProject = new Project(&#34;testProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;create by terraform&#34;)
+ *             .build());
+ * 
+ *         var testStore = new Store(&#34;testStore&#34;, StoreArgs.builder()        
+ *             .project(testProject.name())
+ *             .retentionPeriod(3650)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var testMachineGroup = new MachineGroup(&#34;testMachineGroup&#34;, MachineGroupArgs.builder()        
+ *             .project(testProject.name())
+ *             .topic(&#34;terraform&#34;)
+ *             .identifyLists(            
+ *                 &#34;10.0.0.1&#34;,
+ *                 &#34;10.0.0.3&#34;,
+ *                 &#34;10.0.0.2&#34;)
+ *             .build());
+ * 
+ *         var testLogTailConfig = new LogTailConfig(&#34;testLogTailConfig&#34;, LogTailConfigArgs.builder()        
+ *             .project(testProject.name())
+ *             .logstore(testStore.name())
+ *             .inputType(&#34;file&#34;)
+ *             .logSample(&#34;test&#34;)
+ *             .outputType(&#34;LogService&#34;)
+ *             .inputDetail(&#34;&#34;&#34;
+ *   	{
+ * 		&#34;logPath&#34;: &#34;/logPath&#34;,
+ * 		&#34;filePattern&#34;: &#34;access.log&#34;,
+ * 		&#34;logType&#34;: &#34;json_log&#34;,
+ * 		&#34;topicFormat&#34;: &#34;default&#34;,
+ * 		&#34;discardUnmatch&#34;: false,
+ * 		&#34;enableRawLog&#34;: true,
+ * 		&#34;fileEncoding&#34;: &#34;gbk&#34;,
+ * 		&#34;maxDepth&#34;: 10
+ * 	}
+ * 	
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var testLogTailAttachment = new LogTailAttachment(&#34;testLogTailAttachment&#34;, LogTailAttachmentArgs.builder()        
+ *             .project(testProject.name())
+ *             .logtailConfigName(testLogTailConfig.name())
+ *             .machineGroupName(testMachineGroup.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Logtial to machine group can be imported using the id, e.g.

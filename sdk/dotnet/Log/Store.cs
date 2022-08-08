@@ -81,6 +81,12 @@ namespace Pulumi.AliCloud.Log
         [Output("shards")]
         public Output<ImmutableArray<Outputs.StoreShard>> Shards { get; private set; } = null!;
 
+        /// <summary>
+        /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+        /// </summary>
+        [Output("telemetryType")]
+        public Output<string?> TelemetryType { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Store resource with the given unique name, arguments, and options.
@@ -181,6 +187,12 @@ namespace Pulumi.AliCloud.Log
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
 
+        /// <summary>
+        /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+        /// </summary>
+        [Input("telemetryType")]
+        public Input<string>? TelemetryType { get; set; }
+
         public StoreArgs()
         {
         }
@@ -253,6 +265,12 @@ namespace Pulumi.AliCloud.Log
             get => _shards ?? (_shards = new InputList<Inputs.StoreShardGetArgs>());
             set => _shards = value;
         }
+
+        /// <summary>
+        /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+        /// </summary>
+        [Input("telemetryType")]
+        public Input<string>? TelemetryType { get; set; }
 
         public StoreState()
         {

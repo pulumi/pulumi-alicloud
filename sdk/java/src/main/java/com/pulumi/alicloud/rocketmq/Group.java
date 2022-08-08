@@ -26,6 +26,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rocketmq.Instance;
+ * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+ * import com.pulumi.alicloud.rocketmq.Group;
+ * import com.pulumi.alicloud.rocketmq.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
+ *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-onsGroupDatasourceName&#34;);
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .remark(&#34;default_ons_instance_remark&#34;)
+ *             .build());
+ * 
+ *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+ *             .groupName(groupName)
+ *             .instanceId(defaultInstance.id())
+ *             .remark(&#34;dafault_ons_group_remark&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ONS GROUP can be imported using the id, e.g.

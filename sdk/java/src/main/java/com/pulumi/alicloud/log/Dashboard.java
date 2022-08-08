@@ -22,6 +22,81 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.log.Dashboard;
+ * import com.pulumi.alicloud.log.DashboardArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;tf unit test&#34;)
+ *             .build());
+ * 
+ *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *             .project(&#34;tf-project&#34;)
+ *             .retentionPeriod(&#34;3000&#34;)
+ *             .shardCount(1)
+ *             .build());
+ * 
+ *         var example = new Dashboard(&#34;example&#34;, DashboardArgs.builder()        
+ *             .charList(&#34;&#34;&#34;
+ *   [
+ *     {
+ *       &#34;action&#34;: {},
+ *       &#34;title&#34;:&#34;new_title&#34;,
+ *       &#34;type&#34;:&#34;map&#34;,
+ *       &#34;search&#34;:{
+ *         &#34;logstore&#34;:&#34;tf-logstore&#34;,
+ *         &#34;topic&#34;:&#34;new_topic&#34;,
+ *         &#34;query&#34;:&#34;* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product&#34;,
+ *         &#34;start&#34;:&#34;-86400s&#34;,
+ *         &#34;end&#34;:&#34;now&#34;
+ *       },
+ *       &#34;display&#34;:{
+ *         &#34;xAxis&#34;:[
+ *           &#34;ct_name&#34;
+ *         ],
+ *         &#34;yAxis&#34;:[
+ *           &#34;ct_product&#34;
+ *         ],
+ *         &#34;xPos&#34;:0,
+ *         &#34;yPos&#34;:0,
+ *         &#34;width&#34;:10,
+ *         &#34;height&#34;:12,
+ *         &#34;displayName&#34;:&#34;xixihaha911&#34;
+ *       }
+ *     }
+ *   ]
+ * 
+ *             &#34;&#34;&#34;)
+ *             .dashboardName(&#34;tf-dashboard&#34;)
+ *             .projectName(&#34;tf-project&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Log Dashboard can be imported using the id or name, e.g.

@@ -195,6 +195,23 @@ func (o ShardingNetworkPublicAddressOutput) ToShardingNetworkPublicAddressOutput
 	return o
 }
 
+// The ID of the instance.
+func (o ShardingNetworkPublicAddressOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingNetworkPublicAddress) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The endpoint of the instance.
+func (o ShardingNetworkPublicAddressOutput) NetworkAddresses() ShardingNetworkPublicAddressNetworkAddressArrayOutput {
+	return o.ApplyT(func(v *ShardingNetworkPublicAddress) ShardingNetworkPublicAddressNetworkAddressArrayOutput {
+		return v.NetworkAddresses
+	}).(ShardingNetworkPublicAddressNetworkAddressArrayOutput)
+}
+
+// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+func (o ShardingNetworkPublicAddressOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingNetworkPublicAddress) pulumi.StringOutput { return v.NodeId }).(pulumi.StringOutput)
+}
+
 type ShardingNetworkPublicAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (ShardingNetworkPublicAddressArrayOutput) ElementType() reflect.Type {

@@ -265,6 +265,46 @@ func (o SlbAttachmentOutput) ToSlbAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of the application to which you want to bind an SLB instance.
+func (o SlbAttachmentOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The listening port for the bound SLB instance.
+func (o SlbAttachmentOutput) ListenerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.IntPtrOutput { return v.ListenerPort }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the SLB instance that is going to be bound.
+func (o SlbAttachmentOutput) SlbId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
+}
+
+// The IP address that is allocated to the bound SLB instance.
+func (o SlbAttachmentOutput) SlbIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.StringOutput { return v.SlbIp }).(pulumi.StringOutput)
+}
+
+// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+func (o SlbAttachmentOutput) SlbStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.StringOutput { return v.SlbStatus }).(pulumi.StringOutput)
+}
+
+// The type of the bound SLB instance.
+func (o SlbAttachmentOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The ID of the virtual server (VServer) group associated with the intranet SLB instance.
+func (o SlbAttachmentOutput) VserverGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.StringPtrOutput { return v.VserverGroupId }).(pulumi.StringPtrOutput)
+}
+
+// VPC related vswitch ID.
+func (o SlbAttachmentOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlbAttachment) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type SlbAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (SlbAttachmentArrayOutput) ElementType() reflect.Type {

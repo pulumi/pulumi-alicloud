@@ -22,6 +22,41 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.brain.IndustrialPidLoop;
+ * import com.pulumi.alicloud.brain.IndustrialPidLoopArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new IndustrialPidLoop(&#34;example&#34;, IndustrialPidLoopArgs.builder()        
+ *             .pidLoopConfiguration(&#34;YourLoopConfiguration&#34;)
+ *             .pidLoopDcsType(&#34;standard&#34;)
+ *             .pidLoopIsCrucial(true)
+ *             .pidLoopName(&#34;tf-testAcc&#34;)
+ *             .pidLoopType(&#34;0&#34;)
+ *             .pidProjectId(&#34;856c6b8f-ca63-40a4-xxxx-xxxx&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Brain Industrial Pid Loop can be imported using the id, e.g.

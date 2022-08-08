@@ -82,7 +82,9 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> AllowedIp { get; private set; } = null!;
 
         /// <summary>
-        /// The type of whitelist. Valid Value: `vpc`.
+        /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// - `vpc`: IP address whitelist for VPC access.
+        /// - `internet`: IP address whitelist for Internet access.
         /// </summary>
         [Output("allowedType")]
         public Output<string> AllowedType { get; private set; } = null!;
@@ -94,7 +96,9 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Port range.  Valid Value: `9092/9092`.
+        /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+        /// - `9092/9092`: port range for a VPC whitelist.
+        /// - `9093/9093`: port range for an Internet whitelist.
         /// </summary>
         [Output("portRange")]
         public Output<string> PortRange { get; private set; } = null!;
@@ -152,7 +156,9 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> AllowedIp { get; set; } = null!;
 
         /// <summary>
-        /// The type of whitelist. Valid Value: `vpc`.
+        /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// - `vpc`: IP address whitelist for VPC access.
+        /// - `internet`: IP address whitelist for Internet access.
         /// </summary>
         [Input("allowedType", required: true)]
         public Input<string> AllowedType { get; set; } = null!;
@@ -164,7 +170,9 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The Port range.  Valid Value: `9092/9092`.
+        /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+        /// - `9092/9092`: port range for a VPC whitelist.
+        /// - `9093/9093`: port range for an Internet whitelist.
         /// </summary>
         [Input("portRange", required: true)]
         public Input<string> PortRange { get; set; } = null!;
@@ -183,7 +191,9 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? AllowedIp { get; set; }
 
         /// <summary>
-        /// The type of whitelist. Valid Value: `vpc`.
+        /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// - `vpc`: IP address whitelist for VPC access.
+        /// - `internet`: IP address whitelist for Internet access.
         /// </summary>
         [Input("allowedType")]
         public Input<string>? AllowedType { get; set; }
@@ -195,7 +205,9 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The Port range.  Valid Value: `9092/9092`.
+        /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+        /// - `9092/9092`: port range for a VPC whitelist.
+        /// - `9093/9093`: port range for an Internet whitelist.
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }

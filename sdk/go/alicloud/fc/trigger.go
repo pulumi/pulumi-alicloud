@@ -266,6 +266,61 @@ func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOu
 	return o
 }
 
+// The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+func (o TriggerOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+// The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
+func (o TriggerOutput) ConfigMns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.ConfigMns }).(pulumi.StringPtrOutput)
+}
+
+// The Function Compute function name.
+func (o TriggerOutput) Function() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Function }).(pulumi.StringOutput)
+}
+
+// The date this resource was last modified.
+func (o TriggerOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+func (o TriggerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Setting a prefix to get a only trigger name. It is conflict with "name".
+func (o TriggerOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
+func (o TriggerOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// The Function Compute service name.
+func (o TriggerOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
+func (o TriggerOutput) SourceArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.SourceArn }).(pulumi.StringPtrOutput)
+}
+
+// The Function Compute trigger ID.
+func (o TriggerOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
+}
+
+// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
+func (o TriggerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type TriggerArrayOutput struct{ *pulumi.OutputState }
 
 func (TriggerArrayOutput) ElementType() reflect.Type {

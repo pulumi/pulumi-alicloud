@@ -18,10 +18,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.cms.getAlarmContacts({
- *     ids: ["tf-testAccCmsAlarmContact"],
- * });
- * export const first_contact = data.alicloud_cms_alarm_contacts["this"].contacts;
+ * export = async () => {
+ *     const example = await alicloud.cms.getAlarmContacts({
+ *         ids: ["tf-testAccCmsAlarmContact"],
+ *     });
+ *     const first_contact = data.alicloud_cms_alarm_contacts["this"].contacts;
+ *     return {
+ *         "first-contact": first_contact,
+ *     };
+ * }
  * ```
  */
 export function getAlarmContacts(args?: GetAlarmContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactsResult> {

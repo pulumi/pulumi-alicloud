@@ -29,6 +29,90 @@ import javax.annotation.Nullable;
  * * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
  * * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
  * 
+ * ## Example Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+ * import com.pulumi.alicloud.slb.Acl;
+ * import com.pulumi.alicloud.slb.AclArgs;
+ * import com.pulumi.alicloud.slb.inputs.AclEntryListArgs;
+ * import com.pulumi.alicloud.slb.Listener;
+ * import com.pulumi.alicloud.slb.ListenerArgs;
+ * import com.pulumi.alicloud.slb.inputs.ListenerXForwardedForArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;testcreatehttplistener&#34;);
+ *         final var ipVersion = config.get(&#34;ipVersion&#34;).orElse(&#34;ipv4&#34;);
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(&#34;tf-testAccSlbListenerHttp&#34;)
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .internet(true)
+ *             .build());
+ * 
+ *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *             .ipVersion(ipVersion)
+ *             .entryLists(            
+ *                 AclEntryListArgs.builder()
+ *                     .entry(&#34;10.10.10.0/24&#34;)
+ *                     .comment(&#34;first&#34;)
+ *                     .build(),
+ *                 AclEntryListArgs.builder()
+ *                     .entry(&#34;168.10.10.0/24&#34;)
+ *                     .comment(&#34;second&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+ *             .backendPort(80)
+ *             .frontendPort(80)
+ *             .protocol(&#34;http&#34;)
+ *             .bandwidth(10)
+ *             .stickySession(&#34;on&#34;)
+ *             .stickySessionType(&#34;insert&#34;)
+ *             .cookieTimeout(86400)
+ *             .cookie(&#34;testslblistenercookie&#34;)
+ *             .healthCheck(&#34;on&#34;)
+ *             .healthCheckDomain(&#34;ali.com&#34;)
+ *             .healthCheckUri(&#34;/cons&#34;)
+ *             .healthCheckConnectPort(20)
+ *             .healthyThreshold(8)
+ *             .unhealthyThreshold(8)
+ *             .healthCheckTimeout(8)
+ *             .healthCheckInterval(5)
+ *             .healthCheckHttpCode(&#34;http_2xx,http_3xx&#34;)
+ *             .xForwardedFor(ListenerXForwardedForArgs.builder()
+ *                 .retriveSlbIp(true)
+ *                 .retriveSlbId(true)
+ *                 .build())
+ *             .aclStatus(&#34;on&#34;)
+ *             .aclType(&#34;white&#34;)
+ *             .aclId(defaultAcl.id())
+ *             .requestTimeout(80)
+ *             .idleTimeout(30)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Listener fields and protocol mapping
  * 
  * load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:

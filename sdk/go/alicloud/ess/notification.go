@@ -34,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
-// 		name := fmt.Sprintf("%v%v%v", "tf-testAccEssNotification-", "%", "d")
+// 		name := fmt.Sprintf("tf-testAccEssNotification-%vd", "%")
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
@@ -97,7 +97,7 @@ import (
 // 				pulumi.String("AUTOSCALING:SCALE_OUT_ERROR"),
 // 			},
 // 			NotificationArn: defaultQueue.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v", "acs:ess:", defaultRegions.Regions[0].Id, ":", defaultAccount.Id, ":queue/", name), nil
+// 				return fmt.Sprintf("acs:ess:%v:%v:queue/%v", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -304,6 +304,24 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+// * region: the region ID of the scaling group. For more information, see `Regions and zones`
+// * account-id: the ID of your account.
+// * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
+func (o NotificationOutput) NotificationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.NotificationArn }).(pulumi.StringOutput)
+}
+
+// The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
+func (o NotificationOutput) NotificationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringArrayOutput { return v.NotificationTypes }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the Auto Scaling group.
+func (o NotificationOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
 type NotificationArrayOutput struct{ *pulumi.OutputState }

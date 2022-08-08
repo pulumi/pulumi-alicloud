@@ -275,6 +275,46 @@ func (o OrderOutput) ToOrderOutputWithContext(ctx context.Context) OrderOutput {
 	return o
 }
 
+// Service providers customize additional components.
+func (o OrderOutput) Components() pulumi.MapOutput {
+	return o.ApplyT(func(v *Order) pulumi.MapOutput { return v.Components }).(pulumi.MapOutput)
+}
+
+// The coupon id of the market product.
+func (o OrderOutput) CouponId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringPtrOutput { return v.CouponId }).(pulumi.StringPtrOutput)
+}
+
+// The number of purchase cycles.
+func (o OrderOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Order) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// The package version of the market product.
+func (o OrderOutput) PackageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringOutput { return v.PackageVersion }).(pulumi.StringOutput)
+}
+
+// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+func (o OrderOutput) PayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringPtrOutput { return v.PayType }).(pulumi.StringPtrOutput)
+}
+
+// The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
+func (o OrderOutput) PricingCycle() pulumi.StringOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringOutput { return v.PricingCycle }).(pulumi.StringOutput)
+}
+
+// The productCode of market place product.
+func (o OrderOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The quantity of the market product will be purchased.
+func (o OrderOutput) Quantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Order) pulumi.IntPtrOutput { return v.Quantity }).(pulumi.IntPtrOutput)
+}
+
 type OrderArrayOutput struct{ *pulumi.OutputState }
 
 func (OrderArrayOutput) ElementType() reflect.Type {

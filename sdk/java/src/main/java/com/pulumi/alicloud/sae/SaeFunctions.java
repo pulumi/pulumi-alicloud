@@ -42,6 +42,40 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
+     *             .appId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationScalingRulesResult> getApplicationScalingRules(GetApplicationScalingRulesArgs args) {
         return getApplicationScalingRules(args, InvokeOptions.Empty);
@@ -52,6 +86,40 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
+     *             .appId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationScalingRulesResult> getApplicationScalingRulesPlain(GetApplicationScalingRulesPlainArgs args) {
@@ -64,6 +132,40 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
+     *             .appId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationScalingRulesResult> getApplicationScalingRules(GetApplicationScalingRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", TypeShape.of(GetApplicationScalingRulesResult.class), args, Utilities.withVersion(options));
@@ -74,6 +176,40 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
+     *             .appId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationScalingRulesResult> getApplicationScalingRulesPlain(GetApplicationScalingRulesPlainArgs args, InvokeOptions options) {
@@ -86,6 +222,84 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .vpcName(&#34;tf_testacc&#34;)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceDescription(name)
+     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceName(name)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+     *             .appDescription(&#34;tf-testaccDescription&#34;)
+     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *             .namespaceId(defaultNamespace.id())
+     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+     *             .packageType(&#34;Image&#34;)
+     *             .vswitchId(vsw.id())
+     *             .timezone(&#34;Asia/Beijing&#34;)
+     *             .replicas(&#34;5&#34;)
+     *             .cpu(&#34;500&#34;)
+     *             .memory(&#34;2048&#34;)
+     *             .build());
+     * 
+     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(defaultApplication.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationsResult> getApplications() {
         return getApplications(GetApplicationsArgs.Empty, InvokeOptions.Empty);
@@ -96,6 +310,84 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .vpcName(&#34;tf_testacc&#34;)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceDescription(name)
+     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceName(name)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+     *             .appDescription(&#34;tf-testaccDescription&#34;)
+     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *             .namespaceId(defaultNamespace.id())
+     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+     *             .packageType(&#34;Image&#34;)
+     *             .vswitchId(vsw.id())
+     *             .timezone(&#34;Asia/Beijing&#34;)
+     *             .replicas(&#34;5&#34;)
+     *             .cpu(&#34;500&#34;)
+     *             .memory(&#34;2048&#34;)
+     *             .build());
+     * 
+     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(defaultApplication.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain() {
@@ -108,6 +400,84 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .vpcName(&#34;tf_testacc&#34;)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceDescription(name)
+     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceName(name)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+     *             .appDescription(&#34;tf-testaccDescription&#34;)
+     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *             .namespaceId(defaultNamespace.id())
+     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+     *             .packageType(&#34;Image&#34;)
+     *             .vswitchId(vsw.id())
+     *             .timezone(&#34;Asia/Beijing&#34;)
+     *             .replicas(&#34;5&#34;)
+     *             .cpu(&#34;500&#34;)
+     *             .memory(&#34;2048&#34;)
+     *             .build());
+     * 
+     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(defaultApplication.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args) {
         return getApplications(args, InvokeOptions.Empty);
@@ -118,6 +488,84 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .vpcName(&#34;tf_testacc&#34;)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceDescription(name)
+     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceName(name)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+     *             .appDescription(&#34;tf-testaccDescription&#34;)
+     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *             .namespaceId(defaultNamespace.id())
+     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+     *             .packageType(&#34;Image&#34;)
+     *             .vswitchId(vsw.id())
+     *             .timezone(&#34;Asia/Beijing&#34;)
+     *             .replicas(&#34;5&#34;)
+     *             .cpu(&#34;500&#34;)
+     *             .memory(&#34;2048&#34;)
+     *             .build());
+     * 
+     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(defaultApplication.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args) {
@@ -130,6 +578,84 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .vpcName(&#34;tf_testacc&#34;)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceDescription(name)
+     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceName(name)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+     *             .appDescription(&#34;tf-testaccDescription&#34;)
+     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *             .namespaceId(defaultNamespace.id())
+     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+     *             .packageType(&#34;Image&#34;)
+     *             .vswitchId(vsw.id())
+     *             .timezone(&#34;Asia/Beijing&#34;)
+     *             .replicas(&#34;5&#34;)
+     *             .cpu(&#34;500&#34;)
+     *             .memory(&#34;2048&#34;)
+     *             .build());
+     * 
+     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(defaultApplication.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getApplications:getApplications", TypeShape.of(GetApplicationsResult.class), args, Utilities.withVersion(options));
@@ -140,6 +666,84 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.161.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .vpcName(&#34;tf_testacc&#34;)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .build());
+     * 
+     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceDescription(name)
+     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceName(name)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+     *             .appDescription(&#34;tf-testaccDescription&#34;)
+     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *             .namespaceId(defaultNamespace.id())
+     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+     *             .packageType(&#34;Image&#34;)
+     *             .vswitchId(vsw.id())
+     *             .timezone(&#34;Asia/Beijing&#34;)
+     *             .replicas(&#34;5&#34;)
+     *             .cpu(&#34;500&#34;)
+     *             .memory(&#34;2048&#34;)
+     *             .build());
+     * 
+     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids(defaultApplication.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
@@ -152,6 +756,60 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.ConfigMap;
+     * import com.pulumi.alicloud.sae.ConfigMapArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
+     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
+     *             .namespaceName(&#34;example_value&#34;)
+     *             .namespaceDescription(&#34;your_description&#34;)
+     *             .build());
+     * 
+     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *             .data(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
+     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                 )))
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .build());
+     * 
+     *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .nameRegex(&#34;^example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetConfigMapsResult> getConfigMaps(GetConfigMapsArgs args) {
         return getConfigMaps(args, InvokeOptions.Empty);
@@ -162,6 +820,60 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.ConfigMap;
+     * import com.pulumi.alicloud.sae.ConfigMapArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
+     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
+     *             .namespaceName(&#34;example_value&#34;)
+     *             .namespaceDescription(&#34;your_description&#34;)
+     *             .build());
+     * 
+     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *             .data(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
+     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                 )))
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .build());
+     * 
+     *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .nameRegex(&#34;^example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigMapsResult> getConfigMapsPlain(GetConfigMapsPlainArgs args) {
@@ -174,6 +886,60 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.ConfigMap;
+     * import com.pulumi.alicloud.sae.ConfigMapArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
+     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
+     *             .namespaceName(&#34;example_value&#34;)
+     *             .namespaceDescription(&#34;your_description&#34;)
+     *             .build());
+     * 
+     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *             .data(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
+     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                 )))
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .build());
+     * 
+     *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .nameRegex(&#34;^example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetConfigMapsResult> getConfigMaps(GetConfigMapsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getConfigMaps:getConfigMaps", TypeShape.of(GetConfigMapsResult.class), args, Utilities.withVersion(options));
@@ -184,6 +950,60 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.130.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.ConfigMap;
+     * import com.pulumi.alicloud.sae.ConfigMapArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetConfigMapsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
+     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
+     *             .namespaceName(&#34;example_value&#34;)
+     *             .namespaceDescription(&#34;your_description&#34;)
+     *             .build());
+     * 
+     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *             .data(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
+     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                 )))
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .build());
+     * 
+     *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
+     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .nameRegex(&#34;^example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetConfigMapsResult> getConfigMapsPlain(GetConfigMapsPlainArgs args, InvokeOptions options) {
@@ -196,6 +1016,38 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
+     *             .appId(&#34;example_id&#34;)
+     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGreyTagRoutesResult> getGreyTagRoutes(GetGreyTagRoutesArgs args) {
         return getGreyTagRoutes(args, InvokeOptions.Empty);
@@ -206,6 +1058,38 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.160.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
+     *             .appId(&#34;example_id&#34;)
+     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGreyTagRoutesResult> getGreyTagRoutesPlain(GetGreyTagRoutesPlainArgs args) {
@@ -218,6 +1102,38 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
+     *             .appId(&#34;example_id&#34;)
+     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGreyTagRoutesResult> getGreyTagRoutes(GetGreyTagRoutesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", TypeShape.of(GetGreyTagRoutesResult.class), args, Utilities.withVersion(options));
@@ -228,6 +1144,38 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.160.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetGreyTagRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
+     *             .appId(&#34;example_id&#34;)
+     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGreyTagRoutesResult> getGreyTagRoutesPlain(GetGreyTagRoutesPlainArgs args, InvokeOptions options) {
@@ -276,6 +1224,35 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     * 
+     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstanceSpecificationsResult> getInstanceSpecifications() {
         return getInstanceSpecifications(GetInstanceSpecificationsArgs.Empty, InvokeOptions.Empty);
@@ -286,6 +1263,35 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     * 
+     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceSpecificationsResult> getInstanceSpecificationsPlain() {
@@ -298,6 +1304,35 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     * 
+     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstanceSpecificationsResult> getInstanceSpecifications(GetInstanceSpecificationsArgs args) {
         return getInstanceSpecifications(args, InvokeOptions.Empty);
@@ -308,6 +1343,35 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     * 
+     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceSpecificationsResult> getInstanceSpecificationsPlain(GetInstanceSpecificationsPlainArgs args) {
@@ -320,6 +1384,35 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     * 
+     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstanceSpecificationsResult> getInstanceSpecifications(GetInstanceSpecificationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", TypeShape.of(GetInstanceSpecificationsResult.class), args, Utilities.withVersion(options));
@@ -330,6 +1423,35 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.139.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetInstanceSpecificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     * 
+     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceSpecificationsResult> getInstanceSpecificationsPlain(GetInstanceSpecificationsPlainArgs args, InvokeOptions options) {
@@ -342,6 +1464,37 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
         return getNamespaces(GetNamespacesArgs.Empty, InvokeOptions.Empty);
@@ -352,6 +1505,37 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -364,6 +1548,37 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
         return getNamespaces(args, InvokeOptions.Empty);
@@ -374,6 +1589,37 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -386,6 +1632,37 @@ public final class SaeFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
@@ -396,6 +1673,37 @@ public final class SaeFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
@@ -411,6 +1719,34 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -426,6 +1762,34 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -441,6 +1805,34 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -456,6 +1848,34 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -471,6 +1891,34 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -486,6 +1934,34 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

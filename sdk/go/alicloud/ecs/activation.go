@@ -249,6 +249,33 @@ func (o ActivationOutput) ToActivationOutputWithContext(ctx context.Context) Act
 	return o
 }
 
+// The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+func (o ActivationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Activation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
+func (o ActivationOutput) InstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Activation) pulumi.IntOutput { return v.InstanceCount }).(pulumi.IntOutput)
+}
+
+// The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
+// - If you use the activation code created by the CreateActivation operation to register managed instances, the instances are assigned sequential names that are prefixed by the value of this parameter. You can also specify a new instance name to override the assigned sequential name when you register a managed instance.
+// - If you specify InstanceName when you register a managed instance, an instance name in the format of `<InstanceName>-<Number>` is generated. The number of digits in the <Number> value is determined by that in the InstanceCount value. Example: 001. If you do not specify InstanceName, the hostname (Hostname) is used as the instance name.
+func (o ActivationOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Activation) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
+func (o ActivationOutput) IpAddressRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Activation) pulumi.StringOutput { return v.IpAddressRange }).(pulumi.StringOutput)
+}
+
+// The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
+func (o ActivationOutput) TimeToLiveInHours() pulumi.IntOutput {
+	return o.ApplyT(func(v *Activation) pulumi.IntOutput { return v.TimeToLiveInHours }).(pulumi.IntOutput)
+}
+
 type ActivationArrayOutput struct{ *pulumi.OutputState }
 
 func (ActivationArrayOutput) ElementType() reflect.Type {

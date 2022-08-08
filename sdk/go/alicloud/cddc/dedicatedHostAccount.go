@@ -212,6 +212,26 @@ func (o DedicatedHostAccountOutput) ToDedicatedHostAccountOutputWithContext(ctx 
 	return o
 }
 
+// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
+func (o DedicatedHostAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHostAccount) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+func (o DedicatedHostAccountOutput) AccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHostAccount) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+}
+
+// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
+func (o DedicatedHostAccountOutput) AccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHostAccount) pulumi.StringPtrOutput { return v.AccountType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of Dedicated the host.
+func (o DedicatedHostAccountOutput) DedicatedHostId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHostAccount) pulumi.StringOutput { return v.DedicatedHostId }).(pulumi.StringOutput)
+}
+
 type DedicatedHostAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostAccountArrayOutput) ElementType() reflect.Type {

@@ -28,6 +28,58 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.hbr.HanaInstance;
+ * import com.pulumi.alicloud.hbr.HanaInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleVault = new Vault(&#34;exampleVault&#34;, VaultArgs.builder()        
+ *             .vaultName(var_.name())
+ *             .build());
+ * 
+ *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         var exampleHanaInstance = new HanaInstance(&#34;exampleHanaInstance&#34;, HanaInstanceArgs.builder()        
+ *             .alertSetting(&#34;INHERITED&#34;)
+ *             .hanaName(var_.name())
+ *             .host(&#34;1.1.1.1&#34;)
+ *             .instanceNumber(1)
+ *             .password(&#34;YouPassword123&#34;)
+ *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .sid(&#34;HXE&#34;)
+ *             .useSsl(false)
+ *             .userName(&#34;admin&#34;)
+ *             .validateCertificate(false)
+ *             .vaultId(exampleVault.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.

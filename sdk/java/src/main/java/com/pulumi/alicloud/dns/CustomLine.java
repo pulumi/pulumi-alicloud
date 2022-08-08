@@ -25,6 +25,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dns.CustomLine;
+ * import com.pulumi.alicloud.dns.CustomLineArgs;
+ * import com.pulumi.alicloud.dns.inputs.CustomLineIpSegmentListArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new CustomLine(&#34;default&#34;, CustomLineArgs.builder()        
+ *             .customLineName(&#34;tf-testacc&#34;)
+ *             .domainName(&#34;your_domain_name&#34;)
+ *             .ipSegmentLists(CustomLineIpSegmentListArgs.builder()
+ *                 .endIp(&#34;192.0.2.125&#34;)
+ *                 .startIp(&#34;192.0.2.123&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Alidns Custom Line can be imported using the id, e.g.

@@ -24,6 +24,40 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.sddp.Rule;
+ * import com.pulumi.alicloud.sddp.RuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Rule(&#34;default&#34;, RuleArgs.builder()        
+ *             .category(&#34;0&#34;)
+ *             .content(&#34;content&#34;)
+ *             .productCode(&#34;ODPS&#34;)
+ *             .riskLevelId(&#34;4&#34;)
+ *             .ruleName(&#34;rule_name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Data Security Center Rule can be imported using the id, e.g.

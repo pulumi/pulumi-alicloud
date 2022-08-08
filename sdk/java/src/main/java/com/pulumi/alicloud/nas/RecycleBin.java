@@ -23,6 +23,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.RecycleBin;
+ * import com.pulumi.alicloud.nas.RecycleBinArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
+ *             .protocolType(&#34;NFS&#34;)
+ *             .storageType(&#34;Performance&#34;)
+ *             .description(var_.name())
+ *             .encryptType(&#34;1&#34;)
+ *             .build());
+ * 
+ *         var exampleRecycleBin = new RecycleBin(&#34;exampleRecycleBin&#34;, RecycleBinArgs.builder()        
+ *             .fileSystemId(exampleFileSystem.id())
+ *             .reservedDays(3)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.

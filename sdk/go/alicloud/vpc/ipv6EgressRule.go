@@ -281,6 +281,36 @@ func (o Ipv6EgressRuleOutput) ToIpv6EgressRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+func (o Ipv6EgressRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the IPv6 address to which you want to apply the egress-only rule.
+func (o Ipv6EgressRuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
+func (o Ipv6EgressRuleOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+func (o Ipv6EgressRuleOutput) Ipv6EgressRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringPtrOutput { return v.Ipv6EgressRuleName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the IPv6 gateway.
+func (o Ipv6EgressRuleOutput) Ipv6GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.Ipv6GatewayId }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+func (o Ipv6EgressRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type Ipv6EgressRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6EgressRuleArrayOutput) ElementType() reflect.Type {

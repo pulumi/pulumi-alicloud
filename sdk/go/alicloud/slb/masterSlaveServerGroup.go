@@ -225,6 +225,26 @@ func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupOutputWithContext(
 	return o
 }
 
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (o MasterSlaveServerGroupOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MasterSlaveServerGroup) pulumi.BoolPtrOutput { return v.DeleteProtectionValidation }).(pulumi.BoolPtrOutput)
+}
+
+// The Load Balancer ID which is used to launch a new master slave server group.
+func (o MasterSlaveServerGroupOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MasterSlaveServerGroup) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// Name of the master slave server group.
+func (o MasterSlaveServerGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MasterSlaveServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+func (o MasterSlaveServerGroupOutput) Servers() MasterSlaveServerGroupServerArrayOutput {
+	return o.ApplyT(func(v *MasterSlaveServerGroup) MasterSlaveServerGroupServerArrayOutput { return v.Servers }).(MasterSlaveServerGroupServerArrayOutput)
+}
+
 type MasterSlaveServerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (MasterSlaveServerGroupArrayOutput) ElementType() reflect.Type {

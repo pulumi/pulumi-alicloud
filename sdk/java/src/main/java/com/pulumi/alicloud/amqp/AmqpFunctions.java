@@ -33,6 +33,37 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
+     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBindingsResult> getBindings(GetBindingsArgs args) {
         return getBindings(args, InvokeOptions.Empty);
@@ -43,6 +74,37 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
+     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBindingsResult> getBindingsPlain(GetBindingsPlainArgs args) {
@@ -55,6 +117,37 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
+     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBindingsResult> getBindings(GetBindingsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:amqp/getBindings:getBindings", TypeShape.of(GetBindingsResult.class), args, Utilities.withVersion(options));
@@ -65,6 +158,37 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
+     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBindingsResult> getBindingsPlain(GetBindingsPlainArgs args, InvokeOptions options) {
@@ -77,6 +201,48 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Exchange-1&#34;,
+     *                 &#34;my-Exchange-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetExchangesResult> getExchanges(GetExchangesArgs args) {
         return getExchanges(args, InvokeOptions.Empty);
@@ -87,6 +253,48 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.128.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Exchange-1&#34;,
+     *                 &#34;my-Exchange-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExchangesResult> getExchangesPlain(GetExchangesPlainArgs args) {
@@ -99,6 +307,48 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Exchange-1&#34;,
+     *                 &#34;my-Exchange-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetExchangesResult> getExchanges(GetExchangesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:amqp/getExchanges:getExchanges", TypeShape.of(GetExchangesResult.class), args, Utilities.withVersion(options));
@@ -109,6 +359,48 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.128.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Exchange-1&#34;,
+     *                 &#34;my-Exchange-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExchangesResult> getExchangesPlain(GetExchangesPlainArgs args, InvokeOptions options) {
@@ -121,6 +413,44 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(            
+     *                 &#34;amqp-abc12345&#34;,
+     *                 &#34;amqp-abc34567&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -131,6 +461,44 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.128.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(            
+     *                 &#34;amqp-abc12345&#34;,
+     *                 &#34;amqp-abc34567&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -143,6 +511,44 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(            
+     *                 &#34;amqp-abc12345&#34;,
+     *                 &#34;amqp-abc34567&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -153,6 +559,44 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.128.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(            
+     *                 &#34;amqp-abc12345&#34;,
+     *                 &#34;amqp-abc34567&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -165,6 +609,44 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(            
+     *                 &#34;amqp-abc12345&#34;,
+     *                 &#34;amqp-abc34567&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:amqp/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -175,6 +657,44 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.128.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(            
+     *                 &#34;amqp-abc12345&#34;,
+     *                 &#34;amqp-abc34567&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -187,6 +707,48 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Queue-1&#34;,
+     *                 &#34;my-Queue-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args) {
         return getQueues(args, InvokeOptions.Empty);
@@ -197,6 +759,48 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.127.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Queue-1&#34;,
+     *                 &#34;my-Queue-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args) {
@@ -209,6 +813,48 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Queue-1&#34;,
+     *                 &#34;my-Queue-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:amqp/getQueues:getQueues", TypeShape.of(GetQueuesResult.class), args, Utilities.withVersion(options));
@@ -219,6 +865,48 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.127.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .ids(            
+     *                 &#34;my-Queue-1&#34;,
+     *                 &#34;my-Queue-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args, InvokeOptions options) {
@@ -231,6 +919,46 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .ids(            
+     *                 &#34;my-VirtualHost-1&#34;,
+     *                 &#34;my-VirtualHost-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVirtualHostsResult> getVirtualHosts(GetVirtualHostsArgs args) {
         return getVirtualHosts(args, InvokeOptions.Empty);
@@ -241,6 +969,46 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .ids(            
+     *                 &#34;my-VirtualHost-1&#34;,
+     *                 &#34;my-VirtualHost-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVirtualHostsResult> getVirtualHostsPlain(GetVirtualHostsPlainArgs args) {
@@ -253,6 +1021,46 @@ public final class AmqpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .ids(            
+     *                 &#34;my-VirtualHost-1&#34;,
+     *                 &#34;my-VirtualHost-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVirtualHostsResult> getVirtualHosts(GetVirtualHostsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:amqp/getVirtualHosts:getVirtualHosts", TypeShape.of(GetVirtualHostsResult.class), args, Utilities.withVersion(options));
@@ -263,6 +1071,46 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .ids(            
+     *                 &#34;my-VirtualHost-1&#34;,
+     *                 &#34;my-VirtualHost-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
+     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVirtualHostsResult> getVirtualHostsPlain(GetVirtualHostsPlainArgs args, InvokeOptions options) {

@@ -211,6 +211,31 @@ func (o EipAssociationOutput) ToEipAssociationOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The allocation EIP ID.
+func (o EipAssociationOutput) AllocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAssociation) pulumi.StringOutput { return v.AllocationId }).(pulumi.StringOutput)
+}
+
+// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+func (o EipAssociationOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EipAssociation) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+func (o EipAssociationOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAssociation) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+func (o EipAssociationOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAssociation) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The private IP address in the network segment of the vswitch which has been assigned.
+func (o EipAssociationOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAssociation) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
 type EipAssociationArrayOutput struct{ *pulumi.OutputState }
 
 func (EipAssociationArrayOutput) ElementType() reflect.Type {

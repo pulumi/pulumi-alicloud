@@ -215,6 +215,21 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// The description of Gateway.
+func (o GatewayOutput) GatewayDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.GatewayDesc }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Gateway.
+func (o GatewayOutput) GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayName }).(pulumi.StringOutput)
+}
+
+// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+func (o GatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type GatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayArrayOutput) ElementType() reflect.Type {

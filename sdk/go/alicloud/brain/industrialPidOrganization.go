@@ -207,6 +207,16 @@ func (o IndustrialPidOrganizationOutput) ToIndustrialPidOrganizationOutputWithCo
 	return o
 }
 
+// The ID of parent pid organization.
+func (o IndustrialPidOrganizationOutput) ParentPidOrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndustrialPidOrganization) pulumi.StringPtrOutput { return v.ParentPidOrganizationId }).(pulumi.StringPtrOutput)
+}
+
+// The name of pid organization.
+func (o IndustrialPidOrganizationOutput) PidOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidOrganization) pulumi.StringOutput { return v.PidOrganizationName }).(pulumi.StringOutput)
+}
+
 type IndustrialPidOrganizationArrayOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidOrganizationArrayOutput) ElementType() reflect.Type {

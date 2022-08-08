@@ -229,6 +229,26 @@ func (o DeviceGroupOutput) ToDeviceGroupOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// The GroupDesc of the device group.
+func (o DeviceGroupOutput) GroupDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceGroup) pulumi.StringPtrOutput { return v.GroupDesc }).(pulumi.StringPtrOutput)
+}
+
+// The GroupName of the device group.
+func (o DeviceGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The id of the Iot Instance.
+func (o DeviceGroupOutput) IotInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceGroup) pulumi.StringPtrOutput { return v.IotInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The id of the SuperGroup.
+func (o DeviceGroupOutput) SuperGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceGroup) pulumi.StringPtrOutput { return v.SuperGroupId }).(pulumi.StringPtrOutput)
+}
+
 type DeviceGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (DeviceGroupArrayOutput) ElementType() reflect.Type {

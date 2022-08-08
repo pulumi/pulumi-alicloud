@@ -52,6 +52,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     * 
+     */
+    @Import(name="cloneDataPoint")
+    private @Nullable Output<String> cloneDataPoint;
+
+    /**
+     * @return The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     * 
+     */
+    public Optional<Output<String>> cloneDataPoint() {
+        return Optional.ofNullable(this.cloneDataPoint);
+    }
+
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      * 
      */
@@ -79,6 +96,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> connectionString() {
         return Optional.ofNullable(this.connectionString);
+    }
+
+    /**
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * 
+     */
+    @Import(name="creationCategory")
+    private @Nullable Output<String> creationCategory;
+
+    /**
+     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * 
+     */
+    public Optional<Output<String>> creationCategory() {
+        return Optional.ofNullable(this.creationCategory);
+    }
+
+    /**
+     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+     * 
+     */
+    @Import(name="creationOption")
+    private @Nullable Output<String> creationOption;
+
+    /**
+     * @return The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+     * 
+     */
+    public Optional<Output<String>> creationOption() {
+        return Optional.ofNullable(this.creationOption);
     }
 
     /**
@@ -207,6 +258,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> encryptNewTables() {
         return Optional.ofNullable(this.encryptNewTables);
+    }
+
+    /**
+     * The ID of the global database network (GDN).
+     * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+     * 
+     */
+    @Import(name="gdnId")
+    private @Nullable Output<String> gdnId;
+
+    /**
+     * @return The ID of the global database network (GDN).
+     * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+     * 
+     */
+    public Optional<Output<String>> gdnId() {
+        return Optional.ofNullable(this.gdnId);
     }
 
     /**
@@ -358,6 +426,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     * 
+     */
+    @Import(name="sourceResourceId")
+    private @Nullable Output<String> sourceResourceId;
+
+    /**
+     * @return The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     * 
+     */
+    public Optional<Output<String>> sourceResourceId() {
+        return Optional.ofNullable(this.sourceResourceId);
+    }
+
+    /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      * 
      */
@@ -445,8 +528,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState(ClusterState $) {
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
+        this.cloneDataPoint = $.cloneDataPoint;
         this.collectorStatus = $.collectorStatus;
         this.connectionString = $.connectionString;
+        this.creationCategory = $.creationCategory;
+        this.creationOption = $.creationOption;
         this.dbClusterIpArrays = $.dbClusterIpArrays;
         this.dbNodeClass = $.dbNodeClass;
         this.dbNodeCount = $.dbNodeCount;
@@ -455,6 +541,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.deletionLock = $.deletionLock;
         this.description = $.description;
         this.encryptNewTables = $.encryptNewTables;
+        this.gdnId = $.gdnId;
         this.imciSwitch = $.imciSwitch;
         this.maintainTime = $.maintainTime;
         this.modifyType = $.modifyType;
@@ -465,6 +552,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
         this.securityIps = $.securityIps;
+        this.sourceResourceId = $.sourceResourceId;
         this.subCategory = $.subCategory;
         this.tags = $.tags;
         this.tdeStatus = $.tdeStatus;
@@ -533,6 +621,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cloneDataPoint The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+         * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloneDataPoint(@Nullable Output<String> cloneDataPoint) {
+            $.cloneDataPoint = cloneDataPoint;
+            return this;
+        }
+
+        /**
+         * @param cloneDataPoint The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+         * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloneDataPoint(String cloneDataPoint) {
+            return cloneDataPoint(Output.of(cloneDataPoint));
+        }
+
+        /**
          * @param collectorStatus Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
          * 
          * @return builder
@@ -572,6 +683,52 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectionString(String connectionString) {
             return connectionString(Output.of(connectionString));
+        }
+
+        /**
+         * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationCategory(@Nullable Output<String> creationCategory) {
+            $.creationCategory = creationCategory;
+            return this;
+        }
+
+        /**
+         * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationCategory(String creationCategory) {
+            return creationCategory(Output.of(creationCategory));
+        }
+
+        /**
+         * @param creationOption The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+         * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationOption(@Nullable Output<String> creationOption) {
+            $.creationOption = creationOption;
+            return this;
+        }
+
+        /**
+         * @param creationOption The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+         * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationOption(String creationOption) {
+            return creationOption(Output.of(creationOption));
         }
 
         /**
@@ -758,6 +915,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder encryptNewTables(String encryptNewTables) {
             return encryptNewTables(Output.of(encryptNewTables));
+        }
+
+        /**
+         * @param gdnId The ID of the global database network (GDN).
+         * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gdnId(@Nullable Output<String> gdnId) {
+            $.gdnId = gdnId;
+            return this;
+        }
+
+        /**
+         * @param gdnId The ID of the global database network (GDN).
+         * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gdnId(String gdnId) {
+            return gdnId(Output.of(gdnId));
         }
 
         /**
@@ -993,6 +1173,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder securityIps(String... securityIps) {
             return securityIps(List.of(securityIps));
+        }
+
+        /**
+         * @param sourceResourceId The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceResourceId(@Nullable Output<String> sourceResourceId) {
+            $.sourceResourceId = sourceResourceId;
+            return this;
+        }
+
+        /**
+         * @param sourceResourceId The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceResourceId(String sourceResourceId) {
+            return sourceResourceId(Output.of(sourceResourceId));
         }
 
         /**

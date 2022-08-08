@@ -508,6 +508,183 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The cold storage capacity of the instance. Unit: GB.
+func (o InstanceOutput) ColdStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ColdStorage }).(pulumi.IntOutput)
+}
+
+// The core num.
+func (o InstanceOutput) CoreNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreNum }).(pulumi.IntPtrOutput)
+}
+
+// The core spec.
+func (o InstanceOutput) CoreSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CoreSpec }).(pulumi.StringPtrOutput)
+}
+
+// The deletion protection of instance.
+func (o InstanceOutput) DeletionProection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.DeletionProection }).(pulumi.BoolOutput)
+}
+
+// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+func (o InstanceOutput) DiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiskCategory }).(pulumi.StringOutput)
+}
+
+// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
+func (o InstanceOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// (Available in v1.163.0+) Whether to enable file engine.
+func (o InstanceOutput) EnabledFileEngine() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledFileEngine }).(pulumi.BoolOutput)
+}
+
+// (Available in v1.163.0+) Whether to enable lts engine.
+func (o InstanceOutput) EnabledLtsEngine() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledLtsEngine }).(pulumi.BoolOutput)
+}
+
+// (Available in v1.163.0+) Whether to enable search engine.
+func (o InstanceOutput) EnabledSearchEngine() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledSearchEngine }).(pulumi.BoolOutput)
+}
+
+// (Available in v1.163.0+) Whether to enable table engine.
+func (o InstanceOutput) EnabledTableEngine() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledTableEngine }).(pulumi.BoolOutput)
+}
+
+// (Available in v1.163.0+) Whether to enable time serires engine.
+func (o InstanceOutput) EnabledTimeSeriresEngine() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledTimeSeriresEngine }).(pulumi.BoolOutput)
+}
+
+// The count of file engine.
+func (o InstanceOutput) FileEngineNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.FileEngineNodeCount }).(pulumi.IntOutput)
+}
+
+// The specification of file engine. Valid values: `lindorm.c.xlarge`.
+func (o InstanceOutput) FileEngineSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FileEngineSpecification }).(pulumi.StringOutput)
+}
+
+// The group name.
+func (o InstanceOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the instance.
+func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+func (o InstanceOutput) InstanceStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceStorage }).(pulumi.StringPtrOutput)
+}
+
+// The ip white list of instance.
+func (o InstanceOutput) IpWhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.IpWhiteLists }).(pulumi.StringArrayOutput)
+}
+
+// The count of lindorm tunnel service.
+func (o InstanceOutput) LtsNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.LtsNodeCount }).(pulumi.IntOutput)
+}
+
+// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
+func (o InstanceOutput) LtsNodeSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LtsNodeSpecification }).(pulumi.StringOutput)
+}
+
+// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
+func (o InstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The count of phoenix.
+func (o InstanceOutput) PhoenixNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PhoenixNodeCount }).(pulumi.IntOutput)
+}
+
+// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+func (o InstanceOutput) PhoenixNodeSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PhoenixNodeSpecification }).(pulumi.StringOutput)
+}
+
+// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
+func (o InstanceOutput) PricingCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The count of search engine.
+func (o InstanceOutput) SearchEngineNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SearchEngineNodeCount }).(pulumi.IntOutput)
+}
+
+// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+func (o InstanceOutput) SearchEngineSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SearchEngineSpecification }).(pulumi.StringOutput)
+}
+
+// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The count of table engine.
+func (o InstanceOutput) TableEngineNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TableEngineNodeCount }).(pulumi.IntOutput)
+}
+
+// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+func (o InstanceOutput) TableEngineSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TableEngineSpecification }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The count of time series engine.
+func (o InstanceOutput) TimeSeriesEngineNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TimeSeriesEngineNodeCount }).(pulumi.IntOutput)
+}
+
+// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+func (o InstanceOutput) TimeSeriresEngineSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TimeSeriresEngineSpecification }).(pulumi.StringOutput)
+}
+
+// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+//
+// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
+func (o InstanceOutput) UpgradeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpgradeType }).(pulumi.StringPtrOutput)
+}
+
+// The vswitch id.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the instance.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

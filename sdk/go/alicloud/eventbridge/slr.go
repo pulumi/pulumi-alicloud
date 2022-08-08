@@ -156,6 +156,10 @@ func (o SlrOutput) ToSlrOutputWithContext(ctx context.Context) SlrOutput {
 	return o
 }
 
+func (o SlrOutput) ProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slr) pulumi.StringOutput { return v.ProductName }).(pulumi.StringOutput)
+}
+
 type SlrArrayOutput struct{ *pulumi.OutputState }
 
 func (SlrArrayOutput) ElementType() reflect.Type {

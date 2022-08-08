@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Slb
     /// MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=
     /// -----END RSA PRIVATE KEY-----
     /// ",
-    ///             ServerCertificate = @"-----BEGIN CERTIFICATE-----
+    ///             Certificate = @"-----BEGIN CERTIFICATE-----
     /// MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Slb
     ///         // create a server certificate
     ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs
     ///         {
-    ///             ServerCertificate = File.ReadAllText($"{path.Module}/server_certificate.pem"),
+    ///             Certificate = File.ReadAllText($"{path.Module}/server_certificate.pem"),
     ///             PrivateKey = File.ReadAllText($"{path.Module}/private_key.pem"),
     ///         });
     ///     }

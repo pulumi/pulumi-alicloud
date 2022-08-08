@@ -278,6 +278,46 @@ func (o HostAccountOutput) ToHostAccountOutputWithContext(ctx context.Context) H
 	return o
 }
 
+// Hosting account ID.
+func (o HostAccountOutput) HostAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringOutput { return v.HostAccountId }).(pulumi.StringOutput)
+}
+
+// The name of the host account. The name can be up to 128 characters in length.
+func (o HostAccountOutput) HostAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringOutput { return v.HostAccountName }).(pulumi.StringOutput)
+}
+
+// The ID of the host for which you want to create an account.
+func (o HostAccountOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringOutput { return v.HostId }).(pulumi.StringOutput)
+}
+
+// The ID of the Bastionhost instance where you want to create an account for the host.
+func (o HostAccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
+func (o HostAccountOutput) PassPhrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringPtrOutput { return v.PassPhrase }).(pulumi.StringPtrOutput)
+}
+
+// The password of the host account.
+func (o HostAccountOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
+func (o HostAccountOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// The protocol used by the host account. Valid values: SSH,RDP
+func (o HostAccountOutput) ProtocolName() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccount) pulumi.StringOutput { return v.ProtocolName }).(pulumi.StringOutput)
+}
+
 type HostAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (HostAccountArrayOutput) ElementType() reflect.Type {

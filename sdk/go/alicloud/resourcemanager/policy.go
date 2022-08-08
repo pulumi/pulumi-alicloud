@@ -33,7 +33,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
-// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v", "		{\n", "			\"Statement\": [{\n", "				\"Action\": [\"oss:*\"],\n", "				\"Effect\": \"Allow\",\n", "				\"Resource\": [\"acs:oss:*:*:*\"]\n", "			}],\n", "			\"Version\": \"1\"\n", "		}\n", "    \n")),
+// 			PolicyDocument: pulumi.String(fmt.Sprintf(`		{
+// 			"Statement": [{
+// 				"Action": ["oss:*"],
+// 				"Effect": "Allow",
+// 				"Resource": ["acs:oss:*:*:*"]
+// 			}],
+// 			"Version": "1"
+// 		}
+//
+// `)),
 // 			PolicyName: pulumi.String("abc12345"),
 // 		})
 // 		if err != nil {
@@ -248,6 +257,33 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
+}
+
+// The version of the policy. Default to v1.
+//
+// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
+func (o PolicyOutput) DefaultVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.DefaultVersion }).(pulumi.StringOutput)
+}
+
+// The description of the policy. The description must be 1 to 1,024 characters in length.
+func (o PolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The content of the policy. The content must be 1 to 2,048 characters in length.
+func (o PolicyOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyDocument }).(pulumi.StringOutput)
+}
+
+// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+func (o PolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// The type of the policy. Valid values: `Custom`, `System`.
+func (o PolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }
 
 type PolicyArrayOutput struct{ *pulumi.OutputState }

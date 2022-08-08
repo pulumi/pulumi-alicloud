@@ -39,6 +39,38 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .accountName(&#34;root&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
         return getAccounts(args, InvokeOptions.Empty);
@@ -49,6 +81,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .accountName(&#34;root&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -61,6 +125,38 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .accountName(&#34;root&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
@@ -71,6 +167,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .accountName(&#34;root&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -83,6 +211,37 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAuditPoliciesResult> getAuditPolicies(GetAuditPoliciesArgs args) {
         return getAuditPolicies(args, InvokeOptions.Empty);
@@ -93,6 +252,37 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAuditPoliciesResult> getAuditPoliciesPlain(GetAuditPoliciesPlainArgs args) {
@@ -105,6 +295,37 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAuditPoliciesResult> getAuditPolicies(GetAuditPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getAuditPolicies:getAuditPolicies", TypeShape.of(GetAuditPoliciesResult.class), args, Utilities.withVersion(options));
@@ -116,6 +337,37 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetAuditPoliciesResult> getAuditPoliciesPlain(GetAuditPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:mongodb/getAuditPolicies:getAuditPolicies", TypeShape.of(GetAuditPoliciesResult.class), args, Utilities.withVersion(options));
@@ -125,6 +377,37 @@ public final class MongodbFunctions {
      * Filters support regular expression for the instance name, engine or instance type.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -135,6 +418,37 @@ public final class MongodbFunctions {
      * Filters support regular expression for the instance name, engine or instance type.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -145,6 +459,37 @@ public final class MongodbFunctions {
      * Filters support regular expression for the instance name, engine or instance type.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -155,6 +500,37 @@ public final class MongodbFunctions {
      * Filters support regular expression for the instance name, engine or instance type.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -165,6 +541,37 @@ public final class MongodbFunctions {
      * Filters support regular expression for the instance name, engine or instance type.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -175,6 +582,37 @@ public final class MongodbFunctions {
      * Filters support regular expression for the instance name, engine or instance type.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -187,6 +625,49 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceClass(&#34;example_value&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .networkType(&#34;VPC&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerlessInstancesResult> getServerlessInstances() {
         return getServerlessInstances(GetServerlessInstancesArgs.Empty, InvokeOptions.Empty);
@@ -197,6 +678,49 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceClass(&#34;example_value&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .networkType(&#34;VPC&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerlessInstancesResult> getServerlessInstancesPlain() {
@@ -209,6 +733,49 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceClass(&#34;example_value&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .networkType(&#34;VPC&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerlessInstancesResult> getServerlessInstances(GetServerlessInstancesArgs args) {
         return getServerlessInstances(args, InvokeOptions.Empty);
@@ -219,6 +786,49 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceClass(&#34;example_value&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .networkType(&#34;VPC&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerlessInstancesResult> getServerlessInstancesPlain(GetServerlessInstancesPlainArgs args) {
@@ -231,6 +841,49 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceClass(&#34;example_value&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .networkType(&#34;VPC&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerlessInstancesResult> getServerlessInstances(GetServerlessInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getServerlessInstances:getServerlessInstances", TypeShape.of(GetServerlessInstancesResult.class), args, Utilities.withVersion(options));
@@ -241,6 +894,49 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.148.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceClass(&#34;example_value&#34;)
+     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .networkType(&#34;VPC&#34;)
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .vpcId(&#34;example_value&#34;)
+     *             .vswitchId(&#34;example_value&#34;)
+     *             .zoneId(&#34;example_value&#34;)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerlessInstancesResult> getServerlessInstancesPlain(GetServerlessInstancesPlainArgs args, InvokeOptions options) {
@@ -289,6 +985,39 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .nodeId(&#34;example_value&#34;)
+     *             .role(&#34;Primary&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs args) {
         return getShardingNetworkPublicAddresses(args, InvokeOptions.Empty);
@@ -299,6 +1028,39 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.149.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .nodeId(&#34;example_value&#34;)
+     *             .role(&#34;Primary&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddressesPlain(GetShardingNetworkPublicAddressesPlainArgs args) {
@@ -311,6 +1073,39 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .nodeId(&#34;example_value&#34;)
+     *             .role(&#34;Primary&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", TypeShape.of(GetShardingNetworkPublicAddressesResult.class), args, Utilities.withVersion(options));
@@ -322,6 +1117,39 @@ public final class MongodbFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .nodeId(&#34;example_value&#34;)
+     *             .role(&#34;Primary&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddressesPlain(GetShardingNetworkPublicAddressesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", TypeShape.of(GetShardingNetworkPublicAddressesResult.class), args, Utilities.withVersion(options));
@@ -332,6 +1160,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = MongodbFunctions.getZones();
+     * 
+     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -343,6 +1203,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = MongodbFunctions.getZones();
+     * 
+     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -354,6 +1246,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = MongodbFunctions.getZones();
+     * 
+     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -365,6 +1289,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = MongodbFunctions.getZones();
+     * 
+     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -376,6 +1332,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = MongodbFunctions.getZones();
+     * 
+     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -387,6 +1375,38 @@ public final class MongodbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = MongodbFunctions.getZones();
+     * 
+     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -40,7 +40,7 @@ import (
 // 			name = param
 // 		}
 // 		defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
-// 			Description: pulumi.String(fmt.Sprintf("%v%v", name, "-description")),
+// 			Description: pulumi.String(fmt.Sprintf("%v-description", name)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -54,7 +54,7 @@ import (
 // 		defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
 // 			Bucket: defaultBucket.ID(),
 // 			Key:    pulumi.String("fc/hello.zip"),
-// 			Content: pulumi.String(fmt.Sprintf("%v%v%v%v", "		# -*- coding: utf-8 -*-\n", "	def handler(event, context):\n", "		print \"hello world\"\n", "		return 'hello world'\n")),
+// 			Content: pulumi.String(fmt.Sprintf("		# -*- coding: utf-8 -*-\n	def handler(event, context):\n		print \"hello world\"\n		return 'hello world'\n")),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -311,6 +311,46 @@ func (o CustomDomainOutput) ToCustomDomainOutput() CustomDomainOutput {
 
 func (o CustomDomainOutput) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
 	return o
+}
+
+// The account id.
+func (o CustomDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The api version of Function Compute.
+func (o CustomDomainOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The configuration of HTTPS certificate.
+func (o CustomDomainOutput) CertConfig() CustomDomainCertConfigPtrOutput {
+	return o.ApplyT(func(v *CustomDomain) CustomDomainCertConfigPtrOutput { return v.CertConfig }).(CustomDomainCertConfigPtrOutput)
+}
+
+// The date this resource was created.
+func (o CustomDomainOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
+// The custom domain name. For example, "example.com".
+func (o CustomDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The date this resource was last modified.
+func (o CustomDomainOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The protocol, `HTTP` or `HTTP,HTTPS`.
+func (o CustomDomainOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The configuration of domain route, mapping the path and Function Compute function.
+func (o CustomDomainOutput) RouteConfigs() CustomDomainRouteConfigArrayOutput {
+	return o.ApplyT(func(v *CustomDomain) CustomDomainRouteConfigArrayOutput { return v.RouteConfigs }).(CustomDomainRouteConfigArrayOutput)
 }
 
 type CustomDomainArrayOutput struct{ *pulumi.OutputState }

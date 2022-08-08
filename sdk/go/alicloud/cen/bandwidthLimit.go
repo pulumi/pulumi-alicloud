@@ -308,6 +308,21 @@ func (o BandwidthLimitOutput) ToBandwidthLimitOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The bandwidth configured for the interconnected regions communication.
+func (o BandwidthLimitOutput) BandwidthLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *BandwidthLimit) pulumi.IntOutput { return v.BandwidthLimit }).(pulumi.IntOutput)
+}
+
+// The ID of the CEN.
+func (o BandwidthLimitOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthLimit) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// List of the two regions to interconnect. Must be two different regions.
+func (o BandwidthLimitOutput) RegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BandwidthLimit) pulumi.StringArrayOutput { return v.RegionIds }).(pulumi.StringArrayOutput)
+}
+
 type BandwidthLimitArrayOutput struct{ *pulumi.OutputState }
 
 func (BandwidthLimitArrayOutput) ElementType() reflect.Type {

@@ -391,6 +391,103 @@ func (o RouterInterfaceOutput) ToRouterInterfaceOutputWithContext(ctx context.Co
 	return o
 }
 
+// It has been deprecated from version 1.11.0.
+//
+// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
+func (o RouterInterfaceOutput) AccessPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.AccessPointId }).(pulumi.StringOutput)
+}
+
+// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
+func (o RouterInterfaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
+func (o RouterInterfaceOutput) HealthCheckSourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.HealthCheckSourceIp }).(pulumi.StringPtrOutput)
+}
+
+// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
+func (o RouterInterfaceOutput) HealthCheckTargetIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.HealthCheckTargetIp }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
+func (o RouterInterfaceOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
+// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
+func (o RouterInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from version 1.11.0.
+//
+// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
+func (o RouterInterfaceOutput) OppositeAccessPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.OppositeAccessPointId }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+//
+// Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+func (o RouterInterfaceOutput) OppositeInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeInterfaceId }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+//
+// Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
+func (o RouterInterfaceOutput) OppositeInterfaceOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeInterfaceOwnerId }).(pulumi.StringOutput)
+}
+
+// The Region of peer side.
+func (o RouterInterfaceOutput) OppositeRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRegion }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+//
+// Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+func (o RouterInterfaceOutput) OppositeRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRouterId }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+//
+// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+func (o RouterInterfaceOutput) OppositeRouterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRouterType }).(pulumi.StringOutput)
+}
+
+func (o RouterInterfaceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
+func (o RouterInterfaceOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// The Router ID.
+func (o RouterInterfaceOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
+func (o RouterInterfaceOutput) RouterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.RouterType }).(pulumi.StringOutput)
+}
+
+// Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
+func (o RouterInterfaceOutput) Specification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.Specification }).(pulumi.StringPtrOutput)
+}
+
 type RouterInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceArrayOutput) ElementType() reflect.Type {

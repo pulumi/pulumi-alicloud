@@ -384,6 +384,99 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The auto pay.
+func (o InstanceOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+// The auto renew.
+func (o InstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Description of the instance. 2 to 256 English or Chinese characters in length and cannot
+// start with `http://` and `https`.
+func (o InstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The eip bandwidth.
+func (o InstanceOutput) EipBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.EipBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The force.
+func (o InstanceOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// The ID Of The Image.
+func (o InstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The name of the instance. It must be 2 to 128 characters in length and must start with an
+// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+// the instance.
+func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// Instance Type.
+func (o InstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the key pair of the mobile phone instance.
+func (o InstanceOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// The payment type.Valid values: `PayAsYouGo`,`Subscription`
+func (o InstanceOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// The period. It is valid when `periodUnit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
+// is valid when `periodUnit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+func (o InstanceOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
+// to `Month`.
+func (o InstanceOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// The selected resolution for the cloud mobile phone instance.
+func (o InstanceOutput) Resolution() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Resolution }).(pulumi.StringOutput)
+}
+
+// The ID of the security group. The security group is the same as that of the
+// ECS instance.
+func (o InstanceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Instance status. Valid values: `Running`, `Stopped`.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Cloud mobile phone VNC password. The password must be six characters in length and must
+// contain only uppercase, lowercase English letters and Arabic numerals.
+func (o InstanceOutput) VncPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VncPassword }).(pulumi.StringPtrOutput)
+}
+
+// The vswitch id.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

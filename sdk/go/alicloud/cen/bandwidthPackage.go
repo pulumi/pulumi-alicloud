@@ -295,6 +295,71 @@ func (o BandwidthPackageOutput) ToBandwidthPackageOutputWithContext(ctx context.
 	return o
 }
 
+// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
+func (o BandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The name of the bandwidth package. Defaults to null.
+func (o BandwidthPackageOutput) CenBandwidthPackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.CenBandwidthPackageName }).(pulumi.StringOutput)
+}
+
+// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
+//
+// Deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.
+func (o BandwidthPackageOutput) ChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.ChargeType }).(pulumi.StringOutput)
+}
+
+// The description of the bandwidth package. Default to null.
+func (o BandwidthPackageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The time of the bandwidth package to expire.
+func (o BandwidthPackageOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+func (o BandwidthPackageOutput) GeographicRegionAId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.GeographicRegionAId }).(pulumi.StringOutput)
+}
+
+// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
+func (o BandwidthPackageOutput) GeographicRegionBId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.GeographicRegionBId }).(pulumi.StringOutput)
+}
+
+// Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
+//
+// Deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
+func (o BandwidthPackageOutput) GeographicRegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringArrayOutput { return v.GeographicRegionIds }).(pulumi.StringArrayOutput)
+}
+
+// Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+//
+// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
+func (o BandwidthPackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+func (o BandwidthPackageOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o BandwidthPackageOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The association status of the bandwidth package.
+func (o BandwidthPackageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type BandwidthPackageArrayOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageArrayOutput) ElementType() reflect.Type {

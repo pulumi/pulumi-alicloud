@@ -30,7 +30,29 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := oos.NewTemplate(ctx, "default", &oos.TemplateArgs{
-// 			Content:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"FormatVersion\": \"OOS-2019-06-01\",\n", "    \"Description\": \"Update Describe instances of given status\",\n", "    \"Parameters\":{\n", "      \"Status\":{\n", "        \"Type\": \"String\",\n", "        \"Description\": \"(Required) The status of the Ecs instance.\"\n", "      }\n", "    },\n", "    \"Tasks\": [\n", "      {\n", "        \"Properties\" :{\n", "          \"Parameters\":{\n", "            \"Status\": \"{{ Status }}\"\n", "          },\n", "          \"API\": \"DescribeInstances\",\n", "          \"Service\": \"Ecs\"\n", "        },\n", "        \"Name\": \"foo\",\n", "        \"Action\": \"ACS::ExecuteApi\"\n", "      }]\n", "  }\n")),
+// 			Content: pulumi.String(fmt.Sprintf(`  {
+//     "FormatVersion": "OOS-2019-06-01",
+//     "Description": "Update Describe instances of given status",
+//     "Parameters":{
+//       "Status":{
+//         "Type": "String",
+//         "Description": "(Required) The status of the Ecs instance."
+//       }
+//     },
+//     "Tasks": [
+//       {
+//         "Properties" :{
+//           "Parameters":{
+//             "Status": "{{ Status }}"
+//           },
+//           "API": "DescribeInstances",
+//           "Service": "Ecs"
+//         },
+//         "Name": "foo",
+//         "Action": "ACS::ExecuteApi"
+//       }]
+//   }
+// `)),
 // 			TemplateName: pulumi.String("test-name"),
 // 			VersionName:  pulumi.String("test"),
 // 			Tags: pulumi.AnyMap{
@@ -361,6 +383,111 @@ func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {
 
 func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
 	return o
+}
+
+// The counters of OOS Execution.
+func (o ExecutionOutput) Counters() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Counters }).(pulumi.StringOutput)
+}
+
+// The time when the execution was created.
+func (o ExecutionOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+// The description of OOS Execution.
+func (o ExecutionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The time when the execution was ended.
+func (o ExecutionOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
+}
+
+// The user who execute the template.
+func (o ExecutionOutput) ExecutedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.ExecutedBy }).(pulumi.StringOutput)
+}
+
+// Whether to include subtasks.
+func (o ExecutionOutput) IsParent() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Execution) pulumi.BoolOutput { return v.IsParent }).(pulumi.BoolOutput)
+}
+
+// The loop mode of OOS Execution.
+func (o ExecutionOutput) LoopMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.LoopMode }).(pulumi.StringPtrOutput)
+}
+
+// The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
+func (o ExecutionOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The outputs of OOS Execution.
+func (o ExecutionOutput) Outputs() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Outputs }).(pulumi.StringOutput)
+}
+
+// The parameters required by the template. Default to `{}`.
+func (o ExecutionOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.Parameters }).(pulumi.StringPtrOutput)
+}
+
+// The id of parent execution.
+func (o ExecutionOutput) ParentExecutionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.ParentExecutionId }).(pulumi.StringPtrOutput)
+}
+
+// The role that executes the current template.
+func (o ExecutionOutput) RamRole() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.RamRole }).(pulumi.StringOutput)
+}
+
+// The mode of safety check.
+func (o ExecutionOutput) SafetyCheck() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.SafetyCheck }).(pulumi.StringPtrOutput)
+}
+
+// The time when the execution was started.
+func (o ExecutionOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
+}
+
+// The status of OOS Execution.
+func (o ExecutionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The message of status.
+func (o ExecutionOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+func (o ExecutionOutput) TemplateContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringPtrOutput { return v.TemplateContent }).(pulumi.StringPtrOutput)
+}
+
+// The id of template.
+func (o ExecutionOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// The name of execution template.
+func (o ExecutionOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The version of execution template.
+func (o ExecutionOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+// The time when the execution was updated.
+func (o ExecutionOutput) UpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.UpdateDate }).(pulumi.StringOutput)
 }
 
 type ExecutionArrayOutput struct{ *pulumi.OutputState }

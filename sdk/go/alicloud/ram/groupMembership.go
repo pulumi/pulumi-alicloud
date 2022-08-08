@@ -237,6 +237,16 @@ func (o GroupMembershipOutput) ToGroupMembershipOutputWithContext(ctx context.Co
 	return o
 }
 
+// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+func (o GroupMembershipOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+func (o GroupMembershipOutput) UserNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.StringArrayOutput { return v.UserNames }).(pulumi.StringArrayOutput)
+}
+
 type GroupMembershipArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipArrayOutput) ElementType() reflect.Type {

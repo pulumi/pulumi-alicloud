@@ -411,6 +411,106 @@ func (o VirtualBorderRouterOutput) ToVirtualBorderRouterOutputWithContext(ctx co
 	return o
 }
 
+// The associated physical connections.
+func (o VirtualBorderRouterOutput) AssociatedPhysicalConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.AssociatedPhysicalConnections }).(pulumi.StringPtrOutput)
+}
+
+// The bandwidth.
+func (o VirtualBorderRouterOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Operators for physical connection circuit provided coding.
+func (o VirtualBorderRouterOutput) CircuitCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.CircuitCode }).(pulumi.StringPtrOutput)
+}
+
+// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+func (o VirtualBorderRouterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+func (o VirtualBorderRouterOutput) DetectMultiplier() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntOutput { return v.DetectMultiplier }).(pulumi.IntOutput)
+}
+
+// Whether to Enable IPv6. Valid values: `false`, `true`.
+func (o VirtualBorderRouterOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.BoolOutput { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
+// Alibaba Cloud-Connected IPv4 address.
+func (o VirtualBorderRouterOutput) LocalGatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.LocalGatewayIp }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud-Connected IPv6 Address.
+func (o VirtualBorderRouterOutput) LocalIpv6GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.LocalIpv6GatewayIp }).(pulumi.StringPtrOutput)
+}
+
+// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+func (o VirtualBorderRouterOutput) MinRxInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntOutput { return v.MinRxInterval }).(pulumi.IntOutput)
+}
+
+// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+func (o VirtualBorderRouterOutput) MinTxInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntOutput { return v.MinTxInterval }).(pulumi.IntOutput)
+}
+
+// The Client-Side Interconnection IPv4 Address.
+func (o VirtualBorderRouterOutput) PeerGatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.PeerGatewayIp }).(pulumi.StringOutput)
+}
+
+// The Client-Side Interconnection IPv6 Address.
+func (o VirtualBorderRouterOutput) PeerIpv6GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.PeerIpv6GatewayIp }).(pulumi.StringPtrOutput)
+}
+
+// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+func (o VirtualBorderRouterOutput) PeeringIpv6SubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.PeeringIpv6SubnetMask }).(pulumi.StringPtrOutput)
+}
+
+// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+func (o VirtualBorderRouterOutput) PeeringSubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.PeeringSubnetMask }).(pulumi.StringOutput)
+}
+
+// The ID of the Physical Connection to Which the ID.
+func (o VirtualBorderRouterOutput) PhysicalConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.PhysicalConnectionId }).(pulumi.StringOutput)
+}
+
+// (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+func (o VirtualBorderRouterOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+func (o VirtualBorderRouterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The vbr owner id.
+func (o VirtualBorderRouterOutput) VbrOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.VbrOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+func (o VirtualBorderRouterOutput) VirtualBorderRouterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringPtrOutput { return v.VirtualBorderRouterName }).(pulumi.StringPtrOutput)
+}
+
+// The VLAN ID of the VBR. Value range: 0~2999.
+func (o VirtualBorderRouterOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntOutput { return v.VlanId }).(pulumi.IntOutput)
+}
+
 type VirtualBorderRouterArrayOutput struct{ *pulumi.OutputState }
 
 func (VirtualBorderRouterArrayOutput) ElementType() reflect.Type {

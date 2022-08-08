@@ -27,6 +27,126 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.Database;
+ * import com.pulumi.alicloud.rds.DatabaseArgs;
+ * import com.pulumi.alicloud.rds.Account;
+ * import com.pulumi.alicloud.rds.AccountArgs;
+ * import com.pulumi.alicloud.rds.AccountPrivilege;
+ * import com.pulumi.alicloud.rds.AccountPrivilegeArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.dts.SubscriptionJob;
+ * import com.pulumi.alicloud.dts.SubscriptionJobArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;dtsSubscriptionJob&#34;);
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;5.6&#34;)
+ *             .instanceType(&#34;rds.mysql.s1.small&#34;)
+ *             .instanceStorage(&#34;10&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new Database(&#34;db-&#34; + i, DatabaseArgs.builder()            
+ *                 .instanceId(instance.id())
+ *                 .description(&#34;from terraform&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *             .instanceId(instance.id())
+ *             .password(&#34;Test12345&#34;)
+ *             .description(&#34;from terraform&#34;)
+ *             .build());
+ * 
+ *         var privilege = new AccountPrivilege(&#34;privilege&#34;, AccountPrivilegeArgs.builder()        
+ *             .instanceId(instance.id())
+ *             .accountName(account.name())
+ *             .privilege(&#34;ReadWrite&#34;)
+ *             .dbNames(db.stream().map(element -&gt; element.name()).collect(toList()))
+ *             .build());
+ * 
+ *         final var default1Networks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var default1Switches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(data.alicloud_vpcs().default().ids()[0])
+ *             .build());
+ * 
+ *         var defaultSubscriptionJob = new SubscriptionJob(&#34;defaultSubscriptionJob&#34;, SubscriptionJobArgs.builder()        
+ *             .dtsJobName(name)
+ *             .paymentType(&#34;PostPaid&#34;)
+ *             .sourceEndpointEngineName(&#34;MySQL&#34;)
+ *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .sourceEndpointInstanceType(&#34;RDS&#34;)
+ *             .sourceEndpointInstanceId(instance.id())
+ *             .sourceEndpointDatabaseName(&#34;tfaccountpri_0&#34;)
+ *             .sourceEndpointUserName(&#34;tftestprivilege&#34;)
+ *             .sourceEndpointPassword(&#34;Test12345&#34;)
+ *             .dbList(&#34;&#34;&#34;
+ *         {&#34;dtstestdata&#34;: {&#34;name&#34;: &#34;tfaccountpri_0&#34;, &#34;all&#34;: true}}
+ *             &#34;&#34;&#34;)
+ *             .subscriptionInstanceNetworkType(&#34;vpc&#34;)
+ *             .subscriptionInstanceVpcId(default1Networks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .subscriptionInstanceVswitchId(default1Switches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .status(&#34;Normal&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DTS Subscription Job can be imported using the id, e.g.

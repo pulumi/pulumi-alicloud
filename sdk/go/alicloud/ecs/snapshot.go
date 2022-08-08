@@ -283,6 +283,62 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+func (o SnapshotOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The source disk ID.
+func (o SnapshotOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
+}
+
+func (o SnapshotOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+func (o SnapshotOutput) InstantAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.InstantAccess }).(pulumi.BoolPtrOutput)
+}
+
+func (o SnapshotOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.InstantAccessRetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+func (o SnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o SnapshotOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+func (o SnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+func (o SnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SnapshotOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type SnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (SnapshotArrayOutput) ElementType() reflect.Type {

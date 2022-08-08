@@ -325,6 +325,61 @@ func (o EcsBackupClientOutput) ToEcsBackupClientOutputWithContext(ctx context.Co
 	return o
 }
 
+// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
+func (o EcsBackupClientOutput) DataNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.DataNetworkType }).(pulumi.StringOutput)
+}
+
+// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
+func (o EcsBackupClientOutput) DataProxySetting() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.DataProxySetting }).(pulumi.StringOutput)
+}
+
+// The ID of ECS instance.
+func (o EcsBackupClientOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores used by a single backup task, 0 means no restrictions.
+func (o EcsBackupClientOutput) MaxCpuCore() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.MaxCpuCore }).(pulumi.StringOutput)
+}
+
+// The number of concurrent jobs for a single backup task, 0 means no restrictions.
+func (o EcsBackupClientOutput) MaxWorker() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.MaxWorker }).(pulumi.StringOutput)
+}
+
+// Custom data plane proxy server host address.
+func (o EcsBackupClientOutput) ProxyHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.ProxyHost }).(pulumi.StringOutput)
+}
+
+// The password of custom data plane proxy server.
+func (o EcsBackupClientOutput) ProxyPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.ProxyPassword }).(pulumi.StringOutput)
+}
+
+// Custom data plane proxy server host port.
+func (o EcsBackupClientOutput) ProxyPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.ProxyPort }).(pulumi.StringOutput)
+}
+
+// The username of custom data plane proxy server.
+func (o EcsBackupClientOutput) ProxyUser() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.ProxyUser }).(pulumi.StringOutput)
+}
+
+// Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
+func (o EcsBackupClientOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
+func (o EcsBackupClientOutput) UseHttps() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsBackupClient) pulumi.BoolOutput { return v.UseHttps }).(pulumi.BoolOutput)
+}
+
 type EcsBackupClientArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupClientArrayOutput) ElementType() reflect.Type {

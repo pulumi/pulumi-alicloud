@@ -24,6 +24,40 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Activation;
+ * import com.pulumi.alicloud.ecs.ActivationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Activation(&#34;example&#34;, ActivationArgs.builder()        
+ *             .description(var_.name())
+ *             .instanceCount(10)
+ *             .instanceName(var_.name())
+ *             .ipAddressRange(&#34;0.0.0.0/0&#34;)
+ *             .timeToLiveInHours(4)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Activation can be imported using the id, e.g.

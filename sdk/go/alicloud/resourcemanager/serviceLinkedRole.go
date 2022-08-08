@@ -237,6 +237,36 @@ func (o ServiceLinkedRoleOutput) ToServiceLinkedRoleOutputWithContext(ctx contex
 	return o
 }
 
+// The Alibaba Cloud Resource Name (ARN) of the role.
+func (o ServiceLinkedRoleOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
+func (o ServiceLinkedRoleOutput) CustomSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringPtrOutput { return v.CustomSuffix }).(pulumi.StringPtrOutput)
+}
+
+// The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
+func (o ServiceLinkedRoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the role.
+func (o ServiceLinkedRoleOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// The name of the role.
+func (o ServiceLinkedRoleOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
+func (o ServiceLinkedRoleOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
 type ServiceLinkedRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceLinkedRoleArrayOutput) ElementType() reflect.Type {

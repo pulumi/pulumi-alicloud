@@ -234,6 +234,31 @@ func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutputWithContext(ct
 	return o
 }
 
+// The ID of the application that you want to deploy.
+func (o ApplicationDeploymentOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationDeployment) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
+func (o ApplicationDeploymentOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationDeployment) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Last package version deployed.
+func (o ApplicationDeploymentOutput) LastPackageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationDeployment) pulumi.StringOutput { return v.LastPackageVersion }).(pulumi.StringOutput)
+}
+
+// The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
+func (o ApplicationDeploymentOutput) PackageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationDeployment) pulumi.StringPtrOutput { return v.PackageVersion }).(pulumi.StringPtrOutput)
+}
+
+// The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
+func (o ApplicationDeploymentOutput) WarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationDeployment) pulumi.StringOutput { return v.WarUrl }).(pulumi.StringOutput)
+}
+
 type ApplicationDeploymentArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationDeploymentArrayOutput) ElementType() reflect.Type {

@@ -25,6 +25,36 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cfg.ConfigurationRecorder;
+ * import com.pulumi.alicloud.cfg.ConfigurationRecorderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ConfigurationRecorder(&#34;example&#34;, ConfigurationRecorderArgs.builder()        
+ *             .resourceTypes(            
+ *                 &#34;ACS::ECS::Instance&#34;,
+ *                 &#34;ACS::ECS::Disk&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

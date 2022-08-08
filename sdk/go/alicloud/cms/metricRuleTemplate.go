@@ -315,6 +315,61 @@ func (o MetricRuleTemplateOutput) ToMetricRuleTemplateOutputWithContext(ctx cont
 	return o
 }
 
+// The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
+func (o MetricRuleTemplateOutput) AlertTemplates() MetricRuleTemplateAlertTemplateArrayOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) MetricRuleTemplateAlertTemplateArrayOutput { return v.AlertTemplates }).(MetricRuleTemplateAlertTemplateArrayOutput)
+}
+
+// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+func (o MetricRuleTemplateOutput) ApplyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.ApplyMode }).(pulumi.StringPtrOutput)
+}
+
+// The description of the alert template.
+func (o MetricRuleTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+func (o MetricRuleTemplateOutput) EnableEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.EnableEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+func (o MetricRuleTemplateOutput) EnableStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.EnableStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the application group.
+func (o MetricRuleTemplateOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the alert template.
+func (o MetricRuleTemplateOutput) MetricRuleTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringOutput { return v.MetricRuleTemplateName }).(pulumi.StringOutput)
+}
+
+// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+func (o MetricRuleTemplateOutput) NotifyLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.NotifyLevel }).(pulumi.StringPtrOutput)
+}
+
+// The version of the alert template to be modified.
+func (o MetricRuleTemplateOutput) RestVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringOutput { return v.RestVersion }).(pulumi.StringOutput)
+}
+
+// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+func (o MetricRuleTemplateOutput) SilenceTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.IntPtrOutput { return v.SilenceTime }).(pulumi.IntPtrOutput)
+}
+
+// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+func (o MetricRuleTemplateOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.Webhook }).(pulumi.StringPtrOutput)
+}
+
 type MetricRuleTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateArrayOutput) ElementType() reflect.Type {

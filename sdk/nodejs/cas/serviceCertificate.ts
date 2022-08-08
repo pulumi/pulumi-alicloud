@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * const example = new alicloud.cas.ServiceCertificate("example", {
  *     certificateName: "test",

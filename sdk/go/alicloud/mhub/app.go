@@ -276,6 +276,41 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
+// AppName.
+func (o AppOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AppName }).(pulumi.StringOutput)
+}
+
+// The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
+func (o AppOutput) BundleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BundleId }).(pulumi.StringPtrOutput)
+}
+
+// Base64 string of picture.
+func (o AppOutput) EncodedIcon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.EncodedIcon }).(pulumi.StringPtrOutput)
+}
+
+// The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
+func (o AppOutput) IndustryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.IndustryId }).(pulumi.StringOutput)
+}
+
+// Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
+func (o AppOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.PackageName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Product.
+func (o AppOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ProductId }).(pulumi.StringOutput)
+}
+
+// The type of the Product. Valid values: `Android` and `iOS`.
+func (o AppOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type AppArrayOutput struct{ *pulumi.OutputState }
 
 func (AppArrayOutput) ElementType() reflect.Type {

@@ -26,6 +26,40 @@ public final class SagFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.rocketmq.Acl;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(alicloud_sag_acls.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls() {
         return getAcls(GetAclsArgs.Empty, InvokeOptions.Empty);
@@ -38,6 +72,40 @@ public final class SagFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.rocketmq.Acl;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(alicloud_sag_acls.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain() {
@@ -52,6 +120,40 @@ public final class SagFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.rocketmq.Acl;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(alicloud_sag_acls.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args) {
         return getAcls(args, InvokeOptions.Empty);
@@ -64,6 +166,40 @@ public final class SagFunctions {
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.rocketmq.Acl;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(alicloud_sag_acls.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args) {
@@ -78,6 +214,40 @@ public final class SagFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.rocketmq.Acl;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(alicloud_sag_acls.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sag/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
@@ -91,6 +261,40 @@ public final class SagFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.rocketmq.Acl;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(alicloud_sag_acls.default().id())
+     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .build());
+     * 
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sag/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
@@ -101,6 +305,42 @@ public final class SagFunctions {
      * &gt; **NOTE:** Available in v1.168.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSmartagFlowLogsResult> getSmartagFlowLogs() {
@@ -113,6 +353,42 @@ public final class SagFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetSmartagFlowLogsResult> getSmartagFlowLogsPlain() {
         return getSmartagFlowLogsPlain(GetSmartagFlowLogsPlainArgs.Empty, InvokeOptions.Empty);
@@ -123,6 +399,42 @@ public final class SagFunctions {
      * &gt; **NOTE:** Available in v1.168.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSmartagFlowLogsResult> getSmartagFlowLogs(GetSmartagFlowLogsArgs args) {
@@ -135,6 +447,42 @@ public final class SagFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetSmartagFlowLogsResult> getSmartagFlowLogsPlain(GetSmartagFlowLogsPlainArgs args) {
         return getSmartagFlowLogsPlain(args, InvokeOptions.Empty);
@@ -146,6 +494,42 @@ public final class SagFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSmartagFlowLogsResult> getSmartagFlowLogs(GetSmartagFlowLogsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", TypeShape.of(GetSmartagFlowLogsResult.class), args, Utilities.withVersion(options));
@@ -156,6 +540,42 @@ public final class SagFunctions {
      * &gt; **NOTE:** Available in v1.168.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSmartagFlowLogsResult> getSmartagFlowLogsPlain(GetSmartagFlowLogsPlainArgs args, InvokeOptions options) {

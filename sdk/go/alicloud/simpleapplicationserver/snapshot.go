@@ -193,6 +193,21 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+// The ID of the disk.
+func (o SnapshotOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
+func (o SnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
+func (o SnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (SnapshotArrayOutput) ElementType() reflect.Type {

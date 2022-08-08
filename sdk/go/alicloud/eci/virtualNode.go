@@ -359,6 +359,61 @@ func (o VirtualNodeOutput) ToVirtualNodeOutputWithContext(ctx context.Context) V
 	return o
 }
 
+// The Id of eip.
+func (o VirtualNodeOutput) EipInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringOutput { return v.EipInstanceId }).(pulumi.StringOutput)
+}
+
+// Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
+func (o VirtualNodeOutput) EnablePublicNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.BoolPtrOutput { return v.EnablePublicNetwork }).(pulumi.BoolPtrOutput)
+}
+
+// The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
+func (o VirtualNodeOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
+}
+
+// The resource group ID.
+func (o VirtualNodeOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The security group ID.
+func (o VirtualNodeOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
+func (o VirtualNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o VirtualNodeOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The taint. See the following `Block taints`.
+func (o VirtualNodeOutput) Taints() VirtualNodeTaintArrayOutput {
+	return o.ApplyT(func(v *VirtualNode) VirtualNodeTaintArrayOutput { return v.Taints }).(VirtualNodeTaintArrayOutput)
+}
+
+// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
+func (o VirtualNodeOutput) VirtualNodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringPtrOutput { return v.VirtualNodeName }).(pulumi.StringPtrOutput)
+}
+
+// The vswitch id.
+func (o VirtualNodeOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone.
+func (o VirtualNodeOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type VirtualNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (VirtualNodeArrayOutput) ElementType() reflect.Type {

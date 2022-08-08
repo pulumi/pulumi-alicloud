@@ -221,6 +221,23 @@ func (o DomainGroupOutput) ToDomainGroupOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
+func (o DomainGroupOutput) DomainGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainGroup) pulumi.StringOutput { return v.DomainGroupName }).(pulumi.StringOutput)
+}
+
+// The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
+//
+// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
+func (o DomainGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// User language.
+func (o DomainGroupOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainGroup) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
 type DomainGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainGroupArrayOutput) ElementType() reflect.Type {

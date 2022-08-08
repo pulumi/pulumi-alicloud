@@ -104,6 +104,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> BackupRetentionPolicyOnClusterDeletion { get; private set; } = null!;
 
         /// <summary>
+        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        /// &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+        /// </summary>
+        [Output("cloneDataPoint")]
+        public Output<string?> CloneDataPoint { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Output("collectorStatus")]
@@ -114,6 +121,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
+
+        /// <summary>
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        /// </summary>
+        [Output("creationCategory")]
+        public Output<string> CreationCategory { get; private set; } = null!;
+
+        /// <summary>
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        /// &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+        /// </summary>
+        [Output("creationOption")]
+        public Output<string> CreationOption { get; private set; } = null!;
 
         /// <summary>
         /// db_cluster_ip_array defines how users can send requests to your API.
@@ -133,7 +154,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Output("dbNodeCount")]
-        public Output<int?> DbNodeCount { get; private set; } = null!;
+        public Output<int> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -166,6 +187,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("encryptNewTables")]
         public Output<string?> EncryptNewTables { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the global database network (GDN).
+        /// &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+        /// </summary>
+        [Output("gdnId")]
+        public Output<string?> GdnId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -226,6 +254,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        /// </summary>
+        [Output("sourceResourceId")]
+        public Output<string?> SourceResourceId { get; private set; } = null!;
 
         /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
@@ -320,10 +354,31 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
+        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        /// &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+        /// </summary>
+        [Input("cloneDataPoint")]
+        public Input<string>? CloneDataPoint { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Input("collectorStatus")]
         public Input<string>? CollectorStatus { get; set; }
+
+        /// <summary>
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        /// </summary>
+        [Input("creationCategory")]
+        public Input<string>? CreationCategory { get; set; }
+
+        /// <summary>
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        /// &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+        /// </summary>
+        [Input("creationOption")]
+        public Input<string>? CreationOption { get; set; }
 
         [Input("dbClusterIpArrays")]
         private InputList<Inputs.ClusterDbClusterIpArrayArgs>? _dbClusterIpArrays;
@@ -382,6 +437,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("encryptNewTables")]
         public Input<string>? EncryptNewTables { get; set; }
+
+        /// <summary>
+        /// The ID of the global database network (GDN).
+        /// &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+        /// </summary>
+        [Input("gdnId")]
+        public Input<string>? GdnId { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -462,6 +524,12 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
+        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        /// </summary>
+        [Input("sourceResourceId")]
+        public Input<string>? SourceResourceId { get; set; }
+
+        /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         /// </summary>
         [Input("subCategory")]
@@ -521,6 +589,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
+        /// The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+        /// &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+        /// </summary>
+        [Input("cloneDataPoint")]
+        public Input<string>? CloneDataPoint { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Input("collectorStatus")]
@@ -531,6 +606,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
+
+        /// <summary>
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        /// </summary>
+        [Input("creationCategory")]
+        public Input<string>? CreationCategory { get; set; }
+
+        /// <summary>
+        /// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+        /// &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+        /// </summary>
+        [Input("creationOption")]
+        public Input<string>? CreationOption { get; set; }
 
         [Input("dbClusterIpArrays")]
         private InputList<Inputs.ClusterDbClusterIpArrayGetArgs>? _dbClusterIpArrays;
@@ -589,6 +678,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("encryptNewTables")]
         public Input<string>? EncryptNewTables { get; set; }
+
+        /// <summary>
+        /// The ID of the global database network (GDN).
+        /// &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+        /// </summary>
+        [Input("gdnId")]
+        public Input<string>? GdnId { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -667,6 +763,12 @@ namespace Pulumi.AliCloud.PolarDB
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        /// </summary>
+        [Input("sourceResourceId")]
+        public Input<string>? SourceResourceId { get; set; }
 
         /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.

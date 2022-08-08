@@ -438,6 +438,106 @@ func (o GtmInstanceOutput) ToGtmInstanceOutputWithContext(ctx context.Context) G
 	return o
 }
 
+// The alert notification methods. See the following `Block alertConfig`.
+func (o GtmInstanceOutput) AlertConfigs() GtmInstanceAlertConfigArrayOutput {
+	return o.ApplyT(func(v *GtmInstance) GtmInstanceAlertConfigArrayOutput { return v.AlertConfigs }).(GtmInstanceAlertConfigArrayOutput)
+}
+
+// The alert group.
+func (o GtmInstanceOutput) AlertGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringArrayOutput { return v.AlertGroups }).(pulumi.StringArrayOutput)
+}
+
+// The access type of the CNAME domain name. Valid value: `PUBLIC`.
+func (o GtmInstanceOutput) CnameType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.CnameType }).(pulumi.StringOutput)
+}
+
+// The force update.
+func (o GtmInstanceOutput) ForceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// The quota of detection tasks.
+func (o GtmInstanceOutput) HealthCheckTaskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.IntOutput { return v.HealthCheckTaskCount }).(pulumi.IntOutput)
+}
+
+// The name of the instance.
+func (o GtmInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The lang.
+func (o GtmInstanceOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// Paid package version. Valid values: `ultimate`, `standard`.
+func (o GtmInstanceOutput) PackageEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.PackageEdition }).(pulumi.StringOutput)
+}
+
+// The Payment Type of the resource. Valid value: `Subscription`.
+func (o GtmInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
+func (o GtmInstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
+func (o GtmInstanceOutput) PublicCnameMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.PublicCnameMode }).(pulumi.StringOutput)
+}
+
+// The CNAME access domain name.
+func (o GtmInstanceOutput) PublicRr() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.PublicRr }).(pulumi.StringOutput)
+}
+
+// The website domain name that the user uses on the Internet.
+func (o GtmInstanceOutput) PublicUserDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.PublicUserDomainName }).(pulumi.StringOutput)
+}
+
+// The domain name that is used to access GTM over the Internet.
+func (o GtmInstanceOutput) PublicZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.PublicZoneName }).(pulumi.StringOutput)
+}
+
+// Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
+func (o GtmInstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
+func (o GtmInstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GtmInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The quota of SMS notifications.
+func (o GtmInstanceOutput) SmsNotificationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.IntOutput { return v.SmsNotificationCount }).(pulumi.IntOutput)
+}
+
+// The type of the access policy. Valid values: `GEO`, `LATENCY`.
+func (o GtmInstanceOutput) StrategyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.StringOutput { return v.StrategyMode }).(pulumi.StringOutput)
+}
+
+// The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
+func (o GtmInstanceOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GtmInstance) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
 type GtmInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GtmInstanceArrayOutput) ElementType() reflect.Type {

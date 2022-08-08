@@ -247,6 +247,31 @@ func (o RealTimeLogDeliveryOutput) ToRealTimeLogDeliveryOutputWithContext(ctx co
 	return o
 }
 
+// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+func (o RealTimeLogDeliveryOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+func (o RealTimeLogDeliveryOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The name of the Log Service project that is used for real-time log delivery.
+func (o RealTimeLogDeliveryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region where the Log Service project is deployed.
+func (o RealTimeLogDeliveryOutput) SlsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.SlsRegion }).(pulumi.StringOutput)
+}
+
+// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+func (o RealTimeLogDeliveryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type RealTimeLogDeliveryArrayOutput struct{ *pulumi.OutputState }
 
 func (RealTimeLogDeliveryArrayOutput) ElementType() reflect.Type {

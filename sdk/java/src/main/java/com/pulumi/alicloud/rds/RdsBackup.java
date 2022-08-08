@@ -24,6 +24,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.RdsBackup;
+ * import com.pulumi.alicloud.rds.RdsBackupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;5.6&#34;)
+ *             .instanceType(&#34;rds.mysql.t1.small&#34;)
+ *             .instanceStorage(&#34;30&#34;)
+ *             .instanceChargeType(&#34;Postpaid&#34;)
+ *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .build());
+ * 
+ *         var exampleRdsBackup = new RdsBackup(&#34;exampleRdsBackup&#34;, RdsBackupArgs.builder()        
+ *             .dbInstanceId(exampleInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * RDS Backup can be imported using the id, e.g.

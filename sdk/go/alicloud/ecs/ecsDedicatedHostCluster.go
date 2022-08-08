@@ -250,6 +250,31 @@ func (o EcsDedicatedHostClusterOutput) ToEcsDedicatedHostClusterOutputWithContex
 	return o
 }
 
+// The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
+func (o EcsDedicatedHostClusterOutput) DedicatedHostClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDedicatedHostCluster) pulumi.StringPtrOutput { return v.DedicatedHostClusterName }).(pulumi.StringPtrOutput)
+}
+
+// The description of the dedicated host cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+func (o EcsDedicatedHostClusterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDedicatedHostCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The dry run.
+func (o EcsDedicatedHostClusterOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsDedicatedHostCluster) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o EcsDedicatedHostClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EcsDedicatedHostCluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the zone in which to create the dedicated host cluster.
+func (o EcsDedicatedHostClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDedicatedHostCluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type EcsDedicatedHostClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsDedicatedHostClusterArrayOutput) ElementType() reflect.Type {

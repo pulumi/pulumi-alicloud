@@ -417,6 +417,120 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+func (o RuleOutput) Cookie() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Cookie }).(pulumi.StringPtrOutput)
+}
+
+// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+func (o RuleOutput) CookieTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.CookieTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (o RuleOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.BoolPtrOutput { return v.DeleteProtectionValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
+// and wildcard characters. The following two domain name formats are supported:
+// - Standard domain name: www.test.com
+// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
+func (o RuleOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
+func (o RuleOutput) FrontendPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.FrontendPort }).(pulumi.IntOutput)
+}
+
+// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
+func (o RuleOutput) HealthCheck() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.HealthCheck }).(pulumi.StringPtrOutput)
+}
+
+// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+func (o RuleOutput) HealthCheckConnectPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
+}
+
+// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+func (o RuleOutput) HealthCheckDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.HealthCheckDomain }).(pulumi.StringPtrOutput)
+}
+
+// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
+func (o RuleOutput) HealthCheckHttpCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.HealthCheckHttpCode }).(pulumi.StringPtrOutput)
+}
+
+// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
+func (o RuleOutput) HealthCheckInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
+}
+
+// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
+func (o RuleOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
+}
+
+// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+func (o RuleOutput) HealthCheckUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.HealthCheckUri }).(pulumi.StringPtrOutput)
+}
+
+// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+func (o RuleOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+func (o RuleOutput) ListenerSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.ListenerSync }).(pulumi.StringPtrOutput)
+}
+
+// The Load Balancer ID which is used to launch the new forwarding rule.
+func (o RuleOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+// Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
+func (o RuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+func (o RuleOutput) Scheduler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Scheduler }).(pulumi.StringPtrOutput)
+}
+
+// ID of a virtual server group that will be forwarded.
+func (o RuleOutput) ServerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ServerGroupId }).(pulumi.StringOutput)
+}
+
+// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
+func (o RuleOutput) StickySession() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.StickySession }).(pulumi.StringPtrOutput)
+}
+
+// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+func (o RuleOutput) StickySessionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.StickySessionType }).(pulumi.StringPtrOutput)
+}
+
+// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+func (o RuleOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
+// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+func (o RuleOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
+}
+
 type RuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleArrayOutput) ElementType() reflect.Type {

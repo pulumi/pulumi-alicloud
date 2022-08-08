@@ -24,6 +24,48 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.AccessGroup;
+ * import com.pulumi.alicloud.nas.AccessGroupArgs;
+ * import com.pulumi.alicloud.nas.AccessRule;
+ * import com.pulumi.alicloud.nas.AccessRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooAccessGroup = new AccessGroup(&#34;fooAccessGroup&#34;, AccessGroupArgs.builder()        
+ *             .accessGroupName(&#34;tf-NasConfigName&#34;)
+ *             .accessGroupType(&#34;Vpc&#34;)
+ *             .description(&#34;tf-testAccNasConfig&#34;)
+ *             .build());
+ * 
+ *         var fooAccessRule = new AccessRule(&#34;fooAccessRule&#34;, AccessRuleArgs.builder()        
+ *             .accessGroupName(fooAccessGroup.accessGroupName())
+ *             .sourceCidrIp(&#34;168.1.1.0/16&#34;)
+ *             .rwAccessType(&#34;RDWR&#34;)
+ *             .userAccessType(&#34;no_squash&#34;)
+ *             .priority(2)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Nas Access Rule can be imported using the id, e.g.

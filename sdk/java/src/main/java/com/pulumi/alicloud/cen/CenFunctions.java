@@ -81,6 +81,35 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
+     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetBandwidthLimitsResult> getBandwidthLimits() {
@@ -90,6 +119,35 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
+     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthLimitsResult> getBandwidthLimitsPlain() {
@@ -99,6 +157,35 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
+     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetBandwidthLimitsResult> getBandwidthLimits(GetBandwidthLimitsArgs args) {
@@ -108,6 +195,35 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
+     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthLimitsResult> getBandwidthLimitsPlain(GetBandwidthLimitsPlainArgs args) {
@@ -117,6 +233,35 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
+     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetBandwidthLimitsResult> getBandwidthLimits(GetBandwidthLimitsArgs args, InvokeOptions options) {
@@ -126,6 +271,35 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
+     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthLimitsResult> getBandwidthLimitsPlain(GetBandwidthLimitsPlainArgs args, InvokeOptions options) {
@@ -135,6 +309,36 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages() {
@@ -144,6 +348,36 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain() {
@@ -153,6 +387,36 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args) {
@@ -162,6 +426,36 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args) {
@@ -171,6 +465,36 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args, InvokeOptions options) {
@@ -180,6 +504,36 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args, InvokeOptions options) {
@@ -192,6 +546,38 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFlowlogsResult> getFlowlogs() {
         return getFlowlogs(GetFlowlogsArgs.Empty, InvokeOptions.Empty);
@@ -202,6 +588,38 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.78.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFlowlogsResult> getFlowlogsPlain() {
@@ -214,6 +632,38 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFlowlogsResult> getFlowlogs(GetFlowlogsArgs args) {
         return getFlowlogs(args, InvokeOptions.Empty);
@@ -224,6 +674,38 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.78.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFlowlogsResult> getFlowlogsPlain(GetFlowlogsPlainArgs args) {
@@ -236,6 +718,38 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFlowlogsResult> getFlowlogs(GetFlowlogsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getFlowlogs:getFlowlogs", TypeShape.of(GetFlowlogsResult.class), args, Utilities.withVersion(options));
@@ -247,6 +761,38 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetFlowlogsResult> getFlowlogsPlain(GetFlowlogsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getFlowlogs:getFlowlogs", TypeShape.of(GetFlowlogsResult.class), args, Utilities.withVersion(options));
@@ -257,6 +803,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args) {
@@ -268,6 +843,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args) {
@@ -279,6 +883,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions options) {
@@ -290,6 +923,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args, InvokeOptions options) {
@@ -299,6 +961,36 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -308,6 +1000,36 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -317,6 +1039,36 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -326,6 +1078,36 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -335,6 +1117,36 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -344,6 +1156,36 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;cen-id1&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -355,6 +1197,37 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
+     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
+     *             .ids(&#34;cn-hangzhou&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPrivateZonesResult> getPrivateZones(GetPrivateZonesArgs args) {
@@ -366,6 +1239,37 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
+     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
+     *             .ids(&#34;cn-hangzhou&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrivateZonesResult> getPrivateZonesPlain(GetPrivateZonesPlainArgs args) {
@@ -377,6 +1281,37 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
+     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
+     *             .ids(&#34;cn-hangzhou&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPrivateZonesResult> getPrivateZones(GetPrivateZonesArgs args, InvokeOptions options) {
@@ -388,6 +1323,37 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
+     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
+     *             .ids(&#34;cn-hangzhou&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrivateZonesResult> getPrivateZonesPlain(GetPrivateZonesPlainArgs args, InvokeOptions options) {
@@ -397,6 +1363,36 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .regionId(&#34;cn-beijing&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionRouteEntriesResult> getRegionRouteEntries(GetRegionRouteEntriesArgs args) {
@@ -406,6 +1402,36 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .regionId(&#34;cn-beijing&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionRouteEntriesResult> getRegionRouteEntriesPlain(GetRegionRouteEntriesPlainArgs args) {
@@ -415,6 +1441,36 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .regionId(&#34;cn-beijing&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionRouteEntriesResult> getRegionRouteEntries(GetRegionRouteEntriesArgs args, InvokeOptions options) {
@@ -424,6 +1480,36 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .regionId(&#34;cn-beijing&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionRouteEntriesResult> getRegionRouteEntriesPlain(GetRegionRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -433,6 +1519,36 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args) {
@@ -442,6 +1558,36 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args) {
@@ -451,6 +1597,36 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args, InvokeOptions options) {
@@ -460,6 +1636,36 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .instanceId(&#34;cen-id1&#34;)
+     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -471,6 +1677,40 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
+     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
+     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
+     *             .descriptionRegex(&#34;datasource_test&#34;)
+     *             .cenRegionId(&#34;cn-hangzhou&#34;)
+     *             .transmitDirection(&#34;RegionIn&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteMapsResult> getRouteMaps(GetRouteMapsArgs args) {
@@ -482,6 +1722,40 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
+     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
+     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
+     *             .descriptionRegex(&#34;datasource_test&#34;)
+     *             .cenRegionId(&#34;cn-hangzhou&#34;)
+     *             .transmitDirection(&#34;RegionIn&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteMapsResult> getRouteMapsPlain(GetRouteMapsPlainArgs args) {
@@ -493,6 +1767,40 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
+     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
+     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
+     *             .descriptionRegex(&#34;datasource_test&#34;)
+     *             .cenRegionId(&#34;cn-hangzhou&#34;)
+     *             .transmitDirection(&#34;RegionIn&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRouteMapsResult> getRouteMaps(GetRouteMapsArgs args, InvokeOptions options) {
@@ -504,6 +1812,40 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
+     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
+     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
+     *             .descriptionRegex(&#34;datasource_test&#34;)
+     *             .cenRegionId(&#34;cn-hangzhou&#34;)
+     *             .transmitDirection(&#34;RegionIn&#34;)
+     *             .status(&#34;Active&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteMapsResult> getRouteMapsPlain(GetRouteMapsPlainArgs args, InvokeOptions options) {
@@ -516,6 +1858,37 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
+     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRouteServicesResult> getRouteServices(GetRouteServicesArgs args) {
         return getRouteServices(args, InvokeOptions.Empty);
@@ -526,6 +1899,37 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.102.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
+     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteServicesResult> getRouteServicesPlain(GetRouteServicesPlainArgs args) {
@@ -538,6 +1942,37 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
+     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetRouteServicesResult> getRouteServices(GetRouteServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getRouteServices:getRouteServices", TypeShape.of(GetRouteServicesResult.class), args, Utilities.withVersion(options));
@@ -548,6 +1983,37 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.102.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
+     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRouteServicesResult> getRouteServicesPlain(GetRouteServicesPlainArgs args, InvokeOptions options) {
@@ -560,6 +2026,46 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMarkingPoliciesResult> getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs args) {
         return getTrafficMarkingPolicies(args, InvokeOptions.Empty);
@@ -570,6 +2076,46 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMarkingPoliciesResult> getTrafficMarkingPoliciesPlain(GetTrafficMarkingPoliciesPlainArgs args) {
@@ -582,6 +2128,46 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTrafficMarkingPoliciesResult> getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", TypeShape.of(GetTrafficMarkingPoliciesResult.class), args, Utilities.withVersion(options));
@@ -592,6 +2178,46 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.173.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTrafficMarkingPoliciesResult> getTrafficMarkingPoliciesPlain(GetTrafficMarkingPoliciesPlainArgs args, InvokeOptions options) {
@@ -604,6 +2230,36 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources() {
         return getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.Empty, InvokeOptions.Empty);
@@ -614,6 +2270,36 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResourcesPlain() {
@@ -626,6 +2312,36 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs args) {
         return getTransitRouterAvailableResources(args, InvokeOptions.Empty);
@@ -636,6 +2352,36 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResourcesPlain(GetTransitRouterAvailableResourcesPlainArgs args) {
@@ -648,6 +2394,36 @@ public final class CenFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", TypeShape.of(GetTransitRouterAvailableResourcesResult.class), args, Utilities.withVersion(options));
@@ -658,6 +2434,36 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResourcesPlain(GetTransitRouterAvailableResourcesPlainArgs args, InvokeOptions options) {
@@ -749,6 +2555,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs args) {
@@ -760,6 +2595,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociationsPlain(GetTransitRouterRouteTableAssociationsPlainArgs args) {
@@ -771,6 +2635,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs args, InvokeOptions options) {
@@ -782,6 +2675,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociationsPlain(GetTransitRouterRouteTableAssociationsPlainArgs args, InvokeOptions options) {
@@ -793,6 +2715,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs args) {
@@ -804,6 +2755,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagationsPlain(GetTransitRouterRouteTablePropagationsPlainArgs args) {
@@ -815,6 +2795,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs args, InvokeOptions options) {
@@ -826,6 +2835,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagationsPlain(GetTransitRouterRouteTablePropagationsPlainArgs args, InvokeOptions options) {
@@ -875,6 +2913,34 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRouterServiceResult> getTransitRouterService() {
@@ -888,6 +2954,34 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterServiceResult> getTransitRouterServicePlain() {
@@ -901,6 +2995,34 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRouterServiceResult> getTransitRouterService(GetTransitRouterServiceArgs args) {
@@ -914,6 +3036,34 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterServiceResult> getTransitRouterServicePlain(GetTransitRouterServicePlainArgs args) {
@@ -927,6 +3077,34 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRouterServiceResult> getTransitRouterService(GetTransitRouterServiceArgs args, InvokeOptions options) {
@@ -940,6 +3118,34 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRouterServiceResult> getTransitRouterServicePlain(GetTransitRouterServicePlainArgs args, InvokeOptions options) {
@@ -1023,6 +3229,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
+     *             .cenId(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRoutersResult> getTransitRouters(GetTransitRoutersArgs args) {
@@ -1034,6 +3269,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
+     *             .cenId(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRoutersResult> getTransitRoutersPlain(GetTransitRoutersPlainArgs args) {
@@ -1045,6 +3309,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
+     *             .cenId(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetTransitRoutersResult> getTransitRouters(GetTransitRoutersArgs args, InvokeOptions options) {
@@ -1056,6 +3349,35 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
+     *             .cenId(&#34;cen-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetTransitRoutersResult> getTransitRoutersPlain(GetTransitRoutersPlainArgs args, InvokeOptions options) {

@@ -219,6 +219,31 @@ func (o ConsumerChannelOutput) ToConsumerChannelOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the consumer group.
+func (o ConsumerChannelOutput) ConsumerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerChannel) pulumi.StringOutput { return v.ConsumerGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the consumer group.
+func (o ConsumerChannelOutput) ConsumerGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerChannel) pulumi.StringOutput { return v.ConsumerGroupName }).(pulumi.StringOutput)
+}
+
+// The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+func (o ConsumerChannelOutput) ConsumerGroupPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerChannel) pulumi.StringOutput { return v.ConsumerGroupPassword }).(pulumi.StringOutput)
+}
+
+// The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
+func (o ConsumerChannelOutput) ConsumerGroupUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerChannel) pulumi.StringOutput { return v.ConsumerGroupUserName }).(pulumi.StringOutput)
+}
+
+// The ID of the subscription instance.
+func (o ConsumerChannelOutput) DtsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerChannel) pulumi.StringOutput { return v.DtsInstanceId }).(pulumi.StringOutput)
+}
+
 type ConsumerChannelArrayOutput struct{ *pulumi.OutputState }
 
 func (ConsumerChannelArrayOutput) ElementType() reflect.Type {

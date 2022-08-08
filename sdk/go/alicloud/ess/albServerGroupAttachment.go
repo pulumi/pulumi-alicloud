@@ -234,6 +234,32 @@ func (o AlbServerGroupAttachmentOutput) ToAlbServerGroupAttachmentOutputWithCont
 	return o
 }
 
+// ID of Alb Server Group.
+func (o AlbServerGroupAttachmentOutput) AlbServerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlbServerGroupAttachment) pulumi.StringOutput { return v.AlbServerGroupId }).(pulumi.StringOutput)
+}
+
+// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
+// server group from scaling group. Default to false.
+func (o AlbServerGroupAttachmentOutput) ForceAttach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbServerGroupAttachment) pulumi.BoolPtrOutput { return v.ForceAttach }).(pulumi.BoolPtrOutput)
+}
+
+// - The port will be used for Alb Server Group backend server.
+func (o AlbServerGroupAttachmentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *AlbServerGroupAttachment) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// ID of the scaling group.
+func (o AlbServerGroupAttachmentOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlbServerGroupAttachment) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// The weight of an ECS instance attached to the Alb Server Group.
+func (o AlbServerGroupAttachmentOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *AlbServerGroupAttachment) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type AlbServerGroupAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AlbServerGroupAttachmentArrayOutput) ElementType() reflect.Type {

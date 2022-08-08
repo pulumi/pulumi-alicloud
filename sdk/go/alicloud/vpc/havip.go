@@ -230,6 +230,31 @@ func (o HAVipOutput) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 	return o
 }
 
+// The description of the HaVip instance.
+func (o HAVipOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HAVip) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the HaVip instance.
+func (o HAVipOutput) HavipName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HAVip) pulumi.StringPtrOutput { return v.HavipName }).(pulumi.StringPtrOutput)
+}
+
+// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+func (o HAVipOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// (Available in v1.120.0+) The status of the HaVip instance.
+func (o HAVipOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The vswitchId of the HaVip, the field can't be changed.
+func (o HAVipOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type HAVipArrayOutput struct{ *pulumi.OutputState }
 
 func (HAVipArrayOutput) ElementType() reflect.Type {

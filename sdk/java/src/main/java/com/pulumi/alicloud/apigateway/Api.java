@@ -27,6 +27,73 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.apigateway.Group;
+ * import com.pulumi.alicloud.apigateway.GroupArgs;
+ * import com.pulumi.alicloud.apigateway.Api;
+ * import com.pulumi.alicloud.apigateway.ApiArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var apiGroup = new Group(&#34;apiGroup&#34;, GroupArgs.builder()        
+ *             .description(&#34;description of the api group&#34;)
+ *             .build());
+ * 
+ *         var apiGatewayApi = new Api(&#34;apiGatewayApi&#34;, ApiArgs.builder()        
+ *             .groupId(apiGroup.id())
+ *             .description(&#34;your description&#34;)
+ *             .authType(&#34;APP&#34;)
+ *             .forceNonceCheck(false)
+ *             .requestConfig(ApiRequestConfigArgs.builder()
+ *                 .protocol(&#34;HTTP&#34;)
+ *                 .method(&#34;GET&#34;)
+ *                 .path(&#34;/test/path1&#34;)
+ *                 .mode(&#34;MAPPING&#34;)
+ *                 .build())
+ *             .serviceType(&#34;HTTP&#34;)
+ *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+ *                 .address(&#34;http://apigateway-backend.alicloudapi.com:8080&#34;)
+ *                 .method(&#34;GET&#34;)
+ *                 .path(&#34;/web/cloudapi&#34;)
+ *                 .timeout(12)
+ *                 .aoneName(&#34;cloudapi-openapi&#34;)
+ *                 .build())
+ *             .requestParameters(ApiRequestParameterArgs.builder()
+ *                 .name(&#34;aaa&#34;)
+ *                 .type(&#34;STRING&#34;)
+ *                 .required(&#34;OPTIONAL&#34;)
+ *                 .in(&#34;QUERY&#34;)
+ *                 .inService(&#34;QUERY&#34;)
+ *                 .nameService(&#34;testparams&#34;)
+ *                 .build())
+ *             .stageNames(            
+ *                 &#34;RELEASE&#34;,
+ *                 &#34;TEST&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Api gateway api can be imported using the id.Format to `&lt;API Group Id&gt;:&lt;API Id&gt;` e.g.

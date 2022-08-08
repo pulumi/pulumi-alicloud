@@ -32,6 +32,64 @@ import javax.annotation.Nullable;
  * You can still use this resource to manage the instance which has been already created, but can not create a new one.
  * 
  * ## Example Usage
+ * ### Create a Gpdb instance
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.gpdb.Instance;
+ * import com.pulumi.alicloud.gpdb.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Gpdb&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .vswitchName(&#34;vpc-123456&#34;)
+ *             .build());
+ * 
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .description(&#34;tf-gpdb-test&#34;)
+ *             .engine(&#34;gpdb&#34;)
+ *             .engineVersion(&#34;4.3&#34;)
+ *             .instanceClass(&#34;gpdb.group.segsdx2&#34;)
+ *             .instanceGroupCount(&#34;2&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityIpLists(            
+ *                 &#34;10.168.1.12&#34;,
+ *                 &#34;100.69.7.112&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

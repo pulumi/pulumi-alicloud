@@ -22,6 +22,37 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.90.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dms.EnterpriseUser;
+ * import com.pulumi.alicloud.dms.EnterpriseUserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new EnterpriseUser(&#34;example&#34;, EnterpriseUserArgs.builder()        
+ *             .mobile(&#34;1591066xxxx&#34;)
+ *             .roleNames(&#34;DBA&#34;)
+ *             .uid(&#34;uid&#34;)
+ *             .userName(&#34;tf-test&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

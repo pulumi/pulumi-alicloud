@@ -111,6 +111,35 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getActivations();
+     * 
+     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetActivationsResult> getActivations() {
         return getActivations(GetActivationsArgs.Empty, InvokeOptions.Empty);
@@ -121,6 +150,35 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.177.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getActivations();
+     * 
+     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetActivationsResult> getActivationsPlain() {
@@ -133,6 +191,35 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getActivations();
+     * 
+     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetActivationsResult> getActivations(GetActivationsArgs args) {
         return getActivations(args, InvokeOptions.Empty);
@@ -143,6 +230,35 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.177.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getActivations();
+     * 
+     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetActivationsResult> getActivationsPlain(GetActivationsPlainArgs args) {
@@ -155,6 +271,35 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getActivations();
+     * 
+     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetActivationsResult> getActivations(GetActivationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getActivations:getActivations", TypeShape.of(GetActivationsResult.class), args, Utilities.withVersion(options));
@@ -165,6 +310,35 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.177.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getActivations();
+     * 
+     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetActivationsResult> getActivationsPlain(GetActivationsPlainArgs args, InvokeOptions options) {
@@ -177,6 +351,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies() {
         return getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.Empty, InvokeOptions.Empty);
@@ -187,6 +393,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.117.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain() {
@@ -199,6 +437,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args) {
         return getAutoSnapshotPolicies(args, InvokeOptions.Empty);
@@ -209,6 +479,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.117.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args) {
@@ -221,6 +523,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", TypeShape.of(GetAutoSnapshotPoliciesResult.class), args, Utilities.withVersion(options));
@@ -231,6 +565,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.117.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args, InvokeOptions options) {
@@ -243,6 +609,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCommandsResult> getCommands() {
         return getCommands(GetCommandsArgs.Empty, InvokeOptions.Empty);
@@ -253,6 +651,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.116.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain() {
@@ -265,6 +695,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCommandsResult> getCommands(GetCommandsArgs args) {
         return getCommands(args, InvokeOptions.Empty);
@@ -275,6 +737,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.116.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain(GetCommandsPlainArgs args) {
@@ -287,6 +781,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetCommandsResult> getCommands(GetCommandsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getCommands:getCommands", TypeShape.of(GetCommandsResult.class), args, Utilities.withVersion(options));
@@ -298,6 +824,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain(GetCommandsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getCommands:getCommands", TypeShape.of(GetCommandsResult.class), args, Utilities.withVersion(options));
@@ -308,6 +866,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts() {
@@ -319,6 +908,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain() {
@@ -330,6 +950,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args) {
@@ -341,6 +992,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args) {
@@ -352,6 +1034,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args, InvokeOptions options) {
@@ -363,6 +1076,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .status(&#34;Available&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args, InvokeOptions options) {
@@ -370,6 +1114,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDisksResult> getDisks() {
@@ -377,6 +1150,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDisksResult> getDisksPlain() {
@@ -384,6 +1186,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDisksResult> getDisks(GetDisksArgs args) {
@@ -391,6 +1222,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDisksResult> getDisksPlain(GetDisksPlainArgs args) {
@@ -398,6 +1258,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetDisksResult> getDisks(GetDisksArgs args, InvokeOptions options) {
@@ -405,6 +1294,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
+     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDisksResult> getDisksPlain(GetDisksPlainArgs args, InvokeOptions options) {
@@ -417,6 +1335,57 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClusters() {
         return getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.Empty, InvokeOptions.Empty);
@@ -427,6 +1396,57 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClustersPlain() {
@@ -439,6 +1459,57 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs args) {
         return getEcsDedicatedHostClusters(args, InvokeOptions.Empty);
@@ -449,6 +1520,57 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClustersPlain(GetEcsDedicatedHostClustersPlainArgs args) {
@@ -461,6 +1583,57 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", TypeShape.of(GetEcsDedicatedHostClustersResult.class), args, Utilities.withVersion(options));
@@ -471,6 +1644,57 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDedicatedHostClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .zoneId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
+     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClustersPlain(GetEcsDedicatedHostClustersPlainArgs args, InvokeOptions options) {
@@ -483,6 +1707,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDeploymentSetsResult> getEcsDeploymentSets() {
         return getEcsDeploymentSets(GetEcsDeploymentSetsArgs.Empty, InvokeOptions.Empty);
@@ -493,6 +1753,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDeploymentSetsResult> getEcsDeploymentSetsPlain() {
@@ -505,6 +1801,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDeploymentSetsResult> getEcsDeploymentSets(GetEcsDeploymentSetsArgs args) {
         return getEcsDeploymentSets(args, InvokeOptions.Empty);
@@ -515,6 +1847,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDeploymentSetsResult> getEcsDeploymentSetsPlain(GetEcsDeploymentSetsPlainArgs args) {
@@ -527,6 +1895,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDeploymentSetsResult> getEcsDeploymentSets(GetEcsDeploymentSetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", TypeShape.of(GetEcsDeploymentSetsResult.class), args, Utilities.withVersion(options));
@@ -537,6 +1941,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDeploymentSetsResult> getEcsDeploymentSetsPlain(GetEcsDeploymentSetsPlainArgs args, InvokeOptions options) {
@@ -549,6 +1989,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDisksResult> getEcsDisks() {
         return getEcsDisks(GetEcsDisksArgs.Empty, InvokeOptions.Empty);
@@ -559,6 +2031,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDisksResult> getEcsDisksPlain() {
@@ -571,6 +2075,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDisksResult> getEcsDisks(GetEcsDisksArgs args) {
         return getEcsDisks(args, InvokeOptions.Empty);
@@ -581,6 +2117,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDisksResult> getEcsDisksPlain(GetEcsDisksPlainArgs args) {
@@ -593,6 +2161,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsDisksResult> getEcsDisks(GetEcsDisksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsDisks:getEcsDisks", TypeShape.of(GetEcsDisksResult.class), args, Utilities.withVersion(options));
@@ -603,6 +2203,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsDisksResult> getEcsDisksPlain(GetEcsDisksPlainArgs args, InvokeOptions options) {
@@ -615,6 +2247,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsImageComponentsResult> getEcsImageComponents() {
         return getEcsImageComponents(GetEcsImageComponentsArgs.Empty, InvokeOptions.Empty);
@@ -625,6 +2293,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsImageComponentsResult> getEcsImageComponentsPlain() {
@@ -637,6 +2341,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsImageComponentsResult> getEcsImageComponents(GetEcsImageComponentsArgs args) {
         return getEcsImageComponents(args, InvokeOptions.Empty);
@@ -647,6 +2387,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsImageComponentsResult> getEcsImageComponentsPlain(GetEcsImageComponentsPlainArgs args) {
@@ -659,6 +2435,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsImageComponentsResult> getEcsImageComponents(GetEcsImageComponentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", TypeShape.of(GetEcsImageComponentsResult.class), args, Utilities.withVersion(options));
@@ -669,6 +2481,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.159.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImageComponentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
+     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsImageComponentsResult> getEcsImageComponentsPlain(GetEcsImageComponentsPlainArgs args, InvokeOptions options) {
@@ -681,6 +2529,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsImagePipelineResult> getEcsImagePipeline() {
         return getEcsImagePipeline(GetEcsImagePipelineArgs.Empty, InvokeOptions.Empty);
@@ -691,6 +2575,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsImagePipelineResult> getEcsImagePipelinePlain() {
@@ -703,6 +2623,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsImagePipelineResult> getEcsImagePipeline(GetEcsImagePipelineArgs args) {
         return getEcsImagePipeline(args, InvokeOptions.Empty);
@@ -713,6 +2669,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsImagePipelineResult> getEcsImagePipelinePlain(GetEcsImagePipelinePlainArgs args) {
@@ -725,6 +2717,42 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsImagePipelineResult> getEcsImagePipeline(GetEcsImagePipelineArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", TypeShape.of(GetEcsImagePipelineResult.class), args, Utilities.withVersion(options));
@@ -735,6 +2763,42 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsImagePipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
+     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsImagePipelineResult> getEcsImagePipelinePlain(GetEcsImagePipelinePlainArgs args, InvokeOptions options) {
@@ -747,6 +2811,37 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsInvocationsResult> getEcsInvocations() {
         return getEcsInvocations(GetEcsInvocationsArgs.Empty, InvokeOptions.Empty);
@@ -757,6 +2852,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.168.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsInvocationsResult> getEcsInvocationsPlain() {
@@ -769,6 +2895,37 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsInvocationsResult> getEcsInvocations(GetEcsInvocationsArgs args) {
         return getEcsInvocations(args, InvokeOptions.Empty);
@@ -779,6 +2936,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.168.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsInvocationsResult> getEcsInvocationsPlain(GetEcsInvocationsPlainArgs args) {
@@ -791,6 +2979,37 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsInvocationsResult> getEcsInvocations(GetEcsInvocationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsInvocations:getEcsInvocations", TypeShape.of(GetEcsInvocationsResult.class), args, Utilities.withVersion(options));
@@ -801,6 +3020,37 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.168.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsInvocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsInvocationsResult> getEcsInvocationsPlain(GetEcsInvocationsPlainArgs args, InvokeOptions options) {
@@ -813,6 +3063,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(&#34;key_pair_name&#34;)
+     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsKeyPairsResult> getEcsKeyPairs() {
         return getEcsKeyPairs(GetEcsKeyPairsArgs.Empty, InvokeOptions.Empty);
@@ -823,6 +3105,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.121.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(&#34;key_pair_name&#34;)
+     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsKeyPairsResult> getEcsKeyPairsPlain() {
@@ -835,6 +3149,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(&#34;key_pair_name&#34;)
+     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsKeyPairsResult> getEcsKeyPairs(GetEcsKeyPairsArgs args) {
         return getEcsKeyPairs(args, InvokeOptions.Empty);
@@ -845,6 +3191,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.121.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(&#34;key_pair_name&#34;)
+     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsKeyPairsResult> getEcsKeyPairsPlain(GetEcsKeyPairsPlainArgs args) {
@@ -857,6 +3235,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(&#34;key_pair_name&#34;)
+     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsKeyPairsResult> getEcsKeyPairs(GetEcsKeyPairsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", TypeShape.of(GetEcsKeyPairsResult.class), args, Utilities.withVersion(options));
@@ -867,6 +3277,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.121.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(&#34;key_pair_name&#34;)
+     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsKeyPairsResult> getEcsKeyPairsPlain(GetEcsKeyPairsPlainArgs args, InvokeOptions options) {
@@ -879,6 +3321,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
+     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates() {
         return getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.Empty, InvokeOptions.Empty);
@@ -889,6 +3363,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
+     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsLaunchTemplatesResult> getEcsLaunchTemplatesPlain() {
@@ -901,6 +3407,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
+     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs args) {
         return getEcsLaunchTemplates(args, InvokeOptions.Empty);
@@ -911,6 +3449,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
+     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsLaunchTemplatesResult> getEcsLaunchTemplatesPlain(GetEcsLaunchTemplatesPlainArgs args) {
@@ -923,6 +3493,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
+     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", TypeShape.of(GetEcsLaunchTemplatesResult.class), args, Utilities.withVersion(options));
@@ -933,6 +3535,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
+     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsLaunchTemplatesResult> getEcsLaunchTemplatesPlain(GetEcsLaunchTemplatesPlainArgs args, InvokeOptions options) {
@@ -945,6 +3579,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs args) {
         return getEcsNetworkInterfacePermissions(args, InvokeOptions.Empty);
@@ -955,6 +3621,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissionsPlain(GetEcsNetworkInterfacePermissionsPlainArgs args) {
@@ -967,6 +3665,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", TypeShape.of(GetEcsNetworkInterfacePermissionsResult.class), args, Utilities.withVersion(options));
@@ -977,6 +3707,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissionsPlain(GetEcsNetworkInterfacePermissionsPlainArgs args, InvokeOptions options) {
@@ -989,6 +3751,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
+     *             .ids(&#34;eni-abcd1234&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsNetworkInterfacesResult> getEcsNetworkInterfaces() {
         return getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.Empty, InvokeOptions.Empty);
@@ -999,6 +3793,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.123.1+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
+     *             .ids(&#34;eni-abcd1234&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacesResult> getEcsNetworkInterfacesPlain() {
@@ -1011,6 +3837,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
+     *             .ids(&#34;eni-abcd1234&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsNetworkInterfacesResult> getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs args) {
         return getEcsNetworkInterfaces(args, InvokeOptions.Empty);
@@ -1021,6 +3879,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.123.1+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
+     *             .ids(&#34;eni-abcd1234&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacesResult> getEcsNetworkInterfacesPlain(GetEcsNetworkInterfacesPlainArgs args) {
@@ -1033,6 +3923,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
+     *             .ids(&#34;eni-abcd1234&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsNetworkInterfacesResult> getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", TypeShape.of(GetEcsNetworkInterfacesResult.class), args, Utilities.withVersion(options));
@@ -1043,6 +3965,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.123.1+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
+     *             .ids(&#34;eni-abcd1234&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacesResult> getEcsNetworkInterfacesPlain(GetEcsNetworkInterfacesPlainArgs args, InvokeOptions options) {
@@ -1055,6 +4009,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsPrefixListsResult> getEcsPrefixLists() {
         return getEcsPrefixLists(GetEcsPrefixListsArgs.Empty, InvokeOptions.Empty);
@@ -1065,6 +4051,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsPrefixListsResult> getEcsPrefixListsPlain() {
@@ -1077,6 +4095,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsPrefixListsResult> getEcsPrefixLists(GetEcsPrefixListsArgs args) {
         return getEcsPrefixLists(args, InvokeOptions.Empty);
@@ -1087,6 +4137,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsPrefixListsResult> getEcsPrefixListsPlain(GetEcsPrefixListsPlainArgs args) {
@@ -1099,6 +4181,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsPrefixListsResult> getEcsPrefixLists(GetEcsPrefixListsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", TypeShape.of(GetEcsPrefixListsResult.class), args, Utilities.withVersion(options));
@@ -1109,6 +4223,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
+     *             .ids(&#34;E2RY53-xxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsPrefixListsResult> getEcsPrefixListsPlain(GetEcsPrefixListsPlainArgs args, InvokeOptions options) {
@@ -1121,6 +4267,52 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .status(&#34;accomplished&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsSnapshotGroupsResult> getEcsSnapshotGroups() {
         return getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.Empty, InvokeOptions.Empty);
@@ -1131,6 +4323,52 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.160.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .status(&#34;accomplished&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsSnapshotGroupsResult> getEcsSnapshotGroupsPlain() {
@@ -1143,6 +4381,52 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .status(&#34;accomplished&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsSnapshotGroupsResult> getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs args) {
         return getEcsSnapshotGroups(args, InvokeOptions.Empty);
@@ -1153,6 +4437,52 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.160.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .status(&#34;accomplished&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsSnapshotGroupsResult> getEcsSnapshotGroupsPlain(GetEcsSnapshotGroupsPlainArgs args) {
@@ -1165,6 +4495,52 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .status(&#34;accomplished&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsSnapshotGroupsResult> getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", TypeShape.of(GetEcsSnapshotGroupsResult.class), args, Utilities.withVersion(options));
@@ -1175,6 +4551,52 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.160.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .ids(&#34;example-id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .status(&#34;accomplished&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
+     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsSnapshotGroupsResult> getEcsSnapshotGroupsPlain(GetEcsSnapshotGroupsPlainArgs args, InvokeOptions options) {
@@ -1187,6 +4609,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsSnapshotsResult> getEcsSnapshots() {
         return getEcsSnapshots(GetEcsSnapshotsArgs.Empty, InvokeOptions.Empty);
@@ -1197,6 +4651,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsSnapshotsResult> getEcsSnapshotsPlain() {
@@ -1209,6 +4695,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsSnapshotsResult> getEcsSnapshots(GetEcsSnapshotsArgs args) {
         return getEcsSnapshots(args, InvokeOptions.Empty);
@@ -1219,6 +4737,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsSnapshotsResult> getEcsSnapshotsPlain(GetEcsSnapshotsPlainArgs args) {
@@ -1231,6 +4781,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsSnapshotsResult> getEcsSnapshots(GetEcsSnapshotsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", TypeShape.of(GetEcsSnapshotsResult.class), args, Utilities.withVersion(options));
@@ -1241,6 +4823,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.120.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-test&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsSnapshotsResult> getEcsSnapshotsPlain(GetEcsSnapshotsPlainArgs args, InvokeOptions options) {
@@ -1253,6 +4867,40 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnits() {
         return getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.Empty, InvokeOptions.Empty);
@@ -1263,6 +4911,40 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.155.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnitsPlain() {
@@ -1275,6 +4957,40 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs args) {
         return getEcsStorageCapacityUnits(args, InvokeOptions.Empty);
@@ -1285,6 +5001,40 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.155.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnitsPlain(GetEcsStorageCapacityUnitsPlainArgs args) {
@@ -1297,6 +5047,40 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", TypeShape.of(GetEcsStorageCapacityUnitsResult.class), args, Utilities.withVersion(options));
@@ -1307,6 +5091,40 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.155.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEcsStorageCapacityUnitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnitsPlain(GetEcsStorageCapacityUnitsPlainArgs args, InvokeOptions options) {
@@ -1319,6 +5137,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
+     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEipAddressesResult> getEipAddresses() {
         return getEipAddresses(GetEipAddressesArgs.Empty, InvokeOptions.Empty);
@@ -1329,6 +5179,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
+     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEipAddressesResult> getEipAddressesPlain() {
@@ -1341,6 +5223,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
+     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEipAddressesResult> getEipAddresses(GetEipAddressesArgs args) {
         return getEipAddresses(args, InvokeOptions.Empty);
@@ -1351,6 +5265,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
+     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEipAddressesResult> getEipAddressesPlain(GetEipAddressesPlainArgs args) {
@@ -1363,6 +5309,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
+     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEipAddressesResult> getEipAddresses(GetEipAddressesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEipAddresses:getEipAddresses", TypeShape.of(GetEipAddressesResult.class), args, Utilities.withVersion(options));
@@ -1374,12 +5352,71 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
+     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetEipAddressesResult> getEipAddressesPlain(GetEipAddressesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getEipAddresses:getEipAddresses", TypeShape.of(GetEipAddressesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var eipsDs = EcsFunctions.getEips();
+     * 
+     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -1391,6 +5428,33 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var eipsDs = EcsFunctions.getEips();
+     * 
+     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -1402,6 +5466,33 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var eipsDs = EcsFunctions.getEips();
+     * 
+     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -1413,6 +5504,33 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var eipsDs = EcsFunctions.getEips();
+     * 
+     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -1424,6 +5542,33 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var eipsDs = EcsFunctions.getEips();
+     * 
+     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -1435,6 +5580,33 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var eipsDs = EcsFunctions.getEips();
+     * 
+     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -1451,6 +5623,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
+     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHpcClustersResult> getHpcClusters() {
         return getHpcClusters(GetHpcClustersArgs.Empty, InvokeOptions.Empty);
@@ -1461,6 +5665,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.116.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
+     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHpcClustersResult> getHpcClustersPlain() {
@@ -1473,6 +5709,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
+     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHpcClustersResult> getHpcClusters(GetHpcClustersArgs args) {
         return getHpcClusters(args, InvokeOptions.Empty);
@@ -1483,6 +5751,38 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.116.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
+     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetHpcClustersResult> getHpcClustersPlain(GetHpcClustersPlainArgs args) {
@@ -1495,6 +5795,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
+     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetHpcClustersResult> getHpcClusters(GetHpcClustersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getHpcClusters:getHpcClusters", TypeShape.of(GetHpcClustersResult.class), args, Utilities.withVersion(options));
@@ -1506,6 +5838,38 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
+     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
+     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetHpcClustersResult> getHpcClustersPlain(GetHpcClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getHpcClusters:getHpcClusters", TypeShape.of(GetHpcClustersResult.class), args, Utilities.withVersion(options));
@@ -1515,6 +5879,36 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetImagesResult> getImages() {
@@ -1525,6 +5919,36 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain() {
@@ -1535,6 +5959,36 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args) {
@@ -1545,6 +5999,36 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
@@ -1555,6 +6039,36 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
@@ -1565,6 +6079,36 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
@@ -1576,6 +6120,36 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
+     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceTypeFamiliesResult> getInstanceTypeFamilies() {
@@ -1587,6 +6161,36 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
+     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypeFamiliesResult> getInstanceTypeFamiliesPlain() {
@@ -1598,6 +6202,36 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
+     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceTypeFamiliesResult> getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs args) {
@@ -1609,6 +6243,36 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
+     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypeFamiliesResult> getInstanceTypeFamiliesPlain(GetInstanceTypeFamiliesPlainArgs args) {
@@ -1620,6 +6284,36 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
+     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceTypeFamiliesResult> getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs args, InvokeOptions options) {
@@ -1631,6 +6325,36 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
+     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypeFamiliesResult> getInstanceTypeFamiliesPlain(GetInstanceTypeFamiliesPlainArgs args, InvokeOptions options) {
@@ -1644,6 +6368,41 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes() {
@@ -1657,6 +6416,41 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain() {
@@ -1670,6 +6464,41 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args) {
@@ -1683,6 +6512,41 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args) {
@@ -1696,6 +6560,41 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args, InvokeOptions options) {
@@ -1709,6 +6608,41 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .cpuCoreCount(1)
+     *             .memorySize(2)
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args, InvokeOptions options) {
@@ -1718,6 +6652,37 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;web_server&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -1727,6 +6692,37 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;web_server&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -1736,6 +6732,37 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;web_server&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -1745,6 +6772,37 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;web_server&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -1754,6 +6812,37 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;web_server&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -1763,6 +6852,37 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;web_server&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -1770,6 +6890,40 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *             .keyName(&#34;keyPairDatasource&#34;)
+     *             .build());
+     * 
+     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(defaultKeyPair.keyName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs() {
@@ -1777,6 +6931,40 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *             .keyName(&#34;keyPairDatasource&#34;)
+     *             .build());
+     * 
+     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(defaultKeyPair.keyName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain() {
@@ -1784,6 +6972,40 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *             .keyName(&#34;keyPairDatasource&#34;)
+     *             .build());
+     * 
+     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(defaultKeyPair.keyName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args) {
@@ -1791,6 +7013,40 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *             .keyName(&#34;keyPairDatasource&#34;)
+     *             .build());
+     * 
+     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(defaultKeyPair.keyName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args) {
@@ -1798,6 +7054,40 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *             .keyName(&#34;keyPairDatasource&#34;)
+     *             .build());
+     * 
+     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(defaultKeyPair.keyName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args, InvokeOptions options) {
@@ -1805,6 +7095,40 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *             .keyName(&#34;keyPairDatasource&#34;)
+     *             .build());
+     * 
+     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .nameRegex(defaultKeyPair.keyName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args, InvokeOptions options) {
@@ -1812,6 +7136,103 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterface;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .build());
+     * 
+     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .description(&#34;Basic test&#34;)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroups(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceName(name)
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .internetMaxBandwidthOut(10)
+     *             .securityGroups(group.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *             .instanceId(instance.id())
+     *             .networkInterfaceId(interface_.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *             .ids(attachment.networkInterfaceId())
+     *             .instanceId(instance.id())
+     *             .nameRegex(name)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .type(&#34;Secondary&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -1835,6 +7256,103 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterface;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .build());
+     * 
+     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .description(&#34;Basic test&#34;)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroups(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceName(name)
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .internetMaxBandwidthOut(10)
+     *             .securityGroups(group.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *             .instanceId(instance.id())
+     *             .networkInterfaceId(interface_.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *             .ids(attachment.networkInterfaceId())
+     *             .instanceId(instance.id())
+     *             .nameRegex(name)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .type(&#34;Secondary&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -1858,6 +7376,103 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterface;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .build());
+     * 
+     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .description(&#34;Basic test&#34;)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroups(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceName(name)
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .internetMaxBandwidthOut(10)
+     *             .securityGroups(group.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *             .instanceId(instance.id())
+     *             .networkInterfaceId(interface_.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *             .ids(attachment.networkInterfaceId())
+     *             .instanceId(instance.id())
+     *             .nameRegex(name)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .type(&#34;Secondary&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -1881,6 +7496,103 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterface;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .build());
+     * 
+     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .description(&#34;Basic test&#34;)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroups(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceName(name)
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .internetMaxBandwidthOut(10)
+     *             .securityGroups(group.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *             .instanceId(instance.id())
+     *             .networkInterfaceId(interface_.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *             .ids(attachment.networkInterfaceId())
+     *             .instanceId(instance.id())
+     *             .nameRegex(name)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .type(&#34;Secondary&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -1904,6 +7616,103 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterface;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .build());
+     * 
+     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .description(&#34;Basic test&#34;)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroups(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceName(name)
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .internetMaxBandwidthOut(10)
+     *             .securityGroups(group.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *             .instanceId(instance.id())
+     *             .networkInterfaceId(interface_.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *             .ids(attachment.networkInterfaceId())
+     *             .instanceId(instance.id())
+     *             .nameRegex(name)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .type(&#34;Secondary&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -1927,6 +7736,103 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterface;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachment;
+     * import com.pulumi.alicloud.vpc.NetworkInterfaceAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetNetworkInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
+     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(vpc.id())
+     *             .build());
+     * 
+     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .description(&#34;Basic test&#34;)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroups(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceName(name)
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .internetMaxBandwidthOut(10)
+     *             .securityGroups(group.id())
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *             .instanceId(instance.id())
+     *             .networkInterfaceId(interface_.id())
+     *             .build());
+     * 
+     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *             .ids(attachment.networkInterfaceId())
+     *             .instanceId(instance.id())
+     *             .nameRegex(name)
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .type(&#34;Secondary&#34;)
+     *             .vpcId(vpc.id())
+     *             .vswitchId(vswitch.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -1955,6 +7861,52 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;api&#34;)
+     *             .build());
+     * 
+     *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
+     *             .direction(&#34;ingress&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;internet&#34;)
+     *             .build());
+     * 
+     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
+     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSecurityGroupRulesResult> getSecurityGroupRules(GetSecurityGroupRulesArgs args) {
         return getSecurityGroupRules(args, InvokeOptions.Empty);
@@ -1965,6 +7917,52 @@ public final class EcsFunctions {
      * The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
      * 
      * ## Example Usage
+     * 
+     * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;api&#34;)
+     *             .build());
+     * 
+     *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
+     *             .direction(&#34;ingress&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;internet&#34;)
+     *             .build());
+     * 
+     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
+     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecurityGroupRulesResult> getSecurityGroupRulesPlain(GetSecurityGroupRulesPlainArgs args) {
@@ -1977,6 +7975,52 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;api&#34;)
+     *             .build());
+     * 
+     *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
+     *             .direction(&#34;ingress&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;internet&#34;)
+     *             .build());
+     * 
+     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
+     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSecurityGroupRulesResult> getSecurityGroupRules(GetSecurityGroupRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", TypeShape.of(GetSecurityGroupRulesResult.class), args, Utilities.withVersion(options));
@@ -1988,6 +8032,52 @@ public final class EcsFunctions {
      * 
      * ## Example Usage
      * 
+     * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupRulesArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;api&#34;)
+     *             .build());
+     * 
+     *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
+     *             .direction(&#34;ingress&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
+     *             .ipProtocol(&#34;tcp&#34;)
+     *             .nicType(&#34;internet&#34;)
+     *             .build());
+     * 
+     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
+     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetSecurityGroupRulesResult> getSecurityGroupRulesPlain(GetSecurityGroupRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", TypeShape.of(GetSecurityGroupRulesResult.class), args, Utilities.withVersion(options));
@@ -1996,6 +8086,43 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;^web-&#34;)
+     *             .outputFile(&#34;web_access.json&#34;)
+     *             .build());
+     * 
+     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     * 
+     *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(primaryVpcDs.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSecurityGroupsResult> getSecurityGroups() {
@@ -2005,6 +8132,43 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;^web-&#34;)
+     *             .outputFile(&#34;web_access.json&#34;)
+     *             .build());
+     * 
+     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     * 
+     *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(primaryVpcDs.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain() {
@@ -2014,6 +8178,43 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;^web-&#34;)
+     *             .outputFile(&#34;web_access.json&#34;)
+     *             .build());
+     * 
+     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     * 
+     *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(primaryVpcDs.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSecurityGroupsResult> getSecurityGroups(GetSecurityGroupsArgs args) {
@@ -2023,6 +8224,43 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;^web-&#34;)
+     *             .outputFile(&#34;web_access.json&#34;)
+     *             .build());
+     * 
+     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     * 
+     *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(primaryVpcDs.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain(GetSecurityGroupsPlainArgs args) {
@@ -2032,6 +8270,43 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;^web-&#34;)
+     *             .outputFile(&#34;web_access.json&#34;)
+     *             .build());
+     * 
+     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     * 
+     *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(primaryVpcDs.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSecurityGroupsResult> getSecurityGroups(GetSecurityGroupsArgs args, InvokeOptions options) {
@@ -2041,6 +8316,43 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .nameRegex(&#34;^web-&#34;)
+     *             .outputFile(&#34;web_access.json&#34;)
+     *             .build());
+     * 
+     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     * 
+     *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(primaryVpcDs.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain(GetSecurityGroupsPlainArgs args, InvokeOptions options) {
@@ -2048,6 +8360,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .ids(&#34;s-123456890abcdef&#34;)
+     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -2083,6 +8424,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .ids(&#34;s-123456890abcdef&#34;)
+     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -2118,6 +8488,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .ids(&#34;s-123456890abcdef&#34;)
+     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -2153,6 +8552,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .ids(&#34;s-123456890abcdef&#34;)
+     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -2188,6 +8616,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .ids(&#34;s-123456890abcdef&#34;)
+     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -2223,6 +8680,35 @@ public final class EcsFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .ids(&#34;s-123456890abcdef&#34;)
+     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Argument Reference
      * 
      * The following arguments are supported:

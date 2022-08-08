@@ -192,6 +192,21 @@ func (o ScimServerCredentialOutput) ToScimServerCredentialOutputWithContext(ctx 
 	return o
 }
 
+// The CredentialId of the resource.
+func (o ScimServerCredentialOutput) CredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.CredentialId }).(pulumi.StringOutput)
+}
+
+// The ID of the Directory.
+func (o ScimServerCredentialOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+func (o ScimServerCredentialOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ScimServerCredentialArrayOutput struct{ *pulumi.OutputState }
 
 func (ScimServerCredentialArrayOutput) ElementType() reflect.Type {

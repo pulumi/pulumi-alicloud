@@ -21,6 +21,53 @@ public final class OpensearchFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.opensearch.AppGroup;
+     * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+     * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+     * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
+     * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
+     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *             .appGroupName(name)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .type(&#34;standard&#34;)
+     *             .quota(AppGroupQuotaArgs.builder()
+     *                 .docSize(1)
+     *                 .computeResource(20)
+     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *             .ids(defaultAppGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAppGroupsResult> getAppGroups() {
         return getAppGroups(GetAppGroupsArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +78,53 @@ public final class OpensearchFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.opensearch.AppGroup;
+     * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+     * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+     * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
+     * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
+     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *             .appGroupName(name)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .type(&#34;standard&#34;)
+     *             .quota(AppGroupQuotaArgs.builder()
+     *                 .docSize(1)
+     *                 .computeResource(20)
+     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *             .ids(defaultAppGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppGroupsResult> getAppGroupsPlain() {
@@ -43,6 +137,53 @@ public final class OpensearchFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.opensearch.AppGroup;
+     * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+     * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+     * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
+     * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
+     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *             .appGroupName(name)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .type(&#34;standard&#34;)
+     *             .quota(AppGroupQuotaArgs.builder()
+     *                 .docSize(1)
+     *                 .computeResource(20)
+     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *             .ids(defaultAppGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAppGroupsResult> getAppGroups(GetAppGroupsArgs args) {
         return getAppGroups(args, InvokeOptions.Empty);
@@ -53,6 +194,53 @@ public final class OpensearchFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.opensearch.AppGroup;
+     * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+     * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+     * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
+     * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
+     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *             .appGroupName(name)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .type(&#34;standard&#34;)
+     *             .quota(AppGroupQuotaArgs.builder()
+     *                 .docSize(1)
+     *                 .computeResource(20)
+     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *             .ids(defaultAppGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppGroupsResult> getAppGroupsPlain(GetAppGroupsPlainArgs args) {
@@ -65,6 +253,53 @@ public final class OpensearchFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.opensearch.AppGroup;
+     * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+     * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+     * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
+     * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
+     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *             .appGroupName(name)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .type(&#34;standard&#34;)
+     *             .quota(AppGroupQuotaArgs.builder()
+     *                 .docSize(1)
+     *                 .computeResource(20)
+     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *             .ids(defaultAppGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAppGroupsResult> getAppGroups(GetAppGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:opensearch/getAppGroups:getAppGroups", TypeShape.of(GetAppGroupsResult.class), args, Utilities.withVersion(options));
@@ -75,6 +310,53 @@ public final class OpensearchFunctions {
      * &gt; **NOTE:** Available in v1.136.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.opensearch.AppGroup;
+     * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+     * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+     * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
+     * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
+     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *             .appGroupName(name)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .type(&#34;standard&#34;)
+     *             .quota(AppGroupQuotaArgs.builder()
+     *                 .docSize(1)
+     *                 .computeResource(20)
+     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *             .ids(defaultAppGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppGroupsResult> getAppGroupsPlain(GetAppGroupsPlainArgs args, InvokeOptions options) {

@@ -231,6 +231,26 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// The public connection string of KVStore DBInstance.
+func (o ConnectionOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
+func (o ConnectionOutput) ConnectionStringPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionStringPrefix }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o ConnectionOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The service port number of the instance.
+func (o ConnectionOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
 type ConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (ConnectionArrayOutput) ElementType() reflect.Type {

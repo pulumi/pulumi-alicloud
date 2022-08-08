@@ -45,6 +45,40 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetExpressSyncsResult> getExpressSyncs() {
         return getExpressSyncs(GetExpressSyncsArgs.Empty, InvokeOptions.Empty);
@@ -55,6 +89,40 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExpressSyncsResult> getExpressSyncsPlain() {
@@ -67,6 +135,40 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetExpressSyncsResult> getExpressSyncs(GetExpressSyncsArgs args) {
         return getExpressSyncs(args, InvokeOptions.Empty);
@@ -77,6 +179,40 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExpressSyncsResult> getExpressSyncsPlain(GetExpressSyncsPlainArgs args) {
@@ -89,6 +225,40 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetExpressSyncsResult> getExpressSyncs(GetExpressSyncsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", TypeShape.of(GetExpressSyncsResult.class), args, Utilities.withVersion(options));
@@ -99,6 +269,40 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetExpressSyncsResult> getExpressSyncsPlain(GetExpressSyncsPlainArgs args, InvokeOptions options) {
@@ -111,6 +315,46 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewayBlockVolumesResult> getGatewayBlockVolumes(GetGatewayBlockVolumesArgs args) {
         return getGatewayBlockVolumes(args, InvokeOptions.Empty);
@@ -121,6 +365,46 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewayBlockVolumesResult> getGatewayBlockVolumesPlain(GetGatewayBlockVolumesPlainArgs args) {
@@ -133,6 +417,46 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewayBlockVolumesResult> getGatewayBlockVolumes(GetGatewayBlockVolumesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", TypeShape.of(GetGatewayBlockVolumesResult.class), args, Utilities.withVersion(options));
@@ -143,6 +467,46 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewayBlockVolumesResult> getGatewayBlockVolumesPlain(GetGatewayBlockVolumesPlainArgs args, InvokeOptions options) {
@@ -155,6 +519,49 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewayCacheDisksResult> getGatewayCacheDisks(GetGatewayCacheDisksArgs args) {
         return getGatewayCacheDisks(args, InvokeOptions.Empty);
@@ -165,6 +572,49 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewayCacheDisksResult> getGatewayCacheDisksPlain(GetGatewayCacheDisksPlainArgs args) {
@@ -177,6 +627,49 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewayCacheDisksResult> getGatewayCacheDisks(GetGatewayCacheDisksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", TypeShape.of(GetGatewayCacheDisksResult.class), args, Utilities.withVersion(options));
@@ -187,6 +680,49 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .status(&#34;0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewayCacheDisksResult> getGatewayCacheDisksPlain(GetGatewayCacheDisksPlainArgs args, InvokeOptions options) {
@@ -199,6 +735,46 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewayFileSharesResult> getGatewayFileShares(GetGatewayFileSharesArgs args) {
         return getGatewayFileShares(args, InvokeOptions.Empty);
@@ -209,6 +785,46 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewayFileSharesResult> getGatewayFileSharesPlain(GetGatewayFileSharesPlainArgs args) {
@@ -221,6 +837,46 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewayFileSharesResult> getGatewayFileShares(GetGatewayFileSharesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", TypeShape.of(GetGatewayFileSharesResult.class), args, Utilities.withVersion(options));
@@ -231,6 +887,46 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
+     *             .gatewayId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewayFileSharesResult> getGatewayFileSharesPlain(GetGatewayFileSharesPlainArgs args, InvokeOptions options) {
@@ -243,6 +939,78 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUser;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .description(&#34;tf-acctestDesalone&#34;)
+     *             .gatewayClass(&#34;Standard&#34;)
+     *             .type(&#34;File&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .releaseAfterExpiration(false)
+     *             .publicNetworkBandwidth(40)
+     *             .storageBundleId(example.id())
+     *             .location(&#34;Cloud&#34;)
+     *             .gatewayName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
+     *             .username(&#34;your_username&#34;)
+     *             .password(&#34;password&#34;)
+     *             .gatewayId(defaultGateway.id())
+     *             .build());
+     * 
+     *         final var ids = CloudstoragegatewayFunctions.getGatewaySmbUsers(GetGatewaySmbUsersArgs.builder()
+     *             .gatewayId(defaultGateway.id())
+     *             .ids(defaultGatewaySmbUser.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewaySmbUsersResult> getGatewaySmbUsers(GetGatewaySmbUsersArgs args) {
         return getGatewaySmbUsers(args, InvokeOptions.Empty);
@@ -253,6 +1021,78 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUser;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .description(&#34;tf-acctestDesalone&#34;)
+     *             .gatewayClass(&#34;Standard&#34;)
+     *             .type(&#34;File&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .releaseAfterExpiration(false)
+     *             .publicNetworkBandwidth(40)
+     *             .storageBundleId(example.id())
+     *             .location(&#34;Cloud&#34;)
+     *             .gatewayName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
+     *             .username(&#34;your_username&#34;)
+     *             .password(&#34;password&#34;)
+     *             .gatewayId(defaultGateway.id())
+     *             .build());
+     * 
+     *         final var ids = CloudstoragegatewayFunctions.getGatewaySmbUsers(GetGatewaySmbUsersArgs.builder()
+     *             .gatewayId(defaultGateway.id())
+     *             .ids(defaultGatewaySmbUser.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewaySmbUsersResult> getGatewaySmbUsersPlain(GetGatewaySmbUsersPlainArgs args) {
@@ -265,6 +1105,78 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUser;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .description(&#34;tf-acctestDesalone&#34;)
+     *             .gatewayClass(&#34;Standard&#34;)
+     *             .type(&#34;File&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .releaseAfterExpiration(false)
+     *             .publicNetworkBandwidth(40)
+     *             .storageBundleId(example.id())
+     *             .location(&#34;Cloud&#34;)
+     *             .gatewayName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
+     *             .username(&#34;your_username&#34;)
+     *             .password(&#34;password&#34;)
+     *             .gatewayId(defaultGateway.id())
+     *             .build());
+     * 
+     *         final var ids = CloudstoragegatewayFunctions.getGatewaySmbUsers(GetGatewaySmbUsersArgs.builder()
+     *             .gatewayId(defaultGateway.id())
+     *             .ids(defaultGatewaySmbUser.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewaySmbUsersResult> getGatewaySmbUsers(GetGatewaySmbUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", TypeShape.of(GetGatewaySmbUsersResult.class), args, Utilities.withVersion(options));
@@ -275,6 +1187,78 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUser;
+     * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .description(&#34;tf-acctestDesalone&#34;)
+     *             .gatewayClass(&#34;Standard&#34;)
+     *             .type(&#34;File&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .releaseAfterExpiration(false)
+     *             .publicNetworkBandwidth(40)
+     *             .storageBundleId(example.id())
+     *             .location(&#34;Cloud&#34;)
+     *             .gatewayName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
+     *             .username(&#34;your_username&#34;)
+     *             .password(&#34;password&#34;)
+     *             .gatewayId(defaultGateway.id())
+     *             .build());
+     * 
+     *         final var ids = CloudstoragegatewayFunctions.getGatewaySmbUsers(GetGatewaySmbUsersArgs.builder()
+     *             .gatewayId(defaultGateway.id())
+     *             .ids(defaultGatewaySmbUser.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewaySmbUsersResult> getGatewaySmbUsersPlain(GetGatewaySmbUsersPlainArgs args, InvokeOptions options) {
@@ -287,6 +1271,44 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .storageBundleId(example.id())
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args) {
         return getGateways(args, InvokeOptions.Empty);
@@ -297,6 +1319,44 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .storageBundleId(example.id())
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args) {
@@ -309,6 +1369,44 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .storageBundleId(example.id())
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
@@ -319,6 +1417,44 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+     * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
+     *             .storageBundleName(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .storageBundleId(example.id())
+     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args, InvokeOptions options) {
@@ -332,6 +1468,34 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -345,6 +1509,34 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -358,6 +1550,34 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -371,6 +1591,34 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -384,6 +1632,34 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -397,6 +1673,34 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -409,6 +1713,37 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStocksResult> getStocks() {
         return getStocks(GetStocksArgs.Empty, InvokeOptions.Empty);
@@ -419,6 +1754,37 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStocksResult> getStocksPlain() {
@@ -431,6 +1797,37 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStocksResult> getStocks(GetStocksArgs args) {
         return getStocks(args, InvokeOptions.Empty);
@@ -441,6 +1838,37 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStocksResult> getStocksPlain(GetStocksPlainArgs args) {
@@ -453,6 +1881,37 @@ public final class CloudstoragegatewayFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetStocksResult> getStocks(GetStocksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudstoragegateway/getStocks:getStocks", TypeShape.of(GetStocksResult.class), args, Utilities.withVersion(options));
@@ -463,6 +1922,37 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.144.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetStocksResult> getStocksPlain(GetStocksPlainArgs args, InvokeOptions options) {

@@ -322,6 +322,21 @@ func (o ExpressSyncShareAttachmentOutput) ToExpressSyncShareAttachmentOutputWith
 	return o
 }
 
+// The ID of the ExpressSync.
+func (o ExpressSyncShareAttachmentOutput) ExpressSyncId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressSyncShareAttachment) pulumi.StringOutput { return v.ExpressSyncId }).(pulumi.StringOutput)
+}
+
+// The ID of the Gateway.
+func (o ExpressSyncShareAttachmentOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressSyncShareAttachment) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
+func (o ExpressSyncShareAttachmentOutput) ShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressSyncShareAttachment) pulumi.StringOutput { return v.ShareName }).(pulumi.StringOutput)
+}
+
 type ExpressSyncShareAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncShareAttachmentArrayOutput) ElementType() reflect.Type {

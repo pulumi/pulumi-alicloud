@@ -22,6 +22,37 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.VirtualHost;
+ * import com.pulumi.alicloud.amqp.VirtualHostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new VirtualHost(&#34;example&#34;, VirtualHostArgs.builder()        
+ *             .instanceId(&#34;amqp-abc12345&#34;)
+ *             .virtualHostName(&#34;my-VirtualHost&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.

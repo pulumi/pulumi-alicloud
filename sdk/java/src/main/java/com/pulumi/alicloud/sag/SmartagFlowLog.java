@@ -24,6 +24,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.sag.SmartagFlowLog;
+ * import com.pulumi.alicloud.sag.SmartagFlowLogArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new SmartagFlowLog(&#34;example&#34;, SmartagFlowLogArgs.builder()        
+ *             .flowLogName(&#34;example_value&#34;)
+ *             .logstoreName(&#34;example_value&#34;)
+ *             .netflowServerIp(&#34;example_value&#34;)
+ *             .netflowServerPort(1)
+ *             .outputType(&#34;all&#34;)
+ *             .projectName(&#34;example_value&#34;)
+ *             .slsRegionId(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Smartag Flow Log can be imported using the id, e.g.

@@ -245,6 +245,48 @@ func (o AccessConfigurationOutput) ToAccessConfigurationOutputWithContext(ctx co
 	return o
 }
 
+// The AccessConfigurationId of the Access Configuration.
+func (o AccessConfigurationOutput) AccessConfigurationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfiguration) pulumi.StringOutput { return v.AccessConfigurationId }).(pulumi.StringOutput)
+}
+
+// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+func (o AccessConfigurationOutput) AccessConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfiguration) pulumi.StringOutput { return v.AccessConfigurationName }).(pulumi.StringOutput)
+}
+
+// The Description of the  Access Configuration. The description can be up to `1024` characters long.
+func (o AccessConfigurationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Directory.
+func (o AccessConfigurationOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConfiguration) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+func (o AccessConfigurationOutput) ForceRemovePermissionPolicies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessConfiguration) pulumi.BoolPtrOutput { return v.ForceRemovePermissionPolicies }).(pulumi.BoolPtrOutput)
+}
+
+// The Policy List. See the following `Block permissionPolicies`.
+func (o AccessConfigurationOutput) PermissionPolicies() AccessConfigurationPermissionPolicyArrayOutput {
+	return o.ApplyT(func(v *AccessConfiguration) AccessConfigurationPermissionPolicyArrayOutput {
+		return v.PermissionPolicies
+	}).(AccessConfigurationPermissionPolicyArrayOutput)
+}
+
+// The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
+func (o AccessConfigurationOutput) RelayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessConfiguration) pulumi.StringPtrOutput { return v.RelayState }).(pulumi.StringPtrOutput)
+}
+
+// The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+func (o AccessConfigurationOutput) SessionDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *AccessConfiguration) pulumi.IntOutput { return v.SessionDuration }).(pulumi.IntOutput)
+}
+
 type AccessConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationArrayOutput) ElementType() reflect.Type {

@@ -15,44 +15,6 @@ namespace Pulumi.AliCloud.Eais
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Eais.GetInstances.InvokeAsync(new AliCloud.Eais.GetInstancesArgs
-        ///         {
-        ///             Id = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EaisInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Eais.GetInstances.InvokeAsync(new AliCloud.Eais.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.EaisInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
-        /// 
-        ///     [Output("eaisInstanceId1")]
-        ///     public Output&lt;string&gt; EaisInstanceId1 { get; set; }
-        ///     [Output("eaisInstanceId2")]
-        ///     public Output&lt;string&gt; EaisInstanceId2 { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -61,44 +23,6 @@ namespace Pulumi.AliCloud.Eais
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Eais.GetInstances.InvokeAsync(new AliCloud.Eais.GetInstancesArgs
-        ///         {
-        ///             Id = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EaisInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Eais.GetInstances.InvokeAsync(new AliCloud.Eais.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.EaisInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
-        /// 
-        ///     [Output("eaisInstanceId1")]
-        ///     public Output&lt;string&gt; EaisInstanceId1 { get; set; }
-        ///     [Output("eaisInstanceId2")]
-        ///     public Output&lt;string&gt; EaisInstanceId2 { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

@@ -406,6 +406,84 @@ func (o DedicatedHostOutput) ToDedicatedHostOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
+func (o DedicatedHostOutput) AllocationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.AllocationStatus }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the auto-renewal feature.
+func (o DedicatedHostOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the dedicated cluster.
+func (o DedicatedHostOutput) DedicatedHostGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.DedicatedHostGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the host.
+func (o DedicatedHostOutput) DedicatedHostId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.DedicatedHostId }).(pulumi.StringOutput)
+}
+
+// The instance type of the host. For more information about the supported instance types of hosts, see [Host specification details](https://www.alibabacloud.com/help/doc-detail/206343.htm).
+func (o DedicatedHostOutput) HostClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.HostClass }).(pulumi.StringOutput)
+}
+
+// The name of the host. The name must be `1` to `64` characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+func (o DedicatedHostOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+}
+
+// Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
+func (o DedicatedHostOutput) ImageCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.ImageCategory }).(pulumi.StringPtrOutput)
+}
+
+// Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
+func (o DedicatedHostOutput) OsPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.OsPassword }).(pulumi.StringPtrOutput)
+}
+
+// The payment type of the resource. Valid values: `Subscription`.
+func (o DedicatedHostOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
+func (o DedicatedHostOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
+func (o DedicatedHostOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o DedicatedHostOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The subscription duration of the host. Valid values:
+// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
+// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
+// * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
+func (o DedicatedHostOutput) UsedTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.IntPtrOutput { return v.UsedTime }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the vSwitch to which the host is connected.
+func (o DedicatedHostOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone.
+func (o DedicatedHostOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type DedicatedHostArrayOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostArrayOutput) ElementType() reflect.Type {

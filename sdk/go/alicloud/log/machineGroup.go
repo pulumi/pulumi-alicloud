@@ -211,6 +211,31 @@ func (o MachineGroupOutput) ToMachineGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The specific machine identification, which can be an IP address or user-defined identity.
+func (o MachineGroupOutput) IdentifyLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineGroup) pulumi.StringArrayOutput { return v.IdentifyLists }).(pulumi.StringArrayOutput)
+}
+
+// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
+func (o MachineGroupOutput) IdentifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineGroup) pulumi.StringPtrOutput { return v.IdentifyType }).(pulumi.StringPtrOutput)
+}
+
+// The machine group name, which is unique in the same project.
+func (o MachineGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project name to the machine group belongs.
+func (o MachineGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The topic of a machine group.
+func (o MachineGroupOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineGroup) pulumi.StringPtrOutput { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
 type MachineGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (MachineGroupArrayOutput) ElementType() reflect.Type {

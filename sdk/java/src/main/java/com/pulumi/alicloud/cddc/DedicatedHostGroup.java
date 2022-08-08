@@ -25,6 +25,50 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroup;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_test_foo&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var default_ = new DedicatedHostGroup(&#34;default&#34;, DedicatedHostGroupArgs.builder()        
+ *             .engine(&#34;MongoDB&#34;)
+ *             .vpcId(vpc.id())
+ *             .cpuAllocationRatio(101)
+ *             .memAllocationRatio(50)
+ *             .diskAllocationRatio(200)
+ *             .allocationPolicy(&#34;Evenly&#34;)
+ *             .hostReplacePolicy(&#34;Manual&#34;)
+ *             .dedicatedHostGroupDesc(&#34;tf-testaccDesc&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.

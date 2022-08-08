@@ -269,6 +269,56 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The name prefix of account.
+func (o AccountOutput) AccountNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+func (o AccountOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The ID of the parent folder.
+func (o AccountOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Ways for members to join the resource directory. Valid values: `invited`, `created`.
+func (o AccountOutput) JoinMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.JoinMethod }).(pulumi.StringOutput)
+}
+
+// The time when the member joined the resource directory.
+func (o AccountOutput) JoinTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.JoinTime }).(pulumi.StringOutput)
+}
+
+// The modification time of the invitation.
+func (o AccountOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+func (o AccountOutput) PayerAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.PayerAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Resource directory ID.
+func (o AccountOutput) ResourceDirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.ResourceDirectoryId }).(pulumi.StringOutput)
+}
+
+// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+func (o AccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Member type. The value of `ResourceAccount` indicates the resource account.
+func (o AccountOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type AccountArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountArrayOutput) ElementType() reflect.Type {

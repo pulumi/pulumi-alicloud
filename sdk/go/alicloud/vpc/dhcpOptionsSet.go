@@ -270,6 +270,48 @@ func (o DhcpOptionsSetOutput) ToDhcpOptionsSetOutputWithContext(ctx context.Cont
 	return o
 }
 
+// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+//
+// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+func (o DhcpOptionsSetOutput) AssociateVpcs() DhcpOptionsSetAssociateVpcArrayOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) DhcpOptionsSetAssociateVpcArrayOutput { return v.AssociateVpcs }).(DhcpOptionsSetAssociateVpcArrayOutput)
+}
+
+// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+func (o DhcpOptionsSetOutput) DhcpOptionsSetDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.StringPtrOutput { return v.DhcpOptionsSetDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+func (o DhcpOptionsSetOutput) DhcpOptionsSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.StringPtrOutput { return v.DhcpOptionsSetName }).(pulumi.StringPtrOutput)
+}
+
+// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+func (o DhcpOptionsSetOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.StringPtrOutput { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+func (o DhcpOptionsSetOutput) DomainNameServers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.StringPtrOutput { return v.DomainNameServers }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to precheck this request only. Valid values: `true` or `false`.
+func (o DhcpOptionsSetOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the account to which the DHCP options set belongs.
+func (o DhcpOptionsSetOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.StringOutput { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+func (o DhcpOptionsSetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type DhcpOptionsSetArrayOutput struct{ *pulumi.OutputState }
 
 func (DhcpOptionsSetArrayOutput) ElementType() reflect.Type {

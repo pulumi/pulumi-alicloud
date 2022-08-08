@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DynamicTagGroup{}
 	case "alicloud:cms/groupMetricRule:GroupMetricRule":
 		r = &GroupMetricRule{}
+	case "alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask":
+		r = &HybridMonitorFcTask{}
+	case "alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask":
+		r = &HybridMonitorSlsTask{}
 	case "alicloud:cms/metricRuleTemplate:MetricRuleTemplate":
 		r = &MetricRuleTemplate{}
 	case "alicloud:cms/monitorGroup:MonitorGroup":
@@ -79,6 +83,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cms/groupMetricRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/hybridMonitorFcTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/hybridMonitorSlsTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

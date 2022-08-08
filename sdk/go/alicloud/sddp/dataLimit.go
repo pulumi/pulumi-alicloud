@@ -264,6 +264,56 @@ func (o DataLimitOutput) ToDataLimitOutputWithContext(ctx context.Context) DataL
 	return o
 }
 
+// Whether to enable the log auditing feature. Valid values: `0`, `1`.
+func (o DataLimitOutput) AuditStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.IntOutput { return v.AuditStatus }).(pulumi.IntOutput)
+}
+
+// The type of the database. Valid values: `MySQL`, `SQLServer`.
+func (o DataLimitOutput) EngineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.StringPtrOutput { return v.EngineType }).(pulumi.StringPtrOutput)
+}
+
+// The lang.
+func (o DataLimitOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
+func (o DataLimitOutput) LogStoreDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.IntPtrOutput { return v.LogStoreDay }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the data asset.
+func (o DataLimitOutput) ParentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
+}
+
+// The password that is used to connect to the database.
+func (o DataLimitOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port that is used to connect to the database.
+func (o DataLimitOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
+func (o DataLimitOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The region ID of the data asset.
+func (o DataLimitOutput) ServiceRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.StringPtrOutput { return v.ServiceRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the service to which the data asset belongs.
+func (o DataLimitOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLimit) pulumi.StringPtrOutput { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
 type DataLimitArrayOutput struct{ *pulumi.OutputState }
 
 func (DataLimitArrayOutput) ElementType() reflect.Type {

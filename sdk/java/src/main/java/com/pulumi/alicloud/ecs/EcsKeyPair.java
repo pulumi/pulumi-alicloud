@@ -25,6 +25,45 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsKeyPair;
+ * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new EcsKeyPair(&#34;example&#34;, EcsKeyPairArgs.builder()        
+ *             .keyPairName(&#34;key_pair_name&#34;)
+ *             .build());
+ * 
+ *         var prefix = new EcsKeyPair(&#34;prefix&#34;, EcsKeyPairArgs.builder()        
+ *             .keyNamePrefix(&#34;terraform-test-key-pair-prefix&#34;)
+ *             .build());
+ * 
+ *         var publickey = new EcsKeyPair(&#34;publickey&#34;, EcsKeyPairArgs.builder()        
+ *             .keyPairName(&#34;my_public_key&#34;)
+ *             .publicKey(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Key Pair can be imported using the id, e.g.

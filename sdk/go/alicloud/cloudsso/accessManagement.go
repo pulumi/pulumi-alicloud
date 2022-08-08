@@ -253,6 +253,41 @@ func (o AccessManagementOutput) ToAccessManagementOutputWithContext(ctx context.
 	return o
 }
 
+// The Access configuration ID.
+func (o AccessManagementOutput) AccessConfigurationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessManagement) pulumi.StringOutput { return v.AccessConfigurationId }).(pulumi.StringOutput)
+}
+
+// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+func (o AccessManagementOutput) DeprovisionStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessManagement) pulumi.StringPtrOutput { return v.DeprovisionStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Directory.
+func (o AccessManagementOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessManagement) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The ID of the access assignment.
+func (o AccessManagementOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessManagement) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+func (o AccessManagementOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessManagement) pulumi.StringOutput { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// The ID of the target to create the resource range.
+func (o AccessManagementOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessManagement) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// The type of the resource range target to be accessed. Valid values: `RD-Account`.
+func (o AccessManagementOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessManagement) pulumi.StringOutput { return v.TargetType }).(pulumi.StringOutput)
+}
+
 type AccessManagementArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessManagementArrayOutput) ElementType() reflect.Type {

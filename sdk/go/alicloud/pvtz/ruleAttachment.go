@@ -187,6 +187,16 @@ func (o RuleAttachmentOutput) ToRuleAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the rule.
+func (o RuleAttachmentOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleAttachment) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The List of the VPC. See the following `Block vpcs`.
+func (o RuleAttachmentOutput) Vpcs() RuleAttachmentVpcArrayOutput {
+	return o.ApplyT(func(v *RuleAttachment) RuleAttachmentVpcArrayOutput { return v.Vpcs }).(RuleAttachmentVpcArrayOutput)
+}
+
 type RuleAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleAttachmentArrayOutput) ElementType() reflect.Type {

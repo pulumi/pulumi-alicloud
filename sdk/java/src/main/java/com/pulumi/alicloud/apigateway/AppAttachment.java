@@ -16,6 +16,39 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.apigateway.AppAttachment;
+ * import com.pulumi.alicloud.apigateway.AppAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new AppAttachment(&#34;foo&#34;, AppAttachmentArgs.builder()        
+ *             .apiId(&#34;d29d25b9cfdf4742b1a3f6537299a749&#34;)
+ *             .appId(&#34;20898181&#34;)
+ *             .groupId(&#34;aaef8cdbb404420f9398a74ed1db7fff&#34;)
+ *             .stageName(&#34;PRE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:apigateway/appAttachment:AppAttachment")
 public class AppAttachment extends com.pulumi.resources.CustomResource {

@@ -292,6 +292,72 @@ func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx contex
 	return o
 }
 
+// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+func (o SecurityGroupRuleOutput) CidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.CidrIp }).(pulumi.StringPtrOutput)
+}
+
+// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+func (o SecurityGroupRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+func (o SecurityGroupRuleOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+func (o SecurityGroupRuleOutput) Ipv6CidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Ipv6CidrIp }).(pulumi.StringPtrOutput)
+}
+
+// Network type, can be either `internet` or `intranet`, the default value is `internet`.
+func (o SecurityGroupRuleOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.NicType }).(pulumi.StringOutput)
+}
+
+// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+func (o SecurityGroupRuleOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
+// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
+func (o SecurityGroupRuleOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
+func (o SecurityGroupRuleOutput) PrefixListId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.PrefixListId }).(pulumi.StringOutput)
+}
+
+// Authorization policy priority, with parameter values: `1-100`, default value: 1.
+func (o SecurityGroupRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The security group to apply this rule to.
+func (o SecurityGroupRuleOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+func (o SecurityGroupRuleOutput) SourceGroupOwnerAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.SourceGroupOwnerAccount }).(pulumi.StringPtrOutput)
+}
+
+// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
+func (o SecurityGroupRuleOutput) SourceSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.SourceSecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+func (o SecurityGroupRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type SecurityGroupRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (SecurityGroupRuleArrayOutput) ElementType() reflect.Type {

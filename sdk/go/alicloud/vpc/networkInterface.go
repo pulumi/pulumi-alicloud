@@ -400,6 +400,94 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 	return o
 }
 
+// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+func (o NetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.54.0+) The MAC address of an ENI.
+func (o NetworkInterfaceOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
+}
+
+// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+func (o NetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NetworkInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+func (o NetworkInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.PrimaryIpAddress }).(pulumi.StringOutput)
+}
+
+// The primary private IP of the ENI.
+//
+// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+func (o NetworkInterfaceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+func (o NetworkInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+//
+// Deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
+func (o NetworkInterfaceOutput) PrivateIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
+}
+
+// Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+//
+// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
+func (o NetworkInterfaceOutput) PrivateIpsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.IntOutput { return v.PrivateIpsCount }).(pulumi.IntOutput)
+}
+
+func (o NetworkInterfaceOutput) QueueNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.IntOutput { return v.QueueNumber }).(pulumi.IntOutput)
+}
+
+// The Id of resource group which the network interface belongs.
+func (o NetworkInterfaceOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworkInterfaceOutput) SecondaryPrivateIpAddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.IntOutput { return v.SecondaryPrivateIpAddressCount }).(pulumi.IntOutput)
+}
+
+func (o NetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of security group ids to associate with.
+//
+// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
+func (o NetworkInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o NetworkInterfaceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o NetworkInterfaceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The VSwitch to create the ENI in.
+func (o NetworkInterfaceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
 type NetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkInterfaceArrayOutput) ElementType() reflect.Type {

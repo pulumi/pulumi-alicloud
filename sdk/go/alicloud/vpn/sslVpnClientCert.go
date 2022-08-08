@@ -233,6 +233,41 @@ func (o SslVpnClientCertOutput) ToSslVpnClientCertOutputWithContext(ctx context.
 	return o
 }
 
+// The client ca cert.
+func (o SslVpnClientCertOutput) CaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnClientCert) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
+}
+
+// The client cert.
+func (o SslVpnClientCertOutput) ClientCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnClientCert) pulumi.StringOutput { return v.ClientCert }).(pulumi.StringOutput)
+}
+
+// The vpn client config.
+func (o SslVpnClientCertOutput) ClientConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnClientCert) pulumi.StringOutput { return v.ClientConfig }).(pulumi.StringOutput)
+}
+
+// The client key.
+func (o SslVpnClientCertOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnClientCert) pulumi.StringOutput { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+// The name of the client certificate.
+func (o SslVpnClientCertOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnClientCert) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the SSL-VPN server.
+func (o SslVpnClientCertOutput) SslVpnServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnClientCert) pulumi.StringOutput { return v.SslVpnServerId }).(pulumi.StringOutput)
+}
+
+// The status of the client certificate.
+func (o SslVpnClientCertOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslVpnClientCert) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SslVpnClientCertArrayOutput struct{ *pulumi.OutputState }
 
 func (SslVpnClientCertArrayOutput) ElementType() reflect.Type {

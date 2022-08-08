@@ -261,6 +261,21 @@ func (o GatewaySmbUserOutput) ToGatewaySmbUserOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Gateway ID of the Gateway SMB User.
+func (o GatewaySmbUserOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewaySmbUser) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The password of the Gateway SMB User.
+func (o GatewaySmbUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewaySmbUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// The username of the Gateway SMB User.
+func (o GatewaySmbUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewaySmbUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
 type GatewaySmbUserArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewaySmbUserArrayOutput) ElementType() reflect.Type {

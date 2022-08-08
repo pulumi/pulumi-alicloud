@@ -156,6 +156,10 @@ func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
 }
 
+func (o AliasOutput) AccountAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.AccountAlias }).(pulumi.StringOutput)
+}
+
 type AliasArrayOutput struct{ *pulumi.OutputState }
 
 func (AliasArrayOutput) ElementType() reflect.Type {

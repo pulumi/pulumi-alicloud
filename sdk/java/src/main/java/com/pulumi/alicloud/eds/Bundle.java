@@ -25,6 +25,58 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eds.EdsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+ * import com.pulumi.alicloud.eds.Bundle;
+ * import com.pulumi.alicloud.eds.BundleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultImages = EdsFunctions.getImages(GetImagesArgs.builder()
+ *             .imageType(&#34;SYSTEM&#34;)
+ *             .osType(&#34;Windows&#34;)
+ *             .desktopInstanceType(&#34;eds.hf.4c8g&#34;)
+ *             .build());
+ * 
+ *         final var defaultDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+ *             .instanceTypeFamily(&#34;eds.hf&#34;)
+ *             .cpuCount(4)
+ *             .memorySize(8192)
+ *             .build());
+ * 
+ *         var defaultBundle = new Bundle(&#34;defaultBundle&#34;, BundleArgs.builder()        
+ *             .description(var_.name())
+ *             .desktopType(defaultDesktopTypes.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.ids()[0]))
+ *             .bundleName(var_.name())
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .userDiskSizeGibs(70)
+ *             .rootDiskSizeGib(80)
+ *             .rootDiskPerformanceLevel(&#34;PL1&#34;)
+ *             .userDiskPerformanceLevel(&#34;PL1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECD Bundle can be imported using the id, e.g.

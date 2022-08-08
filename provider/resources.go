@@ -445,7 +445,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"alicloud_cms_sls_group": {Tok: resource(cmsMod, "SlsGroup")},
+			"alicloud_cms_sls_group":               {Tok: resource(cmsMod, "SlsGroup")},
+			"alicloud_cms_hybrid_monitor_fc_task":  {Tok: resource(cmsMod, "HybridMonitorFcTask")},
+			"alicloud_cms_hybrid_monitor_sls_task": {Tok: resource(cmsMod, "HybridMonitorSlsTask")},
 
 			// Config
 			"alicloud_config_configuration_recorder":    {Tok: resource(cfgMod, "ConfigurationRecorder")},
@@ -808,6 +810,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbr_replication_vault":  {Tok: resource(hbrMod, "ReplicationVault")},
 			"alicloud_hbr_ots_backup_plan":    {Tok: resource(hbrMod, "OtsBackupPlan")},
 			"alicloud_hbr_hana_instance":      {Tok: resource(hbrMod, "HanaInstance")},
+			"alicloud_hbr_hana_backup_plan":   {Tok: resource(hbrMod, "HanaBackupPlan")},
 
 			// Iot
 			"alicloud_iot_device_group": {Tok: resource(iotMod, "DeviceGroup")},
@@ -1431,11 +1434,13 @@ func Provider() tfbridge.ProviderInfo {
 					Markdown: []byte(" "),
 				},
 			},
-			"alicloud_cms_metric_rule_templates": {Tok: dataSource(cmsMod, "getMetricRuleTemplates")},
-			"alicloud_cms_dynamic_tag_groups":    {Tok: dataSource(cmsMod, "getDynamicTagGroups")},
-			"alicloud_cms_namespaces":            {Tok: dataSource(cmsMod, "getNamespaces")},
-			"alicloud_cms_sls_groups":            {Tok: dataSource(cmsMod, "getSlsGroups")},
-			"alicloud_cms_hybrid_monitor_datas":  {Tok: dataSource(cmsMod, "getHybridMonitorDatas")},
+			"alicloud_cms_metric_rule_templates":    {Tok: dataSource(cmsMod, "getMetricRuleTemplates")},
+			"alicloud_cms_dynamic_tag_groups":       {Tok: dataSource(cmsMod, "getDynamicTagGroups")},
+			"alicloud_cms_namespaces":               {Tok: dataSource(cmsMod, "getNamespaces")},
+			"alicloud_cms_sls_groups":               {Tok: dataSource(cmsMod, "getSlsGroups")},
+			"alicloud_cms_hybrid_monitor_datas":     {Tok: dataSource(cmsMod, "getHybridMonitorDatas")},
+			"alicloud_cms_hybrid_monitor_fc_tasks":  {Tok: dataSource(cmsMod, "getHybridMonitorFcTasks")},
+			"alicloud_cms_hybrid_monitor_sls_tasks": {Tok: dataSource(cmsMod, "getHybridMonitorSlsTasks")},
 
 			// Config
 			"alicloud_config_configuration_recorders":    {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -1727,6 +1732,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbr_ots_backup_plans":          {Tok: dataSource(hbrMod, "getOtsBackupPlans")},
 			"alicloud_hbr_ots_snapshots":             {Tok: dataSource(hbrMod, "getOtsSnapshots")},
 			"alicloud_hbr_hana_instances":            {Tok: dataSource(hbrMod, "getHanaInstances")},
+			"alicloud_hbr_hana_backup_plans":         {Tok: dataSource(hbrMod, "getHanaBackupPlans")},
 
 			// iot
 			"alicloud_iot_service":       {Tok: dataSource(iotMod, "getService")},

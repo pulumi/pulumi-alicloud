@@ -307,6 +307,70 @@ func (o TrailDeprecatedOutput) ToTrailDeprecatedOutputWithContext(ctx context.Co
 	return o
 }
 
+// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+func (o TrailDeprecatedOutput) EventRw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.EventRw }).(pulumi.StringPtrOutput)
+}
+
+func (o TrailDeprecatedOutput) IsOrganizationTrail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.BoolPtrOutput { return v.IsOrganizationTrail }).(pulumi.BoolPtrOutput)
+}
+
+// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
+func (o TrailDeprecatedOutput) MnsTopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.MnsTopicArn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the trail to be created, which must be unique for an account.
+//
+// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
+func (o TrailDeprecatedOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+func (o TrailDeprecatedOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.OssBucketName }).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the specified OSS bucket name. This parameter can be left empty.
+func (o TrailDeprecatedOutput) OssKeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.OssKeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o TrailDeprecatedOutput) OssWriteRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.OssWriteRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The RAM role in ActionTrail permitted by the user.
+//
+// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
+func (o TrailDeprecatedOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The unique ARN of the Log Service project.
+func (o TrailDeprecatedOutput) SlsProjectArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.SlsProjectArn }).(pulumi.StringPtrOutput)
+}
+
+// The unique ARN of the Log Service role.
+func (o TrailDeprecatedOutput) SlsWriteRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
+}
+
+func (o TrailDeprecatedOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o TrailDeprecatedOutput) TrailName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.TrailName }).(pulumi.StringOutput)
+}
+
+func (o TrailDeprecatedOutput) TrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.TrailRegion }).(pulumi.StringOutput)
+}
+
 type TrailDeprecatedArrayOutput struct{ *pulumi.OutputState }
 
 func (TrailDeprecatedArrayOutput) ElementType() reflect.Type {

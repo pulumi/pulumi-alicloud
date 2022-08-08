@@ -202,6 +202,37 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     @Import(name="tags")
@@ -209,6 +240,37 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -433,6 +495,37 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param tags A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.alicloud.slb.SlbFunctions;
+         * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+         *             .tags(Map.ofEntries(
+         *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+         *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+         *             ))
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

@@ -240,6 +240,41 @@ func (o LogTailConfigOutput) ToLogTailConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
+func (o LogTailConfigOutput) InputDetail() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailConfig) pulumi.StringOutput { return v.InputDetail }).(pulumi.StringOutput)
+}
+
+// The input type. Currently only two types of files and plugin are supported.
+func (o LogTailConfigOutput) InputType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailConfig) pulumi.StringOutput { return v.InputType }).(pulumi.StringOutput)
+}
+
+// （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+func (o LogTailConfigOutput) LogSample() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogTailConfig) pulumi.StringPtrOutput { return v.LogSample }).(pulumi.StringPtrOutput)
+}
+
+// The log store name to the query index belongs.
+func (o LogTailConfigOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailConfig) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The Logtail configuration name, which is unique in the same project.
+func (o LogTailConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The output type. Currently, only LogService is supported.
+func (o LogTailConfigOutput) OutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailConfig) pulumi.StringOutput { return v.OutputType }).(pulumi.StringOutput)
+}
+
+// The project name to the log store belongs.
+func (o LogTailConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogTailConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 type LogTailConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (LogTailConfigArrayOutput) ElementType() reflect.Type {

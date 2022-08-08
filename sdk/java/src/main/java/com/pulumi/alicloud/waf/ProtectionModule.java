@@ -24,6 +24,65 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.waf.WafFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.waf.Domain;
+ * import com.pulumi.alicloud.waf.DomainArgs;
+ * import com.pulumi.alicloud.waf.inputs.DomainLogHeaderArgs;
+ * import com.pulumi.alicloud.waf.ProtectionModule;
+ * import com.pulumi.alicloud.waf.ProtectionModuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultInstances = WafFunctions.getInstances();
+ * 
+ *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+ *             .domainName(&#34;you domain&#34;)
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .isAccessProduct(&#34;On&#34;)
+ *             .sourceIps(&#34;1.1.1.1&#34;)
+ *             .clusterType(&#34;PhysicalCluster&#34;)
+ *             .http2Ports(443)
+ *             .httpPorts(80)
+ *             .httpsPorts(443)
+ *             .httpToUserIp(&#34;Off&#34;)
+ *             .httpsRedirect(&#34;Off&#34;)
+ *             .loadBalancing(&#34;IpHash&#34;)
+ *             .logHeaders(DomainLogHeaderArgs.builder()
+ *                 .key(&#34;foo&#34;)
+ *                 .value(&#34;http&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultProtectionModule = new ProtectionModule(&#34;defaultProtectionModule&#34;, ProtectionModuleArgs.builder()        
+ *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .domain(defaultDomain.domainName())
+ *             .defenseType(&#34;ac_cc&#34;)
+ *             .mode(0)
+ *             .status(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.

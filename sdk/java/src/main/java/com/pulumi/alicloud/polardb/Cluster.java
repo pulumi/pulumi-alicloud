@@ -28,6 +28,77 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.66.0+.
  * 
  * ## Example Usage
+ * ### Create a PolarDB MySQL cluster
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.polardb.Cluster;
+ * import com.pulumi.alicloud.polardb.ClusterArgs;
+ * import com.pulumi.alicloud.polardb.inputs.ClusterDbClusterIpArrayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;polardbClusterconfig&#34;);
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;PolarDB&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *             .dbType(&#34;MySQL&#34;)
+ *             .dbVersion(&#34;5.6&#34;)
+ *             .dbNodeClass(&#34;polar.mysql.x4.medium&#34;)
+ *             .payType(&#34;PostPaid&#34;)
+ *             .description(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .dbClusterIpArrays(            
+ *                 ClusterDbClusterIpArrayArgs.builder()
+ *                     .dbClusterIpArrayName(&#34;default&#34;)
+ *                     .securityIps(                    
+ *                         &#34;1.2.3.4&#34;,
+ *                         &#34;1.2.3.5&#34;)
+ *                     .build(),
+ *                 ClusterDbClusterIpArrayArgs.builder()
+ *                     .dbClusterIpArrayName(&#34;test_ips1&#34;)
+ *                     .securityIps(&#34;1.2.3.6&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -69,6 +140,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.backupRetentionPolicyOnClusterDeletion;
     }
     /**
+     * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     * 
+     */
+    @Export(name="cloneDataPoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> cloneDataPoint;
+
+    /**
+     * @return The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
+     * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     * 
+     */
+    public Output<Optional<String>> cloneDataPoint() {
+        return Codegen.optional(this.cloneDataPoint);
+    }
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      * 
      */
@@ -95,6 +182,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> connectionString() {
         return this.connectionString;
+    }
+    /**
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * 
+     */
+    @Export(name="creationCategory", type=String.class, parameters={})
+    private Output<String> creationCategory;
+
+    /**
+     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * 
+     */
+    public Output<String> creationCategory() {
+        return this.creationCategory;
+    }
+    /**
+     * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+     * 
+     */
+    @Export(name="creationOption", type=String.class, parameters={})
+    private Output<String> creationOption;
+
+    /**
+     * @return The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
+     * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
+     * 
+     */
+    public Output<String> creationOption() {
+        return this.creationOption;
     }
     /**
      * db_cluster_ip_array defines how users can send requests to your API.
@@ -132,15 +251,15 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dbNodeCount", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> dbNodeCount;
+    private Output<Integer> dbNodeCount;
 
     /**
      * @return Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
-    public Output<Optional<Integer>> dbNodeCount() {
-        return Codegen.optional(this.dbNodeCount);
+    public Output<Integer> dbNodeCount() {
+        return this.dbNodeCount;
     }
     /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -215,6 +334,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> encryptNewTables() {
         return Codegen.optional(this.encryptNewTables);
+    }
+    /**
+     * The ID of the global database network (GDN).
+     * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+     * 
+     */
+    @Export(name="gdnId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> gdnId;
+
+    /**
+     * @return The ID of the global database network (GDN).
+     * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
+     * 
+     */
+    public Output<Optional<String>> gdnId() {
+        return Codegen.optional(this.gdnId);
     }
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -353,6 +488,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> securityIps() {
         return this.securityIps;
+    }
+    /**
+     * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     * 
+     */
+    @Export(name="sourceResourceId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> sourceResourceId;
+
+    /**
+     * @return The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+     * 
+     */
+    public Output<Optional<String>> sourceResourceId() {
+        return Codegen.optional(this.sourceResourceId);
     }
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.

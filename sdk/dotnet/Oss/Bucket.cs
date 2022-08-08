@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "private",
-    ///             Bucket = "bucket-170309-acl",
+    ///             BucketName = "bucket-170309-acl",
     ///         });
     ///     }
     /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         var bucket_website = new AliCloud.Oss.Bucket("bucket-website", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "bucket-170309-website",
+    ///             BucketName = "bucket-170309-website",
     ///             Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs
     ///             {
     ///                 ErrorDocument = "error.html",
@@ -72,12 +72,12 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         var bucket_target = new AliCloud.Oss.Bucket("bucket-target", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "bucket-170309-acl",
+    ///             BucketName = "bucket-170309-acl",
     ///             Acl = "public-read",
     ///         });
     ///         var bucket_logging = new AliCloud.Oss.Bucket("bucket-logging", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "bucket-170309-logging",
+    ///             BucketName = "bucket-170309-logging",
     ///             Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs
     ///             {
     ///                 TargetBucket = bucket_target.Id,
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_referer = new AliCloud.Oss.Bucket("bucket-referer", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "private",
-    ///             Bucket = "bucket-170309-referer",
+    ///             BucketName = "bucket-170309-referer",
     ///             RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs
     ///             {
     ///                 AllowEmpty = false,
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_lifecycle = new AliCloud.Oss.Bucket("bucket-lifecycle", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "public-read",
-    ///             Bucket = "bucket-170309-lifecycle",
+    ///             BucketName = "bucket-170309-lifecycle",
     ///             LifecycleRules = 
     ///             {
     ///                 new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_versioning_lifecycle = new AliCloud.Oss.Bucket("bucket-versioning-lifecycle", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "private",
-    ///             Bucket = "bucket-170309-lifecycle",
+    ///             BucketName = "bucket-170309-lifecycle",
     ///             LifecycleRules = 
     ///             {
     ///                 new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_policy = new AliCloud.Oss.Bucket("bucket-policy", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "private",
-    ///             Bucket = "bucket-170309-policy",
+    ///             BucketName = "bucket-170309-policy",
     ///             Policy = @"  {""Statement"":
     ///       [{""Action"":
     ///           [""oss:PutObject"", ""oss:GetObject"", ""oss:DeleteBucket""],
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         var bucket_storageclass = new AliCloud.Oss.Bucket("bucket-storageclass", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "bucket-170309-storageclass",
+    ///             BucketName = "bucket-170309-storageclass",
     ///             StorageClass = "IA",
     ///         });
     ///     }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_sserule = new AliCloud.Oss.Bucket("bucket-sserule", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "private",
-    ///             Bucket = "bucket-170309-sserule",
+    ///             BucketName = "bucket-170309-sserule",
     ///             ServerSideEncryptionRule = new AliCloud.Oss.Inputs.BucketServerSideEncryptionRuleArgs
     ///             {
     ///                 KmsMasterKeyId = "your kms key id",
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_tags = new AliCloud.Oss.Bucket("bucket-tags", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "private",
-    ///             Bucket = "bucket-170309-tags",
+    ///             BucketName = "bucket-170309-tags",
     ///             Tags = 
     ///             {
     ///                 { "key1", "value1" },
@@ -311,7 +311,7 @@ namespace Pulumi.AliCloud.Oss
     ///         var bucket_versioning = new AliCloud.Oss.Bucket("bucket-versioning", new AliCloud.Oss.BucketArgs
     ///         {
     ///             Acl = "private",
-    ///             Bucket = "bucket-170309-versioning",
+    ///             BucketName = "bucket-170309-versioning",
     ///             Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs
     ///             {
     ///                 Status = "Enabled",
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         var bucket_redundancytype = new AliCloud.Oss.Bucket("bucket-redundancytype", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "bucket_name",
+    ///             BucketName = "bucket_name",
     ///             RedundancyType = "ZRS",
     ///         });
     ///     }
@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         var bucket_accelerate = new AliCloud.Oss.Bucket("bucket-accelerate", new AliCloud.Oss.BucketArgs
     ///         {
-    ///             Bucket = "bucket_name",
+    ///             BucketName = "bucket_name",
     ///             TransferAcceleration = new AliCloud.Oss.Inputs.BucketTransferAccelerationArgs
     ///             {
     ///                 Enabled = false,

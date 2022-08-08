@@ -26,6 +26,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ddos.DdosCooInstance;
+ * import com.pulumi.alicloud.ddos.DdosCooInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var newInstance = new DdosCooInstance(&#34;newInstance&#34;, DdosCooInstanceArgs.builder()        
+ *             .bandwidth(&#34;30&#34;)
+ *             .baseBandwidth(&#34;30&#34;)
+ *             .domainCount(&#34;50&#34;)
+ *             .period(&#34;1&#34;)
+ *             .portCount(&#34;50&#34;)
+ *             .productType(&#34;ddoscoo&#34;)
+ *             .serviceBandwidth(&#34;100&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Ddoscoo instance can be imported using the id, e.g.

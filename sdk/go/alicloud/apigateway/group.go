@@ -48,6 +48,8 @@ type Group struct {
 
 	// The description of the api gateway group. Defaults to null.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The id of the api gateway.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The name of the api gateway group. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
@@ -90,6 +92,8 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// The description of the api gateway group. Defaults to null.
 	Description *string `pulumi:"description"`
+	// The id of the api gateway.
+	InstanceId *string `pulumi:"instanceId"`
 	// The name of the api gateway group. Defaults to null.
 	Name *string `pulumi:"name"`
 	// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
@@ -101,6 +105,8 @@ type groupState struct {
 type GroupState struct {
 	// The description of the api gateway group. Defaults to null.
 	Description pulumi.StringPtrInput
+	// The id of the api gateway.
+	InstanceId pulumi.StringPtrInput
 	// The name of the api gateway group. Defaults to null.
 	Name pulumi.StringPtrInput
 	// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
@@ -116,6 +122,8 @@ func (GroupState) ElementType() reflect.Type {
 type groupArgs struct {
 	// The description of the api gateway group. Defaults to null.
 	Description string `pulumi:"description"`
+	// The id of the api gateway.
+	InstanceId *string `pulumi:"instanceId"`
 	// The name of the api gateway group. Defaults to null.
 	Name *string `pulumi:"name"`
 }
@@ -124,6 +132,8 @@ type groupArgs struct {
 type GroupArgs struct {
 	// The description of the api gateway group. Defaults to null.
 	Description pulumi.StringInput
+	// The id of the api gateway.
+	InstanceId pulumi.StringPtrInput
 	// The name of the api gateway group. Defaults to null.
 	Name pulumi.StringPtrInput
 }
@@ -213,6 +223,31 @@ func (o GroupOutput) ToGroupOutput() GroupOutput {
 
 func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
+}
+
+// The description of the api gateway group. Defaults to null.
+func (o GroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The id of the api gateway.
+func (o GroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the api gateway group. Defaults to null.
+func (o GroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+func (o GroupOutput) SubDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.SubDomain }).(pulumi.StringOutput)
+}
+
+// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+func (o GroupOutput) VpcDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.VpcDomain }).(pulumi.StringOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

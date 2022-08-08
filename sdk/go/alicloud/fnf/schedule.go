@@ -34,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		exampleFlow, err := fnf.NewFlow(ctx, "exampleFlow", &fnf.FlowArgs{
-// 			Definition:  pulumi.String(fmt.Sprintf("%v%v%v%v%v", "  version: v1beta1\n", "  type: flow\n", "  steps:\n", "    - type: pass\n", "      name: helloworld\n")),
+// 			Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
 // 			Description: pulumi.String("tf-testaccFnFFlow983041"),
 // 			Type:        pulumi.String("FDL"),
 // 		})
@@ -280,6 +280,46 @@ func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
 
 func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return o
+}
+
+// The CRON expression of the time-based schedule to be created.
+func (o ScheduleOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+// The description of the time-based schedule to be created.
+func (o ScheduleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+func (o ScheduleOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolPtrOutput { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the flow bound to the time-based schedule you want to create.
+func (o ScheduleOutput) FlowName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.FlowName }).(pulumi.StringOutput)
+}
+
+// The time when the time-based schedule was last updated.
+func (o ScheduleOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The trigger message of the time-based schedule to be created. It must be in JSON object format.
+func (o ScheduleOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the time-based schedule.
+func (o ScheduleOutput) ScheduleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.ScheduleId }).(pulumi.StringOutput)
+}
+
+// The name of the time-based schedule to be created.
+func (o ScheduleOutput) ScheduleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.ScheduleName }).(pulumi.StringOutput)
 }
 
 type ScheduleArrayOutput struct{ *pulumi.OutputState }

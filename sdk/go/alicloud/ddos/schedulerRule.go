@@ -281,6 +281,39 @@ func (o SchedulerRuleOutput) ToSchedulerRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The cname is the traffic scheduler corresponding to rules.
+func (o SchedulerRuleOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchedulerRule) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
+}
+
+// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
+func (o SchedulerRuleOutput) Param() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchedulerRule) pulumi.StringPtrOutput { return v.Param }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
+func (o SchedulerRuleOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchedulerRule) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the rule.
+func (o SchedulerRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchedulerRule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The rule type. Valid values:
+// `2`: tiered protection.
+// `3`: globalization acceleration.
+// `6`: Cloud product interaction.
+func (o SchedulerRuleOutput) RuleType() pulumi.IntOutput {
+	return o.ApplyT(func(v *SchedulerRule) pulumi.IntOutput { return v.RuleType }).(pulumi.IntOutput)
+}
+
+// The information about the scheduling rules. See the following `Block rules`.
+func (o SchedulerRuleOutput) Rules() SchedulerRuleRuleArrayOutput {
+	return o.ApplyT(func(v *SchedulerRule) SchedulerRuleRuleArrayOutput { return v.Rules }).(SchedulerRuleRuleArrayOutput)
+}
+
 type SchedulerRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (SchedulerRuleArrayOutput) ElementType() reflect.Type {

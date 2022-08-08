@@ -30,6 +30,37 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetContainerGroupsResult> getContainerGroups() {
         return getContainerGroups(GetContainerGroupsArgs.Empty, InvokeOptions.Empty);
@@ -40,6 +71,37 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetContainerGroupsResult> getContainerGroupsPlain() {
@@ -52,6 +114,37 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetContainerGroupsResult> getContainerGroups(GetContainerGroupsArgs args) {
         return getContainerGroups(args, InvokeOptions.Empty);
@@ -62,6 +155,37 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetContainerGroupsResult> getContainerGroupsPlain(GetContainerGroupsPlainArgs args) {
@@ -74,6 +198,37 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetContainerGroupsResult> getContainerGroups(GetContainerGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eci/getContainerGroups:getContainerGroups", TypeShape.of(GetContainerGroupsResult.class), args, Utilities.withVersion(options));
@@ -84,6 +239,37 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.111.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetContainerGroupsResult> getContainerGroupsPlain(GetContainerGroupsPlainArgs args, InvokeOptions options) {
@@ -150,6 +336,44 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVirtualNodesResult> getVirtualNodes() {
         return getVirtualNodes(GetVirtualNodesArgs.Empty, InvokeOptions.Empty);
@@ -160,6 +384,44 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVirtualNodesResult> getVirtualNodesPlain() {
@@ -172,6 +434,44 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVirtualNodesResult> getVirtualNodes(GetVirtualNodesArgs args) {
         return getVirtualNodes(args, InvokeOptions.Empty);
@@ -182,6 +482,44 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVirtualNodesResult> getVirtualNodesPlain(GetVirtualNodesPlainArgs args) {
@@ -194,6 +532,44 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVirtualNodesResult> getVirtualNodes(GetVirtualNodesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eci/getVirtualNodes:getVirtualNodes", TypeShape.of(GetVirtualNodesResult.class), args, Utilities.withVersion(options));
@@ -204,6 +580,44 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
+     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVirtualNodesResult> getVirtualNodesPlain(GetVirtualNodesPlainArgs args, InvokeOptions options) {
@@ -216,6 +630,35 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EciFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -226,6 +669,35 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EciFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -238,6 +710,35 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EciFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -248,6 +749,35 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EciFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -260,6 +790,35 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EciFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eci/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -270,6 +829,35 @@ public final class EciFunctions {
      * &gt; **NOTE:** Available in v1.145.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EciFunctions.getZones();
+     * 
+     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

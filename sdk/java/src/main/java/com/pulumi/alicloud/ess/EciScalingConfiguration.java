@@ -32,6 +32,83 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.EciScalingConfiguration;
+ * import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
+ * import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;essscalingconfiguration&#34;);
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(data.alicloud_zones().default().zones()[0].id())
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(0)
+ *             .maxSize(1)
+ *             .scalingGroupName(name)
+ *             .removalPolicies(            
+ *                 &#34;OldestInstance&#34;,
+ *                 &#34;NewestInstance&#34;)
+ *             .vswitchIds(defaultSwitch.id())
+ *             .groupType(&#34;ECI&#34;)
+ *             .build());
+ * 
+ *         var defaultEciScalingConfiguration = new EciScalingConfiguration(&#34;defaultEciScalingConfiguration&#34;, EciScalingConfigurationArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .cpu(2)
+ *             .memory(4)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .forceDelete(true)
+ *             .active(true)
+ *             .containerGroupName(&#34;container-group-1649839595174&#34;)
+ *             .containers(EciScalingConfigurationContainerArgs.builder()
+ *                 .name(&#34;container-1&#34;)
+ *                 .image(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ESS eci scaling configuration can be imported using the id, e.g.

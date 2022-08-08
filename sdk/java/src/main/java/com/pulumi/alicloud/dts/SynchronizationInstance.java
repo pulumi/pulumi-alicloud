@@ -24,6 +24,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dts.SynchronizationInstance;
+ * import com.pulumi.alicloud.dts.SynchronizationInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SynchronizationInstance(&#34;default&#34;, SynchronizationInstanceArgs.builder()        
+ *             .destinationEndpointEngineName(&#34;ADB30&#34;)
+ *             .destinationEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .instanceClass(&#34;small&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .sourceEndpointEngineName(&#34;PolarDB&#34;)
+ *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .syncArchitecture(&#34;oneway&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DTS Synchronization Instance can be imported using the id, e.g.

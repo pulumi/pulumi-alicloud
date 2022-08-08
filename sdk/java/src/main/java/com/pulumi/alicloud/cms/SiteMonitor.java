@@ -25,6 +25,44 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cms.SiteMonitor;
+ * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+ * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basic = new SiteMonitor(&#34;basic&#34;, SiteMonitorArgs.builder()        
+ *             .address(&#34;http://www.alibabacloud.com&#34;)
+ *             .interval(5)
+ *             .ispCities(SiteMonitorIspCityArgs.builder()
+ *                 .city(&#34;546&#34;)
+ *                 .isp(&#34;465&#34;)
+ *                 .build())
+ *             .taskName(&#34;tf-testAccCmsSiteMonitor_basic&#34;)
+ *             .taskType(&#34;HTTP&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Alarm rule can be imported using the id, e.g.

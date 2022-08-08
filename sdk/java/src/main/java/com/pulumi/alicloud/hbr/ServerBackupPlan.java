@@ -26,6 +26,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.hbr.ServerBackupPlan;
+ * import com.pulumi.alicloud.hbr.ServerBackupPlanArgs;
+ * import com.pulumi.alicloud.hbr.inputs.ServerBackupPlanDetailArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
+ *             .status(&#34;Running&#34;)
+ *             .build());
+ * 
+ *         var example = new ServerBackupPlan(&#34;example&#34;, ServerBackupPlanArgs.builder()        
+ *             .ecsServerBackupPlanName(&#34;server_backup_plan&#34;)
+ *             .instanceId(default_.instances()[0].id())
+ *             .schedule(&#34;I|1602673264|PT2H&#34;)
+ *             .retention(1)
+ *             .details(ServerBackupPlanDetailArgs.builder()
+ *                 .appConsistent(true)
+ *                 .snapshotGroup(true)
+ *                 .build())
+ *             .disabled(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.

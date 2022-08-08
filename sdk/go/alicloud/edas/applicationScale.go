@@ -234,6 +234,31 @@ func (o ApplicationScaleOutput) ToApplicationScaleOutputWithContext(ctx context.
 	return o
 }
 
+// The ID of the application that you want to deploy.
+func (o ApplicationScaleOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationScale) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The ID of the instance group to which you want to add ECS instances to scale out the application.
+func (o ApplicationScaleOutput) DeployGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationScale) pulumi.StringOutput { return v.DeployGroup }).(pulumi.StringOutput)
+}
+
+// The ecc information of the resource supplied above. The value is formulated as `<ecc1,ecc2>`.
+func (o ApplicationScaleOutput) EccInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationScale) pulumi.StringOutput { return v.EccInfo }).(pulumi.StringOutput)
+}
+
+// The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+func (o ApplicationScaleOutput) EcuInfos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationScale) pulumi.StringArrayOutput { return v.EcuInfos }).(pulumi.StringArrayOutput)
+}
+
+// This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
+func (o ApplicationScaleOutput) ForceStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationScale) pulumi.BoolPtrOutput { return v.ForceStatus }).(pulumi.BoolPtrOutput)
+}
+
 type ApplicationScaleArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScaleArrayOutput) ElementType() reflect.Type {

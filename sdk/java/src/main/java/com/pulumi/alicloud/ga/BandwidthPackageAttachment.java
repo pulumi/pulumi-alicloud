@@ -23,6 +23,56 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackage;
+ * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAccelerator = new Accelerator(&#34;exampleAccelerator&#34;, AcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .autoUseCoupon(true)
+ *             .spec(&#34;1&#34;)
+ *             .build());
+ * 
+ *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(20)
+ *             .type(&#34;Basic&#34;)
+ *             .bandwidthType(&#34;Basic&#34;)
+ *             .duration(1)
+ *             .autoPay(true)
+ *             .ratio(30)
+ *             .build());
+ * 
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(exampleAccelerator.id())
+ *             .bandwidthPackageId(exampleBandwidthPackage.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Ga Bandwidth Package Attachment can be imported using the id, e.g.

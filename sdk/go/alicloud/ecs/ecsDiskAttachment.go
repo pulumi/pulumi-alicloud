@@ -288,6 +288,40 @@ func (o EcsDiskAttachmentOutput) ToEcsDiskAttachmentOutputWithContext(ctx contex
 	return o
 }
 
+// Whether to mount as a system disk. Default to: `false`.
+func (o EcsDiskAttachmentOutput) Bootable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.BoolPtrOutput { return v.Bootable }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the disk is released together with the instance. Default to: `false`.
+func (o EcsDiskAttachmentOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.BoolPtrOutput { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+}
+
+func (o EcsDiskAttachmentOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
+}
+
+// ID of the Disk to be attached.
+func (o EcsDiskAttachmentOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// ID of the Instance to attach to.
+func (o EcsDiskAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of key pair
+func (o EcsDiskAttachmentOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
+func (o EcsDiskAttachmentOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
 type EcsDiskAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsDiskAttachmentArrayOutput) ElementType() reflect.Type {

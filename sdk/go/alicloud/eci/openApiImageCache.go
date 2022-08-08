@@ -216,6 +216,56 @@ func (o OpenApiImageCacheOutput) ToOpenApiImageCacheOutputWithContext(ctx contex
 	return o
 }
 
+func (o OpenApiImageCacheOutput) ContainerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringOutput { return v.ContainerGroupId }).(pulumi.StringOutput)
+}
+
+func (o OpenApiImageCacheOutput) EipInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringPtrOutput { return v.EipInstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenApiImageCacheOutput) ImageCacheName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringOutput { return v.ImageCacheName }).(pulumi.StringOutput)
+}
+
+func (o OpenApiImageCacheOutput) ImageCacheSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.IntPtrOutput { return v.ImageCacheSize }).(pulumi.IntPtrOutput)
+}
+
+func (o OpenApiImageCacheOutput) ImageRegistryCredentials() OpenApiImageCacheImageRegistryCredentialArrayOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) OpenApiImageCacheImageRegistryCredentialArrayOutput {
+		return v.ImageRegistryCredentials
+	}).(OpenApiImageCacheImageRegistryCredentialArrayOutput)
+}
+
+func (o OpenApiImageCacheOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringArrayOutput { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+func (o OpenApiImageCacheOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenApiImageCacheOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+func (o OpenApiImageCacheOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+func (o OpenApiImageCacheOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o OpenApiImageCacheOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+func (o OpenApiImageCacheOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenApiImageCache) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type OpenApiImageCacheArrayOutput struct{ *pulumi.OutputState }
 
 func (OpenApiImageCacheArrayOutput) ElementType() reflect.Type {

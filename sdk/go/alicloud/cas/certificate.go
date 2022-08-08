@@ -35,8 +35,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cas.NewCertificate(ctx, "cert", &cas.CertificateArgs{
-// 			Cert: readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/test.crt")),
-// 			Key:  readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/test.key")),
+// 			Cert: readFileOrPanic(fmt.Sprintf("%v/test.crt", path.Module)),
+// 			Key:  readFileOrPanic(fmt.Sprintf("%v/test.key", path.Module)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -238,6 +238,31 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
+}
+
+// Cert of the Certificate in which the Certificate will add.
+func (o CertificateOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o CertificateOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// Key of the Certificate in which the Certificate will add.
+func (o CertificateOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o CertificateOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+//
+// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+func (o CertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 type CertificateArrayOutput struct{ *pulumi.OutputState }

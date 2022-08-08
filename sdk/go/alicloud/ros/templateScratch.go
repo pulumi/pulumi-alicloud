@@ -293,6 +293,51 @@ func (o TemplateScratchOutput) ToTemplateScratchOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Description of the Template Scratch.
+func (o TemplateScratchOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateScratch) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The execution mode. Valid Values: `Async` or `Sync`.
+func (o TemplateScratchOutput) ExecutionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateScratch) pulumi.StringPtrOutput { return v.ExecutionMode }).(pulumi.StringPtrOutput)
+}
+
+// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
+func (o TemplateScratchOutput) LogicalIdStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TemplateScratch) pulumi.StringOutput { return v.LogicalIdStrategy }).(pulumi.StringOutput)
+}
+
+// Priority parameter. See the following `Block preferenceParameters`.
+func (o TemplateScratchOutput) PreferenceParameters() TemplateScratchPreferenceParameterArrayOutput {
+	return o.ApplyT(func(v *TemplateScratch) TemplateScratchPreferenceParameterArrayOutput { return v.PreferenceParameters }).(TemplateScratchPreferenceParameterArrayOutput)
+}
+
+// Source resource grouping. See the following `Block sourceResourceGroup`.
+func (o TemplateScratchOutput) SourceResourceGroup() TemplateScratchSourceResourceGroupPtrOutput {
+	return o.ApplyT(func(v *TemplateScratch) TemplateScratchSourceResourceGroupPtrOutput { return v.SourceResourceGroup }).(TemplateScratchSourceResourceGroupPtrOutput)
+}
+
+// Source resource. See the following `Block sourceResources`.
+func (o TemplateScratchOutput) SourceResources() TemplateScratchSourceResourceArrayOutput {
+	return o.ApplyT(func(v *TemplateScratch) TemplateScratchSourceResourceArrayOutput { return v.SourceResources }).(TemplateScratchSourceResourceArrayOutput)
+}
+
+// Source tag. See the following `Block sourceTag`.
+func (o TemplateScratchOutput) SourceTag() TemplateScratchSourceTagPtrOutput {
+	return o.ApplyT(func(v *TemplateScratch) TemplateScratchSourceTagPtrOutput { return v.SourceTag }).(TemplateScratchSourceTagPtrOutput)
+}
+
+// The status of the resource.
+func (o TemplateScratchOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TemplateScratch) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
+func (o TemplateScratchOutput) TemplateScratchType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TemplateScratch) pulumi.StringOutput { return v.TemplateScratchType }).(pulumi.StringOutput)
+}
+
 type TemplateScratchArrayOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchArrayOutput) ElementType() reflect.Type {

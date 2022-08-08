@@ -269,6 +269,21 @@ func (o InstanceGrantOutput) ToInstanceGrantOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of the CEN.
+func (o InstanceGrantOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGrant) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The owner UID of the  CEN which the child instance granted to.
+func (o InstanceGrantOutput) CenOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGrant) pulumi.StringOutput { return v.CenOwnerId }).(pulumi.StringOutput)
+}
+
+// The ID of the child instance to grant.
+func (o InstanceGrantOutput) ChildInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGrant) pulumi.StringOutput { return v.ChildInstanceId }).(pulumi.StringOutput)
+}
+
 type InstanceGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceGrantArrayOutput) ElementType() reflect.Type {

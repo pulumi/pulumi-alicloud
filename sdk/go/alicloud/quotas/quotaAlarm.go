@@ -274,6 +274,41 @@ func (o QuotaAlarmOutput) ToQuotaAlarmOutputWithContext(ctx context.Context) Quo
 	return o
 }
 
+// The Product Code.
+func (o QuotaAlarmOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The Quota Action Code.
+func (o QuotaAlarmOutput) QuotaActionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.QuotaActionCode }).(pulumi.StringOutput)
+}
+
+// The name of Quota Alarm.
+func (o QuotaAlarmOutput) QuotaAlarmName() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.QuotaAlarmName }).(pulumi.StringOutput)
+}
+
+// The Quota Dimensions.
+func (o QuotaAlarmOutput) QuotaDimensions() QuotaAlarmQuotaDimensionArrayOutput {
+	return o.ApplyT(func(v *QuotaAlarm) QuotaAlarmQuotaDimensionArrayOutput { return v.QuotaDimensions }).(QuotaAlarmQuotaDimensionArrayOutput)
+}
+
+// The threshold of Quota Alarm.
+func (o QuotaAlarmOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.Float64PtrOutput { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+// The threshold percent of Quota Alarm.
+func (o QuotaAlarmOutput) ThresholdPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.Float64PtrOutput { return v.ThresholdPercent }).(pulumi.Float64PtrOutput)
+}
+
+// The WebHook of Quota Alarm.
+func (o QuotaAlarmOutput) WebHook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringPtrOutput { return v.WebHook }).(pulumi.StringPtrOutput)
+}
+
 type QuotaAlarmArrayOutput struct{ *pulumi.OutputState }
 
 func (QuotaAlarmArrayOutput) ElementType() reflect.Type {

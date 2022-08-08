@@ -16,6 +16,35 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cas.Certificate;
+ * import com.pulumi.alicloud.cas.CertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
+ *             .cert(Files.readString(Paths.get(String.format(&#34;%s/test.crt&#34;, path.module()))))
+ *             .key(Files.readString(Paths.get(String.format(&#34;%s/test.key&#34;, path.module()))))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * @deprecated
  * This resource has been deprecated in favour of ServiceCertificate

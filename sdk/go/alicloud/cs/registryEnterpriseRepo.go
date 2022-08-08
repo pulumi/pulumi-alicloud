@@ -278,6 +278,41 @@ func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoOutputWithContext(
 	return o
 }
 
+// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+func (o RegistryEnterpriseRepoOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringPtrOutput { return v.Detail }).(pulumi.StringPtrOutput)
+}
+
+// ID of Container Registry Enterprise Edition instance.
+func (o RegistryEnterpriseRepoOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+func (o RegistryEnterpriseRepoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+func (o RegistryEnterpriseRepoOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The uuid of Container Registry Enterprise Edition repository.
+func (o RegistryEnterpriseRepoOutput) RepoId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.RepoId }).(pulumi.StringOutput)
+}
+
+// `PUBLIC` or `PRIVATE`, repo's visibility.
+func (o RegistryEnterpriseRepoOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The repository general information. It can contain 1 to 100 characters.
+func (o RegistryEnterpriseRepoOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.Summary }).(pulumi.StringOutput)
+}
+
 type RegistryEnterpriseRepoArrayOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseRepoArrayOutput) ElementType() reflect.Type {

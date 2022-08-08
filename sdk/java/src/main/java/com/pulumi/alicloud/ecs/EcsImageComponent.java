@@ -25,6 +25,48 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.ecs.EcsImageComponent;
+ * import com.pulumi.alicloud.ecs.EcsImageComponentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .nameRegex(&#34;default&#34;)
+ *             .build());
+ * 
+ *         var example = new EcsImageComponent(&#34;example&#34;, EcsImageComponentArgs.builder()        
+ *             .componentType(&#34;Build&#34;)
+ *             .content(&#34;RUN yum update -y&#34;)
+ *             .description(&#34;example_value&#34;)
+ *             .imageComponentName(&#34;example_value&#34;)
+ *             .resourceGroupId(default_.groups()[0].id())
+ *             .systemType(&#34;Linux&#34;)
+ *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Image Component can be imported using the id, e.g.

@@ -19,6 +19,171 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Using `vpc_ids` to attach being in same region several vpc instances to a private zone
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.pvtz.ZoneAttachment;
+ * import com.pulumi.alicloud.pvtz.ZoneAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var zone = new Zone(&#34;zone&#34;);
+ * 
+ *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var zone_attachment = new ZoneAttachment(&#34;zone-attachment&#34;, ZoneAttachmentArgs.builder()        
+ *             .zoneId(zone.id())
+ *             .vpcIds(            
+ *                 first.id(),
+ *                 second.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Using `vpcs` to attach being in same region several vpc instances to a private zone
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.pvtz.ZoneAttachment;
+ * import com.pulumi.alicloud.pvtz.ZoneAttachmentArgs;
+ * import com.pulumi.alicloud.pvtz.inputs.ZoneAttachmentVpcArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var zone = new Zone(&#34;zone&#34;);
+ * 
+ *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var zone_attachment = new ZoneAttachment(&#34;zone-attachment&#34;, ZoneAttachmentArgs.builder()        
+ *             .zoneId(zone.id())
+ *             .vpcs(            
+ *                 ZoneAttachmentVpcArgs.builder()
+ *                     .vpcId(first.id())
+ *                     .build(),
+ *                 ZoneAttachmentVpcArgs.builder()
+ *                     .vpcId(second.id())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Using `vpcs` to attach being in different regions several vpc instances to a private zone
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.pulumi.providers.alicloud;
+ * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.alicloud.pvtz.ZoneAttachment;
+ * import com.pulumi.alicloud.pvtz.ZoneAttachmentArgs;
+ * import com.pulumi.alicloud.pvtz.inputs.ZoneAttachmentVpcArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var zone = new Zone(&#34;zone&#34;);
+ * 
+ *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var eu = new Provider(&#34;eu&#34;, ProviderArgs.builder()        
+ *             .region(&#34;eu-central-1&#34;)
+ *             .build());
+ * 
+ *         var third = new Network(&#34;third&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.eu())
+ *                 .build());
+ * 
+ *         var zone_attachment = new ZoneAttachment(&#34;zone-attachment&#34;, ZoneAttachmentArgs.builder()        
+ *             .zoneId(zone.id())
+ *             .vpcs(            
+ *                 ZoneAttachmentVpcArgs.builder()
+ *                     .vpcId(first.id())
+ *                     .build(),
+ *                 ZoneAttachmentVpcArgs.builder()
+ *                     .vpcId(second.id())
+ *                     .build(),
+ *                 ZoneAttachmentVpcArgs.builder()
+ *                     .regionId(&#34;eu-central-1&#34;)
+ *                     .vpcId(third.id())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Private Zone attachment can be imported using the id(same with `zone_id`), e.g.

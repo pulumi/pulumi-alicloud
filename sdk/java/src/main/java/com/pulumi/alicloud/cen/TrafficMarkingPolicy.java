@@ -25,6 +25,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TrafficMarkingPolicy;
+ * import com.pulumi.alicloud.cen.TrafficMarkingPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .cenId(exampleInstance.id())
+ *             .transitRouterName(&#34;example_value&#34;)
+ *             .build());
+ * 
+ *         var exampleTrafficMarkingPolicy = new TrafficMarkingPolicy(&#34;exampleTrafficMarkingPolicy&#34;, TrafficMarkingPolicyArgs.builder()        
+ *             .markingDscp(1)
+ *             .priority(1)
+ *             .trafficMarkingPolicyName(&#34;example_value&#34;)
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.

@@ -1184,6 +1184,412 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+// - cert
+// - perfer
+// - verify-ca
+// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+func (o InstanceOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
+}
+
+// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+func (o InstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+func (o InstanceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The upgrade method to use. Valid values:
+// - Auto: Instances are automatically upgraded to a higher minor version.
+// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+func (o InstanceOutput) AutoUpgradeMinorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AutoUpgradeMinorVersion }).(pulumi.StringOutput)
+}
+
+// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+func (o InstanceOutput) BabelfishConfigs() InstanceBabelfishConfigArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceBabelfishConfigArrayOutput { return v.BabelfishConfigs }).(InstanceBabelfishConfigArrayOutput)
+}
+
+// The TDS port of the instance for which Babelfish is enabled.
+func (o InstanceOutput) BabelfishPort() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BabelfishPort }).(pulumi.StringOutput)
+}
+
+// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+// - aliyun: a cloud certificate
+// - custom: a custom certificate
+func (o InstanceOutput) CaType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CaType }).(pulumi.StringOutput)
+}
+
+// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
+func (o InstanceOutput) ClientCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ClientCaCert }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+// - 1: enables the public key
+// - 0: disables the public key
+func (o InstanceOutput) ClientCaEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ClientCaEnabled }).(pulumi.IntPtrOutput)
+}
+
+// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
+func (o InstanceOutput) ClientCertRevocationList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ClientCertRevocationList }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+// - 1: enables the CRL
+// - 0: disables the CRL
+func (o InstanceOutput) ClientCrlEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ClientCrlEnabled }).(pulumi.IntPtrOutput)
+}
+
+// RDS database connection string.
+func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionStringPrefix }).(pulumi.StringOutput)
+}
+
+// The attribute of the IP address whitelist. By default, this parameter is empty.
+func (o InstanceOutput) DbInstanceIpArrayAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DbInstanceIpArrayAttribute }).(pulumi.StringPtrOutput)
+}
+
+// The name of the IP address whitelist. Default value: Default.
+func (o InstanceOutput) DbInstanceIpArrayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DbInstanceIpArrayName }).(pulumi.StringPtrOutput)
+}
+
+// The storage type of the instance. Valid values:
+// - local_ssd: specifies to use local SSDs. This value is recommended.
+// - cloud_ssd: specifies to use standard SSDs.
+// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+func (o InstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
+// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+func (o InstanceOutput) DbIsIgnoreCase() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.DbIsIgnoreCase }).(pulumi.BoolOutput)
+}
+
+// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
+// - If you set the `Engine` parameter to MySQL.
+// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+// - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+// - If you set the `Engine` parameter to PostgreSQL.
+// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+func (o InstanceOutput) DbTimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbTimeZone }).(pulumi.StringOutput)
+}
+
+// The switch of delete protection. Valid values:
+// - true: delete protect.
+// - false: no delete protect.
+func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
+func (o InstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+func (o InstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Set it to true to make some parameter efficient when modifying them. Default to false.
+func (o InstanceOutput) ForceRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceRestart }).(pulumi.BoolPtrOutput)
+}
+
+// The read-only instances to which you want to synchronize the IP address whitelist.
+// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+// * If the instance is not attached with a read-only instance, this parameter is empty.
+func (o InstanceOutput) FreshWhiteListReadins() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.FreshWhiteListReadins }).(pulumi.StringPtrOutput)
+}
+
+// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+func (o InstanceOutput) HaConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HaConfig }).(pulumi.StringOutput)
+}
+
+// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The name of DB instance. It a string of 2 to 256 characters.
+func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// User-defined DB instance storage space. Value range:
+// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+// - [20,1000] for MySQL 5.7 basic single node edition;
+// - [10, 2000] for SQL Server 2008R2;
+// - [20,2000] for SQL Server 2012 basic single node edition
+//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+func (o InstanceOutput) InstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.InstanceStorage }).(pulumi.IntOutput)
+}
+
+// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+func (o InstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+func (o InstanceOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+func (o InstanceOutput) ManualHaTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ManualHaTime }).(pulumi.StringPtrOutput)
+}
+
+// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+func (o InstanceOutput) ModifyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyMode }).(pulumi.StringPtrOutput)
+}
+
+// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+func (o InstanceOutput) MonitoringPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MonitoringPeriod }).(pulumi.IntOutput)
+}
+
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
+}
+
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+func (o InstanceOutput) PgHbaConfs() InstancePgHbaConfArrayOutput {
+	return o.ApplyT(func(v *Instance) InstancePgHbaConfArrayOutput { return v.PgHbaConfs }).(InstancePgHbaConfArrayOutput)
+}
+
+func (o InstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+func (o InstanceOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
+// - None: No archived backup files are retained.
+// - Lastest: Only the last archived backup file is retained.
+// - All: All the archived backup files are retained.
+func (o InstanceOutput) ReleasedKeepPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ReleasedKeepPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+// - cert
+// - perfer
+// - verify-ca
+// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+func (o InstanceOutput) ReplicationAcl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReplicationAcl }).(pulumi.StringOutput)
+}
+
+// The ID of resource group which the DB instance belongs.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+//
+// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+func (o InstanceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+func (o InstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
+func (o InstanceOutput) SecurityIpMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityIpMode }).(pulumi.StringPtrOutput)
+}
+
+// The type of IP address in the IP address whitelist.
+func (o InstanceOutput) SecurityIpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityIpType }).(pulumi.StringPtrOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+func (o InstanceOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+func (o InstanceOutput) ServerCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServerCert }).(pulumi.StringOutput)
+}
+
+// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+func (o InstanceOutput) ServerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServerKey }).(pulumi.StringOutput)
+}
+
+// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+func (o InstanceOutput) SqlCollectorConfigValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SqlCollectorConfigValue }).(pulumi.IntPtrOutput)
+}
+
+// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+func (o InstanceOutput) SqlCollectorStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SqlCollectorStatus }).(pulumi.StringOutput)
+}
+
+// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+func (o InstanceOutput) SslAction() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslAction }).(pulumi.StringOutput)
+}
+
+// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+func (o InstanceOutput) SslStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslStatus }).(pulumi.StringOutput)
+}
+
+// Automatic storage space expansion switch. Valid values:
+// - Enable
+// - Disable
+func (o InstanceOutput) StorageAutoScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.StorageAutoScale }).(pulumi.StringPtrOutput)
+}
+
+// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+// - 10
+// - 20
+// - 30
+// - 40
+// - 50
+func (o InstanceOutput) StorageThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.StorageThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+func (o InstanceOutput) StorageUpperBound() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.StorageUpperBound }).(pulumi.IntPtrOutput)
+}
+
+// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+func (o InstanceOutput) SwitchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SwitchTime }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o InstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+// - rds: The instance runs RDS Basic or High-availability Edition.
+// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+func (o InstanceOutput) TargetMinorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TargetMinorVersion }).(pulumi.StringOutput)
+}
+
+// The availability check method of the instance. Valid values:
+// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+func (o InstanceOutput) TcpConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TcpConnectionType }).(pulumi.StringOutput)
+}
+
+// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+func (o InstanceOutput) TdeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
+}
+
+// Whether to upgrade a minor version of the kernel. Valid values:
+// - true: upgrade
+// - false: not to upgrade
+func (o InstanceOutput) UpgradeDbInstanceKernelVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.UpgradeDbInstanceKernelVersion }).(pulumi.BoolPtrOutput)
+}
+
+// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+// - Immediate: The minor engine version is immediately updated.
+// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+func (o InstanceOutput) UpgradeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpgradeTime }).(pulumi.StringPtrOutput)
+}
+
+// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+func (o InstanceOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the IP address whitelist. Default value: MIX. Valid values:
+// - Classic: classic network in enhanced whitelist mode
+// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+// - MIX: standard whitelist mode
+func (o InstanceOutput) WhitelistNetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.WhitelistNetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
+// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+func (o InstanceOutput) ZoneIdSlaveA() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneIdSlaveA }).(pulumi.StringOutput)
+}
+
+// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+func (o InstanceOutput) ZoneIdSlaveB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ZoneIdSlaveB }).(pulumi.StringPtrOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

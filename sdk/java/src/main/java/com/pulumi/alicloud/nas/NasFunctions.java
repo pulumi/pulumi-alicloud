@@ -53,6 +53,37 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .accessGroupType(&#34;Classic&#34;)
+     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups() {
@@ -64,6 +95,37 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .accessGroupType(&#34;Classic&#34;)
+     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain() {
@@ -75,6 +137,37 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .accessGroupType(&#34;Classic&#34;)
+     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups(GetAccessGroupsArgs args) {
@@ -86,6 +179,37 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .accessGroupType(&#34;Classic&#34;)
+     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain(GetAccessGroupsPlainArgs args) {
@@ -97,6 +221,37 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .accessGroupType(&#34;Classic&#34;)
+     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups(GetAccessGroupsArgs args, InvokeOptions options) {
@@ -108,6 +263,37 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex(&#34;^foo&#34;)
+     *             .accessGroupType(&#34;Classic&#34;)
+     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain(GetAccessGroupsPlainArgs args, InvokeOptions options) {
@@ -163,6 +349,35 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies() {
@@ -174,6 +389,35 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain() {
@@ -185,6 +429,35 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args) {
@@ -196,6 +469,35 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args) {
@@ -207,6 +509,35 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args, InvokeOptions options) {
@@ -218,6 +549,35 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args, InvokeOptions options) {
@@ -230,6 +590,46 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDataFlowsResult> getDataFlows(GetDataFlowsArgs args) {
         return getDataFlows(args, InvokeOptions.Empty);
@@ -240,6 +640,46 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetDataFlowsResult> getDataFlowsPlain(GetDataFlowsPlainArgs args) {
@@ -252,6 +692,46 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetDataFlowsResult> getDataFlows(GetDataFlowsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:nas/getDataFlows:getDataFlows", TypeShape.of(GetDataFlowsResult.class), args, Utilities.withVersion(options));
@@ -263,6 +743,46 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetDataFlowsResult> getDataFlowsPlain(GetDataFlowsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:nas/getDataFlows:getDataFlows", TypeShape.of(GetDataFlowsResult.class), args, Utilities.withVersion(options));
@@ -273,6 +793,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
+     *             .protocolType(&#34;NFS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFileSystemsResult> getFileSystems() {
@@ -284,6 +834,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
+     *             .protocolType(&#34;NFS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain() {
@@ -295,6 +875,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
+     *             .protocolType(&#34;NFS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFileSystemsResult> getFileSystems(GetFileSystemsArgs args) {
@@ -306,6 +916,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
+     *             .protocolType(&#34;NFS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain(GetFileSystemsPlainArgs args) {
@@ -317,6 +957,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
+     *             .protocolType(&#34;NFS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetFileSystemsResult> getFileSystems(GetFileSystemsArgs args, InvokeOptions options) {
@@ -328,6 +998,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
+     *             .protocolType(&#34;NFS&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain(GetFileSystemsPlainArgs args, InvokeOptions options) {
@@ -340,6 +1040,40 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFilesetsResult> getFilesets(GetFilesetsArgs args) {
         return getFilesets(args, InvokeOptions.Empty);
@@ -350,6 +1084,40 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFilesetsResult> getFilesetsPlain(GetFilesetsPlainArgs args) {
@@ -362,6 +1130,40 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFilesetsResult> getFilesets(GetFilesetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:nas/getFilesets:getFilesets", TypeShape.of(GetFilesetsResult.class), args, Utilities.withVersion(options));
@@ -372,6 +1174,40 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFilesetsResult> getFilesetsPlain(GetFilesetsPlainArgs args, InvokeOptions options) {
@@ -384,6 +1220,46 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-LifecyclePolicy-1&#34;,
+     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLifecyclePoliciesResult> getLifecyclePolicies(GetLifecyclePoliciesArgs args) {
         return getLifecyclePolicies(args, InvokeOptions.Empty);
@@ -394,6 +1270,46 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-LifecyclePolicy-1&#34;,
+     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLifecyclePoliciesResult> getLifecyclePoliciesPlain(GetLifecyclePoliciesPlainArgs args) {
@@ -406,6 +1322,46 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-LifecyclePolicy-1&#34;,
+     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLifecyclePoliciesResult> getLifecyclePolicies(GetLifecyclePoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", TypeShape.of(GetLifecyclePoliciesResult.class), args, Utilities.withVersion(options));
@@ -417,6 +1373,46 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;my-LifecyclePolicy-1&#34;,
+     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
+     *             .fileSystemId(&#34;example_value&#34;)
+     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetLifecyclePoliciesResult> getLifecyclePoliciesPlain(GetLifecyclePoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", TypeShape.of(GetLifecyclePoliciesResult.class), args, Utilities.withVersion(options));
@@ -427,6 +1423,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
+     *             .fileSystemId(&#34;1a2sc4d&#34;)
+     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetMountTargetsResult> getMountTargets(GetMountTargetsArgs args) {
@@ -438,6 +1464,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
+     *             .fileSystemId(&#34;1a2sc4d&#34;)
+     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMountTargetsResult> getMountTargetsPlain(GetMountTargetsPlainArgs args) {
@@ -449,6 +1505,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
+     *             .fileSystemId(&#34;1a2sc4d&#34;)
+     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetMountTargetsResult> getMountTargets(GetMountTargetsArgs args, InvokeOptions options) {
@@ -460,6 +1546,36 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
+     *             .fileSystemId(&#34;1a2sc4d&#34;)
+     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetMountTargetsResult> getMountTargetsPlain(GetMountTargetsPlainArgs args, InvokeOptions options) {
@@ -471,6 +1587,37 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
+     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type(&#34;Performance&#34;)
+     *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProtocolsResult> getProtocols(GetProtocolsArgs args) {
@@ -482,6 +1629,37 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
+     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type(&#34;Performance&#34;)
+     *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProtocolsResult> getProtocolsPlain(GetProtocolsPlainArgs args) {
@@ -493,6 +1671,37 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
+     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type(&#34;Performance&#34;)
+     *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetProtocolsResult> getProtocols(GetProtocolsArgs args, InvokeOptions options) {
@@ -504,6 +1713,37 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
+     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type(&#34;Performance&#34;)
+     *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetProtocolsResult> getProtocolsPlain(GetProtocolsPlainArgs args, InvokeOptions options) {
@@ -517,6 +1757,34 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = NasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -530,6 +1798,34 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = NasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -543,6 +1839,34 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = NasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -556,6 +1880,34 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = NasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -569,6 +1921,34 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = NasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -582,6 +1962,34 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = NasFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -594,6 +2002,40 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSnapshotsResult> getSnapshots() {
         return getSnapshots(GetSnapshotsArgs.Empty, InvokeOptions.Empty);
@@ -604,6 +2046,40 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain() {
@@ -616,6 +2092,40 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args) {
         return getSnapshots(args, InvokeOptions.Empty);
@@ -626,6 +2136,40 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args) {
@@ -638,6 +2182,40 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:nas/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
@@ -649,6 +2227,40 @@ public final class NasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NasFunctions.getSnapshots();
+     * 
+     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:nas/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
@@ -659,6 +2271,33 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -670,6 +2309,33 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -681,6 +2347,33 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -692,6 +2385,33 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -703,6 +2423,33 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -714,6 +2461,33 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = NasFunctions.getZones();
+     * 
+     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

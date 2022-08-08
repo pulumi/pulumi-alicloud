@@ -213,6 +213,16 @@ func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusOutputWithContex
 	return o
 }
 
+// The name of the resource. Valid values: `sessionManagerStatus`.
+func (o EcsSessionManagerStatusOutput) SessionManagerStatusName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSessionManagerStatus) pulumi.StringOutput { return v.SessionManagerStatusName }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Disabled`, `Enabled`.
+func (o EcsSessionManagerStatusOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSessionManagerStatus) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type EcsSessionManagerStatusArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsSessionManagerStatusArrayOutput) ElementType() reflect.Type {

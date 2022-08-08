@@ -267,6 +267,21 @@ func (o HostAccountShareKeyAttachmentOutput) ToHostAccountShareKeyAttachmentOutp
 	return o
 }
 
+// The ID list of the host account.
+func (o HostAccountShareKeyAttachmentOutput) HostAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccountShareKeyAttachment) pulumi.StringOutput { return v.HostAccountId }).(pulumi.StringOutput)
+}
+
+// The ID of the host shared key.
+func (o HostAccountShareKeyAttachmentOutput) HostShareKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccountShareKeyAttachment) pulumi.StringOutput { return v.HostShareKeyId }).(pulumi.StringOutput)
+}
+
+// The ID of the Bastion machine instance.
+func (o HostAccountShareKeyAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAccountShareKeyAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type HostAccountShareKeyAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (HostAccountShareKeyAttachmentArrayOutput) ElementType() reflect.Type {

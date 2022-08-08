@@ -244,6 +244,37 @@ func (o ResourceGroupOutput) ToResourceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The ID of the Alibaba Cloud account to which the resource group belongs.
+func (o ResourceGroupOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+func (o ResourceGroupOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
+func (o ResourceGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceGroupOutput) RegionStatuses() ResourceGroupRegionStatusArrayOutput {
+	return o.ApplyT(func(v *ResourceGroup) ResourceGroupRegionStatusArrayOutput { return v.RegionStatuses }).(ResourceGroupRegionStatusArrayOutput)
+}
+
+// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+func (o ResourceGroupOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The status of the regional resource group.
+func (o ResourceGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ResourceGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourceGroupArrayOutput) ElementType() reflect.Type {

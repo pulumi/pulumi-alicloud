@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms;
 import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
 import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
 import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+import com.pulumi.alicloud.cms.inputs.AlarmPrometheusArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -244,6 +245,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Monitor project name, such as &#34;acs_ecs_dashboard&#34; and &#34;acs_rds_dashboard&#34;. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
      * 
      */
     @Import(name="project", required=true)
@@ -251,10 +253,26 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Monitor project name, such as &#34;acs_ecs_dashboard&#34; and &#34;acs_rds_dashboard&#34;. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
      * 
      */
     public Output<String> project() {
         return this.project;
+    }
+
+    /**
+     * The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * 
+     */
+    @Import(name="prometheuses")
+    private @Nullable Output<List<AlarmPrometheusArgs>> prometheuses;
+
+    /**
+     * @return The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+     * 
+     */
+    public Optional<Output<List<AlarmPrometheusArgs>>> prometheuses() {
+        return Optional.ofNullable(this.prometheuses);
     }
 
     /**
@@ -396,6 +414,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         this.operator = $.operator;
         this.period = $.period;
         this.project = $.project;
+        this.prometheuses = $.prometheuses;
         this.silenceTime = $.silenceTime;
         this.startTime = $.startTime;
         this.statistics = $.statistics;
@@ -731,6 +750,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param project Monitor project name, such as &#34;acs_ecs_dashboard&#34; and &#34;acs_rds_dashboard&#34;. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
          * 
          * @return builder
          * 
@@ -742,12 +762,44 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param project Monitor project name, such as &#34;acs_ecs_dashboard&#34; and &#34;acs_rds_dashboard&#34;. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
          * 
          * @return builder
          * 
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param prometheuses The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prometheuses(@Nullable Output<List<AlarmPrometheusArgs>> prometheuses) {
+            $.prometheuses = prometheuses;
+            return this;
+        }
+
+        /**
+         * @param prometheuses The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prometheuses(List<AlarmPrometheusArgs> prometheuses) {
+            return prometheuses(Output.of(prometheuses));
+        }
+
+        /**
+         * @param prometheuses The Prometheus alert rule. See the following `Block prometheus`. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prometheuses(AlarmPrometheusArgs... prometheuses) {
+            return prometheuses(List.of(prometheuses));
         }
 
         /**

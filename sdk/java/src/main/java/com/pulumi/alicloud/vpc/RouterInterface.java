@@ -17,6 +17,45 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.RouterInterface;
+ * import com.pulumi.alicloud.vpc.RouterInterfaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var interface_ = new RouterInterface(&#34;interface&#34;, RouterInterfaceArgs.builder()        
+ *             .oppositeRegion(&#34;cn-beijing&#34;)
+ *             .routerType(&#34;VRouter&#34;)
+ *             .routerId(foo.routerId())
+ *             .role(&#34;InitiatingSide&#34;)
+ *             .specification(&#34;Large.2&#34;)
+ *             .description(&#34;test1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

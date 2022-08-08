@@ -25,6 +25,43 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.sae.LoadBalancerIntranet;
+ * import com.pulumi.alicloud.sae.LoadBalancerIntranetArgs;
+ * import com.pulumi.alicloud.sae.inputs.LoadBalancerIntranetIntranetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new LoadBalancerIntranet(&#34;example&#34;, LoadBalancerIntranetArgs.builder()        
+ *             .appId(&#34;your_application_id&#34;)
+ *             .intranets(LoadBalancerIntranetIntranetArgs.builder()
+ *                 .port(80)
+ *                 .protocol(&#34;TCP&#34;)
+ *                 .targetPort(8080)
+ *                 .build())
+ *             .intranetSlbId(&#34;intranet_slb_id&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The resource can be imported using the id, e.g.

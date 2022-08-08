@@ -224,6 +224,70 @@ func (o ApplicationInfoOutput) ToApplicationInfoOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ApplicationInfoOutput) ApproveValue() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.ApproveValue }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) AuditMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.AuditMode }).(pulumi.StringPtrOutput)
+}
+
+func (o ApplicationInfoOutput) AuditReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.AuditReason }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) DesireValue() pulumi.Float64Output {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.Float64Output { return v.DesireValue }).(pulumi.Float64Output)
+}
+
+func (o ApplicationInfoOutput) Dimensions() ApplicationInfoDimensionArrayOutput {
+	return o.ApplyT(func(v *ApplicationInfo) ApplicationInfoDimensionArrayOutput { return v.Dimensions }).(ApplicationInfoDimensionArrayOutput)
+}
+
+func (o ApplicationInfoOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) NoticeType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.IntPtrOutput { return v.NoticeType }).(pulumi.IntPtrOutput)
+}
+
+func (o ApplicationInfoOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) QuotaActionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaActionCode }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) QuotaCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.QuotaCategory }).(pulumi.StringPtrOutput)
+}
+
+func (o ApplicationInfoOutput) QuotaDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaDescription }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) QuotaName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaName }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) QuotaUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaUnit }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.Reason }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ApplicationInfoArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationInfoArrayOutput) ElementType() reflect.Type {

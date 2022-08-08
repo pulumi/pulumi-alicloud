@@ -274,6 +274,31 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
+func (o ConnectionOutput) ConnectionPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionPrefix }).(pulumi.StringOutput)
+}
+
+// Connection instance string.
+func (o ConnectionOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The Id of instance that can run database.
+func (o ConnectionOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ip address of connection string.
+func (o ConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Internet connection port. Valid value: [3200-3999]. Default to 3306.
+func (o ConnectionOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Port }).(pulumi.StringPtrOutput)
+}
+
 type ConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (ConnectionArrayOutput) ElementType() reflect.Type {

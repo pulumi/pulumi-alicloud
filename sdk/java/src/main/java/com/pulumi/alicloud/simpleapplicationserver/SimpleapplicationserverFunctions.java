@@ -57,6 +57,42 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -67,6 +103,42 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -79,6 +151,42 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -89,6 +197,42 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -101,6 +245,42 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -111,6 +291,42 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -123,6 +339,42 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerCustomImagesResult> getServerCustomImages() {
         return getServerCustomImages(GetServerCustomImagesArgs.Empty, InvokeOptions.Empty);
@@ -133,6 +385,42 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerCustomImagesResult> getServerCustomImagesPlain() {
@@ -145,6 +433,42 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerCustomImagesResult> getServerCustomImages(GetServerCustomImagesArgs args) {
         return getServerCustomImages(args, InvokeOptions.Empty);
@@ -155,6 +479,42 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerCustomImagesResult> getServerCustomImagesPlain(GetServerCustomImagesPlainArgs args) {
@@ -167,6 +527,42 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerCustomImagesResult> getServerCustomImages(GetServerCustomImagesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", TypeShape.of(GetServerCustomImagesResult.class), args, Utilities.withVersion(options));
@@ -177,6 +573,42 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerCustomImagesResult> getServerCustomImagesPlain(GetServerCustomImagesPlainArgs args, InvokeOptions options) {
@@ -189,6 +621,57 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .status(&#34;In_use&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .diskType(&#34;System&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerDisksResult> getServerDisks() {
         return getServerDisks(GetServerDisksArgs.Empty, InvokeOptions.Empty);
@@ -199,6 +682,57 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .status(&#34;In_use&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .diskType(&#34;System&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerDisksResult> getServerDisksPlain() {
@@ -211,6 +745,57 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .status(&#34;In_use&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .diskType(&#34;System&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerDisksResult> getServerDisks(GetServerDisksArgs args) {
         return getServerDisks(args, InvokeOptions.Empty);
@@ -221,6 +806,57 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .status(&#34;In_use&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .diskType(&#34;System&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerDisksResult> getServerDisksPlain(GetServerDisksPlainArgs args) {
@@ -233,6 +869,57 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .status(&#34;In_use&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .diskType(&#34;System&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerDisksResult> getServerDisks(GetServerDisksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", TypeShape.of(GetServerDisksResult.class), args, Utilities.withVersion(options));
@@ -243,6 +930,57 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .status(&#34;In_use&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .diskType(&#34;System&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerDisksResult> getServerDisksPlain(GetServerDisksPlainArgs args, InvokeOptions options) {
@@ -255,6 +993,40 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerFirewallRulesResult> getServerFirewallRules(GetServerFirewallRulesArgs args) {
         return getServerFirewallRules(args, InvokeOptions.Empty);
@@ -265,6 +1037,40 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerFirewallRulesResult> getServerFirewallRulesPlain(GetServerFirewallRulesPlainArgs args) {
@@ -277,6 +1083,40 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerFirewallRulesResult> getServerFirewallRules(GetServerFirewallRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", TypeShape.of(GetServerFirewallRulesResult.class), args, Utilities.withVersion(options));
@@ -287,6 +1127,40 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerFirewallRulesResult> getServerFirewallRulesPlain(GetServerFirewallRulesPlainArgs args, InvokeOptions options) {
@@ -299,6 +1173,41 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+     *             .memory(1)
+     *             .bandwidth(3)
+     *             .diskSize(40)
+     *             .flow(6)
+     *             .core(2)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerPlansResult> getServerPlans() {
         return getServerPlans(GetServerPlansArgs.Empty, InvokeOptions.Empty);
@@ -309,6 +1218,41 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+     *             .memory(1)
+     *             .bandwidth(3)
+     *             .diskSize(40)
+     *             .flow(6)
+     *             .core(2)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerPlansResult> getServerPlansPlain() {
@@ -321,6 +1265,41 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+     *             .memory(1)
+     *             .bandwidth(3)
+     *             .diskSize(40)
+     *             .flow(6)
+     *             .core(2)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerPlansResult> getServerPlans(GetServerPlansArgs args) {
         return getServerPlans(args, InvokeOptions.Empty);
@@ -331,6 +1310,41 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+     *             .memory(1)
+     *             .bandwidth(3)
+     *             .diskSize(40)
+     *             .flow(6)
+     *             .core(2)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerPlansResult> getServerPlansPlain(GetServerPlansPlainArgs args) {
@@ -343,6 +1357,41 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+     *             .memory(1)
+     *             .bandwidth(3)
+     *             .diskSize(40)
+     *             .flow(6)
+     *             .core(2)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerPlansResult> getServerPlans(GetServerPlansArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", TypeShape.of(GetServerPlansResult.class), args, Utilities.withVersion(options));
@@ -353,6 +1402,41 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.135.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+     *             .memory(1)
+     *             .bandwidth(3)
+     *             .diskSize(40)
+     *             .flow(6)
+     *             .core(2)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerPlansResult> getServerPlansPlain(GetServerPlansPlainArgs args, InvokeOptions options) {
@@ -365,6 +1449,54 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .diskId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerSnapshotsResult> getServerSnapshots() {
         return getServerSnapshots(GetServerSnapshotsArgs.Empty, InvokeOptions.Empty);
@@ -375,6 +1507,54 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .diskId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerSnapshotsResult> getServerSnapshotsPlain() {
@@ -387,6 +1567,54 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .diskId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerSnapshotsResult> getServerSnapshots(GetServerSnapshotsArgs args) {
         return getServerSnapshots(args, InvokeOptions.Empty);
@@ -397,6 +1625,54 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .diskId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerSnapshotsResult> getServerSnapshotsPlain(GetServerSnapshotsPlainArgs args) {
@@ -409,6 +1685,54 @@ public final class SimpleapplicationserverFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .diskId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServerSnapshotsResult> getServerSnapshots(GetServerSnapshotsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", TypeShape.of(GetServerSnapshotsResult.class), args, Utilities.withVersion(options));
@@ -419,6 +1743,54 @@ public final class SimpleapplicationserverFunctions {
      * &gt; **NOTE:** Available in v1.143.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .diskId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServerSnapshotsResult> getServerSnapshotsPlain(GetServerSnapshotsPlainArgs args, InvokeOptions options) {

@@ -347,6 +347,64 @@ func (o AcceleratorOutput) ToAcceleratorOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The Name of the GA instance.
+func (o AcceleratorOutput) AcceleratorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.AcceleratorName }).(pulumi.StringPtrOutput)
+}
+
+// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+func (o AcceleratorOutput) AutoRenewDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
+}
+
+// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+func (o AcceleratorOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
+}
+
+// Descriptive information of the global acceleration instance.
+func (o AcceleratorOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+func (o AcceleratorOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.IntOutput { return v.Duration }).(pulumi.IntOutput)
+}
+
+// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+// * `Month`: billed on a monthly basis.
+// * `Year`: billed on an annual basis.
+func (o AcceleratorOutput) PricingCycle() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.PricingCycle }).(pulumi.StringOutput)
+}
+
+// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+// - `AutoRenewal`: Enable auto renewal.
+// - `Normal`: Disable auto renewal.
+// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+func (o AcceleratorOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The instance type of the GA instance. Specification of global acceleration instance, value:
+// `1`: Small 1.
+// `2`: Small 2.
+// `3`: Small 3.
+// `5`: Medium 1.
+// `8`: Medium 2.
+// `10`: Medium 3.
+func (o AcceleratorOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of the GA instance.
+func (o AcceleratorOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AcceleratorArrayOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorArrayOutput) ElementType() reflect.Type {

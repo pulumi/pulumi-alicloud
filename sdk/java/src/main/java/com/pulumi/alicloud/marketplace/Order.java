@@ -20,6 +20,42 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.marketplace.Order;
+ * import com.pulumi.alicloud.marketplace.OrderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var order = new Order(&#34;order&#34;, OrderArgs.builder()        
+ *             .couponId(&#34;&#34;)
+ *             .duration(1)
+ *             .packageVersion(&#34;yuncode2713600001&#34;)
+ *             .payType(&#34;prepay&#34;)
+ *             .pricingCycle(&#34;Month&#34;)
+ *             .productCode(&#34;cmapi033136&#34;)
+ *             .quantity(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Market order can be imported using the id, e.g.

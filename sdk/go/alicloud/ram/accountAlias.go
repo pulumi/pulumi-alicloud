@@ -193,6 +193,11 @@ func (o AccountAliasOutput) ToAccountAliasOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+func (o AccountAliasOutput) AccountAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAlias) pulumi.StringOutput { return v.AccountAlias }).(pulumi.StringOutput)
+}
+
 type AccountAliasArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountAliasArrayOutput) ElementType() reflect.Type {

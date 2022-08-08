@@ -266,6 +266,41 @@ func (o NasFileSystemOutput) ToNasFileSystemOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The description of nas file system.
+func (o NasFileSystemOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasFileSystem) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The filesystem id of nas file system.
+func (o NasFileSystemOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasFileSystem) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The domain of mount target.
+func (o NasFileSystemOutput) MountTargetDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasFileSystem) pulumi.StringOutput { return v.MountTargetDomain }).(pulumi.StringOutput)
+}
+
+// The name of nas file system.
+func (o NasFileSystemOutput) NasFileSystemName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasFileSystem) pulumi.StringPtrOutput { return v.NasFileSystemName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of office site.
+func (o NasFileSystemOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasFileSystem) pulumi.StringOutput { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
+func (o NasFileSystemOutput) Reset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NasFileSystem) pulumi.BoolPtrOutput { return v.Reset }).(pulumi.BoolPtrOutput)
+}
+
+// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+func (o NasFileSystemOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasFileSystem) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type NasFileSystemArrayOutput struct{ *pulumi.OutputState }
 
 func (NasFileSystemArrayOutput) ElementType() reflect.Type {

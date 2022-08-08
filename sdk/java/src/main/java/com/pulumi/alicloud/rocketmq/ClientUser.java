@@ -28,6 +28,41 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rocketmq.ClientUser;
+ * import com.pulumi.alicloud.rocketmq.ClientUserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ClientUser(&#34;default&#34;, ClientUserArgs.builder()        
+ *             .bandwidth(&#34;20&#34;)
+ *             .clientIp(&#34;192.1.10.0&#34;)
+ *             .password(&#34;xxxxxxx&#34;)
+ *             .sagId(&#34;sag-xxxxx&#34;)
+ *             .userMail(&#34;tftest-xxxxx@test.com&#34;)
+ *             .userName(&#34;th-username-xxxxx&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The Sag ClientUser can be imported using the name, e.g.

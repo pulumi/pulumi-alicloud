@@ -23,6 +23,66 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.fnf.Flow;
+ * import com.pulumi.alicloud.fnf.FlowArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Role(&#34;default&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ *   {
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *         &#34;Effect&#34;: &#34;Allow&#34;,
+ *         &#34;Principal&#34;: {
+ *           &#34;Service&#34;: [
+ *             &#34;fnf.aliyuncs.com&#34;
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var example = new Flow(&#34;example&#34;, FlowArgs.builder()        
+ *             .definition(&#34;&#34;&#34;
+ *   version: v1beta1
+ *   type: flow
+ *   steps:
+ *     - type: pass
+ *       name: helloworld
+ *             &#34;&#34;&#34;)
+ *             .roleArn(default_.arn())
+ *             .description(&#34;Test for terraform fnf_flow.&#34;)
+ *             .type(&#34;FDL&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Serverless Workflow Flow can be imported using the id, e.g.

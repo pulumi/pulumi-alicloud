@@ -221,6 +221,21 @@ func (o IndustrialPidProjectOutput) ToIndustrialPidProjectOutputWithContext(ctx 
 	return o
 }
 
+// The ID of Pid Organization.
+func (o IndustrialPidProjectOutput) PidOrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidProject) pulumi.StringOutput { return v.PidOrganizationId }).(pulumi.StringOutput)
+}
+
+// The description of Pid Project.
+func (o IndustrialPidProjectOutput) PidProjectDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndustrialPidProject) pulumi.StringPtrOutput { return v.PidProjectDesc }).(pulumi.StringPtrOutput)
+}
+
+// The name of Pid Project.
+func (o IndustrialPidProjectOutput) PidProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IndustrialPidProject) pulumi.StringOutput { return v.PidProjectName }).(pulumi.StringOutput)
+}
+
 type IndustrialPidProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidProjectArrayOutput) ElementType() reflect.Type {

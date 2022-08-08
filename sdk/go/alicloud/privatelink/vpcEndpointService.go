@@ -255,6 +255,46 @@ func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutputWithContext(ctx cont
 	return o
 }
 
+// Whether to automatically accept terminal node connections.
+func (o VpcEndpointServiceOutput) AutoAcceptConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.BoolPtrOutput { return v.AutoAcceptConnection }).(pulumi.BoolPtrOutput)
+}
+
+// The connection bandwidth.
+func (o VpcEndpointServiceOutput) ConnectBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.IntOutput { return v.ConnectBandwidth }).(pulumi.IntOutput)
+}
+
+// Whether to pre-check this request only. Default to: `false`
+func (o VpcEndpointServiceOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+func (o VpcEndpointServiceOutput) Payer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringPtrOutput { return v.Payer }).(pulumi.StringPtrOutput)
+}
+
+// The business status of Vpc Endpoint Service.
+func (o VpcEndpointServiceOutput) ServiceBusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ServiceBusinessStatus }).(pulumi.StringOutput)
+}
+
+// The description of the terminal node service.
+func (o VpcEndpointServiceOutput) ServiceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringPtrOutput { return v.ServiceDescription }).(pulumi.StringPtrOutput)
+}
+
+// Service Domain.
+func (o VpcEndpointServiceOutput) ServiceDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ServiceDomain }).(pulumi.StringOutput)
+}
+
+// The status of Vpc Endpoint Service.
+func (o VpcEndpointServiceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type VpcEndpointServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceArrayOutput) ElementType() reflect.Type {

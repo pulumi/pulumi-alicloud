@@ -229,6 +229,26 @@ func (o HostGroupOutput) ToHostGroupOutputWithContext(ctx context.Context) HostG
 	return o
 }
 
+// Specify the New Host Group of Notes, Supports up to 500 Characters.
+func (o HostGroupOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostGroup) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Host Group ID.
+func (o HostGroupOutput) HostGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostGroup) pulumi.StringOutput { return v.HostGroupId }).(pulumi.StringOutput)
+}
+
+// Specify the New Host Group Name, Supports up to 128 Characters.
+func (o HostGroupOutput) HostGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostGroup) pulumi.StringOutput { return v.HostGroupName }).(pulumi.StringOutput)
+}
+
+// Specify the New Host Group Where the Bastion Host ID of.
+func (o HostGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostGroup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type HostGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (HostGroupArrayOutput) ElementType() reflect.Type {

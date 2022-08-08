@@ -10,6 +10,8 @@ import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
 import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
 import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansPlainArgs;
+import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansArgs;
+import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
 import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
@@ -33,6 +35,7 @@ import com.pulumi.alicloud.hbr.inputs.GetVaultsPlainArgs;
 import com.pulumi.alicloud.hbr.outputs.GetBackupJobsResult;
 import com.pulumi.alicloud.hbr.outputs.GetEcsBackupClientsResult;
 import com.pulumi.alicloud.hbr.outputs.GetEcsBackupPlansResult;
+import com.pulumi.alicloud.hbr.outputs.GetHanaBackupPlansResult;
 import com.pulumi.alicloud.hbr.outputs.GetHanaInstancesResult;
 import com.pulumi.alicloud.hbr.outputs.GetNasBackupPlansResult;
 import com.pulumi.alicloud.hbr.outputs.GetOssBackupPlansResult;
@@ -57,6 +60,82 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .values(                    
+     *                         &#34;2021-08-23T14:17:15CST&#34;,
+     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .status(&#34;COMPLETE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;LESS_THAN&#34;)
+     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBackupJobsResult> getBackupJobs(GetBackupJobsArgs args) {
         return getBackupJobs(args, InvokeOptions.Empty);
@@ -67,6 +146,82 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .values(                    
+     *                         &#34;2021-08-23T14:17:15CST&#34;,
+     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .status(&#34;COMPLETE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;LESS_THAN&#34;)
+     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBackupJobsResult> getBackupJobsPlain(GetBackupJobsPlainArgs args) {
@@ -79,6 +234,82 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .values(                    
+     *                         &#34;2021-08-23T14:17:15CST&#34;,
+     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .status(&#34;COMPLETE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;LESS_THAN&#34;)
+     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetBackupJobsResult> getBackupJobs(GetBackupJobsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:hbr/getBackupJobs:getBackupJobs", TypeShape.of(GetBackupJobsResult.class), args, Utilities.withVersion(options));
@@ -89,6 +320,82 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .values(                    
+     *                         &#34;2021-08-23T14:17:15CST&#34;,
+     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .status(&#34;COMPLETE&#34;)
+     *             .filters(            
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;VaultId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;InstanceId&#34;)
+     *                     .operator(&#34;IN&#34;)
+     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .build(),
+     *                 GetBackupJobsFilterArgs.builder()
+     *                     .key(&#34;CompleteTime&#34;)
+     *                     .operator(&#34;LESS_THAN&#34;)
+     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetBackupJobsResult> getBackupJobsPlain(GetBackupJobsPlainArgs args, InvokeOptions options) {
@@ -101,6 +408,45 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;ecs_instance_name&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
+     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
+     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsBackupClientsResult> getEcsBackupClients() {
         return getEcsBackupClients(GetEcsBackupClientsArgs.Empty, InvokeOptions.Empty);
@@ -111,6 +457,45 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;ecs_instance_name&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
+     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
+     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsBackupClientsResult> getEcsBackupClientsPlain() {
@@ -123,6 +508,45 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;ecs_instance_name&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
+     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
+     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsBackupClientsResult> getEcsBackupClients(GetEcsBackupClientsArgs args) {
         return getEcsBackupClients(args, InvokeOptions.Empty);
@@ -133,6 +557,45 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;ecs_instance_name&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
+     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
+     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsBackupClientsResult> getEcsBackupClientsPlain(GetEcsBackupClientsPlainArgs args) {
@@ -145,6 +608,45 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;ecs_instance_name&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
+     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
+     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsBackupClientsResult> getEcsBackupClients(GetEcsBackupClientsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", TypeShape.of(GetEcsBackupClientsResult.class), args, Utilities.withVersion(options));
@@ -155,6 +657,45 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;ecs_instance_name&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
+     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
+     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsBackupClientsResult> getEcsBackupClientsPlain(GetEcsBackupClientsPlainArgs args, InvokeOptions options) {
@@ -167,6 +708,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsBackupPlansResult> getEcsBackupPlans() {
         return getEcsBackupPlans(GetEcsBackupPlansArgs.Empty, InvokeOptions.Empty);
@@ -177,6 +749,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsBackupPlansResult> getEcsBackupPlansPlain() {
@@ -189,6 +792,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsBackupPlansResult> getEcsBackupPlans(GetEcsBackupPlansArgs args) {
         return getEcsBackupPlans(args, InvokeOptions.Empty);
@@ -199,6 +833,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEcsBackupPlansResult> getEcsBackupPlansPlain(GetEcsBackupPlansPlainArgs args) {
@@ -211,6 +876,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEcsBackupPlansResult> getEcsBackupPlans(GetEcsBackupPlansArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", TypeShape.of(GetEcsBackupPlansResult.class), args, Utilities.withVersion(options));
@@ -222,9 +918,220 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetEcsBackupPlansResult> getEcsBackupPlansPlain(GetEcsBackupPlansPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", TypeShape.of(GetEcsBackupPlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.179.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetHanaBackupPlansResult> getHanaBackupPlans(GetHanaBackupPlansArgs args) {
+        return getHanaBackupPlans(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.179.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetHanaBackupPlansResult> getHanaBackupPlansPlain(GetHanaBackupPlansPlainArgs args) {
+        return getHanaBackupPlansPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.179.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetHanaBackupPlansResult> getHanaBackupPlans(GetHanaBackupPlansArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", TypeShape.of(GetHanaBackupPlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.179.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
+     *             .clusterId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetHanaBackupPlansResult> getHanaBackupPlansPlain(GetHanaBackupPlansPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", TypeShape.of(GetHanaBackupPlansResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
@@ -232,6 +1139,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.178.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetHanaInstancesResult> getHanaInstances() {
@@ -244,6 +1182,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetHanaInstancesResult> getHanaInstancesPlain() {
         return getHanaInstancesPlain(GetHanaInstancesPlainArgs.Empty, InvokeOptions.Empty);
@@ -254,6 +1223,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.178.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetHanaInstancesResult> getHanaInstances(GetHanaInstancesArgs args) {
@@ -266,6 +1266,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetHanaInstancesResult> getHanaInstancesPlain(GetHanaInstancesPlainArgs args) {
         return getHanaInstancesPlain(args, InvokeOptions.Empty);
@@ -276,6 +1307,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.178.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetHanaInstancesResult> getHanaInstances(GetHanaInstancesArgs args, InvokeOptions options) {
@@ -288,6 +1350,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetHanaInstancesResult> getHanaInstancesPlain(GetHanaInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getHanaInstances:getHanaInstances", TypeShape.of(GetHanaInstancesResult.class), args, Utilities.withVersion(options));
@@ -298,6 +1391,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNasBackupPlansResult> getNasBackupPlans() {
@@ -310,6 +1434,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetNasBackupPlansResult> getNasBackupPlansPlain() {
         return getNasBackupPlansPlain(GetNasBackupPlansPlainArgs.Empty, InvokeOptions.Empty);
@@ -320,6 +1475,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNasBackupPlansResult> getNasBackupPlans(GetNasBackupPlansArgs args) {
@@ -332,6 +1518,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetNasBackupPlansResult> getNasBackupPlansPlain(GetNasBackupPlansPlainArgs args) {
         return getNasBackupPlansPlain(args, InvokeOptions.Empty);
@@ -342,6 +1559,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.132.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNasBackupPlansResult> getNasBackupPlans(GetNasBackupPlansArgs args, InvokeOptions options) {
@@ -354,6 +1602,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetNasBackupPlansResult> getNasBackupPlansPlain(GetNasBackupPlansPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", TypeShape.of(GetNasBackupPlansResult.class), args, Utilities.withVersion(options));
@@ -364,6 +1643,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOssBackupPlansResult> getOssBackupPlans() {
@@ -376,6 +1686,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOssBackupPlansResult> getOssBackupPlansPlain() {
         return getOssBackupPlansPlain(GetOssBackupPlansPlainArgs.Empty, InvokeOptions.Empty);
@@ -386,6 +1727,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOssBackupPlansResult> getOssBackupPlans(GetOssBackupPlansArgs args) {
@@ -398,6 +1770,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOssBackupPlansResult> getOssBackupPlansPlain(GetOssBackupPlansPlainArgs args) {
         return getOssBackupPlansPlain(args, InvokeOptions.Empty);
@@ -408,6 +1811,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.131.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOssBackupPlansResult> getOssBackupPlans(GetOssBackupPlansArgs args, InvokeOptions options) {
@@ -420,6 +1854,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOssBackupPlansResult> getOssBackupPlansPlain(GetOssBackupPlansPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", TypeShape.of(GetOssBackupPlansResult.class), args, Utilities.withVersion(options));
@@ -430,6 +1895,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOtsBackupPlansResult> getOtsBackupPlans() {
@@ -442,6 +1938,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOtsBackupPlansResult> getOtsBackupPlansPlain() {
         return getOtsBackupPlansPlain(GetOtsBackupPlansPlainArgs.Empty, InvokeOptions.Empty);
@@ -452,6 +1979,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOtsBackupPlansResult> getOtsBackupPlans(GetOtsBackupPlansArgs args) {
@@ -464,6 +2022,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOtsBackupPlansResult> getOtsBackupPlansPlain(GetOtsBackupPlansPlainArgs args) {
         return getOtsBackupPlansPlain(args, InvokeOptions.Empty);
@@ -474,6 +2063,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.163.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOtsBackupPlansResult> getOtsBackupPlans(GetOtsBackupPlansArgs args, InvokeOptions options) {
@@ -486,6 +2106,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOtsBackupPlansResult> getOtsBackupPlansPlain(GetOtsBackupPlansPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans", TypeShape.of(GetOtsBackupPlansResult.class), args, Utilities.withVersion(options));
@@ -496,6 +2147,34 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.164.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOtsSnapshotsResult> getOtsSnapshots() {
@@ -508,6 +2187,34 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOtsSnapshotsResult> getOtsSnapshotsPlain() {
         return getOtsSnapshotsPlain(GetOtsSnapshotsPlainArgs.Empty, InvokeOptions.Empty);
@@ -518,6 +2225,34 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.164.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOtsSnapshotsResult> getOtsSnapshots(GetOtsSnapshotsArgs args) {
@@ -530,6 +2265,34 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOtsSnapshotsResult> getOtsSnapshotsPlain(GetOtsSnapshotsPlainArgs args) {
         return getOtsSnapshotsPlain(args, InvokeOptions.Empty);
@@ -540,6 +2303,34 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.164.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetOtsSnapshotsResult> getOtsSnapshots(GetOtsSnapshotsArgs args, InvokeOptions options) {
@@ -552,6 +2343,34 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetOtsSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetOtsSnapshotsResult> getOtsSnapshotsPlain(GetOtsSnapshotsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", TypeShape.of(GetOtsSnapshotsResult.class), args, Utilities.withVersion(options));
@@ -562,6 +2381,35 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     * 
+     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetReplicationVaultRegionsResult> getReplicationVaultRegions() {
@@ -574,6 +2422,35 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     * 
+     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetReplicationVaultRegionsResult> getReplicationVaultRegionsPlain() {
         return getReplicationVaultRegionsPlain(GetReplicationVaultRegionsPlainArgs.Empty, InvokeOptions.Empty);
@@ -584,6 +2461,35 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     * 
+     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetReplicationVaultRegionsResult> getReplicationVaultRegions(GetReplicationVaultRegionsArgs args) {
@@ -596,6 +2502,35 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     * 
+     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetReplicationVaultRegionsResult> getReplicationVaultRegionsPlain(GetReplicationVaultRegionsPlainArgs args) {
         return getReplicationVaultRegionsPlain(args, InvokeOptions.Empty);
@@ -606,6 +2541,35 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.152.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     * 
+     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetReplicationVaultRegionsResult> getReplicationVaultRegions(GetReplicationVaultRegionsArgs args, InvokeOptions options) {
@@ -618,6 +2582,35 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     * 
+     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetReplicationVaultRegionsResult> getReplicationVaultRegionsPlain(GetReplicationVaultRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", TypeShape.of(GetReplicationVaultRegionsResult.class), args, Utilities.withVersion(options));
@@ -628,6 +2621,43 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetRestoreJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRestoreJobsResult> getRestoreJobs(GetRestoreJobsArgs args) {
@@ -640,6 +2670,43 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetRestoreJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetRestoreJobsResult> getRestoreJobsPlain(GetRestoreJobsPlainArgs args) {
         return getRestoreJobsPlain(args, InvokeOptions.Empty);
@@ -650,6 +2717,43 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetRestoreJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRestoreJobsResult> getRestoreJobs(GetRestoreJobsArgs args, InvokeOptions options) {
@@ -662,6 +2766,43 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetRestoreJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-name&#34;)
+     *             .build());
+     * 
+     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetRestoreJobsResult> getRestoreJobsPlain(GetRestoreJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getRestoreJobs:getRestoreJobs", TypeShape.of(GetRestoreJobsResult.class), args, Utilities.withVersion(options));
@@ -672,6 +2813,47 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
+     *             .filters(GetServerBackupPlansFilterArgs.builder()
+     *                 .key(&#34;instanceId&#34;)
+     *                 .values(default_.instances()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServerBackupPlansResult> getServerBackupPlans() {
@@ -684,6 +2866,47 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
+     *             .filters(GetServerBackupPlansFilterArgs.builder()
+     *                 .key(&#34;instanceId&#34;)
+     *                 .values(default_.instances()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetServerBackupPlansResult> getServerBackupPlansPlain() {
         return getServerBackupPlansPlain(GetServerBackupPlansPlainArgs.Empty, InvokeOptions.Empty);
@@ -694,6 +2917,47 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
+     *             .filters(GetServerBackupPlansFilterArgs.builder()
+     *                 .key(&#34;instanceId&#34;)
+     *                 .values(default_.instances()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServerBackupPlansResult> getServerBackupPlans(GetServerBackupPlansArgs args) {
@@ -706,6 +2970,47 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
+     *             .filters(GetServerBackupPlansFilterArgs.builder()
+     *                 .key(&#34;instanceId&#34;)
+     *                 .values(default_.instances()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetServerBackupPlansResult> getServerBackupPlansPlain(GetServerBackupPlansPlainArgs args) {
         return getServerBackupPlansPlain(args, InvokeOptions.Empty);
@@ -716,6 +3021,47 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
+     *             .filters(GetServerBackupPlansFilterArgs.builder()
+     *                 .key(&#34;instanceId&#34;)
+     *                 .values(default_.instances()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServerBackupPlansResult> getServerBackupPlans(GetServerBackupPlansArgs args, InvokeOptions options) {
@@ -728,6 +3074,47 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
+     *             .status(&#34;Running&#34;)
+     *             .build());
+     * 
+     *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
+     *             .filters(GetServerBackupPlansFilterArgs.builder()
+     *                 .key(&#34;instanceId&#34;)
+     *                 .values(default_.instances()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetServerBackupPlansResult> getServerBackupPlansPlain(GetServerBackupPlansPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", TypeShape.of(GetServerBackupPlansResult.class), args, Utilities.withVersion(options));
@@ -738,6 +3125,71 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;OSS&#34;)
+     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .build());
+     * 
+     *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;NAS&#34;)
+     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args) {
@@ -750,6 +3202,71 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;OSS&#34;)
+     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .build());
+     * 
+     *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;NAS&#34;)
+     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args) {
         return getSnapshotsPlain(args, InvokeOptions.Empty);
@@ -760,6 +3277,71 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.133.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;OSS&#34;)
+     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .build());
+     * 
+     *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;NAS&#34;)
+     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
@@ -772,6 +3354,71 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .build());
+     * 
+     *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .build());
+     * 
+     *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;OSS&#34;)
+     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .build());
+     * 
+     *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .sourceType(&#34;NAS&#34;)
+     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
+     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
@@ -782,6 +3429,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
+     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetVaultsResult> getVaults() {
@@ -794,6 +3472,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
+     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetVaultsResult> getVaultsPlain() {
         return getVaultsPlain(GetVaultsPlainArgs.Empty, InvokeOptions.Empty);
@@ -804,6 +3513,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
+     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetVaultsResult> getVaults(GetVaultsArgs args) {
@@ -816,6 +3556,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
+     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetVaultsResult> getVaultsPlain(GetVaultsPlainArgs args) {
         return getVaultsPlain(args, InvokeOptions.Empty);
@@ -827,6 +3598,37 @@ public final class HbrFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
+     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetVaultsResult> getVaults(GetVaultsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:hbr/getVaults:getVaults", TypeShape.of(GetVaultsResult.class), args, Utilities.withVersion(options));
@@ -837,6 +3639,37 @@ public final class HbrFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
+     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetVaultsResult> getVaultsPlain(GetVaultsPlainArgs args, InvokeOptions options) {

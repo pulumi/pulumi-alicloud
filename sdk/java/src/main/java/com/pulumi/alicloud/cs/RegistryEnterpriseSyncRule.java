@@ -25,6 +25,43 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseSyncRule;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseSyncRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegistryEnterpriseSyncRule(&#34;default&#34;, RegistryEnterpriseSyncRuleArgs.builder()        
+ *             .instanceId(&#34;my-source-instance-id&#34;)
+ *             .namespaceName(&#34;my-source-namespace&#34;)
+ *             .repoName(&#34;my-source-repo&#34;)
+ *             .tagFilter(&#34;.*&#34;)
+ *             .targetInstanceId(&#34;my-target-instance-id&#34;)
+ *             .targetNamespaceName(&#34;my-target-namespace&#34;)
+ *             .targetRegionId(&#34;cn-hangzhou&#34;)
+ *             .targetRepoName(&#34;my-target-repo&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.

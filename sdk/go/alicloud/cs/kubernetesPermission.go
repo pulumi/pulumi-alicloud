@@ -171,6 +171,16 @@ func (o KubernetesPermissionOutput) ToKubernetesPermissionOutputWithContext(ctx 
 	return o
 }
 
+// A list of user permission.
+func (o KubernetesPermissionOutput) Permissions() KubernetesPermissionPermissionArrayOutput {
+	return o.ApplyT(func(v *KubernetesPermission) KubernetesPermissionPermissionArrayOutput { return v.Permissions }).(KubernetesPermissionPermissionArrayOutput)
+}
+
+// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
+func (o KubernetesPermissionOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesPermission) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
 type KubernetesPermissionArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesPermissionArrayOutput) ElementType() reflect.Type {

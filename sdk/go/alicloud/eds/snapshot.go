@@ -299,6 +299,31 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+// The description of the Snapshot.
+func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Desktop.
+func (o SnapshotOutput) DesktopId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.DesktopId }).(pulumi.StringOutput)
+}
+
+// The name of the Snapshot.
+func (o SnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
+func (o SnapshotOutput) SourceDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceDiskType }).(pulumi.StringOutput)
+}
+
+// The status of the snapshot.
+func (o SnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type SnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (SnapshotArrayOutput) ElementType() reflect.Type {

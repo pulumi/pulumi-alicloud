@@ -227,6 +227,26 @@ func (o AppAttachmentOutput) ToAppAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The apiId that app apply to access.
+func (o AppAttachmentOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppAttachment) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// The app that apply to the authorization.
+func (o AppAttachmentOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppAttachment) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The group that the api belongs to.
+func (o AppAttachmentOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppAttachment) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Stage that the app apply to access.
+func (o AppAttachmentOutput) StageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppAttachment) pulumi.StringOutput { return v.StageName }).(pulumi.StringOutput)
+}
+
 type AppAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AppAttachmentArrayOutput) ElementType() reflect.Type {

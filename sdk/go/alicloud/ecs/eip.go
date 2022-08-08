@@ -328,6 +328,93 @@ func (o EipOutput) ToEipOutputWithContext(ctx context.Context) EipOutput {
 	return o
 }
 
+func (o EipOutput) ActivityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.ActivityId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+func (o EipOutput) AddressName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.AddressName }).(pulumi.StringOutput)
+}
+
+func (o EipOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+func (o EipOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// Whether enable the deletion protection or not. Default value: `false`.
+// - true: Enable deletion protection.
+// - false: Disable deletion protection.
+func (o EipOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Eip) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+func (o EipOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+//
+// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+func (o EipOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
+func (o EipOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The elastic ip address
+func (o EipOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+func (o EipOutput) Isp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
+}
+
+// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+func (o EipOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EipOutput) Netmode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.Netmode }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+func (o EipOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o EipOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The Id of resource group which the eip belongs.
+func (o EipOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The EIP current status.
+func (o EipOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o EipOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Eip) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type EipArrayOutput struct{ *pulumi.OutputState }
 
 func (EipArrayOutput) ElementType() reflect.Type {

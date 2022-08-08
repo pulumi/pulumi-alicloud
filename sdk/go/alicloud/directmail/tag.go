@@ -199,6 +199,11 @@ func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
 	return o
 }
 
+// The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
+func (o TagOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.TagName }).(pulumi.StringOutput)
+}
+
 type TagArrayOutput struct{ *pulumi.OutputState }
 
 func (TagArrayOutput) ElementType() reflect.Type {

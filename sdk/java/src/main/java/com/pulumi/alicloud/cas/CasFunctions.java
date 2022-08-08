@@ -19,6 +19,36 @@ import java.util.concurrent.CompletableFuture;
 public final class CasFunctions {
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -30,6 +60,36 @@ public final class CasFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -41,6 +101,36 @@ public final class CasFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -52,6 +142,36 @@ public final class CasFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -63,6 +183,36 @@ public final class CasFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -74,6 +224,36 @@ public final class CasFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -90,6 +270,38 @@ public final class CasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .ids(&#34;Certificate Id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServiceCertificatesResult> getServiceCertificates() {
         return getServiceCertificates(GetServiceCertificatesArgs.Empty, InvokeOptions.Empty);
@@ -100,6 +312,38 @@ public final class CasFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .ids(&#34;Certificate Id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceCertificatesResult> getServiceCertificatesPlain() {
@@ -112,6 +356,38 @@ public final class CasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .ids(&#34;Certificate Id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServiceCertificatesResult> getServiceCertificates(GetServiceCertificatesArgs args) {
         return getServiceCertificates(args, InvokeOptions.Empty);
@@ -122,6 +398,38 @@ public final class CasFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .ids(&#34;Certificate Id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceCertificatesResult> getServiceCertificatesPlain(GetServiceCertificatesPlainArgs args) {
@@ -134,6 +442,38 @@ public final class CasFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .ids(&#34;Certificate Id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServiceCertificatesResult> getServiceCertificates(GetServiceCertificatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cas/getServiceCertificates:getServiceCertificates", TypeShape.of(GetServiceCertificatesResult.class), args, Utilities.withVersion(options));
@@ -144,6 +484,38 @@ public final class CasFunctions {
      * &gt; **NOTE:** Available in v1.129.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cas.CasFunctions;
+     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .nameRegex(&#34;^cas&#34;)
+     *             .ids(&#34;Certificate Id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceCertificatesResult> getServiceCertificatesPlain(GetServiceCertificatesPlainArgs args, InvokeOptions options) {

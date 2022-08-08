@@ -438,6 +438,83 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The app key.
+func (o InstanceOutput) AppKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AppKey }).(pulumi.StringPtrOutput)
+}
+
+// The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+func (o InstanceOutput) DiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DiskCategory }).(pulumi.StringPtrOutput)
+}
+
+// The duration.
+func (o InstanceOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+func (o InstanceOutput) EngineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EngineType }).(pulumi.StringPtrOutput)
+}
+
+// The alias of the instance.
+func (o InstanceOutput) InstanceAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceAlias }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the instance.
+// - Following enumerative value for TSDB for InfluxDB️ standart edition:
+// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
+// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
+// - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
+// - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
+// - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
+// - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
+// - Following enumerative value for TSDB for InfluxDB High-availability edition:
+// - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
+// - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
+// - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
+// - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
+// - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
+// - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
+// - Following enumerative value for TSDB:
+// - `tsdb.1x.basic` refers to basic edition I;
+// - `tsdb.3x.basic` refers to basic edition II;
+// - `tsdb.4x.basic` refers to basic edtion III;
+// - `tsdb.12x.standard` refers to standard edition I;
+// - `tsdb.24x.standard` refers to standard edition II;
+// - `tsdb.48x.large` refers to ultimate edition I;
+// - `tsdb.96x.large` refers to ultimate edition II.
+func (o InstanceOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
+func (o InstanceOutput) InstanceStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceStorage }).(pulumi.StringOutput)
+}
+
+// The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
+func (o InstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the instance.
+func (o InstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

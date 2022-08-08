@@ -209,6 +209,21 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
+// The description of the app. Defaults to null.
+func (o AppOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the app.
+func (o AppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o AppOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 type AppArrayOutput struct{ *pulumi.OutputState }
 
 func (AppArrayOutput) ElementType() reflect.Type {

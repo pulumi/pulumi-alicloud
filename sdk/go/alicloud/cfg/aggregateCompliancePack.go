@@ -347,6 +347,50 @@ func (o AggregateCompliancePackOutput) ToAggregateCompliancePackOutputWithContex
 	return o
 }
 
+// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+func (o AggregateCompliancePackOutput) AggregateCompliancePackName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.AggregateCompliancePackName }).(pulumi.StringOutput)
+}
+
+// The ID of aggregator.
+func (o AggregateCompliancePackOutput) AggregatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.AggregatorId }).(pulumi.StringOutput)
+}
+
+// The Template ID of compliance package.
+func (o AggregateCompliancePackOutput) CompliancePackTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringPtrOutput { return v.CompliancePackTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// A list of Config Rule IDs.
+func (o AggregateCompliancePackOutput) ConfigRuleIds() AggregateCompliancePackConfigRuleIdArrayOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) AggregateCompliancePackConfigRuleIdArrayOutput {
+		return v.ConfigRuleIds
+	}).(AggregateCompliancePackConfigRuleIdArrayOutput)
+}
+
+// A list of Config Rules.
+//
+// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+func (o AggregateCompliancePackOutput) ConfigRules() AggregateCompliancePackConfigRuleArrayOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) AggregateCompliancePackConfigRuleArrayOutput { return v.ConfigRules }).(AggregateCompliancePackConfigRuleArrayOutput)
+}
+
+// The description of compliance package.
+func (o AggregateCompliancePackOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+func (o AggregateCompliancePackOutput) RiskLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.IntOutput { return v.RiskLevel }).(pulumi.IntOutput)
+}
+
+// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+func (o AggregateCompliancePackOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type AggregateCompliancePackArrayOutput struct{ *pulumi.OutputState }
 
 func (AggregateCompliancePackArrayOutput) ElementType() reflect.Type {

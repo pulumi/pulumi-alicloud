@@ -449,6 +449,103 @@ func (o ServerlessInstanceOutput) ToServerlessInstanceOutputWithContext(ctx cont
 	return o
 }
 
+// The password of the database logon account.
+// * The password length is `8` to `32` bits.
+// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+func (o ServerlessInstanceOutput) AccountPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+}
+
+// Set whether the instance is automatically renewed.
+func (o ServerlessInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
+func (o ServerlessInstanceOutput) CapacityUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.IntOutput { return v.CapacityUnit }).(pulumi.IntOutput)
+}
+
+// The db instance description.
+func (o ServerlessInstanceOutput) DbInstanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringPtrOutput { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
+}
+
+// The db instance storage. Valid values: `1` to `100`.
+func (o ServerlessInstanceOutput) DbInstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.IntOutput { return v.DbInstanceStorage }).(pulumi.IntOutput)
+}
+
+// The database engine of the instance. Valid values: `MongoDB`.
+func (o ServerlessInstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The database version number. Valid values: `4.2`.
+func (o ServerlessInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
+func (o ServerlessInstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC.
+func (o ServerlessInstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
+func (o ServerlessInstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The period price type. Valid values: `Day`, `Month`.
+func (o ServerlessInstanceOutput) PeriodPriceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringPtrOutput { return v.PeriodPriceType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o ServerlessInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// An array that consists of the information of IP whitelists.
+func (o ServerlessInstanceOutput) SecurityIpGroups() ServerlessInstanceSecurityIpGroupArrayOutput {
+	return o.ApplyT(func(v *ServerlessInstance) ServerlessInstanceSecurityIpGroupArrayOutput { return v.SecurityIpGroups }).(ServerlessInstanceSecurityIpGroupArrayOutput)
+}
+
+// The instance status. For more information, see the instance Status Table.
+func (o ServerlessInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage engine used by the instance. Valid values: `WiredTiger`.
+func (o ServerlessInstanceOutput) StorageEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.StorageEngine }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ServerlessInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC network.
+func (o ServerlessInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The of the vswitch.
+func (o ServerlessInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone. Use this parameter to specify the zone created by the instance.
+func (o ServerlessInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ServerlessInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerlessInstanceArrayOutput) ElementType() reflect.Type {

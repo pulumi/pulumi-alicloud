@@ -323,6 +323,26 @@ func (o EcsNetworkInterfaceAttachmentOutput) ToEcsNetworkInterfaceAttachmentOutp
 	return o
 }
 
+// The instance id.
+func (o EcsNetworkInterfaceAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The network interface id.
+func (o EcsNetworkInterfaceAttachmentOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// The trunk network instance id.
+func (o EcsNetworkInterfaceAttachmentOutput) TrunkNetworkInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.StringPtrOutput { return v.TrunkNetworkInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The wait for network configuration ready.
+func (o EcsNetworkInterfaceAttachmentOutput) WaitForNetworkConfigurationReady() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.BoolPtrOutput { return v.WaitForNetworkConfigurationReady }).(pulumi.BoolPtrOutput)
+}
+
 type EcsNetworkInterfaceAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceAttachmentArrayOutput) ElementType() reflect.Type {

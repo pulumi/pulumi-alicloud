@@ -592,6 +592,121 @@ func (o EtlOutput) ToEtlOutputWithContext(ctx context.Context) EtlOutput {
 	return o
 }
 
+// Delivery target logstore access key id.
+func (o EtlOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Delivery target logstore access key secret.
+func (o EtlOutput) AccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
+}
+
+// The etl job create time.
+func (o EtlOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Etl) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// Description of the log etl job.
+func (o EtlOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Log service etl job alias.
+func (o EtlOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The name of the log etl job.
+func (o EtlOutput) EtlName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.EtlName }).(pulumi.StringOutput)
+}
+
+// Target logstore configuration for delivery after data processing.
+func (o EtlOutput) EtlSinks() EtlEtlSinkArrayOutput {
+	return o.ApplyT(func(v *Etl) EtlEtlSinkArrayOutput { return v.EtlSinks }).(EtlEtlSinkArrayOutput)
+}
+
+// Log service etl type, the default value is `ETL`.
+func (o EtlOutput) EtlType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.EtlType }).(pulumi.StringPtrOutput)
+}
+
+// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
+func (o EtlOutput) FromTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.IntPtrOutput { return v.FromTime }).(pulumi.IntPtrOutput)
+}
+
+// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
+func (o EtlOutput) KmsEncryptedAccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.KmsEncryptedAccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
+func (o EtlOutput) KmsEncryptedAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.KmsEncryptedAccessKeySecret }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+func (o EtlOutput) KmsEncryptionAccessKeyIdContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *Etl) pulumi.MapOutput { return v.KmsEncryptionAccessKeyIdContext }).(pulumi.MapOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+func (o EtlOutput) KmsEncryptionAccessKeySecretContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *Etl) pulumi.MapOutput { return v.KmsEncryptionAccessKeySecretContext }).(pulumi.MapOutput)
+}
+
+// ETL job last modified time.
+func (o EtlOutput) LastModifiedTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Etl) pulumi.IntOutput { return v.LastModifiedTime }).(pulumi.IntOutput)
+}
+
+// Delivery target logstore.
+func (o EtlOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// Advanced parameter configuration of processing operations.
+func (o EtlOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// The project where the target logstore is delivered.
+func (o EtlOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+func (o EtlOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Job scheduling type, the default value is Resident.
+func (o EtlOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// Processing operation grammar.
+func (o EtlOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
+}
+
+// Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
+func (o EtlOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
+func (o EtlOutput) ToTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.IntPtrOutput { return v.ToTime }).(pulumi.IntPtrOutput)
+}
+
+// Log etl job version. the default value is `2`.
+func (o EtlOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.IntPtrOutput { return v.Version }).(pulumi.IntPtrOutput)
+}
+
 type EtlArrayOutput struct{ *pulumi.OutputState }
 
 func (EtlArrayOutput) ElementType() reflect.Type {

@@ -21,6 +21,41 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.83.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.Folder;
+ * import com.pulumi.alicloud.resourcemanager.FolderArgs;
+ * import com.pulumi.alicloud.resourcemanager.Account;
+ * import com.pulumi.alicloud.resourcemanager.AccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var f1 = new Folder(&#34;f1&#34;, FolderArgs.builder()        
+ *             .folderName(&#34;test1&#34;)
+ *             .build());
+ * 
+ *         var example = new Account(&#34;example&#34;, AccountArgs.builder()        
+ *             .displayName(&#34;RDAccount&#34;)
+ *             .folderId(f1.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

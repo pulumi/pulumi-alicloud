@@ -22,6 +22,121 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.Database;
+ * import com.pulumi.alicloud.rds.DatabaseArgs;
+ * import com.pulumi.alicloud.rds.Account;
+ * import com.pulumi.alicloud.rds.AccountArgs;
+ * import com.pulumi.alicloud.rds.AccountPrivilege;
+ * import com.pulumi.alicloud.rds.AccountPrivilegeArgs;
+ * import com.pulumi.alicloud.dts.SubscriptionJob;
+ * import com.pulumi.alicloud.dts.SubscriptionJobArgs;
+ * import com.pulumi.alicloud.dts.ConsumerChannel;
+ * import com.pulumi.alicloud.dts.ConsumerChannelArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tftestdts&#34;);
+ *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(creation)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;5.6&#34;)
+ *             .instanceType(&#34;rds.mysql.s1.small&#34;)
+ *             .instanceStorage(&#34;10&#34;)
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new Database(&#34;db-&#34; + i, DatabaseArgs.builder()            
+ *                 .instanceId(instance.id())
+ *                 .description(&#34;from terraform&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *             .dbInstanceId(instance.id())
+ *             .accountName(&#34;tftestprivilege&#34;)
+ *             .accountPassword(&#34;Test12345&#34;)
+ *             .accountDescription(&#34;from terraform&#34;)
+ *             .build());
+ * 
+ *         var privilege = new AccountPrivilege(&#34;privilege&#34;, AccountPrivilegeArgs.builder()        
+ *             .instanceId(instance.id())
+ *             .accountName(account.name())
+ *             .privilege(&#34;ReadWrite&#34;)
+ *             .dbNames(db.stream().map(element -&gt; element.name()).collect(toList()))
+ *             .build());
+ * 
+ *         var defaultSubscriptionJob = new SubscriptionJob(&#34;defaultSubscriptionJob&#34;, SubscriptionJobArgs.builder()        
+ *             .dtsJobName(name)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .sourceEndpointEngineName(&#34;MySQL&#34;)
+ *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .sourceEndpointInstanceType(&#34;RDS&#34;)
+ *             .sourceEndpointInstanceId(instance.id())
+ *             .sourceEndpointDatabaseName(&#34;tfaccountpri_0&#34;)
+ *             .sourceEndpointUserName(&#34;tftestprivilege&#34;)
+ *             .sourceEndpointPassword(&#34;Test12345&#34;)
+ *             .subscriptionInstanceNetworkType(&#34;vpc&#34;)
+ *             .dbList(&#34;&#34;&#34;
+ *         {&#34;dtstestdata&#34;: {&#34;name&#34;: &#34;tfaccountpri_0&#34;, &#34;all&#34;: true}}
+ *             &#34;&#34;&#34;)
+ *             .subscriptionInstanceVpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .subscriptionInstanceVswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .status(&#34;Normal&#34;)
+ *             .build());
+ * 
+ *         var defaultConsumerChannel = new ConsumerChannel(&#34;defaultConsumerChannel&#34;, ConsumerChannelArgs.builder()        
+ *             .dtsInstanceId(defaultSubscriptionJob.dtsInstanceId())
+ *             .consumerGroupName(name)
+ *             .consumerGroupUserName(name)
+ *             .consumerGroupPassword(&#34;tftestAcc123&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * DTS Consumer Channel can be imported using the id, e.g.

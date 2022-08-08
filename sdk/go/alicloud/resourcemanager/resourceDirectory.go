@@ -219,6 +219,26 @@ func (o ResourceDirectoryOutput) ToResourceDirectoryOutputWithContext(ctx contex
 	return o
 }
 
+// The ID of the master account.
+func (o ResourceDirectoryOutput) MasterAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MasterAccountId }).(pulumi.StringOutput)
+}
+
+// The name of the master account.
+func (o ResourceDirectoryOutput) MasterAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MasterAccountName }).(pulumi.StringOutput)
+}
+
+// The ID of the root folder.
+func (o ResourceDirectoryOutput) RootFolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.RootFolderId }).(pulumi.StringOutput)
+}
+
+// The status of control policy. Valid values:`Enabled` and `Disabled`.
+func (o ResourceDirectoryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type ResourceDirectoryArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourceDirectoryArrayOutput) ElementType() reflect.Type {

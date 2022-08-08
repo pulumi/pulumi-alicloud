@@ -47,7 +47,35 @@ import (
 // 			return err
 // 		}
 // 		_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
-// 			CharList:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  [\n", "    {\n", "      \"action\": {},\n", "      \"title\":\"new_title\",\n", "      \"type\":\"map\",\n", "      \"search\":{\n", "        \"logstore\":\"tf-logstore\",\n", "        \"topic\":\"new_topic\",\n", "        \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",\n", "        \"start\":\"-86400s\",\n", "        \"end\":\"now\"\n", "      },\n", "      \"display\":{\n", "        \"xAxis\":[\n", "          \"ct_name\"\n", "        ],\n", "        \"yAxis\":[\n", "          \"ct_product\"\n", "        ],\n", "        \"xPos\":0,\n", "        \"yPos\":0,\n", "        \"width\":10,\n", "        \"height\":12,\n", "        \"displayName\":\"xixihaha911\"\n", "      }\n", "    }\n", "  ]\n", "\n")),
+// 			CharList: pulumi.String(fmt.Sprintf(`  [
+//     {
+//       "action": {},
+//       "title":"new_title",
+//       "type":"map",
+//       "search":{
+//         "logstore":"tf-logstore",
+//         "topic":"new_topic",
+//         "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+//         "start":"-86400s",
+//         "end":"now"
+//       },
+//       "display":{
+//         "xAxis":[
+//           "ct_name"
+//         ],
+//         "yAxis":[
+//           "ct_product"
+//         ],
+//         "xPos":0,
+//         "yPos":0,
+//         "width":10,
+//         "height":12,
+//         "displayName":"xixihaha911"
+//       }
+//     }
+//   ]
+//
+// `)),
 // 			DashboardName: pulumi.String("tf-dashboard"),
 // 			ProjectName:   pulumi.String("tf-project"),
 // 		})
@@ -250,6 +278,26 @@ func (o DashboardOutput) ToDashboardOutput() DashboardOutput {
 
 func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) DashboardOutput {
 	return o
+}
+
+// Configuration of charts in the dashboard.
+func (o DashboardOutput) CharList() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.CharList }).(pulumi.StringOutput)
+}
+
+// The name of the Log Dashboard.
+func (o DashboardOutput) DashboardName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DashboardName }).(pulumi.StringOutput)
+}
+
+// Dashboard alias.
+func (o DashboardOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the log project. It is the only in one Alicloud account.
+func (o DashboardOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
 type DashboardArrayOutput struct{ *pulumi.OutputState }

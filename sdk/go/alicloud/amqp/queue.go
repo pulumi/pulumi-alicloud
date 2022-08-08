@@ -379,6 +379,74 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return o
 }
 
+// Specifies whether the Auto Delete attribute is configured. Valid values:
+// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
+// * false: The Auto Delete attribute is not configured.
+func (o QueueOutput) AutoDeleteState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.BoolPtrOutput { return v.AutoDeleteState }).(pulumi.BoolPtrOutput)
+}
+
+// The validity period after which the queue is automatically deleted.
+// If the queue is not accessed within a specified period of time, it is automatically deleted.
+func (o QueueOutput) AutoExpireState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.AutoExpireState }).(pulumi.StringPtrOutput)
+}
+
+// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
+// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
+// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+func (o QueueOutput) DeadLetterExchange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.DeadLetterExchange }).(pulumi.StringPtrOutput)
+}
+
+// The dead letter routing key.
+func (o QueueOutput) DeadLetterRoutingKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.DeadLetterRoutingKey }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the queue is an exclusive queue. Valid values:
+// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
+// * false: The queue is not an exclusive queue.
+func (o QueueOutput) ExclusiveState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.BoolPtrOutput { return v.ExclusiveState }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the instance.
+func (o QueueOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The maximum number of messages that can be stored in the queue.
+// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
+func (o QueueOutput) MaxLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.MaxLength }).(pulumi.StringPtrOutput)
+}
+
+// The highest priority supported by the queue. This parameter is set to a positive integer.
+// Valid values: 0 to 255. Recommended values: 1 to 10
+func (o QueueOutput) MaximumPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.IntPtrOutput { return v.MaximumPriority }).(pulumi.IntPtrOutput)
+}
+
+// The message TTL of the queue.
+// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
+// Message TTL must be set to a non-negative integer, in milliseconds.
+// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+func (o QueueOutput) MessageTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.MessageTtl }).(pulumi.StringPtrOutput)
+}
+
+// The name of the queue.
+// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+func (o QueueOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
+}
+
+// The name of the virtual host.
+func (o QueueOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
 type QueueArrayOutput struct{ *pulumi.OutputState }
 
 func (QueueArrayOutput) ElementType() reflect.Type {

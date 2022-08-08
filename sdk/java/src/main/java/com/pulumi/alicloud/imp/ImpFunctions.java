@@ -21,6 +21,40 @@ public final class ImpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imp.ImpFunctions;
+     * import com.pulumi.alicloud.imp.inputs.GetAppTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImpFunctions.getAppTemplates();
+     * 
+     *         ctx.export(&#34;impAppTemplateId1&#34;, ids.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my_AppTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;impAppTemplateId2&#34;, nameRegex.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAppTemplatesResult> getAppTemplates() {
         return getAppTemplates(GetAppTemplatesArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +65,40 @@ public final class ImpFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imp.ImpFunctions;
+     * import com.pulumi.alicloud.imp.inputs.GetAppTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImpFunctions.getAppTemplates();
+     * 
+     *         ctx.export(&#34;impAppTemplateId1&#34;, ids.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my_AppTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;impAppTemplateId2&#34;, nameRegex.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppTemplatesResult> getAppTemplatesPlain() {
@@ -43,6 +111,40 @@ public final class ImpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imp.ImpFunctions;
+     * import com.pulumi.alicloud.imp.inputs.GetAppTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImpFunctions.getAppTemplates();
+     * 
+     *         ctx.export(&#34;impAppTemplateId1&#34;, ids.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my_AppTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;impAppTemplateId2&#34;, nameRegex.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAppTemplatesResult> getAppTemplates(GetAppTemplatesArgs args) {
         return getAppTemplates(args, InvokeOptions.Empty);
@@ -53,6 +155,40 @@ public final class ImpFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imp.ImpFunctions;
+     * import com.pulumi.alicloud.imp.inputs.GetAppTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImpFunctions.getAppTemplates();
+     * 
+     *         ctx.export(&#34;impAppTemplateId1&#34;, ids.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my_AppTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;impAppTemplateId2&#34;, nameRegex.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppTemplatesResult> getAppTemplatesPlain(GetAppTemplatesPlainArgs args) {
@@ -65,6 +201,40 @@ public final class ImpFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imp.ImpFunctions;
+     * import com.pulumi.alicloud.imp.inputs.GetAppTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImpFunctions.getAppTemplates();
+     * 
+     *         ctx.export(&#34;impAppTemplateId1&#34;, ids.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my_AppTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;impAppTemplateId2&#34;, nameRegex.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAppTemplatesResult> getAppTemplates(GetAppTemplatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:imp/getAppTemplates:getAppTemplates", TypeShape.of(GetAppTemplatesResult.class), args, Utilities.withVersion(options));
@@ -75,6 +245,40 @@ public final class ImpFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imp.ImpFunctions;
+     * import com.pulumi.alicloud.imp.inputs.GetAppTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImpFunctions.getAppTemplates();
+     * 
+     *         ctx.export(&#34;impAppTemplateId1&#34;, ids.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .nameRegex(&#34;^my_AppTemplate&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;impAppTemplateId2&#34;, nameRegex.applyValue(getAppTemplatesResult -&gt; getAppTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAppTemplatesResult> getAppTemplatesPlain(GetAppTemplatesPlainArgs args, InvokeOptions options) {

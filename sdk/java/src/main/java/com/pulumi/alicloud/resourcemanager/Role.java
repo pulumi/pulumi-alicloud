@@ -22,6 +22,52 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.82.0+.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.Role;
+ * import com.pulumi.alicloud.resourcemanager.RoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Role(&#34;example&#34;, RoleArgs.builder()        
+ *             .assumeRolePolicyDocument(&#34;&#34;&#34;
+ *      {
+ *           &#34;Statement&#34;: [
+ *                {
+ *                     &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *                     &#34;Effect&#34;: &#34;Allow&#34;,
+ *                     &#34;Principal&#34;: {
+ *                         &#34;RAM&#34;:[
+ *                                 &#34;acs:ram::103755469187****:root&#34;，
+ *                                 &#34;acs:ram::104408977069****:root&#34;
+ *                         ]
+ *                     }
+ *                 }
+ *           ],
+ *           &#34;Version&#34;: &#34;1&#34;
+ *      }
+ * 	 
+ *             &#34;&#34;&#34;)
+ *             .roleName(&#34;testrd&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -300,6 +300,36 @@ func (o SaslUserOutput) ToSaslUserOutputWithContext(ctx context.Context) SaslUse
 	return o
 }
 
+// ID of the ALIKAFKA Instance that owns the groups.
+func (o SaslUserOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+func (o SaslUserOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o SaslUserOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+func (o SaslUserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+func (o SaslUserOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+func (o SaslUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
 type SaslUserArrayOutput struct{ *pulumi.OutputState }
 
 func (SaslUserArrayOutput) ElementType() reflect.Type {

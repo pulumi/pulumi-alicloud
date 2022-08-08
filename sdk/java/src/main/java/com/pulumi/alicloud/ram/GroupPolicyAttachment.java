@@ -17,6 +17,68 @@ import javax.annotation.Nullable;
  * Provides a RAM Group Policy attachment resource.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.Group;
+ * import com.pulumi.alicloud.ram.GroupArgs;
+ * import com.pulumi.alicloud.ram.Policy;
+ * import com.pulumi.alicloud.ram.PolicyArgs;
+ * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+ * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
+ *             .comments(&#34;this is a group comments.&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ *     {
+ *       &#34;Statement&#34;: [
+ *         {
+ *           &#34;Action&#34;: [
+ *             &#34;oss:ListObjects&#34;,
+ *             &#34;oss:GetObject&#34;
+ *           ],
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Resource&#34;: [
+ *             &#34;acs:oss:*:*:mybucket&#34;,
+ *             &#34;acs:oss:*:*:mybucket/*&#34;
+ *           ]
+ *         }
+ *       ],
+ *         &#34;Version&#34;: &#34;1&#34;
+ *     }
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a policy test&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var attach = new GroupPolicyAttachment(&#34;attach&#34;, GroupPolicyAttachmentArgs.builder()        
+ *             .policyName(policy.name())
+ *             .policyType(policy.type())
+ *             .groupName(group.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

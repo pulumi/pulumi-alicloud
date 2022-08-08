@@ -219,6 +219,21 @@ func (o UserVpcAuthorizationOutput) ToUserVpcAuthorizationOutputWithContext(ctx 
 	return o
 }
 
+// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
+func (o UserVpcAuthorizationOutput) AuthChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserVpcAuthorization) pulumi.StringPtrOutput { return v.AuthChannel }).(pulumi.StringPtrOutput)
+}
+
+// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
+func (o UserVpcAuthorizationOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserVpcAuthorization) pulumi.StringPtrOutput { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// The primary account ID of the user who authorizes the resource.
+func (o UserVpcAuthorizationOutput) AuthorizedUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserVpcAuthorization) pulumi.StringOutput { return v.AuthorizedUserId }).(pulumi.StringOutput)
+}
+
 type UserVpcAuthorizationArrayOutput struct{ *pulumi.OutputState }
 
 func (UserVpcAuthorizationArrayOutput) ElementType() reflect.Type {

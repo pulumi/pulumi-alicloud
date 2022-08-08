@@ -333,6 +333,61 @@ func (o QosPolicyOutput) ToQosPolicyOutputWithContext(ctx context.Context) QosPo
 	return o
 }
 
+// The description of the QoS policy.
+func (o QosPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination CIDR block.
+func (o QosPolicyOutput) DestCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.DestCidr }).(pulumi.StringOutput)
+}
+
+// The destination port range.
+func (o QosPolicyOutput) DestPortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.DestPortRange }).(pulumi.StringOutput)
+}
+
+// The expiration time of the quintuple rule.
+func (o QosPolicyOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringPtrOutput { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The transport layer protocol.
+func (o QosPolicyOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The name of the QoS policy.
+func (o QosPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
+func (o QosPolicyOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The instance ID of the QoS policy to which the quintuple rule is created.
+func (o QosPolicyOutput) QosId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.QosId }).(pulumi.StringOutput)
+}
+
+// The source CIDR block.
+func (o QosPolicyOutput) SourceCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.SourceCidr }).(pulumi.StringOutput)
+}
+
+// The source port range of the transport layer.
+func (o QosPolicyOutput) SourcePortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.SourcePortRange }).(pulumi.StringOutput)
+}
+
+// The time when the quintuple rule takes effect.
+func (o QosPolicyOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringPtrOutput { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 type QosPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (QosPolicyArrayOutput) ElementType() reflect.Type {

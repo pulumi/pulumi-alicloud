@@ -27,6 +27,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Command;
+ * import com.pulumi.alicloud.ecs.CommandArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.EcsInvocation;
+ * import com.pulumi.alicloud.ecs.EcsInvocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+ *             .commandContent(&#34;bHMK&#34;)
+ *             .description(&#34;For Terraform Test&#34;)
+ *             .type(&#34;RunShellScript&#34;)
+ *             .workingDir(&#34;/root&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .status(&#34;Running&#34;)
+ *             .build());
+ * 
+ *         var defaultEcsInvocation = new EcsInvocation(&#34;defaultEcsInvocation&#34;, EcsInvocationArgs.builder()        
+ *             .commandId(defaultCommand.id())
+ *             .instanceIds(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ECS Invocation can be imported using the id, e.g.

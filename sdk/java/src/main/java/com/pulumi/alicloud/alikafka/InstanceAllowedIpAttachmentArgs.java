@@ -29,14 +29,18 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The type of whitelist. Valid Value: `vpc`.
+     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * - `vpc`: IP address whitelist for VPC access.
+     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     @Import(name="allowedType", required=true)
     private Output<String> allowedType;
 
     /**
-     * @return The type of whitelist. Valid Value: `vpc`.
+     * @return The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * - `vpc`: IP address whitelist for VPC access.
+     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     public Output<String> allowedType() {
@@ -59,14 +63,18 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The Port range.  Valid Value: `9092/9092`.
+     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+     * - `9092/9092`: port range for a VPC whitelist.
+     * - `9093/9093`: port range for an Internet whitelist.
      * 
      */
     @Import(name="portRange", required=true)
     private Output<String> portRange;
 
     /**
-     * @return The Port range.  Valid Value: `9092/9092`.
+     * @return The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+     * - `9092/9092`: port range for a VPC whitelist.
+     * - `9093/9093`: port range for an Internet whitelist.
      * 
      */
     public Output<String> portRange() {
@@ -122,7 +130,9 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param allowedType The type of whitelist. Valid Value: `vpc`.
+         * @param allowedType The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+         * - `vpc`: IP address whitelist for VPC access.
+         * - `internet`: IP address whitelist for Internet access.
          * 
          * @return builder
          * 
@@ -133,7 +143,9 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param allowedType The type of whitelist. Valid Value: `vpc`.
+         * @param allowedType The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+         * - `vpc`: IP address whitelist for VPC access.
+         * - `internet`: IP address whitelist for Internet access.
          * 
          * @return builder
          * 
@@ -164,7 +176,9 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param portRange The Port range.  Valid Value: `9092/9092`.
+         * @param portRange The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+         * - `9092/9092`: port range for a VPC whitelist.
+         * - `9093/9093`: port range for an Internet whitelist.
          * 
          * @return builder
          * 
@@ -175,7 +189,9 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param portRange The Port range.  Valid Value: `9092/9092`.
+         * @param portRange The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
+         * - `9092/9092`: port range for a VPC whitelist.
+         * - `9093/9093`: port range for an Internet whitelist.
          * 
          * @return builder
          * 

@@ -284,6 +284,41 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// The account ID to which the CEN instance belongs.
+func (o InstanceAttachmentOutput) CenOwnerId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.IntPtrOutput { return v.CenOwnerId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the child instance to attach.
+func (o InstanceAttachmentOutput) ChildInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.ChildInstanceId }).(pulumi.StringOutput)
+}
+
+// The uid of the child instance. Only used when attach a child instance of other account.
+func (o InstanceAttachmentOutput) ChildInstanceOwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.IntOutput { return v.ChildInstanceOwnerId }).(pulumi.IntOutput)
+}
+
+// The region ID of the child instance to attach.
+func (o InstanceAttachmentOutput) ChildInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.ChildInstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+func (o InstanceAttachmentOutput) ChildInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.ChildInstanceType }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN.
+func (o InstanceAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The associating status of the network.
+func (o InstanceAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 type InstanceAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceAttachmentArrayOutput) ElementType() reflect.Type {

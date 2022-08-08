@@ -363,6 +363,91 @@ func (o JobTemplateOutput) ToJobTemplateOutputWithContext(ctx context.Context) J
 	return o
 }
 
+// Queue Jobs, Is of the Form: 1-10:2.
+func (o JobTemplateOutput) ArrayRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.ArrayRequest }).(pulumi.StringPtrOutput)
+}
+
+// Job Maximum Run Time.
+func (o JobTemplateOutput) ClockTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.ClockTime }).(pulumi.StringPtrOutput)
+}
+
+// Job Commands.
+func (o JobTemplateOutput) CommandLine() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.CommandLine }).(pulumi.StringOutput)
+}
+
+// A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
+func (o JobTemplateOutput) Gpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.IntPtrOutput { return v.Gpu }).(pulumi.IntPtrOutput)
+}
+
+// A Job Template Name.
+func (o JobTemplateOutput) JobTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.JobTemplateName }).(pulumi.StringOutput)
+}
+
+// A Single Compute Node Maximum Memory.
+func (o JobTemplateOutput) Mem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.Mem }).(pulumi.StringPtrOutput)
+}
+
+// Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
+func (o JobTemplateOutput) Node() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.IntPtrOutput { return v.Node }).(pulumi.IntPtrOutput)
+}
+
+// Job Commands the Directory.
+func (o JobTemplateOutput) PackagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.PackagePath }).(pulumi.StringPtrOutput)
+}
+
+// The Job Priority.
+func (o JobTemplateOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The Job Queue.
+func (o JobTemplateOutput) Queue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.Queue }).(pulumi.StringPtrOutput)
+}
+
+// If the Job Is Support for the Re-Run.
+func (o JobTemplateOutput) ReRunable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.BoolOutput { return v.ReRunable }).(pulumi.BoolOutput)
+}
+
+// The name of the user who performed the job.
+func (o JobTemplateOutput) RunasUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.RunasUser }).(pulumi.StringPtrOutput)
+}
+
+// Error Output Path.
+func (o JobTemplateOutput) StderrRedirectPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.StderrRedirectPath }).(pulumi.StringPtrOutput)
+}
+
+// Standard Output Path and.
+func (o JobTemplateOutput) StdoutRedirectPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.StdoutRedirectPath }).(pulumi.StringPtrOutput)
+}
+
+// A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
+func (o JobTemplateOutput) Task() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.IntPtrOutput { return v.Task }).(pulumi.IntPtrOutput)
+}
+
+// A Single Task and the Number of Required Threads.
+func (o JobTemplateOutput) Thread() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.IntPtrOutput { return v.Thread }).(pulumi.IntPtrOutput)
+}
+
+// The Job of the Environment Variable.
+func (o JobTemplateOutput) Variables() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringPtrOutput { return v.Variables }).(pulumi.StringPtrOutput)
+}
+
 type JobTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateArrayOutput) ElementType() reflect.Type {

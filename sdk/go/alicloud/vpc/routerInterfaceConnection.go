@@ -78,7 +78,7 @@ import (
 // 			RouterId:       barNetwork.RouterId,
 // 			Role:           pulumi.String("AcceptingSide"),
 // 			Specification:  pulumi.String("Large.1"),
-// 			Description:    pulumi.String(fmt.Sprintf("%v%v", name, "-opposite")),
+// 			Description:    pulumi.String(fmt.Sprintf("%v-opposite", name)),
 // 		}, pulumi.Provider(alicloud))
 // 		if err != nil {
 // 			return err
@@ -297,6 +297,30 @@ func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionOutput() Rou
 
 func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionOutputWithContext(ctx context.Context) RouterInterfaceConnectionOutput {
 	return o
+}
+
+// One side router interface ID.
+func (o RouterInterfaceConnectionOutput) InterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringOutput { return v.InterfaceId }).(pulumi.StringOutput)
+}
+
+// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
+func (o RouterInterfaceConnectionOutput) OppositeInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringOutput { return v.OppositeInterfaceId }).(pulumi.StringOutput)
+}
+
+func (o RouterInterfaceConnectionOutput) OppositeInterfaceOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringOutput { return v.OppositeInterfaceOwnerId }).(pulumi.StringOutput)
+}
+
+// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
+func (o RouterInterfaceConnectionOutput) OppositeRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringOutput { return v.OppositeRouterId }).(pulumi.StringOutput)
+}
+
+// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+func (o RouterInterfaceConnectionOutput) OppositeRouterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringPtrOutput { return v.OppositeRouterType }).(pulumi.StringPtrOutput)
 }
 
 type RouterInterfaceConnectionArrayOutput struct{ *pulumi.OutputState }

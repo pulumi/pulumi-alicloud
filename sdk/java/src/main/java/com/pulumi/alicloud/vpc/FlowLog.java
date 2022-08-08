@@ -25,6 +25,55 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.FlowLog;
+ * import com.pulumi.alicloud.vpc.FlowLogArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terratest_vpc_flow_log&#34;);
+ *         final var logStoreName = config.get(&#34;logStoreName&#34;).orElse(&#34;vpc-flow-log-for-vpc&#34;);
+ *         final var projectName = config.get(&#34;projectName&#34;).orElse(&#34;vpc-flow-log-for-vpc&#34;);
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultFlowLog = new FlowLog(&#34;defaultFlowLog&#34;, FlowLogArgs.builder()        
+ *             .resourceId(defaultNetwork.id())
+ *             .resourceType(&#34;VPC&#34;)
+ *             .trafficType(&#34;All&#34;)
+ *             .logStoreName(logStoreName)
+ *             .projectName(projectName)
+ *             .flowLogName(name)
+ *             .status(&#34;Active&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(&#34;alicloud_vpc.default&#34;)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPC Flow Log can be imported using the id, e.g.

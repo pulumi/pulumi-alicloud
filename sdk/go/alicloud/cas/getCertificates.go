@@ -26,7 +26,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		certs, err := cas.GetCertificates(ctx, &cas.GetCertificatesArgs{
 // 			NameRegex:  pulumi.StringRef("^cas"),
-// 			OutputFile: pulumi.StringRef(fmt.Sprintf("%v%v", path.Module, "/cas_certificates.json")),
+// 			OutputFile: pulumi.StringRef(fmt.Sprintf("%v/cas_certificates.json", path.Module)),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

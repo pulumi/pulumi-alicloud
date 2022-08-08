@@ -27,6 +27,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vod.Domain;
+ * import com.pulumi.alicloud.vod.DomainArgs;
+ * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Domain(&#34;default&#34;, DomainArgs.builder()        
+ *             .domainName(&#34;your_domain_name&#34;)
+ *             .scope(&#34;domestic&#34;)
+ *             .sources(DomainSourceArgs.builder()
+ *                 .sourceContent(&#34;your_source_content&#34;)
+ *                 .sourcePort(&#34;80&#34;)
+ *                 .sourceType(&#34;domain&#34;)
+ *                 .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+ *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VOD Domain can be imported using the id, e.g.

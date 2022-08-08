@@ -364,6 +364,111 @@ func (o DedicatedHostOutput) ToDedicatedHostOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
+func (o DedicatedHostOutput) ActionOnMaintenance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.ActionOnMaintenance }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
+func (o DedicatedHostOutput) AutoPlacement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.AutoPlacement }).(pulumi.StringPtrOutput)
+}
+
+// The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+func (o DedicatedHostOutput) AutoReleaseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.AutoReleaseTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether to automatically renew the subscription dedicated host.
+func (o DedicatedHostOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
+func (o DedicatedHostOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+func (o DedicatedHostOutput) CpuOverCommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.Float64PtrOutput { return v.CpuOverCommitRatio }).(pulumi.Float64PtrOutput)
+}
+
+// The dedicated host cluster ID to which the dedicated host belongs.
+func (o DedicatedHostOutput) DedicatedHostClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.DedicatedHostClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+func (o DedicatedHostOutput) DedicatedHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.DedicatedHostName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
+func (o DedicatedHostOutput) DedicatedHostType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.DedicatedHostType }).(pulumi.StringOutput)
+}
+
+// The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+func (o DedicatedHostOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
+func (o DedicatedHostOutput) DetailFee() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.BoolPtrOutput { return v.DetailFee }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to only validate the request. Default: `false`.
+func (o DedicatedHostOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
+func (o DedicatedHostOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// Specify the minimum purchase quantity of a dedicated host.
+func (o DedicatedHostOutput) MinQuantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.IntPtrOutput { return v.MinQuantity }).(pulumi.IntPtrOutput)
+}
+
+// dedicated host network parameters. contains the following attributes:
+func (o DedicatedHostOutput) NetworkAttributes() DedicatedHostNetworkAttributeArrayOutput {
+	return o.ApplyT(func(v *DedicatedHost) DedicatedHostNetworkAttributeArrayOutput { return v.NetworkAttributes }).(DedicatedHostNetworkAttributeArrayOutput)
+}
+
+// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
+func (o DedicatedHostOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which the dedicated host belongs.
+func (o DedicatedHostOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The unit of the subscription period of the dedicated host.
+func (o DedicatedHostOutput) SaleCycle() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.SaleCycle }).(pulumi.StringOutput)
+}
+
+// The status of the dedicated host.
+func (o DedicatedHostOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o DedicatedHostOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
+func (o DedicatedHostOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type DedicatedHostArrayOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostArrayOutput) ElementType() reflect.Type {

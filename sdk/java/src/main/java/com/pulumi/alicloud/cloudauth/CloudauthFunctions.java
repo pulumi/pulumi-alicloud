@@ -21,6 +21,45 @@ public final class CloudauthFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudauth.FaceConfig;
+     * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
+     * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
+     * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
+     *             .bizName(&#34;example-value&#34;)
+     *             .bizType(&#34;example-value&#34;)
+     *             .build());
+     * 
+     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *             .ids(defaultFaceConfig.id())
+     *             .nameRegex(defaultFaceConfig.bizName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFaceConfigsResult> getFaceConfigs() {
         return getFaceConfigs(GetFaceConfigsArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +70,45 @@ public final class CloudauthFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudauth.FaceConfig;
+     * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
+     * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
+     * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
+     *             .bizName(&#34;example-value&#34;)
+     *             .bizType(&#34;example-value&#34;)
+     *             .build());
+     * 
+     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *             .ids(defaultFaceConfig.id())
+     *             .nameRegex(defaultFaceConfig.bizName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFaceConfigsResult> getFaceConfigsPlain() {
@@ -43,6 +121,45 @@ public final class CloudauthFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudauth.FaceConfig;
+     * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
+     * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
+     * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
+     *             .bizName(&#34;example-value&#34;)
+     *             .bizType(&#34;example-value&#34;)
+     *             .build());
+     * 
+     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *             .ids(defaultFaceConfig.id())
+     *             .nameRegex(defaultFaceConfig.bizName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFaceConfigsResult> getFaceConfigs(GetFaceConfigsArgs args) {
         return getFaceConfigs(args, InvokeOptions.Empty);
@@ -53,6 +170,45 @@ public final class CloudauthFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudauth.FaceConfig;
+     * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
+     * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
+     * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
+     *             .bizName(&#34;example-value&#34;)
+     *             .bizType(&#34;example-value&#34;)
+     *             .build());
+     * 
+     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *             .ids(defaultFaceConfig.id())
+     *             .nameRegex(defaultFaceConfig.bizName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFaceConfigsResult> getFaceConfigsPlain(GetFaceConfigsPlainArgs args) {
@@ -65,6 +221,45 @@ public final class CloudauthFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudauth.FaceConfig;
+     * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
+     * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
+     * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
+     *             .bizName(&#34;example-value&#34;)
+     *             .bizType(&#34;example-value&#34;)
+     *             .build());
+     * 
+     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *             .ids(defaultFaceConfig.id())
+     *             .nameRegex(defaultFaceConfig.bizName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetFaceConfigsResult> getFaceConfigs(GetFaceConfigsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", TypeShape.of(GetFaceConfigsResult.class), args, Utilities.withVersion(options));
@@ -75,6 +270,45 @@ public final class CloudauthFunctions {
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudauth.FaceConfig;
+     * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
+     * import com.pulumi.alicloud.cloudauth.CloudauthFunctions;
+     * import com.pulumi.alicloud.cloudauth.inputs.GetFaceConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
+     *             .bizName(&#34;example-value&#34;)
+     *             .bizType(&#34;example-value&#34;)
+     *             .build());
+     * 
+     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *             .ids(defaultFaceConfig.id())
+     *             .nameRegex(defaultFaceConfig.bizName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetFaceConfigsResult> getFaceConfigsPlain(GetFaceConfigsPlainArgs args, InvokeOptions options) {

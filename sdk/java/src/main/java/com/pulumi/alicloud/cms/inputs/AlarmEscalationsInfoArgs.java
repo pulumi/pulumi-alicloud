@@ -62,14 +62,14 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Critical level alarm retry times. Default to 3.
+     * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
      * 
      */
     @Import(name="times")
     private @Nullable Output<Integer> times;
 
     /**
-     * @return Critical level alarm retry times. Default to 3.
+     * @return The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
      * 
      */
     public Optional<Output<Integer>> times() {
@@ -167,7 +167,7 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param times Critical level alarm retry times. Default to 3.
+         * @param times The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AlarmEscalationsInfoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param times Critical level alarm retry times. Default to 3.
+         * @param times The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          * 
          * @return builder
          * 

@@ -26,6 +26,58 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.Snapshot;
+ * import com.pulumi.alicloud.nas.SnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;testacc&#34;);
+ *         final var defaultZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .build());
+ * 
+ *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .protocolType(&#34;NFS&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .storageType(&#34;standard&#34;)
+ *             .description(name)
+ *             .capacity(100)
+ *             .build());
+ * 
+ *         var defaultSnapshot = new Snapshot(&#34;defaultSnapshot&#34;, SnapshotArgs.builder()        
+ *             .fileSystemId(defaultFileSystem.id())
+ *             .description(name)
+ *             .retentionDays(20)
+ *             .snapshotName(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.

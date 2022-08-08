@@ -223,6 +223,21 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+func (o AccessGroupOutput) AccessGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.AccessGroupName }).(pulumi.StringOutput)
+}
+
+// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+func (o AccessGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The NetworkType of Access Group. Valid values: `VPC`.
+func (o AccessGroupOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
 type AccessGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupArrayOutput) ElementType() reflect.Type {

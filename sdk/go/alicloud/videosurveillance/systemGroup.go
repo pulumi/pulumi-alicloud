@@ -327,6 +327,81 @@ func (o SystemGroupOutput) ToSystemGroupOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
+func (o SystemGroupOutput) Callback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringPtrOutput { return v.Callback }).(pulumi.StringPtrOutput)
+}
+
+// The capture image.
+func (o SystemGroupOutput) CaptureImage() pulumi.IntOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.IntOutput { return v.CaptureImage }).(pulumi.IntOutput)
+}
+
+// The capture interval.
+func (o SystemGroupOutput) CaptureInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.IntOutput { return v.CaptureInterval }).(pulumi.IntOutput)
+}
+
+// The capture oss bucket.
+func (o SystemGroupOutput) CaptureOssBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringOutput { return v.CaptureOssBucket }).(pulumi.StringOutput)
+}
+
+// The capture oss path.
+func (o SystemGroupOutput) CaptureOssPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringOutput { return v.CaptureOssPath }).(pulumi.StringOutput)
+}
+
+// The capture video.
+func (o SystemGroupOutput) CaptureVideo() pulumi.IntOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.IntOutput { return v.CaptureVideo }).(pulumi.IntOutput)
+}
+
+// The description of Group.
+func (o SystemGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to open Group.
+func (o SystemGroupOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The Group Name.
+func (o SystemGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
+func (o SystemGroupOutput) InProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringOutput { return v.InProtocol }).(pulumi.StringOutput)
+}
+
+// Whether to enable on-demand streaming. Default value:`false`.
+func (o SystemGroupOutput) LazyPull() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.BoolOutput { return v.LazyPull }).(pulumi.BoolOutput)
+}
+
+// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
+func (o SystemGroupOutput) OutProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringOutput { return v.OutProtocol }).(pulumi.StringOutput)
+}
+
+// The domain name of plan streaming used by the group.
+func (o SystemGroupOutput) PlayDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringOutput { return v.PlayDomain }).(pulumi.StringOutput)
+}
+
+// The domain name of push streaming used by the group.
+func (o SystemGroupOutput) PushDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.StringOutput { return v.PushDomain }).(pulumi.StringOutput)
+}
+
+// Whether to open Group. Valid values: `on`,`off`.
+func (o SystemGroupOutput) Status() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemGroup) pulumi.BoolOutput { return v.Status }).(pulumi.BoolOutput)
+}
+
 type SystemGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (SystemGroupArrayOutput) ElementType() reflect.Type {

@@ -598,6 +598,219 @@ func (o ScalingConfigurationOutput) ToScalingConfigurationOutputWithContext(ctx 
 	return o
 }
 
+// Whether active current scaling configuration in the specified scaling group. Default to `false`.
+func (o ScalingConfigurationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+func (o ScalingConfigurationOutput) CreditSpecification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.CreditSpecification }).(pulumi.StringPtrOutput)
+}
+
+// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+func (o ScalingConfigurationOutput) DataDisks() ScalingConfigurationDataDiskArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationDataDiskArrayOutput { return v.DataDisks }).(ScalingConfigurationDataDiskArrayOutput)
+}
+
+// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
+func (o ScalingConfigurationOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
+func (o ScalingConfigurationOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname of an ECS instance.
+func (o ScalingConfigurationOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// ID of an image file, indicating the image resource selected when an instance is enabled.
+func (o ScalingConfigurationOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Name of an image file, indicating the image resource selected when an instance is enabled.
+func (o ScalingConfigurationOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+//
+// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
+func (o ScalingConfigurationOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
+func (o ScalingConfigurationOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+func (o ScalingConfigurationOutput) InstancePatternInfos() ScalingConfigurationInstancePatternInfoArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationInstancePatternInfoArrayOutput {
+		return v.InstancePatternInfos
+	}).(ScalingConfigurationInstancePatternInfoArrayOutput)
+}
+
+// Resource type of an ECS instance.
+func (o ScalingConfigurationOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Resource types of an ECS instance.
+func (o ScalingConfigurationOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+func (o ScalingConfigurationOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+func (o ScalingConfigurationOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntOutput { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
+}
+
+// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+func (o ScalingConfigurationOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
+}
+
+// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+//
+// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+func (o ScalingConfigurationOutput) IoOptimized() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use outdated instance type. Default to false.
+func (o ScalingConfigurationOutput) IsOutdated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.IsOutdated }).(pulumi.BoolPtrOutput)
+}
+
+// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+func (o ScalingConfigurationOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+func (o ScalingConfigurationOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (o ScalingConfigurationOutput) KmsEncryptionContext() pulumi.MapOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// Indicates whether to overwrite the existing data. Default to false.
+func (o ScalingConfigurationOutput) Override() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.Override }).(pulumi.BoolPtrOutput)
+}
+
+// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+func (o ScalingConfigurationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
+func (o ScalingConfigurationOutput) PasswordInherit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
+}
+
+// ID of resource group.
+func (o ScalingConfigurationOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+func (o ScalingConfigurationOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.RoleName }).(pulumi.StringPtrOutput)
+}
+
+// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
+func (o ScalingConfigurationOutput) ScalingConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringOutput { return v.ScalingConfigurationName }).(pulumi.StringOutput)
+}
+
+// ID of the scaling group of a scaling configuration.
+func (o ScalingConfigurationOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
+func (o ScalingConfigurationOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
+func (o ScalingConfigurationOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+func (o ScalingConfigurationOutput) SpotPriceLimits() ScalingConfigurationSpotPriceLimitArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationSpotPriceLimitArrayOutput { return v.SpotPriceLimits }).(ScalingConfigurationSpotPriceLimitArrayOutput)
+}
+
+// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+func (o ScalingConfigurationOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
+func (o ScalingConfigurationOutput) Substitute() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringOutput { return v.Substitute }).(pulumi.StringOutput)
+}
+
+// The id of auto snapshot policy for system disk.
+func (o ScalingConfigurationOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
+func (o ScalingConfigurationOutput) SystemDiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskCategory }).(pulumi.StringPtrOutput)
+}
+
+// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+func (o ScalingConfigurationOutput) SystemDiskDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+func (o ScalingConfigurationOutput) SystemDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskName }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as the system disk.
+func (o ScalingConfigurationOutput) SystemDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
+func (o ScalingConfigurationOutput) SystemDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntPtrOutput { return v.SystemDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+func (o ScalingConfigurationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
+func (o ScalingConfigurationOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
 type ScalingConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationArrayOutput) ElementType() reflect.Type {

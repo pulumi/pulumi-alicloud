@@ -24,6 +24,62 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpn.VpnFunctions;
+ * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+ * import com.pulumi.alicloud.vpn.CustomerGateway;
+ * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+ * import com.pulumi.alicloud.vpn.Connection;
+ * import com.pulumi.alicloud.vpn.ConnectionArgs;
+ * import com.pulumi.alicloud.vpn.PbrRouteEntry;
+ * import com.pulumi.alicloud.vpn.PbrRouteEntryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfacc&#34;);
+ *         final var defaultGateways = VpnFunctions.getGateways();
+ * 
+ *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *             .ipAddress(&#34;192.168.1.1&#34;)
+ *             .build());
+ * 
+ *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *             .customerGatewayId(defaultCustomerGateway.id())
+ *             .vpnGatewayId(defaultGateways.applyValue(getGatewaysResult -&gt; getGatewaysResult.ids()[0]))
+ *             .localSubnets(&#34;192.168.2.0/24&#34;)
+ *             .remoteSubnets(&#34;192.168.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultPbrRouteEntry = new PbrRouteEntry(&#34;defaultPbrRouteEntry&#34;, PbrRouteEntryArgs.builder()        
+ *             .vpnGatewayId(defaultGateways.applyValue(getGatewaysResult -&gt; getGatewaysResult.ids()[0]))
+ *             .routeSource(&#34;192.168.1.0/24&#34;)
+ *             .routeDest(&#34;10.0.0.0/24&#34;)
+ *             .nextHop(defaultConnection.id())
+ *             .weight(0)
+ *             .publishVpc(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * VPN Pbr route entry can be imported using the id, e.g.

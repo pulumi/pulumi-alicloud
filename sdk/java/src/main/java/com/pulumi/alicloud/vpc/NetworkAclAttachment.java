@@ -18,6 +18,72 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.NetworkAcl;
+ * import com.pulumi.alicloud.vpc.NetworkAclArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.NetworkAclAttachment;
+ * import com.pulumi.alicloud.vpc.NetworkAclAttachmentArgs;
+ * import com.pulumi.alicloud.vpc.inputs.NetworkAclAttachmentResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;NatGatewayConfigSpec&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var defaultNetworkAcl = new NetworkAcl(&#34;defaultNetworkAcl&#34;, NetworkAclArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .networkAclName(name)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultNetworkAclAttachment = new NetworkAclAttachment(&#34;defaultNetworkAclAttachment&#34;, NetworkAclAttachmentArgs.builder()        
+ *             .networkAclId(defaultNetworkAcl.id())
+ *             .resources(NetworkAclAttachmentResourceArgs.builder()
+ *                 .resourceId(defaultSwitch.id())
+ *                 .resourceType(&#34;VSwitch&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:vpc/networkAclAttachment:NetworkAclAttachment")
 public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {

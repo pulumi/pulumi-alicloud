@@ -19,6 +19,52 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpn.Gateway;
+ * import com.pulumi.alicloud.vpn.GatewayArgs;
+ * import com.pulumi.alicloud.vpn.SslVpnServer;
+ * import com.pulumi.alicloud.vpn.SslVpnServerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooGateway = new Gateway(&#34;fooGateway&#34;, GatewayArgs.builder()        
+ *             .vpcId(&#34;vpc-fake-id&#34;)
+ *             .bandwidth(&#34;10&#34;)
+ *             .enableSsl(true)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .description(&#34;test_create_description&#34;)
+ *             .build());
+ * 
+ *         var fooSslVpnServer = new SslVpnServer(&#34;fooSslVpnServer&#34;, SslVpnServerArgs.builder()        
+ *             .vpnGatewayId(fooGateway.id())
+ *             .clientIpPool(&#34;192.168.0.0/16&#34;)
+ *             .localSubnet(&#34;172.16.0.0/21&#34;)
+ *             .protocol(&#34;UDP&#34;)
+ *             .cipher(&#34;AES-128-CBC&#34;)
+ *             .port(1194)
+ *             .compress(&#34;false&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * SSL-VPN server can be imported using the id, e.g.

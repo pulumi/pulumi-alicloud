@@ -360,6 +360,86 @@ func (o BucketObjectOutput) ToBucketObjectOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+func (o BucketObjectOutput) Acl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+// The name of the bucket to put the file in.
+func (o BucketObjectOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+func (o BucketObjectOutput) CacheControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.CacheControl }).(pulumi.StringPtrOutput)
+}
+
+// The literal content being uploaded to the bucket.
+func (o BucketObjectOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+func (o BucketObjectOutput) ContentDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.ContentDisposition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+func (o BucketObjectOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+// the content length of request.
+func (o BucketObjectOutput) ContentLength() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentLength }).(pulumi.StringOutput)
+}
+
+// The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+func (o BucketObjectOutput) ContentMd5() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.ContentMd5 }).(pulumi.StringPtrOutput)
+}
+
+// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+func (o BucketObjectOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// the ETag generated for the object (an MD5 sum of the object content).
+func (o BucketObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+func (o BucketObjectOutput) Expires() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Expires }).(pulumi.StringPtrOutput)
+}
+
+// The name of the object once it is in the bucket.
+func (o BucketObjectOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+func (o BucketObjectOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
+func (o BucketObjectOutput) ServerSideEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.ServerSideEncryption }).(pulumi.StringPtrOutput)
+}
+
+// The path to the source file being uploaded to the bucket.
+func (o BucketObjectOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// A unique version ID value for the object, if bucket versioning is enabled.
+func (o BucketObjectOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
+}
+
 type BucketObjectArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketObjectArrayOutput) ElementType() reflect.Type {

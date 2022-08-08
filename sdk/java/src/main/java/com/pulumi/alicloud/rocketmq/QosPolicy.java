@@ -27,6 +27,48 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rocketmq.Qos;
+ * import com.pulumi.alicloud.rocketmq.QosPolicy;
+ * import com.pulumi.alicloud.rocketmq.QosPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultQos = new Qos(&#34;defaultQos&#34;);
+ * 
+ *         var defaultQosPolicy = new QosPolicy(&#34;defaultQosPolicy&#34;, QosPolicyArgs.builder()        
+ *             .qosId(defaultQos.id())
+ *             .description(&#34;tf-testSagQosPolicyDescription&#34;)
+ *             .priority(&#34;1&#34;)
+ *             .ipProtocol(&#34;ALL&#34;)
+ *             .sourceCidr(&#34;192.168.0.0/24&#34;)
+ *             .sourcePortRange(&#34;-1/-1&#34;)
+ *             .destCidr(&#34;10.10.0.0/24&#34;)
+ *             .destPortRange(&#34;-1/-1&#34;)
+ *             .startTime(&#34;2019-10-25T16:41:33+0800&#34;)
+ *             .endTime(&#34;2019-10-26T16:41:33+0800&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * The Sag Qos Policy can be imported using the id, e.g.

@@ -223,6 +223,21 @@ func (o ImageExportOutput) ToImageExportOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The source image ID.
+func (o ImageExportOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageExport) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Save the exported OSS bucket.
+func (o ImageExportOutput) OssBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageExport) pulumi.StringOutput { return v.OssBucket }).(pulumi.StringOutput)
+}
+
+// The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
+func (o ImageExportOutput) OssPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageExport) pulumi.StringPtrOutput { return v.OssPrefix }).(pulumi.StringPtrOutput)
+}
+
 type ImageExportArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageExportArrayOutput) ElementType() reflect.Type {

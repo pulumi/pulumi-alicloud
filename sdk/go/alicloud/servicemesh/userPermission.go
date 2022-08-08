@@ -17,97 +17,6 @@ import (
 //
 // > **NOTE:** Available in v1.174.0+.
 //
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicemesh"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "servicemesh"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultVersions, err := servicemesh.GetVersions(ctx, &servicemesh.GetVersionsArgs{
-// 			Edition: pulumi.StringRef("Default"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultUser, err := ram.NewUser(ctx, "defaultUser", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		default1, err := servicemesh.NewServiceMesh(ctx, "default1", &servicemesh.ServiceMeshArgs{
-// 			ServiceMeshName: pulumi.String(name),
-// 			Edition:         pulumi.String("Default"),
-// 			Version:         pulumi.String(defaultVersions.Versions[0].Version),
-// 			ClusterSpec:     pulumi.String("standard"),
-// 			Network: &servicemesh.ServiceMeshNetworkArgs{
-// 				VpcId: pulumi.String(defaultNetworks.Ids[0]),
-// 				VswitcheList: pulumi.String{
-// 					defaultSwitches.Ids[0],
-// 				},
-// 			},
-// 			LoadBalancer: &servicemesh.ServiceMeshLoadBalancerArgs{
-// 				PilotPublicEip:     pulumi.Bool(false),
-// 				ApiServerPublicEip: pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = servicemesh.NewUserPermission(ctx, "example", &servicemesh.UserPermissionArgs{
-// 			SubAccountUserId: defaultUser.ID(),
-// 			Permissions: servicemesh.UserPermissionPermissionArray{
-// 				&servicemesh.UserPermissionPermissionArgs{
-// 					RoleName:      pulumi.String("istio-admin"),
-// 					ServiceMeshId: default1.ID(),
-// 					RoleType:      pulumi.String("custom"),
-// 					IsCustom:      pulumi.Bool(true),
-// 					IsRamRole:     pulumi.Bool(false),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Service Mesh User Permission can be imported using the id, e.g.
@@ -273,6 +182,16 @@ func (o UserPermissionOutput) ToUserPermissionOutput() UserPermissionOutput {
 
 func (o UserPermissionOutput) ToUserPermissionOutputWithContext(ctx context.Context) UserPermissionOutput {
 	return o
+}
+
+// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+func (o UserPermissionOutput) Permissions() UserPermissionPermissionArrayOutput {
+	return o.ApplyT(func(v *UserPermission) UserPermissionPermissionArrayOutput { return v.Permissions }).(UserPermissionPermissionArrayOutput)
+}
+
+// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+func (o UserPermissionOutput) SubAccountUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserPermission) pulumi.StringOutput { return v.SubAccountUserId }).(pulumi.StringOutput)
 }
 
 type UserPermissionArrayOutput struct{ *pulumi.OutputState }

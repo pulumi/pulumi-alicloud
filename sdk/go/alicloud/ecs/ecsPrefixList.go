@@ -257,6 +257,31 @@ func (o EcsPrefixListOutput) ToEcsPrefixListOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The IP address family. Valid values: `IPv4`,`IPv6`.
+func (o EcsPrefixListOutput) AddressFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsPrefixList) pulumi.StringOutput { return v.AddressFamily }).(pulumi.StringOutput)
+}
+
+// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+func (o EcsPrefixListOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsPrefixList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Entry. The details see Block `entry`.
+func (o EcsPrefixListOutput) Entries() EcsPrefixListEntryArrayOutput {
+	return o.ApplyT(func(v *EcsPrefixList) EcsPrefixListEntryArrayOutput { return v.Entries }).(EcsPrefixListEntryArrayOutput)
+}
+
+// The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
+func (o EcsPrefixListOutput) MaxEntries() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsPrefixList) pulumi.IntOutput { return v.MaxEntries }).(pulumi.IntOutput)
+}
+
+// The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+func (o EcsPrefixListOutput) PrefixListName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsPrefixList) pulumi.StringOutput { return v.PrefixListName }).(pulumi.StringOutput)
+}
+
 type EcsPrefixListArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsPrefixListArrayOutput) ElementType() reflect.Type {

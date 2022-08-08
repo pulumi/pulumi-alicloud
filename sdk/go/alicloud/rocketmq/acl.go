@@ -195,6 +195,11 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
+// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+func (o AclOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type AclArrayOutput struct{ *pulumi.OutputState }
 
 func (AclArrayOutput) ElementType() reflect.Type {

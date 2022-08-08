@@ -208,6 +208,16 @@ func (o DomainAttachmentOutput) ToDomainAttachmentOutputWithContext(ctx context.
 	return o
 }
 
+// The domain names bound to the DNS instance.
+func (o DomainAttachmentOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DomainAttachment) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
+}
+
+// The id of the DNS instance.
+func (o DomainAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type DomainAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainAttachmentArrayOutput) ElementType() reflect.Type {

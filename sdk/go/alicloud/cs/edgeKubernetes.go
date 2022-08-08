@@ -535,6 +535,217 @@ func (o EdgeKubernetesOutput) ToEdgeKubernetesOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o EdgeKubernetesOutput) Addons() EdgeKubernetesAddonArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesAddonArrayOutput { return v.Addons }).(EdgeKubernetesAddonArrayOutput)
+}
+
+// The ID of availability zone.
+func (o EdgeKubernetesOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+func (o EdgeKubernetesOutput) CertificateAuthority() EdgeKubernetesCertificateAuthorityOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesCertificateAuthorityOutput { return v.CertificateAuthority }).(EdgeKubernetesCertificateAuthorityOutput)
+}
+
+// The path of client certificate, like `~/.kube/client-cert.pem`.
+func (o EdgeKubernetesOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// The path of client key, like `~/.kube/client-key.pem`.
+func (o EdgeKubernetesOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+func (o EdgeKubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ClusterCaCert }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesOutput) Connections() EdgeKubernetesConnectionsOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesConnectionsOutput { return v.Connections }).(EdgeKubernetesConnectionsOutput)
+}
+
+// Whether to enable cluster deletion protection.
+func (o EdgeKubernetesOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
+func (o EdgeKubernetesOutput) ForceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// Install cloud monitor agent on ECS. default: `true`.
+func (o EdgeKubernetesOutput) InstallCloudMonitor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolPtrOutput { return v.InstallCloudMonitor }).(pulumi.BoolPtrOutput)
+}
+
+// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+func (o EdgeKubernetesOutput) IsEnterpriseSecurityGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolOutput { return v.IsEnterpriseSecurityGroup }).(pulumi.BoolOutput)
+}
+
+// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+func (o EdgeKubernetesOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// The path of kube config, like `~/.kube/config`.
+func (o EdgeKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.KubeConfig }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesOutput) LogConfig() EdgeKubernetesLogConfigPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesLogConfigPtrOutput { return v.LogConfig }).(EdgeKubernetesLogConfigPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o EdgeKubernetesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EdgeKubernetesOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The ID of nat gateway used to launch kubernetes cluster.
+func (o EdgeKubernetesOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+func (o EdgeKubernetesOutput) NewNatGateway() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolPtrOutput { return v.NewNatGateway }).(pulumi.BoolPtrOutput)
+}
+
+// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
+func (o EdgeKubernetesOutput) NodeCidrMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.IntPtrOutput { return v.NodeCidrMask }).(pulumi.IntPtrOutput)
+}
+
+// The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
+func (o EdgeKubernetesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// [Flannel Specific] The CIDR block for the pod network when using Flannel.
+func (o EdgeKubernetesOutput) PodCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.PodCidr }).(pulumi.StringPtrOutput)
+}
+
+// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+func (o EdgeKubernetesOutput) ProxyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ProxyMode }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesOutput) RdsInstances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.RdsInstances }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+func (o EdgeKubernetesOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o EdgeKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+func (o EdgeKubernetesOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+func (o EdgeKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ServiceCidr }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesOutput) SlbInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.SlbInternet }).(pulumi.StringOutput)
+}
+
+// Whether to create internet load balancer for API Server. Default to true.
+func (o EdgeKubernetesOutput) SlbInternetEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolPtrOutput { return v.SlbInternetEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of private load balancer where the current cluster master node is located.
+func (o EdgeKubernetesOutput) SlbIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.SlbIntranet }).(pulumi.StringOutput)
+}
+
+// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+func (o EdgeKubernetesOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+func (o EdgeKubernetesOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+func (o EdgeKubernetesOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// The ID of VPC where the current cluster is located.
+func (o EdgeKubernetesOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The data disk configurations of worker nodes, such as the disk type and disk size.
+func (o EdgeKubernetesOutput) WorkerDataDisks() EdgeKubernetesWorkerDataDiskArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesWorkerDataDiskArrayOutput { return v.WorkerDataDisks }).(EdgeKubernetesWorkerDataDiskArrayOutput)
+}
+
+// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
+func (o EdgeKubernetesOutput) WorkerDiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.WorkerDiskCategory }).(pulumi.StringPtrOutput)
+}
+
+// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+func (o EdgeKubernetesOutput) WorkerDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.WorkerDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+func (o EdgeKubernetesOutput) WorkerDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.IntPtrOutput { return v.WorkerDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// Worker node system disk auto snapshot policy.
+func (o EdgeKubernetesOutput) WorkerDiskSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.WorkerDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeKubernetesOutput) WorkerInstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.WorkerInstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+func (o EdgeKubernetesOutput) WorkerInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of cluster worker nodes.
+func (o EdgeKubernetesOutput) WorkerNodes() EdgeKubernetesWorkerNodeArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesWorkerNodeArrayOutput { return v.WorkerNodes }).(EdgeKubernetesWorkerNodeArrayOutput)
+}
+
+// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+func (o EdgeKubernetesOutput) WorkerNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.IntOutput { return v.WorkerNumber }).(pulumi.IntOutput)
+}
+
+func (o EdgeKubernetesOutput) WorkerVswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.WorkerVswitchIds }).(pulumi.StringArrayOutput)
+}
+
 type EdgeKubernetesArrayOutput struct{ *pulumi.OutputState }
 
 func (EdgeKubernetesArrayOutput) ElementType() reflect.Type {

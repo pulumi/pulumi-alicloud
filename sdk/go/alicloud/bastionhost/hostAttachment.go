@@ -225,6 +225,21 @@ func (o HostAttachmentOutput) ToHostAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Specifies the added to the host group ID.
+func (o HostAttachmentOutput) HostGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAttachment) pulumi.StringOutput { return v.HostGroupId }).(pulumi.StringOutput)
+}
+
+// Specified to be part of a host group of host ID.
+func (o HostAttachmentOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAttachment) pulumi.StringOutput { return v.HostId }).(pulumi.StringOutput)
+}
+
+// The bastion host instance id.
+func (o HostAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 type HostAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (HostAttachmentArrayOutput) ElementType() reflect.Type {

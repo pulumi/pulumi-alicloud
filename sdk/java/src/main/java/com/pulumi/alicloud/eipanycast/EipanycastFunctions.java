@@ -21,6 +21,38 @@ public final class EipanycastFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
+     * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAnycastEipAddressesResult> getAnycastEipAddresses() {
         return getAnycastEipAddresses(GetAnycastEipAddressesArgs.Empty, InvokeOptions.Empty);
@@ -31,6 +63,38 @@ public final class EipanycastFunctions {
      * &gt; **NOTE:** Available in v1.113.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
+     * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAnycastEipAddressesResult> getAnycastEipAddressesPlain() {
@@ -43,6 +107,38 @@ public final class EipanycastFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
+     * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAnycastEipAddressesResult> getAnycastEipAddresses(GetAnycastEipAddressesArgs args) {
         return getAnycastEipAddresses(args, InvokeOptions.Empty);
@@ -53,6 +149,38 @@ public final class EipanycastFunctions {
      * &gt; **NOTE:** Available in v1.113.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
+     * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAnycastEipAddressesResult> getAnycastEipAddressesPlain(GetAnycastEipAddressesPlainArgs args) {
@@ -65,6 +193,38 @@ public final class EipanycastFunctions {
      * 
      * ## Example Usage
      * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
+     * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAnycastEipAddressesResult> getAnycastEipAddresses(GetAnycastEipAddressesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", TypeShape.of(GetAnycastEipAddressesResult.class), args, Utilities.withVersion(options));
@@ -75,6 +235,38 @@ public final class EipanycastFunctions {
      * &gt; **NOTE:** Available in v1.113.0+.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eipanycast.EipanycastFunctions;
+     * import com.pulumi.alicloud.eipanycast.inputs.GetAnycastEipAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAnycastEipAddressesResult> getAnycastEipAddressesPlain(GetAnycastEipAddressesPlainArgs args, InvokeOptions options) {
