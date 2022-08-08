@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: This resource has been deprecated and replaced by the Switch resource.
 type Subnet struct {
 	pulumi.CustomResourceState
 

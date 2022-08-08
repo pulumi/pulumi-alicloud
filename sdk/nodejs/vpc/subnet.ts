@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * @deprecated This resource has been deprecated and replaced by the Switch resource.
+ */
 export class Subnet extends pulumi.CustomResource {
     /**
      * Get an existing Subnet resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class Subnet extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetState, opts?: pulumi.CustomResourceOptions): Subnet {
+        pulumi.log.warn("Subnet is deprecated: This resource has been deprecated and replaced by the Switch resource.")
         return new Subnet(name, <any>state, { ...opts, id: id });
     }
 
@@ -55,8 +59,11 @@ export class Subnet extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated This resource has been deprecated and replaced by the Switch resource. */
     constructor(name: string, args: SubnetArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated This resource has been deprecated and replaced by the Switch resource. */
     constructor(name: string, argsOrState?: SubnetArgs | SubnetState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Subnet is deprecated: This resource has been deprecated and replaced by the Switch resource.")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
