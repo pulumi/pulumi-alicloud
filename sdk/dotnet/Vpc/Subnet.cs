@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    [Obsolete(@"This resource has been deprecated and replaced by the Switch resource.")]
     [AliCloudResourceType("alicloud:vpc/subnet:Subnet")]
     public partial class Subnet : Pulumi.CustomResource
     {

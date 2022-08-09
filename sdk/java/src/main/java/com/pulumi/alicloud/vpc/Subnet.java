@@ -16,6 +16,12 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * This resource has been deprecated and replaced by the Switch resource.
+ * 
+ */
+@Deprecated /* This resource has been deprecated and replaced by the Switch resource. */
 @ResourceType(type="alicloud:vpc/subnet:Subnet")
 public class Subnet extends com.pulumi.resources.CustomResource {
     /**

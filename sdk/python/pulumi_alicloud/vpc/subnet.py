@@ -241,7 +241,12 @@ class _SubnetState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""This resource has been deprecated and replaced by the Switch resource.""", DeprecationWarning)
+
+
 class Subnet(pulumi.CustomResource):
+    warnings.warn("""This resource has been deprecated and replaced by the Switch resource.""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -292,6 +297,7 @@ class Subnet(pulumi.CustomResource):
                  vswitch_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""Subnet is deprecated: This resource has been deprecated and replaced by the Switch resource.""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
