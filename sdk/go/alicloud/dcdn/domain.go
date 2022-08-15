@@ -23,36 +23,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
-// 			DomainName: pulumi.String("example.com"),
-// 			Scope:      pulumi.String("overseas"),
-// 			Sources: dcdn.DomainSourceArray{
-// 				&dcdn.DomainSourceArgs{
-// 					Content:  pulumi.String("1.1.1.1"),
-// 					Port:     pulumi.Int(80),
-// 					Priority: pulumi.String("20"),
-// 					Type:     pulumi.String("ipaddr"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
+//				DomainName: pulumi.String("example.com"),
+//				Scope:      pulumi.String("overseas"),
+//				Sources: dcdn.DomainSourceArray{
+//					&dcdn.DomainSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Port:     pulumi.Int(80),
+//						Priority: pulumi.String("20"),
+//						Type:     pulumi.String("ipaddr"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // DCDN Domain can be imported using the id or DCDN Domain name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dcdn/domain:Domain example example.com
+//
+//	$ pulumi import alicloud:dcdn/domain:Domain example example.com
+//
 // ```
 type Domain struct {
 	pulumi.CustomResourceState
@@ -299,7 +304,7 @@ func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 // DomainArrayInput is an input type that accepts DomainArray and DomainArrayOutput values.
 // You can construct a concrete instance of `DomainArrayInput` via:
 //
-//          DomainArray{ DomainArgs{...} }
+//	DomainArray{ DomainArgs{...} }
 type DomainArrayInput interface {
 	pulumi.Input
 
@@ -324,7 +329,7 @@ func (i DomainArray) ToDomainArrayOutputWithContext(ctx context.Context) DomainA
 // DomainMapInput is an input type that accepts DomainMap and DomainMapOutput values.
 // You can construct a concrete instance of `DomainMapInput` via:
 //
-//          DomainMap{ "key": DomainArgs{...} }
+//	DomainMap{ "key": DomainArgs{...} }
 type DomainMapInput interface {
 	pulumi.Input
 

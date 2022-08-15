@@ -19,94 +19,97 @@ import (
 //
 // ## Example Usage
 //
-// Set bucket replication configuration
+// # Set bucket replication configuration
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucketReplication(ctx, "cross-region-replication", &oss.BucketReplicationArgs{
-// 			Action: pulumi.String("ALL"),
-// 			Bucket: pulumi.String("bucket-in-hangzhou"),
-// 			Destination: &oss.BucketReplicationDestinationArgs{
-// 				Bucket:   pulumi.String("bucket-in-beijing"),
-// 				Location: pulumi.String("oss-cn-beijing"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oss.NewBucketReplication(ctx, "same-region-replication", &oss.BucketReplicationArgs{
-// 			Action: pulumi.String("ALL"),
-// 			Bucket: pulumi.String("bucket-in-hangzhou"),
-// 			Destination: &oss.BucketReplicationDestinationArgs{
-// 				Bucket:   pulumi.String("bucket-in-hangzhou-1"),
-// 				Location: pulumi.String("oss-cn-hangzhou"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oss.NewBucketReplication(ctx, "replication-with-prefix", &oss.BucketReplicationArgs{
-// 			Action: pulumi.String("ALL"),
-// 			Bucket: pulumi.String("bucket-1"),
-// 			Destination: &oss.BucketReplicationDestinationArgs{
-// 				Bucket:   pulumi.String("bucket-2"),
-// 				Location: pulumi.String("oss-cn-hangzhou"),
-// 			},
-// 			HistoricalObjectReplication: pulumi.String("disabled"),
-// 			PrefixSet: &oss.BucketReplicationPrefixSetArgs{
-// 				Prefixes: pulumi.StringArray{
-// 					pulumi.String("prefix1/"),
-// 					pulumi.String("prefix2/"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oss.NewBucketReplication(ctx, "replication-with-specific-action", &oss.BucketReplicationArgs{
-// 			Action: pulumi.String("PUT"),
-// 			Bucket: pulumi.String("bucket-1"),
-// 			Destination: &oss.BucketReplicationDestinationArgs{
-// 				Bucket:   pulumi.String("bucket-2"),
-// 				Location: pulumi.String("oss-cn-hangzhou"),
-// 			},
-// 			HistoricalObjectReplication: pulumi.String("disabled"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oss.NewBucketReplication(ctx, "replication-with-kms-encryption", &oss.BucketReplicationArgs{
-// 			Action: pulumi.String("ALL"),
-// 			Bucket: pulumi.String("bucket-1"),
-// 			Destination: &oss.BucketReplicationDestinationArgs{
-// 				Bucket:   pulumi.String("bucket-2"),
-// 				Location: pulumi.String("oss-cn-hangzhou"),
-// 			},
-// 			EncryptionConfiguration: &oss.BucketReplicationEncryptionConfigurationArgs{
-// 				ReplicaKmsKeyId: pulumi.String("<your kms key id>"),
-// 			},
-// 			HistoricalObjectReplication: pulumi.String("disabled"),
-// 			SourceSelectionCriteria: &oss.BucketReplicationSourceSelectionCriteriaArgs{
-// 				SseKmsEncryptedObjects: &oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{
-// 					Status: pulumi.String("Enabled"),
-// 				},
-// 			},
-// 			SyncRole: pulumi.String("<your ram role>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucketReplication(ctx, "cross-region-replication", &oss.BucketReplicationArgs{
+//				Action: pulumi.String("ALL"),
+//				Bucket: pulumi.String("bucket-in-hangzhou"),
+//				Destination: &oss.BucketReplicationDestinationArgs{
+//					Bucket:   pulumi.String("bucket-in-beijing"),
+//					Location: pulumi.String("oss-cn-beijing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketReplication(ctx, "same-region-replication", &oss.BucketReplicationArgs{
+//				Action: pulumi.String("ALL"),
+//				Bucket: pulumi.String("bucket-in-hangzhou"),
+//				Destination: &oss.BucketReplicationDestinationArgs{
+//					Bucket:   pulumi.String("bucket-in-hangzhou-1"),
+//					Location: pulumi.String("oss-cn-hangzhou"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketReplication(ctx, "replication-with-prefix", &oss.BucketReplicationArgs{
+//				Action: pulumi.String("ALL"),
+//				Bucket: pulumi.String("bucket-1"),
+//				Destination: &oss.BucketReplicationDestinationArgs{
+//					Bucket:   pulumi.String("bucket-2"),
+//					Location: pulumi.String("oss-cn-hangzhou"),
+//				},
+//				HistoricalObjectReplication: pulumi.String("disabled"),
+//				PrefixSet: &oss.BucketReplicationPrefixSetArgs{
+//					Prefixes: pulumi.StringArray{
+//						pulumi.String("prefix1/"),
+//						pulumi.String("prefix2/"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketReplication(ctx, "replication-with-specific-action", &oss.BucketReplicationArgs{
+//				Action: pulumi.String("PUT"),
+//				Bucket: pulumi.String("bucket-1"),
+//				Destination: &oss.BucketReplicationDestinationArgs{
+//					Bucket:   pulumi.String("bucket-2"),
+//					Location: pulumi.String("oss-cn-hangzhou"),
+//				},
+//				HistoricalObjectReplication: pulumi.String("disabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketReplication(ctx, "replication-with-kms-encryption", &oss.BucketReplicationArgs{
+//				Action: pulumi.String("ALL"),
+//				Bucket: pulumi.String("bucket-1"),
+//				Destination: &oss.BucketReplicationDestinationArgs{
+//					Bucket:   pulumi.String("bucket-2"),
+//					Location: pulumi.String("oss-cn-hangzhou"),
+//				},
+//				EncryptionConfiguration: &oss.BucketReplicationEncryptionConfigurationArgs{
+//					ReplicaKmsKeyId: pulumi.String("<your kms key id>"),
+//				},
+//				HistoricalObjectReplication: pulumi.String("disabled"),
+//				SourceSelectionCriteria: &oss.BucketReplicationSourceSelectionCriteriaArgs{
+//					SseKmsEncryptedObjects: &oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{
+//						Status: pulumi.String("Enabled"),
+//					},
+//				},
+//				SyncRole: pulumi.String("<your ram role>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -296,7 +299,7 @@ func (i *BucketReplication) ToBucketReplicationOutputWithContext(ctx context.Con
 // BucketReplicationArrayInput is an input type that accepts BucketReplicationArray and BucketReplicationArrayOutput values.
 // You can construct a concrete instance of `BucketReplicationArrayInput` via:
 //
-//          BucketReplicationArray{ BucketReplicationArgs{...} }
+//	BucketReplicationArray{ BucketReplicationArgs{...} }
 type BucketReplicationArrayInput interface {
 	pulumi.Input
 
@@ -321,7 +324,7 @@ func (i BucketReplicationArray) ToBucketReplicationArrayOutputWithContext(ctx co
 // BucketReplicationMapInput is an input type that accepts BucketReplicationMap and BucketReplicationMapOutput values.
 // You can construct a concrete instance of `BucketReplicationMapInput` via:
 //
-//          BucketReplicationMap{ "key": BucketReplicationArgs{...} }
+//	BucketReplicationMap{ "key": BucketReplicationArgs{...} }
 type BucketReplicationMapInput interface {
 	pulumi.Input
 

@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eipanycast.NewAnycastEipAddress(ctx, "example", &eipanycast.AnycastEipAddressArgs{
-// 			ServiceLocation: pulumi.String("international"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eipanycast.NewAnycastEipAddress(ctx, "example", &eipanycast.AnycastEipAddressArgs{
+//				ServiceLocation: pulumi.String("international"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Eipanycast Anycast Eip Address can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
+//
+//	$ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
+//
 // ```
 type AnycastEipAddress struct {
 	pulumi.CustomResourceState
@@ -194,7 +199,7 @@ func (i *AnycastEipAddress) ToAnycastEipAddressOutputWithContext(ctx context.Con
 // AnycastEipAddressArrayInput is an input type that accepts AnycastEipAddressArray and AnycastEipAddressArrayOutput values.
 // You can construct a concrete instance of `AnycastEipAddressArrayInput` via:
 //
-//          AnycastEipAddressArray{ AnycastEipAddressArgs{...} }
+//	AnycastEipAddressArray{ AnycastEipAddressArgs{...} }
 type AnycastEipAddressArrayInput interface {
 	pulumi.Input
 
@@ -219,7 +224,7 @@ func (i AnycastEipAddressArray) ToAnycastEipAddressArrayOutputWithContext(ctx co
 // AnycastEipAddressMapInput is an input type that accepts AnycastEipAddressMap and AnycastEipAddressMapOutput values.
 // You can construct a concrete instance of `AnycastEipAddressMapInput` via:
 //
-//          AnycastEipAddressMap{ "key": AnycastEipAddressArgs{...} }
+//	AnycastEipAddressMap{ "key": AnycastEipAddressArgs{...} }
 type AnycastEipAddressMapInput interface {
 	pulumi.Input
 

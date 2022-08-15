@@ -19,56 +19,61 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
-// 			Comments: pulumi.String("this is a group comments."),
-// 			Force:    pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-// 			Document: pulumi.String(fmt.Sprintf(`    {
-//       "Statement": [
-//         {
-//           "Action": [
-//             "oss:ListObjects",
-//             "oss:GetObject"
-//           ],
-//           "Effect": "Allow",
-//           "Resource": [
-//             "acs:oss:*:*:mybucket",
-//             "acs:oss:*:*:mybucket/*"
-//           ]
-//         }
-//       ],
-//         "Version": "1"
-//     }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+//				Comments: pulumi.String("this is a group comments."),
+//				Force:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				Document: pulumi.String(fmt.Sprintf(`    {
+//	      "Statement": [
+//	        {
+//	          "Action": [
+//	            "oss:ListObjects",
+//	            "oss:GetObject"
+//	          ],
+//	          "Effect": "Allow",
+//	          "Resource": [
+//	            "acs:oss:*:*:mybucket",
+//	            "acs:oss:*:*:mybucket/*"
+//	          ]
+//	        }
+//	      ],
+//	        "Version": "1"
+//	    }
+//
 // `)),
-// 			Description: pulumi.String("this is a policy test"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ram.NewGroupPolicyAttachment(ctx, "attach", &ram.GroupPolicyAttachmentArgs{
-// 			PolicyName: policy.Name,
-// 			PolicyType: policy.Type,
-// 			GroupName:  group.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				Description: pulumi.String("this is a policy test"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewGroupPolicyAttachment(ctx, "attach", &ram.GroupPolicyAttachmentArgs{
+//				PolicyName: policy.Name,
+//				PolicyType: policy.Type,
+//				GroupName:  group.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -76,7 +81,9 @@ import (
 // RAM Group Policy attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+//
+//	$ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+//
 // ```
 type GroupPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -193,7 +200,7 @@ func (i *GroupPolicyAttachment) ToGroupPolicyAttachmentOutputWithContext(ctx con
 // GroupPolicyAttachmentArrayInput is an input type that accepts GroupPolicyAttachmentArray and GroupPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `GroupPolicyAttachmentArrayInput` via:
 //
-//          GroupPolicyAttachmentArray{ GroupPolicyAttachmentArgs{...} }
+//	GroupPolicyAttachmentArray{ GroupPolicyAttachmentArgs{...} }
 type GroupPolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -218,7 +225,7 @@ func (i GroupPolicyAttachmentArray) ToGroupPolicyAttachmentArrayOutputWithContex
 // GroupPolicyAttachmentMapInput is an input type that accepts GroupPolicyAttachmentMap and GroupPolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `GroupPolicyAttachmentMapInput` via:
 //
-//          GroupPolicyAttachmentMap{ "key": GroupPolicyAttachmentArgs{...} }
+//	GroupPolicyAttachmentMap{ "key": GroupPolicyAttachmentArgs{...} }
 type GroupPolicyAttachmentMapInput interface {
 	pulumi.Input
 

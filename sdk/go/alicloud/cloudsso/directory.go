@@ -20,27 +20,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudsso.NewDirectory(ctx, "default", &cloudsso.DirectoryArgs{
-// 			DirectoryName: pulumi.String("example-value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudsso.NewDirectory(ctx, "default", &cloudsso.DirectoryArgs{
+//				DirectoryName: pulumi.String("example-value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Cloud SSO Directory can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/directory:Directory example <id>
+//
+//	$ pulumi import alicloud:cloudsso/directory:Directory example <id>
+//
 // ```
 type Directory struct {
 	pulumi.CustomResourceState
@@ -166,7 +171,7 @@ func (i *Directory) ToDirectoryOutputWithContext(ctx context.Context) DirectoryO
 // DirectoryArrayInput is an input type that accepts DirectoryArray and DirectoryArrayOutput values.
 // You can construct a concrete instance of `DirectoryArrayInput` via:
 //
-//          DirectoryArray{ DirectoryArgs{...} }
+//	DirectoryArray{ DirectoryArgs{...} }
 type DirectoryArrayInput interface {
 	pulumi.Input
 
@@ -191,7 +196,7 @@ func (i DirectoryArray) ToDirectoryArrayOutputWithContext(ctx context.Context) D
 // DirectoryMapInput is an input type that accepts DirectoryMap and DirectoryMapOutput values.
 // You can construct a concrete instance of `DirectoryMapInput` via:
 //
-//          DirectoryMap{ "key": DirectoryArgs{...} }
+//	DirectoryMap{ "key": DirectoryArgs{...} }
 type DirectoryMapInput interface {
 	pulumi.Input
 

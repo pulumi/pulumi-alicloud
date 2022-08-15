@@ -172,7 +172,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
-     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      */
     public readonly internetMaxBandwidthOut!: pulumi.Output<number>;
     /**
@@ -488,7 +488,7 @@ export interface EcsInstanceSetState {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
@@ -681,7 +681,7 @@ export interface EcsInstanceSetArgs {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**

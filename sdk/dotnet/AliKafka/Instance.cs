@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.AliKafka
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
@@ -124,6 +124,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> IoMax { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         /// </summary>
         [Output("name")]
@@ -136,13 +142,13 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string?> PaidType { get; private set; } = null!;
 
         /// <summary>
-        /// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Output("securityGroup")]
         public Output<string> SecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         /// </summary>
         [Output("serviceVersion")]
         public Output<string> ServiceVersion { get; private set; } = null!;
@@ -152,6 +158,16 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("specType")]
         public Output<string?> SpecType { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the instance. Valid values:
+        /// - 0: pending
+        /// - 1: deploying
+        /// - 5: running
+        /// - 15: expired
+        /// </summary>
+        [Output("status")]
+        public Output<int> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -230,7 +246,7 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -268,6 +284,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int> IoMax { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         /// </summary>
         [Input("name")]
@@ -280,13 +302,13 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? PaidType { get; set; }
 
         /// <summary>
-        /// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
-        /// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         /// </summary>
         [Input("serviceVersion")]
         public Input<string>? ServiceVersion { get; set; }
@@ -329,7 +351,7 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -373,6 +395,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int>? IoMax { get; set; }
 
         /// <summary>
+        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         /// </summary>
         [Input("name")]
@@ -385,13 +413,13 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? PaidType { get; set; }
 
         /// <summary>
-        /// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
-        /// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         /// </summary>
         [Input("serviceVersion")]
         public Input<string>? ServiceVersion { get; set; }
@@ -401,6 +429,16 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("specType")]
         public Input<string>? SpecType { get; set; }
+
+        /// <summary>
+        /// The status of the instance. Valid values:
+        /// - 0: pending
+        /// - 1: deploying
+        /// - 5: running
+        /// - 15: expired
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

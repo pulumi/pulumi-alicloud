@@ -270,6 +270,49 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Create a node pool with customized kubelet parameters
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     instanceChargeType: "PostPaid",
+ *     desiredSize: 3,
+ *     kubeletConfiguration: {
+ *         registryPullQps: "0",
+ *         registryBurst: "0",
+ *         eventRecordQps: "0",
+ *         eventBurst: "0",
+ *         evictionHard: {
+ *             "memory.available": "1024Mi",
+ *             "nodefs.available": `10%`,
+ *             "nodefs.inodesFree": "1000",
+ *             "imagefs.available": `10%`,
+ *             "imagefs.inodesFree": "1000",
+ *             "allocatableMemory.available": "2048",
+ *             "pid.available": "1000",
+ *         },
+ *         systemReserved: {
+ *             cpu: "1",
+ *             memory: "1Gi",
+ *             ephemeral_storage: "10Gi",
+ *         },
+ *         kubeReserved: {
+ *             cpu: "500m",
+ *             memory: "1Gi",
+ *         },
+ *     },
+ *     rolloutPolicy: {
+ *         maxUnavailable: 1,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
@@ -391,7 +434,11 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     */
+    public readonly kubeletConfiguration!: pulumi.Output<outputs.cs.NodePoolKubeletConfiguration | undefined>;
+    /**
+     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
      */
     public readonly labels!: pulumi.Output<outputs.cs.NodePoolLabel[] | undefined>;
     /**
@@ -438,6 +485,10 @@ export class NodePool extends pulumi.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    public readonly rolloutPolicy!: pulumi.Output<outputs.cs.NodePoolRolloutPolicy | undefined>;
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
      */
@@ -510,11 +561,11 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly systemDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
-     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * A List of Kubernetes taints to assign to the nodes.
+     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      */
     public readonly taints!: pulumi.Output<outputs.cs.NodePoolTaint[] | undefined>;
     /**
@@ -568,6 +619,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["kubeletConfiguration"] = state ? state.kubeletConfiguration : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["management"] = state ? state.management : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -579,6 +631,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["platform"] = state ? state.platform : undefined;
             resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["rolloutPolicy"] = state ? state.rolloutPolicy : undefined;
             resourceInputs["runtimeName"] = state ? state.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
             resourceInputs["scalingConfig"] = state ? state.scalingConfig : undefined;
@@ -634,6 +687,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["kubeletConfiguration"] = args ? args.kubeletConfiguration : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["management"] = args ? args.management : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -645,6 +699,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["platform"] = args ? args.platform : undefined;
             resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["rolloutPolicy"] = args ? args.rolloutPolicy : undefined;
             resourceInputs["runtimeName"] = args ? args.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
             resourceInputs["scalingConfig"] = args ? args.scalingConfig : undefined;
@@ -763,7 +818,11 @@ export interface NodePoolState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     */
+    kubeletConfiguration?: pulumi.Input<inputs.cs.NodePoolKubeletConfiguration>;
+    /**
+     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
      */
     labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**
@@ -810,6 +869,10 @@ export interface NodePoolState {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    rolloutPolicy?: pulumi.Input<inputs.cs.NodePoolRolloutPolicy>;
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
      */
@@ -882,11 +945,11 @@ export interface NodePoolState {
      */
     systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A List of Kubernetes taints to assign to the nodes.
+     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      */
     taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
     /**
@@ -996,7 +1059,11 @@ export interface NodePoolArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     */
+    kubeletConfiguration?: pulumi.Input<inputs.cs.NodePoolKubeletConfiguration>;
+    /**
+     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
      */
     labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**
@@ -1043,6 +1110,10 @@ export interface NodePoolArgs {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    rolloutPolicy?: pulumi.Input<inputs.cs.NodePoolRolloutPolicy>;
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
      */
@@ -1111,11 +1182,11 @@ export interface NodePoolArgs {
      */
     systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A List of Kubernetes taints to assign to the nodes.
+     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      */
     taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
     /**

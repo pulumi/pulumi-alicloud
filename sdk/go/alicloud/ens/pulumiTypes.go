@@ -26,7 +26,7 @@ type GetKeyPairsPair struct {
 // GetKeyPairsPairInput is an input type that accepts GetKeyPairsPairArgs and GetKeyPairsPairOutput values.
 // You can construct a concrete instance of `GetKeyPairsPairInput` via:
 //
-//          GetKeyPairsPairArgs{...}
+//	GetKeyPairsPairArgs{...}
 type GetKeyPairsPairInput interface {
 	pulumi.Input
 
@@ -62,7 +62,7 @@ func (i GetKeyPairsPairArgs) ToGetKeyPairsPairOutputWithContext(ctx context.Cont
 // GetKeyPairsPairArrayInput is an input type that accepts GetKeyPairsPairArray and GetKeyPairsPairArrayOutput values.
 // You can construct a concrete instance of `GetKeyPairsPairArrayInput` via:
 //
-//          GetKeyPairsPairArray{ GetKeyPairsPairArgs{...} }
+//	GetKeyPairsPairArray{ GetKeyPairsPairArgs{...} }
 type GetKeyPairsPairArrayInput interface {
 	pulumi.Input
 

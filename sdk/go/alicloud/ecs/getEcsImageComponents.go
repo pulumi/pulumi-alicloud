@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := ecs.GetEcsImageComponents(ctx, &ecs.GetEcsImageComponentsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("ecsImageComponentId1", ids.Components[0].Id)
-// 		nameRegex, err := ecs.GetEcsImageComponents(ctx, &ecs.GetEcsImageComponentsArgs{
-// 			NameRegex: pulumi.StringRef("^my-ImageComponent"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("ecsImageComponentId2", nameRegex.Components[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ecs.GetEcsImageComponents(ctx, &ecs.GetEcsImageComponentsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsImageComponentId1", ids.Components[0].Id)
+//			nameRegex, err := ecs.GetEcsImageComponents(ctx, &ecs.GetEcsImageComponentsArgs{
+//				NameRegex: pulumi.StringRef("^my-ImageComponent"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsImageComponentId2", nameRegex.Components[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEcsImageComponents(ctx *pulumi.Context, args *GetEcsImageComponentsArgs, opts ...pulumi.InvokeOption) (*GetEcsImageComponentsResult, error) {
 	var rv GetEcsImageComponentsResult

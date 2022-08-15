@@ -22,7 +22,9 @@ import (
 // ECS Network Interface Permission can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
+//
 // ```
 type EcsNetworkInterfacePermission struct {
 	pulumi.CustomResourceState
@@ -155,7 +157,7 @@ func (i *EcsNetworkInterfacePermission) ToEcsNetworkInterfacePermissionOutputWit
 // EcsNetworkInterfacePermissionArrayInput is an input type that accepts EcsNetworkInterfacePermissionArray and EcsNetworkInterfacePermissionArrayOutput values.
 // You can construct a concrete instance of `EcsNetworkInterfacePermissionArrayInput` via:
 //
-//          EcsNetworkInterfacePermissionArray{ EcsNetworkInterfacePermissionArgs{...} }
+//	EcsNetworkInterfacePermissionArray{ EcsNetworkInterfacePermissionArgs{...} }
 type EcsNetworkInterfacePermissionArrayInput interface {
 	pulumi.Input
 
@@ -180,7 +182,7 @@ func (i EcsNetworkInterfacePermissionArray) ToEcsNetworkInterfacePermissionArray
 // EcsNetworkInterfacePermissionMapInput is an input type that accepts EcsNetworkInterfacePermissionMap and EcsNetworkInterfacePermissionMapOutput values.
 // You can construct a concrete instance of `EcsNetworkInterfacePermissionMapInput` via:
 //
-//          EcsNetworkInterfacePermissionMap{ "key": EcsNetworkInterfacePermissionArgs{...} }
+//	EcsNetworkInterfacePermissionMap{ "key": EcsNetworkInterfacePermissionArgs{...} }
 type EcsNetworkInterfacePermissionMapInput interface {
 	pulumi.Input
 

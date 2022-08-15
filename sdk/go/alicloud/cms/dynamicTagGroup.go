@@ -19,44 +19,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
-// 			AlarmContactGroupName: pulumi.String("example_value"),
-// 			Describe:              pulumi.String("example_value"),
-// 			EnableSubscribed:      pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cms.NewDynamicTagGroup(ctx, "defaultDynamicTagGroup", &cms.DynamicTagGroupArgs{
-// 			ContactGroupLists: pulumi.StringArray{
-// 				defaultAlarmContactGroup.ID(),
-// 			},
-// 			TagKey: pulumi.String("your_tag_key"),
-// 			MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
-// 				&cms.DynamicTagGroupMatchExpressArgs{
-// 					TagValue:              pulumi.String("your_tag_value"),
-// 					TagValueMatchFunction: pulumi.String("all"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String("example_value"),
+//				Describe:              pulumi.String("example_value"),
+//				EnableSubscribed:      pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewDynamicTagGroup(ctx, "defaultDynamicTagGroup", &cms.DynamicTagGroupArgs{
+//				ContactGroupLists: pulumi.StringArray{
+//					defaultAlarmContactGroup.ID(),
+//				},
+//				TagKey: pulumi.String("your_tag_key"),
+//				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
+//					&cms.DynamicTagGroupMatchExpressArgs{
+//						TagValue:              pulumi.String("your_tag_value"),
+//						TagValueMatchFunction: pulumi.String("all"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,7 +67,9 @@ import (
 // Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
+//
+//	$ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
+//
 // ```
 type DynamicTagGroup struct {
 	pulumi.CustomResourceState
@@ -207,7 +212,7 @@ func (i *DynamicTagGroup) ToDynamicTagGroupOutputWithContext(ctx context.Context
 // DynamicTagGroupArrayInput is an input type that accepts DynamicTagGroupArray and DynamicTagGroupArrayOutput values.
 // You can construct a concrete instance of `DynamicTagGroupArrayInput` via:
 //
-//          DynamicTagGroupArray{ DynamicTagGroupArgs{...} }
+//	DynamicTagGroupArray{ DynamicTagGroupArgs{...} }
 type DynamicTagGroupArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +237,7 @@ func (i DynamicTagGroupArray) ToDynamicTagGroupArrayOutputWithContext(ctx contex
 // DynamicTagGroupMapInput is an input type that accepts DynamicTagGroupMap and DynamicTagGroupMapOutput values.
 // You can construct a concrete instance of `DynamicTagGroupMapInput` via:
 //
-//          DynamicTagGroupMap{ "key": DynamicTagGroupArgs{...} }
+//	DynamicTagGroupMap{ "key": DynamicTagGroupArgs{...} }
 type DynamicTagGroupMapInput interface {
 	pulumi.Input
 

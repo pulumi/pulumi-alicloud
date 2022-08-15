@@ -21,6 +21,8 @@ __all__ = [
     'GetDatabasesDatabaseAccountResult',
     'GetEndpointsEndpointResult',
     'GetEndpointsEndpointAddressItemResult',
+    'GetGlobalDatabaseNetworksNetworkResult',
+    'GetGlobalDatabaseNetworksNetworkDbClusterResult',
     'GetNodeClassesClassResult',
     'GetNodeClassesClassSupportedEngineResult',
     'GetNodeClassesClassSupportedEngineAvailableResourceResult',
@@ -817,6 +819,141 @@ class GetEndpointsEndpointAddressItemResult(dict):
         ID of the VSwitch the cluster belongs to.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetGlobalDatabaseNetworksNetworkResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 db_clusters: Sequence['outputs.GetGlobalDatabaseNetworksNetworkDbClusterResult'],
+                 db_type: str,
+                 db_version: str,
+                 description: str,
+                 gdn_id: str,
+                 id: str,
+                 status: str):
+        """
+        :param str create_time: The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        :param Sequence['GetGlobalDatabaseNetworksNetworkDbClusterArgs'] db_clusters: The details of each cluster in the Global Database Network.
+        :param str db_type: The type of the database engine. Only MySQL is supported.
+        :param str db_version: The version number of the database engine. Only the 8.0 version is supported.
+        :param str description: The description of the Global Database Network.
+        :param str gdn_id: The ID of the Global Database Network.
+        :param str id: The ID of the Global Database Network.
+        :param str status: The status of the Global Database Network.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_clusters", db_clusters)
+        pulumi.set(__self__, "db_type", db_type)
+        pulumi.set(__self__, "db_version", db_version)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "gdn_id", gdn_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbClusters")
+    def db_clusters(self) -> Sequence['outputs.GetGlobalDatabaseNetworksNetworkDbClusterResult']:
+        """
+        The details of each cluster in the Global Database Network.
+        """
+        return pulumi.get(self, "db_clusters")
+
+    @property
+    @pulumi.getter(name="dbType")
+    def db_type(self) -> str:
+        """
+        The type of the database engine. Only MySQL is supported.
+        """
+        return pulumi.get(self, "db_type")
+
+    @property
+    @pulumi.getter(name="dbVersion")
+    def db_version(self) -> str:
+        """
+        The version number of the database engine. Only the 8.0 version is supported.
+        """
+        return pulumi.get(self, "db_version")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Global Database Network.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gdnId")
+    def gdn_id(self) -> str:
+        """
+        The ID of the Global Database Network.
+        """
+        return pulumi.get(self, "gdn_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Global Database Network.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Global Database Network.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGlobalDatabaseNetworksNetworkDbClusterResult(dict):
+    def __init__(__self__, *,
+                 db_cluster_id: str,
+                 region_id: str,
+                 role: str):
+        """
+        :param str db_cluster_id: The ID of the PolarDB cluster.
+        :param str region_id: The region ID of the cluster.
+        :param str role: The role of the cluster.
+        """
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> str:
+        """
+        The ID of the PolarDB cluster.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the cluster.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role of the cluster.
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type

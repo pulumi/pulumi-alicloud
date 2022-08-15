@@ -31,7 +31,9 @@ import (
 // DTS Migration Job can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
+//
+//	$ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
+//
 // ```
 type MigrationJob struct {
 	pulumi.CustomResourceState
@@ -446,7 +448,7 @@ func (i *MigrationJob) ToMigrationJobOutputWithContext(ctx context.Context) Migr
 // MigrationJobArrayInput is an input type that accepts MigrationJobArray and MigrationJobArrayOutput values.
 // You can construct a concrete instance of `MigrationJobArrayInput` via:
 //
-//          MigrationJobArray{ MigrationJobArgs{...} }
+//	MigrationJobArray{ MigrationJobArgs{...} }
 type MigrationJobArrayInput interface {
 	pulumi.Input
 
@@ -471,7 +473,7 @@ func (i MigrationJobArray) ToMigrationJobArrayOutputWithContext(ctx context.Cont
 // MigrationJobMapInput is an input type that accepts MigrationJobMap and MigrationJobMapOutput values.
 // You can construct a concrete instance of `MigrationJobMapInput` via:
 //
-//          MigrationJobMap{ "key": MigrationJobArgs{...} }
+//	MigrationJobMap{ "key": MigrationJobArgs{...} }
 type MigrationJobMapInput interface {
 	pulumi.Input
 

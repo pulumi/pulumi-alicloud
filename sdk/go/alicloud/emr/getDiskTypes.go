@@ -21,26 +21,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
-// 			ClusterType:         "HADOOP",
-// 			DestinationResource: "DataDisk",
-// 			InstanceChargeType:  "PostPaid",
-// 			InstanceType:        "ecs.g5.xlarge",
-// 			ZoneId:              pulumi.StringRef("cn-huhehaote-a"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dataDiskType", _default.Types[0].Value)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+//				ClusterType:         "HADOOP",
+//				DestinationResource: "DataDisk",
+//				InstanceChargeType:  "PostPaid",
+//				InstanceType:        "ecs.g5.xlarge",
+//				ZoneId:              pulumi.StringRef("cn-huhehaote-a"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataDiskType", _default.Types[0].Value)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDiskTypes(ctx *pulumi.Context, args *GetDiskTypesArgs, opts ...pulumi.InvokeOption) (*GetDiskTypesResult, error) {
 	var rv GetDiskTypesResult

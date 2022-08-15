@@ -15,6 +15,7 @@ from .get_service import *
 from .get_services import *
 from .get_triggers import *
 from .get_zones import *
+from .layer_version import *
 from .service import *
 from .trigger import *
 from ._inputs import *

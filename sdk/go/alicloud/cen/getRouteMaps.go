@@ -20,29 +20,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		this, err := cen.GetRouteMaps(ctx, &cen.GetRouteMapsArgs{
-// 			CenId: "cen-ihdlgo87ai********",
-// 			Ids: []string{
-// 				"cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
-// 			},
-// 			DescriptionRegex:  pulumi.StringRef("datasource_test"),
-// 			CenRegionId:       pulumi.StringRef("cn-hangzhou"),
-// 			TransmitDirection: pulumi.StringRef("RegionIn"),
-// 			Status:            pulumi.StringRef("Active"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstCenRouteMapId", this.Maps[0].RouteMapId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := cen.GetRouteMaps(ctx, &cen.GetRouteMapsArgs{
+//				CenId: "cen-ihdlgo87ai********",
+//				Ids: []string{
+//					"cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
+//				},
+//				DescriptionRegex:  pulumi.StringRef("datasource_test"),
+//				CenRegionId:       pulumi.StringRef("cn-hangzhou"),
+//				TransmitDirection: pulumi.StringRef("RegionIn"),
+//				Status:            pulumi.StringRef("Active"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstCenRouteMapId", this.Maps[0].RouteMapId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRouteMaps(ctx *pulumi.Context, args *GetRouteMapsArgs, opts ...pulumi.InvokeOption) (*GetRouteMapsResult, error) {
 	var rv GetRouteMapsResult

@@ -19,113 +19,116 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
-// 			NamespaceDescription: pulumi.String("example_value"),
-// 			NamespaceId:          pulumi.String("example_value"),
-// 			NamespaceName:        pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
-// 			AppDescription: pulumi.String("example_value"),
-// 			AppName:        pulumi.String("example_value"),
-// 			NamespaceId:    defaultNamespace.NamespaceId,
-// 			ImageUrl:       pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
-// 			PackageType:    pulumi.String("Image"),
-// 			Jdk:            pulumi.String("Open JDK 8"),
-// 			VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
-// 			VpcId:          pulumi.String(defaultNetworks.Ids[0]),
-// 			Timezone:       pulumi.String("Asia/Shanghai"),
-// 			Replicas:       pulumi.Int(5),
-// 			Cpu:            pulumi.Int(500),
-// 			Memory:         pulumi.Int(2048),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sae.NewApplicationScalingRule(ctx, "example", &sae.ApplicationScalingRuleArgs{
-// 			AppId:             defaultApplication.ID(),
-// 			ScalingRuleName:   pulumi.String("example-value"),
-// 			ScalingRuleEnable: pulumi.Bool(true),
-// 			ScalingRuleType:   pulumi.String("mix"),
-// 			ScalingRuleTimer: &sae.ApplicationScalingRuleScalingRuleTimerArgs{
-// 				BeginDate: pulumi.String("2022-02-25"),
-// 				EndDate:   pulumi.String("2022-03-25"),
-// 				Period:    pulumi.String("* * *"),
-// 				Schedules: sae.ApplicationScalingRuleScalingRuleTimerScheduleArray{
-// 					&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
-// 						AtTime:      pulumi.String("08:00"),
-// 						MaxReplicas: pulumi.Int(10),
-// 						MinReplicas: pulumi.Int(3),
-// 					},
-// 					&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
-// 						AtTime:      pulumi.String("20:00"),
-// 						MaxReplicas: pulumi.Int(50),
-// 						MinReplicas: pulumi.Int(3),
-// 					},
-// 				},
-// 			},
-// 			ScalingRuleMetric: &sae.ApplicationScalingRuleScalingRuleMetricArgs{
-// 				MaxReplicas: pulumi.Int(50),
-// 				MinReplicas: pulumi.Int(3),
-// 				Metrics: sae.ApplicationScalingRuleScalingRuleMetricMetricArray{
-// 					&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
-// 						MetricType:                     pulumi.String("CPU"),
-// 						MetricTargetAverageUtilization: pulumi.Int(20),
-// 					},
-// 					&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
-// 						MetricType:                     pulumi.String("MEMORY"),
-// 						MetricTargetAverageUtilization: pulumi.Int(30),
-// 					},
-// 					&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
-// 						MetricType:                     pulumi.String("tcpActiveConn"),
-// 						MetricTargetAverageUtilization: pulumi.Int(20),
-// 					},
-// 				},
-// 				ScaleUpRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{
-// 					Step:                       pulumi.Int(10),
-// 					Disabled:                   pulumi.Bool(false),
-// 					StabilizationWindowSeconds: pulumi.Int(0),
-// 				},
-// 				ScaleDownRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{
-// 					Step:                       pulumi.Int(10),
-// 					Disabled:                   pulumi.Bool(false),
-// 					StabilizationWindowSeconds: pulumi.Int(10),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
+//				NamespaceDescription: pulumi.String("example_value"),
+//				NamespaceId:          pulumi.String("example_value"),
+//				NamespaceName:        pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
+//				AppDescription: pulumi.String("example_value"),
+//				AppName:        pulumi.String("example_value"),
+//				NamespaceId:    defaultNamespace.NamespaceId,
+//				ImageUrl:       pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
+//				PackageType:    pulumi.String("Image"),
+//				Jdk:            pulumi.String("Open JDK 8"),
+//				VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:          pulumi.String(defaultNetworks.Ids[0]),
+//				Timezone:       pulumi.String("Asia/Shanghai"),
+//				Replicas:       pulumi.Int(5),
+//				Cpu:            pulumi.Int(500),
+//				Memory:         pulumi.Int(2048),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sae.NewApplicationScalingRule(ctx, "example", &sae.ApplicationScalingRuleArgs{
+//				AppId:             defaultApplication.ID(),
+//				ScalingRuleName:   pulumi.String("example-value"),
+//				ScalingRuleEnable: pulumi.Bool(true),
+//				ScalingRuleType:   pulumi.String("mix"),
+//				ScalingRuleTimer: &sae.ApplicationScalingRuleScalingRuleTimerArgs{
+//					BeginDate: pulumi.String("2022-02-25"),
+//					EndDate:   pulumi.String("2022-03-25"),
+//					Period:    pulumi.String("* * *"),
+//					Schedules: sae.ApplicationScalingRuleScalingRuleTimerScheduleArray{
+//						&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
+//							AtTime:      pulumi.String("08:00"),
+//							MaxReplicas: pulumi.Int(10),
+//							MinReplicas: pulumi.Int(3),
+//						},
+//						&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
+//							AtTime:      pulumi.String("20:00"),
+//							MaxReplicas: pulumi.Int(50),
+//							MinReplicas: pulumi.Int(3),
+//						},
+//					},
+//				},
+//				ScalingRuleMetric: &sae.ApplicationScalingRuleScalingRuleMetricArgs{
+//					MaxReplicas: pulumi.Int(50),
+//					MinReplicas: pulumi.Int(3),
+//					Metrics: sae.ApplicationScalingRuleScalingRuleMetricMetricArray{
+//						&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
+//							MetricType:                     pulumi.String("CPU"),
+//							MetricTargetAverageUtilization: pulumi.Int(20),
+//						},
+//						&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
+//							MetricType:                     pulumi.String("MEMORY"),
+//							MetricTargetAverageUtilization: pulumi.Int(30),
+//						},
+//						&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
+//							MetricType:                     pulumi.String("tcpActiveConn"),
+//							MetricTargetAverageUtilization: pulumi.Int(20),
+//						},
+//					},
+//					ScaleUpRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{
+//						Step:                       pulumi.Int(10),
+//						Disabled:                   pulumi.Bool(false),
+//						StabilizationWindowSeconds: pulumi.Int(0),
+//					},
+//					ScaleDownRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{
+//						Step:                       pulumi.Int(10),
+//						Disabled:                   pulumi.Bool(false),
+//						StabilizationWindowSeconds: pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -133,7 +136,9 @@ import (
 // Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
+//
+//	$ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
+//
 // ```
 type ApplicationScalingRule struct {
 	pulumi.CustomResourceState
@@ -300,7 +305,7 @@ func (i *ApplicationScalingRule) ToApplicationScalingRuleOutputWithContext(ctx c
 // ApplicationScalingRuleArrayInput is an input type that accepts ApplicationScalingRuleArray and ApplicationScalingRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleArrayInput` via:
 //
-//          ApplicationScalingRuleArray{ ApplicationScalingRuleArgs{...} }
+//	ApplicationScalingRuleArray{ ApplicationScalingRuleArgs{...} }
 type ApplicationScalingRuleArrayInput interface {
 	pulumi.Input
 
@@ -325,7 +330,7 @@ func (i ApplicationScalingRuleArray) ToApplicationScalingRuleArrayOutputWithCont
 // ApplicationScalingRuleMapInput is an input type that accepts ApplicationScalingRuleMap and ApplicationScalingRuleMapOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleMapInput` via:
 //
-//          ApplicationScalingRuleMap{ "key": ApplicationScalingRuleArgs{...} }
+//	ApplicationScalingRuleMap{ "key": ApplicationScalingRuleArgs{...} }
 type ApplicationScalingRuleMapInput interface {
 	pulumi.Input
 

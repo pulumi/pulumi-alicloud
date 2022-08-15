@@ -22,40 +22,44 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
-// 			AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf(`     {
-//           "Statement": [
-//                {
-//                     "Action": "sts:AssumeRole",
-//                     "Effect": "Allow",
-//                     "Principal": {
-//                         "RAM":[
-//                                 "acs:ram::103755469187****:root"，
-//                                 "acs:ram::104408977069****:root"
-//                         ]
-//                     }
-//                 }
-//           ],
-//           "Version": "1"
-//      }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
+//				AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf(`     {
+//	          "Statement": [
+//	               {
+//	                    "Action": "sts:AssumeRole",
+//	                    "Effect": "Allow",
+//	                    "Principal": {
+//	                        "RAM":[
+//	                                "acs:ram::103755469187****:root"，
+//	                                "acs:ram::104408977069****:root"
+//	                        ]
+//	                    }
+//	                }
+//	          ],
+//	          "Version": "1"
+//	     }
 //
 // `)),
-// 			RoleName: pulumi.String("testrd"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				RoleName: pulumi.String("testrd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +67,9 @@ import (
 // Resource Manager can be imported using the id or role_name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/role:Role example testrd
+//
+//	$ pulumi import alicloud:resourcemanager/role:Role example testrd
+//
 // ```
 type Role struct {
 	pulumi.CustomResourceState
@@ -208,7 +214,7 @@ func (i *Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 // RoleArrayInput is an input type that accepts RoleArray and RoleArrayOutput values.
 // You can construct a concrete instance of `RoleArrayInput` via:
 //
-//          RoleArray{ RoleArgs{...} }
+//	RoleArray{ RoleArgs{...} }
 type RoleArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +239,7 @@ func (i RoleArray) ToRoleArrayOutputWithContext(ctx context.Context) RoleArrayOu
 // RoleMapInput is an input type that accepts RoleMap and RoleMapOutput values.
 // You can construct a concrete instance of `RoleMapInput` via:
 //
-//          RoleMap{ "key": RoleArgs{...} }
+//	RoleMap{ "key": RoleArgs{...} }
 type RoleMapInput interface {
 	pulumi.Input
 

@@ -286,14 +286,14 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
         return this.serviceName;
     }
     /**
-     * Function Compute async job configuration. valid values true or false, default `false`
+     * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      * 
      */
     @Export(name="statefulInvocation", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> statefulInvocation;
 
     /**
-     * @return Function Compute async job configuration. valid values true or false, default `false`
+     * @return Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      * 
      */
     public Output<Optional<Boolean>> statefulInvocation() {

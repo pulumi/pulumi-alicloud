@@ -21,39 +21,42 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewRegistryEnterpriseNamespace(ctx, "my-namespace", &cs.RegistryEnterpriseNamespaceArgs{
-// 			InstanceId:        pulumi.String("cri-xxx"),
-// 			AutoCreate:        pulumi.Bool(false),
-// 			DefaultVisibility: pulumi.String("PUBLIC"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cs.NewRegistryEnterpriseRepo(ctx, "my-repo", &cs.RegistryEnterpriseRepoArgs{
-// 			InstanceId: my_namespace.InstanceId,
-// 			Namespace:  my_namespace.Name,
-// 			Summary:    pulumi.String("this is summary of my new repo"),
-// 			RepoType:   pulumi.String("PUBLIC"),
-// 			Detail:     pulumi.String("this is a public repo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewRegistryEnterpriseNamespace(ctx, "my-namespace", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        pulumi.String("cri-xxx"),
+//				AutoCreate:        pulumi.Bool(false),
+//				DefaultVisibility: pulumi.String("PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewRegistryEnterpriseRepo(ctx, "my-repo", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: my_namespace.InstanceId,
+//				Namespace:  my_namespace.Name,
+//				Summary:    pulumi.String("this is summary of my new repo"),
+//				RepoType:   pulumi.String("PUBLIC"),
+//				Detail:     pulumi.String("this is a public repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -61,7 +64,9 @@ import (
 // Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+//
+//	$ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+//
 // ```
 type RegistryEnterpriseRepo struct {
 	pulumi.CustomResourceState
@@ -217,7 +222,7 @@ func (i *RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutputWithContext(ctx c
 // RegistryEnterpriseRepoArrayInput is an input type that accepts RegistryEnterpriseRepoArray and RegistryEnterpriseRepoArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseRepoArrayInput` via:
 //
-//          RegistryEnterpriseRepoArray{ RegistryEnterpriseRepoArgs{...} }
+//	RegistryEnterpriseRepoArray{ RegistryEnterpriseRepoArgs{...} }
 type RegistryEnterpriseRepoArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +247,7 @@ func (i RegistryEnterpriseRepoArray) ToRegistryEnterpriseRepoArrayOutputWithCont
 // RegistryEnterpriseRepoMapInput is an input type that accepts RegistryEnterpriseRepoMap and RegistryEnterpriseRepoMapOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseRepoMapInput` via:
 //
-//          RegistryEnterpriseRepoMap{ "key": RegistryEnterpriseRepoArgs{...} }
+//	RegistryEnterpriseRepoMap{ "key": RegistryEnterpriseRepoArgs{...} }
 type RegistryEnterpriseRepoMapInput interface {
 	pulumi.Input
 

@@ -20,36 +20,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
-// 			Bandwidth:   pulumi.String("2"),
-// 			Description: pulumi.String("tf-testAcc-CommonBandwidthPackage"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_ = vpc.GetCommonBandwidthPackagesOutput(ctx, vpc.GetCommonBandwidthPackagesOutputArgs{
-// 			Ids: pulumi.StringArray{
-// 				fooCommonBandwithPackage.ID(),
-// 			},
-// 			NameRegex: pulumi.String("^tf-testAcc.*"),
-// 		}, nil)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
+//				Bandwidth:   pulumi.String("2"),
+//				Description: pulumi.String("tf-testAcc-CommonBandwidthPackage"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = vpc.GetCommonBandwidthPackagesOutput(ctx, vpc.GetCommonBandwidthPackagesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					fooCommonBandwithPackage.ID(),
+//				},
+//				NameRegex: pulumi.String("^tf-testAcc.*"),
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Public ip addresses Block
 //
-//   The public ip addresses mapping supports the following:
+//	The public ip addresses mapping supports the following:
 //
-//   * `ipAddress`   - The address of the EIP.
-//   * `allocationId` - The ID of the EIP instance.
-//   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
+//	* `ipAddress`   - The address of the EIP.
+//	* `allocationId` - The ID of the EIP instance.
+//	* `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
 func GetCommonBandwidthPackages(ctx *pulumi.Context, args *GetCommonBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetCommonBandwidthPackagesResult, error) {
 	var rv GetCommonBandwidthPackagesResult
 	err := ctx.Invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args, &rv, opts...)

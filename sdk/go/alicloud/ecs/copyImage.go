@@ -148,7 +148,7 @@ func (i *CopyImage) ToCopyImageOutputWithContext(ctx context.Context) CopyImageO
 // CopyImageArrayInput is an input type that accepts CopyImageArray and CopyImageArrayOutput values.
 // You can construct a concrete instance of `CopyImageArrayInput` via:
 //
-//          CopyImageArray{ CopyImageArgs{...} }
+//	CopyImageArray{ CopyImageArgs{...} }
 type CopyImageArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +173,7 @@ func (i CopyImageArray) ToCopyImageArrayOutputWithContext(ctx context.Context) C
 // CopyImageMapInput is an input type that accepts CopyImageMap and CopyImageMapOutput values.
 // You can construct a concrete instance of `CopyImageMapInput` via:
 //
-//          CopyImageMap{ "key": CopyImageArgs{...} }
+//	CopyImageMap{ "key": CopyImageArgs{...} }
 type CopyImageMapInput interface {
 	pulumi.Input
 

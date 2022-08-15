@@ -20,26 +20,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dmsEnterpriseInstancesDs, err := dms.GetEnterpriseInstances(ctx, &dms.GetEnterpriseInstancesArgs{
-// 			EnvType:      pulumi.StringRef("test"),
-// 			InstanceType: pulumi.StringRef("mysql"),
-// 			NameRegex:    pulumi.StringRef("tf_testAcc"),
-// 			NetType:      pulumi.StringRef("CLASSIC"),
-// 			OutputFile:   pulumi.StringRef("dms_enterprise_instances.json"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.Instances[0].InstanceId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dmsEnterpriseInstancesDs, err := dms.GetEnterpriseInstances(ctx, &dms.GetEnterpriseInstancesArgs{
+//				EnvType:      pulumi.StringRef("test"),
+//				InstanceType: pulumi.StringRef("mysql"),
+//				NameRegex:    pulumi.StringRef("tf_testAcc"),
+//				NetType:      pulumi.StringRef("CLASSIC"),
+//				OutputFile:   pulumi.StringRef("dms_enterprise_instances.json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.Instances[0].InstanceId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEnterpriseInstances(ctx *pulumi.Context, args *GetEnterpriseInstancesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseInstancesResult, error) {
 	var rv GetEnterpriseInstancesResult

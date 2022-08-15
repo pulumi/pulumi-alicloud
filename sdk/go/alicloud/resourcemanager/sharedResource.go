@@ -22,7 +22,9 @@ import (
 // Resource Manager Shared Resource can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
+//
+//	$ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
+//
 // ```
 type SharedResource struct {
 	pulumi.CustomResourceState
@@ -145,7 +147,7 @@ func (i *SharedResource) ToSharedResourceOutputWithContext(ctx context.Context) 
 // SharedResourceArrayInput is an input type that accepts SharedResourceArray and SharedResourceArrayOutput values.
 // You can construct a concrete instance of `SharedResourceArrayInput` via:
 //
-//          SharedResourceArray{ SharedResourceArgs{...} }
+//	SharedResourceArray{ SharedResourceArgs{...} }
 type SharedResourceArrayInput interface {
 	pulumi.Input
 
@@ -170,7 +172,7 @@ func (i SharedResourceArray) ToSharedResourceArrayOutputWithContext(ctx context.
 // SharedResourceMapInput is an input type that accepts SharedResourceMap and SharedResourceMapOutput values.
 // You can construct a concrete instance of `SharedResourceMapInput` via:
 //
-//          SharedResourceMap{ "key": SharedResourceArgs{...} }
+//	SharedResourceMap{ "key": SharedResourceArgs{...} }
 type SharedResourceMapInput interface {
 	pulumi.Input
 

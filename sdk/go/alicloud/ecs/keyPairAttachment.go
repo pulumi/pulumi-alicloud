@@ -135,7 +135,7 @@ func (i *KeyPairAttachment) ToKeyPairAttachmentOutputWithContext(ctx context.Con
 // KeyPairAttachmentArrayInput is an input type that accepts KeyPairAttachmentArray and KeyPairAttachmentArrayOutput values.
 // You can construct a concrete instance of `KeyPairAttachmentArrayInput` via:
 //
-//          KeyPairAttachmentArray{ KeyPairAttachmentArgs{...} }
+//	KeyPairAttachmentArray{ KeyPairAttachmentArgs{...} }
 type KeyPairAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -160,7 +160,7 @@ func (i KeyPairAttachmentArray) ToKeyPairAttachmentArrayOutputWithContext(ctx co
 // KeyPairAttachmentMapInput is an input type that accepts KeyPairAttachmentMap and KeyPairAttachmentMapOutput values.
 // You can construct a concrete instance of `KeyPairAttachmentMapInput` via:
 //
-//          KeyPairAttachmentMap{ "key": KeyPairAttachmentArgs{...} }
+//	KeyPairAttachmentMap{ "key": KeyPairAttachmentArgs{...} }
 type KeyPairAttachmentMapInput interface {
 	pulumi.Input
 

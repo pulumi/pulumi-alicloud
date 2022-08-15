@@ -16,8 +16,10 @@ export * from "./getAccounts";
 export * from "./getClusters";
 export * from "./getDatabases";
 export * from "./getEndpoints";
+export * from "./getGlobalDatabaseNetworks";
 export * from "./getNodeClasses";
 export * from "./getZones";
+export * from "./globalDatabaseNetwork";
 
 // Import resources to register:
 import { Account } from "./account";
@@ -27,6 +29,7 @@ import { Cluster } from "./cluster";
 import { Database } from "./database";
 import { Endpoint } from "./endpoint";
 import { EndpointAddress } from "./endpointAddress";
+import { GlobalDatabaseNetwork } from "./globalDatabaseNetwork";
 
 const _module = {
     version: utilities.getVersion(),
@@ -46,6 +49,8 @@ const _module = {
                 return new Endpoint(name, <any>undefined, { urn })
             case "alicloud:polardb/endpointAddress:EndpointAddress":
                 return new EndpointAddress(name, <any>undefined, { urn })
+            case "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork":
+                return new GlobalDatabaseNetwork(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -58,3 +63,4 @@ pulumi.runtime.registerResourceModule("alicloud", "polardb/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpointAddress", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/globalDatabaseNetwork", _module)

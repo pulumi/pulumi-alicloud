@@ -16,28 +16,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		nameRegex, err := sae.GetNamespaces(ctx, &sae.GetNamespacesArgs{
-// 			NameRegex: pulumi.StringRef("^my-Namespace"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("saeNamespaceId", nameRegex.Namespaces[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			nameRegex, err := sae.GetNamespaces(ctx, &sae.GetNamespacesArgs{
+//				NameRegex: pulumi.StringRef("^my-Namespace"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("saeNamespaceId", nameRegex.Namespaces[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNamespaces(ctx *pulumi.Context, args *GetNamespacesArgs, opts ...pulumi.InvokeOption) (*GetNamespacesResult, error) {
 	var rv GetNamespacesResult

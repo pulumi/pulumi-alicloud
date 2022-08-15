@@ -16,42 +16,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewAlarm(ctx, "basic", &cms.AlarmArgs{
-// 			ContactGroups: pulumi.StringArray{
-// 				pulumi.String("test-group"),
-// 			},
-// 			EffectiveInterval: pulumi.String("0:00-2:00"),
-// 			EscalationsCritical: &cms.AlarmEscalationsCriticalArgs{
-// 				ComparisonOperator: pulumi.String("<="),
-// 				Statistics:         pulumi.String("Average"),
-// 				Threshold:          pulumi.String("35"),
-// 				Times:              pulumi.Int(2),
-// 			},
-// 			MetricDimensions: pulumi.String("[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]"),
-// 			Period:           pulumi.Int(900),
-// 			Project:          pulumi.String("acs_ecs_dashboard"),
-// 			Webhook:          pulumi.String(fmt.Sprintf("https://%v.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/", data.Alicloud_account.Current.Id)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewAlarm(ctx, "basic", &cms.AlarmArgs{
+//				ContactGroups: pulumi.StringArray{
+//					pulumi.String("test-group"),
+//				},
+//				EffectiveInterval: pulumi.String("0:00-2:00"),
+//				EscalationsCritical: &cms.AlarmEscalationsCriticalArgs{
+//					ComparisonOperator: pulumi.String("<="),
+//					Statistics:         pulumi.String("Average"),
+//					Threshold:          pulumi.String("35"),
+//					Times:              pulumi.Int(2),
+//				},
+//				MetricDimensions: pulumi.String("[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]"),
+//				Period:           pulumi.Int(900),
+//				Project:          pulumi.String("acs_ecs_dashboard"),
+//				Webhook:          pulumi.String(fmt.Sprintf("https://%v.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/", data.Alicloud_account.Current.Id)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // Alarm rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+//
+//	$ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+//
 // ```
 type Alarm struct {
 	pulumi.CustomResourceState
@@ -113,6 +118,8 @@ type Alarm struct {
 	Statistics pulumi.StringOutput `pulumi:"statistics"`
 	// The current alarm rule status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
@@ -212,6 +219,8 @@ type alarmState struct {
 	Statistics *string `pulumi:"statistics"`
 	// The current alarm rule status.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
@@ -274,6 +283,8 @@ type AlarmState struct {
 	Statistics pulumi.StringPtrInput
 	// The current alarm rule status.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
@@ -338,6 +349,8 @@ type alarmArgs struct {
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
@@ -399,6 +412,8 @@ type AlarmArgs struct {
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
@@ -437,7 +452,7 @@ func (i *Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 // AlarmArrayInput is an input type that accepts AlarmArray and AlarmArrayOutput values.
 // You can construct a concrete instance of `AlarmArrayInput` via:
 //
-//          AlarmArray{ AlarmArgs{...} }
+//	AlarmArray{ AlarmArgs{...} }
 type AlarmArrayInput interface {
 	pulumi.Input
 
@@ -462,7 +477,7 @@ func (i AlarmArray) ToAlarmArrayOutputWithContext(ctx context.Context) AlarmArra
 // AlarmMapInput is an input type that accepts AlarmMap and AlarmMapOutput values.
 // You can construct a concrete instance of `AlarmMapInput` via:
 //
-//          AlarmMap{ "key": AlarmArgs{...} }
+//	AlarmMap{ "key": AlarmArgs{...} }
 type AlarmMapInput interface {
 	pulumi.Input
 
@@ -602,6 +617,11 @@ func (o AlarmOutput) Statistics() pulumi.StringOutput {
 // The current alarm rule status.
 func (o AlarmOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o AlarmOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Critical level alarm threshold value, which must be a numeric value currently.

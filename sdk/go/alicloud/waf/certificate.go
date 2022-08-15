@@ -19,39 +19,42 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := waf.NewCertificate(ctx, "default", &waf.CertificateArgs{
-// 			Certificate:     pulumi.String("your_certificate"),
-// 			CertificateName: pulumi.String("your_certificate_name"),
-// 			Domain:          pulumi.String("your_domain_name"),
-// 			InstanceId:      pulumi.String("your_instance_id"),
-// 			PrivateKey:      pulumi.String("your_private_key"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = waf.NewCertificate(ctx, "default2", &waf.CertificateArgs{
-// 			CertificateId: pulumi.String("your_certificate_id"),
-// 			Domain:        pulumi.String("your_domain_name"),
-// 			InstanceId:    pulumi.String("your_instance_id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := waf.NewCertificate(ctx, "default", &waf.CertificateArgs{
+//				Certificate:     pulumi.String("your_certificate"),
+//				CertificateName: pulumi.String("your_certificate_name"),
+//				Domain:          pulumi.String("your_domain_name"),
+//				InstanceId:      pulumi.String("your_instance_id"),
+//				PrivateKey:      pulumi.String("your_private_key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = waf.NewCertificate(ctx, "default2", &waf.CertificateArgs{
+//				CertificateId: pulumi.String("your_certificate_id"),
+//				Domain:        pulumi.String("your_domain_name"),
+//				InstanceId:    pulumi.String("your_instance_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // WAF Certificate can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
+//
+//	$ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
+//
 // ```
 type Certificate struct {
 	pulumi.CustomResourceState
@@ -203,7 +208,7 @@ func (i *Certificate) ToCertificateOutputWithContext(ctx context.Context) Certif
 // CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateArrayInput` via:
 //
-//          CertificateArray{ CertificateArgs{...} }
+//	CertificateArray{ CertificateArgs{...} }
 type CertificateArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +233,7 @@ func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Contex
 // CertificateMapInput is an input type that accepts CertificateMap and CertificateMapOutput values.
 // You can construct a concrete instance of `CertificateMapInput` via:
 //
-//          CertificateMap{ "key": CertificateArgs{...} }
+//	CertificateMap{ "key": CertificateArgs{...} }
 type CertificateMapInput interface {
 	pulumi.Input
 

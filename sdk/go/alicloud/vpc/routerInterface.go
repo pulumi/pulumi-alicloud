@@ -17,32 +17,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewRouterInterface(ctx, "interface", &vpc.RouterInterfaceArgs{
-// 			OppositeRegion: pulumi.String("cn-beijing"),
-// 			RouterType:     pulumi.String("VRouter"),
-// 			RouterId:       foo.RouterId,
-// 			Role:           pulumi.String("InitiatingSide"),
-// 			Specification:  pulumi.String("Large.2"),
-// 			Description:    pulumi.String("test1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewRouterInterface(ctx, "interface", &vpc.RouterInterfaceArgs{
+//				OppositeRegion: pulumi.String("cn-beijing"),
+//				RouterType:     pulumi.String("VRouter"),
+//				RouterId:       foo.RouterId,
+//				Role:           pulumi.String("InitiatingSide"),
+//				Specification:  pulumi.String("Large.2"),
+//				Description:    pulumi.String("test1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // The router interface can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
+//
+//	$ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
+//
 // ```
 type RouterInterface struct {
 	pulumi.CustomResourceState
@@ -330,7 +335,7 @@ func (i *RouterInterface) ToRouterInterfaceOutputWithContext(ctx context.Context
 // RouterInterfaceArrayInput is an input type that accepts RouterInterfaceArray and RouterInterfaceArrayOutput values.
 // You can construct a concrete instance of `RouterInterfaceArrayInput` via:
 //
-//          RouterInterfaceArray{ RouterInterfaceArgs{...} }
+//	RouterInterfaceArray{ RouterInterfaceArgs{...} }
 type RouterInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -355,7 +360,7 @@ func (i RouterInterfaceArray) ToRouterInterfaceArrayOutputWithContext(ctx contex
 // RouterInterfaceMapInput is an input type that accepts RouterInterfaceMap and RouterInterfaceMapOutput values.
 // You can construct a concrete instance of `RouterInterfaceMapInput` via:
 //
-//          RouterInterfaceMap{ "key": RouterInterfaceArgs{...} }
+//	RouterInterfaceMap{ "key": RouterInterfaceArgs{...} }
 type RouterInterfaceMapInput interface {
 	pulumi.Input
 

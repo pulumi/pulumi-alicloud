@@ -18,26 +18,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
-// 			GroupName:  pulumi.StringRef("group1"),
-// 			NameRegex:  pulumi.StringRef("^user"),
-// 			OutputFile: pulumi.StringRef("users.txt"),
-// 			PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
-// 			PolicyType: pulumi.StringRef("Custom"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstUserId", usersDs.Users[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
+//				GroupName:  pulumi.StringRef("group1"),
+//				NameRegex:  pulumi.StringRef("^user"),
+//				OutputFile: pulumi.StringRef("users.txt"),
+//				PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
+//				PolicyType: pulumi.StringRef("Custom"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstUserId", usersDs.Users[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	var rv GetUsersResult

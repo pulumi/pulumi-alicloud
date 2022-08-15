@@ -17,27 +17,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewK8sCluster(ctx, "default", &edas.K8sClusterArgs{
-// 			CsClusterId: pulumi.String("xxxx-xxx-xxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edas.NewK8sCluster(ctx, "default", &edas.K8sClusterArgs{
+//				CsClusterId: pulumi.String("xxxx-xxx-xxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // EDAS cluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
+//
+//	$ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
+//
 // ```
 type K8sCluster struct {
 	pulumi.CustomResourceState
@@ -188,7 +193,7 @@ func (i *K8sCluster) ToK8sClusterOutputWithContext(ctx context.Context) K8sClust
 // K8sClusterArrayInput is an input type that accepts K8sClusterArray and K8sClusterArrayOutput values.
 // You can construct a concrete instance of `K8sClusterArrayInput` via:
 //
-//          K8sClusterArray{ K8sClusterArgs{...} }
+//	K8sClusterArray{ K8sClusterArgs{...} }
 type K8sClusterArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +218,7 @@ func (i K8sClusterArray) ToK8sClusterArrayOutputWithContext(ctx context.Context)
 // K8sClusterMapInput is an input type that accepts K8sClusterMap and K8sClusterMapOutput values.
 // You can construct a concrete instance of `K8sClusterMapInput` via:
 //
-//          K8sClusterMap{ "key": K8sClusterArgs{...} }
+//	K8sClusterMap{ "key": K8sClusterArgs{...} }
 type K8sClusterMapInput interface {
 	pulumi.Input
 

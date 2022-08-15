@@ -19,41 +19,44 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
-// 			NameRegex: pulumi.StringRef("^my-PhysicalConnection"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = expressconnect.NewVirtualBorderRouter(ctx, "example", &expressconnect.VirtualBorderRouterArgs{
-// 			LocalGatewayIp:          pulumi.String("10.0.0.1"),
-// 			PeerGatewayIp:           pulumi.String("10.0.0.2"),
-// 			PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-// 			PhysicalConnectionId:    pulumi.String(nameRegex.Connections[0].Id),
-// 			VirtualBorderRouterName: pulumi.String("example_value"),
-// 			VlanId:                  pulumi.Int(1),
-// 			MinRxInterval:           pulumi.Int(1000),
-// 			MinTxInterval:           pulumi.Int(1000),
-// 			DetectMultiplier:        pulumi.Int(10),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^my-PhysicalConnection"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewVirtualBorderRouter(ctx, "example", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    pulumi.String(nameRegex.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.String("example_value"),
+//				VlanId:                  pulumi.Int(1),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -61,7 +64,9 @@ import (
 // Express Connect Virtual Border Router can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
+//
+//	$ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
+//
 // ```
 type VirtualBorderRouter struct {
 	pulumi.CustomResourceState
@@ -350,7 +355,7 @@ func (i *VirtualBorderRouter) ToVirtualBorderRouterOutputWithContext(ctx context
 // VirtualBorderRouterArrayInput is an input type that accepts VirtualBorderRouterArray and VirtualBorderRouterArrayOutput values.
 // You can construct a concrete instance of `VirtualBorderRouterArrayInput` via:
 //
-//          VirtualBorderRouterArray{ VirtualBorderRouterArgs{...} }
+//	VirtualBorderRouterArray{ VirtualBorderRouterArgs{...} }
 type VirtualBorderRouterArrayInput interface {
 	pulumi.Input
 
@@ -375,7 +380,7 @@ func (i VirtualBorderRouterArray) ToVirtualBorderRouterArrayOutputWithContext(ct
 // VirtualBorderRouterMapInput is an input type that accepts VirtualBorderRouterMap and VirtualBorderRouterMapOutput values.
 // You can construct a concrete instance of `VirtualBorderRouterMapInput` via:
 //
-//          VirtualBorderRouterMap{ "key": VirtualBorderRouterArgs{...} }
+//	VirtualBorderRouterMap{ "key": VirtualBorderRouterArgs{...} }
 type VirtualBorderRouterMapInput interface {
 	pulumi.Input
 

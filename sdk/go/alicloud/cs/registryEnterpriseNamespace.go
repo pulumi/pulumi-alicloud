@@ -21,29 +21,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewRegistryEnterpriseNamespace(ctx, "my-namespace", &cs.RegistryEnterpriseNamespaceArgs{
-// 			AutoCreate:        pulumi.Bool(false),
-// 			DefaultVisibility: pulumi.String("PUBLIC"),
-// 			InstanceId:        pulumi.String("cri-xxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewRegistryEnterpriseNamespace(ctx, "my-namespace", &cs.RegistryEnterpriseNamespaceArgs{
+//				AutoCreate:        pulumi.Bool(false),
+//				DefaultVisibility: pulumi.String("PUBLIC"),
+//				InstanceId:        pulumi.String("cri-xxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+//
+//	$ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+//
 // ```
 type RegistryEnterpriseNamespace struct {
 	pulumi.CustomResourceState
@@ -178,7 +183,7 @@ func (i *RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutputWithCon
 // RegistryEnterpriseNamespaceArrayInput is an input type that accepts RegistryEnterpriseNamespaceArray and RegistryEnterpriseNamespaceArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseNamespaceArrayInput` via:
 //
-//          RegistryEnterpriseNamespaceArray{ RegistryEnterpriseNamespaceArgs{...} }
+//	RegistryEnterpriseNamespaceArray{ RegistryEnterpriseNamespaceArgs{...} }
 type RegistryEnterpriseNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +208,7 @@ func (i RegistryEnterpriseNamespaceArray) ToRegistryEnterpriseNamespaceArrayOutp
 // RegistryEnterpriseNamespaceMapInput is an input type that accepts RegistryEnterpriseNamespaceMap and RegistryEnterpriseNamespaceMapOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseNamespaceMapInput` via:
 //
-//          RegistryEnterpriseNamespaceMap{ "key": RegistryEnterpriseNamespaceArgs{...} }
+//	RegistryEnterpriseNamespaceMap{ "key": RegistryEnterpriseNamespaceArgs{...} }
 type RegistryEnterpriseNamespaceMapInput interface {
 	pulumi.Input
 

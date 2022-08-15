@@ -16,24 +16,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := actiontrail.NewTrailDeprecated(ctx, "foo", &actiontrail.TrailDeprecatedArgs{
-// 			EventRw:       pulumi.String("Write-test"),
-// 			OssBucketName: pulumi.Any(alicloud_oss_bucket.Bucket.Id),
-// 			RoleName:      pulumi.Any(alicloud_ram_role_policy_attachment.Attach.Role_name),
-// 			OssKeyPrefix:  pulumi.String("at-product-account-audit-B"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := actiontrail.NewTrailDeprecated(ctx, "foo", &actiontrail.TrailDeprecatedArgs{
+//				EventRw:       pulumi.String("Write-test"),
+//				OssBucketName: pulumi.Any(alicloud_oss_bucket.Bucket.Id),
+//				RoleName:      pulumi.Any(alicloud_ram_role_policy_attachment.Attach.Role_name),
+//				OssKeyPrefix:  pulumi.String("at-product-account-audit-B"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -41,7 +44,9 @@ import (
 // Action trail can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+//
+//	$ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+//
 // ```
 //
 // Deprecated: Resource renamed to `Trail`
@@ -246,7 +251,7 @@ func (i *TrailDeprecated) ToTrailDeprecatedOutputWithContext(ctx context.Context
 // TrailDeprecatedArrayInput is an input type that accepts TrailDeprecatedArray and TrailDeprecatedArrayOutput values.
 // You can construct a concrete instance of `TrailDeprecatedArrayInput` via:
 //
-//          TrailDeprecatedArray{ TrailDeprecatedArgs{...} }
+//	TrailDeprecatedArray{ TrailDeprecatedArgs{...} }
 type TrailDeprecatedArrayInput interface {
 	pulumi.Input
 
@@ -271,7 +276,7 @@ func (i TrailDeprecatedArray) ToTrailDeprecatedArrayOutputWithContext(ctx contex
 // TrailDeprecatedMapInput is an input type that accepts TrailDeprecatedMap and TrailDeprecatedMapOutput values.
 // You can construct a concrete instance of `TrailDeprecatedMapInput` via:
 //
-//          TrailDeprecatedMap{ "key": TrailDeprecatedArgs{...} }
+//	TrailDeprecatedMap{ "key": TrailDeprecatedArgs{...} }
 type TrailDeprecatedMapInput interface {
 	pulumi.Input
 

@@ -16,38 +16,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := slb.GetTlsCipherPolicies(ctx, &slb.GetTlsCipherPoliciesArgs{
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("slbTlsCipherPolicyId1", ids.Policies[0].Id)
-// 		nameRegex, err := slb.GetTlsCipherPolicies(ctx, &slb.GetTlsCipherPoliciesArgs{
-// 			NameRegex: pulumi.StringRef("^My-TlsCipherPolicy"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("slbTlsCipherPolicyId2", nameRegex.Policies[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := slb.GetTlsCipherPolicies(ctx, &slb.GetTlsCipherPoliciesArgs{
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("slbTlsCipherPolicyId1", ids.Policies[0].Id)
+//			nameRegex, err := slb.GetTlsCipherPolicies(ctx, &slb.GetTlsCipherPoliciesArgs{
+//				NameRegex: pulumi.StringRef("^My-TlsCipherPolicy"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("slbTlsCipherPolicyId2", nameRegex.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTlsCipherPolicies(ctx *pulumi.Context, args *GetTlsCipherPoliciesArgs, opts ...pulumi.InvokeOption) (*GetTlsCipherPoliciesResult, error) {
 	var rv GetTlsCipherPoliciesResult

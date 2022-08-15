@@ -20,79 +20,82 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "forward-entry-config-example-name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 			VpcName:   pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			VpcId:       defaultNetwork.ID(),
-// 			VswitchName: pulumi.String(name),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
-// 			Specification: pulumi.String("Small"),
-// 			VpcId:         defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
-// 			AddressName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
-// 			AllocationId: defaultEipAddress.ID(),
-// 			InstanceId:   defaultNatGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultForwardEntry, err := vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
-// 			ExternalIp:     defaultEipAddress.IpAddress,
-// 			ExternalPort:   pulumi.String("80"),
-// 			ForwardTableId: defaultNatGateway.ForwardTableIds,
-// 			InternalIp:     pulumi.String("172.16.0.3"),
-// 			InternalPort:   pulumi.String("8080"),
-// 			IpProtocol:     pulumi.String("tcp"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_ = vpc.GetForwardEntriesOutput(ctx, vpc.GetForwardEntriesOutputArgs{
-// 			ForwardTableId: defaultForwardEntry.ForwardTableId,
-// 		}, nil)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "forward-entry-config-example-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				VpcId:       defaultNetwork.ID(),
+//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
+//				Specification: pulumi.String("Small"),
+//				VpcId:         defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				AddressName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
+//				AllocationId: defaultEipAddress.ID(),
+//				InstanceId:   defaultNatGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultForwardEntry, err := vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
+//				ExternalIp:     defaultEipAddress.IpAddress,
+//				ExternalPort:   pulumi.String("80"),
+//				ForwardTableId: defaultNatGateway.ForwardTableIds,
+//				InternalIp:     pulumi.String("172.16.0.3"),
+//				InternalPort:   pulumi.String("8080"),
+//				IpProtocol:     pulumi.String("tcp"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = vpc.GetForwardEntriesOutput(ctx, vpc.GetForwardEntriesOutputArgs{
+//				ForwardTableId: defaultForwardEntry.ForwardTableId,
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetForwardEntries(ctx *pulumi.Context, args *GetForwardEntriesArgs, opts ...pulumi.InvokeOption) (*GetForwardEntriesResult, error) {
 	var rv GetForwardEntriesResult

@@ -16,40 +16,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := bastionhost.GetHostShareKeys(ctx, &bastionhost.GetHostShareKeysArgs{
-// 			InstanceId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("bastionhostHostShareKeyId1", ids.Keys[0].Id)
-// 		nameRegex, err := bastionhost.GetHostShareKeys(ctx, &bastionhost.GetHostShareKeysArgs{
-// 			InstanceId: "example_value",
-// 			NameRegex:  pulumi.StringRef("^my-HostShareKey"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("bastionhostHostShareKeyId2", nameRegex.Keys[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := bastionhost.GetHostShareKeys(ctx, &bastionhost.GetHostShareKeysArgs{
+//				InstanceId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostHostShareKeyId1", ids.Keys[0].Id)
+//			nameRegex, err := bastionhost.GetHostShareKeys(ctx, &bastionhost.GetHostShareKeysArgs{
+//				InstanceId: "example_value",
+//				NameRegex:  pulumi.StringRef("^my-HostShareKey"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostHostShareKeyId2", nameRegex.Keys[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHostShareKeys(ctx *pulumi.Context, args *GetHostShareKeysArgs, opts ...pulumi.InvokeOption) (*GetHostShareKeysResult, error) {
 	var rv GetHostShareKeysResult

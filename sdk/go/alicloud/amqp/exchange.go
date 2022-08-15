@@ -19,39 +19,42 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
-// 			InstanceId:      pulumi.String("amqp-abc12345"),
-// 			VirtualHostName: pulumi.String("my-VirtualHost"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = amqp.NewExchange(ctx, "exampleExchange", &amqp.ExchangeArgs{
-// 			AutoDeleteState: pulumi.Bool(false),
-// 			ExchangeName:    pulumi.String("my-Exchange"),
-// 			ExchangeType:    pulumi.String("DIRECT"),
-// 			InstanceId:      exampleVirtualHost.InstanceId,
-// 			Internal:        pulumi.Bool(false),
-// 			VirtualHostName: exampleVirtualHost.VirtualHostName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
+//				InstanceId:      pulumi.String("amqp-abc12345"),
+//				VirtualHostName: pulumi.String("my-VirtualHost"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewExchange(ctx, "exampleExchange", &amqp.ExchangeArgs{
+//				AutoDeleteState: pulumi.Bool(false),
+//				ExchangeName:    pulumi.String("my-Exchange"),
+//				ExchangeType:    pulumi.String("DIRECT"),
+//				InstanceId:      exampleVirtualHost.InstanceId,
+//				Internal:        pulumi.Bool(false),
+//				VirtualHostName: exampleVirtualHost.VirtualHostName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
+//
+//	$ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
+//
 // ```
 type Exchange struct {
 	pulumi.CustomResourceState
@@ -280,7 +285,7 @@ func (i *Exchange) ToExchangeOutputWithContext(ctx context.Context) ExchangeOutp
 // ExchangeArrayInput is an input type that accepts ExchangeArray and ExchangeArrayOutput values.
 // You can construct a concrete instance of `ExchangeArrayInput` via:
 //
-//          ExchangeArray{ ExchangeArgs{...} }
+//	ExchangeArray{ ExchangeArgs{...} }
 type ExchangeArrayInput interface {
 	pulumi.Input
 
@@ -305,7 +310,7 @@ func (i ExchangeArray) ToExchangeArrayOutputWithContext(ctx context.Context) Exc
 // ExchangeMapInput is an input type that accepts ExchangeMap and ExchangeMapOutput values.
 // You can construct a concrete instance of `ExchangeMapInput` via:
 //
-//          ExchangeMap{ "key": ExchangeArgs{...} }
+//	ExchangeMap{ "key": ExchangeArgs{...} }
 type ExchangeMapInput interface {
 	pulumi.Input
 
@@ -359,13 +364,13 @@ func (o ExchangeOutput) ExchangeName() pulumi.StringOutput {
 }
 
 // The type of the exchange. Valid values:
-// * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-// * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-// * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-// * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-//   When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-//   when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-//   The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+//   - FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
+//   - DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
+//   - TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
+//   - HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
+//     When binding Headers Exchange and Queue, set the key-value pair of the binding property;
+//     when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
+//     The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
 func (o ExchangeOutput) ExchangeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Exchange) pulumi.StringOutput { return v.ExchangeType }).(pulumi.StringOutput)
 }

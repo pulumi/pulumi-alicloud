@@ -176,6 +176,12 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Critical level alarm threshold value, which must be a numeric value currently.
         /// </summary>
         [Output("threshold")]
@@ -367,6 +373,18 @@ namespace Pulumi.AliCloud.Cms
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Critical level alarm threshold value, which must be a numeric value currently.
         /// </summary>
@@ -525,6 +543,18 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Critical level alarm threshold value, which must be a numeric value currently.

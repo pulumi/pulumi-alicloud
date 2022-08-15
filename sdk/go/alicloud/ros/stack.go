@@ -19,40 +19,44 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ros.NewStack(ctx, "example", &ros.StackArgs{
-// 			StackName: pulumi.String("tf-testaccstack"),
-// 			StackPolicyBody: pulumi.String(fmt.Sprintf(`    {
-//     	"Statement": [{
-//     		"Action": "Update:Delete",
-//     		"Resource": "*",
-//     		"Effect": "Allow",
-//     		"Principal": "*"
-//     	}]
-//     }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ros.NewStack(ctx, "example", &ros.StackArgs{
+//				StackName: pulumi.String("tf-testaccstack"),
+//				StackPolicyBody: pulumi.String(fmt.Sprintf(`    {
+//	    	"Statement": [{
+//	    		"Action": "Update:Delete",
+//	    		"Resource": "*",
+//	    		"Effect": "Allow",
+//	    		"Principal": "*"
+//	    	}]
+//	    }
 //
 // `)),
-// 			TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +64,9 @@ import (
 // ROS Stack can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ros/stack:Stack example <stack_id>
+//
+//	$ pulumi import alicloud:ros/stack:Stack example <stack_id>
+//
 // ```
 type Stack struct {
 	pulumi.CustomResourceState
@@ -347,7 +353,7 @@ func (i *Stack) ToStackOutputWithContext(ctx context.Context) StackOutput {
 // StackArrayInput is an input type that accepts StackArray and StackArrayOutput values.
 // You can construct a concrete instance of `StackArrayInput` via:
 //
-//          StackArray{ StackArgs{...} }
+//	StackArray{ StackArgs{...} }
 type StackArrayInput interface {
 	pulumi.Input
 
@@ -372,7 +378,7 @@ func (i StackArray) ToStackArrayOutputWithContext(ctx context.Context) StackArra
 // StackMapInput is an input type that accepts StackMap and StackMapOutput values.
 // You can construct a concrete instance of `StackMapInput` via:
 //
-//          StackMap{ "key": StackArgs{...} }
+//	StackMap{ "key": StackArgs{...} }
 type StackMapInput interface {
 	pulumi.Input
 

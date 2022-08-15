@@ -13,30 +13,33 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpc.NewCommonBandwithPackage(ctx, "foo", &vpc.CommonBandwithPackageArgs{
-// 			Bandwidth:            pulumi.String("1000"),
-// 			BandwidthPackageName: pulumi.String("test-common-bandwidth-package"),
-// 			Description:          pulumi.String("test-common-bandwidth-package"),
-// 			InternetChargeType:   pulumi.String("PayByBandwidth"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.NewCommonBandwithPackage(ctx, "foo", &vpc.CommonBandwithPackageArgs{
+//				Bandwidth:            pulumi.String("1000"),
+//				BandwidthPackageName: pulumi.String("test-common-bandwidth-package"),
+//				Description:          pulumi.String("test-common-bandwidth-package"),
+//				InternetChargeType:   pulumi.String("PayByBandwidth"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,7 +47,9 @@ import (
 // The common bandwidth package can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
+//
+//	$ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
+//
 // ```
 type CommonBandwithPackage struct {
 	pulumi.CustomResourceState
@@ -261,7 +266,7 @@ func (i *CommonBandwithPackage) ToCommonBandwithPackageOutputWithContext(ctx con
 // CommonBandwithPackageArrayInput is an input type that accepts CommonBandwithPackageArray and CommonBandwithPackageArrayOutput values.
 // You can construct a concrete instance of `CommonBandwithPackageArrayInput` via:
 //
-//          CommonBandwithPackageArray{ CommonBandwithPackageArgs{...} }
+//	CommonBandwithPackageArray{ CommonBandwithPackageArgs{...} }
 type CommonBandwithPackageArrayInput interface {
 	pulumi.Input
 
@@ -286,7 +291,7 @@ func (i CommonBandwithPackageArray) ToCommonBandwithPackageArrayOutputWithContex
 // CommonBandwithPackageMapInput is an input type that accepts CommonBandwithPackageMap and CommonBandwithPackageMapOutput values.
 // You can construct a concrete instance of `CommonBandwithPackageMapInput` via:
 //
-//          CommonBandwithPackageMap{ "key": CommonBandwithPackageArgs{...} }
+//	CommonBandwithPackageMap{ "key": CommonBandwithPackageArgs{...} }
 type CommonBandwithPackageMapInput interface {
 	pulumi.Input
 

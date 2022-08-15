@@ -22,6 +22,7 @@ class InstanceArgs:
                  vswitch_id: pulumi.Input[str],
                  config: Optional[pulumi.Input[str]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
@@ -38,12 +39,13 @@ class InstanceArgs:
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-        :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+        :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-        :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[str] service_version: （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
+        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -57,6 +59,8 @@ class InstanceArgs:
             pulumi.set(__self__, "config", config)
         if eip_max is not None:
             pulumi.set(__self__, "eip_max", eip_max)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if paid_type is not None:
@@ -148,7 +152,7 @@ class InstanceArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         """
         return pulumi.get(self, "config")
 
@@ -167,6 +171,18 @@ class InstanceArgs:
     @eip_max.setter
     def eip_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "eip_max", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @property
     @pulumi.getter
@@ -196,7 +212,7 @@ class InstanceArgs:
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
-        （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        The ID of security group for this instance. If the security group is empty, system will create a default one.
         """
         return pulumi.get(self, "security_group")
 
@@ -208,7 +224,7 @@ class InstanceArgs:
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> Optional[pulumi.Input[str]]:
         """
-        （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         """
         return pulumi.get(self, "service_version")
 
@@ -251,11 +267,13 @@ class _InstanceState:
                  eip_max: Optional[pulumi.Input[int]] = None,
                  end_point: Optional[pulumi.Input[str]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  spec_type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  topic_quota: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -263,7 +281,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -272,11 +290,17 @@ class _InstanceState:
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-        :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[str] service_version: （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
+        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input[int] status: The status of the instance. Valid values:
+               - 0: pending
+               - 1: deploying
+               - 5: running
+               - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
@@ -297,6 +321,8 @@ class _InstanceState:
             pulumi.set(__self__, "end_point", end_point)
         if io_max is not None:
             pulumi.set(__self__, "io_max", io_max)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if paid_type is not None:
@@ -307,6 +333,8 @@ class _InstanceState:
             pulumi.set(__self__, "service_version", service_version)
         if spec_type is not None:
             pulumi.set(__self__, "spec_type", spec_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if topic_quota is not None:
@@ -322,7 +350,7 @@ class _InstanceState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         """
         return pulumi.get(self, "config")
 
@@ -405,6 +433,18 @@ class _InstanceState:
         pulumi.set(self, "io_max", value)
 
     @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -432,7 +472,7 @@ class _InstanceState:
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
-        （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        The ID of security group for this instance. If the security group is empty, system will create a default one.
         """
         return pulumi.get(self, "security_group")
 
@@ -444,7 +484,7 @@ class _InstanceState:
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> Optional[pulumi.Input[str]]:
         """
-        （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         """
         return pulumi.get(self, "service_version")
 
@@ -463,6 +503,22 @@ class _InstanceState:
     @spec_type.setter
     def spec_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_type", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status of the instance. Valid values:
+        - 0: pending
+        - 1: deploying
+        - 5: running
+        - 15: expired
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -536,6 +592,7 @@ class Instance(pulumi.CustomResource):
                  disk_type: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
@@ -596,7 +653,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -604,10 +661,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-        :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[str] service_version: （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
+        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
@@ -689,6 +747,7 @@ class Instance(pulumi.CustomResource):
                  disk_type: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
@@ -720,6 +779,7 @@ class Instance(pulumi.CustomResource):
             if io_max is None and not opts.urn:
                 raise TypeError("Missing required property 'io_max'")
             __props__.__dict__["io_max"] = io_max
+            __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["name"] = name
             __props__.__dict__["paid_type"] = paid_type
             __props__.__dict__["security_group"] = security_group
@@ -733,6 +793,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["end_point"] = None
+            __props__.__dict__["status"] = None
             __props__.__dict__["vpc_id"] = None
             __props__.__dict__["zone_id"] = None
         super(Instance, __self__).__init__(
@@ -752,11 +813,13 @@ class Instance(pulumi.CustomResource):
             eip_max: Optional[pulumi.Input[int]] = None,
             end_point: Optional[pulumi.Input[str]] = None,
             io_max: Optional[pulumi.Input[int]] = None,
+            kms_key_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             paid_type: Optional[pulumi.Input[str]] = None,
             security_group: Optional[pulumi.Input[str]] = None,
             service_version: Optional[pulumi.Input[str]] = None,
             spec_type: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             topic_quota: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -769,7 +832,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -778,11 +841,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-        :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[str] service_version: （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
+        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input[int] status: The status of the instance. Valid values:
+               - 0: pending
+               - 1: deploying
+               - 5: running
+               - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
@@ -800,11 +869,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["eip_max"] = eip_max
         __props__.__dict__["end_point"] = end_point
         __props__.__dict__["io_max"] = io_max
+        __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["name"] = name
         __props__.__dict__["paid_type"] = paid_type
         __props__.__dict__["security_group"] = security_group
         __props__.__dict__["service_version"] = service_version
         __props__.__dict__["spec_type"] = spec_type
+        __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["topic_quota"] = topic_quota
         __props__.__dict__["vpc_id"] = vpc_id
@@ -816,7 +887,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[str]:
         """
-        （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         """
         return pulumi.get(self, "config")
 
@@ -871,6 +942,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "io_max")
 
     @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -890,7 +969,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> pulumi.Output[str]:
         """
-        （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+        The ID of security group for this instance. If the security group is empty, system will create a default one.
         """
         return pulumi.get(self, "security_group")
 
@@ -898,7 +977,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> pulumi.Output[str]:
         """
-        （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         """
         return pulumi.get(self, "service_version")
 
@@ -909,6 +988,18 @@ class Instance(pulumi.CustomResource):
         The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         """
         return pulumi.get(self, "spec_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[int]:
+        """
+        The status of the instance. Valid values:
+        - 0: pending
+        - 1: deploying
+        - 5: running
+        - 15: expired
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

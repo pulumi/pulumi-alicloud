@@ -24,82 +24,85 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-test"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
-// 			CpuCoreCount:       pulumi.IntRef(2),
-// 			MemorySize:         pulumi.Float64Ref(4),
-// 			KubernetesNodeRole: pulumi.StringRef("Worker"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("10.1.0.0/21"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VswitchName: pulumi.String(name),
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("10.1.1.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
-// 			KeyPairName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var defaultManagedKubernetes []*cs.ManagedKubernetes
-// 		for key0, _ := range 1 == true {
-// 			__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
-// 				ClusterSpec:               pulumi.String("ack.pro.small"),
-// 				IsEnterpriseSecurityGroup: pulumi.Bool(true),
-// 				WorkerNumber:              pulumi.Int(2),
-// 				Password:                  pulumi.String("Hello1234"),
-// 				PodCidr:                   pulumi.String("172.20.0.0/16"),
-// 				ServiceCidr:               pulumi.String("172.21.0.0/20"),
-// 				WorkerVswitchIds: pulumi.StringArray{
-// 					defaultSwitch.ID(),
-// 				},
-// 				WorkerInstanceTypes: pulumi.StringArray{
-// 					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// 				},
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			defaultManagedKubernetes = append(defaultManagedKubernetes, __res)
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-test"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:       pulumi.IntRef(2),
+//				MemorySize:         pulumi.Float64Ref(4),
+//				KubernetesNodeRole: pulumi.StringRef("Worker"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.1.1.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
+//				KeyPairName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var defaultManagedKubernetes []*cs.ManagedKubernetes
+//			for key0, _ := range 1 == true {
+//				__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
+//					ClusterSpec:               pulumi.String("ack.pro.small"),
+//					IsEnterpriseSecurityGroup: pulumi.Bool(true),
+//					WorkerNumber:              pulumi.Int(2),
+//					Password:                  pulumi.String("Hello1234"),
+//					PodCidr:                   pulumi.String("172.20.0.0/16"),
+//					ServiceCidr:               pulumi.String("172.21.0.0/20"),
+//					WorkerVswitchIds: pulumi.StringArray{
+//						defaultSwitch.ID(),
+//					},
+//					WorkerInstanceTypes: pulumi.StringArray{
+//						pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultManagedKubernetes = append(defaultManagedKubernetes, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // **Installing of addon**
 // When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
@@ -111,47 +114,50 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewKubernetesAddon(ctx, "ack-node-problem-detector", &cs.KubernetesAddonArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			Version:   pulumi.String("1.2.7"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"CpuLimit":              "",
-// 			"CpuRequest":            "100m",
-// 			"EnableWebhook":         true,
-// 			"HostNetwork":           false,
-// 			"IngressSlbNetworkType": "internet",
-// 			"IngressSlbSpec":        "slb.s2.small",
-// 			"MemoryLimit":           "",
-// 			"MemoryRequest":         "200Mi",
-// 			"NodeSelector":          []interface{}{},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err = cs.NewKubernetesAddon(ctx, "nginxIngressController", &cs.KubernetesAddonArgs{
-// 			ClusterId: pulumi.Any(_var.Cluster_id),
-// 			Version:   pulumi.String("v1.1.2-aliyun.2"),
-// 			Config:    pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewKubernetesAddon(ctx, "ack-node-problem-detector", &cs.KubernetesAddonArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				Version:   pulumi.String("1.2.7"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"CpuLimit":              "",
+//				"CpuRequest":            "100m",
+//				"EnableWebhook":         true,
+//				"HostNetwork":           false,
+//				"IngressSlbNetworkType": "internet",
+//				"IngressSlbSpec":        "slb.s2.small",
+//				"MemoryLimit":           "",
+//				"MemoryRequest":         "200Mi",
+//				"NodeSelector":          []interface{}{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cs.NewKubernetesAddon(ctx, "nginxIngressController", &cs.KubernetesAddonArgs{
+//				ClusterId: pulumi.Any(_var.Cluster_id),
+//				Version:   pulumi.String("v1.1.2-aliyun.2"),
+//				Config:    pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // **Upgrading of addon**
@@ -160,22 +166,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewKubernetesAddon(ctx, "ack-node-problem-detector", &cs.KubernetesAddonArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			Version:   pulumi.String("1.2.8"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewKubernetesAddon(ctx, "ack-node-problem-detector", &cs.KubernetesAddonArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				Version:   pulumi.String("1.2.8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -183,7 +192,9 @@ import (
 // Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon <cluster_id>:<addon_name>
+//
+//	$ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon <cluster_id>:<addon_name>
+//
 // ```
 type KubernetesAddon struct {
 	pulumi.CustomResourceState
@@ -325,7 +336,7 @@ func (i *KubernetesAddon) ToKubernetesAddonOutputWithContext(ctx context.Context
 // KubernetesAddonArrayInput is an input type that accepts KubernetesAddonArray and KubernetesAddonArrayOutput values.
 // You can construct a concrete instance of `KubernetesAddonArrayInput` via:
 //
-//          KubernetesAddonArray{ KubernetesAddonArgs{...} }
+//	KubernetesAddonArray{ KubernetesAddonArgs{...} }
 type KubernetesAddonArrayInput interface {
 	pulumi.Input
 
@@ -350,7 +361,7 @@ func (i KubernetesAddonArray) ToKubernetesAddonArrayOutputWithContext(ctx contex
 // KubernetesAddonMapInput is an input type that accepts KubernetesAddonMap and KubernetesAddonMapOutput values.
 // You can construct a concrete instance of `KubernetesAddonMapInput` via:
 //
-//          KubernetesAddonMap{ "key": KubernetesAddonArgs{...} }
+//	KubernetesAddonMap{ "key": KubernetesAddonArgs{...} }
 type KubernetesAddonMapInput interface {
 	pulumi.Input
 

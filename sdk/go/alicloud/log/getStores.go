@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := log.GetStores(ctx, &log.GetStoresArgs{
-// 			Project: "the_project_name",
-// 			Ids: []string{
-// 				"the_store_name",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstLogStoreId", example.Stores[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := log.GetStores(ctx, &log.GetStoresArgs{
+//				Project: "the_project_name",
+//				Ids: []string{
+//					"the_store_name",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstLogStoreId", example.Stores[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetStores(ctx *pulumi.Context, args *GetStoresArgs, opts ...pulumi.InvokeOption) (*GetStoresResult, error) {
 	var rv GetStoresResult

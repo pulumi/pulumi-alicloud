@@ -20,7 +20,7 @@ type AggregateCompliancePackConfigRule struct {
 // AggregateCompliancePackConfigRuleInput is an input type that accepts AggregateCompliancePackConfigRuleArgs and AggregateCompliancePackConfigRuleOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleInput` via:
 //
-//          AggregateCompliancePackConfigRuleArgs{...}
+//	AggregateCompliancePackConfigRuleArgs{...}
 type AggregateCompliancePackConfigRuleInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i AggregateCompliancePackConfigRuleArgs) ToAggregateCompliancePackConfigRu
 // AggregateCompliancePackConfigRuleArrayInput is an input type that accepts AggregateCompliancePackConfigRuleArray and AggregateCompliancePackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleArrayInput` via:
 //
-//          AggregateCompliancePackConfigRuleArray{ AggregateCompliancePackConfigRuleArgs{...} }
+//	AggregateCompliancePackConfigRuleArray{ AggregateCompliancePackConfigRuleArgs{...} }
 type AggregateCompliancePackConfigRuleArrayInput interface {
 	pulumi.Input
 
@@ -128,7 +128,7 @@ type AggregateCompliancePackConfigRuleConfigRuleParameter struct {
 // AggregateCompliancePackConfigRuleConfigRuleParameterInput is an input type that accepts AggregateCompliancePackConfigRuleConfigRuleParameterArgs and AggregateCompliancePackConfigRuleConfigRuleParameterOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleConfigRuleParameterInput` via:
 //
-//          AggregateCompliancePackConfigRuleConfigRuleParameterArgs{...}
+//	AggregateCompliancePackConfigRuleConfigRuleParameterArgs{...}
 type AggregateCompliancePackConfigRuleConfigRuleParameterInput interface {
 	pulumi.Input
 
@@ -158,7 +158,7 @@ func (i AggregateCompliancePackConfigRuleConfigRuleParameterArgs) ToAggregateCom
 // AggregateCompliancePackConfigRuleConfigRuleParameterArrayInput is an input type that accepts AggregateCompliancePackConfigRuleConfigRuleParameterArray and AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleConfigRuleParameterArrayInput` via:
 //
-//          AggregateCompliancePackConfigRuleConfigRuleParameterArray{ AggregateCompliancePackConfigRuleConfigRuleParameterArgs{...} }
+//	AggregateCompliancePackConfigRuleConfigRuleParameterArray{ AggregateCompliancePackConfigRuleConfigRuleParameterArgs{...} }
 type AggregateCompliancePackConfigRuleConfigRuleParameterArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +232,7 @@ type AggregateCompliancePackConfigRuleId struct {
 // AggregateCompliancePackConfigRuleIdInput is an input type that accepts AggregateCompliancePackConfigRuleIdArgs and AggregateCompliancePackConfigRuleIdOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleIdInput` via:
 //
-//          AggregateCompliancePackConfigRuleIdArgs{...}
+//	AggregateCompliancePackConfigRuleIdArgs{...}
 type AggregateCompliancePackConfigRuleIdInput interface {
 	pulumi.Input
 
@@ -260,7 +260,7 @@ func (i AggregateCompliancePackConfigRuleIdArgs) ToAggregateCompliancePackConfig
 // AggregateCompliancePackConfigRuleIdArrayInput is an input type that accepts AggregateCompliancePackConfigRuleIdArray and AggregateCompliancePackConfigRuleIdArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleIdArrayInput` via:
 //
-//          AggregateCompliancePackConfigRuleIdArray{ AggregateCompliancePackConfigRuleIdArgs{...} }
+//	AggregateCompliancePackConfigRuleIdArray{ AggregateCompliancePackConfigRuleIdArgs{...} }
 type AggregateCompliancePackConfigRuleIdArrayInput interface {
 	pulumi.Input
 
@@ -333,7 +333,7 @@ type AggregatorAggregatorAccount struct {
 // AggregatorAggregatorAccountInput is an input type that accepts AggregatorAggregatorAccountArgs and AggregatorAggregatorAccountOutput values.
 // You can construct a concrete instance of `AggregatorAggregatorAccountInput` via:
 //
-//          AggregatorAggregatorAccountArgs{...}
+//	AggregatorAggregatorAccountArgs{...}
 type AggregatorAggregatorAccountInput interface {
 	pulumi.Input
 
@@ -365,7 +365,7 @@ func (i AggregatorAggregatorAccountArgs) ToAggregatorAggregatorAccountOutputWith
 // AggregatorAggregatorAccountArrayInput is an input type that accepts AggregatorAggregatorAccountArray and AggregatorAggregatorAccountArrayOutput values.
 // You can construct a concrete instance of `AggregatorAggregatorAccountArrayInput` via:
 //
-//          AggregatorAggregatorAccountArray{ AggregatorAggregatorAccountArgs{...} }
+//	AggregatorAggregatorAccountArray{ AggregatorAggregatorAccountArgs{...} }
 type AggregatorAggregatorAccountArrayInput interface {
 	pulumi.Input
 
@@ -446,7 +446,7 @@ type CompliancePackConfigRule struct {
 // CompliancePackConfigRuleInput is an input type that accepts CompliancePackConfigRuleArgs and CompliancePackConfigRuleOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleInput` via:
 //
-//          CompliancePackConfigRuleArgs{...}
+//	CompliancePackConfigRuleArgs{...}
 type CompliancePackConfigRuleInput interface {
 	pulumi.Input
 
@@ -476,7 +476,7 @@ func (i CompliancePackConfigRuleArgs) ToCompliancePackConfigRuleOutputWithContex
 // CompliancePackConfigRuleArrayInput is an input type that accepts CompliancePackConfigRuleArray and CompliancePackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleArrayInput` via:
 //
-//          CompliancePackConfigRuleArray{ CompliancePackConfigRuleArgs{...} }
+//	CompliancePackConfigRuleArray{ CompliancePackConfigRuleArgs{...} }
 type CompliancePackConfigRuleArrayInput interface {
 	pulumi.Input
 
@@ -554,7 +554,7 @@ type CompliancePackConfigRuleConfigRuleParameter struct {
 // CompliancePackConfigRuleConfigRuleParameterInput is an input type that accepts CompliancePackConfigRuleConfigRuleParameterArgs and CompliancePackConfigRuleConfigRuleParameterOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleConfigRuleParameterInput` via:
 //
-//          CompliancePackConfigRuleConfigRuleParameterArgs{...}
+//	CompliancePackConfigRuleConfigRuleParameterArgs{...}
 type CompliancePackConfigRuleConfigRuleParameterInput interface {
 	pulumi.Input
 
@@ -584,7 +584,7 @@ func (i CompliancePackConfigRuleConfigRuleParameterArgs) ToCompliancePackConfigR
 // CompliancePackConfigRuleConfigRuleParameterArrayInput is an input type that accepts CompliancePackConfigRuleConfigRuleParameterArray and CompliancePackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleConfigRuleParameterArrayInput` via:
 //
-//          CompliancePackConfigRuleConfigRuleParameterArray{ CompliancePackConfigRuleConfigRuleParameterArgs{...} }
+//	CompliancePackConfigRuleConfigRuleParameterArray{ CompliancePackConfigRuleConfigRuleParameterArgs{...} }
 type CompliancePackConfigRuleConfigRuleParameterArrayInput interface {
 	pulumi.Input
 
@@ -658,7 +658,7 @@ type CompliancePackConfigRuleId struct {
 // CompliancePackConfigRuleIdInput is an input type that accepts CompliancePackConfigRuleIdArgs and CompliancePackConfigRuleIdOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleIdInput` via:
 //
-//          CompliancePackConfigRuleIdArgs{...}
+//	CompliancePackConfigRuleIdArgs{...}
 type CompliancePackConfigRuleIdInput interface {
 	pulumi.Input
 
@@ -686,7 +686,7 @@ func (i CompliancePackConfigRuleIdArgs) ToCompliancePackConfigRuleIdOutputWithCo
 // CompliancePackConfigRuleIdArrayInput is an input type that accepts CompliancePackConfigRuleIdArray and CompliancePackConfigRuleIdArrayOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleIdArrayInput` via:
 //
-//          CompliancePackConfigRuleIdArray{ CompliancePackConfigRuleIdArgs{...} }
+//	CompliancePackConfigRuleIdArray{ CompliancePackConfigRuleIdArgs{...} }
 type CompliancePackConfigRuleIdArrayInput interface {
 	pulumi.Input
 
@@ -771,7 +771,7 @@ type GetAggregateCompliancePacksPack struct {
 // GetAggregateCompliancePacksPackInput is an input type that accepts GetAggregateCompliancePacksPackArgs and GetAggregateCompliancePacksPackOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackInput` via:
 //
-//          GetAggregateCompliancePacksPackArgs{...}
+//	GetAggregateCompliancePacksPackArgs{...}
 type GetAggregateCompliancePacksPackInput interface {
 	pulumi.Input
 
@@ -815,7 +815,7 @@ func (i GetAggregateCompliancePacksPackArgs) ToGetAggregateCompliancePacksPackOu
 // GetAggregateCompliancePacksPackArrayInput is an input type that accepts GetAggregateCompliancePacksPackArray and GetAggregateCompliancePacksPackArrayOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackArrayInput` via:
 //
-//          GetAggregateCompliancePacksPackArray{ GetAggregateCompliancePacksPackArgs{...} }
+//	GetAggregateCompliancePacksPackArray{ GetAggregateCompliancePacksPackArgs{...} }
 type GetAggregateCompliancePacksPackArrayInput interface {
 	pulumi.Input
 
@@ -930,7 +930,7 @@ type GetAggregateCompliancePacksPackConfigRule struct {
 // GetAggregateCompliancePacksPackConfigRuleInput is an input type that accepts GetAggregateCompliancePacksPackConfigRuleArgs and GetAggregateCompliancePacksPackConfigRuleOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackConfigRuleInput` via:
 //
-//          GetAggregateCompliancePacksPackConfigRuleArgs{...}
+//	GetAggregateCompliancePacksPackConfigRuleArgs{...}
 type GetAggregateCompliancePacksPackConfigRuleInput interface {
 	pulumi.Input
 
@@ -962,7 +962,7 @@ func (i GetAggregateCompliancePacksPackConfigRuleArgs) ToGetAggregateComplianceP
 // GetAggregateCompliancePacksPackConfigRuleArrayInput is an input type that accepts GetAggregateCompliancePacksPackConfigRuleArray and GetAggregateCompliancePacksPackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackConfigRuleArrayInput` via:
 //
-//          GetAggregateCompliancePacksPackConfigRuleArray{ GetAggregateCompliancePacksPackConfigRuleArgs{...} }
+//	GetAggregateCompliancePacksPackConfigRuleArray{ GetAggregateCompliancePacksPackConfigRuleArgs{...} }
 type GetAggregateCompliancePacksPackConfigRuleArrayInput interface {
 	pulumi.Input
 
@@ -1047,7 +1047,7 @@ type GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter struct {
 // GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterInput is an input type that accepts GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs and GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterInput` via:
 //
-//          GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs{...}
+//	GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs{...}
 type GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterInput interface {
 	pulumi.Input
 
@@ -1079,7 +1079,7 @@ func (i GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs) ToGetA
 // GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayInput is an input type that accepts GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArray and GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayInput` via:
 //
-//          GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArray{ GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs{...} }
+//	GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArray{ GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs{...} }
 type GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayInput interface {
 	pulumi.Input
 
@@ -1202,7 +1202,7 @@ type GetAggregateConfigRulesRule struct {
 // GetAggregateConfigRulesRuleInput is an input type that accepts GetAggregateConfigRulesRuleArgs and GetAggregateConfigRulesRuleOutput values.
 // You can construct a concrete instance of `GetAggregateConfigRulesRuleInput` via:
 //
-//          GetAggregateConfigRulesRuleArgs{...}
+//	GetAggregateConfigRulesRuleArgs{...}
 type GetAggregateConfigRulesRuleInput interface {
 	pulumi.Input
 
@@ -1274,7 +1274,7 @@ func (i GetAggregateConfigRulesRuleArgs) ToGetAggregateConfigRulesRuleOutputWith
 // GetAggregateConfigRulesRuleArrayInput is an input type that accepts GetAggregateConfigRulesRuleArray and GetAggregateConfigRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetAggregateConfigRulesRuleArrayInput` via:
 //
-//          GetAggregateConfigRulesRuleArray{ GetAggregateConfigRulesRuleArgs{...} }
+//	GetAggregateConfigRulesRuleArray{ GetAggregateConfigRulesRuleArgs{...} }
 type GetAggregateConfigRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -1458,7 +1458,7 @@ type GetAggregateConfigRulesRuleCompliance struct {
 // GetAggregateConfigRulesRuleComplianceInput is an input type that accepts GetAggregateConfigRulesRuleComplianceArgs and GetAggregateConfigRulesRuleComplianceOutput values.
 // You can construct a concrete instance of `GetAggregateConfigRulesRuleComplianceInput` via:
 //
-//          GetAggregateConfigRulesRuleComplianceArgs{...}
+//	GetAggregateConfigRulesRuleComplianceArgs{...}
 type GetAggregateConfigRulesRuleComplianceInput interface {
 	pulumi.Input
 
@@ -1488,7 +1488,7 @@ func (i GetAggregateConfigRulesRuleComplianceArgs) ToGetAggregateConfigRulesRule
 // GetAggregateConfigRulesRuleComplianceArrayInput is an input type that accepts GetAggregateConfigRulesRuleComplianceArray and GetAggregateConfigRulesRuleComplianceArrayOutput values.
 // You can construct a concrete instance of `GetAggregateConfigRulesRuleComplianceArrayInput` via:
 //
-//          GetAggregateConfigRulesRuleComplianceArray{ GetAggregateConfigRulesRuleComplianceArgs{...} }
+//	GetAggregateConfigRulesRuleComplianceArray{ GetAggregateConfigRulesRuleComplianceArgs{...} }
 type GetAggregateConfigRulesRuleComplianceArrayInput interface {
 	pulumi.Input
 
@@ -1590,7 +1590,7 @@ type GetAggregateDeliveriesDelivery struct {
 // GetAggregateDeliveriesDeliveryInput is an input type that accepts GetAggregateDeliveriesDeliveryArgs and GetAggregateDeliveriesDeliveryOutput values.
 // You can construct a concrete instance of `GetAggregateDeliveriesDeliveryInput` via:
 //
-//          GetAggregateDeliveriesDeliveryArgs{...}
+//	GetAggregateDeliveriesDeliveryArgs{...}
 type GetAggregateDeliveriesDeliveryInput interface {
 	pulumi.Input
 
@@ -1646,7 +1646,7 @@ func (i GetAggregateDeliveriesDeliveryArgs) ToGetAggregateDeliveriesDeliveryOutp
 // GetAggregateDeliveriesDeliveryArrayInput is an input type that accepts GetAggregateDeliveriesDeliveryArray and GetAggregateDeliveriesDeliveryArrayOutput values.
 // You can construct a concrete instance of `GetAggregateDeliveriesDeliveryArrayInput` via:
 //
-//          GetAggregateDeliveriesDeliveryArray{ GetAggregateDeliveriesDeliveryArgs{...} }
+//	GetAggregateDeliveriesDeliveryArray{ GetAggregateDeliveriesDeliveryArgs{...} }
 type GetAggregateDeliveriesDeliveryArrayInput interface {
 	pulumi.Input
 
@@ -1799,7 +1799,7 @@ type GetAggregatorsAggregator struct {
 // GetAggregatorsAggregatorInput is an input type that accepts GetAggregatorsAggregatorArgs and GetAggregatorsAggregatorOutput values.
 // You can construct a concrete instance of `GetAggregatorsAggregatorInput` via:
 //
-//          GetAggregatorsAggregatorArgs{...}
+//	GetAggregatorsAggregatorArgs{...}
 type GetAggregatorsAggregatorInput interface {
 	pulumi.Input
 
@@ -1841,7 +1841,7 @@ func (i GetAggregatorsAggregatorArgs) ToGetAggregatorsAggregatorOutputWithContex
 // GetAggregatorsAggregatorArrayInput is an input type that accepts GetAggregatorsAggregatorArray and GetAggregatorsAggregatorArrayOutput values.
 // You can construct a concrete instance of `GetAggregatorsAggregatorArrayInput` via:
 //
-//          GetAggregatorsAggregatorArray{ GetAggregatorsAggregatorArgs{...} }
+//	GetAggregatorsAggregatorArray{ GetAggregatorsAggregatorArgs{...} }
 type GetAggregatorsAggregatorArrayInput interface {
 	pulumi.Input
 
@@ -1951,7 +1951,7 @@ type GetAggregatorsAggregatorAggregatorAccount struct {
 // GetAggregatorsAggregatorAggregatorAccountInput is an input type that accepts GetAggregatorsAggregatorAggregatorAccountArgs and GetAggregatorsAggregatorAggregatorAccountOutput values.
 // You can construct a concrete instance of `GetAggregatorsAggregatorAggregatorAccountInput` via:
 //
-//          GetAggregatorsAggregatorAggregatorAccountArgs{...}
+//	GetAggregatorsAggregatorAggregatorAccountArgs{...}
 type GetAggregatorsAggregatorAggregatorAccountInput interface {
 	pulumi.Input
 
@@ -1983,7 +1983,7 @@ func (i GetAggregatorsAggregatorAggregatorAccountArgs) ToGetAggregatorsAggregato
 // GetAggregatorsAggregatorAggregatorAccountArrayInput is an input type that accepts GetAggregatorsAggregatorAggregatorAccountArray and GetAggregatorsAggregatorAggregatorAccountArrayOutput values.
 // You can construct a concrete instance of `GetAggregatorsAggregatorAggregatorAccountArrayInput` via:
 //
-//          GetAggregatorsAggregatorAggregatorAccountArray{ GetAggregatorsAggregatorAggregatorAccountArgs{...} }
+//	GetAggregatorsAggregatorAggregatorAccountArray{ GetAggregatorsAggregatorAggregatorAccountArgs{...} }
 type GetAggregatorsAggregatorAggregatorAccountArrayInput interface {
 	pulumi.Input
 
@@ -2078,7 +2078,7 @@ type GetCompliancePacksPack struct {
 // GetCompliancePacksPackInput is an input type that accepts GetCompliancePacksPackArgs and GetCompliancePacksPackOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackInput` via:
 //
-//          GetCompliancePacksPackArgs{...}
+//	GetCompliancePacksPackArgs{...}
 type GetCompliancePacksPackInput interface {
 	pulumi.Input
 
@@ -2122,7 +2122,7 @@ func (i GetCompliancePacksPackArgs) ToGetCompliancePacksPackOutputWithContext(ct
 // GetCompliancePacksPackArrayInput is an input type that accepts GetCompliancePacksPackArray and GetCompliancePacksPackArrayOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackArrayInput` via:
 //
-//          GetCompliancePacksPackArray{ GetCompliancePacksPackArgs{...} }
+//	GetCompliancePacksPackArray{ GetCompliancePacksPackArgs{...} }
 type GetCompliancePacksPackArrayInput interface {
 	pulumi.Input
 
@@ -2235,7 +2235,7 @@ type GetCompliancePacksPackConfigRule struct {
 // GetCompliancePacksPackConfigRuleInput is an input type that accepts GetCompliancePacksPackConfigRuleArgs and GetCompliancePacksPackConfigRuleOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackConfigRuleInput` via:
 //
-//          GetCompliancePacksPackConfigRuleArgs{...}
+//	GetCompliancePacksPackConfigRuleArgs{...}
 type GetCompliancePacksPackConfigRuleInput interface {
 	pulumi.Input
 
@@ -2267,7 +2267,7 @@ func (i GetCompliancePacksPackConfigRuleArgs) ToGetCompliancePacksPackConfigRule
 // GetCompliancePacksPackConfigRuleArrayInput is an input type that accepts GetCompliancePacksPackConfigRuleArray and GetCompliancePacksPackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackConfigRuleArrayInput` via:
 //
-//          GetCompliancePacksPackConfigRuleArray{ GetCompliancePacksPackConfigRuleArgs{...} }
+//	GetCompliancePacksPackConfigRuleArray{ GetCompliancePacksPackConfigRuleArgs{...} }
 type GetCompliancePacksPackConfigRuleArrayInput interface {
 	pulumi.Input
 
@@ -2352,7 +2352,7 @@ type GetCompliancePacksPackConfigRuleConfigRuleParameter struct {
 // GetCompliancePacksPackConfigRuleConfigRuleParameterInput is an input type that accepts GetCompliancePacksPackConfigRuleConfigRuleParameterArgs and GetCompliancePacksPackConfigRuleConfigRuleParameterOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackConfigRuleConfigRuleParameterInput` via:
 //
-//          GetCompliancePacksPackConfigRuleConfigRuleParameterArgs{...}
+//	GetCompliancePacksPackConfigRuleConfigRuleParameterArgs{...}
 type GetCompliancePacksPackConfigRuleConfigRuleParameterInput interface {
 	pulumi.Input
 
@@ -2384,7 +2384,7 @@ func (i GetCompliancePacksPackConfigRuleConfigRuleParameterArgs) ToGetCompliance
 // GetCompliancePacksPackConfigRuleConfigRuleParameterArrayInput is an input type that accepts GetCompliancePacksPackConfigRuleConfigRuleParameterArray and GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackConfigRuleConfigRuleParameterArrayInput` via:
 //
-//          GetCompliancePacksPackConfigRuleConfigRuleParameterArray{ GetCompliancePacksPackConfigRuleConfigRuleParameterArgs{...} }
+//	GetCompliancePacksPackConfigRuleConfigRuleParameterArray{ GetCompliancePacksPackConfigRuleConfigRuleParameterArgs{...} }
 type GetCompliancePacksPackConfigRuleConfigRuleParameterArrayInput interface {
 	pulumi.Input
 
@@ -2473,7 +2473,7 @@ type GetConfigurationRecordersRecorder struct {
 // GetConfigurationRecordersRecorderInput is an input type that accepts GetConfigurationRecordersRecorderArgs and GetConfigurationRecordersRecorderOutput values.
 // You can construct a concrete instance of `GetConfigurationRecordersRecorderInput` via:
 //
-//          GetConfigurationRecordersRecorderArgs{...}
+//	GetConfigurationRecordersRecorderArgs{...}
 type GetConfigurationRecordersRecorderInput interface {
 	pulumi.Input
 
@@ -2511,7 +2511,7 @@ func (i GetConfigurationRecordersRecorderArgs) ToGetConfigurationRecordersRecord
 // GetConfigurationRecordersRecorderArrayInput is an input type that accepts GetConfigurationRecordersRecorderArray and GetConfigurationRecordersRecorderArrayOutput values.
 // You can construct a concrete instance of `GetConfigurationRecordersRecorderArrayInput` via:
 //
-//          GetConfigurationRecordersRecorderArray{ GetConfigurationRecordersRecorderArgs{...} }
+//	GetConfigurationRecordersRecorderArray{ GetConfigurationRecordersRecorderArgs{...} }
 type GetConfigurationRecordersRecorderArrayInput interface {
 	pulumi.Input
 
@@ -2631,7 +2631,7 @@ type GetDeliveriesDelivery struct {
 // GetDeliveriesDeliveryInput is an input type that accepts GetDeliveriesDeliveryArgs and GetDeliveriesDeliveryOutput values.
 // You can construct a concrete instance of `GetDeliveriesDeliveryInput` via:
 //
-//          GetDeliveriesDeliveryArgs{...}
+//	GetDeliveriesDeliveryArgs{...}
 type GetDeliveriesDeliveryInput interface {
 	pulumi.Input
 
@@ -2685,7 +2685,7 @@ func (i GetDeliveriesDeliveryArgs) ToGetDeliveriesDeliveryOutputWithContext(ctx 
 // GetDeliveriesDeliveryArrayInput is an input type that accepts GetDeliveriesDeliveryArray and GetDeliveriesDeliveryArrayOutput values.
 // You can construct a concrete instance of `GetDeliveriesDeliveryArrayInput` via:
 //
-//          GetDeliveriesDeliveryArray{ GetDeliveriesDeliveryArgs{...} }
+//	GetDeliveriesDeliveryArray{ GetDeliveriesDeliveryArgs{...} }
 type GetDeliveriesDeliveryArrayInput interface {
 	pulumi.Input
 
@@ -2835,7 +2835,7 @@ type GetDeliveryChannelsChannel struct {
 // GetDeliveryChannelsChannelInput is an input type that accepts GetDeliveryChannelsChannelArgs and GetDeliveryChannelsChannelOutput values.
 // You can construct a concrete instance of `GetDeliveryChannelsChannelInput` via:
 //
-//          GetDeliveryChannelsChannelArgs{...}
+//	GetDeliveryChannelsChannelArgs{...}
 type GetDeliveryChannelsChannelInput interface {
 	pulumi.Input
 
@@ -2879,7 +2879,7 @@ func (i GetDeliveryChannelsChannelArgs) ToGetDeliveryChannelsChannelOutputWithCo
 // GetDeliveryChannelsChannelArrayInput is an input type that accepts GetDeliveryChannelsChannelArray and GetDeliveryChannelsChannelArrayOutput values.
 // You can construct a concrete instance of `GetDeliveryChannelsChannelArrayInput` via:
 //
-//          GetDeliveryChannelsChannelArray{ GetDeliveryChannelsChannelArgs{...} }
+//	GetDeliveryChannelsChannelArray{ GetDeliveryChannelsChannelArgs{...} }
 type GetDeliveryChannelsChannelArrayInput interface {
 	pulumi.Input
 
@@ -3042,7 +3042,7 @@ type GetRulesRule struct {
 // GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
 // You can construct a concrete instance of `GetRulesRuleInput` via:
 //
-//          GetRulesRuleArgs{...}
+//	GetRulesRuleArgs{...}
 type GetRulesRuleInput interface {
 	pulumi.Input
 
@@ -3124,7 +3124,7 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
-//          GetRulesRuleArray{ GetRulesRuleArgs{...} }
+//	GetRulesRuleArray{ GetRulesRuleArgs{...} }
 type GetRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -3327,7 +3327,7 @@ type GetRulesRuleCompliance struct {
 // GetRulesRuleComplianceInput is an input type that accepts GetRulesRuleComplianceArgs and GetRulesRuleComplianceOutput values.
 // You can construct a concrete instance of `GetRulesRuleComplianceInput` via:
 //
-//          GetRulesRuleComplianceArgs{...}
+//	GetRulesRuleComplianceArgs{...}
 type GetRulesRuleComplianceInput interface {
 	pulumi.Input
 
@@ -3357,7 +3357,7 @@ func (i GetRulesRuleComplianceArgs) ToGetRulesRuleComplianceOutputWithContext(ct
 // GetRulesRuleComplianceArrayInput is an input type that accepts GetRulesRuleComplianceArray and GetRulesRuleComplianceArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleComplianceArrayInput` via:
 //
-//          GetRulesRuleComplianceArray{ GetRulesRuleComplianceArgs{...} }
+//	GetRulesRuleComplianceArray{ GetRulesRuleComplianceArgs{...} }
 type GetRulesRuleComplianceArrayInput interface {
 	pulumi.Input
 

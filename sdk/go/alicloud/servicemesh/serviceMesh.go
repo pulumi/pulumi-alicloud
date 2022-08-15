@@ -22,7 +22,9 @@ import (
 // Service Mesh Service Mesh can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
+//
+//	$ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
+//
 // ```
 type ServiceMesh struct {
 	pulumi.CustomResourceState
@@ -209,7 +211,7 @@ func (i *ServiceMesh) ToServiceMeshOutputWithContext(ctx context.Context) Servic
 // ServiceMeshArrayInput is an input type that accepts ServiceMeshArray and ServiceMeshArrayOutput values.
 // You can construct a concrete instance of `ServiceMeshArrayInput` via:
 //
-//          ServiceMeshArray{ ServiceMeshArgs{...} }
+//	ServiceMeshArray{ ServiceMeshArgs{...} }
 type ServiceMeshArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +236,7 @@ func (i ServiceMeshArray) ToServiceMeshArrayOutputWithContext(ctx context.Contex
 // ServiceMeshMapInput is an input type that accepts ServiceMeshMap and ServiceMeshMapOutput values.
 // You can construct a concrete instance of `ServiceMeshMapInput` via:
 //
-//          ServiceMeshMap{ "key": ServiceMeshArgs{...} }
+//	ServiceMeshMap{ "key": ServiceMeshArgs{...} }
 type ServiceMeshMapInput interface {
 	pulumi.Input
 

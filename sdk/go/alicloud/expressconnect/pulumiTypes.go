@@ -36,7 +36,7 @@ type GetAccessPointsPoint struct {
 // GetAccessPointsPointInput is an input type that accepts GetAccessPointsPointArgs and GetAccessPointsPointOutput values.
 // You can construct a concrete instance of `GetAccessPointsPointInput` via:
 //
-//          GetAccessPointsPointArgs{...}
+//	GetAccessPointsPointArgs{...}
 type GetAccessPointsPointInput interface {
 	pulumi.Input
 
@@ -82,7 +82,7 @@ func (i GetAccessPointsPointArgs) ToGetAccessPointsPointOutputWithContext(ctx co
 // GetAccessPointsPointArrayInput is an input type that accepts GetAccessPointsPointArray and GetAccessPointsPointArrayOutput values.
 // You can construct a concrete instance of `GetAccessPointsPointArrayInput` via:
 //
-//          GetAccessPointsPointArray{ GetAccessPointsPointArgs{...} }
+//	GetAccessPointsPointArray{ GetAccessPointsPointArgs{...} }
 type GetAccessPointsPointArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +200,7 @@ type GetAccessPointsPointAccessPointFeatureModel struct {
 // GetAccessPointsPointAccessPointFeatureModelInput is an input type that accepts GetAccessPointsPointAccessPointFeatureModelArgs and GetAccessPointsPointAccessPointFeatureModelOutput values.
 // You can construct a concrete instance of `GetAccessPointsPointAccessPointFeatureModelInput` via:
 //
-//          GetAccessPointsPointAccessPointFeatureModelArgs{...}
+//	GetAccessPointsPointAccessPointFeatureModelArgs{...}
 type GetAccessPointsPointAccessPointFeatureModelInput interface {
 	pulumi.Input
 
@@ -230,7 +230,7 @@ func (i GetAccessPointsPointAccessPointFeatureModelArgs) ToGetAccessPointsPointA
 // GetAccessPointsPointAccessPointFeatureModelArrayInput is an input type that accepts GetAccessPointsPointAccessPointFeatureModelArray and GetAccessPointsPointAccessPointFeatureModelArrayOutput values.
 // You can construct a concrete instance of `GetAccessPointsPointAccessPointFeatureModelArrayInput` via:
 //
-//          GetAccessPointsPointAccessPointFeatureModelArray{ GetAccessPointsPointAccessPointFeatureModelArgs{...} }
+//	GetAccessPointsPointAccessPointFeatureModelArray{ GetAccessPointsPointAccessPointFeatureModelArgs{...} }
 type GetAccessPointsPointAccessPointFeatureModelArrayInput interface {
 	pulumi.Input
 
@@ -354,7 +354,7 @@ type GetPhysicalConnectionsConnection struct {
 // GetPhysicalConnectionsConnectionInput is an input type that accepts GetPhysicalConnectionsConnectionArgs and GetPhysicalConnectionsConnectionOutput values.
 // You can construct a concrete instance of `GetPhysicalConnectionsConnectionInput` via:
 //
-//          GetPhysicalConnectionsConnectionArgs{...}
+//	GetPhysicalConnectionsConnectionArgs{...}
 type GetPhysicalConnectionsConnectionInput interface {
 	pulumi.Input
 
@@ -432,7 +432,7 @@ func (i GetPhysicalConnectionsConnectionArgs) ToGetPhysicalConnectionsConnection
 // GetPhysicalConnectionsConnectionArrayInput is an input type that accepts GetPhysicalConnectionsConnectionArray and GetPhysicalConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetPhysicalConnectionsConnectionArrayInput` via:
 //
-//          GetPhysicalConnectionsConnectionArray{ GetPhysicalConnectionsConnectionArgs{...} }
+//	GetPhysicalConnectionsConnectionArray{ GetPhysicalConnectionsConnectionArgs{...} }
 type GetPhysicalConnectionsConnectionArrayInput interface {
 	pulumi.Input
 
@@ -629,7 +629,7 @@ type GetVirtualBorderRoutersFilter struct {
 // GetVirtualBorderRoutersFilterInput is an input type that accepts GetVirtualBorderRoutersFilterArgs and GetVirtualBorderRoutersFilterOutput values.
 // You can construct a concrete instance of `GetVirtualBorderRoutersFilterInput` via:
 //
-//          GetVirtualBorderRoutersFilterArgs{...}
+//	GetVirtualBorderRoutersFilterArgs{...}
 type GetVirtualBorderRoutersFilterInput interface {
 	pulumi.Input
 
@@ -660,7 +660,7 @@ func (i GetVirtualBorderRoutersFilterArgs) ToGetVirtualBorderRoutersFilterOutput
 // GetVirtualBorderRoutersFilterArrayInput is an input type that accepts GetVirtualBorderRoutersFilterArray and GetVirtualBorderRoutersFilterArrayOutput values.
 // You can construct a concrete instance of `GetVirtualBorderRoutersFilterArrayInput` via:
 //
-//          GetVirtualBorderRoutersFilterArray{ GetVirtualBorderRoutersFilterArgs{...} }
+//	GetVirtualBorderRoutersFilterArray{ GetVirtualBorderRoutersFilterArgs{...} }
 type GetVirtualBorderRoutersFilterArrayInput interface {
 	pulumi.Input
 
@@ -797,7 +797,7 @@ type GetVirtualBorderRoutersRouter struct {
 // GetVirtualBorderRoutersRouterInput is an input type that accepts GetVirtualBorderRoutersRouterArgs and GetVirtualBorderRoutersRouterOutput values.
 // You can construct a concrete instance of `GetVirtualBorderRoutersRouterInput` via:
 //
-//          GetVirtualBorderRoutersRouterArgs{...}
+//	GetVirtualBorderRoutersRouterArgs{...}
 type GetVirtualBorderRoutersRouterInput interface {
 	pulumi.Input
 
@@ -887,7 +887,7 @@ func (i GetVirtualBorderRoutersRouterArgs) ToGetVirtualBorderRoutersRouterOutput
 // GetVirtualBorderRoutersRouterArrayInput is an input type that accepts GetVirtualBorderRoutersRouterArray and GetVirtualBorderRoutersRouterArrayOutput values.
 // You can construct a concrete instance of `GetVirtualBorderRoutersRouterArrayInput` via:
 //
-//          GetVirtualBorderRoutersRouterArray{ GetVirtualBorderRoutersRouterArgs{...} }
+//	GetVirtualBorderRoutersRouterArray{ GetVirtualBorderRoutersRouterArgs{...} }
 type GetVirtualBorderRoutersRouterArrayInput interface {
 	pulumi.Input
 

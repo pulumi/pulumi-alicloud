@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Endpoint{}
 	case "alicloud:polardb/endpointAddress:EndpointAddress":
 		r = &EndpointAddress{}
+	case "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork":
+		r = &GlobalDatabaseNetwork{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -81,6 +83,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"polardb/endpointAddress",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/globalDatabaseNetwork",
 		&module{version},
 	)
 }

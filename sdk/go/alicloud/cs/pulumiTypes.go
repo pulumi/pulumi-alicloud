@@ -20,7 +20,7 @@ type ApplicationService struct {
 // ApplicationServiceInput is an input type that accepts ApplicationServiceArgs and ApplicationServiceOutput values.
 // You can construct a concrete instance of `ApplicationServiceInput` via:
 //
-//          ApplicationServiceArgs{...}
+//	ApplicationServiceArgs{...}
 type ApplicationServiceInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i ApplicationServiceArgs) ToApplicationServiceOutputWithContext(ctx contex
 // ApplicationServiceArrayInput is an input type that accepts ApplicationServiceArray and ApplicationServiceArrayOutput values.
 // You can construct a concrete instance of `ApplicationServiceArrayInput` via:
 //
-//          ApplicationServiceArray{ ApplicationServiceArgs{...} }
+//	ApplicationServiceArray{ ApplicationServiceArgs{...} }
 type ApplicationServiceArrayInput interface {
 	pulumi.Input
 
@@ -133,7 +133,7 @@ type ClusterNode struct {
 // ClusterNodeInput is an input type that accepts ClusterNodeArgs and ClusterNodeOutput values.
 // You can construct a concrete instance of `ClusterNodeInput` via:
 //
-//          ClusterNodeArgs{...}
+//	ClusterNodeArgs{...}
 type ClusterNodeInput interface {
 	pulumi.Input
 
@@ -164,7 +164,7 @@ func (i ClusterNodeArgs) ToClusterNodeOutputWithContext(ctx context.Context) Clu
 // ClusterNodeArrayInput is an input type that accepts ClusterNodeArray and ClusterNodeArrayOutput values.
 // You can construct a concrete instance of `ClusterNodeArrayInput` via:
 //
-//          ClusterNodeArray{ ClusterNodeArgs{...} }
+//	ClusterNodeArray{ ClusterNodeArgs{...} }
 type ClusterNodeArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +250,7 @@ type EdgeKubernetesAddon struct {
 // EdgeKubernetesAddonInput is an input type that accepts EdgeKubernetesAddonArgs and EdgeKubernetesAddonOutput values.
 // You can construct a concrete instance of `EdgeKubernetesAddonInput` via:
 //
-//          EdgeKubernetesAddonArgs{...}
+//	EdgeKubernetesAddonArgs{...}
 type EdgeKubernetesAddonInput interface {
 	pulumi.Input
 
@@ -280,7 +280,7 @@ func (i EdgeKubernetesAddonArgs) ToEdgeKubernetesAddonOutputWithContext(ctx cont
 // EdgeKubernetesAddonArrayInput is an input type that accepts EdgeKubernetesAddonArray and EdgeKubernetesAddonArrayOutput values.
 // You can construct a concrete instance of `EdgeKubernetesAddonArrayInput` via:
 //
-//          EdgeKubernetesAddonArray{ EdgeKubernetesAddonArgs{...} }
+//	EdgeKubernetesAddonArray{ EdgeKubernetesAddonArgs{...} }
 type EdgeKubernetesAddonArrayInput interface {
 	pulumi.Input
 
@@ -361,7 +361,7 @@ type EdgeKubernetesCertificateAuthority struct {
 // EdgeKubernetesCertificateAuthorityInput is an input type that accepts EdgeKubernetesCertificateAuthorityArgs and EdgeKubernetesCertificateAuthorityOutput values.
 // You can construct a concrete instance of `EdgeKubernetesCertificateAuthorityInput` via:
 //
-//          EdgeKubernetesCertificateAuthorityArgs{...}
+//	EdgeKubernetesCertificateAuthorityArgs{...}
 type EdgeKubernetesCertificateAuthorityInput interface {
 	pulumi.Input
 
@@ -401,11 +401,11 @@ func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAutho
 // EdgeKubernetesCertificateAuthorityPtrInput is an input type that accepts EdgeKubernetesCertificateAuthorityArgs, EdgeKubernetesCertificateAuthorityPtr and EdgeKubernetesCertificateAuthorityPtrOutput values.
 // You can construct a concrete instance of `EdgeKubernetesCertificateAuthorityPtrInput` via:
 //
-//          EdgeKubernetesCertificateAuthorityArgs{...}
+//	        EdgeKubernetesCertificateAuthorityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EdgeKubernetesCertificateAuthorityPtrInput interface {
 	pulumi.Input
 
@@ -534,7 +534,7 @@ type EdgeKubernetesConnections struct {
 // EdgeKubernetesConnectionsInput is an input type that accepts EdgeKubernetesConnectionsArgs and EdgeKubernetesConnectionsOutput values.
 // You can construct a concrete instance of `EdgeKubernetesConnectionsInput` via:
 //
-//          EdgeKubernetesConnectionsArgs{...}
+//	EdgeKubernetesConnectionsArgs{...}
 type EdgeKubernetesConnectionsInput interface {
 	pulumi.Input
 
@@ -572,11 +572,11 @@ func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsPtrOutputWithC
 // EdgeKubernetesConnectionsPtrInput is an input type that accepts EdgeKubernetesConnectionsArgs, EdgeKubernetesConnectionsPtr and EdgeKubernetesConnectionsPtrOutput values.
 // You can construct a concrete instance of `EdgeKubernetesConnectionsPtrInput` via:
 //
-//          EdgeKubernetesConnectionsArgs{...}
+//	        EdgeKubernetesConnectionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EdgeKubernetesConnectionsPtrInput interface {
 	pulumi.Input
 
@@ -710,7 +710,7 @@ type EdgeKubernetesLogConfig struct {
 // EdgeKubernetesLogConfigInput is an input type that accepts EdgeKubernetesLogConfigArgs and EdgeKubernetesLogConfigOutput values.
 // You can construct a concrete instance of `EdgeKubernetesLogConfigInput` via:
 //
-//          EdgeKubernetesLogConfigArgs{...}
+//	EdgeKubernetesLogConfigArgs{...}
 type EdgeKubernetesLogConfigInput interface {
 	pulumi.Input
 
@@ -746,11 +746,11 @@ func (i EdgeKubernetesLogConfigArgs) ToEdgeKubernetesLogConfigPtrOutputWithConte
 // EdgeKubernetesLogConfigPtrInput is an input type that accepts EdgeKubernetesLogConfigArgs, EdgeKubernetesLogConfigPtr and EdgeKubernetesLogConfigPtrOutput values.
 // You can construct a concrete instance of `EdgeKubernetesLogConfigPtrInput` via:
 //
-//          EdgeKubernetesLogConfigArgs{...}
+//	        EdgeKubernetesLogConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EdgeKubernetesLogConfigPtrInput interface {
 	pulumi.Input
 
@@ -871,7 +871,7 @@ type EdgeKubernetesWorkerDataDisk struct {
 // EdgeKubernetesWorkerDataDiskInput is an input type that accepts EdgeKubernetesWorkerDataDiskArgs and EdgeKubernetesWorkerDataDiskOutput values.
 // You can construct a concrete instance of `EdgeKubernetesWorkerDataDiskInput` via:
 //
-//          EdgeKubernetesWorkerDataDiskArgs{...}
+//	EdgeKubernetesWorkerDataDiskArgs{...}
 type EdgeKubernetesWorkerDataDiskInput interface {
 	pulumi.Input
 
@@ -912,7 +912,7 @@ func (i EdgeKubernetesWorkerDataDiskArgs) ToEdgeKubernetesWorkerDataDiskOutputWi
 // EdgeKubernetesWorkerDataDiskArrayInput is an input type that accepts EdgeKubernetesWorkerDataDiskArray and EdgeKubernetesWorkerDataDiskArrayOutput values.
 // You can construct a concrete instance of `EdgeKubernetesWorkerDataDiskArrayInput` via:
 //
-//          EdgeKubernetesWorkerDataDiskArray{ EdgeKubernetesWorkerDataDiskArgs{...} }
+//	EdgeKubernetesWorkerDataDiskArray{ EdgeKubernetesWorkerDataDiskArgs{...} }
 type EdgeKubernetesWorkerDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -1022,7 +1022,7 @@ type EdgeKubernetesWorkerNode struct {
 // EdgeKubernetesWorkerNodeInput is an input type that accepts EdgeKubernetesWorkerNodeArgs and EdgeKubernetesWorkerNodeOutput values.
 // You can construct a concrete instance of `EdgeKubernetesWorkerNodeInput` via:
 //
-//          EdgeKubernetesWorkerNodeArgs{...}
+//	EdgeKubernetesWorkerNodeArgs{...}
 type EdgeKubernetesWorkerNodeInput interface {
 	pulumi.Input
 
@@ -1054,7 +1054,7 @@ func (i EdgeKubernetesWorkerNodeArgs) ToEdgeKubernetesWorkerNodeOutputWithContex
 // EdgeKubernetesWorkerNodeArrayInput is an input type that accepts EdgeKubernetesWorkerNodeArray and EdgeKubernetesWorkerNodeArrayOutput values.
 // You can construct a concrete instance of `EdgeKubernetesWorkerNodeArrayInput` via:
 //
-//          EdgeKubernetesWorkerNodeArray{ EdgeKubernetesWorkerNodeArgs{...} }
+//	EdgeKubernetesWorkerNodeArray{ EdgeKubernetesWorkerNodeArgs{...} }
 type EdgeKubernetesWorkerNodeArrayInput interface {
 	pulumi.Input
 
@@ -1135,7 +1135,7 @@ type KubernetesAddonType struct {
 // KubernetesAddonTypeInput is an input type that accepts KubernetesAddonTypeArgs and KubernetesAddonTypeOutput values.
 // You can construct a concrete instance of `KubernetesAddonTypeInput` via:
 //
-//          KubernetesAddonTypeArgs{...}
+//	KubernetesAddonTypeArgs{...}
 type KubernetesAddonTypeInput interface {
 	pulumi.Input
 
@@ -1165,7 +1165,7 @@ func (i KubernetesAddonTypeArgs) ToKubernetesAddonTypeOutputWithContext(ctx cont
 // KubernetesAddonTypeArrayInput is an input type that accepts KubernetesAddonTypeArray and KubernetesAddonTypeArrayOutput values.
 // You can construct a concrete instance of `KubernetesAddonTypeArrayInput` via:
 //
-//          KubernetesAddonTypeArray{ KubernetesAddonTypeArgs{...} }
+//	KubernetesAddonTypeArray{ KubernetesAddonTypeArgs{...} }
 type KubernetesAddonTypeArrayInput interface {
 	pulumi.Input
 
@@ -1243,7 +1243,7 @@ type KubernetesAutoscalerNodepool struct {
 // KubernetesAutoscalerNodepoolInput is an input type that accepts KubernetesAutoscalerNodepoolArgs and KubernetesAutoscalerNodepoolOutput values.
 // You can construct a concrete instance of `KubernetesAutoscalerNodepoolInput` via:
 //
-//          KubernetesAutoscalerNodepoolArgs{...}
+//	KubernetesAutoscalerNodepoolArgs{...}
 type KubernetesAutoscalerNodepoolInput interface {
 	pulumi.Input
 
@@ -1272,7 +1272,7 @@ func (i KubernetesAutoscalerNodepoolArgs) ToKubernetesAutoscalerNodepoolOutputWi
 // KubernetesAutoscalerNodepoolArrayInput is an input type that accepts KubernetesAutoscalerNodepoolArray and KubernetesAutoscalerNodepoolArrayOutput values.
 // You can construct a concrete instance of `KubernetesAutoscalerNodepoolArrayInput` via:
 //
-//          KubernetesAutoscalerNodepoolArray{ KubernetesAutoscalerNodepoolArgs{...} }
+//	KubernetesAutoscalerNodepoolArray{ KubernetesAutoscalerNodepoolArgs{...} }
 type KubernetesAutoscalerNodepoolArrayInput interface {
 	pulumi.Input
 
@@ -1352,7 +1352,7 @@ type KubernetesCertificateAuthority struct {
 // KubernetesCertificateAuthorityInput is an input type that accepts KubernetesCertificateAuthorityArgs and KubernetesCertificateAuthorityOutput values.
 // You can construct a concrete instance of `KubernetesCertificateAuthorityInput` via:
 //
-//          KubernetesCertificateAuthorityArgs{...}
+//	KubernetesCertificateAuthorityArgs{...}
 type KubernetesCertificateAuthorityInput interface {
 	pulumi.Input
 
@@ -1392,11 +1392,11 @@ func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityPtrO
 // KubernetesCertificateAuthorityPtrInput is an input type that accepts KubernetesCertificateAuthorityArgs, KubernetesCertificateAuthorityPtr and KubernetesCertificateAuthorityPtrOutput values.
 // You can construct a concrete instance of `KubernetesCertificateAuthorityPtrInput` via:
 //
-//          KubernetesCertificateAuthorityArgs{...}
+//	        KubernetesCertificateAuthorityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KubernetesCertificateAuthorityPtrInput interface {
 	pulumi.Input
 
@@ -1529,7 +1529,7 @@ type KubernetesConnections struct {
 // KubernetesConnectionsInput is an input type that accepts KubernetesConnectionsArgs and KubernetesConnectionsOutput values.
 // You can construct a concrete instance of `KubernetesConnectionsInput` via:
 //
-//          KubernetesConnectionsArgs{...}
+//	KubernetesConnectionsArgs{...}
 type KubernetesConnectionsInput interface {
 	pulumi.Input
 
@@ -1571,11 +1571,11 @@ func (i KubernetesConnectionsArgs) ToKubernetesConnectionsPtrOutputWithContext(c
 // KubernetesConnectionsPtrInput is an input type that accepts KubernetesConnectionsArgs, KubernetesConnectionsPtr and KubernetesConnectionsPtrOutput values.
 // You can construct a concrete instance of `KubernetesConnectionsPtrInput` via:
 //
-//          KubernetesConnectionsArgs{...}
+//	        KubernetesConnectionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KubernetesConnectionsPtrInput interface {
 	pulumi.Input
 
@@ -1721,7 +1721,7 @@ type KubernetesMasterNode struct {
 // KubernetesMasterNodeInput is an input type that accepts KubernetesMasterNodeArgs and KubernetesMasterNodeOutput values.
 // You can construct a concrete instance of `KubernetesMasterNodeInput` via:
 //
-//          KubernetesMasterNodeArgs{...}
+//	KubernetesMasterNodeArgs{...}
 type KubernetesMasterNodeInput interface {
 	pulumi.Input
 
@@ -1753,7 +1753,7 @@ func (i KubernetesMasterNodeArgs) ToKubernetesMasterNodeOutputWithContext(ctx co
 // KubernetesMasterNodeArrayInput is an input type that accepts KubernetesMasterNodeArray and KubernetesMasterNodeArrayOutput values.
 // You can construct a concrete instance of `KubernetesMasterNodeArrayInput` via:
 //
-//          KubernetesMasterNodeArray{ KubernetesMasterNodeArgs{...} }
+//	KubernetesMasterNodeArray{ KubernetesMasterNodeArgs{...} }
 type KubernetesMasterNodeArrayInput interface {
 	pulumi.Input
 
@@ -1842,7 +1842,7 @@ type KubernetesPermissionPermission struct {
 // KubernetesPermissionPermissionInput is an input type that accepts KubernetesPermissionPermissionArgs and KubernetesPermissionPermissionOutput values.
 // You can construct a concrete instance of `KubernetesPermissionPermissionInput` via:
 //
-//          KubernetesPermissionPermissionArgs{...}
+//	KubernetesPermissionPermissionArgs{...}
 type KubernetesPermissionPermissionInput interface {
 	pulumi.Input
 
@@ -1880,7 +1880,7 @@ func (i KubernetesPermissionPermissionArgs) ToKubernetesPermissionPermissionOutp
 // KubernetesPermissionPermissionArrayInput is an input type that accepts KubernetesPermissionPermissionArray and KubernetesPermissionPermissionArrayOutput values.
 // You can construct a concrete instance of `KubernetesPermissionPermissionArrayInput` via:
 //
-//          KubernetesPermissionPermissionArray{ KubernetesPermissionPermissionArgs{...} }
+//	KubernetesPermissionPermissionArray{ KubernetesPermissionPermissionArgs{...} }
 type KubernetesPermissionPermissionArrayInput interface {
 	pulumi.Input
 
@@ -1976,7 +1976,7 @@ type KubernetesRuntime struct {
 // KubernetesRuntimeInput is an input type that accepts KubernetesRuntimeArgs and KubernetesRuntimeOutput values.
 // You can construct a concrete instance of `KubernetesRuntimeInput` via:
 //
-//          KubernetesRuntimeArgs{...}
+//	KubernetesRuntimeArgs{...}
 type KubernetesRuntimeInput interface {
 	pulumi.Input
 
@@ -2014,11 +2014,11 @@ func (i KubernetesRuntimeArgs) ToKubernetesRuntimePtrOutputWithContext(ctx conte
 // KubernetesRuntimePtrInput is an input type that accepts KubernetesRuntimeArgs, KubernetesRuntimePtr and KubernetesRuntimePtrOutput values.
 // You can construct a concrete instance of `KubernetesRuntimePtrInput` via:
 //
-//          KubernetesRuntimeArgs{...}
+//	        KubernetesRuntimeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KubernetesRuntimePtrInput interface {
 	pulumi.Input
 
@@ -2131,7 +2131,7 @@ type KubernetesTaint struct {
 // KubernetesTaintInput is an input type that accepts KubernetesTaintArgs and KubernetesTaintOutput values.
 // You can construct a concrete instance of `KubernetesTaintInput` via:
 //
-//          KubernetesTaintArgs{...}
+//	KubernetesTaintArgs{...}
 type KubernetesTaintInput interface {
 	pulumi.Input
 
@@ -2160,7 +2160,7 @@ func (i KubernetesTaintArgs) ToKubernetesTaintOutputWithContext(ctx context.Cont
 // KubernetesTaintArrayInput is an input type that accepts KubernetesTaintArray and KubernetesTaintArrayOutput values.
 // You can construct a concrete instance of `KubernetesTaintArrayInput` via:
 //
-//          KubernetesTaintArray{ KubernetesTaintArgs{...} }
+//	KubernetesTaintArray{ KubernetesTaintArgs{...} }
 type KubernetesTaintArrayInput interface {
 	pulumi.Input
 
@@ -2249,7 +2249,7 @@ type KubernetesWorkerDataDisk struct {
 // KubernetesWorkerDataDiskInput is an input type that accepts KubernetesWorkerDataDiskArgs and KubernetesWorkerDataDiskOutput values.
 // You can construct a concrete instance of `KubernetesWorkerDataDiskInput` via:
 //
-//          KubernetesWorkerDataDiskArgs{...}
+//	KubernetesWorkerDataDiskArgs{...}
 type KubernetesWorkerDataDiskInput interface {
 	pulumi.Input
 
@@ -2290,7 +2290,7 @@ func (i KubernetesWorkerDataDiskArgs) ToKubernetesWorkerDataDiskOutputWithContex
 // KubernetesWorkerDataDiskArrayInput is an input type that accepts KubernetesWorkerDataDiskArray and KubernetesWorkerDataDiskArrayOutput values.
 // You can construct a concrete instance of `KubernetesWorkerDataDiskArrayInput` via:
 //
-//          KubernetesWorkerDataDiskArray{ KubernetesWorkerDataDiskArgs{...} }
+//	KubernetesWorkerDataDiskArray{ KubernetesWorkerDataDiskArgs{...} }
 type KubernetesWorkerDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -2400,7 +2400,7 @@ type KubernetesWorkerNode struct {
 // KubernetesWorkerNodeInput is an input type that accepts KubernetesWorkerNodeArgs and KubernetesWorkerNodeOutput values.
 // You can construct a concrete instance of `KubernetesWorkerNodeInput` via:
 //
-//          KubernetesWorkerNodeArgs{...}
+//	KubernetesWorkerNodeArgs{...}
 type KubernetesWorkerNodeInput interface {
 	pulumi.Input
 
@@ -2432,7 +2432,7 @@ func (i KubernetesWorkerNodeArgs) ToKubernetesWorkerNodeOutputWithContext(ctx co
 // KubernetesWorkerNodeArrayInput is an input type that accepts KubernetesWorkerNodeArray and KubernetesWorkerNodeArrayOutput values.
 // You can construct a concrete instance of `KubernetesWorkerNodeArrayInput` via:
 //
-//          KubernetesWorkerNodeArray{ KubernetesWorkerNodeArgs{...} }
+//	KubernetesWorkerNodeArray{ KubernetesWorkerNodeArgs{...} }
 type KubernetesWorkerNodeArrayInput interface {
 	pulumi.Input
 
@@ -2513,7 +2513,7 @@ type ManagedKubernetesAddon struct {
 // ManagedKubernetesAddonInput is an input type that accepts ManagedKubernetesAddonArgs and ManagedKubernetesAddonOutput values.
 // You can construct a concrete instance of `ManagedKubernetesAddonInput` via:
 //
-//          ManagedKubernetesAddonArgs{...}
+//	ManagedKubernetesAddonArgs{...}
 type ManagedKubernetesAddonInput interface {
 	pulumi.Input
 
@@ -2543,7 +2543,7 @@ func (i ManagedKubernetesAddonArgs) ToManagedKubernetesAddonOutputWithContext(ct
 // ManagedKubernetesAddonArrayInput is an input type that accepts ManagedKubernetesAddonArray and ManagedKubernetesAddonArrayOutput values.
 // You can construct a concrete instance of `ManagedKubernetesAddonArrayInput` via:
 //
-//          ManagedKubernetesAddonArray{ ManagedKubernetesAddonArgs{...} }
+//	ManagedKubernetesAddonArray{ ManagedKubernetesAddonArgs{...} }
 type ManagedKubernetesAddonArrayInput interface {
 	pulumi.Input
 
@@ -2624,7 +2624,7 @@ type ManagedKubernetesCertificateAuthority struct {
 // ManagedKubernetesCertificateAuthorityInput is an input type that accepts ManagedKubernetesCertificateAuthorityArgs and ManagedKubernetesCertificateAuthorityOutput values.
 // You can construct a concrete instance of `ManagedKubernetesCertificateAuthorityInput` via:
 //
-//          ManagedKubernetesCertificateAuthorityArgs{...}
+//	ManagedKubernetesCertificateAuthorityArgs{...}
 type ManagedKubernetesCertificateAuthorityInput interface {
 	pulumi.Input
 
@@ -2664,11 +2664,11 @@ func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificat
 // ManagedKubernetesCertificateAuthorityPtrInput is an input type that accepts ManagedKubernetesCertificateAuthorityArgs, ManagedKubernetesCertificateAuthorityPtr and ManagedKubernetesCertificateAuthorityPtrOutput values.
 // You can construct a concrete instance of `ManagedKubernetesCertificateAuthorityPtrInput` via:
 //
-//          ManagedKubernetesCertificateAuthorityArgs{...}
+//	        ManagedKubernetesCertificateAuthorityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedKubernetesCertificateAuthorityPtrInput interface {
 	pulumi.Input
 
@@ -2801,7 +2801,7 @@ type ManagedKubernetesConnections struct {
 // ManagedKubernetesConnectionsInput is an input type that accepts ManagedKubernetesConnectionsArgs and ManagedKubernetesConnectionsOutput values.
 // You can construct a concrete instance of `ManagedKubernetesConnectionsInput` via:
 //
-//          ManagedKubernetesConnectionsArgs{...}
+//	ManagedKubernetesConnectionsArgs{...}
 type ManagedKubernetesConnectionsInput interface {
 	pulumi.Input
 
@@ -2843,11 +2843,11 @@ func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsPtrOutpu
 // ManagedKubernetesConnectionsPtrInput is an input type that accepts ManagedKubernetesConnectionsArgs, ManagedKubernetesConnectionsPtr and ManagedKubernetesConnectionsPtrOutput values.
 // You can construct a concrete instance of `ManagedKubernetesConnectionsPtrInput` via:
 //
-//          ManagedKubernetesConnectionsArgs{...}
+//	        ManagedKubernetesConnectionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedKubernetesConnectionsPtrInput interface {
 	pulumi.Input
 
@@ -2995,7 +2995,7 @@ type ManagedKubernetesMaintenanceWindow struct {
 // ManagedKubernetesMaintenanceWindowInput is an input type that accepts ManagedKubernetesMaintenanceWindowArgs and ManagedKubernetesMaintenanceWindowOutput values.
 // You can construct a concrete instance of `ManagedKubernetesMaintenanceWindowInput` via:
 //
-//          ManagedKubernetesMaintenanceWindowArgs{...}
+//	ManagedKubernetesMaintenanceWindowArgs{...}
 type ManagedKubernetesMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -3037,11 +3037,11 @@ func (i ManagedKubernetesMaintenanceWindowArgs) ToManagedKubernetesMaintenanceWi
 // ManagedKubernetesMaintenanceWindowPtrInput is an input type that accepts ManagedKubernetesMaintenanceWindowArgs, ManagedKubernetesMaintenanceWindowPtr and ManagedKubernetesMaintenanceWindowPtrOutput values.
 // You can construct a concrete instance of `ManagedKubernetesMaintenanceWindowPtrInput` via:
 //
-//          ManagedKubernetesMaintenanceWindowArgs{...}
+//	        ManagedKubernetesMaintenanceWindowArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedKubernetesMaintenanceWindowPtrInput interface {
 	pulumi.Input
 
@@ -3185,7 +3185,7 @@ type ManagedKubernetesRuntime struct {
 // ManagedKubernetesRuntimeInput is an input type that accepts ManagedKubernetesRuntimeArgs and ManagedKubernetesRuntimeOutput values.
 // You can construct a concrete instance of `ManagedKubernetesRuntimeInput` via:
 //
-//          ManagedKubernetesRuntimeArgs{...}
+//	ManagedKubernetesRuntimeArgs{...}
 type ManagedKubernetesRuntimeInput interface {
 	pulumi.Input
 
@@ -3223,11 +3223,11 @@ func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimePtrOutputWithCon
 // ManagedKubernetesRuntimePtrInput is an input type that accepts ManagedKubernetesRuntimeArgs, ManagedKubernetesRuntimePtr and ManagedKubernetesRuntimePtrOutput values.
 // You can construct a concrete instance of `ManagedKubernetesRuntimePtrInput` via:
 //
-//          ManagedKubernetesRuntimeArgs{...}
+//	        ManagedKubernetesRuntimeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedKubernetesRuntimePtrInput interface {
 	pulumi.Input
 
@@ -3340,7 +3340,7 @@ type ManagedKubernetesTaint struct {
 // ManagedKubernetesTaintInput is an input type that accepts ManagedKubernetesTaintArgs and ManagedKubernetesTaintOutput values.
 // You can construct a concrete instance of `ManagedKubernetesTaintInput` via:
 //
-//          ManagedKubernetesTaintArgs{...}
+//	ManagedKubernetesTaintArgs{...}
 type ManagedKubernetesTaintInput interface {
 	pulumi.Input
 
@@ -3369,7 +3369,7 @@ func (i ManagedKubernetesTaintArgs) ToManagedKubernetesTaintOutputWithContext(ct
 // ManagedKubernetesTaintArrayInput is an input type that accepts ManagedKubernetesTaintArray and ManagedKubernetesTaintArrayOutput values.
 // You can construct a concrete instance of `ManagedKubernetesTaintArrayInput` via:
 //
-//          ManagedKubernetesTaintArray{ ManagedKubernetesTaintArgs{...} }
+//	ManagedKubernetesTaintArray{ ManagedKubernetesTaintArgs{...} }
 type ManagedKubernetesTaintArrayInput interface {
 	pulumi.Input
 
@@ -3458,7 +3458,7 @@ type ManagedKubernetesWorkerDataDisk struct {
 // ManagedKubernetesWorkerDataDiskInput is an input type that accepts ManagedKubernetesWorkerDataDiskArgs and ManagedKubernetesWorkerDataDiskOutput values.
 // You can construct a concrete instance of `ManagedKubernetesWorkerDataDiskInput` via:
 //
-//          ManagedKubernetesWorkerDataDiskArgs{...}
+//	ManagedKubernetesWorkerDataDiskArgs{...}
 type ManagedKubernetesWorkerDataDiskInput interface {
 	pulumi.Input
 
@@ -3499,7 +3499,7 @@ func (i ManagedKubernetesWorkerDataDiskArgs) ToManagedKubernetesWorkerDataDiskOu
 // ManagedKubernetesWorkerDataDiskArrayInput is an input type that accepts ManagedKubernetesWorkerDataDiskArray and ManagedKubernetesWorkerDataDiskArrayOutput values.
 // You can construct a concrete instance of `ManagedKubernetesWorkerDataDiskArrayInput` via:
 //
-//          ManagedKubernetesWorkerDataDiskArray{ ManagedKubernetesWorkerDataDiskArgs{...} }
+//	ManagedKubernetesWorkerDataDiskArray{ ManagedKubernetesWorkerDataDiskArgs{...} }
 type ManagedKubernetesWorkerDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -3609,7 +3609,7 @@ type ManagedKubernetesWorkerNode struct {
 // ManagedKubernetesWorkerNodeInput is an input type that accepts ManagedKubernetesWorkerNodeArgs and ManagedKubernetesWorkerNodeOutput values.
 // You can construct a concrete instance of `ManagedKubernetesWorkerNodeInput` via:
 //
-//          ManagedKubernetesWorkerNodeArgs{...}
+//	ManagedKubernetesWorkerNodeArgs{...}
 type ManagedKubernetesWorkerNodeInput interface {
 	pulumi.Input
 
@@ -3641,7 +3641,7 @@ func (i ManagedKubernetesWorkerNodeArgs) ToManagedKubernetesWorkerNodeOutputWith
 // ManagedKubernetesWorkerNodeArrayInput is an input type that accepts ManagedKubernetesWorkerNodeArray and ManagedKubernetesWorkerNodeArrayOutput values.
 // You can construct a concrete instance of `ManagedKubernetesWorkerNodeArrayInput` via:
 //
-//          ManagedKubernetesWorkerNodeArray{ ManagedKubernetesWorkerNodeArgs{...} }
+//	ManagedKubernetesWorkerNodeArray{ ManagedKubernetesWorkerNodeArgs{...} }
 type ManagedKubernetesWorkerNodeArrayInput interface {
 	pulumi.Input
 
@@ -3733,7 +3733,7 @@ type NodePoolDataDisk struct {
 // NodePoolDataDiskInput is an input type that accepts NodePoolDataDiskArgs and NodePoolDataDiskOutput values.
 // You can construct a concrete instance of `NodePoolDataDiskInput` via:
 //
-//          NodePoolDataDiskArgs{...}
+//	NodePoolDataDiskArgs{...}
 type NodePoolDataDiskInput interface {
 	pulumi.Input
 
@@ -3774,7 +3774,7 @@ func (i NodePoolDataDiskArgs) ToNodePoolDataDiskOutputWithContext(ctx context.Co
 // NodePoolDataDiskArrayInput is an input type that accepts NodePoolDataDiskArray and NodePoolDataDiskArrayOutput values.
 // You can construct a concrete instance of `NodePoolDataDiskArrayInput` via:
 //
-//          NodePoolDataDiskArray{ NodePoolDataDiskArgs{...} }
+//	NodePoolDataDiskArray{ NodePoolDataDiskArgs{...} }
 type NodePoolDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -3872,6 +3872,371 @@ func (o NodePoolDataDiskArrayOutput) Index(i pulumi.IntInput) NodePoolDataDiskOu
 	}).(NodePoolDataDiskOutput)
 }
 
+type NodePoolKubeletConfiguration struct {
+	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+	EventBurst *string `pulumi:"eventBurst"`
+	// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+	EventRecordQps *string `pulumi:"eventRecordQps"`
+	// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionHard map[string]interface{} `pulumi:"evictionHard"`
+	// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionSoft map[string]interface{} `pulumi:"evictionSoft"`
+	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+	EvictionSoftGracePeriod map[string]interface{} `pulumi:"evictionSoftGracePeriod"`
+	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+	KubeApiBurst *string `pulumi:"kubeApiBurst"`
+	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+	KubeApiQps *string `pulumi:"kubeApiQps"`
+	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	KubeReserved map[string]interface{} `pulumi:"kubeReserved"`
+	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+	RegistryBurst *string `pulumi:"registryBurst"`
+	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+	RegistryPullQps *string `pulumi:"registryPullQps"`
+	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+	SerializeImagePulls *string `pulumi:"serializeImagePulls"`
+	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	SystemReserved map[string]interface{} `pulumi:"systemReserved"`
+}
+
+// NodePoolKubeletConfigurationInput is an input type that accepts NodePoolKubeletConfigurationArgs and NodePoolKubeletConfigurationOutput values.
+// You can construct a concrete instance of `NodePoolKubeletConfigurationInput` via:
+//
+//	NodePoolKubeletConfigurationArgs{...}
+type NodePoolKubeletConfigurationInput interface {
+	pulumi.Input
+
+	ToNodePoolKubeletConfigurationOutput() NodePoolKubeletConfigurationOutput
+	ToNodePoolKubeletConfigurationOutputWithContext(context.Context) NodePoolKubeletConfigurationOutput
+}
+
+type NodePoolKubeletConfigurationArgs struct {
+	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+	EventBurst pulumi.StringPtrInput `pulumi:"eventBurst"`
+	// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+	EventRecordQps pulumi.StringPtrInput `pulumi:"eventRecordQps"`
+	// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionHard pulumi.MapInput `pulumi:"evictionHard"`
+	// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionSoft pulumi.MapInput `pulumi:"evictionSoft"`
+	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+	EvictionSoftGracePeriod pulumi.MapInput `pulumi:"evictionSoftGracePeriod"`
+	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+	KubeApiBurst pulumi.StringPtrInput `pulumi:"kubeApiBurst"`
+	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+	KubeApiQps pulumi.StringPtrInput `pulumi:"kubeApiQps"`
+	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	KubeReserved pulumi.MapInput `pulumi:"kubeReserved"`
+	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+	RegistryBurst pulumi.StringPtrInput `pulumi:"registryBurst"`
+	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+	RegistryPullQps pulumi.StringPtrInput `pulumi:"registryPullQps"`
+	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+	SerializeImagePulls pulumi.StringPtrInput `pulumi:"serializeImagePulls"`
+	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	SystemReserved pulumi.MapInput `pulumi:"systemReserved"`
+}
+
+func (NodePoolKubeletConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolKubeletConfiguration)(nil)).Elem()
+}
+
+func (i NodePoolKubeletConfigurationArgs) ToNodePoolKubeletConfigurationOutput() NodePoolKubeletConfigurationOutput {
+	return i.ToNodePoolKubeletConfigurationOutputWithContext(context.Background())
+}
+
+func (i NodePoolKubeletConfigurationArgs) ToNodePoolKubeletConfigurationOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationOutput)
+}
+
+func (i NodePoolKubeletConfigurationArgs) ToNodePoolKubeletConfigurationPtrOutput() NodePoolKubeletConfigurationPtrOutput {
+	return i.ToNodePoolKubeletConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolKubeletConfigurationArgs) ToNodePoolKubeletConfigurationPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationOutput).ToNodePoolKubeletConfigurationPtrOutputWithContext(ctx)
+}
+
+// NodePoolKubeletConfigurationPtrInput is an input type that accepts NodePoolKubeletConfigurationArgs, NodePoolKubeletConfigurationPtr and NodePoolKubeletConfigurationPtrOutput values.
+// You can construct a concrete instance of `NodePoolKubeletConfigurationPtrInput` via:
+//
+//	        NodePoolKubeletConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolKubeletConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolKubeletConfigurationPtrOutput() NodePoolKubeletConfigurationPtrOutput
+	ToNodePoolKubeletConfigurationPtrOutputWithContext(context.Context) NodePoolKubeletConfigurationPtrOutput
+}
+
+type nodePoolKubeletConfigurationPtrType NodePoolKubeletConfigurationArgs
+
+func NodePoolKubeletConfigurationPtr(v *NodePoolKubeletConfigurationArgs) NodePoolKubeletConfigurationPtrInput {
+	return (*nodePoolKubeletConfigurationPtrType)(v)
+}
+
+func (*nodePoolKubeletConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolKubeletConfiguration)(nil)).Elem()
+}
+
+func (i *nodePoolKubeletConfigurationPtrType) ToNodePoolKubeletConfigurationPtrOutput() NodePoolKubeletConfigurationPtrOutput {
+	return i.ToNodePoolKubeletConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolKubeletConfigurationPtrType) ToNodePoolKubeletConfigurationPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationPtrOutput)
+}
+
+type NodePoolKubeletConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NodePoolKubeletConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolKubeletConfiguration)(nil)).Elem()
+}
+
+func (o NodePoolKubeletConfigurationOutput) ToNodePoolKubeletConfigurationOutput() NodePoolKubeletConfigurationOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationOutput) ToNodePoolKubeletConfigurationOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationOutput) ToNodePoolKubeletConfigurationPtrOutput() NodePoolKubeletConfigurationPtrOutput {
+	return o.ToNodePoolKubeletConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolKubeletConfigurationOutput) ToNodePoolKubeletConfigurationPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolKubeletConfiguration) *NodePoolKubeletConfiguration {
+		return &v
+	}).(NodePoolKubeletConfigurationPtrOutput)
+}
+
+// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+func (o NodePoolKubeletConfigurationOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+func (o NodePoolKubeletConfigurationOutput) EventBurst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.EventBurst }).(pulumi.StringPtrOutput)
+}
+
+// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+func (o NodePoolKubeletConfigurationOutput) EventRecordQps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.EventRecordQps }).(pulumi.StringPtrOutput)
+}
+
+// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+func (o NodePoolKubeletConfigurationOutput) EvictionHard() pulumi.MapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.EvictionHard }).(pulumi.MapOutput)
+}
+
+// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+func (o NodePoolKubeletConfigurationOutput) EvictionSoft() pulumi.MapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.EvictionSoft }).(pulumi.MapOutput)
+}
+
+// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+func (o NodePoolKubeletConfigurationOutput) EvictionSoftGracePeriod() pulumi.MapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.EvictionSoftGracePeriod }).(pulumi.MapOutput)
+}
+
+// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+func (o NodePoolKubeletConfigurationOutput) KubeApiBurst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.KubeApiBurst }).(pulumi.StringPtrOutput)
+}
+
+// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+func (o NodePoolKubeletConfigurationOutput) KubeApiQps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.KubeApiQps }).(pulumi.StringPtrOutput)
+}
+
+// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+func (o NodePoolKubeletConfigurationOutput) KubeReserved() pulumi.MapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.KubeReserved }).(pulumi.MapOutput)
+}
+
+// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+func (o NodePoolKubeletConfigurationOutput) RegistryBurst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.RegistryBurst }).(pulumi.StringPtrOutput)
+}
+
+// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+func (o NodePoolKubeletConfigurationOutput) RegistryPullQps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.RegistryPullQps }).(pulumi.StringPtrOutput)
+}
+
+// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+func (o NodePoolKubeletConfigurationOutput) SerializeImagePulls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.SerializeImagePulls }).(pulumi.StringPtrOutput)
+}
+
+// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+func (o NodePoolKubeletConfigurationOutput) SystemReserved() pulumi.MapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.SystemReserved }).(pulumi.MapOutput)
+}
+
+type NodePoolKubeletConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolKubeletConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolKubeletConfiguration)(nil)).Elem()
+}
+
+func (o NodePoolKubeletConfigurationPtrOutput) ToNodePoolKubeletConfigurationPtrOutput() NodePoolKubeletConfigurationPtrOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationPtrOutput) ToNodePoolKubeletConfigurationPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationPtrOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationPtrOutput) Elem() NodePoolKubeletConfigurationOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) NodePoolKubeletConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolKubeletConfiguration
+		return ret
+	}).(NodePoolKubeletConfigurationOutput)
+}
+
+// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+func (o NodePoolKubeletConfigurationPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+func (o NodePoolKubeletConfigurationPtrOutput) EventBurst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventBurst
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+func (o NodePoolKubeletConfigurationPtrOutput) EventRecordQps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventRecordQps
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+func (o NodePoolKubeletConfigurationPtrOutput) EvictionHard() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EvictionHard
+	}).(pulumi.MapOutput)
+}
+
+// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+func (o NodePoolKubeletConfigurationPtrOutput) EvictionSoft() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EvictionSoft
+	}).(pulumi.MapOutput)
+}
+
+// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+func (o NodePoolKubeletConfigurationPtrOutput) EvictionSoftGracePeriod() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EvictionSoftGracePeriod
+	}).(pulumi.MapOutput)
+}
+
+// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+func (o NodePoolKubeletConfigurationPtrOutput) KubeApiBurst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubeApiBurst
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+func (o NodePoolKubeletConfigurationPtrOutput) KubeApiQps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubeApiQps
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+func (o NodePoolKubeletConfigurationPtrOutput) KubeReserved() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.KubeReserved
+	}).(pulumi.MapOutput)
+}
+
+// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+func (o NodePoolKubeletConfigurationPtrOutput) RegistryBurst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryBurst
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+func (o NodePoolKubeletConfigurationPtrOutput) RegistryPullQps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryPullQps
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+func (o NodePoolKubeletConfigurationPtrOutput) SerializeImagePulls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializeImagePulls
+	}).(pulumi.StringPtrOutput)
+}
+
+// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+func (o NodePoolKubeletConfigurationPtrOutput) SystemReserved() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SystemReserved
+	}).(pulumi.MapOutput)
+}
+
 type NodePoolLabel struct {
 	// The label key.
 	Key string `pulumi:"key"`
@@ -3882,7 +4247,7 @@ type NodePoolLabel struct {
 // NodePoolLabelInput is an input type that accepts NodePoolLabelArgs and NodePoolLabelOutput values.
 // You can construct a concrete instance of `NodePoolLabelInput` via:
 //
-//          NodePoolLabelArgs{...}
+//	NodePoolLabelArgs{...}
 type NodePoolLabelInput interface {
 	pulumi.Input
 
@@ -3912,7 +4277,7 @@ func (i NodePoolLabelArgs) ToNodePoolLabelOutputWithContext(ctx context.Context)
 // NodePoolLabelArrayInput is an input type that accepts NodePoolLabelArray and NodePoolLabelArrayOutput values.
 // You can construct a concrete instance of `NodePoolLabelArrayInput` via:
 //
-//          NodePoolLabelArray{ NodePoolLabelArgs{...} }
+//	NodePoolLabelArray{ NodePoolLabelArgs{...} }
 type NodePoolLabelArrayInput interface {
 	pulumi.Input
 
@@ -3994,7 +4359,7 @@ type NodePoolManagement struct {
 // NodePoolManagementInput is an input type that accepts NodePoolManagementArgs and NodePoolManagementOutput values.
 // You can construct a concrete instance of `NodePoolManagementInput` via:
 //
-//          NodePoolManagementArgs{...}
+//	NodePoolManagementArgs{...}
 type NodePoolManagementInput interface {
 	pulumi.Input
 
@@ -4038,11 +4403,11 @@ func (i NodePoolManagementArgs) ToNodePoolManagementPtrOutputWithContext(ctx con
 // NodePoolManagementPtrInput is an input type that accepts NodePoolManagementArgs, NodePoolManagementPtr and NodePoolManagementPtrOutput values.
 // You can construct a concrete instance of `NodePoolManagementPtrInput` via:
 //
-//          NodePoolManagementArgs{...}
+//	        NodePoolManagementArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NodePoolManagementPtrInput interface {
 	pulumi.Input
 
@@ -4191,6 +4556,143 @@ func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type NodePoolRolloutPolicy struct {
+	// Max number of unavailable nodes. Default to `1`.
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// NodePoolRolloutPolicyInput is an input type that accepts NodePoolRolloutPolicyArgs and NodePoolRolloutPolicyOutput values.
+// You can construct a concrete instance of `NodePoolRolloutPolicyInput` via:
+//
+//	NodePoolRolloutPolicyArgs{...}
+type NodePoolRolloutPolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolRolloutPolicyOutput() NodePoolRolloutPolicyOutput
+	ToNodePoolRolloutPolicyOutputWithContext(context.Context) NodePoolRolloutPolicyOutput
+}
+
+type NodePoolRolloutPolicyArgs struct {
+	// Max number of unavailable nodes. Default to `1`.
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (NodePoolRolloutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolRolloutPolicy)(nil)).Elem()
+}
+
+func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyOutput() NodePoolRolloutPolicyOutput {
+	return i.ToNodePoolRolloutPolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyOutputWithContext(ctx context.Context) NodePoolRolloutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRolloutPolicyOutput)
+}
+
+func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
+	return i.ToNodePoolRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRolloutPolicyOutput).ToNodePoolRolloutPolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolRolloutPolicyPtrInput is an input type that accepts NodePoolRolloutPolicyArgs, NodePoolRolloutPolicyPtr and NodePoolRolloutPolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolRolloutPolicyPtrInput` via:
+//
+//	        NodePoolRolloutPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolRolloutPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput
+	ToNodePoolRolloutPolicyPtrOutputWithContext(context.Context) NodePoolRolloutPolicyPtrOutput
+}
+
+type nodePoolRolloutPolicyPtrType NodePoolRolloutPolicyArgs
+
+func NodePoolRolloutPolicyPtr(v *NodePoolRolloutPolicyArgs) NodePoolRolloutPolicyPtrInput {
+	return (*nodePoolRolloutPolicyPtrType)(v)
+}
+
+func (*nodePoolRolloutPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolRolloutPolicy)(nil)).Elem()
+}
+
+func (i *nodePoolRolloutPolicyPtrType) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
+	return i.ToNodePoolRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolRolloutPolicyPtrType) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRolloutPolicyPtrOutput)
+}
+
+type NodePoolRolloutPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolRolloutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolRolloutPolicy)(nil)).Elem()
+}
+
+func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyOutput() NodePoolRolloutPolicyOutput {
+	return o
+}
+
+func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyOutputWithContext(ctx context.Context) NodePoolRolloutPolicyOutput {
+	return o
+}
+
+func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
+	return o.ToNodePoolRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolRolloutPolicy) *NodePoolRolloutPolicy {
+		return &v
+	}).(NodePoolRolloutPolicyPtrOutput)
+}
+
+// Max number of unavailable nodes. Default to `1`.
+func (o NodePoolRolloutPolicyOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolRolloutPolicy) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+type NodePoolRolloutPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolRolloutPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolRolloutPolicy)(nil)).Elem()
+}
+
+func (o NodePoolRolloutPolicyPtrOutput) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolRolloutPolicyPtrOutput) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolRolloutPolicyPtrOutput) Elem() NodePoolRolloutPolicyOutput {
+	return o.ApplyT(func(v *NodePoolRolloutPolicy) NodePoolRolloutPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolRolloutPolicy
+		return ret
+	}).(NodePoolRolloutPolicyOutput)
+}
+
+// Max number of unavailable nodes. Default to `1`.
+func (o NodePoolRolloutPolicyPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolRolloutPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
 type NodePoolScalingConfig struct {
 	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
@@ -4209,7 +4711,7 @@ type NodePoolScalingConfig struct {
 // NodePoolScalingConfigInput is an input type that accepts NodePoolScalingConfigArgs and NodePoolScalingConfigOutput values.
 // You can construct a concrete instance of `NodePoolScalingConfigInput` via:
 //
-//          NodePoolScalingConfigArgs{...}
+//	NodePoolScalingConfigArgs{...}
 type NodePoolScalingConfigInput interface {
 	pulumi.Input
 
@@ -4255,11 +4757,11 @@ func (i NodePoolScalingConfigArgs) ToNodePoolScalingConfigPtrOutputWithContext(c
 // NodePoolScalingConfigPtrInput is an input type that accepts NodePoolScalingConfigArgs, NodePoolScalingConfigPtr and NodePoolScalingConfigPtrOutput values.
 // You can construct a concrete instance of `NodePoolScalingConfigPtrInput` via:
 //
-//          NodePoolScalingConfigArgs{...}
+//	        NodePoolScalingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NodePoolScalingConfigPtrInput interface {
 	pulumi.Input
 
@@ -4433,7 +4935,7 @@ type NodePoolSpotPriceLimit struct {
 // NodePoolSpotPriceLimitInput is an input type that accepts NodePoolSpotPriceLimitArgs and NodePoolSpotPriceLimitOutput values.
 // You can construct a concrete instance of `NodePoolSpotPriceLimitInput` via:
 //
-//          NodePoolSpotPriceLimitArgs{...}
+//	NodePoolSpotPriceLimitArgs{...}
 type NodePoolSpotPriceLimitInput interface {
 	pulumi.Input
 
@@ -4463,7 +4965,7 @@ func (i NodePoolSpotPriceLimitArgs) ToNodePoolSpotPriceLimitOutputWithContext(ct
 // NodePoolSpotPriceLimitArrayInput is an input type that accepts NodePoolSpotPriceLimitArray and NodePoolSpotPriceLimitArrayOutput values.
 // You can construct a concrete instance of `NodePoolSpotPriceLimitArrayInput` via:
 //
-//          NodePoolSpotPriceLimitArray{ NodePoolSpotPriceLimitArgs{...} }
+//	NodePoolSpotPriceLimitArray{ NodePoolSpotPriceLimitArgs{...} }
 type NodePoolSpotPriceLimitArrayInput interface {
 	pulumi.Input
 
@@ -4540,7 +5042,7 @@ type NodePoolTaint struct {
 // NodePoolTaintInput is an input type that accepts NodePoolTaintArgs and NodePoolTaintOutput values.
 // You can construct a concrete instance of `NodePoolTaintInput` via:
 //
-//          NodePoolTaintArgs{...}
+//	NodePoolTaintArgs{...}
 type NodePoolTaintInput interface {
 	pulumi.Input
 
@@ -4571,7 +5073,7 @@ func (i NodePoolTaintArgs) ToNodePoolTaintOutputWithContext(ctx context.Context)
 // NodePoolTaintArrayInput is an input type that accepts NodePoolTaintArray and NodePoolTaintArrayOutput values.
 // You can construct a concrete instance of `NodePoolTaintArrayInput` via:
 //
-//          NodePoolTaintArray{ NodePoolTaintArgs{...} }
+//	NodePoolTaintArray{ NodePoolTaintArgs{...} }
 type NodePoolTaintArrayInput interface {
 	pulumi.Input
 
@@ -4653,7 +5155,7 @@ type ServerlessKubernetesAddon struct {
 // ServerlessKubernetesAddonInput is an input type that accepts ServerlessKubernetesAddonArgs and ServerlessKubernetesAddonOutput values.
 // You can construct a concrete instance of `ServerlessKubernetesAddonInput` via:
 //
-//          ServerlessKubernetesAddonArgs{...}
+//	ServerlessKubernetesAddonArgs{...}
 type ServerlessKubernetesAddonInput interface {
 	pulumi.Input
 
@@ -4685,7 +5187,7 @@ func (i ServerlessKubernetesAddonArgs) ToServerlessKubernetesAddonOutputWithCont
 // ServerlessKubernetesAddonArrayInput is an input type that accepts ServerlessKubernetesAddonArray and ServerlessKubernetesAddonArrayOutput values.
 // You can construct a concrete instance of `ServerlessKubernetesAddonArrayInput` via:
 //
-//          ServerlessKubernetesAddonArray{ ServerlessKubernetesAddonArgs{...} }
+//	ServerlessKubernetesAddonArray{ ServerlessKubernetesAddonArgs{...} }
 type ServerlessKubernetesAddonArrayInput interface {
 	pulumi.Input
 
@@ -4767,7 +5269,7 @@ type SwarmNode struct {
 // SwarmNodeInput is an input type that accepts SwarmNodeArgs and SwarmNodeOutput values.
 // You can construct a concrete instance of `SwarmNodeInput` via:
 //
-//          SwarmNodeArgs{...}
+//	SwarmNodeArgs{...}
 type SwarmNodeInput interface {
 	pulumi.Input
 
@@ -4798,7 +5300,7 @@ func (i SwarmNodeArgs) ToSwarmNodeOutputWithContext(ctx context.Context) SwarmNo
 // SwarmNodeArrayInput is an input type that accepts SwarmNodeArray and SwarmNodeArrayOutput values.
 // You can construct a concrete instance of `SwarmNodeArrayInput` via:
 //
-//          SwarmNodeArray{ SwarmNodeArgs{...} }
+//	SwarmNodeArray{ SwarmNodeArgs{...} }
 type SwarmNodeArrayInput interface {
 	pulumi.Input
 
@@ -4896,7 +5398,7 @@ type GetEdgeKubernetesClustersCluster struct {
 // GetEdgeKubernetesClustersClusterInput is an input type that accepts GetEdgeKubernetesClustersClusterArgs and GetEdgeKubernetesClustersClusterOutput values.
 // You can construct a concrete instance of `GetEdgeKubernetesClustersClusterInput` via:
 //
-//          GetEdgeKubernetesClustersClusterArgs{...}
+//	GetEdgeKubernetesClustersClusterArgs{...}
 type GetEdgeKubernetesClustersClusterInput interface {
 	pulumi.Input
 
@@ -4938,7 +5440,7 @@ func (i GetEdgeKubernetesClustersClusterArgs) ToGetEdgeKubernetesClustersCluster
 // GetEdgeKubernetesClustersClusterArrayInput is an input type that accepts GetEdgeKubernetesClustersClusterArray and GetEdgeKubernetesClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetEdgeKubernetesClustersClusterArrayInput` via:
 //
-//          GetEdgeKubernetesClustersClusterArray{ GetEdgeKubernetesClustersClusterArgs{...} }
+//	GetEdgeKubernetesClustersClusterArray{ GetEdgeKubernetesClustersClusterArgs{...} }
 type GetEdgeKubernetesClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -5048,7 +5550,7 @@ type GetEdgeKubernetesClustersClusterConnections struct {
 // GetEdgeKubernetesClustersClusterConnectionsInput is an input type that accepts GetEdgeKubernetesClustersClusterConnectionsArgs and GetEdgeKubernetesClustersClusterConnectionsOutput values.
 // You can construct a concrete instance of `GetEdgeKubernetesClustersClusterConnectionsInput` via:
 //
-//          GetEdgeKubernetesClustersClusterConnectionsArgs{...}
+//	GetEdgeKubernetesClustersClusterConnectionsArgs{...}
 type GetEdgeKubernetesClustersClusterConnectionsInput interface {
 	pulumi.Input
 
@@ -5111,7 +5613,7 @@ type GetEdgeKubernetesClustersClusterWorkerNode struct {
 // GetEdgeKubernetesClustersClusterWorkerNodeInput is an input type that accepts GetEdgeKubernetesClustersClusterWorkerNodeArgs and GetEdgeKubernetesClustersClusterWorkerNodeOutput values.
 // You can construct a concrete instance of `GetEdgeKubernetesClustersClusterWorkerNodeInput` via:
 //
-//          GetEdgeKubernetesClustersClusterWorkerNodeArgs{...}
+//	GetEdgeKubernetesClustersClusterWorkerNodeArgs{...}
 type GetEdgeKubernetesClustersClusterWorkerNodeInput interface {
 	pulumi.Input
 
@@ -5143,7 +5645,7 @@ func (i GetEdgeKubernetesClustersClusterWorkerNodeArgs) ToGetEdgeKubernetesClust
 // GetEdgeKubernetesClustersClusterWorkerNodeArrayInput is an input type that accepts GetEdgeKubernetesClustersClusterWorkerNodeArray and GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput values.
 // You can construct a concrete instance of `GetEdgeKubernetesClustersClusterWorkerNodeArrayInput` via:
 //
-//          GetEdgeKubernetesClustersClusterWorkerNodeArray{ GetEdgeKubernetesClustersClusterWorkerNodeArgs{...} }
+//	GetEdgeKubernetesClustersClusterWorkerNodeArray{ GetEdgeKubernetesClustersClusterWorkerNodeArgs{...} }
 type GetEdgeKubernetesClustersClusterWorkerNodeArrayInput interface {
 	pulumi.Input
 
@@ -5230,7 +5732,7 @@ type GetKubernetesAddonsAddon struct {
 // GetKubernetesAddonsAddonInput is an input type that accepts GetKubernetesAddonsAddonArgs and GetKubernetesAddonsAddonOutput values.
 // You can construct a concrete instance of `GetKubernetesAddonsAddonInput` via:
 //
-//          GetKubernetesAddonsAddonArgs{...}
+//	GetKubernetesAddonsAddonArgs{...}
 type GetKubernetesAddonsAddonInput interface {
 	pulumi.Input
 
@@ -5266,7 +5768,7 @@ func (i GetKubernetesAddonsAddonArgs) ToGetKubernetesAddonsAddonOutputWithContex
 // GetKubernetesAddonsAddonArrayInput is an input type that accepts GetKubernetesAddonsAddonArray and GetKubernetesAddonsAddonArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesAddonsAddonArrayInput` via:
 //
-//          GetKubernetesAddonsAddonArray{ GetKubernetesAddonsAddonArgs{...} }
+//	GetKubernetesAddonsAddonArray{ GetKubernetesAddonsAddonArgs{...} }
 type GetKubernetesAddonsAddonArrayInput interface {
 	pulumi.Input
 
@@ -5414,7 +5916,7 @@ type GetKubernetesClustersCluster struct {
 // GetKubernetesClustersClusterInput is an input type that accepts GetKubernetesClustersClusterArgs and GetKubernetesClustersClusterOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterInput` via:
 //
-//          GetKubernetesClustersClusterArgs{...}
+//	GetKubernetesClustersClusterArgs{...}
 type GetKubernetesClustersClusterInput interface {
 	pulumi.Input
 
@@ -5501,7 +6003,7 @@ func (i GetKubernetesClustersClusterArgs) ToGetKubernetesClustersClusterOutputWi
 // GetKubernetesClustersClusterArrayInput is an input type that accepts GetKubernetesClustersClusterArray and GetKubernetesClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterArrayInput` via:
 //
-//          GetKubernetesClustersClusterArray{ GetKubernetesClustersClusterArgs{...} }
+//	GetKubernetesClustersClusterArray{ GetKubernetesClustersClusterArgs{...} }
 type GetKubernetesClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -5743,7 +6245,7 @@ type GetKubernetesClustersClusterConnections struct {
 // GetKubernetesClustersClusterConnectionsInput is an input type that accepts GetKubernetesClustersClusterConnectionsArgs and GetKubernetesClustersClusterConnectionsOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterConnectionsInput` via:
 //
-//          GetKubernetesClustersClusterConnectionsArgs{...}
+//	GetKubernetesClustersClusterConnectionsArgs{...}
 type GetKubernetesClustersClusterConnectionsInput interface {
 	pulumi.Input
 
@@ -5818,7 +6320,7 @@ type GetKubernetesClustersClusterLogConfig struct {
 // GetKubernetesClustersClusterLogConfigInput is an input type that accepts GetKubernetesClustersClusterLogConfigArgs and GetKubernetesClustersClusterLogConfigOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterLogConfigInput` via:
 //
-//          GetKubernetesClustersClusterLogConfigArgs{...}
+//	GetKubernetesClustersClusterLogConfigArgs{...}
 type GetKubernetesClustersClusterLogConfigInput interface {
 	pulumi.Input
 
@@ -5848,7 +6350,7 @@ func (i GetKubernetesClustersClusterLogConfigArgs) ToGetKubernetesClustersCluste
 // GetKubernetesClustersClusterLogConfigArrayInput is an input type that accepts GetKubernetesClustersClusterLogConfigArray and GetKubernetesClustersClusterLogConfigArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterLogConfigArrayInput` via:
 //
-//          GetKubernetesClustersClusterLogConfigArray{ GetKubernetesClustersClusterLogConfigArgs{...} }
+//	GetKubernetesClustersClusterLogConfigArray{ GetKubernetesClustersClusterLogConfigArgs{...} }
 type GetKubernetesClustersClusterLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -5926,7 +6428,7 @@ type GetKubernetesClustersClusterMasterNode struct {
 // GetKubernetesClustersClusterMasterNodeInput is an input type that accepts GetKubernetesClustersClusterMasterNodeArgs and GetKubernetesClustersClusterMasterNodeOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterMasterNodeInput` via:
 //
-//          GetKubernetesClustersClusterMasterNodeArgs{...}
+//	GetKubernetesClustersClusterMasterNodeArgs{...}
 type GetKubernetesClustersClusterMasterNodeInput interface {
 	pulumi.Input
 
@@ -5958,7 +6460,7 @@ func (i GetKubernetesClustersClusterMasterNodeArgs) ToGetKubernetesClustersClust
 // GetKubernetesClustersClusterMasterNodeArrayInput is an input type that accepts GetKubernetesClustersClusterMasterNodeArray and GetKubernetesClustersClusterMasterNodeArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterMasterNodeArrayInput` via:
 //
-//          GetKubernetesClustersClusterMasterNodeArray{ GetKubernetesClustersClusterMasterNodeArgs{...} }
+//	GetKubernetesClustersClusterMasterNodeArray{ GetKubernetesClustersClusterMasterNodeArgs{...} }
 type GetKubernetesClustersClusterMasterNodeArrayInput interface {
 	pulumi.Input
 
@@ -6041,7 +6543,7 @@ type GetKubernetesClustersClusterWorkerNode struct {
 // GetKubernetesClustersClusterWorkerNodeInput is an input type that accepts GetKubernetesClustersClusterWorkerNodeArgs and GetKubernetesClustersClusterWorkerNodeOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterWorkerNodeInput` via:
 //
-//          GetKubernetesClustersClusterWorkerNodeArgs{...}
+//	GetKubernetesClustersClusterWorkerNodeArgs{...}
 type GetKubernetesClustersClusterWorkerNodeInput interface {
 	pulumi.Input
 
@@ -6073,7 +6575,7 @@ func (i GetKubernetesClustersClusterWorkerNodeArgs) ToGetKubernetesClustersClust
 // GetKubernetesClustersClusterWorkerNodeArrayInput is an input type that accepts GetKubernetesClustersClusterWorkerNodeArray and GetKubernetesClustersClusterWorkerNodeArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesClustersClusterWorkerNodeArrayInput` via:
 //
-//          GetKubernetesClustersClusterWorkerNodeArray{ GetKubernetesClustersClusterWorkerNodeArgs{...} }
+//	GetKubernetesClustersClusterWorkerNodeArray{ GetKubernetesClustersClusterWorkerNodeArgs{...} }
 type GetKubernetesClustersClusterWorkerNodeArrayInput interface {
 	pulumi.Input
 
@@ -6162,7 +6664,7 @@ type GetKubernetesPermissionPermission struct {
 // GetKubernetesPermissionPermissionInput is an input type that accepts GetKubernetesPermissionPermissionArgs and GetKubernetesPermissionPermissionOutput values.
 // You can construct a concrete instance of `GetKubernetesPermissionPermissionInput` via:
 //
-//          GetKubernetesPermissionPermissionArgs{...}
+//	GetKubernetesPermissionPermissionArgs{...}
 type GetKubernetesPermissionPermissionInput interface {
 	pulumi.Input
 
@@ -6200,7 +6702,7 @@ func (i GetKubernetesPermissionPermissionArgs) ToGetKubernetesPermissionPermissi
 // GetKubernetesPermissionPermissionArrayInput is an input type that accepts GetKubernetesPermissionPermissionArray and GetKubernetesPermissionPermissionArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesPermissionPermissionArrayInput` via:
 //
-//          GetKubernetesPermissionPermissionArray{ GetKubernetesPermissionPermissionArgs{...} }
+//	GetKubernetesPermissionPermissionArray{ GetKubernetesPermissionPermissionArgs{...} }
 type GetKubernetesPermissionPermissionArrayInput interface {
 	pulumi.Input
 
@@ -6296,7 +6798,7 @@ type GetKubernetesVersionMetadata struct {
 // GetKubernetesVersionMetadataInput is an input type that accepts GetKubernetesVersionMetadataArgs and GetKubernetesVersionMetadataOutput values.
 // You can construct a concrete instance of `GetKubernetesVersionMetadataInput` via:
 //
-//          GetKubernetesVersionMetadataArgs{...}
+//	GetKubernetesVersionMetadataArgs{...}
 type GetKubernetesVersionMetadataInput interface {
 	pulumi.Input
 
@@ -6326,7 +6828,7 @@ func (i GetKubernetesVersionMetadataArgs) ToGetKubernetesVersionMetadataOutputWi
 // GetKubernetesVersionMetadataArrayInput is an input type that accepts GetKubernetesVersionMetadataArray and GetKubernetesVersionMetadataArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesVersionMetadataArrayInput` via:
 //
-//          GetKubernetesVersionMetadataArray{ GetKubernetesVersionMetadataArgs{...} }
+//	GetKubernetesVersionMetadataArray{ GetKubernetesVersionMetadataArgs{...} }
 type GetKubernetesVersionMetadataArrayInput interface {
 	pulumi.Input
 
@@ -6402,7 +6904,7 @@ type GetKubernetesVersionMetadataRuntime struct {
 // GetKubernetesVersionMetadataRuntimeInput is an input type that accepts GetKubernetesVersionMetadataRuntimeArgs and GetKubernetesVersionMetadataRuntimeOutput values.
 // You can construct a concrete instance of `GetKubernetesVersionMetadataRuntimeInput` via:
 //
-//          GetKubernetesVersionMetadataRuntimeArgs{...}
+//	GetKubernetesVersionMetadataRuntimeArgs{...}
 type GetKubernetesVersionMetadataRuntimeInput interface {
 	pulumi.Input
 
@@ -6432,7 +6934,7 @@ func (i GetKubernetesVersionMetadataRuntimeArgs) ToGetKubernetesVersionMetadataR
 // GetKubernetesVersionMetadataRuntimeArrayInput is an input type that accepts GetKubernetesVersionMetadataRuntimeArray and GetKubernetesVersionMetadataRuntimeArrayOutput values.
 // You can construct a concrete instance of `GetKubernetesVersionMetadataRuntimeArrayInput` via:
 //
-//          GetKubernetesVersionMetadataRuntimeArray{ GetKubernetesVersionMetadataRuntimeArgs{...} }
+//	GetKubernetesVersionMetadataRuntimeArray{ GetKubernetesVersionMetadataRuntimeArgs{...} }
 type GetKubernetesVersionMetadataRuntimeArrayInput interface {
 	pulumi.Input
 
@@ -6543,7 +7045,7 @@ type GetManagedKubernetesClustersCluster struct {
 // GetManagedKubernetesClustersClusterInput is an input type that accepts GetManagedKubernetesClustersClusterArgs and GetManagedKubernetesClustersClusterOutput values.
 // You can construct a concrete instance of `GetManagedKubernetesClustersClusterInput` via:
 //
-//          GetManagedKubernetesClustersClusterArgs{...}
+//	GetManagedKubernetesClustersClusterArgs{...}
 type GetManagedKubernetesClustersClusterInput interface {
 	pulumi.Input
 
@@ -6608,7 +7110,7 @@ func (i GetManagedKubernetesClustersClusterArgs) ToGetManagedKubernetesClustersC
 // GetManagedKubernetesClustersClusterArrayInput is an input type that accepts GetManagedKubernetesClustersClusterArray and GetManagedKubernetesClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetManagedKubernetesClustersClusterArrayInput` via:
 //
-//          GetManagedKubernetesClustersClusterArray{ GetManagedKubernetesClustersClusterArgs{...} }
+//	GetManagedKubernetesClustersClusterArray{ GetManagedKubernetesClustersClusterArgs{...} }
 type GetManagedKubernetesClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -6804,7 +7306,7 @@ type GetManagedKubernetesClustersClusterConnections struct {
 // GetManagedKubernetesClustersClusterConnectionsInput is an input type that accepts GetManagedKubernetesClustersClusterConnectionsArgs and GetManagedKubernetesClustersClusterConnectionsOutput values.
 // You can construct a concrete instance of `GetManagedKubernetesClustersClusterConnectionsInput` via:
 //
-//          GetManagedKubernetesClustersClusterConnectionsArgs{...}
+//	GetManagedKubernetesClustersClusterConnectionsArgs{...}
 type GetManagedKubernetesClustersClusterConnectionsInput interface {
 	pulumi.Input
 
@@ -6879,7 +7381,7 @@ type GetManagedKubernetesClustersClusterLogConfig struct {
 // GetManagedKubernetesClustersClusterLogConfigInput is an input type that accepts GetManagedKubernetesClustersClusterLogConfigArgs and GetManagedKubernetesClustersClusterLogConfigOutput values.
 // You can construct a concrete instance of `GetManagedKubernetesClustersClusterLogConfigInput` via:
 //
-//          GetManagedKubernetesClustersClusterLogConfigArgs{...}
+//	GetManagedKubernetesClustersClusterLogConfigArgs{...}
 type GetManagedKubernetesClustersClusterLogConfigInput interface {
 	pulumi.Input
 
@@ -6909,7 +7411,7 @@ func (i GetManagedKubernetesClustersClusterLogConfigArgs) ToGetManagedKubernetes
 // GetManagedKubernetesClustersClusterLogConfigArrayInput is an input type that accepts GetManagedKubernetesClustersClusterLogConfigArray and GetManagedKubernetesClustersClusterLogConfigArrayOutput values.
 // You can construct a concrete instance of `GetManagedKubernetesClustersClusterLogConfigArrayInput` via:
 //
-//          GetManagedKubernetesClustersClusterLogConfigArray{ GetManagedKubernetesClustersClusterLogConfigArgs{...} }
+//	GetManagedKubernetesClustersClusterLogConfigArray{ GetManagedKubernetesClustersClusterLogConfigArgs{...} }
 type GetManagedKubernetesClustersClusterLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -6987,7 +7489,7 @@ type GetManagedKubernetesClustersClusterWorkerNode struct {
 // GetManagedKubernetesClustersClusterWorkerNodeInput is an input type that accepts GetManagedKubernetesClustersClusterWorkerNodeArgs and GetManagedKubernetesClustersClusterWorkerNodeOutput values.
 // You can construct a concrete instance of `GetManagedKubernetesClustersClusterWorkerNodeInput` via:
 //
-//          GetManagedKubernetesClustersClusterWorkerNodeArgs{...}
+//	GetManagedKubernetesClustersClusterWorkerNodeArgs{...}
 type GetManagedKubernetesClustersClusterWorkerNodeInput interface {
 	pulumi.Input
 
@@ -7019,7 +7521,7 @@ func (i GetManagedKubernetesClustersClusterWorkerNodeArgs) ToGetManagedKubernete
 // GetManagedKubernetesClustersClusterWorkerNodeArrayInput is an input type that accepts GetManagedKubernetesClustersClusterWorkerNodeArray and GetManagedKubernetesClustersClusterWorkerNodeArrayOutput values.
 // You can construct a concrete instance of `GetManagedKubernetesClustersClusterWorkerNodeArrayInput` via:
 //
-//          GetManagedKubernetesClustersClusterWorkerNodeArray{ GetManagedKubernetesClustersClusterWorkerNodeArgs{...} }
+//	GetManagedKubernetesClustersClusterWorkerNodeArray{ GetManagedKubernetesClustersClusterWorkerNodeArgs{...} }
 type GetManagedKubernetesClustersClusterWorkerNodeArrayInput interface {
 	pulumi.Input
 
@@ -7120,7 +7622,7 @@ type GetRegistryEnterpriseInstancesInstance struct {
 // GetRegistryEnterpriseInstancesInstanceInput is an input type that accepts GetRegistryEnterpriseInstancesInstanceArgs and GetRegistryEnterpriseInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseInstancesInstanceInput` via:
 //
-//          GetRegistryEnterpriseInstancesInstanceArgs{...}
+//	GetRegistryEnterpriseInstancesInstanceArgs{...}
 type GetRegistryEnterpriseInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -7170,7 +7672,7 @@ func (i GetRegistryEnterpriseInstancesInstanceArgs) ToGetRegistryEnterpriseInsta
 // GetRegistryEnterpriseInstancesInstanceArrayInput is an input type that accepts GetRegistryEnterpriseInstancesInstanceArray and GetRegistryEnterpriseInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseInstancesInstanceArrayInput` via:
 //
-//          GetRegistryEnterpriseInstancesInstanceArray{ GetRegistryEnterpriseInstancesInstanceArgs{...} }
+//	GetRegistryEnterpriseInstancesInstanceArray{ GetRegistryEnterpriseInstancesInstanceArgs{...} }
 type GetRegistryEnterpriseInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -7306,7 +7808,7 @@ type GetRegistryEnterpriseNamespacesNamespace struct {
 // GetRegistryEnterpriseNamespacesNamespaceInput is an input type that accepts GetRegistryEnterpriseNamespacesNamespaceArgs and GetRegistryEnterpriseNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseNamespacesNamespaceInput` via:
 //
-//          GetRegistryEnterpriseNamespacesNamespaceArgs{...}
+//	GetRegistryEnterpriseNamespacesNamespaceArgs{...}
 type GetRegistryEnterpriseNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -7346,7 +7848,7 @@ func (i GetRegistryEnterpriseNamespacesNamespaceArgs) ToGetRegistryEnterpriseNam
 // GetRegistryEnterpriseNamespacesNamespaceArrayInput is an input type that accepts GetRegistryEnterpriseNamespacesNamespaceArray and GetRegistryEnterpriseNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseNamespacesNamespaceArrayInput` via:
 //
-//          GetRegistryEnterpriseNamespacesNamespaceArray{ GetRegistryEnterpriseNamespacesNamespaceArgs{...} }
+//	GetRegistryEnterpriseNamespacesNamespaceArray{ GetRegistryEnterpriseNamespacesNamespaceArgs{...} }
 type GetRegistryEnterpriseNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -7457,7 +7959,7 @@ type GetRegistryEnterpriseReposRepo struct {
 // GetRegistryEnterpriseReposRepoInput is an input type that accepts GetRegistryEnterpriseReposRepoArgs and GetRegistryEnterpriseReposRepoOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseReposRepoInput` via:
 //
-//          GetRegistryEnterpriseReposRepoArgs{...}
+//	GetRegistryEnterpriseReposRepoArgs{...}
 type GetRegistryEnterpriseReposRepoInput interface {
 	pulumi.Input
 
@@ -7497,7 +7999,7 @@ func (i GetRegistryEnterpriseReposRepoArgs) ToGetRegistryEnterpriseReposRepoOutp
 // GetRegistryEnterpriseReposRepoArrayInput is an input type that accepts GetRegistryEnterpriseReposRepoArray and GetRegistryEnterpriseReposRepoArrayOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseReposRepoArrayInput` via:
 //
-//          GetRegistryEnterpriseReposRepoArray{ GetRegistryEnterpriseReposRepoArgs{...} }
+//	GetRegistryEnterpriseReposRepoArray{ GetRegistryEnterpriseReposRepoArgs{...} }
 type GetRegistryEnterpriseReposRepoArrayInput interface {
 	pulumi.Input
 
@@ -7608,7 +8110,7 @@ type GetRegistryEnterpriseReposRepoTag struct {
 // GetRegistryEnterpriseReposRepoTagInput is an input type that accepts GetRegistryEnterpriseReposRepoTagArgs and GetRegistryEnterpriseReposRepoTagOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseReposRepoTagInput` via:
 //
-//          GetRegistryEnterpriseReposRepoTagArgs{...}
+//	GetRegistryEnterpriseReposRepoTagArgs{...}
 type GetRegistryEnterpriseReposRepoTagInput interface {
 	pulumi.Input
 
@@ -7648,7 +8150,7 @@ func (i GetRegistryEnterpriseReposRepoTagArgs) ToGetRegistryEnterpriseReposRepoT
 // GetRegistryEnterpriseReposRepoTagArrayInput is an input type that accepts GetRegistryEnterpriseReposRepoTagArray and GetRegistryEnterpriseReposRepoTagArrayOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseReposRepoTagArrayInput` via:
 //
-//          GetRegistryEnterpriseReposRepoTagArray{ GetRegistryEnterpriseReposRepoTagArgs{...} }
+//	GetRegistryEnterpriseReposRepoTagArray{ GetRegistryEnterpriseReposRepoTagArgs{...} }
 type GetRegistryEnterpriseReposRepoTagArrayInput interface {
 	pulumi.Input
 
@@ -7773,7 +8275,7 @@ type GetRegistryEnterpriseSyncRulesRule struct {
 // GetRegistryEnterpriseSyncRulesRuleInput is an input type that accepts GetRegistryEnterpriseSyncRulesRuleArgs and GetRegistryEnterpriseSyncRulesRuleOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseSyncRulesRuleInput` via:
 //
-//          GetRegistryEnterpriseSyncRulesRuleArgs{...}
+//	GetRegistryEnterpriseSyncRulesRuleArgs{...}
 type GetRegistryEnterpriseSyncRulesRuleInput interface {
 	pulumi.Input
 
@@ -7827,7 +8329,7 @@ func (i GetRegistryEnterpriseSyncRulesRuleArgs) ToGetRegistryEnterpriseSyncRules
 // GetRegistryEnterpriseSyncRulesRuleArrayInput is an input type that accepts GetRegistryEnterpriseSyncRulesRuleArray and GetRegistryEnterpriseSyncRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRegistryEnterpriseSyncRulesRuleArrayInput` via:
 //
-//          GetRegistryEnterpriseSyncRulesRuleArray{ GetRegistryEnterpriseSyncRulesRuleArgs{...} }
+//	GetRegistryEnterpriseSyncRulesRuleArray{ GetRegistryEnterpriseSyncRulesRuleArgs{...} }
 type GetRegistryEnterpriseSyncRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -7977,7 +8479,7 @@ type GetServerlessKubernetesClustersCluster struct {
 // GetServerlessKubernetesClustersClusterInput is an input type that accepts GetServerlessKubernetesClustersClusterArgs and GetServerlessKubernetesClustersClusterOutput values.
 // You can construct a concrete instance of `GetServerlessKubernetesClustersClusterInput` via:
 //
-//          GetServerlessKubernetesClustersClusterArgs{...}
+//	GetServerlessKubernetesClustersClusterArgs{...}
 type GetServerlessKubernetesClustersClusterInput interface {
 	pulumi.Input
 
@@ -8021,7 +8523,7 @@ func (i GetServerlessKubernetesClustersClusterArgs) ToGetServerlessKubernetesClu
 // GetServerlessKubernetesClustersClusterArrayInput is an input type that accepts GetServerlessKubernetesClustersClusterArray and GetServerlessKubernetesClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetServerlessKubernetesClustersClusterArrayInput` via:
 //
-//          GetServerlessKubernetesClustersClusterArray{ GetServerlessKubernetesClustersClusterArgs{...} }
+//	GetServerlessKubernetesClustersClusterArray{ GetServerlessKubernetesClustersClusterArgs{...} }
 type GetServerlessKubernetesClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -8139,7 +8641,7 @@ type GetServerlessKubernetesClustersClusterConnections struct {
 // GetServerlessKubernetesClustersClusterConnectionsInput is an input type that accepts GetServerlessKubernetesClustersClusterConnectionsArgs and GetServerlessKubernetesClustersClusterConnectionsOutput values.
 // You can construct a concrete instance of `GetServerlessKubernetesClustersClusterConnectionsInput` via:
 //
-//          GetServerlessKubernetesClustersClusterConnectionsArgs{...}
+//	GetServerlessKubernetesClustersClusterConnectionsArgs{...}
 type GetServerlessKubernetesClustersClusterConnectionsInput interface {
 	pulumi.Input
 
@@ -8252,10 +8754,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerNodeArrayInput)(nil)).Elem(), ManagedKubernetesWorkerNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskArrayInput)(nil)).Elem(), NodePoolDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationPtrInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelInput)(nil)).Elem(), NodePoolLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelArrayInput)(nil)).Elem(), NodePoolLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementInput)(nil)).Elem(), NodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementPtrInput)(nil)).Elem(), NodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRolloutPolicyInput)(nil)).Elem(), NodePoolRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRolloutPolicyPtrInput)(nil)).Elem(), NodePoolRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigPtrInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolSpotPriceLimitInput)(nil)).Elem(), NodePoolSpotPriceLimitArgs{})
@@ -8362,10 +8868,14 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolKubeletConfigurationOutput{})
+	pulumi.RegisterOutputType(NodePoolKubeletConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolLabelOutput{})
 	pulumi.RegisterOutputType(NodePoolLabelArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolRolloutPolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolRolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolSpotPriceLimitOutput{})

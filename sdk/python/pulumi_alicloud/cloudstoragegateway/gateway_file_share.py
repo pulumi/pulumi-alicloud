@@ -59,7 +59,7 @@ class GatewayFileShareArgs:
         :param pulumi.Input[int] backend_limit: The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
         :param pulumi.Input[bool] browsable: The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
         :param pulumi.Input[bool] bypass_cache_read: Direct reading OSS of the gateway file share.
-        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         :param pulumi.Input[bool] direct_io: File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
         :param pulumi.Input[int] download_limit: The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
         :param pulumi.Input[bool] fast_reclaim: The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
@@ -268,7 +268,7 @@ class GatewayFileShareArgs:
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -584,7 +584,7 @@ class _GatewayFileShareState:
         :param pulumi.Input[int] backend_limit: The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
         :param pulumi.Input[bool] browsable: The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
         :param pulumi.Input[bool] bypass_cache_read: Direct reading OSS of the gateway file share.
-        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         :param pulumi.Input[bool] direct_io: File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
         :param pulumi.Input[int] download_limit: The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
         :param pulumi.Input[bool] fast_reclaim: The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
@@ -736,7 +736,7 @@ class _GatewayFileShareState:
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -1203,7 +1203,7 @@ class GatewayFileShare(pulumi.CustomResource):
         :param pulumi.Input[int] backend_limit: The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
         :param pulumi.Input[bool] browsable: The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
         :param pulumi.Input[bool] bypass_cache_read: Direct reading OSS of the gateway file share.
-        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         :param pulumi.Input[bool] direct_io: File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
         :param pulumi.Input[int] download_limit: The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
         :param pulumi.Input[bool] fast_reclaim: The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
@@ -1462,7 +1462,7 @@ class GatewayFileShare(pulumi.CustomResource):
         :param pulumi.Input[int] backend_limit: The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
         :param pulumi.Input[bool] browsable: The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
         :param pulumi.Input[bool] bypass_cache_read: Direct reading OSS of the gateway file share.
-        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        :param pulumi.Input[str] cache_mode: The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         :param pulumi.Input[bool] direct_io: File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
         :param pulumi.Input[int] download_limit: The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
         :param pulumi.Input[bool] fast_reclaim: The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
@@ -1569,7 +1569,7 @@ class GatewayFileShare(pulumi.CustomResource):
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> pulumi.Output[str]:
         """
-        The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         """
         return pulumi.get(self, "cache_mode")
 

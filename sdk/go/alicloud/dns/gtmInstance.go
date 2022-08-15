@@ -19,61 +19,64 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
-// 			AlarmContactGroupName: pulumi.Any(_var.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
-// 			InstanceName:         pulumi.Any(_var.Name),
-// 			PaymentType:          pulumi.String("Subscription"),
-// 			Period:               pulumi.Int(1),
-// 			RenewalStatus:        pulumi.String("ManualRenewal"),
-// 			PackageEdition:       pulumi.String("standard"),
-// 			HealthCheckTaskCount: pulumi.Int(100),
-// 			SmsNotificationCount: pulumi.Int(1000),
-// 			PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
-// 			Ttl:                  pulumi.Int(60),
-// 			CnameType:            pulumi.String("PUBLIC"),
-// 			ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			AlertGroups: pulumi.StringArray{
-// 				defaultAlarmContactGroup.AlarmContactGroupName,
-// 			},
-// 			PublicUserDomainName: pulumi.Any(_var.Domain_name),
-// 			AlertConfigs: dns.GtmInstanceAlertConfigArray{
-// 				&dns.GtmInstanceAlertConfigArgs{
-// 					SmsNotice:      pulumi.Bool(true),
-// 					NoticeType:     pulumi.String("ADDR_ALERT"),
-// 					EmailNotice:    pulumi.Bool(true),
-// 					DingtalkNotice: pulumi.Bool(true),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
+//				InstanceName:         pulumi.Any(_var.Name),
+//				PaymentType:          pulumi.String("Subscription"),
+//				Period:               pulumi.Int(1),
+//				RenewalStatus:        pulumi.String("ManualRenewal"),
+//				PackageEdition:       pulumi.String("standard"),
+//				HealthCheckTaskCount: pulumi.Int(100),
+//				SmsNotificationCount: pulumi.Int(1000),
+//				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
+//				Ttl:                  pulumi.Int(60),
+//				CnameType:            pulumi.String("PUBLIC"),
+//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				AlertGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.AlarmContactGroupName,
+//				},
+//				PublicUserDomainName: pulumi.Any(_var.Domain_name),
+//				AlertConfigs: dns.GtmInstanceAlertConfigArray{
+//					&dns.GtmInstanceAlertConfigArgs{
+//						SmsNotice:      pulumi.Bool(true),
+//						NoticeType:     pulumi.String("ADDR_ALERT"),
+//						EmailNotice:    pulumi.Bool(true),
+//						DingtalkNotice: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -81,7 +84,9 @@ import (
 // Alidns Gtm Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
+//
+//	$ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
+//
 // ```
 type GtmInstance struct {
 	pulumi.CustomResourceState
@@ -377,7 +382,7 @@ func (i *GtmInstance) ToGtmInstanceOutputWithContext(ctx context.Context) GtmIns
 // GtmInstanceArrayInput is an input type that accepts GtmInstanceArray and GtmInstanceArrayOutput values.
 // You can construct a concrete instance of `GtmInstanceArrayInput` via:
 //
-//          GtmInstanceArray{ GtmInstanceArgs{...} }
+//	GtmInstanceArray{ GtmInstanceArgs{...} }
 type GtmInstanceArrayInput interface {
 	pulumi.Input
 
@@ -402,7 +407,7 @@ func (i GtmInstanceArray) ToGtmInstanceArrayOutputWithContext(ctx context.Contex
 // GtmInstanceMapInput is an input type that accepts GtmInstanceMap and GtmInstanceMapOutput values.
 // You can construct a concrete instance of `GtmInstanceMapInput` via:
 //
-//          GtmInstanceMap{ "key": GtmInstanceArgs{...} }
+//	GtmInstanceMap{ "key": GtmInstanceArgs{...} }
 type GtmInstanceMapInput interface {
 	pulumi.Input
 

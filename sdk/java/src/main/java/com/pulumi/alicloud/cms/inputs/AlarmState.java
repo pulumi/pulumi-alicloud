@@ -352,6 +352,21 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Critical level alarm threshold value, which must be a numeric value currently.
      * 
      * @deprecated
@@ -434,6 +449,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         this.startTime = $.startTime;
         this.statistics = $.statistics;
         this.status = $.status;
+        this.tags = $.tags;
         this.threshold = $.threshold;
         this.triggeredCount = $.triggeredCount;
         this.webhook = $.webhook;
@@ -916,6 +932,27 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

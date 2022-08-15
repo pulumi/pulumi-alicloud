@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := imp.GetAppTemplates(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("impAppTemplateId1", ids.Templates[0].Id)
-// 		nameRegex, err := imp.GetAppTemplates(ctx, &imp.GetAppTemplatesArgs{
-// 			NameRegex: pulumi.StringRef("^my_AppTemplate"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("impAppTemplateId2", nameRegex.Templates[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := imp.GetAppTemplates(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("impAppTemplateId1", ids.Templates[0].Id)
+//			nameRegex, err := imp.GetAppTemplates(ctx, &imp.GetAppTemplatesArgs{
+//				NameRegex: pulumi.StringRef("^my_AppTemplate"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("impAppTemplateId2", nameRegex.Templates[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAppTemplates(ctx *pulumi.Context, args *GetAppTemplatesArgs, opts ...pulumi.InvokeOption) (*GetAppTemplatesResult, error) {
 	var rv GetAppTemplatesResult

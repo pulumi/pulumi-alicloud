@@ -16,29 +16,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		nameRegex, err := sae.GetGreyTagRoutes(ctx, &sae.GetGreyTagRoutesArgs{
-// 			AppId:     "example_id",
-// 			NameRegex: pulumi.StringRef("^my-GreyTagRoute"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("saeGreyTagRoutesId", nameRegex.Routes[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			nameRegex, err := sae.GetGreyTagRoutes(ctx, &sae.GetGreyTagRoutesArgs{
+//				AppId:     "example_id",
+//				NameRegex: pulumi.StringRef("^my-GreyTagRoute"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("saeGreyTagRoutesId", nameRegex.Routes[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGreyTagRoutes(ctx *pulumi.Context, args *GetGreyTagRoutesArgs, opts ...pulumi.InvokeOption) (*GetGreyTagRoutesResult, error) {
 	var rv GetGreyTagRoutesResult

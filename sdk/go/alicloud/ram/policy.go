@@ -16,43 +16,47 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-// 			Description: pulumi.String("this is a policy test"),
-// 			Force:       pulumi.Bool(true),
-// 			PolicyDocument: pulumi.String(fmt.Sprintf(`  {
-//     "Statement": [
-//       {
-//         "Action": [
-//           "oss:ListObjects",
-//           "oss:GetObject"
-//         ],
-//         "Effect": "Allow",
-//         "Resource": [
-//           "acs:oss:*:*:mybucket",
-//           "acs:oss:*:*:mybucket/*"
-//         ]
-//       }
-//     ],
-//       "Version": "1"
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				Description: pulumi.String("this is a policy test"),
+//				Force:       pulumi.Bool(true),
+//				PolicyDocument: pulumi.String(fmt.Sprintf(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": [
+//	          "oss:ListObjects",
+//	          "oss:GetObject"
+//	        ],
+//	        "Effect": "Allow",
+//	        "Resource": [
+//	          "acs:oss:*:*:mybucket",
+//	          "acs:oss:*:*:mybucket/*"
+//	        ]
+//	      }
+//	    ],
+//	      "Version": "1"
+//	  }
 //
 // `)),
-// 			PolicyName: pulumi.String("policyName"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				PolicyName: pulumi.String("policyName"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +64,9 @@ import (
 // RAM policy can be imported using the id or name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/policy:Policy example my-policy
+//
+//	$ pulumi import alicloud:ram/policy:Policy example my-policy
+//
 // ```
 type Policy struct {
 	pulumi.CustomResourceState
@@ -292,7 +298,7 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 // PolicyArrayInput is an input type that accepts PolicyArray and PolicyArrayOutput values.
 // You can construct a concrete instance of `PolicyArrayInput` via:
 //
-//          PolicyArray{ PolicyArgs{...} }
+//	PolicyArray{ PolicyArgs{...} }
 type PolicyArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +323,7 @@ func (i PolicyArray) ToPolicyArrayOutputWithContext(ctx context.Context) PolicyA
 // PolicyMapInput is an input type that accepts PolicyMap and PolicyMapOutput values.
 // You can construct a concrete instance of `PolicyMapInput` via:
 //
-//          PolicyMap{ "key": PolicyArgs{...} }
+//	PolicyMap{ "key": PolicyArgs{...} }
 type PolicyMapInput interface {
 	pulumi.Input
 

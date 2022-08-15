@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := directmail.GetTags(ctx, &directmail.GetTagsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("directMailTagId1", ids.Tags[0].Id)
-// 		nameRegex, err := directmail.GetTags(ctx, &directmail.GetTagsArgs{
-// 			NameRegex: pulumi.StringRef("^my-Tag"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("directMailTagId2", nameRegex.Tags[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := directmail.GetTags(ctx, &directmail.GetTagsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("directMailTagId1", ids.Tags[0].Id)
+//			nameRegex, err := directmail.GetTags(ctx, &directmail.GetTagsArgs{
+//				NameRegex: pulumi.StringRef("^my-Tag"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("directMailTagId2", nameRegex.Tags[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
 	var rv GetTagsResult

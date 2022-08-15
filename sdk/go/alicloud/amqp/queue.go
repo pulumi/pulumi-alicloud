@@ -19,36 +19,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
-// 			InstanceId:      pulumi.String("amqp-abc12345"),
-// 			VirtualHostName: pulumi.String("my-VirtualHost"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = amqp.NewQueue(ctx, "exampleQueue", &amqp.QueueArgs{
-// 			InstanceId:      exampleVirtualHost.InstanceId,
-// 			QueueName:       pulumi.String("my-Queue"),
-// 			VirtualHostName: exampleVirtualHost.VirtualHostName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
+//				InstanceId:      pulumi.String("amqp-abc12345"),
+//				VirtualHostName: pulumi.String("my-VirtualHost"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewQueue(ctx, "exampleQueue", &amqp.QueueArgs{
+//				InstanceId:      exampleVirtualHost.InstanceId,
+//				QueueName:       pulumi.String("my-Queue"),
+//				VirtualHostName: exampleVirtualHost.VirtualHostName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // RabbitMQ (AMQP) Queue can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
+//
+//	$ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
+//
 // ```
 type Queue struct {
 	pulumi.CustomResourceState
@@ -318,7 +323,7 @@ func (i *Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 // QueueArrayInput is an input type that accepts QueueArray and QueueArrayOutput values.
 // You can construct a concrete instance of `QueueArrayInput` via:
 //
-//          QueueArray{ QueueArgs{...} }
+//	QueueArray{ QueueArgs{...} }
 type QueueArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +348,7 @@ func (i QueueArray) ToQueueArrayOutputWithContext(ctx context.Context) QueueArra
 // QueueMapInput is an input type that accepts QueueMap and QueueMapOutput values.
 // You can construct a concrete instance of `QueueMapInput` via:
 //
-//          QueueMap{ "key": QueueArgs{...} }
+//	QueueMap{ "key": QueueArgs{...} }
 type QueueMapInput interface {
 	pulumi.Input
 

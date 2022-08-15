@@ -24,54 +24,59 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
-// 			ProtocolType: pulumi.String("NFS"),
-// 			StorageType:  pulumi.String("Performance"),
-// 			Description:  pulumi.String("test file system"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleAccessGroup, err := nas.NewAccessGroup(ctx, "exampleAccessGroup", &nas.AccessGroupArgs{
-// 			AccessGroupName: pulumi.String("test_name"),
-// 			AccessGroupType: pulumi.String("Classic"),
-// 			Description:     pulumi.String("test access group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewMountTarget(ctx, "exampleMountTarget", &nas.MountTargetArgs{
-// 			FileSystemId:    exampleFileSystem.ID(),
-// 			AccessGroupName: exampleAccessGroup.AccessGroupName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//				ProtocolType: pulumi.String("NFS"),
+//				StorageType:  pulumi.String("Performance"),
+//				Description:  pulumi.String("test file system"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessGroup, err := nas.NewAccessGroup(ctx, "exampleAccessGroup", &nas.AccessGroupArgs{
+//				AccessGroupName: pulumi.String("test_name"),
+//				AccessGroupType: pulumi.String("Classic"),
+//				Description:     pulumi.String("test access group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewMountTarget(ctx, "exampleMountTarget", &nas.MountTargetArgs{
+//				FileSystemId:    exampleFileSystem.ID(),
+//				AccessGroupName: exampleAccessGroup.AccessGroupName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// NAS MountTarget
+// # NAS MountTarget
 //
 // can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+//
+//	$ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+//
 // ```
 type MountTarget struct {
 	pulumi.CustomResourceState
@@ -208,7 +213,7 @@ func (i *MountTarget) ToMountTargetOutputWithContext(ctx context.Context) MountT
 // MountTargetArrayInput is an input type that accepts MountTargetArray and MountTargetArrayOutput values.
 // You can construct a concrete instance of `MountTargetArrayInput` via:
 //
-//          MountTargetArray{ MountTargetArgs{...} }
+//	MountTargetArray{ MountTargetArgs{...} }
 type MountTargetArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +238,7 @@ func (i MountTargetArray) ToMountTargetArrayOutputWithContext(ctx context.Contex
 // MountTargetMapInput is an input type that accepts MountTargetMap and MountTargetMapOutput values.
 // You can construct a concrete instance of `MountTargetMapInput` via:
 //
-//          MountTargetMap{ "key": MountTargetArgs{...} }
+//	MountTargetMap{ "key": MountTargetArgs{...} }
 type MountTargetMapInput interface {
 	pulumi.Input
 

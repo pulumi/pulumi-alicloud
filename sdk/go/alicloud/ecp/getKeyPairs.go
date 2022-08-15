@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := ecp.GetKeyPairs(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("ecpKeyPairId1", ids.Pairs[0].Id)
-// 		nameRegex, err := ecp.GetKeyPairs(ctx, &ecp.GetKeyPairsArgs{
-// 			NameRegex: pulumi.StringRef("^my-KeyPair"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("ecpKeyPairId2", nameRegex.Pairs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ecp.GetKeyPairs(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecpKeyPairId1", ids.Pairs[0].Id)
+//			nameRegex, err := ecp.GetKeyPairs(ctx, &ecp.GetKeyPairsArgs{
+//				NameRegex: pulumi.StringRef("^my-KeyPair"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecpKeyPairId2", nameRegex.Pairs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs, opts ...pulumi.InvokeOption) (*GetKeyPairsResult, error) {
 	var rv GetKeyPairsResult

@@ -19,33 +19,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := alb.NewAcl(ctx, "example", &alb.AclArgs{
-// 			AclEntries: alb.AclAclEntryArray{
-// 				&alb.AclAclEntryArgs{
-// 					Description: pulumi.String("example_value"),
-// 					Entry:       pulumi.String("10.0.0.0/24"),
-// 				},
-// 			},
-// 			AclName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alb.NewAcl(ctx, "example", &alb.AclArgs{
+//				AclEntries: alb.AclAclEntryArray{
+//					&alb.AclAclEntryArgs{
+//						Description: pulumi.String("example_value"),
+//						Entry:       pulumi.String("10.0.0.0/24"),
+//					},
+//				},
+//				AclName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // ALB Acl can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alb/acl:Acl example <id>
+//
+//	$ pulumi import alicloud:alb/acl:Acl example <id>
+//
 // ```
 type Acl struct {
 	pulumi.CustomResourceState
@@ -200,7 +205,7 @@ func (i *Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
 // AclArrayInput is an input type that accepts AclArray and AclArrayOutput values.
 // You can construct a concrete instance of `AclArrayInput` via:
 //
-//          AclArray{ AclArgs{...} }
+//	AclArray{ AclArgs{...} }
 type AclArrayInput interface {
 	pulumi.Input
 
@@ -225,7 +230,7 @@ func (i AclArray) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutpu
 // AclMapInput is an input type that accepts AclMap and AclMapOutput values.
 // You can construct a concrete instance of `AclMapInput` via:
 //
-//          AclMap{ "key": AclArgs{...} }
+//	AclMap{ "key": AclArgs{...} }
 type AclMapInput interface {
 	pulumi.Input
 

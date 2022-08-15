@@ -16,51 +16,54 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vod"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vod"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultDomain, err := vod.NewDomain(ctx, "defaultDomain", &vod.DomainArgs{
-// 			DomainName: pulumi.String("your_domain_name"),
-// 			Scope:      pulumi.String("domestic"),
-// 			Sources: vod.DomainSourceArray{
-// 				&vod.DomainSourceArgs{
-// 					SourceType:    pulumi.String("domain"),
-// 					SourceContent: pulumi.String("your_source_content"),
-// 					SourcePort:    pulumi.String("80"),
-// 				},
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"key1": pulumi.Any("value1"),
-// 				"key2": pulumi.Any("value2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultDomains := vod.GetDomainsOutput(ctx, vod.GetDomainsOutputArgs{
-// 			Ids: pulumi.StringArray{
-// 				defaultDomain.ID(),
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"key1": pulumi.Any("value1"),
-// 				"key2": pulumi.Any("value2"),
-// 			},
-// 		}, nil)
-// 		ctx.Export("vodDomain", defaultDomains.ApplyT(func(defaultDomains vod.GetDomainsResult) (vod.GetDomainsDomain, error) {
-// 			return defaultDomains.Domains[0], nil
-// 		}).(vod.GetDomainsDomainOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultDomain, err := vod.NewDomain(ctx, "defaultDomain", &vod.DomainArgs{
+//				DomainName: pulumi.String("your_domain_name"),
+//				Scope:      pulumi.String("domestic"),
+//				Sources: vod.DomainSourceArray{
+//					&vod.DomainSourceArgs{
+//						SourceType:    pulumi.String("domain"),
+//						SourceContent: pulumi.String("your_source_content"),
+//						SourcePort:    pulumi.String("80"),
+//					},
+//				},
+//				Tags: pulumi.AnyMap{
+//					"key1": pulumi.Any("value1"),
+//					"key2": pulumi.Any("value2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDomains := vod.GetDomainsOutput(ctx, vod.GetDomainsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultDomain.ID(),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"key1": pulumi.Any("value1"),
+//					"key2": pulumi.Any("value2"),
+//				},
+//			}, nil)
+//			ctx.Export("vodDomain", defaultDomains.ApplyT(func(defaultDomains vod.GetDomainsResult) (vod.GetDomainsDomain, error) {
+//				return defaultDomains.Domains[0], nil
+//			}).(vod.GetDomainsDomainOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	var rv GetDomainsResult

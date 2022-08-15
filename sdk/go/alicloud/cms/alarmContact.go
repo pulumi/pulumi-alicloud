@@ -17,52 +17,58 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
-// 			AlarmContactName: pulumi.String("zhangsan"),
-// 			ChannelsMail:     pulumi.String("terraform.test.com"),
-// 			Describe:         pulumi.String("For Test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
+//				AlarmContactName: pulumi.String("zhangsan"),
+//				ChannelsMail:     pulumi.String("terraform.test.com"),
+//				Describe:         pulumi.String("For Test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
-// 			AlarmContactName: pulumi.String("zhangsan"),
-// 			Describe:         pulumi.String("For Test"),
-// 			ChannelsMail:     pulumi.String("terraform.test.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
+//				AlarmContactName: pulumi.String("zhangsan"),
+//				Describe:         pulumi.String("For Test"),
+//				ChannelsMail:     pulumi.String("terraform.test.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -70,7 +76,9 @@ import (
 // Alarm contact can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
+//
+//	$ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
+//
 // ```
 type AlarmContact struct {
 	pulumi.CustomResourceState
@@ -224,7 +232,7 @@ func (i *AlarmContact) ToAlarmContactOutputWithContext(ctx context.Context) Alar
 // AlarmContactArrayInput is an input type that accepts AlarmContactArray and AlarmContactArrayOutput values.
 // You can construct a concrete instance of `AlarmContactArrayInput` via:
 //
-//          AlarmContactArray{ AlarmContactArgs{...} }
+//	AlarmContactArray{ AlarmContactArgs{...} }
 type AlarmContactArrayInput interface {
 	pulumi.Input
 
@@ -249,7 +257,7 @@ func (i AlarmContactArray) ToAlarmContactArrayOutputWithContext(ctx context.Cont
 // AlarmContactMapInput is an input type that accepts AlarmContactMap and AlarmContactMapOutput values.
 // You can construct a concrete instance of `AlarmContactMapInput` via:
 //
-//          AlarmContactMap{ "key": AlarmContactArgs{...} }
+//	AlarmContactMap{ "key": AlarmContactArgs{...} }
 type AlarmContactMapInput interface {
 	pulumi.Input
 

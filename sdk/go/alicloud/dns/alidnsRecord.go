@@ -23,26 +23,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewAlidnsRecord(ctx, "record", &dns.AlidnsRecordArgs{
-// 			DomainName: pulumi.String("domainname"),
-// 			Remark:     pulumi.String("Test new alidns record."),
-// 			Rr:         pulumi.String("@"),
-// 			Status:     pulumi.String("ENABLE"),
-// 			Type:       pulumi.String("A"),
-// 			Value:      pulumi.String("192.168.99.99"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewAlidnsRecord(ctx, "record", &dns.AlidnsRecordArgs{
+//				DomainName: pulumi.String("domainname"),
+//				Remark:     pulumi.String("Test new alidns record."),
+//				Rr:         pulumi.String("@"),
+//				Status:     pulumi.String("ENABLE"),
+//				Type:       pulumi.String("A"),
+//				Value:      pulumi.String("192.168.99.99"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Alidns Domain Record can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
+//
+//	$ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
+//
 // ```
 type AlidnsRecord struct {
 	pulumi.CustomResourceState
@@ -250,7 +255,7 @@ func (i *AlidnsRecord) ToAlidnsRecordOutputWithContext(ctx context.Context) Alid
 // AlidnsRecordArrayInput is an input type that accepts AlidnsRecordArray and AlidnsRecordArrayOutput values.
 // You can construct a concrete instance of `AlidnsRecordArrayInput` via:
 //
-//          AlidnsRecordArray{ AlidnsRecordArgs{...} }
+//	AlidnsRecordArray{ AlidnsRecordArgs{...} }
 type AlidnsRecordArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +280,7 @@ func (i AlidnsRecordArray) ToAlidnsRecordArrayOutputWithContext(ctx context.Cont
 // AlidnsRecordMapInput is an input type that accepts AlidnsRecordMap and AlidnsRecordMapOutput values.
 // You can construct a concrete instance of `AlidnsRecordMapInput` via:
 //
-//          AlidnsRecordMap{ "key": AlidnsRecordArgs{...} }
+//	AlidnsRecordMap{ "key": AlidnsRecordArgs{...} }
 type AlidnsRecordMapInput interface {
 	pulumi.Input
 

@@ -19,48 +19,52 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcemanager.NewControlPolicy(ctx, "example", &resourcemanager.ControlPolicyArgs{
-// 			ControlPolicyName: pulumi.String("tf-testAccRDControlPolicy"),
-// 			Description:       pulumi.String("tf-testAccRDControlPolicy"),
-// 			EffectScope:       pulumi.String("RAM"),
-// 			PolicyDocument: pulumi.String(fmt.Sprintf(`  {
-//     "Version": "1",
-//     "Statement": [
-//       {
-//         "Effect": "Deny",
-//         "Action": [
-//           "ram:UpdateRole",
-//           "ram:DeleteRole",
-//           "ram:AttachPolicyToRole",
-//           "ram:DetachPolicyFromRole"
-//         ],
-//         "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
-//       }
-//     ]
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.NewControlPolicy(ctx, "example", &resourcemanager.ControlPolicyArgs{
+//				ControlPolicyName: pulumi.String("tf-testAccRDControlPolicy"),
+//				Description:       pulumi.String("tf-testAccRDControlPolicy"),
+//				EffectScope:       pulumi.String("RAM"),
+//				PolicyDocument: pulumi.String(fmt.Sprintf(`  {
+//	    "Version": "1",
+//	    "Statement": [
+//	      {
+//	        "Effect": "Deny",
+//	        "Action": [
+//	          "ram:UpdateRole",
+//	          "ram:DeleteRole",
+//	          "ram:AttachPolicyToRole",
+//	          "ram:DetachPolicyFromRole"
+//	        ],
+//	        "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+//	      }
+//	    ]
+//	  }
 //
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -68,7 +72,9 @@ import (
 // Resource Manager Control Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/controlPolicy:ControlPolicy example <id>
+//
+//	$ pulumi import alicloud:resourcemanager/controlPolicy:ControlPolicy example <id>
+//
 // ```
 type ControlPolicy struct {
 	pulumi.CustomResourceState
@@ -195,7 +201,7 @@ func (i *ControlPolicy) ToControlPolicyOutputWithContext(ctx context.Context) Co
 // ControlPolicyArrayInput is an input type that accepts ControlPolicyArray and ControlPolicyArrayOutput values.
 // You can construct a concrete instance of `ControlPolicyArrayInput` via:
 //
-//          ControlPolicyArray{ ControlPolicyArgs{...} }
+//	ControlPolicyArray{ ControlPolicyArgs{...} }
 type ControlPolicyArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +226,7 @@ func (i ControlPolicyArray) ToControlPolicyArrayOutputWithContext(ctx context.Co
 // ControlPolicyMapInput is an input type that accepts ControlPolicyMap and ControlPolicyMapOutput values.
 // You can construct a concrete instance of `ControlPolicyMapInput` via:
 //
-//          ControlPolicyMap{ "key": ControlPolicyArgs{...} }
+//	ControlPolicyMap{ "key": ControlPolicyArgs{...} }
 type ControlPolicyMapInput interface {
 	pulumi.Input
 

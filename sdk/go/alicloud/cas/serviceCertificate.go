@@ -19,40 +19,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cas.NewServiceCertificate(ctx, "example", &cas.ServiceCertificateArgs{
-// 			CertificateName: pulumi.String("test"),
-// 			Cert:            readFileOrPanic(fmt.Sprintf("%v/test.crt", path.Module)),
-// 			Key:             readFileOrPanic(fmt.Sprintf("%v/test.key", path.Module)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cas.NewServiceCertificate(ctx, "example", &cas.ServiceCertificateArgs{
+//				CertificateName: pulumi.String("test"),
+//				Cert:            readFileOrPanic(fmt.Sprintf("%v/test.crt", path.Module)),
+//				Key:             readFileOrPanic(fmt.Sprintf("%v/test.key", path.Module)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // SSL Certificates Certificate can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
+//
+//	$ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
+//
 // ```
 type ServiceCertificate struct {
 	pulumi.CustomResourceState
@@ -224,7 +229,7 @@ func (i *ServiceCertificate) ToServiceCertificateOutputWithContext(ctx context.C
 // ServiceCertificateArrayInput is an input type that accepts ServiceCertificateArray and ServiceCertificateArrayOutput values.
 // You can construct a concrete instance of `ServiceCertificateArrayInput` via:
 //
-//          ServiceCertificateArray{ ServiceCertificateArgs{...} }
+//	ServiceCertificateArray{ ServiceCertificateArgs{...} }
 type ServiceCertificateArrayInput interface {
 	pulumi.Input
 
@@ -249,7 +254,7 @@ func (i ServiceCertificateArray) ToServiceCertificateArrayOutputWithContext(ctx 
 // ServiceCertificateMapInput is an input type that accepts ServiceCertificateMap and ServiceCertificateMapOutput values.
 // You can construct a concrete instance of `ServiceCertificateMapInput` via:
 //
-//          ServiceCertificateMap{ "key": ServiceCertificateArgs{...} }
+//	ServiceCertificateMap{ "key": ServiceCertificateArgs{...} }
 type ServiceCertificateMapInput interface {
 	pulumi.Input
 

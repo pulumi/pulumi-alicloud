@@ -23,32 +23,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := waf.NewInstance(ctx, "default", &waf.InstanceArgs{
-// 			BigScreen:           pulumi.String("0"),
-// 			ExclusiveIpPackage:  pulumi.String("1"),
-// 			ExtBandwidth:        pulumi.String("50"),
-// 			ExtDomainPackage:    pulumi.String("1"),
-// 			LogStorage:          pulumi.String("3"),
-// 			LogTime:             pulumi.String("180"),
-// 			PackageCode:         pulumi.String("version_3"),
-// 			Period:              pulumi.Int(1),
-// 			PrefessionalService: pulumi.String("false"),
-// 			ResourceGroupId:     pulumi.String("rs-abc12345"),
-// 			SubscriptionType:    pulumi.String("Subscription"),
-// 			WafLog:              pulumi.String("false"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := waf.NewInstance(ctx, "default", &waf.InstanceArgs{
+//				BigScreen:           pulumi.String("0"),
+//				ExclusiveIpPackage:  pulumi.String("1"),
+//				ExtBandwidth:        pulumi.String("50"),
+//				ExtDomainPackage:    pulumi.String("1"),
+//				LogStorage:          pulumi.String("3"),
+//				LogTime:             pulumi.String("180"),
+//				PackageCode:         pulumi.String("version_3"),
+//				Period:              pulumi.Int(1),
+//				PrefessionalService: pulumi.String("false"),
+//				ResourceGroupId:     pulumi.String("rs-abc12345"),
+//				SubscriptionType:    pulumi.String("Subscription"),
+//				WafLog:              pulumi.String("false"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // WAF instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
+//
+//	$ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -360,7 +365,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -385,7 +390,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

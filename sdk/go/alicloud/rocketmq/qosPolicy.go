@@ -22,40 +22,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rocketmq.NewQosPolicy(ctx, "defaultQosPolicy", &rocketmq.QosPolicyArgs{
-// 			QosId:           defaultQos.ID(),
-// 			Description:     pulumi.String("tf-testSagQosPolicyDescription"),
-// 			Priority:        pulumi.Int(1),
-// 			IpProtocol:      pulumi.String("ALL"),
-// 			SourceCidr:      pulumi.String("192.168.0.0/24"),
-// 			SourcePortRange: pulumi.String("-1/-1"),
-// 			DestCidr:        pulumi.String("10.10.0.0/24"),
-// 			DestPortRange:   pulumi.String("-1/-1"),
-// 			StartTime:       pulumi.String("2019-10-25T16:41:33+0800"),
-// 			EndTime:         pulumi.String("2019-10-26T16:41:33+0800"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewQosPolicy(ctx, "defaultQosPolicy", &rocketmq.QosPolicyArgs{
+//				QosId:           defaultQos.ID(),
+//				Description:     pulumi.String("tf-testSagQosPolicyDescription"),
+//				Priority:        pulumi.Int(1),
+//				IpProtocol:      pulumi.String("ALL"),
+//				SourceCidr:      pulumi.String("192.168.0.0/24"),
+//				SourcePortRange: pulumi.String("-1/-1"),
+//				DestCidr:        pulumi.String("10.10.0.0/24"),
+//				DestPortRange:   pulumi.String("-1/-1"),
+//				StartTime:       pulumi.String("2019-10-25T16:41:33+0800"),
+//				EndTime:         pulumi.String("2019-10-26T16:41:33+0800"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // The Sag Qos Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
+//
+//	$ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
+//
 // ```
 type QosPolicy struct {
 	pulumi.CustomResourceState
@@ -272,7 +277,7 @@ func (i *QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyO
 // QosPolicyArrayInput is an input type that accepts QosPolicyArray and QosPolicyArrayOutput values.
 // You can construct a concrete instance of `QosPolicyArrayInput` via:
 //
-//          QosPolicyArray{ QosPolicyArgs{...} }
+//	QosPolicyArray{ QosPolicyArgs{...} }
 type QosPolicyArrayInput interface {
 	pulumi.Input
 
@@ -297,7 +302,7 @@ func (i QosPolicyArray) ToQosPolicyArrayOutputWithContext(ctx context.Context) Q
 // QosPolicyMapInput is an input type that accepts QosPolicyMap and QosPolicyMapOutput values.
 // You can construct a concrete instance of `QosPolicyMapInput` via:
 //
-//          QosPolicyMap{ "key": QosPolicyArgs{...} }
+//	QosPolicyMap{ "key": QosPolicyArgs{...} }
 type QosPolicyMapInput interface {
 	pulumi.Input
 

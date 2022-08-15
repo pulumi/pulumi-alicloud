@@ -16,40 +16,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := actiontrail.GetHistoryDeliveryJobs(ctx, &actiontrail.GetHistoryDeliveryJobsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("actiontrailHistoryDeliveryJobId1", ids.Jobs[0].Id)
-// 		status, err := actiontrail.GetHistoryDeliveryJobs(ctx, &actiontrail.GetHistoryDeliveryJobsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			Status: pulumi.IntRef(2),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("actiontrailHistoryDeliveryJobId2", status.Jobs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := actiontrail.GetHistoryDeliveryJobs(ctx, &actiontrail.GetHistoryDeliveryJobsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("actiontrailHistoryDeliveryJobId1", ids.Jobs[0].Id)
+//			status, err := actiontrail.GetHistoryDeliveryJobs(ctx, &actiontrail.GetHistoryDeliveryJobsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Status: pulumi.IntRef(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("actiontrailHistoryDeliveryJobId2", status.Jobs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHistoryDeliveryJobs(ctx *pulumi.Context, args *GetHistoryDeliveryJobsArgs, opts ...pulumi.InvokeOption) (*GetHistoryDeliveryJobsResult, error) {
 	var rv GetHistoryDeliveryJobsResult

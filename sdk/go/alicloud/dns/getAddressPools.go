@@ -16,40 +16,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := dns.GetAddressPools(ctx, &dns.GetAddressPoolsArgs{
-// 			InstanceId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("alidnsAddressPoolId1", ids.Pools[0].Id)
-// 		nameRegex, err := dns.GetAddressPools(ctx, &dns.GetAddressPoolsArgs{
-// 			InstanceId: "example_value",
-// 			NameRegex:  pulumi.StringRef("^my-AddressPool"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("alidnsAddressPoolId2", nameRegex.Pools[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dns.GetAddressPools(ctx, &dns.GetAddressPoolsArgs{
+//				InstanceId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alidnsAddressPoolId1", ids.Pools[0].Id)
+//			nameRegex, err := dns.GetAddressPools(ctx, &dns.GetAddressPoolsArgs{
+//				InstanceId: "example_value",
+//				NameRegex:  pulumi.StringRef("^my-AddressPool"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alidnsAddressPoolId2", nameRegex.Pools[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAddressPools(ctx *pulumi.Context, args *GetAddressPoolsArgs, opts ...pulumi.InvokeOption) (*GetAddressPoolsResult, error) {
 	var rv GetAddressPoolsResult

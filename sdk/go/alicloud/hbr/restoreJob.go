@@ -19,103 +19,106 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
-// 			NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultOssBackupPlans, err := hbr.GetOssBackupPlans(ctx, &hbr.GetOssBackupPlansArgs{
-// 			NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
-// 			NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ecsSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
-// 			SourceType: "ECS_FILE",
-// 			VaultId:    defaultEcsBackupPlans.Plans[0].VaultId,
-// 			InstanceId: pulumi.StringRef(defaultEcsBackupPlans.Plans[0].InstanceId),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ossSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
-// 			SourceType: "OSS",
-// 			VaultId:    defaultOssBackupPlans.Plans[0].VaultId,
-// 			Bucket:     pulumi.StringRef(defaultOssBackupPlans.Plans[0].Bucket),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		nasSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
-// 			SourceType:   "NAS",
-// 			VaultId:      defaultNasBackupPlans.Plans[0].VaultId,
-// 			FileSystemId: pulumi.StringRef(defaultNasBackupPlans.Plans[0].FileSystemId),
-// 			CreateTime:   pulumi.StringRef(defaultNasBackupPlans.Plans[0].CreateTime),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewRestoreJob(ctx, "nasJob", &hbr.RestoreJobArgs{
-// 			SnapshotHash:       pulumi.String(nasSnapshots.Snapshots[0].SnapshotHash),
-// 			VaultId:            pulumi.String(defaultNasBackupPlans.Plans[0].VaultId),
-// 			SourceType:         pulumi.String("NAS"),
-// 			RestoreType:        pulumi.String("NAS"),
-// 			SnapshotId:         pulumi.String(nasSnapshots.Snapshots[0].SnapshotId),
-// 			TargetFileSystemId: pulumi.String(defaultNasBackupPlans.Plans[0].FileSystemId),
-// 			TargetCreateTime:   pulumi.String(defaultNasBackupPlans.Plans[0].CreateTime),
-// 			TargetPath:         pulumi.String("/"),
-// 			Options:            pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewRestoreJob(ctx, "ossJob", &hbr.RestoreJobArgs{
-// 			SnapshotHash: pulumi.String(ossSnapshots.Snapshots[0].SnapshotHash),
-// 			VaultId:      pulumi.String(defaultOssBackupPlans.Plans[0].VaultId),
-// 			SourceType:   pulumi.String("OSS"),
-// 			RestoreType:  pulumi.String("OSS"),
-// 			SnapshotId:   pulumi.String(ossSnapshots.Snapshots[0].SnapshotId),
-// 			TargetBucket: pulumi.String(defaultOssBackupPlans.Plans[0].Bucket),
-// 			TargetPrefix: pulumi.String(""),
-// 			Options:      pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewRestoreJob(ctx, "ecsJob", &hbr.RestoreJobArgs{
-// 			SnapshotHash:     pulumi.String(ecsSnapshots.Snapshots[0].SnapshotHash),
-// 			VaultId:          pulumi.String(defaultEcsBackupPlans.Plans[0].VaultId),
-// 			SourceType:       pulumi.String("ECS_FILE"),
-// 			RestoreType:      pulumi.String("ECS_FILE"),
-// 			SnapshotId:       pulumi.String(ecsSnapshots.Snapshots[0].SnapshotId),
-// 			TargetInstanceId: pulumi.String(defaultEcsBackupPlans.Plans[0].InstanceId),
-// 			TargetPath:       pulumi.String("/"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+//				NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultOssBackupPlans, err := hbr.GetOssBackupPlans(ctx, &hbr.GetOssBackupPlansArgs{
+//				NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
+//				NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ecsSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+//				SourceType: "ECS_FILE",
+//				VaultId:    defaultEcsBackupPlans.Plans[0].VaultId,
+//				InstanceId: pulumi.StringRef(defaultEcsBackupPlans.Plans[0].InstanceId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ossSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+//				SourceType: "OSS",
+//				VaultId:    defaultOssBackupPlans.Plans[0].VaultId,
+//				Bucket:     pulumi.StringRef(defaultOssBackupPlans.Plans[0].Bucket),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			nasSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
+//				SourceType:   "NAS",
+//				VaultId:      defaultNasBackupPlans.Plans[0].VaultId,
+//				FileSystemId: pulumi.StringRef(defaultNasBackupPlans.Plans[0].FileSystemId),
+//				CreateTime:   pulumi.StringRef(defaultNasBackupPlans.Plans[0].CreateTime),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewRestoreJob(ctx, "nasJob", &hbr.RestoreJobArgs{
+//				SnapshotHash:       pulumi.String(nasSnapshots.Snapshots[0].SnapshotHash),
+//				VaultId:            pulumi.String(defaultNasBackupPlans.Plans[0].VaultId),
+//				SourceType:         pulumi.String("NAS"),
+//				RestoreType:        pulumi.String("NAS"),
+//				SnapshotId:         pulumi.String(nasSnapshots.Snapshots[0].SnapshotId),
+//				TargetFileSystemId: pulumi.String(defaultNasBackupPlans.Plans[0].FileSystemId),
+//				TargetCreateTime:   pulumi.String(defaultNasBackupPlans.Plans[0].CreateTime),
+//				TargetPath:         pulumi.String("/"),
+//				Options:            pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewRestoreJob(ctx, "ossJob", &hbr.RestoreJobArgs{
+//				SnapshotHash: pulumi.String(ossSnapshots.Snapshots[0].SnapshotHash),
+//				VaultId:      pulumi.String(defaultOssBackupPlans.Plans[0].VaultId),
+//				SourceType:   pulumi.String("OSS"),
+//				RestoreType:  pulumi.String("OSS"),
+//				SnapshotId:   pulumi.String(ossSnapshots.Snapshots[0].SnapshotId),
+//				TargetBucket: pulumi.String(defaultOssBackupPlans.Plans[0].Bucket),
+//				TargetPrefix: pulumi.String(""),
+//				Options:      pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewRestoreJob(ctx, "ecsJob", &hbr.RestoreJobArgs{
+//				SnapshotHash:     pulumi.String(ecsSnapshots.Snapshots[0].SnapshotHash),
+//				VaultId:          pulumi.String(defaultEcsBackupPlans.Plans[0].VaultId),
+//				SourceType:       pulumi.String("ECS_FILE"),
+//				RestoreType:      pulumi.String("ECS_FILE"),
+//				SnapshotId:       pulumi.String(ecsSnapshots.Snapshots[0].SnapshotId),
+//				TargetInstanceId: pulumi.String(defaultEcsBackupPlans.Plans[0].InstanceId),
+//				TargetPath:       pulumi.String("/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
@@ -125,7 +128,9 @@ import (
 // Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example <restore_job_id>:<restore_type>
+//
+//	$ pulumi import alicloud:hbr/restoreJob:RestoreJob example <restore_job_id>:<restore_type>
+//
 // ```
 type RestoreJob struct {
 	pulumi.CustomResourceState
@@ -434,7 +439,7 @@ func (i *RestoreJob) ToRestoreJobOutputWithContext(ctx context.Context) RestoreJ
 // RestoreJobArrayInput is an input type that accepts RestoreJobArray and RestoreJobArrayOutput values.
 // You can construct a concrete instance of `RestoreJobArrayInput` via:
 //
-//          RestoreJobArray{ RestoreJobArgs{...} }
+//	RestoreJobArray{ RestoreJobArgs{...} }
 type RestoreJobArrayInput interface {
 	pulumi.Input
 
@@ -459,7 +464,7 @@ func (i RestoreJobArray) ToRestoreJobArrayOutputWithContext(ctx context.Context)
 // RestoreJobMapInput is an input type that accepts RestoreJobMap and RestoreJobMapOutput values.
 // You can construct a concrete instance of `RestoreJobMapInput` via:
 //
-//          RestoreJobMap{ "key": RestoreJobArgs{...} }
+//	RestoreJobMap{ "key": RestoreJobArgs{...} }
 type RestoreJobMapInput interface {
 	pulumi.Input
 

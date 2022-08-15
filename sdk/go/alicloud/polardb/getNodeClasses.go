@@ -20,32 +20,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("PolarDB"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		resourcesNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
-// 			ZoneId:    pulumi.StringRef(resourcesZones.Zones[0].Id),
-// 			PayType:   "PostPaid",
-// 			DbType:    pulumi.StringRef("MySQL"),
-// 			DbVersion: pulumi.StringRef("5.6"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("polardbNodeClasses", resourcesNodeClasses.Classes)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("PolarDB"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			resourcesNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				ZoneId:    pulumi.StringRef(resourcesZones.Zones[0].Id),
+//				PayType:   "PostPaid",
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("5.6"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("polardbNodeClasses", resourcesNodeClasses.Classes)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNodeClasses(ctx *pulumi.Context, args *GetNodeClassesArgs, opts ...pulumi.InvokeOption) (*GetNodeClassesResult, error) {
 	var rv GetNodeClassesResult

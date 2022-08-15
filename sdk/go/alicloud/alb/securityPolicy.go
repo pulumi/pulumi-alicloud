@@ -19,40 +19,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "testAccSecurityPolicy"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_, err := alb.NewSecurityPolicy(ctx, "default", &alb.SecurityPolicyArgs{
-// 			SecurityPolicyName: pulumi.String(name),
-// 			TlsVersions: pulumi.StringArray{
-// 				pulumi.String("TLSv1.0"),
-// 			},
-// 			Ciphers: pulumi.StringArray{
-// 				pulumi.String("ECDHE-ECDSA-AES128-SHA"),
-// 				pulumi.String("AES256-SHA"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "testAccSecurityPolicy"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := alb.NewSecurityPolicy(ctx, "default", &alb.SecurityPolicyArgs{
+//				SecurityPolicyName: pulumi.String(name),
+//				TlsVersions: pulumi.StringArray{
+//					pulumi.String("TLSv1.0"),
+//				},
+//				Ciphers: pulumi.StringArray{
+//					pulumi.String("ECDHE-ECDSA-AES128-SHA"),
+//					pulumi.String("AES256-SHA"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // ALB Security Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alb/securityPolicy:SecurityPolicy example <id>
+//
+//	$ pulumi import alicloud:alb/securityPolicy:SecurityPolicy example <id>
+//
 // ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
@@ -213,7 +218,7 @@ func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) 
 // SecurityPolicyArrayInput is an input type that accepts SecurityPolicyArray and SecurityPolicyArrayOutput values.
 // You can construct a concrete instance of `SecurityPolicyArrayInput` via:
 //
-//          SecurityPolicyArray{ SecurityPolicyArgs{...} }
+//	SecurityPolicyArray{ SecurityPolicyArgs{...} }
 type SecurityPolicyArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +243,7 @@ func (i SecurityPolicyArray) ToSecurityPolicyArrayOutputWithContext(ctx context.
 // SecurityPolicyMapInput is an input type that accepts SecurityPolicyMap and SecurityPolicyMapOutput values.
 // You can construct a concrete instance of `SecurityPolicyMapInput` via:
 //
-//          SecurityPolicyMap{ "key": SecurityPolicyArgs{...} }
+//	SecurityPolicyMap{ "key": SecurityPolicyArgs{...} }
 type SecurityPolicyMapInput interface {
 	pulumi.Input
 

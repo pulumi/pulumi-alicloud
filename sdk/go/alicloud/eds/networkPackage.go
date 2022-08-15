@@ -19,36 +19,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:         pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType: pulumi.String("Internet"),
-// 			OfficeSiteName:    pulumi.String("your_office_site_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewNetworkPackage(ctx, "example", &eds.NetworkPackageArgs{
-// 			Bandwidth:    pulumi.Int(10),
-// 			OfficeSiteId: _default.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String("your_office_site_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewNetworkPackage(ctx, "example", &eds.NetworkPackageArgs{
+//				Bandwidth:    pulumi.Int(10),
+//				OfficeSiteId: _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // ECD Network Package can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
+//
+//	$ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
+//
 // ```
 type NetworkPackage struct {
 	pulumi.CustomResourceState
@@ -172,7 +177,7 @@ func (i *NetworkPackage) ToNetworkPackageOutputWithContext(ctx context.Context) 
 // NetworkPackageArrayInput is an input type that accepts NetworkPackageArray and NetworkPackageArrayOutput values.
 // You can construct a concrete instance of `NetworkPackageArrayInput` via:
 //
-//          NetworkPackageArray{ NetworkPackageArgs{...} }
+//	NetworkPackageArray{ NetworkPackageArgs{...} }
 type NetworkPackageArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +202,7 @@ func (i NetworkPackageArray) ToNetworkPackageArrayOutputWithContext(ctx context.
 // NetworkPackageMapInput is an input type that accepts NetworkPackageMap and NetworkPackageMapOutput values.
 // You can construct a concrete instance of `NetworkPackageMapInput` via:
 //
-//          NetworkPackageMap{ "key": NetworkPackageArgs{...} }
+//	NetworkPackageMap{ "key": NetworkPackageArgs{...} }
 type NetworkPackageMapInput interface {
 	pulumi.Input
 

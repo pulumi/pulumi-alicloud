@@ -19,45 +19,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
-// 			Current: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cdn.NewFcTrigger(ctx, "example", &cdn.FcTriggerArgs{
-// 			EventMetaName:    pulumi.String("LogFileCreated"),
-// 			EventMetaVersion: pulumi.String("1.0.0"),
-// 			Notes:            pulumi.String("example_value"),
-// 			RoleArn:          pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyuncdneventnotificationrole", defaultAccount.Id)),
-// 			SourceArn:        pulumi.String(fmt.Sprintf("acs:cdn:*:%v:domain/example.com", defaultAccount.Id)),
-// 			TriggerArn:       pulumi.String(fmt.Sprintf("acs:fc:%v:%v:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultRegions.Regions[0].Id, defaultAccount.Id)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cdn.NewFcTrigger(ctx, "example", &cdn.FcTriggerArgs{
+//				EventMetaName:    pulumi.String("LogFileCreated"),
+//				EventMetaVersion: pulumi.String("1.0.0"),
+//				Notes:            pulumi.String("example_value"),
+//				RoleArn:          pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyuncdneventnotificationrole", defaultAccount.Id)),
+//				SourceArn:        pulumi.String(fmt.Sprintf("acs:cdn:*:%v:domain/example.com", defaultAccount.Id)),
+//				TriggerArn:       pulumi.String(fmt.Sprintf("acs:fc:%v:%v:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultRegions.Regions[0].Id, defaultAccount.Id)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // CDN Fc Trigger can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
+//
+//	$ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
+//
 // ```
 type FcTrigger struct {
 	pulumi.CustomResourceState
@@ -231,7 +236,7 @@ func (i *FcTrigger) ToFcTriggerOutputWithContext(ctx context.Context) FcTriggerO
 // FcTriggerArrayInput is an input type that accepts FcTriggerArray and FcTriggerArrayOutput values.
 // You can construct a concrete instance of `FcTriggerArrayInput` via:
 //
-//          FcTriggerArray{ FcTriggerArgs{...} }
+//	FcTriggerArray{ FcTriggerArgs{...} }
 type FcTriggerArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +261,7 @@ func (i FcTriggerArray) ToFcTriggerArrayOutputWithContext(ctx context.Context) F
 // FcTriggerMapInput is an input type that accepts FcTriggerMap and FcTriggerMapOutput values.
 // You can construct a concrete instance of `FcTriggerMapInput` via:
 //
-//          FcTriggerMap{ "key": FcTriggerArgs{...} }
+//	FcTriggerMap{ "key": FcTriggerArgs{...} }
 type FcTriggerMapInput interface {
 	pulumi.Input
 

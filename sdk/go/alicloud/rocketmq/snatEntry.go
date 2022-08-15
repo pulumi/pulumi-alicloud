@@ -21,29 +21,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rocketmq.NewSnatEntry(ctx, "default", &rocketmq.SnatEntryArgs{
-// 			CidrBlock: pulumi.String("192.168.7.0/24"),
-// 			SagId:     pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
-// 			SnatIp:    pulumi.String("192.0.0.2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rocketmq.NewSnatEntry(ctx, "default", &rocketmq.SnatEntryArgs{
+//				CidrBlock: pulumi.String("192.168.7.0/24"),
+//				SagId:     pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
+//				SnatIp:    pulumi.String("192.0.0.2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // The Sag SnatEntry can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
+//
+//	$ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
+//
 // ```
 type SnatEntry struct {
 	pulumi.CustomResourceState
@@ -168,7 +173,7 @@ func (i *SnatEntry) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryO
 // SnatEntryArrayInput is an input type that accepts SnatEntryArray and SnatEntryArrayOutput values.
 // You can construct a concrete instance of `SnatEntryArrayInput` via:
 //
-//          SnatEntryArray{ SnatEntryArgs{...} }
+//	SnatEntryArray{ SnatEntryArgs{...} }
 type SnatEntryArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i SnatEntryArray) ToSnatEntryArrayOutputWithContext(ctx context.Context) S
 // SnatEntryMapInput is an input type that accepts SnatEntryMap and SnatEntryMapOutput values.
 // You can construct a concrete instance of `SnatEntryMapInput` via:
 //
-//          SnatEntryMap{ "key": SnatEntryArgs{...} }
+//	SnatEntryMap{ "key": SnatEntryArgs{...} }
 type SnatEntryMapInput interface {
 	pulumi.Input
 

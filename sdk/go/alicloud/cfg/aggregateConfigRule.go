@@ -19,52 +19,55 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAggregator, err := cfg.NewAggregator(ctx, "exampleAggregator", &cfg.AggregatorArgs{
-// 			AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
-// 				&cfg.AggregatorAggregatorAccountArgs{
-// 					AccountId:   pulumi.String("140278452670****"),
-// 					AccountName: pulumi.String("test-2"),
-// 					AccountType: pulumi.String("ResourceDirectory"),
-// 				},
-// 			},
-// 			AggregatorName: pulumi.String("tf-testaccaggregator"),
-// 			Description:    pulumi.String("tf-testaccaggregator"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewAggregateConfigRule(ctx, "exampleAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
-// 			AggregateConfigRuleName: pulumi.String("tf-testaccconfig1234"),
-// 			AggregatorId:            exampleAggregator.ID(),
-// 			ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
-// 			SourceOwner:             pulumi.String("ALIYUN"),
-// 			SourceIdentifier:        pulumi.String("ecs-cpu-min-count-limit"),
-// 			RiskLevel:               pulumi.Int(1),
-// 			ResourceTypesScopes: pulumi.StringArray{
-// 				pulumi.String("ACS::ECS::Instance"),
-// 			},
-// 			InputParameters: pulumi.AnyMap{
-// 				"cpuCount": pulumi.Any("4"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAggregator, err := cfg.NewAggregator(ctx, "exampleAggregator", &cfg.AggregatorArgs{
+//				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
+//					&cfg.AggregatorAggregatorAccountArgs{
+//						AccountId:   pulumi.String("140278452670****"),
+//						AccountName: pulumi.String("test-2"),
+//						AccountType: pulumi.String("ResourceDirectory"),
+//					},
+//				},
+//				AggregatorName: pulumi.String("tf-testaccaggregator"),
+//				Description:    pulumi.String("tf-testaccaggregator"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewAggregateConfigRule(ctx, "exampleAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
+//				AggregateConfigRuleName: pulumi.String("tf-testaccconfig1234"),
+//				AggregatorId:            exampleAggregator.ID(),
+//				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
+//				SourceOwner:             pulumi.String("ALIYUN"),
+//				SourceIdentifier:        pulumi.String("ecs-cpu-min-count-limit"),
+//				RiskLevel:               pulumi.Int(1),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::ECS::Instance"),
+//				},
+//				InputParameters: pulumi.AnyMap{
+//					"cpuCount": pulumi.Any("4"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -72,7 +75,9 @@ import (
 // Cloud Config Aggregate Config Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example <aggregator_id>:<config_rule_id>
+//
+//	$ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example <aggregator_id>:<config_rule_id>
+//
 // ```
 type AggregateConfigRule struct {
 	pulumi.CustomResourceState
@@ -337,7 +342,7 @@ func (i *AggregateConfigRule) ToAggregateConfigRuleOutputWithContext(ctx context
 // AggregateConfigRuleArrayInput is an input type that accepts AggregateConfigRuleArray and AggregateConfigRuleArrayOutput values.
 // You can construct a concrete instance of `AggregateConfigRuleArrayInput` via:
 //
-//          AggregateConfigRuleArray{ AggregateConfigRuleArgs{...} }
+//	AggregateConfigRuleArray{ AggregateConfigRuleArgs{...} }
 type AggregateConfigRuleArrayInput interface {
 	pulumi.Input
 
@@ -362,7 +367,7 @@ func (i AggregateConfigRuleArray) ToAggregateConfigRuleArrayOutputWithContext(ct
 // AggregateConfigRuleMapInput is an input type that accepts AggregateConfigRuleMap and AggregateConfigRuleMapOutput values.
 // You can construct a concrete instance of `AggregateConfigRuleMapInput` via:
 //
-//          AggregateConfigRuleMap{ "key": AggregateConfigRuleArgs{...} }
+//	AggregateConfigRuleMap{ "key": AggregateConfigRuleArgs{...} }
 type AggregateConfigRuleMapInput interface {
 	pulumi.Input
 

@@ -19,98 +19,101 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		this, err := alicloud.GetAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSlsGroup, err := cms.NewSlsGroup(ctx, "defaultSlsGroup", &cms.SlsGroupArgs{
-// 			SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
-// 				&cms.SlsGroupSlsGroupConfigArgs{
-// 					SlsUserId:   pulumi.String(this.Id),
-// 					SlsLogstore: pulumi.String("Logstore-ECS"),
-// 					SlsProject:  pulumi.String("aliyun-project"),
-// 					SlsRegion:   pulumi.String("cn-hangzhou"),
-// 				},
-// 			},
-// 			SlsGroupDescription: pulumi.String("example_value"),
-// 			SlsGroupName:        pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
-// 			Description:   pulumi.Any(_var.Name),
-// 			Namespace:     pulumi.String("example-value"),
-// 			Specification: pulumi.String("cms.s1.large"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cms.NewHybridMonitorSlsTask(ctx, "defaultHybridMonitorSlsTask", &cms.HybridMonitorSlsTaskArgs{
-// 			SlsProcessConfig: &cms.HybridMonitorSlsTaskSlsProcessConfigArgs{
-// 				Filter: &cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs{
-// 					Relation: pulumi.String("and"),
-// 					Filters: cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{
-// 						&cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{
-// 							Operator:   pulumi.String("="),
-// 							Value:      pulumi.String("200"),
-// 							SlsKeyName: pulumi.String("code"),
-// 						},
-// 					},
-// 				},
-// 				Statistics: cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArray{
-// 					&cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{
-// 						Function:     pulumi.String("count"),
-// 						Alias:        pulumi.String("level_count"),
-// 						SlsKeyName:   pulumi.String("name"),
-// 						ParameterOne: pulumi.String("200"),
-// 						ParameterTwo: pulumi.String("299"),
-// 					},
-// 				},
-// 				GroupBies: cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArray{
-// 					&cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{
-// 						Alias:      pulumi.String("code"),
-// 						SlsKeyName: pulumi.String("ApiResult"),
-// 					},
-// 				},
-// 				Expresses: cms.HybridMonitorSlsTaskSlsProcessConfigExpressArray{
-// 					&cms.HybridMonitorSlsTaskSlsProcessConfigExpressArgs{
-// 						Express: pulumi.String("success_count"),
-// 						Alias:   pulumi.String("SuccRate"),
-// 					},
-// 				},
-// 			},
-// 			TaskName:          pulumi.String("example_value"),
-// 			Namespace:         defaultNamespace.ID(),
-// 			Description:       pulumi.String("example_value"),
-// 			CollectInterval:   pulumi.Int(60),
-// 			CollectTargetType: defaultSlsGroup.ID(),
-// 			AttachLabels: cms.HybridMonitorSlsTaskAttachLabelArray{
-// 				&cms.HybridMonitorSlsTaskAttachLabelArgs{
-// 					Name:  pulumi.String("app_service"),
-// 					Value: pulumi.String("testValue"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSlsGroup, err := cms.NewSlsGroup(ctx, "defaultSlsGroup", &cms.SlsGroupArgs{
+//				SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
+//					&cms.SlsGroupSlsGroupConfigArgs{
+//						SlsUserId:   pulumi.String(this.Id),
+//						SlsLogstore: pulumi.String("Logstore-ECS"),
+//						SlsProject:  pulumi.String("aliyun-project"),
+//						SlsRegion:   pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//				SlsGroupDescription: pulumi.String("example_value"),
+//				SlsGroupName:        pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
+//				Description:   pulumi.Any(_var.Name),
+//				Namespace:     pulumi.String("example-value"),
+//				Specification: pulumi.String("cms.s1.large"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewHybridMonitorSlsTask(ctx, "defaultHybridMonitorSlsTask", &cms.HybridMonitorSlsTaskArgs{
+//				SlsProcessConfig: &cms.HybridMonitorSlsTaskSlsProcessConfigArgs{
+//					Filter: &cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs{
+//						Relation: pulumi.String("and"),
+//						Filters: cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{
+//							&cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{
+//								Operator:   pulumi.String("="),
+//								Value:      pulumi.String("200"),
+//								SlsKeyName: pulumi.String("code"),
+//							},
+//						},
+//					},
+//					Statistics: cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArray{
+//						&cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{
+//							Function:     pulumi.String("count"),
+//							Alias:        pulumi.String("level_count"),
+//							SlsKeyName:   pulumi.String("name"),
+//							ParameterOne: pulumi.String("200"),
+//							ParameterTwo: pulumi.String("299"),
+//						},
+//					},
+//					GroupBies: cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArray{
+//						&cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{
+//							Alias:      pulumi.String("code"),
+//							SlsKeyName: pulumi.String("ApiResult"),
+//						},
+//					},
+//					Expresses: cms.HybridMonitorSlsTaskSlsProcessConfigExpressArray{
+//						&cms.HybridMonitorSlsTaskSlsProcessConfigExpressArgs{
+//							Express: pulumi.String("success_count"),
+//							Alias:   pulumi.String("SuccRate"),
+//						},
+//					},
+//				},
+//				TaskName:          pulumi.String("example_value"),
+//				Namespace:         defaultNamespace.ID(),
+//				Description:       pulumi.String("example_value"),
+//				CollectInterval:   pulumi.Int(60),
+//				CollectTargetType: defaultSlsGroup.ID(),
+//				AttachLabels: cms.HybridMonitorSlsTaskAttachLabelArray{
+//					&cms.HybridMonitorSlsTaskAttachLabelArgs{
+//						Name:  pulumi.String("app_service"),
+//						Value: pulumi.String("testValue"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -118,7 +121,9 @@ import (
 // Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
+//
+//	$ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
+//
 // ```
 type HybridMonitorSlsTask struct {
 	pulumi.CustomResourceState
@@ -278,7 +283,7 @@ func (i *HybridMonitorSlsTask) ToHybridMonitorSlsTaskOutputWithContext(ctx conte
 // HybridMonitorSlsTaskArrayInput is an input type that accepts HybridMonitorSlsTaskArray and HybridMonitorSlsTaskArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskArrayInput` via:
 //
-//          HybridMonitorSlsTaskArray{ HybridMonitorSlsTaskArgs{...} }
+//	HybridMonitorSlsTaskArray{ HybridMonitorSlsTaskArgs{...} }
 type HybridMonitorSlsTaskArrayInput interface {
 	pulumi.Input
 
@@ -303,7 +308,7 @@ func (i HybridMonitorSlsTaskArray) ToHybridMonitorSlsTaskArrayOutputWithContext(
 // HybridMonitorSlsTaskMapInput is an input type that accepts HybridMonitorSlsTaskMap and HybridMonitorSlsTaskMapOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskMapInput` via:
 //
-//          HybridMonitorSlsTaskMap{ "key": HybridMonitorSlsTaskArgs{...} }
+//	HybridMonitorSlsTaskMap{ "key": HybridMonitorSlsTaskArgs{...} }
 type HybridMonitorSlsTaskMapInput interface {
 	pulumi.Input
 

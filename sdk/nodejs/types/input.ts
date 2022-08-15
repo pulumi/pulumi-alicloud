@@ -733,7 +733,6 @@ export namespace alb {
          */
         stickySessionType?: pulumi.Input<string>;
     }
-
 }
 
 export namespace amqp {
@@ -1012,6 +1011,7 @@ export namespace arms {
          */
         value?: pulumi.Input<string>;
     }
+
 }
 
 export namespace bastionhost {
@@ -1116,7 +1116,6 @@ export namespace bastionhost {
          */
         standbyServer?: pulumi.Input<string>;
     }
-
 }
 
 export namespace brain {
@@ -1803,6 +1802,7 @@ export namespace cms {
          */
         slsUserId?: pulumi.Input<string>;
     }
+
 }
 
 export namespace config {
@@ -1900,6 +1900,7 @@ export namespace cr {
          */
         vpc?: pulumi.Input<string>;
     }
+
 }
 
 export namespace cs {
@@ -2045,31 +2046,6 @@ export namespace cs {
         required?: pulumi.Input<boolean>;
     }
 
-    export interface GetKubernetesPermissionPermission {
-        /**
-         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-         */
-        isOwner?: boolean;
-        isRamRole?: boolean;
-        /**
-         * The permission settings to manage ACK clusters.
-         */
-        resourceId: string;
-        /**
-         * The authorization type. Valid values `cluster`, `namespace` and `console`.
-         */
-        resourceType: string;
-        /**
-         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-         */
-        roleName: string;
-        /**
-         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-         */
-        roleType?: string;
-    }
-
     export interface GetKubernetesPermissionPermissionArgs {
         /**
          * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
@@ -2093,6 +2069,31 @@ export namespace cs {
          * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
          */
         roleType?: pulumi.Input<string>;
+    }
+
+    export interface GetKubernetesPermissionPermission {
+        /**
+         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         */
+        isOwner?: boolean;
+        isRamRole?: boolean;
+        /**
+         * The permission settings to manage ACK clusters.
+         */
+        resourceId: string;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         */
+        resourceType: string;
+        /**
+         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         */
+        roleName: string;
+        /**
+         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         */
+        roleType?: string;
     }
 
     export interface KubernetesAddon {
@@ -2402,6 +2403,61 @@ export namespace cs {
         snapshotId?: pulumi.Input<string>;
     }
 
+    export interface NodePoolKubeletConfiguration {
+        /**
+         * Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+         */
+        cpuManagerPolicy?: pulumi.Input<string>;
+        /**
+         * Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+         */
+        eventBurst?: pulumi.Input<string>;
+        /**
+         * Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+         */
+        eventRecordQps?: pulumi.Input<string>;
+        /**
+         * Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+         */
+        evictionHard?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+         */
+        evictionSoft?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+         */
+        evictionSoftGracePeriod?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+         */
+        kubeApiBurst?: pulumi.Input<string>;
+        /**
+         * Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+         */
+        kubeApiQps?: pulumi.Input<string>;
+        /**
+         * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         */
+        kubeReserved?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+         */
+        registryBurst?: pulumi.Input<string>;
+        /**
+         * Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+         */
+        registryPullQps?: pulumi.Input<string>;
+        /**
+         * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+         */
+        serializeImagePulls?: pulumi.Input<string>;
+        /**
+         * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         */
+        systemReserved?: pulumi.Input<{[key: string]: any}>;
+    }
+
     export interface NodePoolLabel {
         /**
          * The label key.
@@ -2434,6 +2490,13 @@ export namespace cs {
          * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
          */
         surgePercentage?: pulumi.Input<number>;
+    }
+
+    export interface NodePoolRolloutPolicy {
+        /**
+         * Max number of unavailable nodes. Default to `1`.
+         */
+        maxUnavailable?: pulumi.Input<number>;
     }
 
     export interface NodePoolScalingConfig {
@@ -2508,6 +2571,7 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
         status?: pulumi.Input<string>;
     }
+
 }
 
 export namespace databasefilesystem {
@@ -3103,7 +3167,6 @@ export namespace eci {
          */
         value?: pulumi.Input<string>;
     }
-
 }
 
 export namespace ecp {
@@ -3309,18 +3372,18 @@ export namespace ecs {
         description?: pulumi.Input<string>;
     }
 
-    export interface GetDedicatedHostsOperationLockArgs {
-        /**
-         * The reason why the dedicated host resource is locked.
-         */
-        lockReason?: pulumi.Input<string>;
-    }
-
     export interface GetDedicatedHostsOperationLock {
         /**
          * The reason why the dedicated host resource is locked.
          */
         lockReason?: string;
+    }
+
+    export interface GetDedicatedHostsOperationLockArgs {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: pulumi.Input<string>;
     }
 
     export interface GetDisksOperationLockArgs {
@@ -3331,12 +3394,12 @@ export namespace ecs {
         lockReason?: string;
     }
 
-    export interface GetEcsDisksOperationLock {
-        lockReason?: string;
-    }
-
     export interface GetEcsDisksOperationLockArgs {
         lockReason?: pulumi.Input<string>;
+    }
+
+    export interface GetEcsDisksOperationLock {
+        lockReason?: string;
     }
 
     export interface ImageDiskDeviceMapping {
@@ -3440,6 +3503,17 @@ export namespace ecs {
         snapshotId?: pulumi.Input<string>;
     }
 
+    export interface InstanceMaintenanceTime {
+        /**
+         * The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         */
+        startTime?: pulumi.Input<string>;
+    }
+
     export interface LaunchTemplateDataDisk {
         /**
          * The category of the disk:
@@ -3539,7 +3613,6 @@ export namespace ecs {
          */
         size?: pulumi.Input<number>;
     }
-
 }
 
 export namespace edas {
@@ -4095,6 +4168,7 @@ export namespace ess {
         metricIntervalUpperBound?: pulumi.Input<string>;
         scalingAdjustment?: pulumi.Input<number>;
     }
+
 }
 
 export namespace eventbridge {
@@ -4295,6 +4369,7 @@ export namespace fc {
          */
         vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
     }
+
 }
 
 export namespace fnf {
@@ -4462,21 +4537,6 @@ export namespace hbase {
 }
 
 export namespace hbr {
-    export interface GetBackupJobsFilterArgs {
-        /**
-         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-         */
-        key?: pulumi.Input<string>;
-        /**
-         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-         */
-        operator?: pulumi.Input<string>;
-        /**
-         * Set of values that are accepted for the given field.
-         */
-        values?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
     export interface GetBackupJobsFilter {
         /**
          * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
@@ -4490,6 +4550,21 @@ export namespace hbr {
          * Set of values that are accepted for the given field.
          */
         values?: string[];
+    }
+
+    export interface GetBackupJobsFilterArgs {
+        /**
+         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GetServerBackupPlansFilterArgs {
@@ -5183,6 +5258,7 @@ export namespace mongodb {
          */
         vswitchId?: pulumi.Input<string>;
     }
+
 }
 
 export namespace mse {
@@ -5656,17 +5732,6 @@ export namespace quotas {
         value?: pulumi.Input<string>;
     }
 
-    export interface GetQuotaAlarmsQuotaDimension {
-        /**
-         * The key of quota_dimensions.
-         */
-        key?: string;
-        /**
-         * The value of quota_dimensions.
-         */
-        value?: string;
-    }
-
     export interface GetQuotaAlarmsQuotaDimensionArgs {
         /**
          * The key of quota_dimensions.
@@ -5676,6 +5741,17 @@ export namespace quotas {
          * The value of quota_dimensions.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface GetQuotaAlarmsQuotaDimension {
+        /**
+         * The key of quota_dimensions.
+         */
+        key?: string;
+        /**
+         * The value of quota_dimensions.
+         */
+        value?: string;
     }
 
     export interface GetQuotaApplicationsDimension {
@@ -5700,17 +5776,6 @@ export namespace quotas {
         value?: pulumi.Input<string>;
     }
 
-    export interface GetQuotasDimensionArgs {
-        /**
-         * The key of dimensions.
-         */
-        key?: pulumi.Input<string>;
-        /**
-         * The value of dimensions.
-         */
-        value?: pulumi.Input<string>;
-    }
-
     export interface GetQuotasDimension {
         /**
          * The key of dimensions.
@@ -5720,6 +5785,17 @@ export namespace quotas {
          * The value of dimensions.
          */
         value?: string;
+    }
+
+    export interface GetQuotasDimensionArgs {
+        /**
+         * The key of dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of dimensions.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface QuotaAlarmQuotaDimension {
@@ -5929,6 +6005,7 @@ export namespace rds {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
+
 }
 
 export namespace resourcemanager {
@@ -6036,6 +6113,7 @@ export namespace ros {
          */
         resourceTypeFilters?: pulumi.Input<pulumi.Input<string>[]>;
     }
+
 }
 
 export namespace sae {
@@ -6309,6 +6387,7 @@ export namespace sae {
          */
         targetPort?: pulumi.Input<number>;
     }
+
 }
 
 export namespace sag {
@@ -6625,6 +6704,7 @@ export namespace servicemesh {
          */
         serviceMeshId?: pulumi.Input<string>;
     }
+
 }
 
 export namespace simpleapplicationserver {
@@ -6674,7 +6754,6 @@ export namespace slb {
         type?: pulumi.Input<string>;
         weight?: pulumi.Input<number>;
     }
-
 }
 
 export namespace tag {
@@ -6857,7 +6936,6 @@ export namespace vpc {
          */
         resourceType?: pulumi.Input<string>;
     }
-
 }
 
 export namespace vpn {
@@ -6943,6 +7021,110 @@ export namespace vpn {
     }
 
     export interface ConnectionIpsecConfig {
+        /**
+         * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         */
+        ipsecAuthAlg?: pulumi.Input<string>;
+        /**
+         * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         */
+        ipsecEncAlg?: pulumi.Input<string>;
+        /**
+         * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         */
+        ipsecLifetime?: pulumi.Input<number>;
+        /**
+         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         */
+        ipsecPfs?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentBgpConfig {
+        /**
+         * Whether to enable BGP.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The ASN on the Alibaba Cloud side.
+         */
+        localAsn?: pulumi.Input<number>;
+        /**
+         * The BGP IP address on the Alibaba Cloud side.
+         */
+        localBgpIp?: pulumi.Input<string>;
+        /**
+         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         */
+        tunnelCidr?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentHealthCheckConfig {
+        /**
+         * The destination IP address that is used for health checks.
+         */
+        dip?: pulumi.Input<string>;
+        /**
+         * Whether to enable BGP.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The interval between two consecutive health checks. Unit: seconds.
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+         */
+        policy?: pulumi.Input<string>;
+        /**
+         * The maximum number of health check retries.
+         */
+        retry?: pulumi.Input<number>;
+        /**
+         * The source IP address that is used for health checks.
+         */
+        sip?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentIkeConfig {
+        /**
+         * IKE authentication algorithm supports sha1 and MD5.
+         */
+        ikeAuthAlg?: pulumi.Input<string>;
+        /**
+         * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+         */
+        ikeEncAlg?: pulumi.Input<string>;
+        /**
+         * The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         */
+        ikeLifetime?: pulumi.Input<number>;
+        /**
+         * The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+         */
+        ikeMode?: pulumi.Input<string>;
+        /**
+         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         */
+        ikePfs?: pulumi.Input<string>;
+        /**
+         * The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+         */
+        ikeVersion?: pulumi.Input<string>;
+        /**
+         * The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+         */
+        localId?: pulumi.Input<string>;
+        /**
+         * Used for authentication between the IPsec VPN gateway and the customer gateway.
+         */
+        psk?: pulumi.Input<string>;
+        /**
+         * The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+         */
+        remoteId?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentIpsecConfig {
         /**
          * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
          */

@@ -18,7 +18,7 @@ type AliasRoutingConfig struct {
 // AliasRoutingConfigInput is an input type that accepts AliasRoutingConfigArgs and AliasRoutingConfigOutput values.
 // You can construct a concrete instance of `AliasRoutingConfigInput` via:
 //
-//          AliasRoutingConfigArgs{...}
+//	AliasRoutingConfigArgs{...}
 type AliasRoutingConfigInput interface {
 	pulumi.Input
 
@@ -54,11 +54,11 @@ func (i AliasRoutingConfigArgs) ToAliasRoutingConfigPtrOutputWithContext(ctx con
 // AliasRoutingConfigPtrInput is an input type that accepts AliasRoutingConfigArgs, AliasRoutingConfigPtr and AliasRoutingConfigPtrOutput values.
 // You can construct a concrete instance of `AliasRoutingConfigPtrInput` via:
 //
-//          AliasRoutingConfigArgs{...}
+//	        AliasRoutingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AliasRoutingConfigPtrInput interface {
 	pulumi.Input
 
@@ -159,7 +159,7 @@ type CustomDomainCertConfig struct {
 // CustomDomainCertConfigInput is an input type that accepts CustomDomainCertConfigArgs and CustomDomainCertConfigOutput values.
 // You can construct a concrete instance of `CustomDomainCertConfigInput` via:
 //
-//          CustomDomainCertConfigArgs{...}
+//	CustomDomainCertConfigArgs{...}
 type CustomDomainCertConfigInput interface {
 	pulumi.Input
 
@@ -199,11 +199,11 @@ func (i CustomDomainCertConfigArgs) ToCustomDomainCertConfigPtrOutputWithContext
 // CustomDomainCertConfigPtrInput is an input type that accepts CustomDomainCertConfigArgs, CustomDomainCertConfigPtr and CustomDomainCertConfigPtrOutput values.
 // You can construct a concrete instance of `CustomDomainCertConfigPtrInput` via:
 //
-//          CustomDomainCertConfigArgs{...}
+//	        CustomDomainCertConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CustomDomainCertConfigPtrInput interface {
 	pulumi.Input
 
@@ -337,7 +337,7 @@ type CustomDomainRouteConfig struct {
 // CustomDomainRouteConfigInput is an input type that accepts CustomDomainRouteConfigArgs and CustomDomainRouteConfigOutput values.
 // You can construct a concrete instance of `CustomDomainRouteConfigInput` via:
 //
-//          CustomDomainRouteConfigArgs{...}
+//	CustomDomainRouteConfigArgs{...}
 type CustomDomainRouteConfigInput interface {
 	pulumi.Input
 
@@ -372,7 +372,7 @@ func (i CustomDomainRouteConfigArgs) ToCustomDomainRouteConfigOutputWithContext(
 // CustomDomainRouteConfigArrayInput is an input type that accepts CustomDomainRouteConfigArray and CustomDomainRouteConfigArrayOutput values.
 // You can construct a concrete instance of `CustomDomainRouteConfigArrayInput` via:
 //
-//          CustomDomainRouteConfigArray{ CustomDomainRouteConfigArgs{...} }
+//	CustomDomainRouteConfigArray{ CustomDomainRouteConfigArgs{...} }
 type CustomDomainRouteConfigArrayInput interface {
 	pulumi.Input
 
@@ -462,7 +462,7 @@ type FunctionAsyncInvokeConfigDestinationConfig struct {
 // FunctionAsyncInvokeConfigDestinationConfigInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigArgs and FunctionAsyncInvokeConfigDestinationConfigOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigInput` via:
 //
-//          FunctionAsyncInvokeConfigDestinationConfigArgs{...}
+//	FunctionAsyncInvokeConfigDestinationConfigArgs{...}
 type FunctionAsyncInvokeConfigDestinationConfigInput interface {
 	pulumi.Input
 
@@ -500,11 +500,11 @@ func (i FunctionAsyncInvokeConfigDestinationConfigArgs) ToFunctionAsyncInvokeCon
 // FunctionAsyncInvokeConfigDestinationConfigPtrInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigArgs, FunctionAsyncInvokeConfigDestinationConfigPtr and FunctionAsyncInvokeConfigDestinationConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigPtrInput` via:
 //
-//          FunctionAsyncInvokeConfigDestinationConfigArgs{...}
+//	        FunctionAsyncInvokeConfigDestinationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionAsyncInvokeConfigDestinationConfigPtrInput interface {
 	pulumi.Input
 
@@ -620,7 +620,7 @@ type FunctionAsyncInvokeConfigDestinationConfigOnFailure struct {
 // FunctionAsyncInvokeConfigDestinationConfigOnFailureInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs and FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnFailureInput` via:
 //
-//          FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{...}
+//	FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{...}
 type FunctionAsyncInvokeConfigDestinationConfigOnFailureInput interface {
 	pulumi.Input
 
@@ -656,11 +656,11 @@ func (i FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs) ToFunctionAsync
 // FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs, FunctionAsyncInvokeConfigDestinationConfigOnFailurePtr and FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput` via:
 //
-//          FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{...}
+//	        FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput interface {
 	pulumi.Input
 
@@ -757,7 +757,7 @@ type FunctionAsyncInvokeConfigDestinationConfigOnSuccess struct {
 // FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs and FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput` via:
 //
-//          FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
+//	FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
 type FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput interface {
 	pulumi.Input
 
@@ -793,11 +793,11 @@ func (i FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs) ToFunctionAsync
 // FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput is an input type that accepts FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs, FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtr and FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput` via:
 //
-//          FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
+//	        FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput interface {
 	pulumi.Input
 
@@ -898,7 +898,7 @@ type FunctionCustomContainerConfig struct {
 // FunctionCustomContainerConfigInput is an input type that accepts FunctionCustomContainerConfigArgs and FunctionCustomContainerConfigOutput values.
 // You can construct a concrete instance of `FunctionCustomContainerConfigInput` via:
 //
-//          FunctionCustomContainerConfigArgs{...}
+//	FunctionCustomContainerConfigArgs{...}
 type FunctionCustomContainerConfigInput interface {
 	pulumi.Input
 
@@ -938,11 +938,11 @@ func (i FunctionCustomContainerConfigArgs) ToFunctionCustomContainerConfigPtrOut
 // FunctionCustomContainerConfigPtrInput is an input type that accepts FunctionCustomContainerConfigArgs, FunctionCustomContainerConfigPtr and FunctionCustomContainerConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionCustomContainerConfigPtrInput` via:
 //
-//          FunctionCustomContainerConfigArgs{...}
+//	        FunctionCustomContainerConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionCustomContainerConfigPtrInput interface {
 	pulumi.Input
 
@@ -1071,7 +1071,7 @@ type ServiceLogConfig struct {
 // ServiceLogConfigInput is an input type that accepts ServiceLogConfigArgs and ServiceLogConfigOutput values.
 // You can construct a concrete instance of `ServiceLogConfigInput` via:
 //
-//          ServiceLogConfigArgs{...}
+//	ServiceLogConfigArgs{...}
 type ServiceLogConfigInput interface {
 	pulumi.Input
 
@@ -1109,11 +1109,11 @@ func (i ServiceLogConfigArgs) ToServiceLogConfigPtrOutputWithContext(ctx context
 // ServiceLogConfigPtrInput is an input type that accepts ServiceLogConfigArgs, ServiceLogConfigPtr and ServiceLogConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceLogConfigPtrInput` via:
 //
-//          ServiceLogConfigArgs{...}
+//	        ServiceLogConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceLogConfigPtrInput interface {
 	pulumi.Input
 
@@ -1229,7 +1229,7 @@ type ServiceNasConfig struct {
 // ServiceNasConfigInput is an input type that accepts ServiceNasConfigArgs and ServiceNasConfigOutput values.
 // You can construct a concrete instance of `ServiceNasConfigInput` via:
 //
-//          ServiceNasConfigArgs{...}
+//	ServiceNasConfigArgs{...}
 type ServiceNasConfigInput interface {
 	pulumi.Input
 
@@ -1269,11 +1269,11 @@ func (i ServiceNasConfigArgs) ToServiceNasConfigPtrOutputWithContext(ctx context
 // ServiceNasConfigPtrInput is an input type that accepts ServiceNasConfigArgs, ServiceNasConfigPtr and ServiceNasConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceNasConfigPtrInput` via:
 //
-//          ServiceNasConfigArgs{...}
+//	        ServiceNasConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceNasConfigPtrInput interface {
 	pulumi.Input
 
@@ -1402,7 +1402,7 @@ type ServiceNasConfigMountPoint struct {
 // ServiceNasConfigMountPointInput is an input type that accepts ServiceNasConfigMountPointArgs and ServiceNasConfigMountPointOutput values.
 // You can construct a concrete instance of `ServiceNasConfigMountPointInput` via:
 //
-//          ServiceNasConfigMountPointArgs{...}
+//	ServiceNasConfigMountPointArgs{...}
 type ServiceNasConfigMountPointInput interface {
 	pulumi.Input
 
@@ -1432,7 +1432,7 @@ func (i ServiceNasConfigMountPointArgs) ToServiceNasConfigMountPointOutputWithCo
 // ServiceNasConfigMountPointArrayInput is an input type that accepts ServiceNasConfigMountPointArray and ServiceNasConfigMountPointArrayOutput values.
 // You can construct a concrete instance of `ServiceNasConfigMountPointArrayInput` via:
 //
-//          ServiceNasConfigMountPointArray{ ServiceNasConfigMountPointArgs{...} }
+//	ServiceNasConfigMountPointArray{ ServiceNasConfigMountPointArgs{...} }
 type ServiceNasConfigMountPointArrayInput interface {
 	pulumi.Input
 
@@ -1509,7 +1509,7 @@ type ServiceVpcConfig struct {
 // ServiceVpcConfigInput is an input type that accepts ServiceVpcConfigArgs and ServiceVpcConfigOutput values.
 // You can construct a concrete instance of `ServiceVpcConfigInput` via:
 //
-//          ServiceVpcConfigArgs{...}
+//	ServiceVpcConfigArgs{...}
 type ServiceVpcConfigInput interface {
 	pulumi.Input
 
@@ -1548,11 +1548,11 @@ func (i ServiceVpcConfigArgs) ToServiceVpcConfigPtrOutputWithContext(ctx context
 // ServiceVpcConfigPtrInput is an input type that accepts ServiceVpcConfigArgs, ServiceVpcConfigPtr and ServiceVpcConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceVpcConfigPtrInput` via:
 //
-//          ServiceVpcConfigArgs{...}
+//	        ServiceVpcConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceVpcConfigPtrInput interface {
 	pulumi.Input
 
@@ -1693,7 +1693,7 @@ type GetCustomDomainsDomain struct {
 // GetCustomDomainsDomainInput is an input type that accepts GetCustomDomainsDomainArgs and GetCustomDomainsDomainOutput values.
 // You can construct a concrete instance of `GetCustomDomainsDomainInput` via:
 //
-//          GetCustomDomainsDomainArgs{...}
+//	GetCustomDomainsDomainArgs{...}
 type GetCustomDomainsDomainInput interface {
 	pulumi.Input
 
@@ -1737,7 +1737,7 @@ func (i GetCustomDomainsDomainArgs) ToGetCustomDomainsDomainOutputWithContext(ct
 // GetCustomDomainsDomainArrayInput is an input type that accepts GetCustomDomainsDomainArray and GetCustomDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetCustomDomainsDomainArrayInput` via:
 //
-//          GetCustomDomainsDomainArray{ GetCustomDomainsDomainArgs{...} }
+//	GetCustomDomainsDomainArray{ GetCustomDomainsDomainArgs{...} }
 type GetCustomDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -1848,7 +1848,7 @@ type GetCustomDomainsDomainCertConfig struct {
 // GetCustomDomainsDomainCertConfigInput is an input type that accepts GetCustomDomainsDomainCertConfigArgs and GetCustomDomainsDomainCertConfigOutput values.
 // You can construct a concrete instance of `GetCustomDomainsDomainCertConfigInput` via:
 //
-//          GetCustomDomainsDomainCertConfigArgs{...}
+//	GetCustomDomainsDomainCertConfigArgs{...}
 type GetCustomDomainsDomainCertConfigInput interface {
 	pulumi.Input
 
@@ -1915,7 +1915,7 @@ type GetCustomDomainsDomainRouteConfig struct {
 // GetCustomDomainsDomainRouteConfigInput is an input type that accepts GetCustomDomainsDomainRouteConfigArgs and GetCustomDomainsDomainRouteConfigOutput values.
 // You can construct a concrete instance of `GetCustomDomainsDomainRouteConfigInput` via:
 //
-//          GetCustomDomainsDomainRouteConfigArgs{...}
+//	GetCustomDomainsDomainRouteConfigArgs{...}
 type GetCustomDomainsDomainRouteConfigInput interface {
 	pulumi.Input
 
@@ -1951,7 +1951,7 @@ func (i GetCustomDomainsDomainRouteConfigArgs) ToGetCustomDomainsDomainRouteConf
 // GetCustomDomainsDomainRouteConfigArrayInput is an input type that accepts GetCustomDomainsDomainRouteConfigArray and GetCustomDomainsDomainRouteConfigArrayOutput values.
 // You can construct a concrete instance of `GetCustomDomainsDomainRouteConfigArrayInput` via:
 //
-//          GetCustomDomainsDomainRouteConfigArray{ GetCustomDomainsDomainRouteConfigArgs{...} }
+//	GetCustomDomainsDomainRouteConfigArray{ GetCustomDomainsDomainRouteConfigArgs{...} }
 type GetCustomDomainsDomainRouteConfigArrayInput interface {
 	pulumi.Input
 
@@ -2074,7 +2074,7 @@ type GetFunctionsFunction struct {
 // GetFunctionsFunctionInput is an input type that accepts GetFunctionsFunctionArgs and GetFunctionsFunctionOutput values.
 // You can construct a concrete instance of `GetFunctionsFunctionInput` via:
 //
-//          GetFunctionsFunctionArgs{...}
+//	GetFunctionsFunctionArgs{...}
 type GetFunctionsFunctionInput interface {
 	pulumi.Input
 
@@ -2136,7 +2136,7 @@ func (i GetFunctionsFunctionArgs) ToGetFunctionsFunctionOutputWithContext(ctx co
 // GetFunctionsFunctionArrayInput is an input type that accepts GetFunctionsFunctionArray and GetFunctionsFunctionArrayOutput values.
 // You can construct a concrete instance of `GetFunctionsFunctionArrayInput` via:
 //
-//          GetFunctionsFunctionArray{ GetFunctionsFunctionArgs{...} }
+//	GetFunctionsFunctionArray{ GetFunctionsFunctionArgs{...} }
 type GetFunctionsFunctionArrayInput interface {
 	pulumi.Input
 
@@ -2296,7 +2296,7 @@ type GetFunctionsFunctionCustomContainerConfig struct {
 // GetFunctionsFunctionCustomContainerConfigInput is an input type that accepts GetFunctionsFunctionCustomContainerConfigArgs and GetFunctionsFunctionCustomContainerConfigOutput values.
 // You can construct a concrete instance of `GetFunctionsFunctionCustomContainerConfigInput` via:
 //
-//          GetFunctionsFunctionCustomContainerConfigArgs{...}
+//	GetFunctionsFunctionCustomContainerConfigArgs{...}
 type GetFunctionsFunctionCustomContainerConfigInput interface {
 	pulumi.Input
 
@@ -2336,11 +2336,11 @@ func (i GetFunctionsFunctionCustomContainerConfigArgs) ToGetFunctionsFunctionCus
 // GetFunctionsFunctionCustomContainerConfigPtrInput is an input type that accepts GetFunctionsFunctionCustomContainerConfigArgs, GetFunctionsFunctionCustomContainerConfigPtr and GetFunctionsFunctionCustomContainerConfigPtrOutput values.
 // You can construct a concrete instance of `GetFunctionsFunctionCustomContainerConfigPtrInput` via:
 //
-//          GetFunctionsFunctionCustomContainerConfigArgs{...}
+//	        GetFunctionsFunctionCustomContainerConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetFunctionsFunctionCustomContainerConfigPtrInput interface {
 	pulumi.Input
 
@@ -2485,7 +2485,7 @@ type GetServicesService struct {
 // GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
 // You can construct a concrete instance of `GetServicesServiceInput` via:
 //
-//          GetServicesServiceArgs{...}
+//	GetServicesServiceArgs{...}
 type GetServicesServiceInput interface {
 	pulumi.Input
 
@@ -2531,7 +2531,7 @@ func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx contex
 // GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetServicesServiceArrayInput` via:
 //
-//          GetServicesServiceArray{ GetServicesServiceArgs{...} }
+//	GetServicesServiceArray{ GetServicesServiceArgs{...} }
 type GetServicesServiceArrayInput interface {
 	pulumi.Input
 
@@ -2647,7 +2647,7 @@ type GetServicesServiceLogConfig struct {
 // GetServicesServiceLogConfigInput is an input type that accepts GetServicesServiceLogConfigArgs and GetServicesServiceLogConfigOutput values.
 // You can construct a concrete instance of `GetServicesServiceLogConfigInput` via:
 //
-//          GetServicesServiceLogConfigArgs{...}
+//	GetServicesServiceLogConfigArgs{...}
 type GetServicesServiceLogConfigInput interface {
 	pulumi.Input
 
@@ -2710,7 +2710,7 @@ type GetServicesServiceNasConfig struct {
 // GetServicesServiceNasConfigInput is an input type that accepts GetServicesServiceNasConfigArgs and GetServicesServiceNasConfigOutput values.
 // You can construct a concrete instance of `GetServicesServiceNasConfigInput` via:
 //
-//          GetServicesServiceNasConfigArgs{...}
+//	GetServicesServiceNasConfigArgs{...}
 type GetServicesServiceNasConfigInput interface {
 	pulumi.Input
 
@@ -2778,7 +2778,7 @@ type GetServicesServiceNasConfigMountPoint struct {
 // GetServicesServiceNasConfigMountPointInput is an input type that accepts GetServicesServiceNasConfigMountPointArgs and GetServicesServiceNasConfigMountPointOutput values.
 // You can construct a concrete instance of `GetServicesServiceNasConfigMountPointInput` via:
 //
-//          GetServicesServiceNasConfigMountPointArgs{...}
+//	GetServicesServiceNasConfigMountPointArgs{...}
 type GetServicesServiceNasConfigMountPointInput interface {
 	pulumi.Input
 
@@ -2808,7 +2808,7 @@ func (i GetServicesServiceNasConfigMountPointArgs) ToGetServicesServiceNasConfig
 // GetServicesServiceNasConfigMountPointArrayInput is an input type that accepts GetServicesServiceNasConfigMountPointArray and GetServicesServiceNasConfigMountPointArrayOutput values.
 // You can construct a concrete instance of `GetServicesServiceNasConfigMountPointArrayInput` via:
 //
-//          GetServicesServiceNasConfigMountPointArray{ GetServicesServiceNasConfigMountPointArgs{...} }
+//	GetServicesServiceNasConfigMountPointArray{ GetServicesServiceNasConfigMountPointArgs{...} }
 type GetServicesServiceNasConfigMountPointArrayInput interface {
 	pulumi.Input
 
@@ -2886,7 +2886,7 @@ type GetServicesServiceVpcConfig struct {
 // GetServicesServiceVpcConfigInput is an input type that accepts GetServicesServiceVpcConfigArgs and GetServicesServiceVpcConfigOutput values.
 // You can construct a concrete instance of `GetServicesServiceVpcConfigInput` via:
 //
-//          GetServicesServiceVpcConfigArgs{...}
+//	GetServicesServiceVpcConfigArgs{...}
 type GetServicesServiceVpcConfigInput interface {
 	pulumi.Input
 
@@ -2966,7 +2966,7 @@ type GetTriggersTrigger struct {
 // GetTriggersTriggerInput is an input type that accepts GetTriggersTriggerArgs and GetTriggersTriggerOutput values.
 // You can construct a concrete instance of `GetTriggersTriggerInput` via:
 //
-//          GetTriggersTriggerArgs{...}
+//	GetTriggersTriggerArgs{...}
 type GetTriggersTriggerInput interface {
 	pulumi.Input
 
@@ -3008,7 +3008,7 @@ func (i GetTriggersTriggerArgs) ToGetTriggersTriggerOutputWithContext(ctx contex
 // GetTriggersTriggerArrayInput is an input type that accepts GetTriggersTriggerArray and GetTriggersTriggerArrayOutput values.
 // You can construct a concrete instance of `GetTriggersTriggerArrayInput` via:
 //
-//          GetTriggersTriggerArray{ GetTriggersTriggerArgs{...} }
+//	GetTriggersTriggerArray{ GetTriggersTriggerArgs{...} }
 type GetTriggersTriggerArrayInput interface {
 	pulumi.Input
 
@@ -3112,7 +3112,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -3140,7 +3140,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

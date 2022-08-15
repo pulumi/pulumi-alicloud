@@ -62,7 +62,7 @@ type GetEnterpriseInstancesInstance struct {
 // GetEnterpriseInstancesInstanceInput is an input type that accepts GetEnterpriseInstancesInstanceArgs and GetEnterpriseInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetEnterpriseInstancesInstanceInput` via:
 //
-//          GetEnterpriseInstancesInstanceArgs{...}
+//	GetEnterpriseInstancesInstanceArgs{...}
 type GetEnterpriseInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -134,7 +134,7 @@ func (i GetEnterpriseInstancesInstanceArgs) ToGetEnterpriseInstancesInstanceOutp
 // GetEnterpriseInstancesInstanceArrayInput is an input type that accepts GetEnterpriseInstancesInstanceArray and GetEnterpriseInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseInstancesInstanceArrayInput` via:
 //
-//          GetEnterpriseInstancesInstanceArray{ GetEnterpriseInstancesInstanceArgs{...} }
+//	GetEnterpriseInstancesInstanceArray{ GetEnterpriseInstancesInstanceArgs{...} }
 type GetEnterpriseInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -333,7 +333,7 @@ type GetEnterpriseUsersUser struct {
 // GetEnterpriseUsersUserInput is an input type that accepts GetEnterpriseUsersUserArgs and GetEnterpriseUsersUserOutput values.
 // You can construct a concrete instance of `GetEnterpriseUsersUserInput` via:
 //
-//          GetEnterpriseUsersUserArgs{...}
+//	GetEnterpriseUsersUserArgs{...}
 type GetEnterpriseUsersUserInput interface {
 	pulumi.Input
 
@@ -378,7 +378,7 @@ func (i GetEnterpriseUsersUserArgs) ToGetEnterpriseUsersUserOutputWithContext(ct
 // GetEnterpriseUsersUserArrayInput is an input type that accepts GetEnterpriseUsersUserArray and GetEnterpriseUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseUsersUserArrayInput` via:
 //
-//          GetEnterpriseUsersUserArray{ GetEnterpriseUsersUserArgs{...} }
+//	GetEnterpriseUsersUserArray{ GetEnterpriseUsersUserArgs{...} }
 type GetEnterpriseUsersUserArrayInput interface {
 	pulumi.Input
 
@@ -497,7 +497,7 @@ type GetUserTenantsTenant struct {
 // GetUserTenantsTenantInput is an input type that accepts GetUserTenantsTenantArgs and GetUserTenantsTenantOutput values.
 // You can construct a concrete instance of `GetUserTenantsTenantInput` via:
 //
-//          GetUserTenantsTenantArgs{...}
+//	GetUserTenantsTenantArgs{...}
 type GetUserTenantsTenantInput interface {
 	pulumi.Input
 
@@ -531,7 +531,7 @@ func (i GetUserTenantsTenantArgs) ToGetUserTenantsTenantOutputWithContext(ctx co
 // GetUserTenantsTenantArrayInput is an input type that accepts GetUserTenantsTenantArray and GetUserTenantsTenantArrayOutput values.
 // You can construct a concrete instance of `GetUserTenantsTenantArrayInput` via:
 //
-//          GetUserTenantsTenantArray{ GetUserTenantsTenantArgs{...} }
+//	GetUserTenantsTenantArray{ GetUserTenantsTenantArgs{...} }
 type GetUserTenantsTenantArrayInput interface {
 	pulumi.Input
 

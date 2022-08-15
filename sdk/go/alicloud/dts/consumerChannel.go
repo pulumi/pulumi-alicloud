@@ -22,7 +22,9 @@ import (
 // DTS Consumer Channel can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example <dts_instance_id>:<consumer_group_id>
+//
+//	$ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example <dts_instance_id>:<consumer_group_id>
+//
 // ```
 type ConsumerChannel struct {
 	pulumi.CustomResourceState
@@ -158,7 +160,7 @@ func (i *ConsumerChannel) ToConsumerChannelOutputWithContext(ctx context.Context
 // ConsumerChannelArrayInput is an input type that accepts ConsumerChannelArray and ConsumerChannelArrayOutput values.
 // You can construct a concrete instance of `ConsumerChannelArrayInput` via:
 //
-//          ConsumerChannelArray{ ConsumerChannelArgs{...} }
+//	ConsumerChannelArray{ ConsumerChannelArgs{...} }
 type ConsumerChannelArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +185,7 @@ func (i ConsumerChannelArray) ToConsumerChannelArrayOutputWithContext(ctx contex
 // ConsumerChannelMapInput is an input type that accepts ConsumerChannelMap and ConsumerChannelMapOutput values.
 // You can construct a concrete instance of `ConsumerChannelMapInput` via:
 //
-//          ConsumerChannelMap{ "key": ConsumerChannelArgs{...} }
+//	ConsumerChannelMap{ "key": ConsumerChannelArgs{...} }
 type ConsumerChannelMapInput interface {
 	pulumi.Input
 

@@ -18,20 +18,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sampleDs, err := slb.GetAcls(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstSlbAclId", sampleDs.Acls[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sampleDs, err := slb.GetAcls(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSlbAclId", sampleDs.Acls[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Entry Block
 //

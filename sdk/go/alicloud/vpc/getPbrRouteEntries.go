@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := vpc.GetPbrRouteEntries(ctx, &vpc.GetPbrRouteEntriesArgs{
-// 			VpnGatewayId: "example_vpn_gateway_id",
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpnIpsecServerId1", ids.Entries[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetPbrRouteEntries(ctx, &vpc.GetPbrRouteEntriesArgs{
+//				VpnGatewayId: "example_vpn_gateway_id",
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpnIpsecServerId1", ids.Entries[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetPbrRouteEntries(ctx *pulumi.Context, args *GetPbrRouteEntriesArgs, opts ...pulumi.InvokeOption) (*GetPbrRouteEntriesResult, error) {
 	var rv GetPbrRouteEntriesResult

@@ -18,30 +18,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpn.GetGateways(ctx, &vpn.GetGatewaysArgs{
-// 			BusinessStatus: pulumi.StringRef("Normal"),
-// 			EnableIpsec:    pulumi.BoolRef(true),
-// 			Ids: []string{
-// 				"fake-vpn-id1",
-// 				"fake-vpn-id2",
-// 			},
-// 			NameRegex:  pulumi.StringRef("testAcc*"),
-// 			OutputFile: pulumi.StringRef("/tmp/vpns"),
-// 			Status:     pulumi.StringRef("active"),
-// 			VpcId:      pulumi.StringRef("fake-vpc-id"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpn.GetGateways(ctx, &vpn.GetGatewaysArgs{
+//				BusinessStatus: pulumi.StringRef("Normal"),
+//				EnableIpsec:    pulumi.BoolRef(true),
+//				Ids: []string{
+//					"fake-vpn-id1",
+//					"fake-vpn-id2",
+//				},
+//				NameRegex:  pulumi.StringRef("testAcc*"),
+//				OutputFile: pulumi.StringRef("/tmp/vpns"),
+//				Status:     pulumi.StringRef("active"),
+//				VpcId:      pulumi.StringRef("fake-vpc-id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGateways(ctx *pulumi.Context, args *GetGatewaysArgs, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	var rv GetGatewaysResult

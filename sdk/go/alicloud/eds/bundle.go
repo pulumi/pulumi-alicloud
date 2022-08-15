@@ -19,52 +19,55 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultImages, err := eds.GetImages(ctx, &eds.GetImagesArgs{
-// 			ImageType:           pulumi.StringRef("SYSTEM"),
-// 			OsType:              pulumi.StringRef("Windows"),
-// 			DesktopInstanceType: pulumi.StringRef("eds.hf.4c8g"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultDesktopTypes, err := eds.GetDesktopTypes(ctx, &eds.GetDesktopTypesArgs{
-// 			InstanceTypeFamily: pulumi.StringRef("eds.hf"),
-// 			CpuCount:           pulumi.IntRef(4),
-// 			MemorySize:         pulumi.IntRef(8192),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewBundle(ctx, "defaultBundle", &eds.BundleArgs{
-// 			Description: pulumi.Any(_var.Name),
-// 			DesktopType: pulumi.String(defaultDesktopTypes.Ids[0]),
-// 			BundleName:  pulumi.Any(_var.Name),
-// 			ImageId:     pulumi.String(defaultImages.Ids[0]),
-// 			UserDiskSizeGibs: pulumi.IntArray{
-// 				pulumi.Int(70),
-// 			},
-// 			RootDiskSizeGib:          pulumi.Int(80),
-// 			RootDiskPerformanceLevel: pulumi.String("PL1"),
-// 			UserDiskPerformanceLevel: pulumi.String("PL1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultImages, err := eds.GetImages(ctx, &eds.GetImagesArgs{
+//				ImageType:           pulumi.StringRef("SYSTEM"),
+//				OsType:              pulumi.StringRef("Windows"),
+//				DesktopInstanceType: pulumi.StringRef("eds.hf.4c8g"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDesktopTypes, err := eds.GetDesktopTypes(ctx, &eds.GetDesktopTypesArgs{
+//				InstanceTypeFamily: pulumi.StringRef("eds.hf"),
+//				CpuCount:           pulumi.IntRef(4),
+//				MemorySize:         pulumi.IntRef(8192),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewBundle(ctx, "defaultBundle", &eds.BundleArgs{
+//				Description: pulumi.Any(_var.Name),
+//				DesktopType: pulumi.String(defaultDesktopTypes.Ids[0]),
+//				BundleName:  pulumi.Any(_var.Name),
+//				ImageId:     pulumi.String(defaultImages.Ids[0]),
+//				UserDiskSizeGibs: pulumi.IntArray{
+//					pulumi.Int(70),
+//				},
+//				RootDiskSizeGib:          pulumi.Int(80),
+//				RootDiskPerformanceLevel: pulumi.String("PL1"),
+//				UserDiskPerformanceLevel: pulumi.String("PL1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -72,7 +75,9 @@ import (
 // ECD Bundle can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/bundle:Bundle example <id>
+//
+//	$ pulumi import alicloud:eds/bundle:Bundle example <id>
+//
 // ```
 type Bundle struct {
 	pulumi.CustomResourceState
@@ -262,7 +267,7 @@ func (i *Bundle) ToBundleOutputWithContext(ctx context.Context) BundleOutput {
 // BundleArrayInput is an input type that accepts BundleArray and BundleArrayOutput values.
 // You can construct a concrete instance of `BundleArrayInput` via:
 //
-//          BundleArray{ BundleArgs{...} }
+//	BundleArray{ BundleArgs{...} }
 type BundleArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +292,7 @@ func (i BundleArray) ToBundleArrayOutputWithContext(ctx context.Context) BundleA
 // BundleMapInput is an input type that accepts BundleMap and BundleMapOutput values.
 // You can construct a concrete instance of `BundleMapInput` via:
 //
-//          BundleMap{ "key": BundleArgs{...} }
+//	BundleMap{ "key": BundleArgs{...} }
 type BundleMapInput interface {
 	pulumi.Input
 

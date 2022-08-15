@@ -121,7 +121,7 @@ export class GatewayFileShare extends pulumi.CustomResource {
      */
     public readonly bypassCacheRead!: pulumi.Output<boolean>;
     /**
-     * The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+     * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      */
     public readonly cacheMode!: pulumi.Output<string>;
     /**
@@ -369,7 +369,7 @@ export interface GatewayFileShareState {
      */
     bypassCacheRead?: pulumi.Input<boolean>;
     /**
-     * The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+     * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      */
     cacheMode?: pulumi.Input<string>;
     /**
@@ -511,7 +511,7 @@ export interface GatewayFileShareArgs {
      */
     bypassCacheRead?: pulumi.Input<boolean>;
     /**
-     * The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+     * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      */
     cacheMode?: pulumi.Input<string>;
     /**

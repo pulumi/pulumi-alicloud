@@ -12,91 +12,95 @@ import (
 )
 
 // Provides an Alicloud Function Compute custom domain resource.
-//  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+//
+//	For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
 //
 // > **NOTE:** Available in 1.98.0+
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testaccalicloudfcservice"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
-// 			Description: pulumi.String(fmt.Sprintf("%v-description", name)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-// 			Bucket: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
-// 			Bucket: defaultBucket.ID(),
-// 			Key:    pulumi.String("fc/hello.zip"),
-// 			Content: pulumi.String(fmt.Sprintf("		# -*- coding: utf-8 -*-\n	def handler(event, context):\n		print \"hello world\"\n		return 'hello world'\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
-// 			Service:    defaultService.Name,
-// 			OssBucket:  defaultBucket.ID(),
-// 			OssKey:     defaultBucketObject.Key,
-// 			MemorySize: pulumi.Int(512),
-// 			Runtime:    pulumi.String("python2.7"),
-// 			Handler:    pulumi.String("hello.handler"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = fc.NewCustomDomain(ctx, "defaultCustomDomain", &fc.CustomDomainArgs{
-// 			DomainName: pulumi.String("terraform.functioncompute.com"),
-// 			Protocol:   pulumi.String("HTTP"),
-// 			RouteConfigs: fc.CustomDomainRouteConfigArray{
-// 				&fc.CustomDomainRouteConfigArgs{
-// 					Path:         pulumi.String("/login/*"),
-// 					ServiceName:  defaultService.Name,
-// 					FunctionName: defaultFunction.Name,
-// 					Qualifier:    pulumi.String("v1"),
-// 					Methods: pulumi.StringArray{
-// 						pulumi.String("GET"),
-// 						pulumi.String("POST"),
-// 					},
-// 				},
-// 			},
-// 			CertConfig: &fc.CustomDomainCertConfigArgs{
-// 				CertName:    pulumi.String("your certificate name"),
-// 				PrivateKey:  pulumi.String("your private key"),
-// 				Certificate: pulumi.String("your certificate data"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testaccalicloudfcservice"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description: pulumi.String(fmt.Sprintf("%v-description", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("fc/hello.zip"),
+//				Content: pulumi.String(fmt.Sprintf("		# -*- coding: utf-8 -*-\n	def handler(event, context):\n		print \"hello world\"\n		return 'hello world'\n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//				Service:    defaultService.Name,
+//				OssBucket:  defaultBucket.ID(),
+//				OssKey:     defaultBucketObject.Key,
+//				MemorySize: pulumi.Int(512),
+//				Runtime:    pulumi.String("python2.7"),
+//				Handler:    pulumi.String("hello.handler"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewCustomDomain(ctx, "defaultCustomDomain", &fc.CustomDomainArgs{
+//				DomainName: pulumi.String("terraform.functioncompute.com"),
+//				Protocol:   pulumi.String("HTTP"),
+//				RouteConfigs: fc.CustomDomainRouteConfigArray{
+//					&fc.CustomDomainRouteConfigArgs{
+//						Path:         pulumi.String("/login/*"),
+//						ServiceName:  defaultService.Name,
+//						FunctionName: defaultFunction.Name,
+//						Qualifier:    pulumi.String("v1"),
+//						Methods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//							pulumi.String("POST"),
+//						},
+//					},
+//				},
+//				CertConfig: &fc.CustomDomainCertConfigArgs{
+//					CertName:    pulumi.String("your certificate name"),
+//					PrivateKey:  pulumi.String("your private key"),
+//					Certificate: pulumi.String("your certificate data"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -104,7 +108,9 @@ import (
 // Function Compute custom domain can be imported using the id or the domain name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
+//
+//	$ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
+//
 // ```
 type CustomDomain struct {
 	pulumi.CustomResourceState
@@ -252,7 +258,7 @@ func (i *CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) Cust
 // CustomDomainArrayInput is an input type that accepts CustomDomainArray and CustomDomainArrayOutput values.
 // You can construct a concrete instance of `CustomDomainArrayInput` via:
 //
-//          CustomDomainArray{ CustomDomainArgs{...} }
+//	CustomDomainArray{ CustomDomainArgs{...} }
 type CustomDomainArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +283,7 @@ func (i CustomDomainArray) ToCustomDomainArrayOutputWithContext(ctx context.Cont
 // CustomDomainMapInput is an input type that accepts CustomDomainMap and CustomDomainMapOutput values.
 // You can construct a concrete instance of `CustomDomainMapInput` via:
 //
-//          CustomDomainMap{ "key": CustomDomainArgs{...} }
+//	CustomDomainMap{ "key": CustomDomainArgs{...} }
 type CustomDomainMapInput interface {
 	pulumi.Input
 

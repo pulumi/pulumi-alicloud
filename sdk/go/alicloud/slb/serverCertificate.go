@@ -24,24 +24,27 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
-// 			PrivateKey:        pulumi.String(fmt.Sprintf("-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=\n-----END RSA PRIVATE KEY-----\n")),
-// 			ServerCertificate: pulumi.String(fmt.Sprintf("-----BEGIN CERTIFICATE-----\nMIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=\n-----END CERTIFICATE-----\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
+//				PrivateKey:        pulumi.String(fmt.Sprintf("-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=\n-----END RSA PRIVATE KEY-----\n")),
+//				ServerCertificate: pulumi.String(fmt.Sprintf("-----BEGIN CERTIFICATE-----\nMIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=\n-----END CERTIFICATE-----\n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // * using server_certificate/private file example
@@ -50,33 +53,36 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
-// 			ServerCertificate: readFileOrPanic(fmt.Sprintf("%v/server_certificate.pem", path.Module)),
-// 			PrivateKey:        readFileOrPanic(fmt.Sprintf("%v/private_key.pem", path.Module)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
+//				ServerCertificate: readFileOrPanic(fmt.Sprintf("%v/server_certificate.pem", path.Module)),
+//				PrivateKey:        readFileOrPanic(fmt.Sprintf("%v/private_key.pem", path.Module)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -84,7 +90,9 @@ import (
 // Server Load balancer Server Certificate can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+//
+//	$ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+//
 // ```
 type ServerCertificate struct {
 	pulumi.CustomResourceState
@@ -262,7 +270,7 @@ func (i *ServerCertificate) ToServerCertificateOutputWithContext(ctx context.Con
 // ServerCertificateArrayInput is an input type that accepts ServerCertificateArray and ServerCertificateArrayOutput values.
 // You can construct a concrete instance of `ServerCertificateArrayInput` via:
 //
-//          ServerCertificateArray{ ServerCertificateArgs{...} }
+//	ServerCertificateArray{ ServerCertificateArgs{...} }
 type ServerCertificateArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +295,7 @@ func (i ServerCertificateArray) ToServerCertificateArrayOutputWithContext(ctx co
 // ServerCertificateMapInput is an input type that accepts ServerCertificateMap and ServerCertificateMapOutput values.
 // You can construct a concrete instance of `ServerCertificateMapInput` via:
 //
-//          ServerCertificateMap{ "key": ServerCertificateArgs{...} }
+//	ServerCertificateMap{ "key": ServerCertificateArgs{...} }
 type ServerCertificateMapInput interface {
 	pulumi.Input
 

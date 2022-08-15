@@ -21,30 +21,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
-// 			ClusterType:         "HADOOP",
-// 			DestinationResource: "InstanceType",
-// 			InstanceChargeType:  "PostPaid",
-// 			InstanceType:        pulumi.StringRef("ecs.g5.2xlarge"),
-// 			SupportLocalStorage: pulumi.BoolRef(false),
-// 			SupportNodeTypes: []string{
-// 				"MASTER",
-// 				"CORE",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstInstanceType", _default.Types[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+//				ClusterType:         "HADOOP",
+//				DestinationResource: "InstanceType",
+//				InstanceChargeType:  "PostPaid",
+//				InstanceType:        pulumi.StringRef("ecs.g5.2xlarge"),
+//				SupportLocalStorage: pulumi.BoolRef(false),
+//				SupportNodeTypes: []string{
+//					"MASTER",
+//					"CORE",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstInstanceType", _default.Types[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {
 	var rv GetInstanceTypesResult

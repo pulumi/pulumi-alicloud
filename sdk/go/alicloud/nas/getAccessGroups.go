@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := nas.GetAccessGroups(ctx, &nas.GetAccessGroupsArgs{
-// 			NameRegex:       pulumi.StringRef("^foo"),
-// 			AccessGroupType: pulumi.StringRef("Classic"),
-// 			Description:     pulumi.StringRef("tf-testAccAccessGroupsdatasource"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("alicloudNasAccessGroupsId", example.Groups[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := nas.GetAccessGroups(ctx, &nas.GetAccessGroupsArgs{
+//				NameRegex:       pulumi.StringRef("^foo"),
+//				AccessGroupType: pulumi.StringRef("Classic"),
+//				Description:     pulumi.StringRef("tf-testAccAccessGroupsdatasource"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudNasAccessGroupsId", example.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pulumi.InvokeOption) (*GetAccessGroupsResult, error) {
 	var rv GetAccessGroupsResult

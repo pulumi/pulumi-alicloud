@@ -18,24 +18,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instancesDs, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("web_server"),
-// 			Status:    pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstInstanceId", instancesDs.Instances[0].Id)
-// 		ctx.Export("instanceIds", instancesDs.Ids)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instancesDs, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("web_server"),
+//				Status:    pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstInstanceId", instancesDs.Instances[0].Id)
+//			ctx.Export("instanceIds", instancesDs.Ids)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

@@ -24,7 +24,9 @@ import (
 // Cloud SSO User can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
+//
+//	$ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -194,7 +196,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -219,7 +221,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

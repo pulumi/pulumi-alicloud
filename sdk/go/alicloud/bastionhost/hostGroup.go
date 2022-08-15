@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewHostGroup(ctx, "example", &bastionhost.HostGroupArgs{
-// 			HostGroupName: pulumi.String("example_value"),
-// 			InstanceId:    pulumi.String("bastionhost-cn-tl3xxxxxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.NewHostGroup(ctx, "example", &bastionhost.HostGroupArgs{
+//				HostGroupName: pulumi.String("example_value"),
+//				InstanceId:    pulumi.String("bastionhost-cn-tl3xxxxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Bastion Host Host Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/hostGroup:HostGroup example <instance_id>:<host_group_id>
+//
+//	$ pulumi import alicloud:bastionhost/hostGroup:HostGroup example <instance_id>:<host_group_id>
+//
 // ```
 type HostGroup struct {
 	pulumi.CustomResourceState
@@ -168,7 +173,7 @@ func (i *HostGroup) ToHostGroupOutputWithContext(ctx context.Context) HostGroupO
 // HostGroupArrayInput is an input type that accepts HostGroupArray and HostGroupArrayOutput values.
 // You can construct a concrete instance of `HostGroupArrayInput` via:
 //
-//          HostGroupArray{ HostGroupArgs{...} }
+//	HostGroupArray{ HostGroupArgs{...} }
 type HostGroupArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i HostGroupArray) ToHostGroupArrayOutputWithContext(ctx context.Context) H
 // HostGroupMapInput is an input type that accepts HostGroupMap and HostGroupMapOutput values.
 // You can construct a concrete instance of `HostGroupMapInput` via:
 //
-//          HostGroupMap{ "key": HostGroupArgs{...} }
+//	HostGroupMap{ "key": HostGroupArgs{...} }
 type HostGroupMapInput interface {
 	pulumi.Input
 

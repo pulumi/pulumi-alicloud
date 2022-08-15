@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &App{}
 	case "alicloud:apigateway/appAttachment:AppAttachment":
 		r = &AppAttachment{}
+	case "alicloud:apigateway/backend:Backend":
+		r = &Backend{}
 	case "alicloud:apigateway/group:Group":
 		r = &Group{}
 	case "alicloud:apigateway/vpcAccess:VpcAccess":
@@ -57,6 +59,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apigateway/appAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apigateway/backend",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

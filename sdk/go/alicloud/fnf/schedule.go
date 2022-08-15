@@ -19,42 +19,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleFlow, err := fnf.NewFlow(ctx, "exampleFlow", &fnf.FlowArgs{
-// 			Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
-// 			Description: pulumi.String("tf-testaccFnFFlow983041"),
-// 			Type:        pulumi.String("FDL"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = fnf.NewSchedule(ctx, "exampleSchedule", &fnf.ScheduleArgs{
-// 			CronExpression: pulumi.String("30 9 * * * *"),
-// 			Description:    pulumi.String("tf-testaccFnFSchedule983041"),
-// 			Enable:         pulumi.Bool(true),
-// 			FlowName:       exampleFlow.Name,
-// 			Payload:        pulumi.String("{\"tf-test\": \"test success\"}"),
-// 			ScheduleName:   pulumi.String("tf-testaccFnFSchedule983041"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleFlow, err := fnf.NewFlow(ctx, "exampleFlow", &fnf.FlowArgs{
+//				Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
+//				Description: pulumi.String("tf-testaccFnFFlow983041"),
+//				Type:        pulumi.String("FDL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fnf.NewSchedule(ctx, "exampleSchedule", &fnf.ScheduleArgs{
+//				CronExpression: pulumi.String("30 9 * * * *"),
+//				Description:    pulumi.String("tf-testaccFnFSchedule983041"),
+//				Enable:         pulumi.Bool(true),
+//				FlowName:       exampleFlow.Name,
+//				Payload:        pulumi.String("{\"tf-test\": \"test success\"}"),
+//				ScheduleName:   pulumi.String("tf-testaccFnFSchedule983041"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // Serverless Workflow Schedule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
+//
+//	$ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
+//
 // ```
 type Schedule struct {
 	pulumi.CustomResourceState
@@ -221,7 +226,7 @@ func (i *Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutp
 // ScheduleArrayInput is an input type that accepts ScheduleArray and ScheduleArrayOutput values.
 // You can construct a concrete instance of `ScheduleArrayInput` via:
 //
-//          ScheduleArray{ ScheduleArgs{...} }
+//	ScheduleArray{ ScheduleArgs{...} }
 type ScheduleArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +251,7 @@ func (i ScheduleArray) ToScheduleArrayOutputWithContext(ctx context.Context) Sch
 // ScheduleMapInput is an input type that accepts ScheduleMap and ScheduleMapOutput values.
 // You can construct a concrete instance of `ScheduleMapInput` via:
 //
-//          ScheduleMap{ "key": ScheduleArgs{...} }
+//	ScheduleMap{ "key": ScheduleArgs{...} }
 type ScheduleMapInput interface {
 	pulumi.Input
 

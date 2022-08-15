@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		this, err := dns.GetDomainTxtGuid(ctx, &dns.GetDomainTxtGuidArgs{
-// 			DomainName: "test111.abc",
-// 			Type:       "ADD_SUB_DOMAIN",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("rr", this.Rr)
-// 		ctx.Export("value", this.Value)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := dns.GetDomainTxtGuid(ctx, &dns.GetDomainTxtGuidArgs{
+//				DomainName: "test111.abc",
+//				Type:       "ADD_SUB_DOMAIN",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("rr", this.Rr)
+//			ctx.Export("value", this.Value)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDomainTxtGuid(ctx *pulumi.Context, args *GetDomainTxtGuidArgs, opts ...pulumi.InvokeOption) (*GetDomainTxtGuidResult, error) {
 	var rv GetDomainTxtGuidResult

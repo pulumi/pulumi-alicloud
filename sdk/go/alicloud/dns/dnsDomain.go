@@ -17,26 +17,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewDnsDomain(ctx, "dns", &dns.DnsDomainArgs{
-// 			DomainName: pulumi.String("starmove.com"),
-// 			GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created":     pulumi.Any("Terraform"),
-// 				"Environment": pulumi.Any("test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewDnsDomain(ctx, "dns", &dns.DnsDomainArgs{
+//				DomainName: pulumi.String("starmove.com"),
+//				GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
+//				Tags: pulumi.AnyMap{
+//					"Created":     pulumi.Any("Terraform"),
+//					"Environment": pulumi.Any("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,7 +47,9 @@ import (
 // DNS domain can be imported using the id or domain name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
+//
+//	$ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
+//
 // ```
 type DnsDomain struct {
 	pulumi.CustomResourceState
@@ -210,7 +215,7 @@ func (i *DnsDomain) ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainO
 // DnsDomainArrayInput is an input type that accepts DnsDomainArray and DnsDomainArrayOutput values.
 // You can construct a concrete instance of `DnsDomainArrayInput` via:
 //
-//          DnsDomainArray{ DnsDomainArgs{...} }
+//	DnsDomainArray{ DnsDomainArgs{...} }
 type DnsDomainArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +240,7 @@ func (i DnsDomainArray) ToDnsDomainArrayOutputWithContext(ctx context.Context) D
 // DnsDomainMapInput is an input type that accepts DnsDomainMap and DnsDomainMapOutput values.
 // You can construct a concrete instance of `DnsDomainMapInput` via:
 //
-//          DnsDomainMap{ "key": DnsDomainArgs{...} }
+//	DnsDomainMap{ "key": DnsDomainArgs{...} }
 type DnsDomainMapInput interface {
 	pulumi.Input
 

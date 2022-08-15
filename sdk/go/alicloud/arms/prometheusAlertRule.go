@@ -19,31 +19,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := arms.NewPrometheusAlertRule(ctx, "example", &arms.PrometheusAlertRuleArgs{
-// 			ClusterId:               pulumi.String("example_value"),
-// 			Duration:                pulumi.String("example_value"),
-// 			Expression:              pulumi.String("example_value"),
-// 			Message:                 pulumi.String("example_value"),
-// 			PrometheusAlertRuleName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := arms.NewPrometheusAlertRule(ctx, "example", &arms.PrometheusAlertRuleArgs{
+//				ClusterId:               pulumi.String("example_value"),
+//				Duration:                pulumi.String("example_value"),
+//				Expression:              pulumi.String("example_value"),
+//				Message:                 pulumi.String("example_value"),
+//				PrometheusAlertRuleName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>
+//
+//	$ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>
+//
 // ```
 type PrometheusAlertRule struct {
 	pulumi.CustomResourceState
@@ -256,7 +261,7 @@ func (i *PrometheusAlertRule) ToPrometheusAlertRuleOutputWithContext(ctx context
 // PrometheusAlertRuleArrayInput is an input type that accepts PrometheusAlertRuleArray and PrometheusAlertRuleArrayOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleArrayInput` via:
 //
-//          PrometheusAlertRuleArray{ PrometheusAlertRuleArgs{...} }
+//	PrometheusAlertRuleArray{ PrometheusAlertRuleArgs{...} }
 type PrometheusAlertRuleArrayInput interface {
 	pulumi.Input
 
@@ -281,7 +286,7 @@ func (i PrometheusAlertRuleArray) ToPrometheusAlertRuleArrayOutputWithContext(ct
 // PrometheusAlertRuleMapInput is an input type that accepts PrometheusAlertRuleMap and PrometheusAlertRuleMapOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleMapInput` via:
 //
-//          PrometheusAlertRuleMap{ "key": PrometheusAlertRuleArgs{...} }
+//	PrometheusAlertRuleMap{ "key": PrometheusAlertRuleArgs{...} }
 type PrometheusAlertRuleMapInput interface {
 	pulumi.Input
 

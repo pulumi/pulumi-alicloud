@@ -19,59 +19,62 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
-// 			Duration:        pulumi.Int(1),
-// 			Spec:            pulumi.String("1"),
-// 			AcceleratorName: pulumi.Any(_var.Name),
-// 			AutoUseCoupon:   pulumi.Bool(true),
-// 			Description:     pulumi.Any(_var.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
-// 			Bandwidth:            pulumi.Int(100),
-// 			Type:                 pulumi.String("Basic"),
-// 			BandwidthType:        pulumi.String("Basic"),
-// 			PaymentType:          pulumi.String("PayAsYouGo"),
-// 			BillingType:          pulumi.String("PayBy95"),
-// 			Ratio:                pulumi.Int(30),
-// 			BandwidthPackageName: pulumi.Any(_var.Name),
-// 			AutoPay:              pulumi.Bool(true),
-// 			AutoUseCoupon:        pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-// 			AcceleratorId:      defaultAccelerator.ID(),
-// 			BandwidthPackageId: defaultBandwidthPackage.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ga.NewAcceleratorSpareIpAttachment(ctx, "defaultAcceleratorSpareIpAttachment", &ga.AcceleratorSpareIpAttachmentArgs{
-// 			AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
-// 			SpareIp:       pulumi.String("127.0.0.1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//				Duration:        pulumi.Int(1),
+//				Spec:            pulumi.String("1"),
+//				AcceleratorName: pulumi.Any(_var.Name),
+//				AutoUseCoupon:   pulumi.Bool(true),
+//				Description:     pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:            pulumi.Int(100),
+//				Type:                 pulumi.String("Basic"),
+//				BandwidthType:        pulumi.String("Basic"),
+//				PaymentType:          pulumi.String("PayAsYouGo"),
+//				BillingType:          pulumi.String("PayBy95"),
+//				Ratio:                pulumi.Int(30),
+//				BandwidthPackageName: pulumi.Any(_var.Name),
+//				AutoPay:              pulumi.Bool(true),
+//				AutoUseCoupon:        pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewAcceleratorSpareIpAttachment(ctx, "defaultAcceleratorSpareIpAttachment", &ga.AcceleratorSpareIpAttachmentArgs{
+//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
+//				SpareIp:       pulumi.String("127.0.0.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -79,7 +82,9 @@ import (
 // Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
+//
+//	$ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
+//
 // ```
 type AcceleratorSpareIpAttachment struct {
 	pulumi.CustomResourceState
@@ -199,7 +204,7 @@ func (i *AcceleratorSpareIpAttachment) ToAcceleratorSpareIpAttachmentOutputWithC
 // AcceleratorSpareIpAttachmentArrayInput is an input type that accepts AcceleratorSpareIpAttachmentArray and AcceleratorSpareIpAttachmentArrayOutput values.
 // You can construct a concrete instance of `AcceleratorSpareIpAttachmentArrayInput` via:
 //
-//          AcceleratorSpareIpAttachmentArray{ AcceleratorSpareIpAttachmentArgs{...} }
+//	AcceleratorSpareIpAttachmentArray{ AcceleratorSpareIpAttachmentArgs{...} }
 type AcceleratorSpareIpAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +229,7 @@ func (i AcceleratorSpareIpAttachmentArray) ToAcceleratorSpareIpAttachmentArrayOu
 // AcceleratorSpareIpAttachmentMapInput is an input type that accepts AcceleratorSpareIpAttachmentMap and AcceleratorSpareIpAttachmentMapOutput values.
 // You can construct a concrete instance of `AcceleratorSpareIpAttachmentMapInput` via:
 //
-//          AcceleratorSpareIpAttachmentMap{ "key": AcceleratorSpareIpAttachmentArgs{...} }
+//	AcceleratorSpareIpAttachmentMap{ "key": AcceleratorSpareIpAttachmentArgs{...} }
 type AcceleratorSpareIpAttachmentMapInput interface {
 	pulumi.Input
 

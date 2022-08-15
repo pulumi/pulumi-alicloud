@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewCommand(ctx, "example", &ecs.CommandArgs{
-// 			CommandContent: pulumi.String("bHMK"),
-// 			Description:    pulumi.String("For Terraform Test"),
-// 			Type:           pulumi.String("RunShellScript"),
-// 			WorkingDir:     pulumi.String("/root"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewCommand(ctx, "example", &ecs.CommandArgs{
+//				CommandContent: pulumi.String("bHMK"),
+//				Description:    pulumi.String("For Terraform Test"),
+//				Type:           pulumi.String("RunShellScript"),
+//				WorkingDir:     pulumi.String("/root"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // ECS Command can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/command:Command example <id>
+//
+//	$ pulumi import alicloud:ecs/command:Command example <id>
+//
 // ```
 type Command struct {
 	pulumi.CustomResourceState
@@ -204,7 +209,7 @@ func (i *Command) ToCommandOutputWithContext(ctx context.Context) CommandOutput 
 // CommandArrayInput is an input type that accepts CommandArray and CommandArrayOutput values.
 // You can construct a concrete instance of `CommandArrayInput` via:
 //
-//          CommandArray{ CommandArgs{...} }
+//	CommandArray{ CommandArgs{...} }
 type CommandArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +234,7 @@ func (i CommandArray) ToCommandArrayOutputWithContext(ctx context.Context) Comma
 // CommandMapInput is an input type that accepts CommandMap and CommandMapOutput values.
 // You can construct a concrete instance of `CommandMapInput` via:
 //
-//          CommandMap{ "key": CommandArgs{...} }
+//	CommandMap{ "key": CommandArgs{...} }
 type CommandMapInput interface {
 	pulumi.Input
 

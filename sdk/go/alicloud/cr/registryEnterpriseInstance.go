@@ -19,32 +19,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cr.NewRegistryEnterpriseInstance(ctx, "my-instance", &cr.RegistryEnterpriseInstanceArgs{
-// 			InstanceName:  pulumi.String("test"),
-// 			InstanceType:  pulumi.String("Advanced"),
-// 			PaymentType:   pulumi.String("Subscription"),
-// 			Period:        pulumi.Int(1),
-// 			RenewPeriod:   pulumi.Int(1),
-// 			RenewalStatus: pulumi.String("AutoRenewal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cr.NewRegistryEnterpriseInstance(ctx, "my-instance", &cr.RegistryEnterpriseInstanceArgs{
+//				InstanceName:  pulumi.String("test"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(1),
+//				RenewalStatus: pulumi.String("AutoRenewal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,7 +55,9 @@ import (
 // Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+//
+//	$ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+//
 // ```
 type RegistryEnterpriseInstance struct {
 	pulumi.CustomResourceState
@@ -254,7 +259,7 @@ func (i *RegistryEnterpriseInstance) ToRegistryEnterpriseInstanceOutputWithConte
 // RegistryEnterpriseInstanceArrayInput is an input type that accepts RegistryEnterpriseInstanceArray and RegistryEnterpriseInstanceArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseInstanceArrayInput` via:
 //
-//          RegistryEnterpriseInstanceArray{ RegistryEnterpriseInstanceArgs{...} }
+//	RegistryEnterpriseInstanceArray{ RegistryEnterpriseInstanceArgs{...} }
 type RegistryEnterpriseInstanceArrayInput interface {
 	pulumi.Input
 
@@ -279,7 +284,7 @@ func (i RegistryEnterpriseInstanceArray) ToRegistryEnterpriseInstanceArrayOutput
 // RegistryEnterpriseInstanceMapInput is an input type that accepts RegistryEnterpriseInstanceMap and RegistryEnterpriseInstanceMapOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseInstanceMapInput` via:
 //
-//          RegistryEnterpriseInstanceMap{ "key": RegistryEnterpriseInstanceArgs{...} }
+//	RegistryEnterpriseInstanceMap{ "key": RegistryEnterpriseInstanceArgs{...} }
 type RegistryEnterpriseInstanceMapInput interface {
 	pulumi.Input
 

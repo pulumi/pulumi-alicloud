@@ -18,73 +18,77 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
-// 			Description: pulumi.String("tf unit test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-// 			Project:         pulumi.String("tf-project"),
-// 			RetentionPeriod: pulumi.Int(3000),
-// 			ShardCount:      pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
-// 			CharList: pulumi.String(fmt.Sprintf(`  [
-//     {
-//       "action": {},
-//       "title":"new_title",
-//       "type":"map",
-//       "search":{
-//         "logstore":"tf-logstore",
-//         "topic":"new_topic",
-//         "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
-//         "start":"-86400s",
-//         "end":"now"
-//       },
-//       "display":{
-//         "xAxis":[
-//           "ct_name"
-//         ],
-//         "yAxis":[
-//           "ct_product"
-//         ],
-//         "xPos":0,
-//         "yPos":0,
-//         "width":10,
-//         "height":12,
-//         "displayName":"xixihaha911"
-//       }
-//     }
-//   ]
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+//				Description: pulumi.String("tf unit test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project:         pulumi.String("tf-project"),
+//				RetentionPeriod: pulumi.Int(3000),
+//				ShardCount:      pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
+//				CharList: pulumi.String(fmt.Sprintf(`  [
+//	    {
+//	      "action": {},
+//	      "title":"new_title",
+//	      "type":"map",
+//	      "search":{
+//	        "logstore":"tf-logstore",
+//	        "topic":"new_topic",
+//	        "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+//	        "start":"-86400s",
+//	        "end":"now"
+//	      },
+//	      "display":{
+//	        "xAxis":[
+//	          "ct_name"
+//	        ],
+//	        "yAxis":[
+//	          "ct_product"
+//	        ],
+//	        "xPos":0,
+//	        "yPos":0,
+//	        "width":10,
+//	        "height":12,
+//	        "displayName":"xixihaha911"
+//	      }
+//	    }
+//	  ]
 //
 // `)),
-// 			DashboardName: pulumi.String("tf-dashboard"),
-// 			ProjectName:   pulumi.String("tf-project"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				DashboardName: pulumi.String("tf-dashboard"),
+//				ProjectName:   pulumi.String("tf-project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -92,7 +96,9 @@ import (
 // Log Dashboard can be imported using the id or name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+//
+//	$ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+//
 // ```
 type Dashboard struct {
 	pulumi.CustomResourceState
@@ -219,7 +225,7 @@ func (i *Dashboard) ToDashboardOutputWithContext(ctx context.Context) DashboardO
 // DashboardArrayInput is an input type that accepts DashboardArray and DashboardArrayOutput values.
 // You can construct a concrete instance of `DashboardArrayInput` via:
 //
-//          DashboardArray{ DashboardArgs{...} }
+//	DashboardArray{ DashboardArgs{...} }
 type DashboardArrayInput interface {
 	pulumi.Input
 
@@ -244,7 +250,7 @@ func (i DashboardArray) ToDashboardArrayOutputWithContext(ctx context.Context) D
 // DashboardMapInput is an input type that accepts DashboardMap and DashboardMapOutput values.
 // You can construct a concrete instance of `DashboardMapInput` via:
 //
-//          DashboardMap{ "key": DashboardArgs{...} }
+//	DashboardMap{ "key": DashboardArgs{...} }
 type DashboardMapInput interface {
 	pulumi.Input
 

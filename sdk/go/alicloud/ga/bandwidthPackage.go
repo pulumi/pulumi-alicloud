@@ -21,32 +21,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ga.NewBandwidthPackage(ctx, "example", &ga.BandwidthPackageArgs{
-// 			AutoPay:       pulumi.Bool(true),
-// 			Bandwidth:     pulumi.Int(20),
-// 			BandwidthType: pulumi.String("Basic"),
-// 			Duration:      pulumi.String("1"),
-// 			Ratio:         pulumi.Int(30),
-// 			Type:          pulumi.String("Basic"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ga.NewBandwidthPackage(ctx, "example", &ga.BandwidthPackageArgs{
+//				AutoPay:       pulumi.Bool(true),
+//				Bandwidth:     pulumi.Int(20),
+//				BandwidthType: pulumi.String("Basic"),
+//				Duration:      pulumi.String("1"),
+//				Ratio:         pulumi.Int(30),
+//				Type:          pulumi.String("Basic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Ga Bandwidth Package can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example <id>
+//
+//	$ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example <id>
+//
 // ```
 type BandwidthPackage struct {
 	pulumi.CustomResourceState
@@ -319,7 +324,7 @@ func (i *BandwidthPackage) ToBandwidthPackageOutputWithContext(ctx context.Conte
 // BandwidthPackageArrayInput is an input type that accepts BandwidthPackageArray and BandwidthPackageArrayOutput values.
 // You can construct a concrete instance of `BandwidthPackageArrayInput` via:
 //
-//          BandwidthPackageArray{ BandwidthPackageArgs{...} }
+//	BandwidthPackageArray{ BandwidthPackageArgs{...} }
 type BandwidthPackageArrayInput interface {
 	pulumi.Input
 
@@ -344,7 +349,7 @@ func (i BandwidthPackageArray) ToBandwidthPackageArrayOutputWithContext(ctx cont
 // BandwidthPackageMapInput is an input type that accepts BandwidthPackageMap and BandwidthPackageMapOutput values.
 // You can construct a concrete instance of `BandwidthPackageMapInput` via:
 //
-//          BandwidthPackageMap{ "key": BandwidthPackageArgs{...} }
+//	BandwidthPackageMap{ "key": BandwidthPackageArgs{...} }
 type BandwidthPackageMapInput interface {
 	pulumi.Input
 

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+import com.pulumi.alicloud.ecs.inputs.InstanceMaintenanceTimeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -461,6 +462,51 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
+    }
+
+    /**
+     * The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     * 
+     */
+    @Import(name="maintenanceAction")
+    private @Nullable Output<String> maintenanceAction;
+
+    /**
+     * @return The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     * 
+     */
+    public Optional<Output<String>> maintenanceAction() {
+        return Optional.ofNullable(this.maintenanceAction);
+    }
+
+    /**
+     * Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+     * 
+     */
+    @Import(name="maintenanceNotify")
+    private @Nullable Output<Boolean> maintenanceNotify;
+
+    /**
+     * @return Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> maintenanceNotify() {
+        return Optional.ofNullable(this.maintenanceNotify);
+    }
+
+    /**
+     * The time of maintenance. See the following `Block maintenance_time`.
+     * 
+     */
+    @Import(name="maintenanceTime")
+    private @Nullable Output<InstanceMaintenanceTimeArgs> maintenanceTime;
+
+    /**
+     * @return The time of maintenance. See the following `Block maintenance_time`.
+     * 
+     */
+    public Optional<Output<InstanceMaintenanceTimeArgs>> maintenanceTime() {
+        return Optional.ofNullable(this.maintenanceTime);
     }
 
     /**
@@ -997,6 +1043,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.keyName = $.keyName;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.maintenanceAction = $.maintenanceAction;
+        this.maintenanceNotify = $.maintenanceNotify;
+        this.maintenanceTime = $.maintenanceTime;
         this.operatorType = $.operatorType;
         this.password = $.password;
         this.period = $.period;
@@ -1656,6 +1705,69 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
+        }
+
+        /**
+         * @param maintenanceAction The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceAction(@Nullable Output<String> maintenanceAction) {
+            $.maintenanceAction = maintenanceAction;
+            return this;
+        }
+
+        /**
+         * @param maintenanceAction The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceAction(String maintenanceAction) {
+            return maintenanceAction(Output.of(maintenanceAction));
+        }
+
+        /**
+         * @param maintenanceNotify Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceNotify(@Nullable Output<Boolean> maintenanceNotify) {
+            $.maintenanceNotify = maintenanceNotify;
+            return this;
+        }
+
+        /**
+         * @param maintenanceNotify Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceNotify(Boolean maintenanceNotify) {
+            return maintenanceNotify(Output.of(maintenanceNotify));
+        }
+
+        /**
+         * @param maintenanceTime The time of maintenance. See the following `Block maintenance_time`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceTime(@Nullable Output<InstanceMaintenanceTimeArgs> maintenanceTime) {
+            $.maintenanceTime = maintenanceTime;
+            return this;
+        }
+
+        /**
+         * @param maintenanceTime The time of maintenance. See the following `Block maintenance_time`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceTime(InstanceMaintenanceTimeArgs maintenanceTime) {
+            return maintenanceTime(Output.of(maintenanceTime));
         }
 
         /**

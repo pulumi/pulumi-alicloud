@@ -36,7 +36,7 @@ type GetAppsApp struct {
 // GetAppsAppInput is an input type that accepts GetAppsAppArgs and GetAppsAppOutput values.
 // You can construct a concrete instance of `GetAppsAppInput` via:
 //
-//          GetAppsAppArgs{...}
+//	GetAppsAppArgs{...}
 type GetAppsAppInput interface {
 	pulumi.Input
 
@@ -82,7 +82,7 @@ func (i GetAppsAppArgs) ToGetAppsAppOutputWithContext(ctx context.Context) GetAp
 // GetAppsAppArrayInput is an input type that accepts GetAppsAppArray and GetAppsAppArrayOutput values.
 // You can construct a concrete instance of `GetAppsAppArrayInput` via:
 //
-//          GetAppsAppArray{ GetAppsAppArgs{...} }
+//	GetAppsAppArray{ GetAppsAppArgs{...} }
 type GetAppsAppArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +200,7 @@ type GetProductsProduct struct {
 // GetProductsProductInput is an input type that accepts GetProductsProductArgs and GetProductsProductOutput values.
 // You can construct a concrete instance of `GetProductsProductInput` via:
 //
-//          GetProductsProductArgs{...}
+//	GetProductsProductArgs{...}
 type GetProductsProductInput interface {
 	pulumi.Input
 
@@ -232,7 +232,7 @@ func (i GetProductsProductArgs) ToGetProductsProductOutputWithContext(ctx contex
 // GetProductsProductArrayInput is an input type that accepts GetProductsProductArray and GetProductsProductArrayOutput values.
 // You can construct a concrete instance of `GetProductsProductArrayInput` via:
 //
-//          GetProductsProductArray{ GetProductsProductArgs{...} }
+//	GetProductsProductArray{ GetProductsProductArgs{...} }
 type GetProductsProductArrayInput interface {
 	pulumi.Input
 

@@ -19,61 +19,64 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
-// 			Duration:      pulumi.Int(1),
-// 			AutoUseCoupon: pulumi.Bool(true),
-// 			Spec:          pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
-// 			Bandwidth:     pulumi.Int(100),
-// 			Type:          pulumi.String("Basic"),
-// 			BandwidthType: pulumi.String("Basic"),
-// 			PaymentType:   pulumi.String("PayAsYouGo"),
-// 			BillingType:   pulumi.String("PayBy95"),
-// 			Ratio:         pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-// 			AcceleratorId:      exampleAccelerator.ID(),
-// 			BandwidthPackageId: deBandwidthPackage.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
-// 			AcceleratorId: exampleAccelerator.ID(),
-// 			PortRanges: ga.ListenerPortRangeArray{
-// 				&ga.ListenerPortRangeArgs{
-// 					FromPort: pulumi.Int(60),
-// 					ToPort:   pulumi.Int(70),
-// 				},
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			deBandwidthPackageAttachment,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(100),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				BillingType:   pulumi.String("PayBy95"),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      exampleAccelerator.ID(),
+//				BandwidthPackageId: deBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
+//				AcceleratorId: exampleAccelerator.ID(),
+//				PortRanges: ga.ListenerPortRangeArray{
+//					&ga.ListenerPortRangeArgs{
+//						FromPort: pulumi.Int(60),
+//						ToPort:   pulumi.Int(70),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				deBandwidthPackageAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -81,7 +84,9 @@ import (
 // Ga Listener can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/listener:Listener example <id>
+//
+//	$ pulumi import alicloud:ga/listener:Listener example <id>
+//
 // ```
 type Listener struct {
 	pulumi.CustomResourceState
@@ -271,7 +276,7 @@ func (i *Listener) ToListenerOutputWithContext(ctx context.Context) ListenerOutp
 // ListenerArrayInput is an input type that accepts ListenerArray and ListenerArrayOutput values.
 // You can construct a concrete instance of `ListenerArrayInput` via:
 //
-//          ListenerArray{ ListenerArgs{...} }
+//	ListenerArray{ ListenerArgs{...} }
 type ListenerArrayInput interface {
 	pulumi.Input
 
@@ -296,7 +301,7 @@ func (i ListenerArray) ToListenerArrayOutputWithContext(ctx context.Context) Lis
 // ListenerMapInput is an input type that accepts ListenerMap and ListenerMapOutput values.
 // You can construct a concrete instance of `ListenerMapInput` via:
 //
-//          ListenerMap{ "key": ListenerArgs{...} }
+//	ListenerMap{ "key": ListenerArgs{...} }
 type ListenerMapInput interface {
 	pulumi.Input
 

@@ -19,46 +19,49 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "onsInstanceName"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		topic := "onsTopicName"
-// 		if param := cfg.Get("topic"); param != "" {
-// 			topic = param
-// 		}
-// 		defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
-// 			Remark: pulumi.String("default_ons_instance_remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
-// 			TopicName:   pulumi.String(topic),
-// 			InstanceId:  defaultInstance.ID(),
-// 			MessageType: pulumi.Int(0),
-// 			Remark:      pulumi.String("dafault_ons_topic_remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "onsInstanceName"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			topic := "onsTopicName"
+//			if param := cfg.Get("topic"); param != "" {
+//				topic = param
+//			}
+//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+//				Remark: pulumi.String("default_ons_instance_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
+//				TopicName:   pulumi.String(topic),
+//				InstanceId:  defaultInstance.ID(),
+//				MessageType: pulumi.Int(0),
+//				Remark:      pulumi.String("dafault_ons_topic_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -66,7 +69,9 @@ import (
 // ONS TOPIC can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
+//
+//	$ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
+//
 // ```
 type Topic struct {
 	pulumi.CustomResourceState
@@ -250,7 +255,7 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
-//          TopicArray{ TopicArgs{...} }
+//	TopicArray{ TopicArgs{...} }
 type TopicArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +280,7 @@ func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArra
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
 // You can construct a concrete instance of `TopicMapInput` via:
 //
-//          TopicMap{ "key": TopicArgs{...} }
+//	TopicMap{ "key": TopicArgs{...} }
 type TopicMapInput interface {
 	pulumi.Input
 

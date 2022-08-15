@@ -17,59 +17,62 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
-// 			InstanceId:      pulumi.String("amqp-abc12345"),
-// 			VirtualHostName: pulumi.String("my-VirtualHost"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleExchange, err := amqp.NewExchange(ctx, "exampleExchange", &amqp.ExchangeArgs{
-// 			AutoDeleteState: pulumi.Bool(false),
-// 			ExchangeName:    pulumi.String("my-Exchange"),
-// 			ExchangeType:    pulumi.String("HEADERS"),
-// 			InstanceId:      exampleVirtualHost.InstanceId,
-// 			Internal:        pulumi.Bool(false),
-// 			VirtualHostName: exampleVirtualHost.VirtualHostName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleQueue, err := amqp.NewQueue(ctx, "exampleQueue", &amqp.QueueArgs{
-// 			InstanceId:      exampleVirtualHost.InstanceId,
-// 			QueueName:       pulumi.String("my-Queue"),
-// 			VirtualHostName: exampleVirtualHost.VirtualHostName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = amqp.NewBinding(ctx, "exampleBinding", &amqp.BindingArgs{
-// 			Argument:        pulumi.String("x-match:all"),
-// 			BindingKey:      exampleQueue.QueueName,
-// 			BindingType:     pulumi.String("QUEUE"),
-// 			DestinationName: pulumi.String("binding-queue"),
-// 			InstanceId:      exampleExchange.InstanceId,
-// 			SourceExchange:  exampleExchange.ExchangeName,
-// 			VirtualHostName: exampleExchange.VirtualHostName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleVirtualHost, err := amqp.NewVirtualHost(ctx, "exampleVirtualHost", &amqp.VirtualHostArgs{
+//				InstanceId:      pulumi.String("amqp-abc12345"),
+//				VirtualHostName: pulumi.String("my-VirtualHost"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleExchange, err := amqp.NewExchange(ctx, "exampleExchange", &amqp.ExchangeArgs{
+//				AutoDeleteState: pulumi.Bool(false),
+//				ExchangeName:    pulumi.String("my-Exchange"),
+//				ExchangeType:    pulumi.String("HEADERS"),
+//				InstanceId:      exampleVirtualHost.InstanceId,
+//				Internal:        pulumi.Bool(false),
+//				VirtualHostName: exampleVirtualHost.VirtualHostName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleQueue, err := amqp.NewQueue(ctx, "exampleQueue", &amqp.QueueArgs{
+//				InstanceId:      exampleVirtualHost.InstanceId,
+//				QueueName:       pulumi.String("my-Queue"),
+//				VirtualHostName: exampleVirtualHost.VirtualHostName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewBinding(ctx, "exampleBinding", &amqp.BindingArgs{
+//				Argument:        pulumi.String("x-match:all"),
+//				BindingKey:      exampleQueue.QueueName,
+//				BindingType:     pulumi.String("QUEUE"),
+//				DestinationName: pulumi.String("binding-queue"),
+//				InstanceId:      exampleExchange.InstanceId,
+//				SourceExchange:  exampleExchange.ExchangeName,
+//				VirtualHostName: exampleExchange.VirtualHostName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -77,7 +80,9 @@ import (
 // RabbitMQ (AMQP) Binding can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:amqp/binding:Binding example <instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>
+//
+//	$ pulumi import alicloud:amqp/binding:Binding example <instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>
+//
 // ```
 type Binding struct {
 	pulumi.CustomResourceState
@@ -278,7 +283,7 @@ func (i *Binding) ToBindingOutputWithContext(ctx context.Context) BindingOutput 
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -303,7 +308,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 // BindingMapInput is an input type that accepts BindingMap and BindingMapOutput values.
 // You can construct a concrete instance of `BindingMapInput` via:
 //
-//          BindingMap{ "key": BindingArgs{...} }
+//	BindingMap{ "key": BindingArgs{...} }
 type BindingMapInput interface {
 	pulumi.Input
 
@@ -347,11 +352,11 @@ func (o BindingOutput) Argument() pulumi.StringOutput {
 }
 
 // The Binding Key.
-// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-//   The binding key must be 1 to 255 characters in length.
-// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-//   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-//   The binding key must be 1 to 255 characters in length.
+//   - For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+//     The binding key must be 1 to 255 characters in length.
+//   - For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+//     If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+//     The binding key must be 1 to 255 characters in length.
 func (o BindingOutput) BindingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.BindingKey }).(pulumi.StringOutput)
 }

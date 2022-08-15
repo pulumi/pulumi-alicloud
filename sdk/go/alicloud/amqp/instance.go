@@ -21,46 +21,49 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := amqp.NewInstance(ctx, "professional", &amqp.InstanceArgs{
-// 			InstanceType:  pulumi.String("professional"),
-// 			MaxEipTps:     pulumi.String("128"),
-// 			MaxTps:        pulumi.String("1000"),
-// 			PaymentType:   pulumi.String("Subscription"),
-// 			Period:        pulumi.Int(1),
-// 			QueueCapacity: pulumi.String("50"),
-// 			SupportEip:    pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = amqp.NewInstance(ctx, "vip", &amqp.InstanceArgs{
-// 			InstanceType:  pulumi.String("vip"),
-// 			MaxEipTps:     pulumi.String("128"),
-// 			MaxTps:        pulumi.String("5000"),
-// 			PaymentType:   pulumi.String("Subscription"),
-// 			Period:        pulumi.Int(1),
-// 			QueueCapacity: pulumi.String("50"),
-// 			StorageSize:   pulumi.String("700"),
-// 			SupportEip:    pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := amqp.NewInstance(ctx, "professional", &amqp.InstanceArgs{
+//				InstanceType:  pulumi.String("professional"),
+//				MaxEipTps:     pulumi.String("128"),
+//				MaxTps:        pulumi.String("1000"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				QueueCapacity: pulumi.String("50"),
+//				SupportEip:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewInstance(ctx, "vip", &amqp.InstanceArgs{
+//				InstanceType:  pulumi.String("vip"),
+//				MaxEipTps:     pulumi.String("128"),
+//				MaxTps:        pulumi.String("5000"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				QueueCapacity: pulumi.String("50"),
+//				StorageSize:   pulumi.String("700"),
+//				SupportEip:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -68,7 +71,9 @@ import (
 // RabbitMQ (AMQP) Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:amqp/instance:Instance example <id>
+//
+//	$ pulumi import alicloud:amqp/instance:Instance example <id>
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -317,7 +322,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -342,7 +347,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

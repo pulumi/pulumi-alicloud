@@ -32,7 +32,7 @@ type GatewaySlbList struct {
 // GatewaySlbListInput is an input type that accepts GatewaySlbListArgs and GatewaySlbListOutput values.
 // You can construct a concrete instance of `GatewaySlbListInput` via:
 //
-//          GatewaySlbListArgs{...}
+//	GatewaySlbListArgs{...}
 type GatewaySlbListInput interface {
 	pulumi.Input
 
@@ -74,7 +74,7 @@ func (i GatewaySlbListArgs) ToGatewaySlbListOutputWithContext(ctx context.Contex
 // GatewaySlbListArrayInput is an input type that accepts GatewaySlbListArray and GatewaySlbListArrayOutput values.
 // You can construct a concrete instance of `GatewaySlbListArrayInput` via:
 //
-//          GatewaySlbListArray{ GatewaySlbListArgs{...} }
+//	GatewaySlbListArray{ GatewaySlbListArgs{...} }
 type GatewaySlbListArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +220,7 @@ type GetClustersCluster struct {
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
 // You can construct a concrete instance of `GetClustersClusterInput` via:
 //
-//          GetClustersClusterArgs{...}
+//	GetClustersClusterArgs{...}
 type GetClustersClusterInput interface {
 	pulumi.Input
 
@@ -290,7 +290,7 @@ func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx contex
 // GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterArrayInput` via:
 //
-//          GetClustersClusterArray{ GetClustersClusterArgs{...} }
+//	GetClustersClusterArray{ GetClustersClusterArgs{...} }
 type GetClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -471,7 +471,7 @@ type GetClustersClusterInstanceModel struct {
 // GetClustersClusterInstanceModelInput is an input type that accepts GetClustersClusterInstanceModelArgs and GetClustersClusterInstanceModelOutput values.
 // You can construct a concrete instance of `GetClustersClusterInstanceModelInput` via:
 //
-//          GetClustersClusterInstanceModelArgs{...}
+//	GetClustersClusterInstanceModelArgs{...}
 type GetClustersClusterInstanceModelInput interface {
 	pulumi.Input
 
@@ -506,7 +506,7 @@ func (i GetClustersClusterInstanceModelArgs) ToGetClustersClusterInstanceModelOu
 // GetClustersClusterInstanceModelArrayInput is an input type that accepts GetClustersClusterInstanceModelArray and GetClustersClusterInstanceModelArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterInstanceModelArrayInput` via:
 //
-//          GetClustersClusterInstanceModelArray{ GetClustersClusterInstanceModelArgs{...} }
+//	GetClustersClusterInstanceModelArray{ GetClustersClusterInstanceModelArgs{...} }
 type GetClustersClusterInstanceModelArrayInput interface {
 	pulumi.Input
 
@@ -620,7 +620,7 @@ type GetEngineNamespacesNamespace struct {
 // GetEngineNamespacesNamespaceInput is an input type that accepts GetEngineNamespacesNamespaceArgs and GetEngineNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetEngineNamespacesNamespaceInput` via:
 //
-//          GetEngineNamespacesNamespaceArgs{...}
+//	GetEngineNamespacesNamespaceArgs{...}
 type GetEngineNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -665,7 +665,7 @@ func (i GetEngineNamespacesNamespaceArgs) ToGetEngineNamespacesNamespaceOutputWi
 // GetEngineNamespacesNamespaceArrayInput is an input type that accepts GetEngineNamespacesNamespaceArray and GetEngineNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetEngineNamespacesNamespaceArrayInput` via:
 //
-//          GetEngineNamespacesNamespaceArray{ GetEngineNamespacesNamespaceArgs{...} }
+//	GetEngineNamespacesNamespaceArray{ GetEngineNamespacesNamespaceArgs{...} }
 type GetEngineNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -792,7 +792,7 @@ type GetGatewaysGateway struct {
 // GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayInput` via:
 //
-//          GetGatewaysGatewayArgs{...}
+//	GetGatewaysGatewayArgs{...}
 type GetGatewaysGatewayInput interface {
 	pulumi.Input
 
@@ -840,7 +840,7 @@ func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx contex
 // GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
 //
-//          GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
+//	GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
 type GetGatewaysGatewayArrayInput interface {
 	pulumi.Input
 
@@ -973,7 +973,7 @@ type GetGatewaysGatewaySlbList struct {
 // GetGatewaysGatewaySlbListInput is an input type that accepts GetGatewaysGatewaySlbListArgs and GetGatewaysGatewaySlbListOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewaySlbListInput` via:
 //
-//          GetGatewaysGatewaySlbListArgs{...}
+//	GetGatewaysGatewaySlbListArgs{...}
 type GetGatewaysGatewaySlbListInput interface {
 	pulumi.Input
 
@@ -1015,7 +1015,7 @@ func (i GetGatewaysGatewaySlbListArgs) ToGetGatewaysGatewaySlbListOutputWithCont
 // GetGatewaysGatewaySlbListArrayInput is an input type that accepts GetGatewaysGatewaySlbListArray and GetGatewaysGatewaySlbListArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewaySlbListArrayInput` via:
 //
-//          GetGatewaysGatewaySlbListArray{ GetGatewaysGatewaySlbListArgs{...} }
+//	GetGatewaysGatewaySlbListArray{ GetGatewaysGatewaySlbListArgs{...} }
 type GetGatewaysGatewaySlbListArrayInput interface {
 	pulumi.Input
 
@@ -1129,7 +1129,7 @@ type GetZnodesZnode struct {
 // GetZnodesZnodeInput is an input type that accepts GetZnodesZnodeArgs and GetZnodesZnodeOutput values.
 // You can construct a concrete instance of `GetZnodesZnodeInput` via:
 //
-//          GetZnodesZnodeArgs{...}
+//	GetZnodesZnodeArgs{...}
 type GetZnodesZnodeInput interface {
 	pulumi.Input
 
@@ -1167,7 +1167,7 @@ func (i GetZnodesZnodeArgs) ToGetZnodesZnodeOutputWithContext(ctx context.Contex
 // GetZnodesZnodeArrayInput is an input type that accepts GetZnodesZnodeArray and GetZnodesZnodeArrayOutput values.
 // You can construct a concrete instance of `GetZnodesZnodeArrayInput` via:
 //
-//          GetZnodesZnodeArray{ GetZnodesZnodeArgs{...} }
+//	GetZnodesZnodeArray{ GetZnodesZnodeArgs{...} }
 type GetZnodesZnodeArrayInput interface {
 	pulumi.Input
 

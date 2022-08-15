@@ -16,32 +16,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := sae.GetApplicationScalingRules(ctx, &sae.GetApplicationScalingRulesArgs{
-// 			AppId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("saeApplicationScalingRuleId1", ids.Rules[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := sae.GetApplicationScalingRules(ctx, &sae.GetApplicationScalingRulesArgs{
+//				AppId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("saeApplicationScalingRuleId1", ids.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetApplicationScalingRules(ctx *pulumi.Context, args *GetApplicationScalingRulesArgs, opts ...pulumi.InvokeOption) (*GetApplicationScalingRulesResult, error) {
 	var rv GetApplicationScalingRulesResult

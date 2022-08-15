@@ -19,52 +19,55 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-test112358"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-// 			VaultName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-// 			Bucket: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewOssBackupPlan(ctx, "defaultOssBackupPlan", &hbr.OssBackupPlanArgs{
-// 			OssBackupPlanName: pulumi.String(name),
-// 			Prefix:            pulumi.String("/"),
-// 			Bucket:            defaultBucket.Bucket,
-// 			VaultId:           defaultVault.ID(),
-// 			Schedule:          pulumi.String("I|1602673264|PT2H"),
-// 			BackupType:        pulumi.String("COMPLETE"),
-// 			Retention:         pulumi.String("2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-test112358"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewOssBackupPlan(ctx, "defaultOssBackupPlan", &hbr.OssBackupPlanArgs{
+//				OssBackupPlanName: pulumi.String(name),
+//				Prefix:            pulumi.String("/"),
+//				Bucket:            defaultBucket.Bucket,
+//				VaultId:           defaultVault.ID(),
+//				Schedule:          pulumi.String("I|1602673264|PT2H"),
+//				BackupType:        pulumi.String("COMPLETE"),
+//				Retention:         pulumi.String("2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -72,7 +75,9 @@ import (
 // HBR Oss Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
+//
+//	$ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
+//
 // ```
 type OssBackupPlan struct {
 	pulumi.CustomResourceState
@@ -248,7 +253,7 @@ func (i *OssBackupPlan) ToOssBackupPlanOutputWithContext(ctx context.Context) Os
 // OssBackupPlanArrayInput is an input type that accepts OssBackupPlanArray and OssBackupPlanArrayOutput values.
 // You can construct a concrete instance of `OssBackupPlanArrayInput` via:
 //
-//          OssBackupPlanArray{ OssBackupPlanArgs{...} }
+//	OssBackupPlanArray{ OssBackupPlanArgs{...} }
 type OssBackupPlanArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +278,7 @@ func (i OssBackupPlanArray) ToOssBackupPlanArrayOutputWithContext(ctx context.Co
 // OssBackupPlanMapInput is an input type that accepts OssBackupPlanMap and OssBackupPlanMapOutput values.
 // You can construct a concrete instance of `OssBackupPlanMapInput` via:
 //
-//          OssBackupPlanMap{ "key": OssBackupPlanArgs{...} }
+//	OssBackupPlanMap{ "key": OssBackupPlanArgs{...} }
 type OssBackupPlanMapInput interface {
 	pulumi.Input
 

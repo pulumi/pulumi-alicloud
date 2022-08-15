@@ -19,124 +19,127 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tftest"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		region := "cn-shanghai"
-// 		if param := cfg.Get("region"); param != "" {
-// 			region = param
-// 		}
-// 		defaultStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
-// 			GatewayClass: pulumi.StringRef("Standard"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("192.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       vpc.ID(),
-// 			CidrBlock:   pulumi.String("192.16.0.0/21"),
-// 			ZoneId:      pulumi.String(defaultStocks.Stocks[0].ZoneId),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "defaultStorageBundle", &cloudstoragegateway.StorageBundleArgs{
-// 			StorageBundleName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
-// 			Description:            pulumi.String("tf-acctestDesalone"),
-// 			GatewayClass:           pulumi.String("Standard"),
-// 			Type:                   pulumi.String("File"),
-// 			PaymentType:            pulumi.String("PayAsYouGo"),
-// 			VswitchId:              defaultSwitch.ID(),
-// 			ReleaseAfterExpiration: pulumi.Bool(true),
-// 			PublicNetworkBandwidth: pulumi.Int(10),
-// 			StorageBundleId:        defaultStorageBundle.ID(),
-// 			Location:               pulumi.String("Cloud"),
-// 			GatewayName:            pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGatewayCacheDisk, err := cloudstoragegateway.NewGatewayCacheDisk(ctx, "defaultGatewayCacheDisk", &cloudstoragegateway.GatewayCacheDiskArgs{
-// 			CacheDiskCategory: pulumi.String("cloud_efficiency"),
-// 			GatewayId:         defaultGateway.ID(),
-// 			CacheDiskSizeInGb: pulumi.Int(50),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-// 			Bucket: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGatewayFileShare, err := cloudstoragegateway.NewGatewayFileShare(ctx, "defaultGatewayFileShare", &cloudstoragegateway.GatewayFileShareArgs{
-// 			GatewayFileShareName: pulumi.String(name),
-// 			GatewayId:            defaultGateway.ID(),
-// 			LocalPath:            defaultGatewayCacheDisk.LocalFilePath,
-// 			OssBucketName:        defaultBucket.Bucket,
-// 			OssEndpoint:          defaultBucket.ExtranetEndpoint,
-// 			Protocol:             pulumi.String("NFS"),
-// 			RemoteSync:           pulumi.Bool(false),
-// 			FeLimit:              pulumi.Int(0),
-// 			BackendLimit:         pulumi.Int(0),
-// 			CacheMode:            pulumi.String("Cache"),
-// 			Squash:               pulumi.String("none"),
-// 			LagPeriod:            pulumi.Int(5),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultExpressSync, err := cloudstoragegateway.NewExpressSync(ctx, "defaultExpressSync", &cloudstoragegateway.ExpressSyncArgs{
-// 			BucketName:      defaultGatewayFileShare.OssBucketName,
-// 			BucketRegion:    pulumi.String(region),
-// 			Description:     pulumi.String(name),
-// 			ExpressSyncName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudstoragegateway.NewExpressSyncShareAttachment(ctx, "defaultExpressSyncShareAttachment", &cloudstoragegateway.ExpressSyncShareAttachmentArgs{
-// 			ExpressSyncId: defaultExpressSync.ID(),
-// 			GatewayId:     defaultGateway.ID(),
-// 			ShareName:     defaultGatewayFileShare.GatewayFileShareName,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tftest"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			region := "cn-shanghai"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
+//				GatewayClass: pulumi.StringRef("Standard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       vpc.ID(),
+//				CidrBlock:   pulumi.String("192.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultStocks.Stocks[0].ZoneId),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "defaultStorageBundle", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
+//				Description:            pulumi.String("tf-acctestDesalone"),
+//				GatewayClass:           pulumi.String("Standard"),
+//				Type:                   pulumi.String("File"),
+//				PaymentType:            pulumi.String("PayAsYouGo"),
+//				VswitchId:              defaultSwitch.ID(),
+//				ReleaseAfterExpiration: pulumi.Bool(true),
+//				PublicNetworkBandwidth: pulumi.Int(10),
+//				StorageBundleId:        defaultStorageBundle.ID(),
+//				Location:               pulumi.String("Cloud"),
+//				GatewayName:            pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewayCacheDisk, err := cloudstoragegateway.NewGatewayCacheDisk(ctx, "defaultGatewayCacheDisk", &cloudstoragegateway.GatewayCacheDiskArgs{
+//				CacheDiskCategory: pulumi.String("cloud_efficiency"),
+//				GatewayId:         defaultGateway.ID(),
+//				CacheDiskSizeInGb: pulumi.Int(50),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewayFileShare, err := cloudstoragegateway.NewGatewayFileShare(ctx, "defaultGatewayFileShare", &cloudstoragegateway.GatewayFileShareArgs{
+//				GatewayFileShareName: pulumi.String(name),
+//				GatewayId:            defaultGateway.ID(),
+//				LocalPath:            defaultGatewayCacheDisk.LocalFilePath,
+//				OssBucketName:        defaultBucket.Bucket,
+//				OssEndpoint:          defaultBucket.ExtranetEndpoint,
+//				Protocol:             pulumi.String("NFS"),
+//				RemoteSync:           pulumi.Bool(false),
+//				FeLimit:              pulumi.Int(0),
+//				BackendLimit:         pulumi.Int(0),
+//				CacheMode:            pulumi.String("Cache"),
+//				Squash:               pulumi.String("none"),
+//				LagPeriod:            pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultExpressSync, err := cloudstoragegateway.NewExpressSync(ctx, "defaultExpressSync", &cloudstoragegateway.ExpressSyncArgs{
+//				BucketName:      defaultGatewayFileShare.OssBucketName,
+//				BucketRegion:    pulumi.String(region),
+//				Description:     pulumi.String(name),
+//				ExpressSyncName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudstoragegateway.NewExpressSyncShareAttachment(ctx, "defaultExpressSyncShareAttachment", &cloudstoragegateway.ExpressSyncShareAttachmentArgs{
+//				ExpressSyncId: defaultExpressSync.ID(),
+//				GatewayId:     defaultGateway.ID(),
+//				ShareName:     defaultGatewayFileShare.GatewayFileShareName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -144,7 +147,9 @@ import (
 // Cloud Storage Gateway Express Sync Share Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
+//
+//	$ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
+//
 // ```
 type ExpressSyncShareAttachment struct {
 	pulumi.CustomResourceState
@@ -261,7 +266,7 @@ func (i *ExpressSyncShareAttachment) ToExpressSyncShareAttachmentOutputWithConte
 // ExpressSyncShareAttachmentArrayInput is an input type that accepts ExpressSyncShareAttachmentArray and ExpressSyncShareAttachmentArrayOutput values.
 // You can construct a concrete instance of `ExpressSyncShareAttachmentArrayInput` via:
 //
-//          ExpressSyncShareAttachmentArray{ ExpressSyncShareAttachmentArgs{...} }
+//	ExpressSyncShareAttachmentArray{ ExpressSyncShareAttachmentArgs{...} }
 type ExpressSyncShareAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -286,7 +291,7 @@ func (i ExpressSyncShareAttachmentArray) ToExpressSyncShareAttachmentArrayOutput
 // ExpressSyncShareAttachmentMapInput is an input type that accepts ExpressSyncShareAttachmentMap and ExpressSyncShareAttachmentMapOutput values.
 // You can construct a concrete instance of `ExpressSyncShareAttachmentMapInput` via:
 //
-//          ExpressSyncShareAttachmentMap{ "key": ExpressSyncShareAttachmentArgs{...} }
+//	ExpressSyncShareAttachmentMap{ "key": ExpressSyncShareAttachmentArgs{...} }
 type ExpressSyncShareAttachmentMapInput interface {
 	pulumi.Input
 

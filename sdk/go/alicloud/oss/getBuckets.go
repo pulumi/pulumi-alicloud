@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ossBucketsDs, err := oss.GetBuckets(ctx, &oss.GetBucketsArgs{
-// 			NameRegex: pulumi.StringRef("sample_oss_bucket"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstOssBucketName", ossBucketsDs.Buckets[0].Name)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ossBucketsDs, err := oss.GetBuckets(ctx, &oss.GetBucketsArgs{
+//				NameRegex: pulumi.StringRef("sample_oss_bucket"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstOssBucketName", ossBucketsDs.Buckets[0].Name)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.InvokeOption) (*GetBucketsResult, error) {
 	var rv GetBucketsResult

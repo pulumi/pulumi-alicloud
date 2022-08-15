@@ -867,7 +867,7 @@ class DBCluster(pulumi.CustomResource):
             vswitch_name=name)
         this = alicloud.adb.DBCluster("this",
             db_cluster_category="Cluster",
-            db_cluster_class="C8",
+            db_node_class="C8",
             db_node_count=4,
             db_node_storage=400,
             mode="reserver",
@@ -961,7 +961,7 @@ class DBCluster(pulumi.CustomResource):
             vswitch_name=name)
         this = alicloud.adb.DBCluster("this",
             db_cluster_category="Cluster",
-            db_cluster_class="C8",
+            db_node_class="C8",
             db_node_count=4,
             db_node_storage=400,
             mode="reserver",

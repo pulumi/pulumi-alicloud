@@ -19,35 +19,38 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsSnapshot(ctx, "default", &ecs.EcsSnapshotArgs{
-// 			Category:      pulumi.String("standard"),
-// 			Description:   pulumi.String("Test For Terraform"),
-// 			DiskId:        pulumi.String("d-gw8csgxxxxxxxxx"),
-// 			RetentionDays: pulumi.Int(20),
-// 			SnapshotName:  pulumi.String("tf-test"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Acceptance-test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsSnapshot(ctx, "default", &ecs.EcsSnapshotArgs{
+//				Category:      pulumi.String("standard"),
+//				Description:   pulumi.String("Test For Terraform"),
+//				DiskId:        pulumi.String("d-gw8csgxxxxxxxxx"),
+//				RetentionDays: pulumi.Int(20),
+//				SnapshotName:  pulumi.String("tf-test"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Acceptance-test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // ECS Snapshot can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
+//
 // ```
 type EcsSnapshot struct {
 	pulumi.CustomResourceState
@@ -262,7 +267,7 @@ func (i *EcsSnapshot) ToEcsSnapshotOutputWithContext(ctx context.Context) EcsSna
 // EcsSnapshotArrayInput is an input type that accepts EcsSnapshotArray and EcsSnapshotArrayOutput values.
 // You can construct a concrete instance of `EcsSnapshotArrayInput` via:
 //
-//          EcsSnapshotArray{ EcsSnapshotArgs{...} }
+//	EcsSnapshotArray{ EcsSnapshotArgs{...} }
 type EcsSnapshotArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +292,7 @@ func (i EcsSnapshotArray) ToEcsSnapshotArrayOutputWithContext(ctx context.Contex
 // EcsSnapshotMapInput is an input type that accepts EcsSnapshotMap and EcsSnapshotMapOutput values.
 // You can construct a concrete instance of `EcsSnapshotMapInput` via:
 //
-//          EcsSnapshotMap{ "key": EcsSnapshotArgs{...} }
+//	EcsSnapshotMap{ "key": EcsSnapshotArgs{...} }
 type EcsSnapshotMapInput interface {
 	pulumi.Input
 

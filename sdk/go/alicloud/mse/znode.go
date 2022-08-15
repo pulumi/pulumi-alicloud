@@ -19,64 +19,67 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := mongodb.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultCluster, err := mse.NewCluster(ctx, "defaultCluster", &mse.ClusterArgs{
-// 			ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
-// 			ClusterType:          pulumi.String("ZooKeeper"),
-// 			ClusterVersion:       pulumi.String("ZooKeeper_3_5_5"),
-// 			InstanceCount:        pulumi.Int(1),
-// 			NetType:              pulumi.String("privatenet"),
-// 			VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
-// 			PubNetworkFlow:       pulumi.String("1"),
-// 			AclEntryLists: pulumi.StringArray{
-// 				pulumi.String("127.0.0.1/32"),
-// 			},
-// 			ClusterAliasName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = mse.NewZnode(ctx, "defaultZnode", &mse.ZnodeArgs{
-// 			ClusterId: defaultCluster.ClusterId,
-// 			Data:      pulumi.String("example_value"),
-// 			Path:      pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := mse.NewCluster(ctx, "defaultCluster", &mse.ClusterArgs{
+//				ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
+//				ClusterType:          pulumi.String("ZooKeeper"),
+//				ClusterVersion:       pulumi.String("ZooKeeper_3_5_5"),
+//				InstanceCount:        pulumi.Int(1),
+//				NetType:              pulumi.String("privatenet"),
+//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
+//				PubNetworkFlow:       pulumi.String("1"),
+//				AclEntryLists: pulumi.StringArray{
+//					pulumi.String("127.0.0.1/32"),
+//				},
+//				ClusterAliasName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mse.NewZnode(ctx, "defaultZnode", &mse.ZnodeArgs{
+//				ClusterId: defaultCluster.ClusterId,
+//				Data:      pulumi.String("example_value"),
+//				Path:      pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -84,7 +87,9 @@ import (
 // Microservice Engine (MSE) Znode can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
+//
+//	$ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
+//
 // ```
 type Znode struct {
 	pulumi.CustomResourceState
@@ -208,7 +213,7 @@ func (i *Znode) ToZnodeOutputWithContext(ctx context.Context) ZnodeOutput {
 // ZnodeArrayInput is an input type that accepts ZnodeArray and ZnodeArrayOutput values.
 // You can construct a concrete instance of `ZnodeArrayInput` via:
 //
-//          ZnodeArray{ ZnodeArgs{...} }
+//	ZnodeArray{ ZnodeArgs{...} }
 type ZnodeArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +238,7 @@ func (i ZnodeArray) ToZnodeArrayOutputWithContext(ctx context.Context) ZnodeArra
 // ZnodeMapInput is an input type that accepts ZnodeMap and ZnodeMapOutput values.
 // You can construct a concrete instance of `ZnodeMapInput` via:
 //
-//          ZnodeMap{ "key": ZnodeArgs{...} }
+//	ZnodeMap{ "key": ZnodeArgs{...} }
 type ZnodeMapInput interface {
 	pulumi.Input
 

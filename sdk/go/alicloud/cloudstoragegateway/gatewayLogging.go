@@ -19,97 +19,100 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "defaultStorageBundle", &cloudstoragegateway.StorageBundleArgs{
-// 			StorageBundleName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
-// 			Description:            pulumi.String("tf-acctestDesalone"),
-// 			GatewayClass:           pulumi.String("Basic"),
-// 			Type:                   pulumi.String("File"),
-// 			PaymentType:            pulumi.String("PayAsYouGo"),
-// 			VswitchId:              defaultSwitch.ID(),
-// 			ReleaseAfterExpiration: pulumi.Bool(true),
-// 			PublicNetworkBandwidth: pulumi.Int(10),
-// 			StorageBundleId:        defaultStorageBundle.ID(),
-// 			Location:               pulumi.String("Cloud"),
-// 			GatewayName:            pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
-// 			Description: pulumi.String("created by terraform"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-// 			Project:            defaultProject.Name,
-// 			ShardCount:         pulumi.Int(3),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
-// 			AppendMeta:         pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudstoragegateway.NewGatewayLogging(ctx, "defaultGatewayLogging", &cloudstoragegateway.GatewayLoggingArgs{
-// 			GatewayId:   defaultGateway.ID(),
-// 			SlsLogstore: defaultStore.Name,
-// 			SlsProject:  defaultProject.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "defaultStorageBundle", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
+//				Description:            pulumi.String("tf-acctestDesalone"),
+//				GatewayClass:           pulumi.String("Basic"),
+//				Type:                   pulumi.String("File"),
+//				PaymentType:            pulumi.String("PayAsYouGo"),
+//				VswitchId:              defaultSwitch.ID(),
+//				ReleaseAfterExpiration: pulumi.Bool(true),
+//				PublicNetworkBandwidth: pulumi.Int(10),
+//				StorageBundleId:        defaultStorageBundle.ID(),
+//				Location:               pulumi.String("Cloud"),
+//				GatewayName:            pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project:            defaultProject.Name,
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudstoragegateway.NewGatewayLogging(ctx, "defaultGatewayLogging", &cloudstoragegateway.GatewayLoggingArgs{
+//				GatewayId:   defaultGateway.ID(),
+//				SlsLogstore: defaultStore.Name,
+//				SlsProject:  defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -117,7 +120,9 @@ import (
 // Cloud Storage Gateway Gateway Logging can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging example <gateway_id>
+//
+//	$ pulumi import alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging example <gateway_id>
+//
 // ```
 type GatewayLogging struct {
 	pulumi.CustomResourceState
@@ -244,7 +249,7 @@ func (i *GatewayLogging) ToGatewayLoggingOutputWithContext(ctx context.Context) 
 // GatewayLoggingArrayInput is an input type that accepts GatewayLoggingArray and GatewayLoggingArrayOutput values.
 // You can construct a concrete instance of `GatewayLoggingArrayInput` via:
 //
-//          GatewayLoggingArray{ GatewayLoggingArgs{...} }
+//	GatewayLoggingArray{ GatewayLoggingArgs{...} }
 type GatewayLoggingArrayInput interface {
 	pulumi.Input
 
@@ -269,7 +274,7 @@ func (i GatewayLoggingArray) ToGatewayLoggingArrayOutputWithContext(ctx context.
 // GatewayLoggingMapInput is an input type that accepts GatewayLoggingMap and GatewayLoggingMapOutput values.
 // You can construct a concrete instance of `GatewayLoggingMapInput` via:
 //
-//          GatewayLoggingMap{ "key": GatewayLoggingArgs{...} }
+//	GatewayLoggingMap{ "key": GatewayLoggingArgs{...} }
 type GatewayLoggingMapInput interface {
 	pulumi.Input
 

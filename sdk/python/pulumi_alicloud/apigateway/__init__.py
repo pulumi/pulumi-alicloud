@@ -8,8 +8,10 @@ import typing
 from .api import *
 from .app import *
 from .app_attachment import *
+from .backend import *
 from .get_apis import *
 from .get_apps import *
+from .get_backends import *
 from .get_groups import *
 from .get_service import *
 from .group import *

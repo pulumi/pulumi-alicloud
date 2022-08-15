@@ -16,34 +16,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
-// 			StorageBundleName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		nameRegex := cloudstoragegateway.GetGatewaysOutput(ctx, cloudstoragegateway.GetGatewaysOutputArgs{
-// 			StorageBundleId: example.ID(),
-// 			NameRegex:       pulumi.String("^my-Gateway"),
-// 		}, nil)
-// 		ctx.Export("cloudStorageGatewayGatewayId", nameRegex.ApplyT(func(nameRegex cloudstoragegateway.GetGatewaysResult) (string, error) {
-// 			return nameRegex.Gateways[0].Id, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nameRegex := cloudstoragegateway.GetGatewaysOutput(ctx, cloudstoragegateway.GetGatewaysOutputArgs{
+//				StorageBundleId: example.ID(),
+//				NameRegex:       pulumi.String("^my-Gateway"),
+//			}, nil)
+//			ctx.Export("cloudStorageGatewayGatewayId", nameRegex.ApplyT(func(nameRegex cloudstoragegateway.GetGatewaysResult) (string, error) {
+//				return nameRegex.Gateways[0].Id, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGateways(ctx *pulumi.Context, args *GetGatewaysArgs, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	var rv GetGatewaysResult

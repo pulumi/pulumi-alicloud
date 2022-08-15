@@ -21,55 +21,58 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "terratest_vpc_flow_log"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		logStoreName := "vpc-flow-log-for-vpc"
-// 		if param := cfg.Get("logStoreName"); param != "" {
-// 			logStoreName = param
-// 		}
-// 		projectName := "vpc-flow-log-for-vpc"
-// 		if param := cfg.Get("projectName"); param != "" {
-// 			projectName = param
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("192.168.0.0/24"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewFlowLog(ctx, "defaultFlowLog", &vpc.FlowLogArgs{
-// 			ResourceId:   defaultNetwork.ID(),
-// 			ResourceType: pulumi.String("VPC"),
-// 			TrafficType:  pulumi.String("All"),
-// 			LogStoreName: pulumi.String(logStoreName),
-// 			ProjectName:  pulumi.String(projectName),
-// 			FlowLogName:  pulumi.String(name),
-// 			Status:       pulumi.String("Active"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			pulumi.Resource("alicloud_vpc.default"),
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terratest_vpc_flow_log"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			logStoreName := "vpc-flow-log-for-vpc"
+//			if param := cfg.Get("logStoreName"); param != "" {
+//				logStoreName = param
+//			}
+//			projectName := "vpc-flow-log-for-vpc"
+//			if param := cfg.Get("projectName"); param != "" {
+//				projectName = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("192.168.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewFlowLog(ctx, "defaultFlowLog", &vpc.FlowLogArgs{
+//				ResourceId:   defaultNetwork.ID(),
+//				ResourceType: pulumi.String("VPC"),
+//				TrafficType:  pulumi.String("All"),
+//				LogStoreName: pulumi.String(logStoreName),
+//				ProjectName:  pulumi.String(projectName),
+//				FlowLogName:  pulumi.String(name),
+//				Status:       pulumi.String("Active"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pulumi.Resource("alicloud_vpc.default"),
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -77,7 +80,9 @@ import (
 // VPC Flow Log can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/flowLog:FlowLog example fl-abc123456
+//
+//	$ pulumi import alicloud:vpc/flowLog:FlowLog example fl-abc123456
+//
 // ```
 type FlowLog struct {
 	pulumi.CustomResourceState
@@ -250,7 +255,7 @@ func (i *FlowLog) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput 
 // FlowLogArrayInput is an input type that accepts FlowLogArray and FlowLogArrayOutput values.
 // You can construct a concrete instance of `FlowLogArrayInput` via:
 //
-//          FlowLogArray{ FlowLogArgs{...} }
+//	FlowLogArray{ FlowLogArgs{...} }
 type FlowLogArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +280,7 @@ func (i FlowLogArray) ToFlowLogArrayOutputWithContext(ctx context.Context) FlowL
 // FlowLogMapInput is an input type that accepts FlowLogMap and FlowLogMapOutput values.
 // You can construct a concrete instance of `FlowLogMapInput` via:
 //
-//          FlowLogMap{ "key": FlowLogArgs{...} }
+//	FlowLogMap{ "key": FlowLogArgs{...} }
 type FlowLogMapInput interface {
 	pulumi.Input
 

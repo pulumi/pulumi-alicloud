@@ -27,31 +27,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewImageCopy(ctx, "default", &ecs.ImageCopyArgs{
-// 			Description:    pulumi.String("test-image"),
-// 			ImageName:      pulumi.String("test-image"),
-// 			SourceImageId:  pulumi.String("m-bp1gxyhdswlsn18tu***"),
-// 			SourceRegionId: pulumi.String("cn-hangzhou"),
-// 			Tags: pulumi.AnyMap{
-// 				"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewImageCopy(ctx, "default", &ecs.ImageCopyArgs{
+//				Description:    pulumi.String("test-image"),
+//				ImageName:      pulumi.String("test-image"),
+//				SourceImageId:  pulumi.String("m-bp1gxyhdswlsn18tu***"),
+//				SourceRegionId: pulumi.String("cn-hangzhou"),
+//				Tags: pulumi.AnyMap{
+//					"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes Reference0
 //
-//  The following attributes are exported:
+//	The following attributes are exported:
 //
 // * `id` - ID of the image.
 //
@@ -60,7 +63,9 @@ import (
 // image can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+//
+//	$ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+//
 // ```
 type ImageCopy struct {
 	pulumi.CustomResourceState
@@ -249,7 +254,7 @@ func (i *ImageCopy) ToImageCopyOutputWithContext(ctx context.Context) ImageCopyO
 // ImageCopyArrayInput is an input type that accepts ImageCopyArray and ImageCopyArrayOutput values.
 // You can construct a concrete instance of `ImageCopyArrayInput` via:
 //
-//          ImageCopyArray{ ImageCopyArgs{...} }
+//	ImageCopyArray{ ImageCopyArgs{...} }
 type ImageCopyArrayInput interface {
 	pulumi.Input
 
@@ -274,7 +279,7 @@ func (i ImageCopyArray) ToImageCopyArrayOutputWithContext(ctx context.Context) I
 // ImageCopyMapInput is an input type that accepts ImageCopyMap and ImageCopyMapOutput values.
 // You can construct a concrete instance of `ImageCopyMapInput` via:
 //
-//          ImageCopyMap{ "key": ImageCopyArgs{...} }
+//	ImageCopyMap{ "key": ImageCopyArgs{...} }
 type ImageCopyMapInput interface {
 	pulumi.Input
 

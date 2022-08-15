@@ -14,6 +14,10 @@ __all__ = [
     'ConnectionHealthCheckConfigArgs',
     'ConnectionIkeConfigArgs',
     'ConnectionIpsecConfigArgs',
+    'GatewayVpnAttachmentBgpConfigArgs',
+    'GatewayVpnAttachmentHealthCheckConfigArgs',
+    'GatewayVpnAttachmentIkeConfigArgs',
+    'GatewayVpnAttachmentIpsecConfigArgs',
     'IpsecServerIkeConfigArgs',
     'IpsecServerIpsecConfigArgs',
 ]
@@ -329,6 +333,402 @@ class ConnectionIkeConfigArgs:
 
 @pulumi.input_type
 class ConnectionIpsecConfigArgs:
+    def __init__(__self__, *,
+                 ipsec_auth_alg: Optional[pulumi.Input[str]] = None,
+                 ipsec_enc_alg: Optional[pulumi.Input[str]] = None,
+                 ipsec_lifetime: Optional[pulumi.Input[int]] = None,
+                 ipsec_pfs: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ipsec_auth_alg: The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        :param pulumi.Input[str] ipsec_enc_alg: The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+        :param pulumi.Input[int] ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        :param pulumi.Input[str] ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+        """
+        if ipsec_auth_alg is not None:
+            pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+        if ipsec_enc_alg is not None:
+            pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+        if ipsec_lifetime is not None:
+            pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+        if ipsec_pfs is not None:
+            pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+
+    @property
+    @pulumi.getter(name="ipsecAuthAlg")
+    def ipsec_auth_alg(self) -> Optional[pulumi.Input[str]]:
+        """
+        The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        """
+        return pulumi.get(self, "ipsec_auth_alg")
+
+    @ipsec_auth_alg.setter
+    def ipsec_auth_alg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipsec_auth_alg", value)
+
+    @property
+    @pulumi.getter(name="ipsecEncAlg")
+    def ipsec_enc_alg(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+        """
+        return pulumi.get(self, "ipsec_enc_alg")
+
+    @ipsec_enc_alg.setter
+    def ipsec_enc_alg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipsec_enc_alg", value)
+
+    @property
+    @pulumi.getter(name="ipsecLifetime")
+    def ipsec_lifetime(self) -> Optional[pulumi.Input[int]]:
+        """
+        The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        """
+        return pulumi.get(self, "ipsec_lifetime")
+
+    @ipsec_lifetime.setter
+    def ipsec_lifetime(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipsec_lifetime", value)
+
+    @property
+    @pulumi.getter(name="ipsecPfs")
+    def ipsec_pfs(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+        """
+        return pulumi.get(self, "ipsec_pfs")
+
+    @ipsec_pfs.setter
+    def ipsec_pfs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipsec_pfs", value)
+
+
+@pulumi.input_type
+class GatewayVpnAttachmentBgpConfigArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 local_asn: Optional[pulumi.Input[int]] = None,
+                 local_bgp_ip: Optional[pulumi.Input[str]] = None,
+                 tunnel_cidr: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enable: Whether to enable BGP.
+        :param pulumi.Input[int] local_asn: The ASN on the Alibaba Cloud side.
+        :param pulumi.Input[str] local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
+        :param pulumi.Input[str] tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if local_asn is not None:
+            pulumi.set(__self__, "local_asn", local_asn)
+        if local_bgp_ip is not None:
+            pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+        if tunnel_cidr is not None:
+            pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable BGP.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ASN on the Alibaba Cloud side.
+        """
+        return pulumi.get(self, "local_asn")
+
+    @local_asn.setter
+    def local_asn(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "local_asn", value)
+
+    @property
+    @pulumi.getter(name="localBgpIp")
+    def local_bgp_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The BGP IP address on the Alibaba Cloud side.
+        """
+        return pulumi.get(self, "local_bgp_ip")
+
+    @local_bgp_ip.setter
+    def local_bgp_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_bgp_ip", value)
+
+    @property
+    @pulumi.getter(name="tunnelCidr")
+    def tunnel_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        """
+        return pulumi.get(self, "tunnel_cidr")
+
+    @tunnel_cidr.setter
+    def tunnel_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tunnel_cidr", value)
+
+
+@pulumi.input_type
+class GatewayVpnAttachmentHealthCheckConfigArgs:
+    def __init__(__self__, *,
+                 dip: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 interval: Optional[pulumi.Input[int]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 retry: Optional[pulumi.Input[int]] = None,
+                 sip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dip: The destination IP address that is used for health checks.
+        :param pulumi.Input[bool] enable: Whether to enable BGP.
+        :param pulumi.Input[int] interval: The interval between two consecutive health checks. Unit: seconds.
+        :param pulumi.Input[str] policy: Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+        :param pulumi.Input[int] retry: The maximum number of health check retries.
+        :param pulumi.Input[str] sip: The source IP address that is used for health checks.
+        """
+        if dip is not None:
+            pulumi.set(__self__, "dip", dip)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if sip is not None:
+            pulumi.set(__self__, "sip", sip)
+
+    @property
+    @pulumi.getter
+    def dip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination IP address that is used for health checks.
+        """
+        return pulumi.get(self, "dip")
+
+    @dip.setter
+    def dip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dip", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable BGP.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval between two consecutive health checks. Unit: seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def retry(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of health check retries.
+        """
+        return pulumi.get(self, "retry")
+
+    @retry.setter
+    def retry(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retry", value)
+
+    @property
+    @pulumi.getter
+    def sip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source IP address that is used for health checks.
+        """
+        return pulumi.get(self, "sip")
+
+    @sip.setter
+    def sip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sip", value)
+
+
+@pulumi.input_type
+class GatewayVpnAttachmentIkeConfigArgs:
+    def __init__(__self__, *,
+                 ike_auth_alg: Optional[pulumi.Input[str]] = None,
+                 ike_enc_alg: Optional[pulumi.Input[str]] = None,
+                 ike_lifetime: Optional[pulumi.Input[int]] = None,
+                 ike_mode: Optional[pulumi.Input[str]] = None,
+                 ike_pfs: Optional[pulumi.Input[str]] = None,
+                 ike_version: Optional[pulumi.Input[str]] = None,
+                 local_id: Optional[pulumi.Input[str]] = None,
+                 psk: Optional[pulumi.Input[str]] = None,
+                 remote_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ike_auth_alg: IKE authentication algorithm supports sha1 and MD5.
+        :param pulumi.Input[str] ike_enc_alg: The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+        :param pulumi.Input[int] ike_lifetime: The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        :param pulumi.Input[str] ike_mode: The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+        :param pulumi.Input[str] ike_pfs: The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+        :param pulumi.Input[str] ike_version: The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+        :param pulumi.Input[str] local_id: The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        :param pulumi.Input[str] psk: Used for authentication between the IPsec VPN gateway and the customer gateway.
+        :param pulumi.Input[str] remote_id: The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+        """
+        if ike_auth_alg is not None:
+            pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+        if ike_enc_alg is not None:
+            pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+        if ike_lifetime is not None:
+            pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+        if ike_mode is not None:
+            pulumi.set(__self__, "ike_mode", ike_mode)
+        if ike_pfs is not None:
+            pulumi.set(__self__, "ike_pfs", ike_pfs)
+        if ike_version is not None:
+            pulumi.set(__self__, "ike_version", ike_version)
+        if local_id is not None:
+            pulumi.set(__self__, "local_id", local_id)
+        if psk is not None:
+            pulumi.set(__self__, "psk", psk)
+        if remote_id is not None:
+            pulumi.set(__self__, "remote_id", remote_id)
+
+    @property
+    @pulumi.getter(name="ikeAuthAlg")
+    def ike_auth_alg(self) -> Optional[pulumi.Input[str]]:
+        """
+        IKE authentication algorithm supports sha1 and MD5.
+        """
+        return pulumi.get(self, "ike_auth_alg")
+
+    @ike_auth_alg.setter
+    def ike_auth_alg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ike_auth_alg", value)
+
+    @property
+    @pulumi.getter(name="ikeEncAlg")
+    def ike_enc_alg(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+        """
+        return pulumi.get(self, "ike_enc_alg")
+
+    @ike_enc_alg.setter
+    def ike_enc_alg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ike_enc_alg", value)
+
+    @property
+    @pulumi.getter(name="ikeLifetime")
+    def ike_lifetime(self) -> Optional[pulumi.Input[int]]:
+        """
+        The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        """
+        return pulumi.get(self, "ike_lifetime")
+
+    @ike_lifetime.setter
+    def ike_lifetime(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ike_lifetime", value)
+
+    @property
+    @pulumi.getter(name="ikeMode")
+    def ike_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+        """
+        return pulumi.get(self, "ike_mode")
+
+    @ike_mode.setter
+    def ike_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ike_mode", value)
+
+    @property
+    @pulumi.getter(name="ikePfs")
+    def ike_pfs(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+        """
+        return pulumi.get(self, "ike_pfs")
+
+    @ike_pfs.setter
+    def ike_pfs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ike_pfs", value)
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+        """
+        return pulumi.get(self, "ike_version")
+
+    @ike_version.setter
+    def ike_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ike_version", value)
+
+    @property
+    @pulumi.getter(name="localId")
+    def local_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        """
+        return pulumi.get(self, "local_id")
+
+    @local_id.setter
+    def local_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_id", value)
+
+    @property
+    @pulumi.getter
+    def psk(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used for authentication between the IPsec VPN gateway and the customer gateway.
+        """
+        return pulumi.get(self, "psk")
+
+    @psk.setter
+    def psk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psk", value)
+
+    @property
+    @pulumi.getter(name="remoteId")
+    def remote_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+        """
+        return pulumi.get(self, "remote_id")
+
+    @remote_id.setter
+    def remote_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remote_id", value)
+
+
+@pulumi.input_type
+class GatewayVpnAttachmentIpsecConfigArgs:
     def __init__(__self__, *,
                  ipsec_auth_alg: Optional[pulumi.Input[str]] = None,
                  ipsec_enc_alg: Optional[pulumi.Input[str]] = None,

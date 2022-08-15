@@ -21,104 +21,113 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
-// 			Description:  pulumi.String("tf-testAccNasConfig"),
-// 			EncryptType:  pulumi.Int(1),
-// 			ProtocolType: pulumi.String("NFS"),
-// 			StorageType:  pulumi.String("Performance"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
+//				Description:  pulumi.String("tf-testAccNasConfig"),
+//				EncryptType:  pulumi.Int(1),
+//				ProtocolType: pulumi.String("NFS"),
+//				StorageType:  pulumi.String("Performance"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
-// 			Capacity:       pulumi.Int(100),
-// 			Description:    pulumi.String("tf-testAccNasConfig"),
-// 			FileSystemType: pulumi.String("extreme"),
-// 			ProtocolType:   pulumi.String("NFS"),
-// 			StorageType:    pulumi.String("standard"),
-// 			ZoneId:         pulumi.String("cn-hangzhou-f"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
+//				Capacity:       pulumi.Int(100),
+//				Description:    pulumi.String("tf-testAccNasConfig"),
+//				FileSystemType: pulumi.String("extreme"),
+//				ProtocolType:   pulumi.String("NFS"),
+//				StorageType:    pulumi.String("standard"),
+//				ZoneId:         pulumi.String("cn-hangzhou-f"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
-// 			FileSystemType: pulumi.StringRef("cpfs"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneId),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
-// 			ProtocolType:   pulumi.String("cpfs"),
-// 			StorageType:    pulumi.String("advance_200"),
-// 			FileSystemType: pulumi.String("cpfs"),
-// 			Capacity:       pulumi.Int(3600),
-// 			Description:    pulumi.String("tf-testacc"),
-// 			ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
-// 			VpcId:          pulumi.String(defaultNetworks.Ids[0]),
-// 			VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("cpfs"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
+//				ProtocolType:   pulumi.String("cpfs"),
+//				StorageType:    pulumi.String("advance_200"),
+//				FileSystemType: pulumi.String("cpfs"),
+//				Capacity:       pulumi.Int(3600),
+//				Description:    pulumi.String("tf-testacc"),
+//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
+//				VpcId:          pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -126,7 +135,9 @@ import (
 // Nas File System can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+//
+//	$ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+//
 // ```
 type FileSystem struct {
 	pulumi.CustomResourceState
@@ -375,7 +386,7 @@ func (i *FileSystem) ToFileSystemOutputWithContext(ctx context.Context) FileSyst
 // FileSystemArrayInput is an input type that accepts FileSystemArray and FileSystemArrayOutput values.
 // You can construct a concrete instance of `FileSystemArrayInput` via:
 //
-//          FileSystemArray{ FileSystemArgs{...} }
+//	FileSystemArray{ FileSystemArgs{...} }
 type FileSystemArrayInput interface {
 	pulumi.Input
 
@@ -400,7 +411,7 @@ func (i FileSystemArray) ToFileSystemArrayOutputWithContext(ctx context.Context)
 // FileSystemMapInput is an input type that accepts FileSystemMap and FileSystemMapOutput values.
 // You can construct a concrete instance of `FileSystemMapInput` via:
 //
-//          FileSystemMap{ "key": FileSystemArgs{...} }
+//	FileSystemMap{ "key": FileSystemArgs{...} }
 type FileSystemMapInput interface {
 	pulumi.Input
 

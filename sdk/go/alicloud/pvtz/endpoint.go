@@ -22,7 +22,9 @@ import (
 // Private Zone Endpoint can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
+//
+//	$ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
+//
 // ```
 type Endpoint struct {
 	pulumi.CustomResourceState
@@ -171,7 +173,7 @@ func (i *Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutp
 // EndpointArrayInput is an input type that accepts EndpointArray and EndpointArrayOutput values.
 // You can construct a concrete instance of `EndpointArrayInput` via:
 //
-//          EndpointArray{ EndpointArgs{...} }
+//	EndpointArray{ EndpointArgs{...} }
 type EndpointArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +198,7 @@ func (i EndpointArray) ToEndpointArrayOutputWithContext(ctx context.Context) End
 // EndpointMapInput is an input type that accepts EndpointMap and EndpointMapOutput values.
 // You can construct a concrete instance of `EndpointMapInput` via:
 //
-//          EndpointMap{ "key": EndpointArgs{...} }
+//	EndpointMap{ "key": EndpointArgs{...} }
 type EndpointMapInput interface {
 	pulumi.Input
 

@@ -16,7 +16,9 @@ import (
 // ESS scaling group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+//
+//	$ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+//
 // ```
 type ScalingGroup struct {
 	pulumi.CustomResourceState
@@ -375,7 +377,7 @@ func (i *ScalingGroup) ToScalingGroupOutputWithContext(ctx context.Context) Scal
 // ScalingGroupArrayInput is an input type that accepts ScalingGroupArray and ScalingGroupArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupArrayInput` via:
 //
-//          ScalingGroupArray{ ScalingGroupArgs{...} }
+//	ScalingGroupArray{ ScalingGroupArgs{...} }
 type ScalingGroupArrayInput interface {
 	pulumi.Input
 
@@ -400,7 +402,7 @@ func (i ScalingGroupArray) ToScalingGroupArrayOutputWithContext(ctx context.Cont
 // ScalingGroupMapInput is an input type that accepts ScalingGroupMap and ScalingGroupMapOutput values.
 // You can construct a concrete instance of `ScalingGroupMapInput` via:
 //
-//          ScalingGroupMap{ "key": ScalingGroupArgs{...} }
+//	ScalingGroupMap{ "key": ScalingGroupArgs{...} }
 type ScalingGroupMapInput interface {
 	pulumi.Input
 
@@ -474,11 +476,11 @@ func (o ScalingGroupOutput) LaunchTemplateVersion() pulumi.StringPtrOutput {
 }
 
 // If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
-// - The Server Load Balancer instance must be enabled.
-// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
-//   targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
-// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
-// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+//   - The Server Load Balancer instance must be enabled.
+//   - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
+//     targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+//   - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
+//   - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 func (o ScalingGroupOutput) LoadbalancerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.LoadbalancerIds }).(pulumi.StringArrayOutput)
 }

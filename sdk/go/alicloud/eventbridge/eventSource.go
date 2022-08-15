@@ -19,34 +19,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eventbridge.NewEventSource(ctx, "example", &eventbridge.EventSourceArgs{
-// 			Description:     pulumi.String("tf-test"),
-// 			EventBusName:    pulumi.String("bus_name"),
-// 			EventSourceName: pulumi.String("tftest"),
-// 			ExternalSourceConfig: pulumi.AnyMap{
-// 				"QueueName": pulumi.Any("mns_queuqe_name"),
-// 			},
-// 			ExternalSourceType:   pulumi.String("MNS"),
-// 			LinkedExternalSource: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eventbridge.NewEventSource(ctx, "example", &eventbridge.EventSourceArgs{
+//				Description:     pulumi.String("tf-test"),
+//				EventBusName:    pulumi.String("bus_name"),
+//				EventSourceName: pulumi.String("tftest"),
+//				ExternalSourceConfig: pulumi.AnyMap{
+//					"QueueName": pulumi.Any("mns_queuqe_name"),
+//				},
+//				ExternalSourceType:   pulumi.String("MNS"),
+//				LinkedExternalSource: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Event Bridge Event Source can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
+//
+//	$ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
+//
 // ```
 type EventSource struct {
 	pulumi.CustomResourceState
@@ -263,7 +268,7 @@ func (i *EventSource) ToEventSourceOutputWithContext(ctx context.Context) EventS
 // EventSourceArrayInput is an input type that accepts EventSourceArray and EventSourceArrayOutput values.
 // You can construct a concrete instance of `EventSourceArrayInput` via:
 //
-//          EventSourceArray{ EventSourceArgs{...} }
+//	EventSourceArray{ EventSourceArgs{...} }
 type EventSourceArrayInput interface {
 	pulumi.Input
 
@@ -288,7 +293,7 @@ func (i EventSourceArray) ToEventSourceArrayOutputWithContext(ctx context.Contex
 // EventSourceMapInput is an input type that accepts EventSourceMap and EventSourceMapOutput values.
 // You can construct a concrete instance of `EventSourceMapInput` via:
 //
-//          EventSourceMap{ "key": EventSourceArgs{...} }
+//	EventSourceMap{ "key": EventSourceArgs{...} }
 type EventSourceMapInput interface {
 	pulumi.Input
 

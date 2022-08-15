@@ -19,64 +19,67 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vswitchId := defaultSwitches.Ids[0]
-// 		defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
-// 			VpcId:              pulumi.String(defaultNetworks.Ids[0]),
-// 			Bandwidth:          pulumi.Int(10),
-// 			EnableSsl:          pulumi.Bool(true),
-// 			EnableIpsec:        pulumi.Bool(true),
-// 			SslConnections:     pulumi.Int(5),
-// 			InstanceChargeType: pulumi.String("PrePaid"),
-// 			VswitchId:          pulumi.String(vswitchId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpn.NewIpsecServer(ctx, "example", &vpn.IpsecServerArgs{
-// 			ClientIpPool:    pulumi.String("example_value"),
-// 			IpsecServerName: pulumi.String("example_value"),
-// 			LocalSubnet:     pulumi.String("example_value"),
-// 			VpnGatewayId:    defaultGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vswitchId := defaultSwitches.Ids[0]
+//			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
+//				VpcId:              pulumi.String(defaultNetworks.Ids[0]),
+//				Bandwidth:          pulumi.Int(10),
+//				EnableSsl:          pulumi.Bool(true),
+//				EnableIpsec:        pulumi.Bool(true),
+//				SslConnections:     pulumi.Int(5),
+//				InstanceChargeType: pulumi.String("PrePaid"),
+//				VswitchId:          pulumi.String(vswitchId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewIpsecServer(ctx, "example", &vpn.IpsecServerArgs{
+//				ClientIpPool:    pulumi.String("example_value"),
+//				IpsecServerName: pulumi.String("example_value"),
+//				LocalSubnet:     pulumi.String("example_value"),
+//				VpnGatewayId:    defaultGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -84,7 +87,9 @@ import (
 // VPN Ipsec Server can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
+//
+//	$ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
+//
 // ```
 type IpsecServer struct {
 	pulumi.CustomResourceState
@@ -271,7 +276,7 @@ func (i *IpsecServer) ToIpsecServerOutputWithContext(ctx context.Context) IpsecS
 // IpsecServerArrayInput is an input type that accepts IpsecServerArray and IpsecServerArrayOutput values.
 // You can construct a concrete instance of `IpsecServerArrayInput` via:
 //
-//          IpsecServerArray{ IpsecServerArgs{...} }
+//	IpsecServerArray{ IpsecServerArgs{...} }
 type IpsecServerArrayInput interface {
 	pulumi.Input
 
@@ -296,7 +301,7 @@ func (i IpsecServerArray) ToIpsecServerArrayOutputWithContext(ctx context.Contex
 // IpsecServerMapInput is an input type that accepts IpsecServerMap and IpsecServerMapOutput values.
 // You can construct a concrete instance of `IpsecServerMapInput` via:
 //
-//          IpsecServerMap{ "key": IpsecServerArgs{...} }
+//	IpsecServerMap{ "key": IpsecServerArgs{...} }
 type IpsecServerMapInput interface {
 	pulumi.Input
 

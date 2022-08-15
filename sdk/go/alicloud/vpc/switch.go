@@ -16,7 +16,9 @@ import (
 // Vswitch can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+//
+//	$ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+//
 // ```
 type Switch struct {
 	pulumi.CustomResourceState
@@ -206,7 +208,7 @@ func (i *Switch) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
 // SwitchArrayInput is an input type that accepts SwitchArray and SwitchArrayOutput values.
 // You can construct a concrete instance of `SwitchArrayInput` via:
 //
-//          SwitchArray{ SwitchArgs{...} }
+//	SwitchArray{ SwitchArgs{...} }
 type SwitchArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +233,7 @@ func (i SwitchArray) ToSwitchArrayOutputWithContext(ctx context.Context) SwitchA
 // SwitchMapInput is an input type that accepts SwitchMap and SwitchMapOutput values.
 // You can construct a concrete instance of `SwitchMapInput` via:
 //
-//          SwitchMap{ "key": SwitchArgs{...} }
+//	SwitchMap{ "key": SwitchArgs{...} }
 type SwitchMapInput interface {
 	pulumi.Input
 

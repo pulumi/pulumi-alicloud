@@ -19,64 +19,67 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("example_value"),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-// 			VpcId:       pulumi.Any(alicloud_vpc.Default.Id),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
-// 			VswitchName: pulumi.Any(_var.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleNatGateway, err := vpc.NewNatGateway(ctx, "exampleNatGateway", &vpc.NatGatewayArgs{
-// 			VpcId:              pulumi.Any(alicloud_vpc.Default.Id),
-// 			InternetChargeType: pulumi.String("PayByLcu"),
-// 			NatGatewayName:     pulumi.String("example_value"),
-// 			Description:        pulumi.String("example_value"),
-// 			NatType:            pulumi.String("Enhanced"),
-// 			VswitchId:          exampleSwitch.ID(),
-// 			NetworkType:        pulumi.String("intranet"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewNatIpCidr(ctx, "exampleNatIpCidr", &vpc.NatIpCidrArgs{
-// 			NatGatewayId:  exampleNatGateway.ID(),
-// 			NatIpCidrName: pulumi.String("example_value"),
-// 			NatIpCidr:     pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("example_value"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:       pulumi.Any(alicloud_vpc.Default.Id),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				VswitchName: pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleNatGateway, err := vpc.NewNatGateway(ctx, "exampleNatGateway", &vpc.NatGatewayArgs{
+//				VpcId:              pulumi.Any(alicloud_vpc.Default.Id),
+//				InternetChargeType: pulumi.String("PayByLcu"),
+//				NatGatewayName:     pulumi.String("example_value"),
+//				Description:        pulumi.String("example_value"),
+//				NatType:            pulumi.String("Enhanced"),
+//				VswitchId:          exampleSwitch.ID(),
+//				NetworkType:        pulumi.String("intranet"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNatIpCidr(ctx, "exampleNatIpCidr", &vpc.NatIpCidrArgs{
+//				NatGatewayId:  exampleNatGateway.ID(),
+//				NatIpCidrName: pulumi.String("example_value"),
+//				NatIpCidr:     pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -84,7 +87,9 @@ import (
 // VPC Nat Ip Cidr can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example <nat_gateway_id>:<nat_ip_cidr>
+//
+//	$ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example <nat_gateway_id>:<nat_ip_cidr>
+//
 // ```
 type NatIpCidr struct {
 	pulumi.CustomResourceState
@@ -221,7 +226,7 @@ func (i *NatIpCidr) ToNatIpCidrOutputWithContext(ctx context.Context) NatIpCidrO
 // NatIpCidrArrayInput is an input type that accepts NatIpCidrArray and NatIpCidrArrayOutput values.
 // You can construct a concrete instance of `NatIpCidrArrayInput` via:
 //
-//          NatIpCidrArray{ NatIpCidrArgs{...} }
+//	NatIpCidrArray{ NatIpCidrArgs{...} }
 type NatIpCidrArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +251,7 @@ func (i NatIpCidrArray) ToNatIpCidrArrayOutputWithContext(ctx context.Context) N
 // NatIpCidrMapInput is an input type that accepts NatIpCidrMap and NatIpCidrMapOutput values.
 // You can construct a concrete instance of `NatIpCidrMapInput` via:
 //
-//          NatIpCidrMap{ "key": NatIpCidrArgs{...} }
+//	NatIpCidrMap{ "key": NatIpCidrArgs{...} }
 type NatIpCidrMapInput interface {
 	pulumi.Input
 

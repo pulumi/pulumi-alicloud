@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/iot"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/iot"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iot.NewDeviceGroup(ctx, "example", &iot.DeviceGroupArgs{
-// 			GroupName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iot.NewDeviceGroup(ctx, "example", &iot.DeviceGroupArgs{
+//				GroupName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Iot Device Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
+//
+//	$ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
+//
 // ```
 type DeviceGroup struct {
 	pulumi.CustomResourceState
@@ -168,7 +173,7 @@ func (i *DeviceGroup) ToDeviceGroupOutputWithContext(ctx context.Context) Device
 // DeviceGroupArrayInput is an input type that accepts DeviceGroupArray and DeviceGroupArrayOutput values.
 // You can construct a concrete instance of `DeviceGroupArrayInput` via:
 //
-//          DeviceGroupArray{ DeviceGroupArgs{...} }
+//	DeviceGroupArray{ DeviceGroupArgs{...} }
 type DeviceGroupArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i DeviceGroupArray) ToDeviceGroupArrayOutputWithContext(ctx context.Contex
 // DeviceGroupMapInput is an input type that accepts DeviceGroupMap and DeviceGroupMapOutput values.
 // You can construct a concrete instance of `DeviceGroupMapInput` via:
 //
-//          DeviceGroupMap{ "key": DeviceGroupArgs{...} }
+//	DeviceGroupMap{ "key": DeviceGroupArgs{...} }
 type DeviceGroupMapInput interface {
 	pulumi.Input
 

@@ -22,7 +22,7 @@ type GetAliasesAlias struct {
 // GetAliasesAliasInput is an input type that accepts GetAliasesAliasArgs and GetAliasesAliasOutput values.
 // You can construct a concrete instance of `GetAliasesAliasInput` via:
 //
-//          GetAliasesAliasArgs{...}
+//	GetAliasesAliasArgs{...}
 type GetAliasesAliasInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i GetAliasesAliasArgs) ToGetAliasesAliasOutputWithContext(ctx context.Cont
 // GetAliasesAliasArrayInput is an input type that accepts GetAliasesAliasArray and GetAliasesAliasArrayOutput values.
 // You can construct a concrete instance of `GetAliasesAliasArrayInput` via:
 //
-//          GetAliasesAliasArray{ GetAliasesAliasArgs{...} }
+//	GetAliasesAliasArray{ GetAliasesAliasArgs{...} }
 type GetAliasesAliasArrayInput interface {
 	pulumi.Input
 
@@ -141,7 +141,7 @@ type GetKeyVersionsVersion struct {
 // GetKeyVersionsVersionInput is an input type that accepts GetKeyVersionsVersionArgs and GetKeyVersionsVersionOutput values.
 // You can construct a concrete instance of `GetKeyVersionsVersionInput` via:
 //
-//          GetKeyVersionsVersionArgs{...}
+//	GetKeyVersionsVersionArgs{...}
 type GetKeyVersionsVersionInput interface {
 	pulumi.Input
 
@@ -177,7 +177,7 @@ func (i GetKeyVersionsVersionArgs) ToGetKeyVersionsVersionOutputWithContext(ctx 
 // GetKeyVersionsVersionArrayInput is an input type that accepts GetKeyVersionsVersionArray and GetKeyVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetKeyVersionsVersionArrayInput` via:
 //
-//          GetKeyVersionsVersionArray{ GetKeyVersionsVersionArgs{...} }
+//	GetKeyVersionsVersionArray{ GetKeyVersionsVersionArgs{...} }
 type GetKeyVersionsVersionArrayInput interface {
 	pulumi.Input
 
@@ -300,7 +300,7 @@ type GetKeysKey struct {
 // GetKeysKeyInput is an input type that accepts GetKeysKeyArgs and GetKeysKeyOutput values.
 // You can construct a concrete instance of `GetKeysKeyInput` via:
 //
-//          GetKeysKeyArgs{...}
+//	GetKeysKeyArgs{...}
 type GetKeysKeyInput interface {
 	pulumi.Input
 
@@ -362,7 +362,7 @@ func (i GetKeysKeyArgs) ToGetKeysKeyOutputWithContext(ctx context.Context) GetKe
 // GetKeysKeyArrayInput is an input type that accepts GetKeysKeyArray and GetKeysKeyArrayOutput values.
 // You can construct a concrete instance of `GetKeysKeyArrayInput` via:
 //
-//          GetKeysKeyArray{ GetKeysKeyArgs{...} }
+//	GetKeysKeyArray{ GetKeysKeyArgs{...} }
 type GetKeysKeyArrayInput interface {
 	pulumi.Input
 
@@ -524,7 +524,7 @@ type GetSecretVersionsVersion struct {
 // GetSecretVersionsVersionInput is an input type that accepts GetSecretVersionsVersionArgs and GetSecretVersionsVersionOutput values.
 // You can construct a concrete instance of `GetSecretVersionsVersionInput` via:
 //
-//          GetSecretVersionsVersionArgs{...}
+//	GetSecretVersionsVersionArgs{...}
 type GetSecretVersionsVersionInput interface {
 	pulumi.Input
 
@@ -560,7 +560,7 @@ func (i GetSecretVersionsVersionArgs) ToGetSecretVersionsVersionOutputWithContex
 // GetSecretVersionsVersionArrayInput is an input type that accepts GetSecretVersionsVersionArray and GetSecretVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetSecretVersionsVersionArrayInput` via:
 //
-//          GetSecretVersionsVersionArray{ GetSecretVersionsVersionArgs{...} }
+//	GetSecretVersionsVersionArray{ GetSecretVersionsVersionArgs{...} }
 type GetSecretVersionsVersionArrayInput interface {
 	pulumi.Input
 
@@ -671,7 +671,7 @@ type GetSecretsSecret struct {
 // GetSecretsSecretInput is an input type that accepts GetSecretsSecretArgs and GetSecretsSecretOutput values.
 // You can construct a concrete instance of `GetSecretsSecretInput` via:
 //
-//          GetSecretsSecretArgs{...}
+//	GetSecretsSecretArgs{...}
 type GetSecretsSecretInput interface {
 	pulumi.Input
 
@@ -721,7 +721,7 @@ func (i GetSecretsSecretArgs) ToGetSecretsSecretOutputWithContext(ctx context.Co
 // GetSecretsSecretArrayInput is an input type that accepts GetSecretsSecretArray and GetSecretsSecretArrayOutput values.
 // You can construct a concrete instance of `GetSecretsSecretArrayInput` via:
 //
-//          GetSecretsSecretArray{ GetSecretsSecretArgs{...} }
+//	GetSecretsSecretArray{ GetSecretsSecretArgs{...} }
 type GetSecretsSecretArrayInput interface {
 	pulumi.Input
 

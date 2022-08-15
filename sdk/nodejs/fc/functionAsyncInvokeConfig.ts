@@ -141,7 +141,7 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Function Compute async job configuration. valid values true or false, default `false`
+     * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      */
     public readonly statefulInvocation!: pulumi.Output<boolean | undefined>;
 
@@ -227,7 +227,7 @@ export interface FunctionAsyncInvokeConfigState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Function Compute async job configuration. valid values true or false, default `false`
+     * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      */
     statefulInvocation?: pulumi.Input<boolean>;
 }
@@ -261,7 +261,7 @@ export interface FunctionAsyncInvokeConfigArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Function Compute async job configuration. valid values true or false, default `false`
+     * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      */
     statefulInvocation?: pulumi.Input<boolean>;
 }

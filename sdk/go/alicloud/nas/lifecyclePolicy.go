@@ -19,37 +19,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
-// 			ProtocolType: pulumi.String("NFS"),
-// 			StorageType:  pulumi.String("Capacity"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewLifecyclePolicy(ctx, "exampleLifecyclePolicy", &nas.LifecyclePolicyArgs{
-// 			FileSystemId:        exampleFileSystem.ID(),
-// 			LifecyclePolicyName: pulumi.String("my-LifecyclePolicy"),
-// 			LifecycleRuleName:   pulumi.String("DEFAULT_ATIME_14"),
-// 			StorageType:         pulumi.String("InfrequentAccess"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//				ProtocolType: pulumi.String("NFS"),
+//				StorageType:  pulumi.String("Capacity"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewLifecyclePolicy(ctx, "exampleLifecyclePolicy", &nas.LifecyclePolicyArgs{
+//				FileSystemId:        exampleFileSystem.ID(),
+//				LifecyclePolicyName: pulumi.String("my-LifecyclePolicy"),
+//				LifecycleRuleName:   pulumi.String("DEFAULT_ATIME_14"),
+//				StorageType:         pulumi.String("InfrequentAccess"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
+//
+//	$ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
+//
 // ```
 type LifecyclePolicy struct {
 	pulumi.CustomResourceState
@@ -200,7 +205,7 @@ func (i *LifecyclePolicy) ToLifecyclePolicyOutputWithContext(ctx context.Context
 // LifecyclePolicyArrayInput is an input type that accepts LifecyclePolicyArray and LifecyclePolicyArrayOutput values.
 // You can construct a concrete instance of `LifecyclePolicyArrayInput` via:
 //
-//          LifecyclePolicyArray{ LifecyclePolicyArgs{...} }
+//	LifecyclePolicyArray{ LifecyclePolicyArgs{...} }
 type LifecyclePolicyArrayInput interface {
 	pulumi.Input
 
@@ -225,7 +230,7 @@ func (i LifecyclePolicyArray) ToLifecyclePolicyArrayOutputWithContext(ctx contex
 // LifecyclePolicyMapInput is an input type that accepts LifecyclePolicyMap and LifecyclePolicyMapOutput values.
 // You can construct a concrete instance of `LifecyclePolicyMapInput` via:
 //
-//          LifecyclePolicyMap{ "key": LifecyclePolicyArgs{...} }
+//	LifecyclePolicyMap{ "key": LifecyclePolicyArgs{...} }
 type LifecyclePolicyMapInput interface {
 	pulumi.Input
 

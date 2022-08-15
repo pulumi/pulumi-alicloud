@@ -18,24 +18,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vpcsDs, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			CidrBlock: pulumi.StringRef("172.16.0.0/12"),
-// 			NameRegex: pulumi.StringRef("^foo"),
-// 			Status:    pulumi.StringRef("Available"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstVpcId", vpcsDs.Vpcs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vpcsDs, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				CidrBlock: pulumi.StringRef("172.16.0.0/12"),
+//				NameRegex: pulumi.StringRef("^foo"),
+//				Status:    pulumi.StringRef("Available"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstVpcId", vpcsDs.Vpcs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.InvokeOption) (*GetNetworksResult, error) {
 	var rv GetNetworksResult

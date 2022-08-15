@@ -22,21 +22,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := expressconnect.GetPhysicalConnectionService(ctx, &expressconnect.GetPhysicalConnectionServiceArgs{
-// 			Enable: pulumi.StringRef("On"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := expressconnect.GetPhysicalConnectionService(ctx, &expressconnect.GetPhysicalConnectionServiceArgs{
+//				Enable: pulumi.StringRef("On"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetPhysicalConnectionService(ctx *pulumi.Context, args *GetPhysicalConnectionServiceArgs, opts ...pulumi.InvokeOption) (*GetPhysicalConnectionServiceResult, error) {
 	var rv GetPhysicalConnectionServiceResult

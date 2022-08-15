@@ -19,45 +19,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("ecs_with_ipv6_address"),
-// 			Status:    pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleIpv6Addresses, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-// 			AssociatedInstanceId: pulumi.StringRef(exampleInstances.Instances[0].Id),
-// 			Status:               pulumi.StringRef("Available"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewIpv6InternetBandwidth(ctx, "exampleIpv6InternetBandwidth", &vpc.Ipv6InternetBandwidthArgs{
-// 			Ipv6AddressId:      pulumi.String(exampleIpv6Addresses.Addresses[0].Id),
-// 			Ipv6GatewayId:      pulumi.String(exampleIpv6Addresses.Addresses[0].Ipv6GatewayId),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
-// 			Bandwidth:          pulumi.Int(20),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("ecs_with_ipv6_address"),
+//				Status:    pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleIpv6Addresses, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
+//				AssociatedInstanceId: pulumi.StringRef(exampleInstances.Instances[0].Id),
+//				Status:               pulumi.StringRef("Available"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewIpv6InternetBandwidth(ctx, "exampleIpv6InternetBandwidth", &vpc.Ipv6InternetBandwidthArgs{
+//				Ipv6AddressId:      pulumi.String(exampleIpv6Addresses.Addresses[0].Id),
+//				Ipv6GatewayId:      pulumi.String(exampleIpv6Addresses.Addresses[0].Ipv6GatewayId),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				Bandwidth:          pulumi.Int(20),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
+//
+//	$ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
+//
 // ```
 type Ipv6InternetBandwidth struct {
 	pulumi.CustomResourceState
@@ -198,7 +203,7 @@ func (i *Ipv6InternetBandwidth) ToIpv6InternetBandwidthOutputWithContext(ctx con
 // Ipv6InternetBandwidthArrayInput is an input type that accepts Ipv6InternetBandwidthArray and Ipv6InternetBandwidthArrayOutput values.
 // You can construct a concrete instance of `Ipv6InternetBandwidthArrayInput` via:
 //
-//          Ipv6InternetBandwidthArray{ Ipv6InternetBandwidthArgs{...} }
+//	Ipv6InternetBandwidthArray{ Ipv6InternetBandwidthArgs{...} }
 type Ipv6InternetBandwidthArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +228,7 @@ func (i Ipv6InternetBandwidthArray) ToIpv6InternetBandwidthArrayOutputWithContex
 // Ipv6InternetBandwidthMapInput is an input type that accepts Ipv6InternetBandwidthMap and Ipv6InternetBandwidthMapOutput values.
 // You can construct a concrete instance of `Ipv6InternetBandwidthMapInput` via:
 //
-//          Ipv6InternetBandwidthMap{ "key": Ipv6InternetBandwidthArgs{...} }
+//	Ipv6InternetBandwidthMap{ "key": Ipv6InternetBandwidthArgs{...} }
 type Ipv6InternetBandwidthMapInput interface {
 	pulumi.Input
 

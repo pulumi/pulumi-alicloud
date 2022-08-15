@@ -21,36 +21,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
-// 			IsDefault: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudconnect.NewNetworkAttachment(ctx, "default", &cloudconnect.NetworkAttachmentArgs{
-// 			CcnId: ccn.ID(),
-// 			SagId: pulumi.String("sag-xxxxx"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			ccn,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
+//				IsDefault: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudconnect.NewNetworkAttachment(ctx, "default", &cloudconnect.NetworkAttachmentArgs{
+//				CcnId: ccn.ID(),
+//				SagId: pulumi.String("sag-xxxxx"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				ccn,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // The Cloud Connect Network Attachment can be imported using the instance_id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
+//
+//	$ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
+//
 // ```
 type NetworkAttachment struct {
 	pulumi.CustomResourceState
@@ -162,7 +167,7 @@ func (i *NetworkAttachment) ToNetworkAttachmentOutputWithContext(ctx context.Con
 // NetworkAttachmentArrayInput is an input type that accepts NetworkAttachmentArray and NetworkAttachmentArrayOutput values.
 // You can construct a concrete instance of `NetworkAttachmentArrayInput` via:
 //
-//          NetworkAttachmentArray{ NetworkAttachmentArgs{...} }
+//	NetworkAttachmentArray{ NetworkAttachmentArgs{...} }
 type NetworkAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +192,7 @@ func (i NetworkAttachmentArray) ToNetworkAttachmentArrayOutputWithContext(ctx co
 // NetworkAttachmentMapInput is an input type that accepts NetworkAttachmentMap and NetworkAttachmentMapOutput values.
 // You can construct a concrete instance of `NetworkAttachmentMapInput` via:
 //
-//          NetworkAttachmentMap{ "key": NetworkAttachmentArgs{...} }
+//	NetworkAttachmentMap{ "key": NetworkAttachmentArgs{...} }
 type NetworkAttachmentMapInput interface {
 	pulumi.Input
 

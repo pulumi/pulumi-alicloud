@@ -19,34 +19,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewTlsCipherPolicy(ctx, "example", &slb.TlsCipherPolicyArgs{
-// 			Ciphers: pulumi.StringArray{
-// 				pulumi.String("AES256-SHA256"),
-// 				pulumi.String("AES128-GCM-SHA256"),
-// 			},
-// 			TlsCipherPolicyName: pulumi.String("Test-example_value"),
-// 			TlsVersions: pulumi.StringArray{
-// 				pulumi.String("TLSv1.2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slb.NewTlsCipherPolicy(ctx, "example", &slb.TlsCipherPolicyArgs{
+//				Ciphers: pulumi.StringArray{
+//					pulumi.String("AES256-SHA256"),
+//					pulumi.String("AES128-GCM-SHA256"),
+//				},
+//				TlsCipherPolicyName: pulumi.String("Test-example_value"),
+//				TlsVersions: pulumi.StringArray{
+//					pulumi.String("TLSv1.2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // SLB Tls Cipher Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
+//
+//	$ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
+//
 // ```
 type TlsCipherPolicy struct {
 	pulumi.CustomResourceState
@@ -177,7 +182,7 @@ func (i *TlsCipherPolicy) ToTlsCipherPolicyOutputWithContext(ctx context.Context
 // TlsCipherPolicyArrayInput is an input type that accepts TlsCipherPolicyArray and TlsCipherPolicyArrayOutput values.
 // You can construct a concrete instance of `TlsCipherPolicyArrayInput` via:
 //
-//          TlsCipherPolicyArray{ TlsCipherPolicyArgs{...} }
+//	TlsCipherPolicyArray{ TlsCipherPolicyArgs{...} }
 type TlsCipherPolicyArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i TlsCipherPolicyArray) ToTlsCipherPolicyArrayOutputWithContext(ctx contex
 // TlsCipherPolicyMapInput is an input type that accepts TlsCipherPolicyMap and TlsCipherPolicyMapOutput values.
 // You can construct a concrete instance of `TlsCipherPolicyMapInput` via:
 //
-//          TlsCipherPolicyMap{ "key": TlsCipherPolicyArgs{...} }
+//	TlsCipherPolicyMap{ "key": TlsCipherPolicyArgs{...} }
 type TlsCipherPolicyMapInput interface {
 	pulumi.Input
 

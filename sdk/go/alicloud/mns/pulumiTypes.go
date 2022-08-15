@@ -30,7 +30,7 @@ type GetQueuesQueue struct {
 // GetQueuesQueueInput is an input type that accepts GetQueuesQueueArgs and GetQueuesQueueOutput values.
 // You can construct a concrete instance of `GetQueuesQueueInput` via:
 //
-//          GetQueuesQueueArgs{...}
+//	GetQueuesQueueArgs{...}
 type GetQueuesQueueInput interface {
 	pulumi.Input
 
@@ -70,7 +70,7 @@ func (i GetQueuesQueueArgs) ToGetQueuesQueueOutputWithContext(ctx context.Contex
 // GetQueuesQueueArrayInput is an input type that accepts GetQueuesQueueArray and GetQueuesQueueArrayOutput values.
 // You can construct a concrete instance of `GetQueuesQueueArrayInput` via:
 //
-//          GetQueuesQueueArray{ GetQueuesQueueArgs{...} }
+//	GetQueuesQueueArray{ GetQueuesQueueArgs{...} }
 type GetQueuesQueueArrayInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ type GetTopicSubscriptionsSubscription struct {
 // GetTopicSubscriptionsSubscriptionInput is an input type that accepts GetTopicSubscriptionsSubscriptionArgs and GetTopicSubscriptionsSubscriptionOutput values.
 // You can construct a concrete instance of `GetTopicSubscriptionsSubscriptionInput` via:
 //
-//          GetTopicSubscriptionsSubscriptionArgs{...}
+//	GetTopicSubscriptionsSubscriptionArgs{...}
 type GetTopicSubscriptionsSubscriptionInput interface {
 	pulumi.Input
 
@@ -223,7 +223,7 @@ func (i GetTopicSubscriptionsSubscriptionArgs) ToGetTopicSubscriptionsSubscripti
 // GetTopicSubscriptionsSubscriptionArrayInput is an input type that accepts GetTopicSubscriptionsSubscriptionArray and GetTopicSubscriptionsSubscriptionArrayOutput values.
 // You can construct a concrete instance of `GetTopicSubscriptionsSubscriptionArrayInput` via:
 //
-//          GetTopicSubscriptionsSubscriptionArray{ GetTopicSubscriptionsSubscriptionArgs{...} }
+//	GetTopicSubscriptionsSubscriptionArray{ GetTopicSubscriptionsSubscriptionArgs{...} }
 type GetTopicSubscriptionsSubscriptionArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +329,7 @@ type GetTopicsTopic struct {
 // GetTopicsTopicInput is an input type that accepts GetTopicsTopicArgs and GetTopicsTopicOutput values.
 // You can construct a concrete instance of `GetTopicsTopicInput` via:
 //
-//          GetTopicsTopicArgs{...}
+//	GetTopicsTopicArgs{...}
 type GetTopicsTopicInput interface {
 	pulumi.Input
 
@@ -363,7 +363,7 @@ func (i GetTopicsTopicArgs) ToGetTopicsTopicOutputWithContext(ctx context.Contex
 // GetTopicsTopicArrayInput is an input type that accepts GetTopicsTopicArray and GetTopicsTopicArrayOutput values.
 // You can construct a concrete instance of `GetTopicsTopicArrayInput` via:
 //
-//          GetTopicsTopicArray{ GetTopicsTopicArgs{...} }
+//	GetTopicsTopicArray{ GetTopicsTopicArgs{...} }
 type GetTopicsTopicArrayInput interface {
 	pulumi.Input
 

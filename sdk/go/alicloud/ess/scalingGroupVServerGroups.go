@@ -49,7 +49,9 @@ import (
 // ESS vserver groups can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
+//
+//	$ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
+//
 // ```
 type ScalingGroupVServerGroups struct {
 	pulumi.CustomResourceState
@@ -163,7 +165,7 @@ func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutputWithContext
 // ScalingGroupVServerGroupsArrayInput is an input type that accepts ScalingGroupVServerGroupsArray and ScalingGroupVServerGroupsArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsArrayInput` via:
 //
-//          ScalingGroupVServerGroupsArray{ ScalingGroupVServerGroupsArgs{...} }
+//	ScalingGroupVServerGroupsArray{ ScalingGroupVServerGroupsArgs{...} }
 type ScalingGroupVServerGroupsArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +190,7 @@ func (i ScalingGroupVServerGroupsArray) ToScalingGroupVServerGroupsArrayOutputWi
 // ScalingGroupVServerGroupsMapInput is an input type that accepts ScalingGroupVServerGroupsMap and ScalingGroupVServerGroupsMapOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsMapInput` via:
 //
-//          ScalingGroupVServerGroupsMap{ "key": ScalingGroupVServerGroupsArgs{...} }
+//	ScalingGroupVServerGroupsMap{ "key": ScalingGroupVServerGroupsArgs{...} }
 type ScalingGroupVServerGroupsMapInput interface {
 	pulumi.Input
 

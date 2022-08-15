@@ -16,7 +16,9 @@ import (
 // Router entry can be imported using the id, e.g (formatted as<route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id>).
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+//
+//	$ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+//
 // ```
 type RouteEntry struct {
 	pulumi.CustomResourceState
@@ -167,7 +169,7 @@ func (i *RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEnt
 // RouteEntryArrayInput is an input type that accepts RouteEntryArray and RouteEntryArrayOutput values.
 // You can construct a concrete instance of `RouteEntryArrayInput` via:
 //
-//          RouteEntryArray{ RouteEntryArgs{...} }
+//	RouteEntryArray{ RouteEntryArgs{...} }
 type RouteEntryArrayInput interface {
 	pulumi.Input
 
@@ -192,7 +194,7 @@ func (i RouteEntryArray) ToRouteEntryArrayOutputWithContext(ctx context.Context)
 // RouteEntryMapInput is an input type that accepts RouteEntryMap and RouteEntryMapOutput values.
 // You can construct a concrete instance of `RouteEntryMapInput` via:
 //
-//          RouteEntryMap{ "key": RouteEntryArgs{...} }
+//	RouteEntryMap{ "key": RouteEntryArgs{...} }
 type RouteEntryMapInput interface {
 	pulumi.Input
 

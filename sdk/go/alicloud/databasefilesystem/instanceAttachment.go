@@ -19,83 +19,86 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		zoneId := "cn-hangzhou-i"
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(zoneId),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			Description: pulumi.String("tf test"),
-// 			VpcId:       pulumi.String(defaultNetworks.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			Owners:     pulumi.StringRef("system"),
-// 			NameRegex:  pulumi.StringRef("^centos_8"),
-// 			MostRecent: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-// 			ImageId:            pulumi.String(defaultImages.Images[0].Id),
-// 			InstanceName:       pulumi.Any(_var.Name),
-// 			InstanceType:       pulumi.String("ecs.g7se.large"),
-// 			AvailabilityZone:   pulumi.String(zoneId),
-// 			VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
-// 			SystemDiskCategory: pulumi.String("cloud_essd"),
-// 			SecurityGroups: pulumi.StringArray{
-// 				defaultSecurityGroup.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databasefilesystem.NewInstance(ctx, "defaultDatabasefilesystem/instanceInstance", &databasefilesystem.InstanceArgs{
-// 			Category:         pulumi.String("standard"),
-// 			ZoneId:           defaultInstance.AvailabilityZone,
-// 			PerformanceLevel: pulumi.String("PL1"),
-// 			InstanceName:     pulumi.Any(_var.Name),
-// 			Size:             pulumi.Int(100),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databasefilesystem.NewInstanceAttachment(ctx, "example", &databasefilesystem.InstanceAttachmentArgs{
-// 			EcsId:      defaultInstance.ID(),
-// 			InstanceId: defaultDatabasefilesystem / instanceInstance.Id,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			zoneId := "cn-hangzhou-i"
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(zoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String("tf test"),
+//				VpcId:       pulumi.String(defaultNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				Owners:     pulumi.StringRef("system"),
+//				NameRegex:  pulumi.StringRef("^centos_8"),
+//				MostRecent: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				ImageId:            pulumi.String(defaultImages.Images[0].Id),
+//				InstanceName:       pulumi.Any(_var.Name),
+//				InstanceType:       pulumi.String("ecs.g7se.large"),
+//				AvailabilityZone:   pulumi.String(zoneId),
+//				VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
+//				SystemDiskCategory: pulumi.String("cloud_essd"),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasefilesystem.NewInstance(ctx, "defaultDatabasefilesystem/instanceInstance", &databasefilesystem.InstanceArgs{
+//				Category:         pulumi.String("standard"),
+//				ZoneId:           defaultInstance.AvailabilityZone,
+//				PerformanceLevel: pulumi.String("PL1"),
+//				InstanceName:     pulumi.Any(_var.Name),
+//				Size:             pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasefilesystem.NewInstanceAttachment(ctx, "example", &databasefilesystem.InstanceAttachmentArgs{
+//				EcsId:      defaultInstance.ID(),
+//				InstanceId: defaultDatabasefilesystem / instanceInstance.Id,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -103,7 +106,9 @@ import (
 // DBFS Instance Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
+//
+//	$ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
+//
 // ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
@@ -210,7 +215,7 @@ func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.C
 // InstanceAttachmentArrayInput is an input type that accepts InstanceAttachmentArray and InstanceAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceAttachmentArrayInput` via:
 //
-//          InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
+//	InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
 type InstanceAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +240,7 @@ func (i InstanceAttachmentArray) ToInstanceAttachmentArrayOutputWithContext(ctx 
 // InstanceAttachmentMapInput is an input type that accepts InstanceAttachmentMap and InstanceAttachmentMapOutput values.
 // You can construct a concrete instance of `InstanceAttachmentMapInput` via:
 //
-//          InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
+//	InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
 type InstanceAttachmentMapInput interface {
 	pulumi.Input
 

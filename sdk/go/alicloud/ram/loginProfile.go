@@ -19,32 +19,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			DisplayName: pulumi.String("user_display_name"),
-// 			Mobile:      pulumi.String("86-18688888888"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Comments:    pulumi.String("yoyoyo"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ram.NewLoginProfile(ctx, "profile", &ram.LoginProfileArgs{
-// 			UserName: user.Name,
-// 			Password: pulumi.String("Yourpassword1234"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				DisplayName: pulumi.String("user_display_name"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewLoginProfile(ctx, "profile", &ram.LoginProfileArgs{
+//				UserName: user.Name,
+//				Password: pulumi.String("Yourpassword1234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,7 +55,9 @@ import (
 // RAM login profile can be imported using the id or user name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+//
+//	$ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+//
 // ```
 type LoginProfile struct {
 	pulumi.CustomResourceState
@@ -176,7 +181,7 @@ func (i *LoginProfile) ToLoginProfileOutputWithContext(ctx context.Context) Logi
 // LoginProfileArrayInput is an input type that accepts LoginProfileArray and LoginProfileArrayOutput values.
 // You can construct a concrete instance of `LoginProfileArrayInput` via:
 //
-//          LoginProfileArray{ LoginProfileArgs{...} }
+//	LoginProfileArray{ LoginProfileArgs{...} }
 type LoginProfileArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i LoginProfileArray) ToLoginProfileArrayOutputWithContext(ctx context.Cont
 // LoginProfileMapInput is an input type that accepts LoginProfileMap and LoginProfileMapOutput values.
 // You can construct a concrete instance of `LoginProfileMapInput` via:
 //
-//          LoginProfileMap{ "key": LoginProfileArgs{...} }
+//	LoginProfileMap{ "key": LoginProfileArgs{...} }
 type LoginProfileMapInput interface {
 	pulumi.Input
 

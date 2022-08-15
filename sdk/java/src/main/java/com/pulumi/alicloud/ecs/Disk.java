@@ -283,14 +283,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="size", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> size;
+    private Output<Integer> size;
 
     /**
      * @return The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      * 
      */
-    public Output<Optional<Integer>> size() {
-        return Codegen.optional(this.size);
+    public Output<Integer> size() {
+        return this.size;
     }
     /**
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.

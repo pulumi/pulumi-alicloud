@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Function Compute async job configuration. valid values true or false, default `false`
+        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         /// </summary>
         [Output("statefulInvocation")]
         public Output<bool?> StatefulInvocation { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Function Compute async job configuration. valid values true or false, default `false`
+        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         /// </summary>
         [Input("statefulInvocation")]
         public Input<bool>? StatefulInvocation { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Function Compute async job configuration. valid values true or false, default `false`
+        /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         /// </summary>
         [Input("statefulInvocation")]
         public Input<bool>? StatefulInvocation { get; set; }

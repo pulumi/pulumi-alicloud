@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := dfs.GetAccessGroups(ctx, &dfs.GetAccessGroupsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dfsAccessGroupId1", ids.Groups[0].Id)
-// 		nameRegex, err := dfs.GetAccessGroups(ctx, &dfs.GetAccessGroupsArgs{
-// 			NameRegex: pulumi.StringRef("^my-AccessGroup"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dfsAccessGroupId2", nameRegex.Groups[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dfs.GetAccessGroups(ctx, &dfs.GetAccessGroupsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dfsAccessGroupId1", ids.Groups[0].Id)
+//			nameRegex, err := dfs.GetAccessGroups(ctx, &dfs.GetAccessGroupsArgs{
+//				NameRegex: pulumi.StringRef("^my-AccessGroup"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dfsAccessGroupId2", nameRegex.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pulumi.InvokeOption) (*GetAccessGroupsResult, error) {
 	var rv GetAccessGroupsResult

@@ -19,59 +19,64 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			DisplayName: pulumi.String("user_display_name"),
-// 			Mobile:      pulumi.String("86-18688888888"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Comments:    pulumi.String("yoyoyo"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-// 			Document: pulumi.String(fmt.Sprintf(`  {
-//     "Statement": [
-//       {
-//         "Action": [
-//           "oss:ListObjects",
-//           "oss:GetObject"
-//         ],
-//         "Effect": "Allow",
-//         "Resource": [
-//           "acs:oss:*:*:mybucket",
-//           "acs:oss:*:*:mybucket/*"
-//         ]
-//       }
-//     ],
-//       "Version": "1"
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				DisplayName: pulumi.String("user_display_name"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				Document: pulumi.String(fmt.Sprintf(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": [
+//	          "oss:ListObjects",
+//	          "oss:GetObject"
+//	        ],
+//	        "Effect": "Allow",
+//	        "Resource": [
+//	          "acs:oss:*:*:mybucket",
+//	          "acs:oss:*:*:mybucket/*"
+//	        ]
+//	      }
+//	    ],
+//	      "Version": "1"
+//	  }
+//
 // `)),
-// 			Description: pulumi.String("this is a policy test"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ram.NewUserPolicyAttachment(ctx, "attach", &ram.UserPolicyAttachmentArgs{
-// 			PolicyName: policy.Name,
-// 			PolicyType: policy.Type,
-// 			UserName:   user.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				Description: pulumi.String("this is a policy test"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewUserPolicyAttachment(ctx, "attach", &ram.UserPolicyAttachmentArgs{
+//				PolicyName: policy.Name,
+//				PolicyType: policy.Type,
+//				UserName:   user.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -79,7 +84,9 @@ import (
 // RAM User Policy attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+//
+//	$ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+//
 // ```
 type UserPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -196,7 +203,7 @@ func (i *UserPolicyAttachment) ToUserPolicyAttachmentOutputWithContext(ctx conte
 // UserPolicyAttachmentArrayInput is an input type that accepts UserPolicyAttachmentArray and UserPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `UserPolicyAttachmentArrayInput` via:
 //
-//          UserPolicyAttachmentArray{ UserPolicyAttachmentArgs{...} }
+//	UserPolicyAttachmentArray{ UserPolicyAttachmentArgs{...} }
 type UserPolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +228,7 @@ func (i UserPolicyAttachmentArray) ToUserPolicyAttachmentArrayOutputWithContext(
 // UserPolicyAttachmentMapInput is an input type that accepts UserPolicyAttachmentMap and UserPolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `UserPolicyAttachmentMapInput` via:
 //
-//          UserPolicyAttachmentMap{ "key": UserPolicyAttachmentArgs{...} }
+//	UserPolicyAttachmentMap{ "key": UserPolicyAttachmentArgs{...} }
 type UserPolicyAttachmentMapInput interface {
 	pulumi.Input
 

@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example1, err := cloudfirewall.NewControlPolicy(ctx, "example1", &cloudfirewall.ControlPolicyArgs{
-// 			ApplicationName: pulumi.String("ANY"),
-// 			AclAction:       pulumi.String("accept"),
-// 			Description:     pulumi.String("example"),
-// 			DestinationType: pulumi.String("net"),
-// 			Destination:     pulumi.String("100.1.1.0/24"),
-// 			Direction:       pulumi.String("out"),
-// 			Proto:           pulumi.String("ANY"),
-// 			Source:          pulumi.String("1.2.3.0/24"),
-// 			SourceType:      pulumi.String("net"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudfirewall.NewControlPolicyOrder(ctx, "example2", &cloudfirewall.ControlPolicyOrderArgs{
-// 			AclUuid:   example1.AclUuid,
-// 			Direction: example1.Direction,
-// 			Order:     pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example1, err := cloudfirewall.NewControlPolicy(ctx, "example1", &cloudfirewall.ControlPolicyArgs{
+//				ApplicationName: pulumi.String("ANY"),
+//				AclAction:       pulumi.String("accept"),
+//				Description:     pulumi.String("example"),
+//				DestinationType: pulumi.String("net"),
+//				Destination:     pulumi.String("100.1.1.0/24"),
+//				Direction:       pulumi.String("out"),
+//				Proto:           pulumi.String("ANY"),
+//				Source:          pulumi.String("1.2.3.0/24"),
+//				SourceType:      pulumi.String("net"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewControlPolicyOrder(ctx, "example2", &cloudfirewall.ControlPolicyOrderArgs{
+//				AclUuid:   example1.AclUuid,
+//				Direction: example1.Direction,
+//				Order:     pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Cloud Firewall Control Policy Order can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
+//
+//	$ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
+//
 // ```
 type ControlPolicyOrder struct {
 	pulumi.CustomResourceState
@@ -177,7 +182,7 @@ func (i *ControlPolicyOrder) ToControlPolicyOrderOutputWithContext(ctx context.C
 // ControlPolicyOrderArrayInput is an input type that accepts ControlPolicyOrderArray and ControlPolicyOrderArrayOutput values.
 // You can construct a concrete instance of `ControlPolicyOrderArrayInput` via:
 //
-//          ControlPolicyOrderArray{ ControlPolicyOrderArgs{...} }
+//	ControlPolicyOrderArray{ ControlPolicyOrderArgs{...} }
 type ControlPolicyOrderArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i ControlPolicyOrderArray) ToControlPolicyOrderArrayOutputWithContext(ctx 
 // ControlPolicyOrderMapInput is an input type that accepts ControlPolicyOrderMap and ControlPolicyOrderMapOutput values.
 // You can construct a concrete instance of `ControlPolicyOrderMapInput` via:
 //
-//          ControlPolicyOrderMap{ "key": ControlPolicyOrderArgs{...} }
+//	ControlPolicyOrderMap{ "key": ControlPolicyOrderArgs{...} }
 type ControlPolicyOrderMapInput interface {
 	pulumi.Input
 

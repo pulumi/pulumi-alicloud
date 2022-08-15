@@ -19,32 +19,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewAlidnsInstance(ctx, "example", &dns.AlidnsInstanceArgs{
-// 			DnsSecurity:   pulumi.String("no"),
-// 			DomainNumbers: pulumi.String("2"),
-// 			Period:        pulumi.Int(1),
-// 			RenewPeriod:   pulumi.Int(1),
-// 			RenewalStatus: pulumi.String("ManualRenewal"),
-// 			VersionCode:   pulumi.String("version_personal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewAlidnsInstance(ctx, "example", &dns.AlidnsInstanceArgs{
+//				DnsSecurity:   pulumi.String("no"),
+//				DomainNumbers: pulumi.String("2"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(1),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				VersionCode:   pulumi.String("version_personal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,7 +55,9 @@ import (
 // DNS instance be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
+//
+//	$ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
+//
 // ```
 type AlidnsInstance struct {
 	pulumi.CustomResourceState
@@ -215,7 +220,7 @@ func (i *AlidnsInstance) ToAlidnsInstanceOutputWithContext(ctx context.Context) 
 // AlidnsInstanceArrayInput is an input type that accepts AlidnsInstanceArray and AlidnsInstanceArrayOutput values.
 // You can construct a concrete instance of `AlidnsInstanceArrayInput` via:
 //
-//          AlidnsInstanceArray{ AlidnsInstanceArgs{...} }
+//	AlidnsInstanceArray{ AlidnsInstanceArgs{...} }
 type AlidnsInstanceArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +245,7 @@ func (i AlidnsInstanceArray) ToAlidnsInstanceArrayOutputWithContext(ctx context.
 // AlidnsInstanceMapInput is an input type that accepts AlidnsInstanceMap and AlidnsInstanceMapOutput values.
 // You can construct a concrete instance of `AlidnsInstanceMapInput` via:
 //
-//          AlidnsInstanceMap{ "key": AlidnsInstanceArgs{...} }
+//	AlidnsInstanceMap{ "key": AlidnsInstanceArgs{...} }
 type AlidnsInstanceMapInput interface {
 	pulumi.Input
 

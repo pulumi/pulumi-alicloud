@@ -17,31 +17,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewCluster(ctx, "default", &edas.ClusterArgs{
-// 			ClusterName:     pulumi.Any(_var.Cluster_name),
-// 			ClusterType:     pulumi.Any(_var.Cluster_type),
-// 			NetworkMode:     pulumi.Any(_var.Network_mode),
-// 			LogicalRegionId: pulumi.Any(_var.Logical_region_id),
-// 			VpcId:           pulumi.Any(_var.Vpc_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edas.NewCluster(ctx, "default", &edas.ClusterArgs{
+//				ClusterName:     pulumi.Any(_var.Cluster_name),
+//				ClusterType:     pulumi.Any(_var.Cluster_type),
+//				NetworkMode:     pulumi.Any(_var.Network_mode),
+//				LogicalRegionId: pulumi.Any(_var.Logical_region_id),
+//				VpcId:           pulumi.Any(_var.Vpc_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // EDAS cluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
+//
+//	$ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
+//
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -186,7 +191,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//          ClusterArray{ ClusterArgs{...} }
+//	ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +216,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//          ClusterMap{ "key": ClusterArgs{...} }
+//	ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 

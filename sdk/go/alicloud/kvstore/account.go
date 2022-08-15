@@ -19,76 +19,79 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "KVStore"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "kvstoreinstancevpc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
-// 			InstanceClass: pulumi.String("redis.master.small.default"),
-// 			InstanceName:  pulumi.String(name),
-// 			VswitchId:     defaultSwitch.ID(),
-// 			PrivateIp:     pulumi.String("172.16.0.10"),
-// 			SecurityIps: pulumi.StringArray{
-// 				pulumi.String("10.0.0.1"),
-// 			},
-// 			InstanceType:  pulumi.String("Redis"),
-// 			EngineVersion: pulumi.String("4.0"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = kvstore.NewAccount(ctx, "example", &kvstore.AccountArgs{
-// 			AccountName:     pulumi.String("tftestnormal"),
-// 			AccountPassword: pulumi.String("YourPassword_123"),
-// 			InstanceId:      defaultInstance.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "KVStore"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "kvstoreinstancevpc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
+//				InstanceClass: pulumi.String("redis.master.small.default"),
+//				InstanceName:  pulumi.String(name),
+//				VswitchId:     defaultSwitch.ID(),
+//				PrivateIp:     pulumi.String("172.16.0.10"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.0.0.1"),
+//				},
+//				InstanceType:  pulumi.String("Redis"),
+//				EngineVersion: pulumi.String("4.0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewAccount(ctx, "example", &kvstore.AccountArgs{
+//				AccountName:     pulumi.String("tftestnormal"),
+//				AccountPassword: pulumi.String("YourPassword_123"),
+//				InstanceId:      defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -96,7 +99,9 @@ import (
 // KVStore account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
+//
+//	$ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
+//
 // ```
 type Account struct {
 	pulumi.CustomResourceState
@@ -301,7 +306,7 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
-//          AccountArray{ AccountArgs{...} }
+//	AccountArray{ AccountArgs{...} }
 type AccountArrayInput interface {
 	pulumi.Input
 
@@ -326,7 +331,7 @@ func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) Accou
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
 // You can construct a concrete instance of `AccountMapInput` via:
 //
-//          AccountMap{ "key": AccountArgs{...} }
+//	AccountMap{ "key": AccountArgs{...} }
 type AccountMapInput interface {
 	pulumi.Input
 
@@ -383,8 +388,8 @@ func (o AccountOutput) AccountPrivilege() pulumi.StringPtrOutput {
 }
 
 // Privilege type of account.
-// - Normal: Common privilege.
-//   Default to Normal.
+//   - Normal: Common privilege.
+//     Default to Normal.
 func (o AccountOutput) AccountType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountType }).(pulumi.StringPtrOutput)
 }

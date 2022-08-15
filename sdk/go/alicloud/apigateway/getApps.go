@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dataApigatway, err := apigateway.GetApps(ctx, &apigateway.GetAppsArgs{
-// 			OutputFile: pulumi.StringRef("outapps"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstAppId", dataApigatway.Apps[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataApigatway, err := apigateway.GetApps(ctx, &apigateway.GetAppsArgs{
+//				OutputFile: pulumi.StringRef("outapps"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstAppId", dataApigatway.Apps[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetApps(ctx *pulumi.Context, args *GetAppsArgs, opts ...pulumi.InvokeOption) (*GetAppsResult, error) {
 	var rv GetAppsResult

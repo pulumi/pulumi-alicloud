@@ -20,6 +20,7 @@ __all__ = [
     'ApiSystemParameter',
     'GetApisApiResult',
     'GetAppsAppResult',
+    'GetBackendsBackendResult',
     'GetGroupsGroupResult',
 ]
 
@@ -774,6 +775,86 @@ class GetAppsAppResult(dict):
         App name.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetBackendsBackendResult(dict):
+    def __init__(__self__, *,
+                 backend_id: str,
+                 backend_name: str,
+                 backend_type: str,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 modified_time: str):
+        """
+        :param str backend_id: The id of the Backend.
+        :param str backend_name: The name of the Backend.
+        :param str backend_type: The type of the Backend.
+        :param str create_time: The created time of the Backend.
+        :param str description: The description of the Backend.
+        :param str modified_time: The modified time of the Backend.
+        """
+        pulumi.set(__self__, "backend_id", backend_id)
+        pulumi.set(__self__, "backend_name", backend_name)
+        pulumi.set(__self__, "backend_type", backend_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modified_time", modified_time)
+
+    @property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> str:
+        """
+        The id of the Backend.
+        """
+        return pulumi.get(self, "backend_id")
+
+    @property
+    @pulumi.getter(name="backendName")
+    def backend_name(self) -> str:
+        """
+        The name of the Backend.
+        """
+        return pulumi.get(self, "backend_name")
+
+    @property
+    @pulumi.getter(name="backendType")
+    def backend_type(self) -> str:
+        """
+        The type of the Backend.
+        """
+        return pulumi.get(self, "backend_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The created time of the Backend.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Backend.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> str:
+        """
+        The modified time of the Backend.
+        """
+        return pulumi.get(self, "modified_time")
 
 
 @pulumi.output_type

@@ -19,77 +19,80 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-test"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
-// 			CpuCoreCount:       pulumi.IntRef(2),
-// 			MemorySize:         pulumi.Float64Ref(4),
-// 			KubernetesNodeRole: pulumi.StringRef("Worker"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("10.1.0.0/21"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VswitchName: pulumi.String(name),
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("10.1.1.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
-// 			KeyPairName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var defaultManagedKubernetes []*cs.ManagedKubernetes
-// 		for key0, _ := range 1 == true {
-// 			__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
-// 				ClusterSpec:               pulumi.String("ack.pro.small"),
-// 				IsEnterpriseSecurityGroup: pulumi.Bool(true),
-// 				PodCidr:                   pulumi.String("172.20.0.0/16"),
-// 				ServiceCidr:               pulumi.String("172.21.0.0/20"),
-// 				WorkerVswitchIds: pulumi.StringArray{
-// 					defaultSwitch.ID(),
-// 				},
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			defaultManagedKubernetes = append(defaultManagedKubernetes, __res)
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-test"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:       pulumi.IntRef(2),
+//				MemorySize:         pulumi.Float64Ref(4),
+//				KubernetesNodeRole: pulumi.StringRef("Worker"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.1.1.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
+//				KeyPairName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var defaultManagedKubernetes []*cs.ManagedKubernetes
+//			for key0, _ := range 1 == true {
+//				__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
+//					ClusterSpec:               pulumi.String("ack.pro.small"),
+//					IsEnterpriseSecurityGroup: pulumi.Bool(true),
+//					PodCidr:                   pulumi.String("172.20.0.0/16"),
+//					ServiceCidr:               pulumi.String("172.21.0.0/20"),
+//					WorkerVswitchIds: pulumi.StringArray{
+//						defaultSwitch.ID(),
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultManagedKubernetes = append(defaultManagedKubernetes, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Create a node pool.
@@ -98,31 +101,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			DesiredSize:        pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				DesiredSize:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // The parameter `nodeCount` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desiredSize` instead, you can update it as follows. for more information of `desiredSize`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
@@ -131,31 +137,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			DesiredSize:        pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				DesiredSize:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `cs.ManagedKubernetes`.
@@ -164,37 +173,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			DesiredSize:        pulumi.Int(1),
-// 			Management: &cs.NodePoolManagementArgs{
-// 				AutoRepair:     pulumi.Bool(true),
-// 				AutoUpgrade:    pulumi.Bool(true),
-// 				Surge:          pulumi.Int(1),
-// 				MaxUnavailable: pulumi.Int(1),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				DesiredSize:        pulumi.Int(1),
+//				Management: &cs.NodePoolManagementArgs{
+//					AutoRepair:     pulumi.Bool(true),
+//					AutoUpgrade:    pulumi.Bool(true),
+//					Surge:          pulumi.Int(1),
+//					MaxUnavailable: pulumi.Int(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Enable automatic scaling for the node pool. `scalingConfig` is required.
@@ -203,34 +215,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			ScalingConfig: &cs.NodePoolScalingConfigArgs{
-// 				MinSize: pulumi.Int(1),
-// 				MaxSize: pulumi.Int(10),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
+//					MinSize: pulumi.Int(1),
+//					MaxSize: pulumi.Int(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Enable automatic scaling for managed node pool.
@@ -239,43 +254,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			Management: &cs.NodePoolManagementArgs{
-// 				AutoRepair:     pulumi.Bool(true),
-// 				AutoUpgrade:    pulumi.Bool(true),
-// 				Surge:          pulumi.Int(1),
-// 				MaxUnavailable: pulumi.Int(1),
-// 			},
-// 			ScalingConfig: &cs.NodePoolScalingConfigArgs{
-// 				MinSize: pulumi.Int(1),
-// 				MaxSize: pulumi.Int(10),
-// 				Type:    pulumi.String("cpu"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			alicloud_cs_autoscaling_config.Default,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				Management: &cs.NodePoolManagementArgs{
+//					AutoRepair:     pulumi.Bool(true),
+//					AutoUpgrade:    pulumi.Bool(true),
+//					Surge:          pulumi.Int(1),
+//					MaxUnavailable: pulumi.Int(1),
+//				},
+//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
+//					MinSize: pulumi.Int(1),
+//					MaxSize: pulumi.Int(10),
+//					Type:    pulumi.String("cpu"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				alicloud_cs_autoscaling_config.Default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Create a `PrePaid` node pool.
@@ -283,41 +301,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory:  pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:      pulumi.Int(40),
-// 			KeyName:             pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			InstanceChargeType:  pulumi.String("PrePaid"),
-// 			Period:              pulumi.Int(1),
-// 			PeriodUnit:          pulumi.String("Month"),
-// 			AutoRenew:           pulumi.Bool(true),
-// 			AutoRenewPeriod:     pulumi.Int(1),
-// 			InstallCloudMonitor: pulumi.Bool(true),
-// 			ScalingConfig: &cs.NodePoolScalingConfigArgs{
-// 				MinSize: pulumi.Int(1),
-// 				MaxSize: pulumi.Int(10),
-// 				Type:    pulumi.String("cpu"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory:  pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:      pulumi.Int(40),
+//				KeyName:             pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				InstanceChargeType:  pulumi.String("PrePaid"),
+//				Period:              pulumi.Int(1),
+//				PeriodUnit:          pulumi.String("Month"),
+//				AutoRenew:           pulumi.Bool(true),
+//				AutoRenewPeriod:     pulumi.Int(1),
+//				InstallCloudMonitor: pulumi.Bool(true),
+//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
+//					MinSize: pulumi.Int(1),
+//					MaxSize: pulumi.Int(10),
+//					Type:    pulumi.String("cpu"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Create a node pool with spot instance.
@@ -325,38 +346,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			DesiredSize:        pulumi.Int(1),
-// 			SpotStrategy:       pulumi.String("SpotWithPriceLimit"),
-// 			SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
-// 				&cs.NodePoolSpotPriceLimitArgs{
-// 					InstanceType: pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 					PriceLimit:   pulumi.String("0.70"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				DesiredSize:        pulumi.Int(1),
+//				SpotStrategy:       pulumi.String("SpotWithPriceLimit"),
+//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//						PriceLimit:   pulumi.String("0.70"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Use Spot instances to create a node pool with auto-scaling enabled
@@ -364,42 +388,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			ScalingConfig: &cs.NodePoolScalingConfigArgs{
-// 				MinSize: pulumi.Int(1),
-// 				MaxSize: pulumi.Int(10),
-// 				Type:    pulumi.String("spot"),
-// 			},
-// 			SpotStrategy: pulumi.String("SpotWithPriceLimit"),
-// 			SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
-// 				&cs.NodePoolSpotPriceLimitArgs{
-// 					InstanceType: pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 					PriceLimit:   pulumi.String("0.70"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
+//					MinSize: pulumi.Int(1),
+//					MaxSize: pulumi.Int(10),
+//					Type:    pulumi.String("spot"),
+//				},
+//				SpotStrategy: pulumi.String("SpotWithPriceLimit"),
+//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//						PriceLimit:   pulumi.String("0.70"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Create a node pool with platform as Windows
@@ -407,37 +434,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			InstanceChargeType: pulumi.String("PostPaid"),
-// 			DesiredSize:        pulumi.Int(1),
-// 			Password:           pulumi.String("Hello1234"),
-// 			Platform:           pulumi.String("Windows"),
-// 			ImageId:            pulumi.Any(window_image_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				DesiredSize:        pulumi.Int(1),
+//				Password:           pulumi.String("Hello1234"),
+//				Platform:           pulumi.String("Windows"),
+//				ImageId:            pulumi.Any(window_image_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Add an existing node to the node pool
+// # Add an existing node to the node pool
 //
 // In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
 //
@@ -445,37 +475,104 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.Any(alicloud_vswitch.Default.Id),
-// 			},
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
-// 			},
-// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// 			SystemDiskSize:     pulumi.Int(40),
-// 			InstanceChargeType: pulumi.String("PostPaid"),
-// 			Instances: pulumi.StringArray{
-// 				pulumi.String("instance_id_01"),
-// 				pulumi.String("instance_id_02"),
-// 				pulumi.String("instance_id_03"),
-// 			},
-// 			FormatDisk:       pulumi.Bool(false),
-// 			KeepInstanceName: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				Instances: pulumi.StringArray{
+//					pulumi.String("instance_id_01"),
+//					pulumi.String("instance_id_02"),
+//					pulumi.String("instance_id_03"),
+//				},
+//				FormatDisk:       pulumi.Bool(false),
+//				KeepInstanceName: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a node pool with customized kubelet parameters
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.Any(alicloud_vswitch.Default.Id),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				DesiredSize:        pulumi.Int(3),
+//				KubeletConfiguration: &cs.NodePoolKubeletConfigurationArgs{
+//					RegistryPullQps: pulumi.String("0"),
+//					RegistryBurst:   pulumi.String("0"),
+//					EventRecordQps:  pulumi.String("0"),
+//					EventBurst:      pulumi.String("0"),
+//					EvictionHard: pulumi.AnyMap{
+//						"memory.available":            pulumi.Any("1024Mi"),
+//						"nodefs.available":            pulumi.Any(fmt.Sprintf("10%v", "%")),
+//						"nodefs.inodesFree":           pulumi.Any("1000"),
+//						"imagefs.available":           pulumi.Any(fmt.Sprintf("10%v", "%")),
+//						"imagefs.inodesFree":          pulumi.Any("1000"),
+//						"allocatableMemory.available": pulumi.Any("2048"),
+//						"pid.available":               pulumi.Any("1000"),
+//					},
+//					SystemReserved: pulumi.AnyMap{
+//						"cpu":               pulumi.Any("1"),
+//						"memory":            pulumi.Any("1Gi"),
+//						"ephemeral_storage": pulumi.Any("10Gi"),
+//					},
+//					KubeReserved: pulumi.AnyMap{
+//						"cpu":    pulumi.Any("500m"),
+//						"memory": pulumi.Any("1Gi"),
+//					},
+//				},
+//				RolloutPolicy: &cs.NodePoolRolloutPolicyArgs{
+//					MaxUnavailable: pulumi.Int(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -483,7 +580,9 @@ import (
 // Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
+//
+//	$ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
+//
 // ```
 type NodePool struct {
 	pulumi.CustomResourceState
@@ -530,7 +629,9 @@ type NodePool struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	KubeletConfiguration NodePoolKubeletConfigurationPtrOutput `pulumi:"kubeletConfiguration"`
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrOutput `pulumi:"management"`
@@ -556,6 +657,8 @@ type NodePool struct {
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RolloutPolicy NodePoolRolloutPolicyPtrOutput `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringOutput `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -593,9 +696,9 @@ type NodePool struct {
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// The system disk snapshot policy id.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskSnapshotPolicyId"`
-	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// A List of Kubernetes taints to assign to the nodes.
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
@@ -687,7 +790,9 @@ type nodePoolState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	KubeletConfiguration *NodePoolKubeletConfiguration `pulumi:"kubeletConfiguration"`
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -713,6 +818,8 @@ type nodePoolState struct {
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -750,9 +857,9 @@ type nodePoolState struct {
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The system disk snapshot policy id.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
-	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// A List of Kubernetes taints to assign to the nodes.
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints []NodePoolTaint `pulumi:"taints"`
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable *bool `pulumi:"unschedulable"`
@@ -807,7 +914,9 @@ type NodePoolState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	KubeletConfiguration NodePoolKubeletConfigurationPtrInput
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrInput
@@ -833,6 +942,8 @@ type NodePoolState struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RolloutPolicy NodePoolRolloutPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -870,9 +981,9 @@ type NodePoolState struct {
 	SystemDiskSize pulumi.IntPtrInput
 	// The system disk snapshot policy id.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
-	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags pulumi.MapInput
-	// A List of Kubernetes taints to assign to the nodes.
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints NodePoolTaintArrayInput
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable pulumi.BoolPtrInput
@@ -931,7 +1042,9 @@ type nodePoolArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	KubeletConfiguration *NodePoolKubeletConfiguration `pulumi:"kubeletConfiguration"`
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -957,6 +1070,8 @@ type nodePoolArgs struct {
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -992,9 +1107,9 @@ type nodePoolArgs struct {
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The system disk snapshot policy id.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
-	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// A List of Kubernetes taints to assign to the nodes.
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints []NodePoolTaint `pulumi:"taints"`
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable *bool `pulumi:"unschedulable"`
@@ -1048,7 +1163,9 @@ type NodePoolArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	KubeletConfiguration NodePoolKubeletConfigurationPtrInput
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrInput
@@ -1074,6 +1191,8 @@ type NodePoolArgs struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RolloutPolicy NodePoolRolloutPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -1109,9 +1228,9 @@ type NodePoolArgs struct {
 	SystemDiskSize pulumi.IntPtrInput
 	// The system disk snapshot policy id.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
-	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 	Tags pulumi.MapInput
-	// A List of Kubernetes taints to assign to the nodes.
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints NodePoolTaintArrayInput
 	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
 	Unschedulable pulumi.BoolPtrInput
@@ -1147,7 +1266,7 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 // NodePoolArrayInput is an input type that accepts NodePoolArray and NodePoolArrayOutput values.
 // You can construct a concrete instance of `NodePoolArrayInput` via:
 //
-//          NodePoolArray{ NodePoolArgs{...} }
+//	NodePoolArray{ NodePoolArgs{...} }
 type NodePoolArrayInput interface {
 	pulumi.Input
 
@@ -1172,7 +1291,7 @@ func (i NodePoolArray) ToNodePoolArrayOutputWithContext(ctx context.Context) Nod
 // NodePoolMapInput is an input type that accepts NodePoolMap and NodePoolMapOutput values.
 // You can construct a concrete instance of `NodePoolMapInput` via:
 //
-//          NodePoolMap{ "key": NodePoolArgs{...} }
+//	NodePoolMap{ "key": NodePoolArgs{...} }
 type NodePoolMapInput interface {
 	pulumi.Input
 
@@ -1313,7 +1432,12 @@ func (o NodePoolOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
 }
 
-// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+// Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+func (o NodePoolOutput) KubeletConfiguration() NodePoolKubeletConfigurationPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolKubeletConfigurationPtrOutput { return v.KubeletConfiguration }).(NodePoolKubeletConfigurationPtrOutput)
+}
+
+// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 func (o NodePoolOutput) Labels() NodePoolLabelArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolLabelArrayOutput { return v.Labels }).(NodePoolLabelArrayOutput)
 }
@@ -1370,6 +1494,11 @@ func (o NodePoolOutput) RdsInstances() pulumi.StringArrayOutput {
 // The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+func (o NodePoolOutput) RolloutPolicy() NodePoolRolloutPolicyPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolRolloutPolicyPtrOutput { return v.RolloutPolicy }).(NodePoolRolloutPolicyPtrOutput)
 }
 
 // The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -1460,12 +1589,12 @@ func (o NodePoolOutput) SystemDiskSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+// A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
 func (o NodePoolOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// A List of Kubernetes taints to assign to the nodes.
+// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 func (o NodePoolOutput) Taints() NodePoolTaintArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolTaintArrayOutput { return v.Taints }).(NodePoolTaintArrayOutput)
 }

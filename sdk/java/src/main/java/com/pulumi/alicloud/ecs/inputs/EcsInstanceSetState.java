@@ -317,14 +317,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+     * @return The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -1216,7 +1216,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetMaxBandwidthOut The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+         * @param internetMaxBandwidthOut The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
          * 
          * @return builder
          * 
@@ -1227,7 +1227,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetMaxBandwidthOut The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+         * @param internetMaxBandwidthOut The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
          * 
          * @return builder
          * 

@@ -16,7 +16,9 @@ import (
 // RDS instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
+//
+//	$ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -1123,7 +1125,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -1148,7 +1150,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 
@@ -1348,12 +1350,12 @@ func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
 }
 
 // User-defined DB instance storage space. Value range:
-// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
-// - [20,1000] for MySQL 5.7 basic single node edition;
-// - [10, 2000] for SQL Server 2008R2;
-// - [20,2000] for SQL Server 2012 basic single node edition
-//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+//   - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+//   - [20,1000] for MySQL 5.7 basic single node edition;
+//   - [10, 2000] for SQL Server 2008R2;
+//   - [20,2000] for SQL Server 2012 basic single node edition
+//     Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+//     Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 func (o InstanceOutput) InstanceStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.InstanceStorage }).(pulumi.IntOutput)
 }

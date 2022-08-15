@@ -6,6 +6,8 @@ package com.pulumi.alicloud.ddos;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
 import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesPlainArgs;
+import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
+import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsPlainArgs;
 import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesArgs;
 import com.pulumi.alicloud.ddos.inputs.GetDdosCooDomainResourcesPlainArgs;
 import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesArgs;
@@ -13,6 +15,7 @@ import com.pulumi.alicloud.ddos.inputs.GetDdosCooInstancesPlainArgs;
 import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsArgs;
 import com.pulumi.alicloud.ddos.inputs.GetDdosCooPortsPlainArgs;
 import com.pulumi.alicloud.ddos.outputs.GetDdosBgpInstancesResult;
+import com.pulumi.alicloud.ddos.outputs.GetDdosBgpIpsResult;
 import com.pulumi.alicloud.ddos.outputs.GetDdosCooDomainResourcesResult;
 import com.pulumi.alicloud.ddos.outputs.GetDdosCooInstancesResult;
 import com.pulumi.alicloud.ddos.outputs.GetDdosCooPortsResult;
@@ -262,6 +265,186 @@ public final class DdosFunctions {
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain(GetDdosBgpInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", TypeShape.of(GetDdosBgpInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.180.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDdosBgpIpsResult> getDdosBgpIps(GetDdosBgpIpsArgs args) {
+        return getDdosBgpIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.180.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDdosBgpIpsResult> getDdosBgpIpsPlain(GetDdosBgpIpsPlainArgs args) {
+        return getDdosBgpIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.180.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDdosBgpIpsResult> getDdosBgpIps(GetDdosBgpIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", TypeShape.of(GetDdosBgpIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.180.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ddos.DdosFunctions;
+     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
+     *             .instanceId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDdosBgpIpsResult> getDdosBgpIpsPlain(GetDdosBgpIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", TypeShape.of(GetDdosBgpIpsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.

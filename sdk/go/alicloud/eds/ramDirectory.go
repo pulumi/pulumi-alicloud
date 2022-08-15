@@ -19,51 +19,54 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := eds.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewRamDirectory(ctx, "defaultRamDirectory", &eds.RamDirectoryArgs{
-// 			DesktopAccessType:    pulumi.String("INTERNET"),
-// 			EnableAdminAccess:    pulumi.Bool(true),
-// 			EnableInternetAccess: pulumi.Bool(true),
-// 			RamDirectoryName:     pulumi.Any(_var.Name),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.String(defaultSwitches.Ids[0]),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := eds.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewRamDirectory(ctx, "defaultRamDirectory", &eds.RamDirectoryArgs{
+//				DesktopAccessType:    pulumi.String("INTERNET"),
+//				EnableAdminAccess:    pulumi.Bool(true),
+//				EnableInternetAccess: pulumi.Bool(true),
+//				RamDirectoryName:     pulumi.Any(_var.Name),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.String(defaultSwitches.Ids[0]),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -71,7 +74,9 @@ import (
 // ECD Ram Directory can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
+//
+//	$ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
+//
 // ```
 type RamDirectory struct {
 	pulumi.CustomResourceState
@@ -211,7 +216,7 @@ func (i *RamDirectory) ToRamDirectoryOutputWithContext(ctx context.Context) RamD
 // RamDirectoryArrayInput is an input type that accepts RamDirectoryArray and RamDirectoryArrayOutput values.
 // You can construct a concrete instance of `RamDirectoryArrayInput` via:
 //
-//          RamDirectoryArray{ RamDirectoryArgs{...} }
+//	RamDirectoryArray{ RamDirectoryArgs{...} }
 type RamDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +241,7 @@ func (i RamDirectoryArray) ToRamDirectoryArrayOutputWithContext(ctx context.Cont
 // RamDirectoryMapInput is an input type that accepts RamDirectoryMap and RamDirectoryMapOutput values.
 // You can construct a concrete instance of `RamDirectoryMapInput` via:
 //
-//          RamDirectoryMap{ "key": RamDirectoryArgs{...} }
+//	RamDirectoryMap{ "key": RamDirectoryArgs{...} }
 type RamDirectoryMapInput interface {
 	pulumi.Input
 

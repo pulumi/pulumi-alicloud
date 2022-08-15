@@ -56,7 +56,7 @@ type GetDomainsDomain struct {
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
 // You can construct a concrete instance of `GetDomainsDomainInput` via:
 //
-//          GetDomainsDomainArgs{...}
+//	GetDomainsDomainArgs{...}
 type GetDomainsDomainInput interface {
 	pulumi.Input
 
@@ -122,7 +122,7 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
-//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
 type GetDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -310,7 +310,7 @@ type GetMailAddressesAddress struct {
 // GetMailAddressesAddressInput is an input type that accepts GetMailAddressesAddressArgs and GetMailAddressesAddressOutput values.
 // You can construct a concrete instance of `GetMailAddressesAddressInput` via:
 //
-//          GetMailAddressesAddressArgs{...}
+//	GetMailAddressesAddressArgs{...}
 type GetMailAddressesAddressInput interface {
 	pulumi.Input
 
@@ -362,7 +362,7 @@ func (i GetMailAddressesAddressArgs) ToGetMailAddressesAddressOutputWithContext(
 // GetMailAddressesAddressArrayInput is an input type that accepts GetMailAddressesAddressArray and GetMailAddressesAddressArrayOutput values.
 // You can construct a concrete instance of `GetMailAddressesAddressArrayInput` via:
 //
-//          GetMailAddressesAddressArray{ GetMailAddressesAddressArgs{...} }
+//	GetMailAddressesAddressArray{ GetMailAddressesAddressArgs{...} }
 type GetMailAddressesAddressArrayInput interface {
 	pulumi.Input
 
@@ -503,7 +503,7 @@ type GetReceiversReceiverse struct {
 // GetReceiversReceiverseInput is an input type that accepts GetReceiversReceiverseArgs and GetReceiversReceiverseOutput values.
 // You can construct a concrete instance of `GetReceiversReceiverseInput` via:
 //
-//          GetReceiversReceiverseArgs{...}
+//	GetReceiversReceiverseArgs{...}
 type GetReceiversReceiverseInput interface {
 	pulumi.Input
 
@@ -543,7 +543,7 @@ func (i GetReceiversReceiverseArgs) ToGetReceiversReceiverseOutputWithContext(ct
 // GetReceiversReceiverseArrayInput is an input type that accepts GetReceiversReceiverseArray and GetReceiversReceiverseArrayOutput values.
 // You can construct a concrete instance of `GetReceiversReceiverseArrayInput` via:
 //
-//          GetReceiversReceiverseArray{ GetReceiversReceiverseArgs{...} }
+//	GetReceiversReceiverseArray{ GetReceiversReceiverseArgs{...} }
 type GetReceiversReceiverseArrayInput interface {
 	pulumi.Input
 
@@ -646,7 +646,7 @@ type GetTagsTag struct {
 // GetTagsTagInput is an input type that accepts GetTagsTagArgs and GetTagsTagOutput values.
 // You can construct a concrete instance of `GetTagsTagInput` via:
 //
-//          GetTagsTagArgs{...}
+//	GetTagsTagArgs{...}
 type GetTagsTagInput interface {
 	pulumi.Input
 
@@ -678,7 +678,7 @@ func (i GetTagsTagArgs) ToGetTagsTagOutputWithContext(ctx context.Context) GetTa
 // GetTagsTagArrayInput is an input type that accepts GetTagsTagArray and GetTagsTagArrayOutput values.
 // You can construct a concrete instance of `GetTagsTagArrayInput` via:
 //
-//          GetTagsTagArray{ GetTagsTagArgs{...} }
+//	GetTagsTagArray{ GetTagsTagArgs{...} }
 type GetTagsTagArrayInput interface {
 	pulumi.Input
 

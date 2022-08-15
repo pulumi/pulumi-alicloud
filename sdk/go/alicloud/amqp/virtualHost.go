@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := amqp.NewVirtualHost(ctx, "example", &amqp.VirtualHostArgs{
-// 			InstanceId:      pulumi.String("amqp-abc12345"),
-// 			VirtualHostName: pulumi.String("my-VirtualHost"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := amqp.NewVirtualHost(ctx, "example", &amqp.VirtualHostArgs{
+//				InstanceId:      pulumi.String("amqp-abc12345"),
+//				VirtualHostName: pulumi.String("my-VirtualHost"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
+//
+//	$ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
+//
 // ```
 type VirtualHost struct {
 	pulumi.CustomResourceState
@@ -152,7 +157,7 @@ func (i *VirtualHost) ToVirtualHostOutputWithContext(ctx context.Context) Virtua
 // VirtualHostArrayInput is an input type that accepts VirtualHostArray and VirtualHostArrayOutput values.
 // You can construct a concrete instance of `VirtualHostArrayInput` via:
 //
-//          VirtualHostArray{ VirtualHostArgs{...} }
+//	VirtualHostArray{ VirtualHostArgs{...} }
 type VirtualHostArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +182,7 @@ func (i VirtualHostArray) ToVirtualHostArrayOutputWithContext(ctx context.Contex
 // VirtualHostMapInput is an input type that accepts VirtualHostMap and VirtualHostMapOutput values.
 // You can construct a concrete instance of `VirtualHostMapInput` via:
 //
-//          VirtualHostMap{ "key": VirtualHostArgs{...} }
+//	VirtualHostMap{ "key": VirtualHostArgs{...} }
 type VirtualHostMapInput interface {
 	pulumi.Input
 

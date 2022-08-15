@@ -23,141 +23,144 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAcl, err := alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
-// 			AclName:         pulumi.String("example_value"),
-// 			ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			AclEntries: alb.AclAclEntryArray{
-// 				&alb.AclAclEntryArgs{
-// 					Description: pulumi.String("description"),
-// 					Entry:       pulumi.String("10.0.0.0/24"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultZones, err := alb.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		default1, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		default2, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[1].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "defaultLoadBalancer", &alb.LoadBalancerArgs{
-// 			VpcId:                pulumi.String(defaultNetworks.Ids[0]),
-// 			AddressType:          pulumi.String("Internet"),
-// 			AddressAllocatedMode: pulumi.String("Fixed"),
-// 			LoadBalancerName:     pulumi.String("example_value"),
-// 			LoadBalancerEdition:  pulumi.String("Standard"),
-// 			ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
-// 				PayType: pulumi.String("PayAsYouGo"),
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 			},
-// 			ZoneMappings: alb.LoadBalancerZoneMappingArray{
-// 				&alb.LoadBalancerZoneMappingArgs{
-// 					VswitchId: pulumi.String(default1.Ids[0]),
-// 					ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 				},
-// 				&alb.LoadBalancerZoneMappingArgs{
-// 					VswitchId: pulumi.String(default2.Ids[0]),
-// 					ZoneId:    pulumi.String(defaultZones.Zones[1].Id),
-// 				},
-// 			},
-// 			ModificationProtectionConfig: &alb.LoadBalancerModificationProtectionConfigArgs{
-// 				Status: pulumi.String("NonProtection"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultServerGroup, err := alb.NewServerGroup(ctx, "defaultServerGroup", &alb.ServerGroupArgs{
-// 			Protocol:        pulumi.String("HTTP"),
-// 			VpcId:           pulumi.String(defaultNetworks.Vpcs[0].Id),
-// 			ServerGroupName: pulumi.String("example_value"),
-// 			ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
-// 				HealthCheckEnabled: pulumi.Bool(false),
-// 			},
-// 			StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
-// 				StickySessionEnabled: pulumi.Bool(false),
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultListener, err := alb.NewListener(ctx, "defaultListener", &alb.ListenerArgs{
-// 			LoadBalancerId:      defaultLoadBalancer.ID(),
-// 			ListenerProtocol:    pulumi.String("HTTP"),
-// 			ListenerPort:        pulumi.Int(80),
-// 			ListenerDescription: pulumi.String("example_value"),
-// 			DefaultActions: alb.ListenerDefaultActionArray{
-// 				&alb.ListenerDefaultActionArgs{
-// 					Type: pulumi.String("ForwardGroup"),
-// 					ForwardGroupConfig: &alb.ListenerDefaultActionForwardGroupConfigArgs{
-// 						ServerGroupTuples: alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{
-// 							&alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{
-// 								ServerGroupId: defaultServerGroup.ID(),
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = alb.NewListenerAclAttachment(ctx, "defaultListenerAclAttachment", &alb.ListenerAclAttachmentArgs{
-// 			AclId:      defaultAcl.ID(),
-// 			ListenerId: defaultListener.ID(),
-// 			AclType:    pulumi.String("White"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAcl, err := alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
+//				AclName:         pulumi.String("example_value"),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				AclEntries: alb.AclAclEntryArray{
+//					&alb.AclAclEntryArgs{
+//						Description: pulumi.String("description"),
+//						Entry:       pulumi.String("10.0.0.0/24"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default2, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[1].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "defaultLoadBalancer", &alb.LoadBalancerArgs{
+//				VpcId:                pulumi.String(defaultNetworks.Ids[0]),
+//				AddressType:          pulumi.String("Internet"),
+//				AddressAllocatedMode: pulumi.String("Fixed"),
+//				LoadBalancerName:     pulumi.String("example_value"),
+//				LoadBalancerEdition:  pulumi.String("Standard"),
+//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
+//					PayType: pulumi.String("PayAsYouGo"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//				},
+//				ZoneMappings: alb.LoadBalancerZoneMappingArray{
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: pulumi.String(default1.Ids[0]),
+//						ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//					},
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: pulumi.String(default2.Ids[0]),
+//						ZoneId:    pulumi.String(defaultZones.Zones[1].Id),
+//					},
+//				},
+//				ModificationProtectionConfig: &alb.LoadBalancerModificationProtectionConfigArgs{
+//					Status: pulumi.String("NonProtection"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerGroup, err := alb.NewServerGroup(ctx, "defaultServerGroup", &alb.ServerGroupArgs{
+//				Protocol:        pulumi.String("HTTP"),
+//				VpcId:           pulumi.String(defaultNetworks.Vpcs[0].Id),
+//				ServerGroupName: pulumi.String("example_value"),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
+//					HealthCheckEnabled: pulumi.Bool(false),
+//				},
+//				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
+//					StickySessionEnabled: pulumi.Bool(false),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultListener, err := alb.NewListener(ctx, "defaultListener", &alb.ListenerArgs{
+//				LoadBalancerId:      defaultLoadBalancer.ID(),
+//				ListenerProtocol:    pulumi.String("HTTP"),
+//				ListenerPort:        pulumi.Int(80),
+//				ListenerDescription: pulumi.String("example_value"),
+//				DefaultActions: alb.ListenerDefaultActionArray{
+//					&alb.ListenerDefaultActionArgs{
+//						Type: pulumi.String("ForwardGroup"),
+//						ForwardGroupConfig: &alb.ListenerDefaultActionForwardGroupConfigArgs{
+//							ServerGroupTuples: alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{
+//								&alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{
+//									ServerGroupId: defaultServerGroup.ID(),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alb.NewListenerAclAttachment(ctx, "defaultListenerAclAttachment", &alb.ListenerAclAttachmentArgs{
+//				AclId:      defaultAcl.ID(),
+//				ListenerId: defaultListener.ID(),
+//				AclType:    pulumi.String("White"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -165,7 +168,9 @@ import (
 // Application Load Balancer (ALB) Listener Acl Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example <listener_id>:<acl_id>
+//
+//	$ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example <listener_id>:<acl_id>
+//
 // ```
 type ListenerAclAttachment struct {
 	pulumi.CustomResourceState
@@ -298,7 +303,7 @@ func (i *ListenerAclAttachment) ToListenerAclAttachmentOutputWithContext(ctx con
 // ListenerAclAttachmentArrayInput is an input type that accepts ListenerAclAttachmentArray and ListenerAclAttachmentArrayOutput values.
 // You can construct a concrete instance of `ListenerAclAttachmentArrayInput` via:
 //
-//          ListenerAclAttachmentArray{ ListenerAclAttachmentArgs{...} }
+//	ListenerAclAttachmentArray{ ListenerAclAttachmentArgs{...} }
 type ListenerAclAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -323,7 +328,7 @@ func (i ListenerAclAttachmentArray) ToListenerAclAttachmentArrayOutputWithContex
 // ListenerAclAttachmentMapInput is an input type that accepts ListenerAclAttachmentMap and ListenerAclAttachmentMapOutput values.
 // You can construct a concrete instance of `ListenerAclAttachmentMapInput` via:
 //
-//          ListenerAclAttachmentMap{ "key": ListenerAclAttachmentArgs{...} }
+//	ListenerAclAttachmentMap{ "key": ListenerAclAttachmentArgs{...} }
 type ListenerAclAttachmentMapInput interface {
 	pulumi.Input
 

@@ -29,7 +29,7 @@ type DomainCertInfo struct {
 // DomainCertInfoInput is an input type that accepts DomainCertInfoArgs and DomainCertInfoOutput values.
 // You can construct a concrete instance of `DomainCertInfoInput` via:
 //
-//          DomainCertInfoArgs{...}
+//	DomainCertInfoArgs{...}
 type DomainCertInfoInput interface {
 	pulumi.Input
 
@@ -68,7 +68,7 @@ func (i DomainCertInfoArgs) ToDomainCertInfoOutputWithContext(ctx context.Contex
 // DomainCertInfoArrayInput is an input type that accepts DomainCertInfoArray and DomainCertInfoArrayOutput values.
 // You can construct a concrete instance of `DomainCertInfoArrayInput` via:
 //
-//          DomainCertInfoArray{ DomainCertInfoArgs{...} }
+//	DomainCertInfoArray{ DomainCertInfoArgs{...} }
 type DomainCertInfoArrayInput interface {
 	pulumi.Input
 
@@ -162,7 +162,7 @@ type DomainConfigFunctionArg struct {
 // DomainConfigFunctionArgInput is an input type that accepts DomainConfigFunctionArgArgs and DomainConfigFunctionArgOutput values.
 // You can construct a concrete instance of `DomainConfigFunctionArgInput` via:
 //
-//          DomainConfigFunctionArgArgs{...}
+//	DomainConfigFunctionArgArgs{...}
 type DomainConfigFunctionArgInput interface {
 	pulumi.Input
 
@@ -192,7 +192,7 @@ func (i DomainConfigFunctionArgArgs) ToDomainConfigFunctionArgOutputWithContext(
 // DomainConfigFunctionArgArrayInput is an input type that accepts DomainConfigFunctionArgArray and DomainConfigFunctionArgArrayOutput values.
 // You can construct a concrete instance of `DomainConfigFunctionArgArrayInput` via:
 //
-//          DomainConfigFunctionArgArray{ DomainConfigFunctionArgArgs{...} }
+//	DomainConfigFunctionArgArray{ DomainConfigFunctionArgArgs{...} }
 type DomainConfigFunctionArgArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +277,7 @@ type DomainSource struct {
 // DomainSourceInput is an input type that accepts DomainSourceArgs and DomainSourceOutput values.
 // You can construct a concrete instance of `DomainSourceInput` via:
 //
-//          DomainSourceArgs{...}
+//	DomainSourceArgs{...}
 type DomainSourceInput interface {
 	pulumi.Input
 
@@ -316,7 +316,7 @@ func (i DomainSourceArgs) ToDomainSourceOutputWithContext(ctx context.Context) D
 // DomainSourceArrayInput is an input type that accepts DomainSourceArray and DomainSourceArrayOutput values.
 // You can construct a concrete instance of `DomainSourceArrayInput` via:
 //
-//          DomainSourceArray{ DomainSourceArgs{...} }
+//	DomainSourceArray{ DomainSourceArgs{...} }
 type DomainSourceArrayInput interface {
 	pulumi.Input
 
@@ -426,7 +426,7 @@ type GetDomainsDomain struct {
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
 // You can construct a concrete instance of `GetDomainsDomainInput` via:
 //
-//          GetDomainsDomainArgs{...}
+//	GetDomainsDomainArgs{...}
 type GetDomainsDomainInput interface {
 	pulumi.Input
 
@@ -472,7 +472,7 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
-//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
 type GetDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -592,7 +592,7 @@ type GetDomainsDomainCertInfo struct {
 // GetDomainsDomainCertInfoInput is an input type that accepts GetDomainsDomainCertInfoArgs and GetDomainsDomainCertInfoOutput values.
 // You can construct a concrete instance of `GetDomainsDomainCertInfoInput` via:
 //
-//          GetDomainsDomainCertInfoArgs{...}
+//	GetDomainsDomainCertInfoArgs{...}
 type GetDomainsDomainCertInfoInput interface {
 	pulumi.Input
 
@@ -626,7 +626,7 @@ func (i GetDomainsDomainCertInfoArgs) ToGetDomainsDomainCertInfoOutputWithContex
 // GetDomainsDomainCertInfoArrayInput is an input type that accepts GetDomainsDomainCertInfoArray and GetDomainsDomainCertInfoArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainCertInfoArrayInput` via:
 //
-//          GetDomainsDomainCertInfoArray{ GetDomainsDomainCertInfoArgs{...} }
+//	GetDomainsDomainCertInfoArray{ GetDomainsDomainCertInfoArgs{...} }
 type GetDomainsDomainCertInfoArrayInput interface {
 	pulumi.Input
 
@@ -718,7 +718,7 @@ type GetDomainsDomainSource struct {
 // GetDomainsDomainSourceInput is an input type that accepts GetDomainsDomainSourceArgs and GetDomainsDomainSourceOutput values.
 // You can construct a concrete instance of `GetDomainsDomainSourceInput` via:
 //
-//          GetDomainsDomainSourceArgs{...}
+//	GetDomainsDomainSourceArgs{...}
 type GetDomainsDomainSourceInput interface {
 	pulumi.Input
 
@@ -754,7 +754,7 @@ func (i GetDomainsDomainSourceArgs) ToGetDomainsDomainSourceOutputWithContext(ct
 // GetDomainsDomainSourceArrayInput is an input type that accepts GetDomainsDomainSourceArray and GetDomainsDomainSourceArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainSourceArrayInput` via:
 //
-//          GetDomainsDomainSourceArray{ GetDomainsDomainSourceArgs{...} }
+//	GetDomainsDomainSourceArray{ GetDomainsDomainSourceArgs{...} }
 type GetDomainsDomainSourceArrayInput interface {
 	pulumi.Input
 

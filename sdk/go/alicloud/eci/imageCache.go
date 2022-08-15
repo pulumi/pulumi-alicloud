@@ -19,33 +19,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eci.NewImageCache(ctx, "example", &eci.ImageCacheArgs{
-// 			EipInstanceId:  pulumi.String("eip-uf60c7cqb2pcrkgxhxxxx"),
-// 			ImageCacheName: pulumi.String("tf-test"),
-// 			Images: pulumi.StringArray{
-// 				pulumi.String("registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"),
-// 			},
-// 			SecurityGroupId: pulumi.String("sg-2zeef68b66fxxxx"),
-// 			VswitchId:       pulumi.String("vsw-2zef9k7ng82xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eci.NewImageCache(ctx, "example", &eci.ImageCacheArgs{
+//				EipInstanceId:  pulumi.String("eip-uf60c7cqb2pcrkgxhxxxx"),
+//				ImageCacheName: pulumi.String("tf-test"),
+//				Images: pulumi.StringArray{
+//					pulumi.String("registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"),
+//				},
+//				SecurityGroupId: pulumi.String("sg-2zeef68b66fxxxx"),
+//				VswitchId:       pulumi.String("vsw-2zef9k7ng82xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // ECI Image Cache can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
+//
+//	$ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
+//
 // ```
 type ImageCache struct {
 	pulumi.CustomResourceState
@@ -255,7 +260,7 @@ func (i *ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCac
 // ImageCacheArrayInput is an input type that accepts ImageCacheArray and ImageCacheArrayOutput values.
 // You can construct a concrete instance of `ImageCacheArrayInput` via:
 //
-//          ImageCacheArray{ ImageCacheArgs{...} }
+//	ImageCacheArray{ ImageCacheArgs{...} }
 type ImageCacheArrayInput interface {
 	pulumi.Input
 
@@ -280,7 +285,7 @@ func (i ImageCacheArray) ToImageCacheArrayOutputWithContext(ctx context.Context)
 // ImageCacheMapInput is an input type that accepts ImageCacheMap and ImageCacheMapOutput values.
 // You can construct a concrete instance of `ImageCacheMapInput` via:
 //
-//          ImageCacheMap{ "key": ImageCacheArgs{...} }
+//	ImageCacheMap{ "key": ImageCacheArgs{...} }
 type ImageCacheMapInput interface {
 	pulumi.Input
 

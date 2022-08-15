@@ -25,24 +25,27 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewCaCertificate(ctx, "foo", &slb.CaCertificateArgs{
-// 			CaCertificate:     pulumi.String(fmt.Sprintf("-----BEGIN CERTIFICATE-----\nMIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=\n-----END CERTIFICATE-----\n")),
-// 			CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slb.NewCaCertificate(ctx, "foo", &slb.CaCertificateArgs{
+//				CaCertificate:     pulumi.String(fmt.Sprintf("-----BEGIN CERTIFICATE-----\nMIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=\n-----END CERTIFICATE-----\n")),
+//				CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // * using CA certificate file
@@ -51,33 +54,36 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewCaCertificate(ctx, "foo-file", &slb.CaCertificateArgs{
-// 			CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
-// 			CaCertificate:     readFileOrPanic(fmt.Sprintf("%v/ca_certificate.pem", path.Module)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slb.NewCaCertificate(ctx, "foo-file", &slb.CaCertificateArgs{
+//				CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
+//				CaCertificate:     readFileOrPanic(fmt.Sprintf("%v/ca_certificate.pem", path.Module)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -85,7 +91,9 @@ import (
 // Server Load balancer CA Certificate can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
+//
+//	$ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
+//
 // ```
 type CaCertificate struct {
 	pulumi.CustomResourceState
@@ -226,7 +234,7 @@ func (i *CaCertificate) ToCaCertificateOutputWithContext(ctx context.Context) Ca
 // CaCertificateArrayInput is an input type that accepts CaCertificateArray and CaCertificateArrayOutput values.
 // You can construct a concrete instance of `CaCertificateArrayInput` via:
 //
-//          CaCertificateArray{ CaCertificateArgs{...} }
+//	CaCertificateArray{ CaCertificateArgs{...} }
 type CaCertificateArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +259,7 @@ func (i CaCertificateArray) ToCaCertificateArrayOutputWithContext(ctx context.Co
 // CaCertificateMapInput is an input type that accepts CaCertificateMap and CaCertificateMapOutput values.
 // You can construct a concrete instance of `CaCertificateMapInput` via:
 //
-//          CaCertificateMap{ "key": CaCertificateArgs{...} }
+//	CaCertificateMap{ "key": CaCertificateArgs{...} }
 type CaCertificateMapInput interface {
 	pulumi.Input
 

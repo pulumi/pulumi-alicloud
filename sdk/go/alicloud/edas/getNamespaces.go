@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := edas.GetNamespaces(ctx, &edas.GetNamespacesArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("edasNamespaceId1", ids.Namespaces[0].Id)
-// 		nameRegex, err := edas.GetNamespaces(ctx, &edas.GetNamespacesArgs{
-// 			NameRegex: pulumi.StringRef("^my-Namespace"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("edasNamespaceId2", nameRegex.Namespaces[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := edas.GetNamespaces(ctx, &edas.GetNamespacesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("edasNamespaceId1", ids.Namespaces[0].Id)
+//			nameRegex, err := edas.GetNamespaces(ctx, &edas.GetNamespacesArgs{
+//				NameRegex: pulumi.StringRef("^my-Namespace"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("edasNamespaceId2", nameRegex.Namespaces[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNamespaces(ctx *pulumi.Context, args *GetNamespacesArgs, opts ...pulumi.InvokeOption) (*GetNamespacesResult, error) {
 	var rv GetNamespacesResult

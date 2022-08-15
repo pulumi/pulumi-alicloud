@@ -12,27 +12,30 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := pvtz.NewZone(ctx, "foo", &pvtz.ZoneArgs{
-// 			ZoneName: pulumi.String("foo.test.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pvtz.NewZone(ctx, "foo", &pvtz.ZoneArgs{
+//				ZoneName: pulumi.String("foo.test.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -40,7 +43,9 @@ import (
 // Private Zone can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:pvtz/zone:Zone example abc123456
+//
+//	$ pulumi import alicloud:pvtz/zone:Zone example abc123456
+//
 // ```
 type Zone struct {
 	pulumi.CustomResourceState
@@ -245,7 +250,7 @@ func (i *Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 // ZoneArrayInput is an input type that accepts ZoneArray and ZoneArrayOutput values.
 // You can construct a concrete instance of `ZoneArrayInput` via:
 //
-//          ZoneArray{ ZoneArgs{...} }
+//	ZoneArray{ ZoneArgs{...} }
 type ZoneArrayInput interface {
 	pulumi.Input
 
@@ -270,7 +275,7 @@ func (i ZoneArray) ToZoneArrayOutputWithContext(ctx context.Context) ZoneArrayOu
 // ZoneMapInput is an input type that accepts ZoneMap and ZoneMapOutput values.
 // You can construct a concrete instance of `ZoneMapInput` via:
 //
-//          ZoneMap{ "key": ZoneArgs{...} }
+//	ZoneMap{ "key": ZoneArgs{...} }
 type ZoneMapInput interface {
 	pulumi.Input
 
@@ -324,9 +329,9 @@ func (o ZoneOutput) Name() pulumi.StringOutput {
 }
 
 // The recursive DNS proxy. Valid values:
-// - ZONE: indicates that the recursive DNS proxy is disabled.
-// - RECORD: indicates that the recursive DNS proxy is enabled.
-//   Default to "ZONE".
+//   - ZONE: indicates that the recursive DNS proxy is disabled.
+//   - RECORD: indicates that the recursive DNS proxy is enabled.
+//     Default to "ZONE".
 func (o ZoneOutput) ProxyPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.ProxyPattern }).(pulumi.StringPtrOutput)
 }

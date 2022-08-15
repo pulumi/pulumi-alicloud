@@ -19,89 +19,92 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultAlertContact, err := arms.NewAlertContact(ctx, "defaultAlertContact", &arms.AlertContactArgs{
-// 			AlertContactName: pulumi.String("example_value"),
-// 			Email:            pulumi.String("example_value@aaa.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAlertContactGroup, err := arms.NewAlertContactGroup(ctx, "defaultAlertContactGroup", &arms.AlertContactGroupArgs{
-// 			AlertContactGroupName: pulumi.String("example_value"),
-// 			ContactIds: pulumi.StringArray{
-// 				defaultAlertContact.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = arms.NewDispatchRule(ctx, "defaultDispatchRule", &arms.DispatchRuleArgs{
-// 			DispatchRuleName: pulumi.String("example_value"),
-// 			DispatchType:     pulumi.String("CREATE_ALERT"),
-// 			GroupRules: arms.DispatchRuleGroupRuleArray{
-// 				&arms.DispatchRuleGroupRuleArgs{
-// 					GroupWaitTime:  pulumi.Int(5),
-// 					GroupInterval:  pulumi.Int(15),
-// 					RepeatInterval: pulumi.Int(100),
-// 					GroupingFields: pulumi.StringArray{
-// 						pulumi.String("alertname"),
-// 					},
-// 				},
-// 			},
-// 			LabelMatchExpressionGrids: arms.DispatchRuleLabelMatchExpressionGridArray{
-// 				&arms.DispatchRuleLabelMatchExpressionGridArgs{
-// 					LabelMatchExpressionGroups: arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{
-// 						&arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{
-// 							LabelMatchExpressions: arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{
-// 								&arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{
-// 									Key:      pulumi.String("_aliyun_arms_involvedObject_kind"),
-// 									Value:    pulumi.String("app"),
-// 									Operator: pulumi.String("eq"),
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 			NotifyRules: arms.DispatchRuleNotifyRuleArray{
-// 				&arms.DispatchRuleNotifyRuleArgs{
-// 					NotifyObjects: arms.DispatchRuleNotifyRuleNotifyObjectArray{
-// 						&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
-// 							NotifyObjectId: defaultAlertContact.ID(),
-// 							NotifyType:     pulumi.String("ARMS_CONTACT"),
-// 							Name:           pulumi.String("example_value"),
-// 						},
-// 						&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
-// 							NotifyObjectId: defaultAlertContactGroup.ID(),
-// 							NotifyType:     pulumi.String("ARMS_CONTACT_GROUP"),
-// 							Name:           pulumi.String("example_value"),
-// 						},
-// 					},
-// 					NotifyChannels: pulumi.StringArray{
-// 						pulumi.String("dingTalk"),
-// 						pulumi.String("wechat"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAlertContact, err := arms.NewAlertContact(ctx, "defaultAlertContact", &arms.AlertContactArgs{
+//				AlertContactName: pulumi.String("example_value"),
+//				Email:            pulumi.String("example_value@aaa.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlertContactGroup, err := arms.NewAlertContactGroup(ctx, "defaultAlertContactGroup", &arms.AlertContactGroupArgs{
+//				AlertContactGroupName: pulumi.String("example_value"),
+//				ContactIds: pulumi.StringArray{
+//					defaultAlertContact.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = arms.NewDispatchRule(ctx, "defaultDispatchRule", &arms.DispatchRuleArgs{
+//				DispatchRuleName: pulumi.String("example_value"),
+//				DispatchType:     pulumi.String("CREATE_ALERT"),
+//				GroupRules: arms.DispatchRuleGroupRuleArray{
+//					&arms.DispatchRuleGroupRuleArgs{
+//						GroupWaitTime:  pulumi.Int(5),
+//						GroupInterval:  pulumi.Int(15),
+//						RepeatInterval: pulumi.Int(100),
+//						GroupingFields: pulumi.StringArray{
+//							pulumi.String("alertname"),
+//						},
+//					},
+//				},
+//				LabelMatchExpressionGrids: arms.DispatchRuleLabelMatchExpressionGridArray{
+//					&arms.DispatchRuleLabelMatchExpressionGridArgs{
+//						LabelMatchExpressionGroups: arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{
+//							&arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{
+//								LabelMatchExpressions: arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{
+//									&arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{
+//										Key:      pulumi.String("_aliyun_arms_involvedObject_kind"),
+//										Value:    pulumi.String("app"),
+//										Operator: pulumi.String("eq"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				NotifyRules: arms.DispatchRuleNotifyRuleArray{
+//					&arms.DispatchRuleNotifyRuleArgs{
+//						NotifyObjects: arms.DispatchRuleNotifyRuleNotifyObjectArray{
+//							&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
+//								NotifyObjectId: defaultAlertContact.ID(),
+//								NotifyType:     pulumi.String("ARMS_CONTACT"),
+//								Name:           pulumi.String("example_value"),
+//							},
+//							&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
+//								NotifyObjectId: defaultAlertContactGroup.ID(),
+//								NotifyType:     pulumi.String("ARMS_CONTACT_GROUP"),
+//								Name:           pulumi.String("example_value"),
+//							},
+//						},
+//						NotifyChannels: pulumi.StringArray{
+//							pulumi.String("dingTalk"),
+//							pulumi.String("wechat"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -109,7 +112,9 @@ import (
 // Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
+//
+//	$ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
+//
 // ```
 type DispatchRule struct {
 	pulumi.CustomResourceState
@@ -265,7 +270,7 @@ func (i *DispatchRule) ToDispatchRuleOutputWithContext(ctx context.Context) Disp
 // DispatchRuleArrayInput is an input type that accepts DispatchRuleArray and DispatchRuleArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleArrayInput` via:
 //
-//          DispatchRuleArray{ DispatchRuleArgs{...} }
+//	DispatchRuleArray{ DispatchRuleArgs{...} }
 type DispatchRuleArrayInput interface {
 	pulumi.Input
 
@@ -290,7 +295,7 @@ func (i DispatchRuleArray) ToDispatchRuleArrayOutputWithContext(ctx context.Cont
 // DispatchRuleMapInput is an input type that accepts DispatchRuleMap and DispatchRuleMapOutput values.
 // You can construct a concrete instance of `DispatchRuleMapInput` via:
 //
-//          DispatchRuleMap{ "key": DispatchRuleArgs{...} }
+//	DispatchRuleMap{ "key": DispatchRuleArgs{...} }
 type DispatchRuleMapInput interface {
 	pulumi.Input
 

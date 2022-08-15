@@ -191,6 +191,24 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        /// </summary>
+        [Output("maintenanceAction")]
+        public Output<string> MaintenanceAction { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        /// </summary>
+        [Output("maintenanceNotify")]
+        public Output<bool?> MaintenanceNotify { get; private set; } = null!;
+
+        /// <summary>
+        /// The time of maintenance. See the following `Block maintenance_time`.
+        /// </summary>
+        [Output("maintenanceTime")]
+        public Output<Outputs.InstanceMaintenanceTime?> MaintenanceTime { get; private set; } = null!;
+
+        /// <summary>
         /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         /// </summary>
         [Output("operatorType")]
@@ -612,6 +630,24 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
+        /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        /// </summary>
+        [Input("maintenanceAction")]
+        public Input<string>? MaintenanceAction { get; set; }
+
+        /// <summary>
+        /// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        /// </summary>
+        [Input("maintenanceNotify")]
+        public Input<bool>? MaintenanceNotify { get; set; }
+
+        /// <summary>
+        /// The time of maintenance. See the following `Block maintenance_time`.
+        /// </summary>
+        [Input("maintenanceTime")]
+        public Input<Inputs.InstanceMaintenanceTimeArgs>? MaintenanceTime { get; set; }
+
+        /// <summary>
         /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         /// </summary>
         [Input("operatorType")]
@@ -1016,6 +1052,24 @@ namespace Pulumi.AliCloud.Ecs
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        /// </summary>
+        [Input("maintenanceAction")]
+        public Input<string>? MaintenanceAction { get; set; }
+
+        /// <summary>
+        /// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        /// </summary>
+        [Input("maintenanceNotify")]
+        public Input<bool>? MaintenanceNotify { get; set; }
+
+        /// <summary>
+        /// The time of maintenance. See the following `Block maintenance_time`.
+        /// </summary>
+        [Input("maintenanceTime")]
+        public Input<Inputs.InstanceMaintenanceTimeGetArgs>? MaintenanceTime { get; set; }
 
         /// <summary>
         /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.

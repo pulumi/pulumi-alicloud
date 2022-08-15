@@ -16,7 +16,9 @@ import (
 // Ess alarm can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+//
+//	$ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+//
 // ```
 type Alarm struct {
 	pulumi.CustomResourceState
@@ -252,7 +254,7 @@ func (i *Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 // AlarmArrayInput is an input type that accepts AlarmArray and AlarmArrayOutput values.
 // You can construct a concrete instance of `AlarmArrayInput` via:
 //
-//          AlarmArray{ AlarmArgs{...} }
+//	AlarmArray{ AlarmArgs{...} }
 type AlarmArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +279,7 @@ func (i AlarmArray) ToAlarmArrayOutputWithContext(ctx context.Context) AlarmArra
 // AlarmMapInput is an input type that accepts AlarmMap and AlarmMapOutput values.
 // You can construct a concrete instance of `AlarmMapInput` via:
 //
-//          AlarmMap{ "key": AlarmArgs{...} }
+//	AlarmMap{ "key": AlarmArgs{...} }
 type AlarmMapInput interface {
 	pulumi.Input
 

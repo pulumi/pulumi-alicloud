@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
-// 			Bandwidth:     pulumi.Int(201),
-// 			BaseBandwidth: pulumi.Int(20),
-// 			IpCount:       pulumi.Int(100),
-// 			IpType:        pulumi.String("IPv4"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+//				Bandwidth:     pulumi.Int(201),
+//				BaseBandwidth: pulumi.Int(20),
+//				IpCount:       pulumi.Int(100),
+//				IpType:        pulumi.String("IPv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Ddosbgp instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+//
+//	$ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+//
 // ```
 type DdosBgpInstance struct {
 	pulumi.CustomResourceState
@@ -213,7 +218,7 @@ func (i *DdosBgpInstance) ToDdosBgpInstanceOutputWithContext(ctx context.Context
 // DdosBgpInstanceArrayInput is an input type that accepts DdosBgpInstanceArray and DdosBgpInstanceArrayOutput values.
 // You can construct a concrete instance of `DdosBgpInstanceArrayInput` via:
 //
-//          DdosBgpInstanceArray{ DdosBgpInstanceArgs{...} }
+//	DdosBgpInstanceArray{ DdosBgpInstanceArgs{...} }
 type DdosBgpInstanceArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +243,7 @@ func (i DdosBgpInstanceArray) ToDdosBgpInstanceArrayOutputWithContext(ctx contex
 // DdosBgpInstanceMapInput is an input type that accepts DdosBgpInstanceMap and DdosBgpInstanceMapOutput values.
 // You can construct a concrete instance of `DdosBgpInstanceMapInput` via:
 //
-//          DdosBgpInstanceMap{ "key": DdosBgpInstanceArgs{...} }
+//	DdosBgpInstanceMap{ "key": DdosBgpInstanceArgs{...} }
 type DdosBgpInstanceMapInput interface {
 	pulumi.Input
 

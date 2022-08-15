@@ -22,7 +22,7 @@ type GetDedicatedHostAccountsAccount struct {
 // GetDedicatedHostAccountsAccountInput is an input type that accepts GetDedicatedHostAccountsAccountArgs and GetDedicatedHostAccountsAccountOutput values.
 // You can construct a concrete instance of `GetDedicatedHostAccountsAccountInput` via:
 //
-//          GetDedicatedHostAccountsAccountArgs{...}
+//	GetDedicatedHostAccountsAccountArgs{...}
 type GetDedicatedHostAccountsAccountInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i GetDedicatedHostAccountsAccountArgs) ToGetDedicatedHostAccountsAccountOu
 // GetDedicatedHostAccountsAccountArrayInput is an input type that accepts GetDedicatedHostAccountsAccountArray and GetDedicatedHostAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostAccountsAccountArrayInput` via:
 //
-//          GetDedicatedHostAccountsAccountArray{ GetDedicatedHostAccountsAccountArgs{...} }
+//	GetDedicatedHostAccountsAccountArray{ GetDedicatedHostAccountsAccountArgs{...} }
 type GetDedicatedHostAccountsAccountArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +187,7 @@ type GetDedicatedHostGroupsGroup struct {
 // GetDedicatedHostGroupsGroupInput is an input type that accepts GetDedicatedHostGroupsGroupArgs and GetDedicatedHostGroupsGroupOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupInput` via:
 //
-//          GetDedicatedHostGroupsGroupArgs{...}
+//	GetDedicatedHostGroupsGroupArgs{...}
 type GetDedicatedHostGroupsGroupInput interface {
 	pulumi.Input
 
@@ -269,7 +269,7 @@ func (i GetDedicatedHostGroupsGroupArgs) ToGetDedicatedHostGroupsGroupOutputWith
 // GetDedicatedHostGroupsGroupArrayInput is an input type that accepts GetDedicatedHostGroupsGroupArray and GetDedicatedHostGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupArrayInput` via:
 //
-//          GetDedicatedHostGroupsGroupArray{ GetDedicatedHostGroupsGroupArgs{...} }
+//	GetDedicatedHostGroupsGroupArray{ GetDedicatedHostGroupsGroupArgs{...} }
 type GetDedicatedHostGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -474,7 +474,7 @@ type GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType struct {
 // GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeInput is an input type that accepts GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs and GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeInput` via:
 //
-//          GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs{...}
+//	GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs{...}
 type GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeInput interface {
 	pulumi.Input
 
@@ -501,7 +501,7 @@ func (i GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs) ToGetD
 // GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput is an input type that accepts GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray and GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput` via:
 //
-//          GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray{ GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs{...} }
+//	GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray{ GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs{...} }
 type GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput interface {
 	pulumi.Input
 
@@ -569,7 +569,7 @@ type GetDedicatedHostGroupsGroupZoneIdList struct {
 // GetDedicatedHostGroupsGroupZoneIdListInput is an input type that accepts GetDedicatedHostGroupsGroupZoneIdListArgs and GetDedicatedHostGroupsGroupZoneIdListOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupZoneIdListInput` via:
 //
-//          GetDedicatedHostGroupsGroupZoneIdListArgs{...}
+//	GetDedicatedHostGroupsGroupZoneIdListArgs{...}
 type GetDedicatedHostGroupsGroupZoneIdListInput interface {
 	pulumi.Input
 
@@ -597,7 +597,7 @@ func (i GetDedicatedHostGroupsGroupZoneIdListArgs) ToGetDedicatedHostGroupsGroup
 // GetDedicatedHostGroupsGroupZoneIdListArrayInput is an input type that accepts GetDedicatedHostGroupsGroupZoneIdListArray and GetDedicatedHostGroupsGroupZoneIdListArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupZoneIdListArrayInput` via:
 //
-//          GetDedicatedHostGroupsGroupZoneIdListArray{ GetDedicatedHostGroupsGroupZoneIdListArgs{...} }
+//	GetDedicatedHostGroupsGroupZoneIdListArray{ GetDedicatedHostGroupsGroupZoneIdListArgs{...} }
 type GetDedicatedHostGroupsGroupZoneIdListArrayInput interface {
 	pulumi.Input
 
@@ -724,7 +724,7 @@ type GetDedicatedHostsHost struct {
 // GetDedicatedHostsHostInput is an input type that accepts GetDedicatedHostsHostArgs and GetDedicatedHostsHostOutput values.
 // You can construct a concrete instance of `GetDedicatedHostsHostInput` via:
 //
-//          GetDedicatedHostsHostArgs{...}
+//	GetDedicatedHostsHostArgs{...}
 type GetDedicatedHostsHostInput interface {
 	pulumi.Input
 
@@ -810,7 +810,7 @@ func (i GetDedicatedHostsHostArgs) ToGetDedicatedHostsHostOutputWithContext(ctx 
 // GetDedicatedHostsHostArrayInput is an input type that accepts GetDedicatedHostsHostArray and GetDedicatedHostsHostArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostsHostArrayInput` via:
 //
-//          GetDedicatedHostsHostArray{ GetDedicatedHostsHostArgs{...} }
+//	GetDedicatedHostsHostArray{ GetDedicatedHostsHostArgs{...} }
 type GetDedicatedHostsHostArrayInput interface {
 	pulumi.Input
 
@@ -1030,7 +1030,7 @@ type GetHostEcsLevelInfosInfo struct {
 // GetHostEcsLevelInfosInfoInput is an input type that accepts GetHostEcsLevelInfosInfoArgs and GetHostEcsLevelInfosInfoOutput values.
 // You can construct a concrete instance of `GetHostEcsLevelInfosInfoInput` via:
 //
-//          GetHostEcsLevelInfosInfoArgs{...}
+//	GetHostEcsLevelInfosInfoArgs{...}
 type GetHostEcsLevelInfosInfoInput interface {
 	pulumi.Input
 
@@ -1064,7 +1064,7 @@ func (i GetHostEcsLevelInfosInfoArgs) ToGetHostEcsLevelInfosInfoOutputWithContex
 // GetHostEcsLevelInfosInfoArrayInput is an input type that accepts GetHostEcsLevelInfosInfoArray and GetHostEcsLevelInfosInfoArrayOutput values.
 // You can construct a concrete instance of `GetHostEcsLevelInfosInfoArrayInput` via:
 //
-//          GetHostEcsLevelInfosInfoArray{ GetHostEcsLevelInfosInfoArgs{...} }
+//	GetHostEcsLevelInfosInfoArray{ GetHostEcsLevelInfosInfoArgs{...} }
 type GetHostEcsLevelInfosInfoArrayInput interface {
 	pulumi.Input
 
@@ -1152,7 +1152,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -1184,7 +1184,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

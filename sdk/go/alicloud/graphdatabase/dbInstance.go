@@ -19,34 +19,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/graphdatabase"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/graphdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := graphdatabase.NewDbInstance(ctx, "example", &graphdatabase.DbInstanceArgs{
-// 			DbInstanceCategory:    pulumi.String("HA"),
-// 			DbInstanceDescription: pulumi.String("example_value"),
-// 			DbInstanceNetworkType: pulumi.String("vpc"),
-// 			DbInstanceStorageType: pulumi.String("cloud_ssd"),
-// 			DbNodeClass:           pulumi.String("gdb.r.2xlarge"),
-// 			DbNodeStorage:         pulumi.Int("example_value"),
-// 			DbVersion:             pulumi.String("1.0"),
-// 			PaymentType:           pulumi.String("PayAsYouGo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := graphdatabase.NewDbInstance(ctx, "example", &graphdatabase.DbInstanceArgs{
+//				DbInstanceCategory:    pulumi.String("HA"),
+//				DbInstanceDescription: pulumi.String("example_value"),
+//				DbInstanceNetworkType: pulumi.String("vpc"),
+//				DbInstanceStorageType: pulumi.String("cloud_ssd"),
+//				DbNodeClass:           pulumi.String("gdb.r.2xlarge"),
+//				DbNodeStorage:         pulumi.Int("example_value"),
+//				DbVersion:             pulumi.String("1.0"),
+//				PaymentType:           pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Graph Database Db Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
+//
+//	$ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
+//
 // ```
 type DbInstance struct {
 	pulumi.CustomResourceState
@@ -279,7 +284,7 @@ func (i *DbInstance) ToDbInstanceOutputWithContext(ctx context.Context) DbInstan
 // DbInstanceArrayInput is an input type that accepts DbInstanceArray and DbInstanceArrayOutput values.
 // You can construct a concrete instance of `DbInstanceArrayInput` via:
 //
-//          DbInstanceArray{ DbInstanceArgs{...} }
+//	DbInstanceArray{ DbInstanceArgs{...} }
 type DbInstanceArrayInput interface {
 	pulumi.Input
 
@@ -304,7 +309,7 @@ func (i DbInstanceArray) ToDbInstanceArrayOutputWithContext(ctx context.Context)
 // DbInstanceMapInput is an input type that accepts DbInstanceMap and DbInstanceMapOutput values.
 // You can construct a concrete instance of `DbInstanceMapInput` via:
 //
-//          DbInstanceMap{ "key": DbInstanceArgs{...} }
+//	DbInstanceMap{ "key": DbInstanceArgs{...} }
 type DbInstanceMapInput interface {
 	pulumi.Input
 

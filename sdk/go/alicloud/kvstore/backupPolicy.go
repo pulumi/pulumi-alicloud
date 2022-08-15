@@ -13,82 +13,85 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "KVStore"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		multiAz := "false"
-// 		if param := cfg.Get("multiAz"); param != "" {
-// 			multiAz = param
-// 		}
-// 		name := "kvstorebackuppolicyvpc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
-// 			InstanceClass: pulumi.String("Memcache"),
-// 			InstanceName:  pulumi.String(name),
-// 			VswitchId:     defaultSwitch.ID(),
-// 			PrivateIp:     pulumi.String("172.16.0.10"),
-// 			SecurityIps: pulumi.StringArray{
-// 				pulumi.String("10.0.0.1"),
-// 			},
-// 			InstanceType:  pulumi.String("memcache.master.small.default"),
-// 			EngineVersion: pulumi.String("2.8"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = kvstore.NewBackupPolicy(ctx, "defaultBackupPolicy", &kvstore.BackupPolicyArgs{
-// 			InstanceId: defaultInstance.ID(),
-// 			BackupPeriods: pulumi.StringArray{
-// 				pulumi.String("Tuesday"),
-// 				pulumi.String("Wednesday"),
-// 			},
-// 			BackupTime: pulumi.String("10:00Z-11:00Z"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "KVStore"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			multiAz := "false"
+//			if param := cfg.Get("multiAz"); param != "" {
+//				multiAz = param
+//			}
+//			name := "kvstorebackuppolicyvpc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
+//				InstanceClass: pulumi.String("Memcache"),
+//				InstanceName:  pulumi.String(name),
+//				VswitchId:     defaultSwitch.ID(),
+//				PrivateIp:     pulumi.String("172.16.0.10"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.0.0.1"),
+//				},
+//				InstanceType:  pulumi.String("memcache.master.small.default"),
+//				EngineVersion: pulumi.String("2.8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewBackupPolicy(ctx, "defaultBackupPolicy", &kvstore.BackupPolicyArgs{
+//				InstanceId: defaultInstance.ID(),
+//				BackupPeriods: pulumi.StringArray{
+//					pulumi.String("Tuesday"),
+//					pulumi.String("Wednesday"),
+//				},
+//				BackupTime: pulumi.String("10:00Z-11:00Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -96,7 +99,9 @@ import (
 // KVStore backup policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+//
+//	$ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+//
 // ```
 type BackupPolicy struct {
 	pulumi.CustomResourceState
@@ -207,7 +212,7 @@ func (i *BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) Back
 // BackupPolicyArrayInput is an input type that accepts BackupPolicyArray and BackupPolicyArrayOutput values.
 // You can construct a concrete instance of `BackupPolicyArrayInput` via:
 //
-//          BackupPolicyArray{ BackupPolicyArgs{...} }
+//	BackupPolicyArray{ BackupPolicyArgs{...} }
 type BackupPolicyArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +237,7 @@ func (i BackupPolicyArray) ToBackupPolicyArrayOutputWithContext(ctx context.Cont
 // BackupPolicyMapInput is an input type that accepts BackupPolicyMap and BackupPolicyMapOutput values.
 // You can construct a concrete instance of `BackupPolicyMapInput` via:
 //
-//          BackupPolicyMap{ "key": BackupPolicyArgs{...} }
+//	BackupPolicyMap{ "key": BackupPolicyArgs{...} }
 type BackupPolicyMapInput interface {
 	pulumi.Input
 

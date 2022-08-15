@@ -23,39 +23,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "terraformslbaclconfig"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		ipVersion := "ipv4"
-// 		if param := cfg.Get("ipVersion"); param != "" {
-// 			ipVersion = param
-// 		}
-// 		defaultAcl, err := slb.NewAcl(ctx, "defaultAcl", &slb.AclArgs{
-// 			IpVersion: pulumi.String(ipVersion),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = slb.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &slb.AclEntryAttachmentArgs{
-// 			AclId:   defaultAcl.ID(),
-// 			Entry:   pulumi.String("168.10.10.0/24"),
-// 			Comment: pulumi.String("second"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraformslbaclconfig"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			ipVersion := "ipv4"
+//			if param := cfg.Get("ipVersion"); param != "" {
+//				ipVersion = param
+//			}
+//			defaultAcl, err := slb.NewAcl(ctx, "defaultAcl", &slb.AclArgs{
+//				IpVersion: pulumi.String(ipVersion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = slb.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &slb.AclEntryAttachmentArgs{
+//				AclId:   defaultAcl.ID(),
+//				Entry:   pulumi.String("168.10.10.0/24"),
+//				Comment: pulumi.String("second"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Acl entry attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+//
+//	$ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+//
 // ```
 type AclEntryAttachment struct {
 	pulumi.CustomResourceState
@@ -177,7 +182,7 @@ func (i *AclEntryAttachment) ToAclEntryAttachmentOutputWithContext(ctx context.C
 // AclEntryAttachmentArrayInput is an input type that accepts AclEntryAttachmentArray and AclEntryAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclEntryAttachmentArrayInput` via:
 //
-//          AclEntryAttachmentArray{ AclEntryAttachmentArgs{...} }
+//	AclEntryAttachmentArray{ AclEntryAttachmentArgs{...} }
 type AclEntryAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i AclEntryAttachmentArray) ToAclEntryAttachmentArrayOutputWithContext(ctx 
 // AclEntryAttachmentMapInput is an input type that accepts AclEntryAttachmentMap and AclEntryAttachmentMapOutput values.
 // You can construct a concrete instance of `AclEntryAttachmentMapInput` via:
 //
-//          AclEntryAttachmentMap{ "key": AclEntryAttachmentArgs{...} }
+//	AclEntryAttachmentMap{ "key": AclEntryAttachmentArgs{...} }
 type AclEntryAttachmentMapInput interface {
 	pulumi.Input
 

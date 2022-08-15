@@ -18,7 +18,7 @@ type AclEntryList struct {
 // AclEntryListInput is an input type that accepts AclEntryListArgs and AclEntryListOutput values.
 // You can construct a concrete instance of `AclEntryListInput` via:
 //
-//          AclEntryListArgs{...}
+//	AclEntryListArgs{...}
 type AclEntryListInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i AclEntryListArgs) ToAclEntryListOutputWithContext(ctx context.Context) A
 // AclEntryListArrayInput is an input type that accepts AclEntryListArray and AclEntryListArrayOutput values.
 // You can construct a concrete instance of `AclEntryListArrayInput` via:
 //
-//          AclEntryListArray{ AclEntryListArgs{...} }
+//	AclEntryListArray{ AclEntryListArgs{...} }
 type AclEntryListArrayInput interface {
 	pulumi.Input
 
@@ -120,7 +120,7 @@ type BackendServerBackendServer struct {
 // BackendServerBackendServerInput is an input type that accepts BackendServerBackendServerArgs and BackendServerBackendServerOutput values.
 // You can construct a concrete instance of `BackendServerBackendServerInput` via:
 //
-//          BackendServerBackendServerArgs{...}
+//	BackendServerBackendServerArgs{...}
 type BackendServerBackendServerInput interface {
 	pulumi.Input
 
@@ -150,7 +150,7 @@ func (i BackendServerBackendServerArgs) ToBackendServerBackendServerOutputWithCo
 // BackendServerBackendServerArrayInput is an input type that accepts BackendServerBackendServerArray and BackendServerBackendServerArrayOutput values.
 // You can construct a concrete instance of `BackendServerBackendServerArrayInput` via:
 //
-//          BackendServerBackendServerArray{ BackendServerBackendServerArgs{...} }
+//	BackendServerBackendServerArray{ BackendServerBackendServerArgs{...} }
 type BackendServerBackendServerArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +235,7 @@ type ListenerXForwardedFor struct {
 // ListenerXForwardedForInput is an input type that accepts ListenerXForwardedForArgs and ListenerXForwardedForOutput values.
 // You can construct a concrete instance of `ListenerXForwardedForInput` via:
 //
-//          ListenerXForwardedForArgs{...}
+//	ListenerXForwardedForArgs{...}
 type ListenerXForwardedForInput interface {
 	pulumi.Input
 
@@ -276,11 +276,11 @@ func (i ListenerXForwardedForArgs) ToListenerXForwardedForPtrOutputWithContext(c
 // ListenerXForwardedForPtrInput is an input type that accepts ListenerXForwardedForArgs, ListenerXForwardedForPtr and ListenerXForwardedForPtrOutput values.
 // You can construct a concrete instance of `ListenerXForwardedForPtrInput` via:
 //
-//          ListenerXForwardedForArgs{...}
+//	        ListenerXForwardedForArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ListenerXForwardedForPtrInput interface {
 	pulumi.Input
 
@@ -424,7 +424,7 @@ type MasterSlaveServerGroupServer struct {
 // MasterSlaveServerGroupServerInput is an input type that accepts MasterSlaveServerGroupServerArgs and MasterSlaveServerGroupServerOutput values.
 // You can construct a concrete instance of `MasterSlaveServerGroupServerInput` via:
 //
-//          MasterSlaveServerGroupServerArgs{...}
+//	MasterSlaveServerGroupServerArgs{...}
 type MasterSlaveServerGroupServerInput interface {
 	pulumi.Input
 
@@ -456,7 +456,7 @@ func (i MasterSlaveServerGroupServerArgs) ToMasterSlaveServerGroupServerOutputWi
 // MasterSlaveServerGroupServerArrayInput is an input type that accepts MasterSlaveServerGroupServerArray and MasterSlaveServerGroupServerArrayOutput values.
 // You can construct a concrete instance of `MasterSlaveServerGroupServerArrayInput` via:
 //
-//          MasterSlaveServerGroupServerArray{ MasterSlaveServerGroupServerArgs{...} }
+//	MasterSlaveServerGroupServerArray{ MasterSlaveServerGroupServerArgs{...} }
 type MasterSlaveServerGroupServerArrayInput interface {
 	pulumi.Input
 
@@ -546,7 +546,7 @@ type ServerGroupServer struct {
 // ServerGroupServerInput is an input type that accepts ServerGroupServerArgs and ServerGroupServerOutput values.
 // You can construct a concrete instance of `ServerGroupServerInput` via:
 //
-//          ServerGroupServerArgs{...}
+//	ServerGroupServerArgs{...}
 type ServerGroupServerInput interface {
 	pulumi.Input
 
@@ -576,7 +576,7 @@ func (i ServerGroupServerArgs) ToServerGroupServerOutputWithContext(ctx context.
 // ServerGroupServerArrayInput is an input type that accepts ServerGroupServerArray and ServerGroupServerArrayOutput values.
 // You can construct a concrete instance of `ServerGroupServerArrayInput` via:
 //
-//          ServerGroupServerArray{ ServerGroupServerArgs{...} }
+//	ServerGroupServerArray{ ServerGroupServerArgs{...} }
 type ServerGroupServerArrayInput interface {
 	pulumi.Input
 
@@ -667,7 +667,7 @@ type GetAclsAcl struct {
 // GetAclsAclInput is an input type that accepts GetAclsAclArgs and GetAclsAclOutput values.
 // You can construct a concrete instance of `GetAclsAclInput` via:
 //
-//          GetAclsAclArgs{...}
+//	GetAclsAclArgs{...}
 type GetAclsAclInput interface {
 	pulumi.Input
 
@@ -706,7 +706,7 @@ func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAc
 // GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclArrayInput` via:
 //
-//          GetAclsAclArray{ GetAclsAclArgs{...} }
+//	GetAclsAclArray{ GetAclsAclArgs{...} }
 type GetAclsAclArrayInput interface {
 	pulumi.Input
 
@@ -804,7 +804,7 @@ type GetAclsAclEntryList struct {
 // GetAclsAclEntryListInput is an input type that accepts GetAclsAclEntryListArgs and GetAclsAclEntryListOutput values.
 // You can construct a concrete instance of `GetAclsAclEntryListInput` via:
 //
-//          GetAclsAclEntryListArgs{...}
+//	GetAclsAclEntryListArgs{...}
 type GetAclsAclEntryListInput interface {
 	pulumi.Input
 
@@ -832,7 +832,7 @@ func (i GetAclsAclEntryListArgs) ToGetAclsAclEntryListOutputWithContext(ctx cont
 // GetAclsAclEntryListArrayInput is an input type that accepts GetAclsAclEntryListArray and GetAclsAclEntryListArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclEntryListArrayInput` via:
 //
-//          GetAclsAclEntryListArray{ GetAclsAclEntryListArgs{...} }
+//	GetAclsAclEntryListArray{ GetAclsAclEntryListArgs{...} }
 type GetAclsAclEntryListArrayInput interface {
 	pulumi.Input
 
@@ -906,7 +906,7 @@ type GetAclsAclRelatedListener struct {
 // GetAclsAclRelatedListenerInput is an input type that accepts GetAclsAclRelatedListenerArgs and GetAclsAclRelatedListenerOutput values.
 // You can construct a concrete instance of `GetAclsAclRelatedListenerInput` via:
 //
-//          GetAclsAclRelatedListenerArgs{...}
+//	GetAclsAclRelatedListenerArgs{...}
 type GetAclsAclRelatedListenerInput interface {
 	pulumi.Input
 
@@ -936,7 +936,7 @@ func (i GetAclsAclRelatedListenerArgs) ToGetAclsAclRelatedListenerOutputWithCont
 // GetAclsAclRelatedListenerArrayInput is an input type that accepts GetAclsAclRelatedListenerArray and GetAclsAclRelatedListenerArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclRelatedListenerArrayInput` via:
 //
-//          GetAclsAclRelatedListenerArray{ GetAclsAclRelatedListenerArgs{...} }
+//	GetAclsAclRelatedListenerArray{ GetAclsAclRelatedListenerArgs{...} }
 type GetAclsAclRelatedListenerArrayInput interface {
 	pulumi.Input
 
@@ -1078,7 +1078,7 @@ type GetApplicationLoadBalancersBalancer struct {
 // GetApplicationLoadBalancersBalancerInput is an input type that accepts GetApplicationLoadBalancersBalancerArgs and GetApplicationLoadBalancersBalancerOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerInput` via:
 //
-//          GetApplicationLoadBalancersBalancerArgs{...}
+//	GetApplicationLoadBalancersBalancerArgs{...}
 type GetApplicationLoadBalancersBalancerInput interface {
 	pulumi.Input
 
@@ -1168,7 +1168,7 @@ func (i GetApplicationLoadBalancersBalancerArgs) ToGetApplicationLoadBalancersBa
 // GetApplicationLoadBalancersBalancerArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerArray and GetApplicationLoadBalancersBalancerArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerArrayInput` via:
 //
-//          GetApplicationLoadBalancersBalancerArray{ GetApplicationLoadBalancersBalancerArgs{...} }
+//	GetApplicationLoadBalancersBalancerArray{ GetApplicationLoadBalancersBalancerArgs{...} }
 type GetApplicationLoadBalancersBalancerArrayInput interface {
 	pulumi.Input
 
@@ -1404,7 +1404,7 @@ type GetApplicationLoadBalancersBalancerBackendServer struct {
 // GetApplicationLoadBalancersBalancerBackendServerInput is an input type that accepts GetApplicationLoadBalancersBalancerBackendServerArgs and GetApplicationLoadBalancersBalancerBackendServerOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerBackendServerInput` via:
 //
-//          GetApplicationLoadBalancersBalancerBackendServerArgs{...}
+//	GetApplicationLoadBalancersBalancerBackendServerArgs{...}
 type GetApplicationLoadBalancersBalancerBackendServerInput interface {
 	pulumi.Input
 
@@ -1438,7 +1438,7 @@ func (i GetApplicationLoadBalancersBalancerBackendServerArgs) ToGetApplicationLo
 // GetApplicationLoadBalancersBalancerBackendServerArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerBackendServerArray and GetApplicationLoadBalancersBalancerBackendServerArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerBackendServerArrayInput` via:
 //
-//          GetApplicationLoadBalancersBalancerBackendServerArray{ GetApplicationLoadBalancersBalancerBackendServerArgs{...} }
+//	GetApplicationLoadBalancersBalancerBackendServerArray{ GetApplicationLoadBalancersBalancerBackendServerArgs{...} }
 type GetApplicationLoadBalancersBalancerBackendServerArrayInput interface {
 	pulumi.Input
 
@@ -1524,7 +1524,7 @@ type GetApplicationLoadBalancersBalancerListenerPortsAndProtocal struct {
 // GetApplicationLoadBalancersBalancerListenerPortsAndProtocalInput is an input type that accepts GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs and GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerListenerPortsAndProtocalInput` via:
 //
-//          GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs{...}
+//	GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs{...}
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocalInput interface {
 	pulumi.Input
 
@@ -1554,7 +1554,7 @@ func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs) ToGetAp
 // GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArray and GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayInput` via:
 //
-//          GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArray{ GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs{...} }
+//	GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArray{ GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs{...} }
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayInput interface {
 	pulumi.Input
 
@@ -1636,7 +1636,7 @@ type GetApplicationLoadBalancersBalancerListenerPortsAndProtocol struct {
 // GetApplicationLoadBalancersBalancerListenerPortsAndProtocolInput is an input type that accepts GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs and GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerListenerPortsAndProtocolInput` via:
 //
-//          GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs{...}
+//	GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs{...}
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocolInput interface {
 	pulumi.Input
 
@@ -1672,7 +1672,7 @@ func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs) ToGetAp
 // GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArray and GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayInput` via:
 //
-//          GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArray{ GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs{...} }
+//	GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArray{ GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs{...} }
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayInput interface {
 	pulumi.Input
 
@@ -1779,7 +1779,7 @@ type GetApplicationLoadBalancersSlb struct {
 // GetApplicationLoadBalancersSlbInput is an input type that accepts GetApplicationLoadBalancersSlbArgs and GetApplicationLoadBalancersSlbOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersSlbInput` via:
 //
-//          GetApplicationLoadBalancersSlbArgs{...}
+//	GetApplicationLoadBalancersSlbArgs{...}
 type GetApplicationLoadBalancersSlbInput interface {
 	pulumi.Input
 
@@ -1825,7 +1825,7 @@ func (i GetApplicationLoadBalancersSlbArgs) ToGetApplicationLoadBalancersSlbOutp
 // GetApplicationLoadBalancersSlbArrayInput is an input type that accepts GetApplicationLoadBalancersSlbArray and GetApplicationLoadBalancersSlbArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersSlbArrayInput` via:
 //
-//          GetApplicationLoadBalancersSlbArray{ GetApplicationLoadBalancersSlbArgs{...} }
+//	GetApplicationLoadBalancersSlbArray{ GetApplicationLoadBalancersSlbArgs{...} }
 type GetApplicationLoadBalancersSlbArrayInput interface {
 	pulumi.Input
 
@@ -1950,7 +1950,7 @@ type GetAttachmentsSlbAttachment struct {
 // GetAttachmentsSlbAttachmentInput is an input type that accepts GetAttachmentsSlbAttachmentArgs and GetAttachmentsSlbAttachmentOutput values.
 // You can construct a concrete instance of `GetAttachmentsSlbAttachmentInput` via:
 //
-//          GetAttachmentsSlbAttachmentArgs{...}
+//	GetAttachmentsSlbAttachmentArgs{...}
 type GetAttachmentsSlbAttachmentInput interface {
 	pulumi.Input
 
@@ -1980,7 +1980,7 @@ func (i GetAttachmentsSlbAttachmentArgs) ToGetAttachmentsSlbAttachmentOutputWith
 // GetAttachmentsSlbAttachmentArrayInput is an input type that accepts GetAttachmentsSlbAttachmentArray and GetAttachmentsSlbAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetAttachmentsSlbAttachmentArrayInput` via:
 //
-//          GetAttachmentsSlbAttachmentArray{ GetAttachmentsSlbAttachmentArgs{...} }
+//	GetAttachmentsSlbAttachmentArray{ GetAttachmentsSlbAttachmentArgs{...} }
 type GetAttachmentsSlbAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -2058,7 +2058,7 @@ type GetBackendServersBackendServer struct {
 // GetBackendServersBackendServerInput is an input type that accepts GetBackendServersBackendServerArgs and GetBackendServersBackendServerOutput values.
 // You can construct a concrete instance of `GetBackendServersBackendServerInput` via:
 //
-//          GetBackendServersBackendServerArgs{...}
+//	GetBackendServersBackendServerArgs{...}
 type GetBackendServersBackendServerInput interface {
 	pulumi.Input
 
@@ -2090,7 +2090,7 @@ func (i GetBackendServersBackendServerArgs) ToGetBackendServersBackendServerOutp
 // GetBackendServersBackendServerArrayInput is an input type that accepts GetBackendServersBackendServerArray and GetBackendServersBackendServerArrayOutput values.
 // You can construct a concrete instance of `GetBackendServersBackendServerArrayInput` via:
 //
-//          GetBackendServersBackendServerArray{ GetBackendServersBackendServerArgs{...} }
+//	GetBackendServersBackendServerArray{ GetBackendServersBackendServerArgs{...} }
 type GetBackendServersBackendServerArrayInput interface {
 	pulumi.Input
 
@@ -2189,7 +2189,7 @@ type GetCaCertificatesCertificate struct {
 // GetCaCertificatesCertificateInput is an input type that accepts GetCaCertificatesCertificateArgs and GetCaCertificatesCertificateOutput values.
 // You can construct a concrete instance of `GetCaCertificatesCertificateInput` via:
 //
-//          GetCaCertificatesCertificateArgs{...}
+//	GetCaCertificatesCertificateArgs{...}
 type GetCaCertificatesCertificateInput interface {
 	pulumi.Input
 
@@ -2237,7 +2237,7 @@ func (i GetCaCertificatesCertificateArgs) ToGetCaCertificatesCertificateOutputWi
 // GetCaCertificatesCertificateArrayInput is an input type that accepts GetCaCertificatesCertificateArray and GetCaCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCaCertificatesCertificateArrayInput` via:
 //
-//          GetCaCertificatesCertificateArray{ GetCaCertificatesCertificateArgs{...} }
+//	GetCaCertificatesCertificateArray{ GetCaCertificatesCertificateArgs{...} }
 type GetCaCertificatesCertificateArrayInput interface {
 	pulumi.Input
 
@@ -2360,7 +2360,7 @@ type GetDomainExtensionsExtension struct {
 // GetDomainExtensionsExtensionInput is an input type that accepts GetDomainExtensionsExtensionArgs and GetDomainExtensionsExtensionOutput values.
 // You can construct a concrete instance of `GetDomainExtensionsExtensionInput` via:
 //
-//          GetDomainExtensionsExtensionArgs{...}
+//	GetDomainExtensionsExtensionArgs{...}
 type GetDomainExtensionsExtensionInput interface {
 	pulumi.Input
 
@@ -2392,7 +2392,7 @@ func (i GetDomainExtensionsExtensionArgs) ToGetDomainExtensionsExtensionOutputWi
 // GetDomainExtensionsExtensionArrayInput is an input type that accepts GetDomainExtensionsExtensionArray and GetDomainExtensionsExtensionArrayOutput values.
 // You can construct a concrete instance of `GetDomainExtensionsExtensionArrayInput` via:
 //
-//          GetDomainExtensionsExtensionArray{ GetDomainExtensionsExtensionArgs{...} }
+//	GetDomainExtensionsExtensionArray{ GetDomainExtensionsExtensionArgs{...} }
 type GetDomainExtensionsExtensionArrayInput interface {
 	pulumi.Input
 
@@ -2546,7 +2546,7 @@ type GetListenersSlbListener struct {
 // GetListenersSlbListenerInput is an input type that accepts GetListenersSlbListenerArgs and GetListenersSlbListenerOutput values.
 // You can construct a concrete instance of `GetListenersSlbListenerInput` via:
 //
-//          GetListenersSlbListenerArgs{...}
+//	GetListenersSlbListenerArgs{...}
 type GetListenersSlbListenerInput interface {
 	pulumi.Input
 
@@ -2649,7 +2649,7 @@ func (i GetListenersSlbListenerArgs) ToGetListenersSlbListenerOutputWithContext(
 // GetListenersSlbListenerArrayInput is an input type that accepts GetListenersSlbListenerArray and GetListenersSlbListenerArrayOutput values.
 // You can construct a concrete instance of `GetListenersSlbListenerArrayInput` via:
 //
-//          GetListenersSlbListenerArray{ GetListenersSlbListenerArgs{...} }
+//	GetListenersSlbListenerArray{ GetListenersSlbListenerArgs{...} }
 type GetListenersSlbListenerArrayInput interface {
 	pulumi.Input
 
@@ -2968,7 +2968,7 @@ type GetLoadBalancersBalancer struct {
 // GetLoadBalancersBalancerInput is an input type that accepts GetLoadBalancersBalancerArgs and GetLoadBalancersBalancerOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerInput` via:
 //
-//          GetLoadBalancersBalancerArgs{...}
+//	GetLoadBalancersBalancerArgs{...}
 type GetLoadBalancersBalancerInput interface {
 	pulumi.Input
 
@@ -3057,7 +3057,7 @@ func (i GetLoadBalancersBalancerArgs) ToGetLoadBalancersBalancerOutputWithContex
 // GetLoadBalancersBalancerArrayInput is an input type that accepts GetLoadBalancersBalancerArray and GetLoadBalancersBalancerArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerArrayInput` via:
 //
-//          GetLoadBalancersBalancerArray{ GetLoadBalancersBalancerArgs{...} }
+//	GetLoadBalancersBalancerArray{ GetLoadBalancersBalancerArgs{...} }
 type GetLoadBalancersBalancerArrayInput interface {
 	pulumi.Input
 
@@ -3223,24 +3223,27 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-// 			Tags: map[string]interface{}{
-// 				"tagKey1": "tagValue1",
-// 				"tagKey2": "tagValue2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o GetLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
@@ -3286,7 +3289,7 @@ type GetLoadBalancersBalancerBackendServer struct {
 // GetLoadBalancersBalancerBackendServerInput is an input type that accepts GetLoadBalancersBalancerBackendServerArgs and GetLoadBalancersBalancerBackendServerOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerBackendServerInput` via:
 //
-//          GetLoadBalancersBalancerBackendServerArgs{...}
+//	GetLoadBalancersBalancerBackendServerArgs{...}
 type GetLoadBalancersBalancerBackendServerInput interface {
 	pulumi.Input
 
@@ -3316,7 +3319,7 @@ func (i GetLoadBalancersBalancerBackendServerArgs) ToGetLoadBalancersBalancerBac
 // GetLoadBalancersBalancerBackendServerArrayInput is an input type that accepts GetLoadBalancersBalancerBackendServerArray and GetLoadBalancersBalancerBackendServerArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerBackendServerArrayInput` via:
 //
-//          GetLoadBalancersBalancerBackendServerArray{ GetLoadBalancersBalancerBackendServerArgs{...} }
+//	GetLoadBalancersBalancerBackendServerArray{ GetLoadBalancersBalancerBackendServerArgs{...} }
 type GetLoadBalancersBalancerBackendServerArrayInput interface {
 	pulumi.Input
 
@@ -3396,7 +3399,7 @@ type GetLoadBalancersBalancerListenerPortsAndProtocal struct {
 // GetLoadBalancersBalancerListenerPortsAndProtocalInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocalArgs and GetLoadBalancersBalancerListenerPortsAndProtocalOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocalInput` via:
 //
-//          GetLoadBalancersBalancerListenerPortsAndProtocalArgs{...}
+//	GetLoadBalancersBalancerListenerPortsAndProtocalArgs{...}
 type GetLoadBalancersBalancerListenerPortsAndProtocalInput interface {
 	pulumi.Input
 
@@ -3424,7 +3427,7 @@ func (i GetLoadBalancersBalancerListenerPortsAndProtocalArgs) ToGetLoadBalancers
 // GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocalArray and GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput` via:
 //
-//          GetLoadBalancersBalancerListenerPortsAndProtocalArray{ GetLoadBalancersBalancerListenerPortsAndProtocalArgs{...} }
+//	GetLoadBalancersBalancerListenerPortsAndProtocalArray{ GetLoadBalancersBalancerListenerPortsAndProtocalArgs{...} }
 type GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput interface {
 	pulumi.Input
 
@@ -3499,7 +3502,7 @@ type GetLoadBalancersBalancerListenerPortsAndProtocol struct {
 // GetLoadBalancersBalancerListenerPortsAndProtocolInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocolArgs and GetLoadBalancersBalancerListenerPortsAndProtocolOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocolInput` via:
 //
-//          GetLoadBalancersBalancerListenerPortsAndProtocolArgs{...}
+//	GetLoadBalancersBalancerListenerPortsAndProtocolArgs{...}
 type GetLoadBalancersBalancerListenerPortsAndProtocolInput interface {
 	pulumi.Input
 
@@ -3530,7 +3533,7 @@ func (i GetLoadBalancersBalancerListenerPortsAndProtocolArgs) ToGetLoadBalancers
 // GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocolArray and GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput` via:
 //
-//          GetLoadBalancersBalancerListenerPortsAndProtocolArray{ GetLoadBalancersBalancerListenerPortsAndProtocolArgs{...} }
+//	GetLoadBalancersBalancerListenerPortsAndProtocolArray{ GetLoadBalancersBalancerListenerPortsAndProtocolArgs{...} }
 type GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput interface {
 	pulumi.Input
 
@@ -3661,7 +3664,7 @@ type GetLoadBalancersSlb struct {
 // GetLoadBalancersSlbInput is an input type that accepts GetLoadBalancersSlbArgs and GetLoadBalancersSlbOutput values.
 // You can construct a concrete instance of `GetLoadBalancersSlbInput` via:
 //
-//          GetLoadBalancersSlbArgs{...}
+//	GetLoadBalancersSlbArgs{...}
 type GetLoadBalancersSlbInput interface {
 	pulumi.Input
 
@@ -3736,7 +3739,7 @@ func (i GetLoadBalancersSlbArgs) ToGetLoadBalancersSlbOutputWithContext(ctx cont
 // GetLoadBalancersSlbArrayInput is an input type that accepts GetLoadBalancersSlbArray and GetLoadBalancersSlbArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersSlbArrayInput` via:
 //
-//          GetLoadBalancersSlbArray{ GetLoadBalancersSlbArgs{...} }
+//	GetLoadBalancersSlbArray{ GetLoadBalancersSlbArgs{...} }
 type GetLoadBalancersSlbArrayInput interface {
 	pulumi.Input
 
@@ -3827,24 +3830,27 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-// 			Tags: map[string]interface{}{
-// 				"tagKey1": "tagValue1",
-// 				"tagKey2": "tagValue2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o GetLoadBalancersSlbOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
@@ -3892,7 +3898,7 @@ type GetMasterSlaveServerGroupsGroup struct {
 // GetMasterSlaveServerGroupsGroupInput is an input type that accepts GetMasterSlaveServerGroupsGroupArgs and GetMasterSlaveServerGroupsGroupOutput values.
 // You can construct a concrete instance of `GetMasterSlaveServerGroupsGroupInput` via:
 //
-//          GetMasterSlaveServerGroupsGroupArgs{...}
+//	GetMasterSlaveServerGroupsGroupArgs{...}
 type GetMasterSlaveServerGroupsGroupInput interface {
 	pulumi.Input
 
@@ -3924,7 +3930,7 @@ func (i GetMasterSlaveServerGroupsGroupArgs) ToGetMasterSlaveServerGroupsGroupOu
 // GetMasterSlaveServerGroupsGroupArrayInput is an input type that accepts GetMasterSlaveServerGroupsGroupArray and GetMasterSlaveServerGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetMasterSlaveServerGroupsGroupArrayInput` via:
 //
-//          GetMasterSlaveServerGroupsGroupArray{ GetMasterSlaveServerGroupsGroupArgs{...} }
+//	GetMasterSlaveServerGroupsGroupArray{ GetMasterSlaveServerGroupsGroupArgs{...} }
 type GetMasterSlaveServerGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -4011,7 +4017,7 @@ type GetMasterSlaveServerGroupsGroupServer struct {
 // GetMasterSlaveServerGroupsGroupServerInput is an input type that accepts GetMasterSlaveServerGroupsGroupServerArgs and GetMasterSlaveServerGroupsGroupServerOutput values.
 // You can construct a concrete instance of `GetMasterSlaveServerGroupsGroupServerInput` via:
 //
-//          GetMasterSlaveServerGroupsGroupServerArgs{...}
+//	GetMasterSlaveServerGroupsGroupServerArgs{...}
 type GetMasterSlaveServerGroupsGroupServerInput interface {
 	pulumi.Input
 
@@ -4047,7 +4053,7 @@ func (i GetMasterSlaveServerGroupsGroupServerArgs) ToGetMasterSlaveServerGroupsG
 // GetMasterSlaveServerGroupsGroupServerArrayInput is an input type that accepts GetMasterSlaveServerGroupsGroupServerArray and GetMasterSlaveServerGroupsGroupServerArrayOutput values.
 // You can construct a concrete instance of `GetMasterSlaveServerGroupsGroupServerArrayInput` via:
 //
-//          GetMasterSlaveServerGroupsGroupServerArray{ GetMasterSlaveServerGroupsGroupServerArgs{...} }
+//	GetMasterSlaveServerGroupsGroupServerArray{ GetMasterSlaveServerGroupsGroupServerArgs{...} }
 type GetMasterSlaveServerGroupsGroupServerArrayInput interface {
 	pulumi.Input
 
@@ -4144,7 +4150,7 @@ type GetRulesSlbRule struct {
 // GetRulesSlbRuleInput is an input type that accepts GetRulesSlbRuleArgs and GetRulesSlbRuleOutput values.
 // You can construct a concrete instance of `GetRulesSlbRuleInput` via:
 //
-//          GetRulesSlbRuleArgs{...}
+//	GetRulesSlbRuleArgs{...}
 type GetRulesSlbRuleInput interface {
 	pulumi.Input
 
@@ -4180,7 +4186,7 @@ func (i GetRulesSlbRuleArgs) ToGetRulesSlbRuleOutputWithContext(ctx context.Cont
 // GetRulesSlbRuleArrayInput is an input type that accepts GetRulesSlbRuleArray and GetRulesSlbRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesSlbRuleArrayInput` via:
 //
-//          GetRulesSlbRuleArray{ GetRulesSlbRuleArgs{...} }
+//	GetRulesSlbRuleArray{ GetRulesSlbRuleArgs{...} }
 type GetRulesSlbRuleArrayInput interface {
 	pulumi.Input
 
@@ -4295,7 +4301,7 @@ type GetServerCertificatesCertificate struct {
 // GetServerCertificatesCertificateInput is an input type that accepts GetServerCertificatesCertificateArgs and GetServerCertificatesCertificateOutput values.
 // You can construct a concrete instance of `GetServerCertificatesCertificateInput` via:
 //
-//          GetServerCertificatesCertificateArgs{...}
+//	GetServerCertificatesCertificateArgs{...}
 type GetServerCertificatesCertificateInput interface {
 	pulumi.Input
 
@@ -4349,7 +4355,7 @@ func (i GetServerCertificatesCertificateArgs) ToGetServerCertificatesCertificate
 // GetServerCertificatesCertificateArrayInput is an input type that accepts GetServerCertificatesCertificateArray and GetServerCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetServerCertificatesCertificateArrayInput` via:
 //
-//          GetServerCertificatesCertificateArray{ GetServerCertificatesCertificateArgs{...} }
+//	GetServerCertificatesCertificateArray{ GetServerCertificatesCertificateArgs{...} }
 type GetServerCertificatesCertificateArrayInput interface {
 	pulumi.Input
 
@@ -4487,7 +4493,7 @@ type GetServerGroupsSlbServerGroup struct {
 // GetServerGroupsSlbServerGroupInput is an input type that accepts GetServerGroupsSlbServerGroupArgs and GetServerGroupsSlbServerGroupOutput values.
 // You can construct a concrete instance of `GetServerGroupsSlbServerGroupInput` via:
 //
-//          GetServerGroupsSlbServerGroupArgs{...}
+//	GetServerGroupsSlbServerGroupArgs{...}
 type GetServerGroupsSlbServerGroupInput interface {
 	pulumi.Input
 
@@ -4519,7 +4525,7 @@ func (i GetServerGroupsSlbServerGroupArgs) ToGetServerGroupsSlbServerGroupOutput
 // GetServerGroupsSlbServerGroupArrayInput is an input type that accepts GetServerGroupsSlbServerGroupArray and GetServerGroupsSlbServerGroupArrayOutput values.
 // You can construct a concrete instance of `GetServerGroupsSlbServerGroupArrayInput` via:
 //
-//          GetServerGroupsSlbServerGroupArray{ GetServerGroupsSlbServerGroupArgs{...} }
+//	GetServerGroupsSlbServerGroupArray{ GetServerGroupsSlbServerGroupArgs{...} }
 type GetServerGroupsSlbServerGroupArrayInput interface {
 	pulumi.Input
 
@@ -4600,7 +4606,7 @@ type GetServerGroupsSlbServerGroupServer struct {
 // GetServerGroupsSlbServerGroupServerInput is an input type that accepts GetServerGroupsSlbServerGroupServerArgs and GetServerGroupsSlbServerGroupServerOutput values.
 // You can construct a concrete instance of `GetServerGroupsSlbServerGroupServerInput` via:
 //
-//          GetServerGroupsSlbServerGroupServerArgs{...}
+//	GetServerGroupsSlbServerGroupServerArgs{...}
 type GetServerGroupsSlbServerGroupServerInput interface {
 	pulumi.Input
 
@@ -4630,7 +4636,7 @@ func (i GetServerGroupsSlbServerGroupServerArgs) ToGetServerGroupsSlbServerGroup
 // GetServerGroupsSlbServerGroupServerArrayInput is an input type that accepts GetServerGroupsSlbServerGroupServerArray and GetServerGroupsSlbServerGroupServerArrayOutput values.
 // You can construct a concrete instance of `GetServerGroupsSlbServerGroupServerArrayInput` via:
 //
-//          GetServerGroupsSlbServerGroupServerArray{ GetServerGroupsSlbServerGroupServerArgs{...} }
+//	GetServerGroupsSlbServerGroupServerArray{ GetServerGroupsSlbServerGroupServerArgs{...} }
 type GetServerGroupsSlbServerGroupServerArrayInput interface {
 	pulumi.Input
 
@@ -4718,7 +4724,7 @@ type GetTlsCipherPoliciesPolicy struct {
 // GetTlsCipherPoliciesPolicyInput is an input type that accepts GetTlsCipherPoliciesPolicyArgs and GetTlsCipherPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetTlsCipherPoliciesPolicyInput` via:
 //
-//          GetTlsCipherPoliciesPolicyArgs{...}
+//	GetTlsCipherPoliciesPolicyArgs{...}
 type GetTlsCipherPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -4760,7 +4766,7 @@ func (i GetTlsCipherPoliciesPolicyArgs) ToGetTlsCipherPoliciesPolicyOutputWithCo
 // GetTlsCipherPoliciesPolicyArrayInput is an input type that accepts GetTlsCipherPoliciesPolicyArray and GetTlsCipherPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetTlsCipherPoliciesPolicyArrayInput` via:
 //
-//          GetTlsCipherPoliciesPolicyArray{ GetTlsCipherPoliciesPolicyArgs{...} }
+//	GetTlsCipherPoliciesPolicyArray{ GetTlsCipherPoliciesPolicyArgs{...} }
 type GetTlsCipherPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -4870,7 +4876,7 @@ type GetTlsCipherPoliciesPolicyRelateListener struct {
 // GetTlsCipherPoliciesPolicyRelateListenerInput is an input type that accepts GetTlsCipherPoliciesPolicyRelateListenerArgs and GetTlsCipherPoliciesPolicyRelateListenerOutput values.
 // You can construct a concrete instance of `GetTlsCipherPoliciesPolicyRelateListenerInput` via:
 //
-//          GetTlsCipherPoliciesPolicyRelateListenerArgs{...}
+//	GetTlsCipherPoliciesPolicyRelateListenerArgs{...}
 type GetTlsCipherPoliciesPolicyRelateListenerInput interface {
 	pulumi.Input
 
@@ -4902,7 +4908,7 @@ func (i GetTlsCipherPoliciesPolicyRelateListenerArgs) ToGetTlsCipherPoliciesPoli
 // GetTlsCipherPoliciesPolicyRelateListenerArrayInput is an input type that accepts GetTlsCipherPoliciesPolicyRelateListenerArray and GetTlsCipherPoliciesPolicyRelateListenerArrayOutput values.
 // You can construct a concrete instance of `GetTlsCipherPoliciesPolicyRelateListenerArrayInput` via:
 //
-//          GetTlsCipherPoliciesPolicyRelateListenerArray{ GetTlsCipherPoliciesPolicyRelateListenerArgs{...} }
+//	GetTlsCipherPoliciesPolicyRelateListenerArray{ GetTlsCipherPoliciesPolicyRelateListenerArgs{...} }
 type GetTlsCipherPoliciesPolicyRelateListenerArrayInput interface {
 	pulumi.Input
 
@@ -4992,7 +4998,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -5031,7 +5037,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -5125,7 +5131,7 @@ type GetZonesZoneSupportedResource struct {
 // GetZonesZoneSupportedResourceInput is an input type that accepts GetZonesZoneSupportedResourceArgs and GetZonesZoneSupportedResourceOutput values.
 // You can construct a concrete instance of `GetZonesZoneSupportedResourceInput` via:
 //
-//          GetZonesZoneSupportedResourceArgs{...}
+//	GetZonesZoneSupportedResourceArgs{...}
 type GetZonesZoneSupportedResourceInput interface {
 	pulumi.Input
 
@@ -5155,7 +5161,7 @@ func (i GetZonesZoneSupportedResourceArgs) ToGetZonesZoneSupportedResourceOutput
 // GetZonesZoneSupportedResourceArrayInput is an input type that accepts GetZonesZoneSupportedResourceArray and GetZonesZoneSupportedResourceArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneSupportedResourceArrayInput` via:
 //
-//          GetZonesZoneSupportedResourceArray{ GetZonesZoneSupportedResourceArgs{...} }
+//	GetZonesZoneSupportedResourceArray{ GetZonesZoneSupportedResourceArgs{...} }
 type GetZonesZoneSupportedResourceArrayInput interface {
 	pulumi.Input
 

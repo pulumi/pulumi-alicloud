@@ -19,82 +19,85 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:            pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType:    pulumi.String("Internet"),
-// 			OfficeSiteName:       pulumi.String("your_office_site_name"),
-// 			EnableInternetAccess: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
-// 			BundleType: pulumi.StringRef("SYSTEM"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
-// 			PolicyGroupName: pulumi.String("your_policy_group_name"),
-// 			Clipboard:       pulumi.String("readwrite"),
-// 			LocalDrive:      pulumi.String("read"),
-// 			AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-// 					Description: pulumi.String("example_value"),
-// 					CidrIp:      pulumi.String("1.2.3.4/24"),
-// 				},
-// 			},
-// 			AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-// 					Type:        pulumi.String("inflow"),
-// 					Policy:      pulumi.String("accept"),
-// 					Description: pulumi.String("example_value"),
-// 					PortRange:   pulumi.String("80/80"),
-// 					IpProtocol:  pulumi.String("TCP"),
-// 					Priority:    pulumi.String("1"),
-// 					CidrIp:      pulumi.String("0.0.0.0/0"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultUser, err := eds.NewUser(ctx, "defaultUser", &eds.UserArgs{
-// 			EndUserId: pulumi.String("your_end_user_id"),
-// 			Email:     pulumi.String("your_email"),
-// 			Phone:     pulumi.String("your_phone"),
-// 			Password:  pulumi.String("your_password"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
-// 			OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-// 			PolicyGroupId: defaultEcdPolicyGroup.ID(),
-// 			BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
-// 			DesktopName:   pulumi.String("your_desktop_name"),
-// 			EndUserIds: pulumi.StringArray{
-// 				defaultUser.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:            pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType:    pulumi.String("Internet"),
+//				OfficeSiteName:       pulumi.String("your_office_site_name"),
+//				EnableInternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//				BundleType: pulumi.StringRef("SYSTEM"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String("your_policy_group_name"),
+//				Clipboard:       pulumi.String("readwrite"),
+//				LocalDrive:      pulumi.String("read"),
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						Description: pulumi.String("example_value"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String("example_value"),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("0.0.0.0/0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultUser, err := eds.NewUser(ctx, "defaultUser", &eds.UserArgs{
+//				EndUserId: pulumi.String("your_end_user_id"),
+//				Email:     pulumi.String("your_email"),
+//				Phone:     pulumi.String("your_phone"),
+//				Password:  pulumi.String("your_password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
+//				DesktopName:   pulumi.String("your_desktop_name"),
+//				EndUserIds: pulumi.StringArray{
+//					defaultUser.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -102,7 +105,9 @@ import (
 // ECD Desktop can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/desktop:Desktop example <id>
+//
+//	$ pulumi import alicloud:eds/desktop:Desktop example <id>
+//
 // ```
 type Desktop struct {
 	pulumi.CustomResourceState
@@ -379,7 +384,7 @@ func (i *Desktop) ToDesktopOutputWithContext(ctx context.Context) DesktopOutput 
 // DesktopArrayInput is an input type that accepts DesktopArray and DesktopArrayOutput values.
 // You can construct a concrete instance of `DesktopArrayInput` via:
 //
-//          DesktopArray{ DesktopArgs{...} }
+//	DesktopArray{ DesktopArgs{...} }
 type DesktopArrayInput interface {
 	pulumi.Input
 
@@ -404,7 +409,7 @@ func (i DesktopArray) ToDesktopArrayOutputWithContext(ctx context.Context) Deskt
 // DesktopMapInput is an input type that accepts DesktopMap and DesktopMapOutput values.
 // You can construct a concrete instance of `DesktopMapInput` via:
 //
-//          DesktopMap{ "key": DesktopArgs{...} }
+//	DesktopMap{ "key": DesktopArgs{...} }
 type DesktopMapInput interface {
 	pulumi.Input
 

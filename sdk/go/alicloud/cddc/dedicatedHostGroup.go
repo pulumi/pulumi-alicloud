@@ -19,42 +19,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("tf_test_foo"),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
-// 			Engine:                 pulumi.String("MongoDB"),
-// 			VpcId:                  vpc.ID(),
-// 			CpuAllocationRatio:     pulumi.Int(101),
-// 			MemAllocationRatio:     pulumi.Int(50),
-// 			DiskAllocationRatio:    pulumi.Int(200),
-// 			AllocationPolicy:       pulumi.String("Evenly"),
-// 			HostReplacePolicy:      pulumi.String("Manual"),
-// 			DedicatedHostGroupDesc: pulumi.String("tf-testaccDesc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_test_foo"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
+//				Engine:                 pulumi.String("MongoDB"),
+//				VpcId:                  vpc.ID(),
+//				CpuAllocationRatio:     pulumi.Int(101),
+//				MemAllocationRatio:     pulumi.Int(50),
+//				DiskAllocationRatio:    pulumi.Int(200),
+//				AllocationPolicy:       pulumi.String("Evenly"),
+//				HostReplacePolicy:      pulumi.String("Manual"),
+//				DedicatedHostGroupDesc: pulumi.String("tf-testaccDesc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup example <id>
+//
+//	$ pulumi import alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup example <id>
+//
 // ```
 type DedicatedHostGroup struct {
 	pulumi.CustomResourceState
@@ -241,7 +246,7 @@ func (i *DedicatedHostGroup) ToDedicatedHostGroupOutputWithContext(ctx context.C
 // DedicatedHostGroupArrayInput is an input type that accepts DedicatedHostGroupArray and DedicatedHostGroupArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostGroupArrayInput` via:
 //
-//          DedicatedHostGroupArray{ DedicatedHostGroupArgs{...} }
+//	DedicatedHostGroupArray{ DedicatedHostGroupArgs{...} }
 type DedicatedHostGroupArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +271,7 @@ func (i DedicatedHostGroupArray) ToDedicatedHostGroupArrayOutputWithContext(ctx 
 // DedicatedHostGroupMapInput is an input type that accepts DedicatedHostGroupMap and DedicatedHostGroupMapOutput values.
 // You can construct a concrete instance of `DedicatedHostGroupMapInput` via:
 //
-//          DedicatedHostGroupMap{ "key": DedicatedHostGroupArgs{...} }
+//	DedicatedHostGroupMap{ "key": DedicatedHostGroupArgs{...} }
 type DedicatedHostGroupMapInput interface {
 	pulumi.Input
 

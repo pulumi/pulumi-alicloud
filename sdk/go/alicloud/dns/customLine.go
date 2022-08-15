@@ -19,34 +19,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewCustomLine(ctx, "default", &dns.CustomLineArgs{
-// 			CustomLineName: pulumi.String("tf-testacc"),
-// 			DomainName:     pulumi.String("your_domain_name"),
-// 			IpSegmentLists: dns.CustomLineIpSegmentListArray{
-// 				&dns.CustomLineIpSegmentListArgs{
-// 					EndIp:   pulumi.String("192.0.2.125"),
-// 					StartIp: pulumi.String("192.0.2.123"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewCustomLine(ctx, "default", &dns.CustomLineArgs{
+//				CustomLineName: pulumi.String("tf-testacc"),
+//				DomainName:     pulumi.String("your_domain_name"),
+//				IpSegmentLists: dns.CustomLineIpSegmentListArray{
+//					&dns.CustomLineIpSegmentListArgs{
+//						EndIp:   pulumi.String("192.0.2.125"),
+//						StartIp: pulumi.String("192.0.2.123"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Alidns Custom Line can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/customLine:CustomLine example <id>
+//
+//	$ pulumi import alicloud:dns/customLine:CustomLine example <id>
+//
 // ```
 type CustomLine struct {
 	pulumi.CustomResourceState
@@ -181,7 +186,7 @@ func (i *CustomLine) ToCustomLineOutputWithContext(ctx context.Context) CustomLi
 // CustomLineArrayInput is an input type that accepts CustomLineArray and CustomLineArrayOutput values.
 // You can construct a concrete instance of `CustomLineArrayInput` via:
 //
-//          CustomLineArray{ CustomLineArgs{...} }
+//	CustomLineArray{ CustomLineArgs{...} }
 type CustomLineArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +211,7 @@ func (i CustomLineArray) ToCustomLineArrayOutputWithContext(ctx context.Context)
 // CustomLineMapInput is an input type that accepts CustomLineMap and CustomLineMapOutput values.
 // You can construct a concrete instance of `CustomLineMapInput` via:
 //
-//          CustomLineMap{ "key": CustomLineArgs{...} }
+//	CustomLineMap{ "key": CustomLineArgs{...} }
 type CustomLineMapInput interface {
 	pulumi.Input
 

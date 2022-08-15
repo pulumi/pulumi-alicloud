@@ -19,37 +19,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cr.NewNamespace(ctx, "my-namespace", &cr.NamespaceArgs{
-// 			AutoCreate:        pulumi.Bool(false),
-// 			DefaultVisibility: pulumi.String("PUBLIC"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cr.NewRepo(ctx, "my-repo", &cr.RepoArgs{
-// 			Namespace: my_namespace.Name,
-// 			Summary:   pulumi.String("this is summary of my new repo"),
-// 			RepoType:  pulumi.String("PUBLIC"),
-// 			Detail:    pulumi.String("this is a public repo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cr.NewNamespace(ctx, "my-namespace", &cr.NamespaceArgs{
+//				AutoCreate:        pulumi.Bool(false),
+//				DefaultVisibility: pulumi.String("PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewRepo(ctx, "my-repo", &cr.RepoArgs{
+//				Namespace: my_namespace.Name,
+//				Summary:   pulumi.String("this is summary of my new repo"),
+//				RepoType:  pulumi.String("PUBLIC"),
+//				Detail:    pulumi.String("this is a public repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // Container Registry repository can be imported using the `namespace/repository`, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
+//
+//	$ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
+//
 // ```
 type Repo struct {
 	pulumi.CustomResourceState
@@ -200,7 +205,7 @@ func (i *Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 // RepoArrayInput is an input type that accepts RepoArray and RepoArrayOutput values.
 // You can construct a concrete instance of `RepoArrayInput` via:
 //
-//          RepoArray{ RepoArgs{...} }
+//	RepoArray{ RepoArgs{...} }
 type RepoArrayInput interface {
 	pulumi.Input
 
@@ -225,7 +230,7 @@ func (i RepoArray) ToRepoArrayOutputWithContext(ctx context.Context) RepoArrayOu
 // RepoMapInput is an input type that accepts RepoMap and RepoMapOutput values.
 // You can construct a concrete instance of `RepoMapInput` via:
 //
-//          RepoMap{ "key": RepoArgs{...} }
+//	RepoMap{ "key": RepoArgs{...} }
 type RepoMapInput interface {
 	pulumi.Input
 

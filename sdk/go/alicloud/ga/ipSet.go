@@ -19,57 +19,60 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
-// 			Duration:      pulumi.Int(1),
-// 			AutoUseCoupon: pulumi.Bool(true),
-// 			Spec:          pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
-// 			Bandwidth:     pulumi.Int(20),
-// 			Type:          pulumi.String("Basic"),
-// 			BandwidthType: pulumi.String("Basic"),
-// 			Duration:      pulumi.String("1"),
-// 			AutoPay:       pulumi.Bool(true),
-// 			Ratio:         pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-// 			AcceleratorId:      exampleAccelerator.ID(),
-// 			BandwidthPackageId: exampleBandwidthPackage.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ga.NewIpSet(ctx, "exampleIpSet", &ga.IpSetArgs{
-// 			AccelerateRegionId: pulumi.String("cn-hangzhou"),
-// 			Bandwidth:          pulumi.Int(5),
-// 			AcceleratorId:      exampleAccelerator.ID(),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			exampleBandwidthPackageAttachment,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(20),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				Duration:      pulumi.String("1"),
+//				AutoPay:       pulumi.Bool(true),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      exampleAccelerator.ID(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewIpSet(ctx, "exampleIpSet", &ga.IpSetArgs{
+//				AccelerateRegionId: pulumi.String("cn-hangzhou"),
+//				Bandwidth:          pulumi.Int(5),
+//				AcceleratorId:      exampleAccelerator.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exampleBandwidthPackageAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -77,7 +80,9 @@ import (
 // Ga Ip Set can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/ipSet:IpSet example <id>
+//
+//	$ pulumi import alicloud:ga/ipSet:IpSet example <id>
+//
 // ```
 type IpSet struct {
 	pulumi.CustomResourceState
@@ -213,7 +218,7 @@ func (i *IpSet) ToIpSetOutputWithContext(ctx context.Context) IpSetOutput {
 // IpSetArrayInput is an input type that accepts IpSetArray and IpSetArrayOutput values.
 // You can construct a concrete instance of `IpSetArrayInput` via:
 //
-//          IpSetArray{ IpSetArgs{...} }
+//	IpSetArray{ IpSetArgs{...} }
 type IpSetArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +243,7 @@ func (i IpSetArray) ToIpSetArrayOutputWithContext(ctx context.Context) IpSetArra
 // IpSetMapInput is an input type that accepts IpSetMap and IpSetMapOutput values.
 // You can construct a concrete instance of `IpSetMapInput` via:
 //
-//          IpSetMap{ "key": IpSetArgs{...} }
+//	IpSetMap{ "key": IpSetArgs{...} }
 type IpSetMapInput interface {
 	pulumi.Input
 

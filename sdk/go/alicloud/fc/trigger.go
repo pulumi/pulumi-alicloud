@@ -16,7 +16,9 @@ import (
 // Function Compute trigger can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
+//
+//	$ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
+//
 // ```
 type Trigger struct {
 	pulumi.CustomResourceState
@@ -205,7 +207,7 @@ func (i *Trigger) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput 
 // TriggerArrayInput is an input type that accepts TriggerArray and TriggerArrayOutput values.
 // You can construct a concrete instance of `TriggerArrayInput` via:
 //
-//          TriggerArray{ TriggerArgs{...} }
+//	TriggerArray{ TriggerArgs{...} }
 type TriggerArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +232,7 @@ func (i TriggerArray) ToTriggerArrayOutputWithContext(ctx context.Context) Trigg
 // TriggerMapInput is an input type that accepts TriggerMap and TriggerMapOutput values.
 // You can construct a concrete instance of `TriggerMapInput` via:
 //
-//          TriggerMap{ "key": TriggerArgs{...} }
+//	TriggerMap{ "key": TriggerArgs{...} }
 type TriggerMapInput interface {
 	pulumi.Input
 

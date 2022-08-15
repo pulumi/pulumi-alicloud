@@ -20,50 +20,53 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-// 			CenInstanceName: pulumi.String("test_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            defaultInstance.ID(),
-// 			ChildInstanceId:       pulumi.String("vbr-xxxxx"),
-// 			ChildInstanceType:     pulumi.String("VBR"),
-// 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewVbrHealthCheck(ctx, "defaultVbrHealthCheck", &cen.VbrHealthCheckArgs{
-// 			CenId:               defaultInstance.ID(),
-// 			HealthCheckSourceIp: pulumi.String("192.168.1.2"),
-// 			HealthCheckTargetIp: pulumi.String("10.0.0.2"),
-// 			VbrInstanceId:       pulumi.String("vbr-xxxxx"),
-// 			VbrInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 			HealthCheckInterval: pulumi.Int(2),
-// 			HealthyThreshold:    pulumi.Int(8),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			defaultInstanceAttachment,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("test_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            defaultInstance.ID(),
+//				ChildInstanceId:       pulumi.String("vbr-xxxxx"),
+//				ChildInstanceType:     pulumi.String("VBR"),
+//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewVbrHealthCheck(ctx, "defaultVbrHealthCheck", &cen.VbrHealthCheckArgs{
+//				CenId:               defaultInstance.ID(),
+//				HealthCheckSourceIp: pulumi.String("192.168.1.2"),
+//				HealthCheckTargetIp: pulumi.String("10.0.0.2"),
+//				VbrInstanceId:       pulumi.String("vbr-xxxxx"),
+//				VbrInstanceRegionId: pulumi.String("cn-hangzhou"),
+//				HealthCheckInterval: pulumi.Int(2),
+//				HealthyThreshold:    pulumi.Int(8),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultInstanceAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -71,7 +74,9 @@ import (
 // CEN VBR HealthCheck can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
+//
+//	$ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
+//
 // ```
 type VbrHealthCheck struct {
 	pulumi.CustomResourceState
@@ -241,7 +246,7 @@ func (i *VbrHealthCheck) ToVbrHealthCheckOutputWithContext(ctx context.Context) 
 // VbrHealthCheckArrayInput is an input type that accepts VbrHealthCheckArray and VbrHealthCheckArrayOutput values.
 // You can construct a concrete instance of `VbrHealthCheckArrayInput` via:
 //
-//          VbrHealthCheckArray{ VbrHealthCheckArgs{...} }
+//	VbrHealthCheckArray{ VbrHealthCheckArgs{...} }
 type VbrHealthCheckArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +271,7 @@ func (i VbrHealthCheckArray) ToVbrHealthCheckArrayOutputWithContext(ctx context.
 // VbrHealthCheckMapInput is an input type that accepts VbrHealthCheckMap and VbrHealthCheckMapOutput values.
 // You can construct a concrete instance of `VbrHealthCheckMapInput` via:
 //
-//          VbrHealthCheckMap{ "key": VbrHealthCheckArgs{...} }
+//	VbrHealthCheckMap{ "key": VbrHealthCheckArgs{...} }
 type VbrHealthCheckMapInput interface {
 	pulumi.Input
 

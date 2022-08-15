@@ -19,62 +19,65 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
-// 			Current: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
-// 			DbClusterVersion:     pulumi.String("20.3.10.75"),
-// 			Category:             pulumi.String("Basic"),
-// 			DbClusterClass:       pulumi.String("S8"),
-// 			DbClusterNetworkType: pulumi.String("vpc"),
-// 			DbNodeGroupCount:     pulumi.Int(1),
-// 			PaymentType:          pulumi.String("PayAsYouGo"),
-// 			DbNodeStorage:        pulumi.String("500"),
-// 			StorageType:          pulumi.String("cloud_essd"),
-// 			VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
-// 			DbClusterAccessWhiteLists: clickhouse.DbClusterDbClusterAccessWhiteListArray{
-// 				&clickhouse.DbClusterDbClusterAccessWhiteListArgs{
-// 					DbClusterIpArrayAttribute: pulumi.String("test"),
-// 					DbClusterIpArrayName:      pulumi.String("test"),
-// 					SecurityIpList:            pulumi.String("192.168.0.1"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
+//				DbClusterVersion:     pulumi.String("20.3.10.75"),
+//				Category:             pulumi.String("Basic"),
+//				DbClusterClass:       pulumi.String("S8"),
+//				DbClusterNetworkType: pulumi.String("vpc"),
+//				DbNodeGroupCount:     pulumi.Int(1),
+//				PaymentType:          pulumi.String("PayAsYouGo"),
+//				DbNodeStorage:        pulumi.String("500"),
+//				StorageType:          pulumi.String("cloud_essd"),
+//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
+//				DbClusterAccessWhiteLists: clickhouse.DbClusterDbClusterAccessWhiteListArray{
+//					&clickhouse.DbClusterDbClusterAccessWhiteListArgs{
+//						DbClusterIpArrayAttribute: pulumi.String("test"),
+//						DbClusterIpArrayName:      pulumi.String("test"),
+//						SecurityIpList:            pulumi.String("192.168.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +85,9 @@ import (
 // Click House DBCluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
+//
+//	$ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
+//
 // ```
 type DbCluster struct {
 	pulumi.CustomResourceState
@@ -364,7 +369,7 @@ func (i *DbCluster) ToDbClusterOutputWithContext(ctx context.Context) DbClusterO
 // DbClusterArrayInput is an input type that accepts DbClusterArray and DbClusterArrayOutput values.
 // You can construct a concrete instance of `DbClusterArrayInput` via:
 //
-//          DbClusterArray{ DbClusterArgs{...} }
+//	DbClusterArray{ DbClusterArgs{...} }
 type DbClusterArrayInput interface {
 	pulumi.Input
 
@@ -389,7 +394,7 @@ func (i DbClusterArray) ToDbClusterArrayOutputWithContext(ctx context.Context) D
 // DbClusterMapInput is an input type that accepts DbClusterMap and DbClusterMapOutput values.
 // You can construct a concrete instance of `DbClusterMapInput` via:
 //
-//          DbClusterMap{ "key": DbClusterArgs{...} }
+//	DbClusterMap{ "key": DbClusterArgs{...} }
 type DbClusterMapInput interface {
 	pulumi.Input
 

@@ -22,7 +22,9 @@ import (
 // DCDN domain config can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dcdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+//
+//	$ pulumi import alicloud:dcdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+//
 // ```
 type DomainConfig struct {
 	pulumi.CustomResourceState
@@ -151,7 +153,7 @@ func (i *DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) Doma
 // DomainConfigArrayInput is an input type that accepts DomainConfigArray and DomainConfigArrayOutput values.
 // You can construct a concrete instance of `DomainConfigArrayInput` via:
 //
-//          DomainConfigArray{ DomainConfigArgs{...} }
+//	DomainConfigArray{ DomainConfigArgs{...} }
 type DomainConfigArrayInput interface {
 	pulumi.Input
 
@@ -176,7 +178,7 @@ func (i DomainConfigArray) ToDomainConfigArrayOutputWithContext(ctx context.Cont
 // DomainConfigMapInput is an input type that accepts DomainConfigMap and DomainConfigMapOutput values.
 // You can construct a concrete instance of `DomainConfigMapInput` via:
 //
-//          DomainConfigMap{ "key": DomainConfigArgs{...} }
+//	DomainConfigMap{ "key": DomainConfigArgs{...} }
 type DomainConfigMapInput interface {
 	pulumi.Input
 

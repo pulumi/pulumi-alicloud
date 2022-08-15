@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewMetricRuleTemplate(ctx, "example", &cms.MetricRuleTemplateArgs{
-// 			AlertTemplates: cms.MetricRuleTemplateAlertTemplateArray{
-// 				&cms.MetricRuleTemplateAlertTemplateArgs{
-// 					Category: pulumi.String("ecs"),
-// 					Escalations: &cms.MetricRuleTemplateAlertTemplateEscalationsArgs{
-// 						Critical: &cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{
-// 							ComparisonOperator: pulumi.String("GreaterThanThreshold"),
-// 							Statistics:         pulumi.String("Average"),
-// 							Threshold:          pulumi.String("90"),
-// 							Times:              pulumi.String("3"),
-// 						},
-// 					},
-// 					MetricName: pulumi.String("cpu_total"),
-// 					Namespace:  pulumi.String("acs_ecs_dashboard"),
-// 					RuleName:   pulumi.String("tf_testAcc_new"),
-// 				},
-// 			},
-// 			MetricRuleTemplateName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewMetricRuleTemplate(ctx, "example", &cms.MetricRuleTemplateArgs{
+//				AlertTemplates: cms.MetricRuleTemplateAlertTemplateArray{
+//					&cms.MetricRuleTemplateAlertTemplateArgs{
+//						Category: pulumi.String("ecs"),
+//						Escalations: &cms.MetricRuleTemplateAlertTemplateEscalationsArgs{
+//							Critical: &cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{
+//								ComparisonOperator: pulumi.String("GreaterThanThreshold"),
+//								Statistics:         pulumi.String("Average"),
+//								Threshold:          pulumi.String("90"),
+//								Times:              pulumi.String("3"),
+//							},
+//						},
+//						MetricName: pulumi.String("cpu_total"),
+//						Namespace:  pulumi.String("acs_ecs_dashboard"),
+//						RuleName:   pulumi.String("tf_testAcc_new"),
+//					},
+//				},
+//				MetricRuleTemplateName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/metricRuleTemplate:MetricRuleTemplate example <id>
+//
+//	$ pulumi import alicloud:cms/metricRuleTemplate:MetricRuleTemplate example <id>
+//
 // ```
 type MetricRuleTemplate struct {
 	pulumi.CustomResourceState
@@ -254,7 +259,7 @@ func (i *MetricRuleTemplate) ToMetricRuleTemplateOutputWithContext(ctx context.C
 // MetricRuleTemplateArrayInput is an input type that accepts MetricRuleTemplateArray and MetricRuleTemplateArrayOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateArrayInput` via:
 //
-//          MetricRuleTemplateArray{ MetricRuleTemplateArgs{...} }
+//	MetricRuleTemplateArray{ MetricRuleTemplateArgs{...} }
 type MetricRuleTemplateArrayInput interface {
 	pulumi.Input
 
@@ -279,7 +284,7 @@ func (i MetricRuleTemplateArray) ToMetricRuleTemplateArrayOutputWithContext(ctx 
 // MetricRuleTemplateMapInput is an input type that accepts MetricRuleTemplateMap and MetricRuleTemplateMapOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateMapInput` via:
 //
-//          MetricRuleTemplateMap{ "key": MetricRuleTemplateArgs{...} }
+//	MetricRuleTemplateMap{ "key": MetricRuleTemplateArgs{...} }
 type MetricRuleTemplateMapInput interface {
 	pulumi.Input
 

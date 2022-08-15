@@ -19,45 +19,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "onsInstanceName"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		groupName := "GID-onsGroupDatasourceName"
-// 		if param := cfg.Get("groupName"); param != "" {
-// 			groupName = param
-// 		}
-// 		defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
-// 			Remark: pulumi.String("default_ons_instance_remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
-// 			GroupName:  pulumi.String(groupName),
-// 			InstanceId: defaultInstance.ID(),
-// 			Remark:     pulumi.String("dafault_ons_group_remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "onsInstanceName"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			groupName := "GID-onsGroupDatasourceName"
+//			if param := cfg.Get("groupName"); param != "" {
+//				groupName = param
+//			}
+//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+//				Remark: pulumi.String("default_ons_instance_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
+//				GroupName:  pulumi.String(groupName),
+//				InstanceId: defaultInstance.ID(),
+//				Remark:     pulumi.String("dafault_ons_group_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // ONS GROUP can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
+//
+//	$ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
+//
 // ```
 type Group struct {
 	pulumi.CustomResourceState
@@ -236,7 +241,7 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
-//          GroupArray{ GroupArgs{...} }
+//	GroupArray{ GroupArgs{...} }
 type GroupArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +266,7 @@ func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArra
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
 // You can construct a concrete instance of `GroupMapInput` via:
 //
-//          GroupMap{ "key": GroupArgs{...} }
+//	GroupMap{ "key": GroupArgs{...} }
 type GroupMapInput interface {
 	pulumi.Input
 

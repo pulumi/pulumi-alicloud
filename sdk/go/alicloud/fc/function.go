@@ -16,7 +16,9 @@ import (
 // Function Compute function can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
+//
+//	$ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
+//
 // ```
 type Function struct {
 	pulumi.CustomResourceState
@@ -305,7 +307,7 @@ func (i *Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutp
 // FunctionArrayInput is an input type that accepts FunctionArray and FunctionArrayOutput values.
 // You can construct a concrete instance of `FunctionArrayInput` via:
 //
-//          FunctionArray{ FunctionArgs{...} }
+//	FunctionArray{ FunctionArgs{...} }
 type FunctionArrayInput interface {
 	pulumi.Input
 
@@ -330,7 +332,7 @@ func (i FunctionArray) ToFunctionArrayOutputWithContext(ctx context.Context) Fun
 // FunctionMapInput is an input type that accepts FunctionMap and FunctionMapOutput values.
 // You can construct a concrete instance of `FunctionMapInput` via:
 //
-//          FunctionMap{ "key": FunctionArgs{...} }
+//	FunctionMap{ "key": FunctionArgs{...} }
 type FunctionMapInput interface {
 	pulumi.Input
 

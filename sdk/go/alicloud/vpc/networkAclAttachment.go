@@ -13,69 +13,72 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "NatGatewayConfigSpec"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "defaultNetworkAcl", &vpc.NetworkAclArgs{
-// 			VpcId:          defaultNetwork.ID(),
-// 			NetworkAclName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewNetworkAclAttachment(ctx, "defaultNetworkAclAttachment", &vpc.NetworkAclAttachmentArgs{
-// 			NetworkAclId: defaultNetworkAcl.ID(),
-// 			Resources: vpc.NetworkAclAttachmentResourceArray{
-// 				&vpc.NetworkAclAttachmentResourceArgs{
-// 					ResourceId:   defaultSwitch.ID(),
-// 					ResourceType: pulumi.String("VSwitch"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "NatGatewayConfigSpec"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "defaultNetworkAcl", &vpc.NetworkAclArgs{
+//				VpcId:          defaultNetwork.ID(),
+//				NetworkAclName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNetworkAclAttachment(ctx, "defaultNetworkAclAttachment", &vpc.NetworkAclAttachmentArgs{
+//				NetworkAclId: defaultNetworkAcl.ID(),
+//				Resources: vpc.NetworkAclAttachmentResourceArray{
+//					&vpc.NetworkAclAttachmentResourceArgs{
+//						ResourceId:   defaultSwitch.ID(),
+//						ResourceType: pulumi.String("VSwitch"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type NetworkAclAttachment struct {
 	pulumi.CustomResourceState
@@ -179,7 +182,7 @@ func (i *NetworkAclAttachment) ToNetworkAclAttachmentOutputWithContext(ctx conte
 // NetworkAclAttachmentArrayInput is an input type that accepts NetworkAclAttachmentArray and NetworkAclAttachmentArrayOutput values.
 // You can construct a concrete instance of `NetworkAclAttachmentArrayInput` via:
 //
-//          NetworkAclAttachmentArray{ NetworkAclAttachmentArgs{...} }
+//	NetworkAclAttachmentArray{ NetworkAclAttachmentArgs{...} }
 type NetworkAclAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +207,7 @@ func (i NetworkAclAttachmentArray) ToNetworkAclAttachmentArrayOutputWithContext(
 // NetworkAclAttachmentMapInput is an input type that accepts NetworkAclAttachmentMap and NetworkAclAttachmentMapOutput values.
 // You can construct a concrete instance of `NetworkAclAttachmentMapInput` via:
 //
-//          NetworkAclAttachmentMap{ "key": NetworkAclAttachmentArgs{...} }
+//	NetworkAclAttachmentMap{ "key": NetworkAclAttachmentArgs{...} }
 type NetworkAclAttachmentMapInput interface {
 	pulumi.Input
 

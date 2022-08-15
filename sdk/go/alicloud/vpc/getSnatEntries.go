@@ -20,75 +20,78 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "snat-entry-example-name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_default, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-// 			VpcId:            fooNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
-// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-// 			VswitchName:      pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooNatGateway, err := vpc.NewNatGateway(ctx, "fooNatGateway", &vpc.NatGatewayArgs{
-// 			VpcId:         fooNetwork.ID(),
-// 			Specification: pulumi.String("Small"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
-// 			AddressName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEipAssociation(ctx, "fooEipAssociation", &ecs.EipAssociationArgs{
-// 			AllocationId: fooEipAddress.ID(),
-// 			InstanceId:   fooNatGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooSnatEntry, err := vpc.NewSnatEntry(ctx, "fooSnatEntry", &vpc.SnatEntryArgs{
-// 			SnatTableId:     fooNatGateway.SnatTableIds,
-// 			SourceVswitchId: fooSwitch.ID(),
-// 			SnatIp:          fooEipAddress.IpAddress,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_ = vpc.GetSnatEntriesOutput(ctx, vpc.GetSnatEntriesOutputArgs{
-// 			SnatTableId: fooSnatEntry.SnatTableId,
-// 		}, nil)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "snat-entry-example-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VpcId:            fooNetwork.ID(),
+//				CidrBlock:        pulumi.String("172.16.0.0/21"),
+//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+//				VswitchName:      pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooNatGateway, err := vpc.NewNatGateway(ctx, "fooNatGateway", &vpc.NatGatewayArgs{
+//				VpcId:         fooNetwork.ID(),
+//				Specification: pulumi.String("Small"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
+//				AddressName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEipAssociation(ctx, "fooEipAssociation", &ecs.EipAssociationArgs{
+//				AllocationId: fooEipAddress.ID(),
+//				InstanceId:   fooNatGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooSnatEntry, err := vpc.NewSnatEntry(ctx, "fooSnatEntry", &vpc.SnatEntryArgs{
+//				SnatTableId:     fooNatGateway.SnatTableIds,
+//				SourceVswitchId: fooSwitch.ID(),
+//				SnatIp:          fooEipAddress.IpAddress,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = vpc.GetSnatEntriesOutput(ctx, vpc.GetSnatEntriesOutputArgs{
+//				SnatTableId: fooSnatEntry.SnatTableId,
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSnatEntries(ctx *pulumi.Context, args *GetSnatEntriesArgs, opts ...pulumi.InvokeOption) (*GetSnatEntriesResult, error) {
 	var rv GetSnatEntriesResult

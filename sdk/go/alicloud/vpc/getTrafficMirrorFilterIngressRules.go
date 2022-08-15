@@ -16,42 +16,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := vpc.GetTrafficMirrorFilterIngressRules(ctx, &vpc.GetTrafficMirrorFilterIngressRulesArgs{
-// 			TrafficMirrorFilterId: "example_traffic_mirror_filter_id",
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorFilterIngressRuleId1", ids.Rules[0].Id)
-// 		status, err := vpc.GetTrafficMirrorFilterIngressRules(ctx, &vpc.GetTrafficMirrorFilterIngressRulesArgs{
-// 			TrafficMirrorFilterId: "example_traffic_mirror_filter_id",
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			Status: pulumi.StringRef("Created"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorFilterIngressRuleId2", status.Rules[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetTrafficMirrorFilterIngressRules(ctx, &vpc.GetTrafficMirrorFilterIngressRulesArgs{
+//				TrafficMirrorFilterId: "example_traffic_mirror_filter_id",
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorFilterIngressRuleId1", ids.Rules[0].Id)
+//			status, err := vpc.GetTrafficMirrorFilterIngressRules(ctx, &vpc.GetTrafficMirrorFilterIngressRulesArgs{
+//				TrafficMirrorFilterId: "example_traffic_mirror_filter_id",
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Status: pulumi.StringRef("Created"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorFilterIngressRuleId2", status.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTrafficMirrorFilterIngressRules(ctx *pulumi.Context, args *GetTrafficMirrorFilterIngressRulesArgs, opts ...pulumi.InvokeOption) (*GetTrafficMirrorFilterIngressRulesResult, error) {
 	var rv GetTrafficMirrorFilterIngressRulesResult

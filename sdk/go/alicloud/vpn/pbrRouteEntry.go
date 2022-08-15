@@ -19,61 +19,64 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tfacc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultGateways, err := vpn.GetGateways(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
-// 			IpAddress: pulumi.String("192.168.1.1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultConnection, err := vpn.NewConnection(ctx, "defaultConnection", &vpn.ConnectionArgs{
-// 			CustomerGatewayId: defaultCustomerGateway.ID(),
-// 			VpnGatewayId:      pulumi.String(defaultGateways.Ids[0]),
-// 			LocalSubnets: pulumi.StringArray{
-// 				pulumi.String("192.168.2.0/24"),
-// 			},
-// 			RemoteSubnets: pulumi.StringArray{
-// 				pulumi.String("192.168.3.0/24"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpn.NewPbrRouteEntry(ctx, "defaultPbrRouteEntry", &vpn.PbrRouteEntryArgs{
-// 			VpnGatewayId: pulumi.String(defaultGateways.Ids[0]),
-// 			RouteSource:  pulumi.String("192.168.1.0/24"),
-// 			RouteDest:    pulumi.String("10.0.0.0/24"),
-// 			NextHop:      defaultConnection.ID(),
-// 			Weight:       pulumi.Int(0),
-// 			PublishVpc:   pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfacc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultGateways, err := vpn.GetGateways(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+//				IpAddress: pulumi.String("192.168.1.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultConnection, err := vpn.NewConnection(ctx, "defaultConnection", &vpn.ConnectionArgs{
+//				CustomerGatewayId: defaultCustomerGateway.ID(),
+//				VpnGatewayId:      pulumi.String(defaultGateways.Ids[0]),
+//				LocalSubnets: pulumi.StringArray{
+//					pulumi.String("192.168.2.0/24"),
+//				},
+//				RemoteSubnets: pulumi.StringArray{
+//					pulumi.String("192.168.3.0/24"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewPbrRouteEntry(ctx, "defaultPbrRouteEntry", &vpn.PbrRouteEntryArgs{
+//				VpnGatewayId: pulumi.String(defaultGateways.Ids[0]),
+//				RouteSource:  pulumi.String("192.168.1.0/24"),
+//				RouteDest:    pulumi.String("10.0.0.0/24"),
+//				NextHop:      defaultConnection.ID(),
+//				Weight:       pulumi.Int(0),
+//				PublishVpc:   pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -81,7 +84,9 @@ import (
 // VPN Pbr route entry can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
+//
+//	$ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
+//
 // ```
 type PbrRouteEntry struct {
 	pulumi.CustomResourceState
@@ -243,7 +248,7 @@ func (i *PbrRouteEntry) ToPbrRouteEntryOutputWithContext(ctx context.Context) Pb
 // PbrRouteEntryArrayInput is an input type that accepts PbrRouteEntryArray and PbrRouteEntryArrayOutput values.
 // You can construct a concrete instance of `PbrRouteEntryArrayInput` via:
 //
-//          PbrRouteEntryArray{ PbrRouteEntryArgs{...} }
+//	PbrRouteEntryArray{ PbrRouteEntryArgs{...} }
 type PbrRouteEntryArrayInput interface {
 	pulumi.Input
 
@@ -268,7 +273,7 @@ func (i PbrRouteEntryArray) ToPbrRouteEntryArrayOutputWithContext(ctx context.Co
 // PbrRouteEntryMapInput is an input type that accepts PbrRouteEntryMap and PbrRouteEntryMapOutput values.
 // You can construct a concrete instance of `PbrRouteEntryMapInput` via:
 //
-//          PbrRouteEntryMap{ "key": PbrRouteEntryArgs{...} }
+//	PbrRouteEntryMap{ "key": PbrRouteEntryArgs{...} }
 type PbrRouteEntryMapInput interface {
 	pulumi.Input
 

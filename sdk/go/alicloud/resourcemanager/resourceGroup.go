@@ -18,28 +18,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcemanager.NewResourceGroup(ctx, "example", &resourcemanager.ResourceGroupArgs{
-// 			DisplayName:       pulumi.String("testrd"),
-// 			ResourceGroupName: pulumi.String("testrd"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.NewResourceGroup(ctx, "example", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("testrd"),
+//				ResourceGroupName: pulumi.String("testrd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Resource Manager Resource Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+//
+//	$ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+//
 // ```
 type ResourceGroup struct {
 	pulumi.CustomResourceState
@@ -183,7 +188,7 @@ func (i *ResourceGroup) ToResourceGroupOutputWithContext(ctx context.Context) Re
 // ResourceGroupArrayInput is an input type that accepts ResourceGroupArray and ResourceGroupArrayOutput values.
 // You can construct a concrete instance of `ResourceGroupArrayInput` via:
 //
-//          ResourceGroupArray{ ResourceGroupArgs{...} }
+//	ResourceGroupArray{ ResourceGroupArgs{...} }
 type ResourceGroupArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +213,7 @@ func (i ResourceGroupArray) ToResourceGroupArrayOutputWithContext(ctx context.Co
 // ResourceGroupMapInput is an input type that accepts ResourceGroupMap and ResourceGroupMapOutput values.
 // You can construct a concrete instance of `ResourceGroupMapInput` via:
 //
-//          ResourceGroupMap{ "key": ResourceGroupArgs{...} }
+//	ResourceGroupMap{ "key": ResourceGroupArgs{...} }
 type ResourceGroupMapInput interface {
 	pulumi.Input
 

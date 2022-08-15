@@ -16,26 +16,29 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cloudfirewall.GetAddressBooks(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudFirewallAddressBookId1", ids.Books[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudfirewall.GetAddressBooks(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudFirewallAddressBookId1", ids.Books[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAddressBooks(ctx *pulumi.Context, args *GetAddressBooksArgs, opts ...pulumi.InvokeOption) (*GetAddressBooksResult, error) {
 	var rv GetAddressBooksResult

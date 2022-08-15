@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := alicloud.GetFileCrc64Checksum(ctx, &GetFileCrc64ChecksumArgs{
-// 			Filename: "exampleFileName",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("fileCrc64Checksum", data.Alicloud_file_crc64_checksum.Defualt.Checksum)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alicloud.GetFileCrc64Checksum(ctx, &GetFileCrc64ChecksumArgs{
+//				Filename: "exampleFileName",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("fileCrc64Checksum", data.Alicloud_file_crc64_checksum.Defualt.Checksum)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetFileCrc64Checksum(ctx *pulumi.Context, args *GetFileCrc64ChecksumArgs, opts ...pulumi.InvokeOption) (*GetFileCrc64ChecksumResult, error) {
 	var rv GetFileCrc64ChecksumResult

@@ -18,27 +18,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		scalingconfigurationsDs, err := ess.GetScalingConfigurations(ctx, &ess.GetScalingConfigurationsArgs{
-// 			Ids: []string{
-// 				"scaling_configuration_id1",
-// 				"scaling_configuration_id2",
-// 			},
-// 			NameRegex:      pulumi.StringRef("scaling_configuration_name"),
-// 			ScalingGroupId: pulumi.StringRef("scaling_group_id"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstScalingRule", scalingconfigurationsDs.Configurations[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scalingconfigurationsDs, err := ess.GetScalingConfigurations(ctx, &ess.GetScalingConfigurationsArgs{
+//				Ids: []string{
+//					"scaling_configuration_id1",
+//					"scaling_configuration_id2",
+//				},
+//				NameRegex:      pulumi.StringRef("scaling_configuration_name"),
+//				ScalingGroupId: pulumi.StringRef("scaling_group_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstScalingRule", scalingconfigurationsDs.Configurations[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetScalingConfigurations(ctx *pulumi.Context, args *GetScalingConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetScalingConfigurationsResult, error) {
 	var rv GetScalingConfigurationsResult

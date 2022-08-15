@@ -16,30 +16,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := dts.GetMigrationJobs(ctx, &dts.GetMigrationJobsArgs{
-// 			Ids: []string{
-// 				"dts_job_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dtsMigrationJobId1", ids.Jobs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dts.GetMigrationJobs(ctx, &dts.GetMigrationJobsArgs{
+//				Ids: []string{
+//					"dts_job_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dtsMigrationJobId1", ids.Jobs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetMigrationJobs(ctx *pulumi.Context, args *GetMigrationJobsArgs, opts ...pulumi.InvokeOption) (*GetMigrationJobsResult, error) {
 	var rv GetMigrationJobsResult

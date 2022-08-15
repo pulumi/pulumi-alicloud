@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 export * from "./api";
 export * from "./app";
 export * from "./appAttachment";
+export * from "./backend";
 export * from "./getApis";
 export * from "./getApps";
+export * from "./getBackends";
 export * from "./getGroups";
 export * from "./getService";
 export * from "./group";
@@ -19,6 +21,7 @@ export * from "./vpcAccess";
 import { Api } from "./api";
 import { App } from "./app";
 import { AppAttachment } from "./appAttachment";
+import { Backend } from "./backend";
 import { Group } from "./group";
 import { VpcAccess } from "./vpcAccess";
 
@@ -32,6 +35,8 @@ const _module = {
                 return new App(name, <any>undefined, { urn })
             case "alicloud:apigateway/appAttachment:AppAttachment":
                 return new AppAttachment(name, <any>undefined, { urn })
+            case "alicloud:apigateway/backend:Backend":
+                return new Backend(name, <any>undefined, { urn })
             case "alicloud:apigateway/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "alicloud:apigateway/vpcAccess:VpcAccess":
@@ -44,5 +49,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/api", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/app", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/appAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/backend", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/vpcAccess", _module)

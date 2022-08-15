@@ -122,7 +122,7 @@ func (i *SuspendProcess) ToSuspendProcessOutputWithContext(ctx context.Context) 
 // SuspendProcessArrayInput is an input type that accepts SuspendProcessArray and SuspendProcessArrayOutput values.
 // You can construct a concrete instance of `SuspendProcessArrayInput` via:
 //
-//          SuspendProcessArray{ SuspendProcessArgs{...} }
+//	SuspendProcessArray{ SuspendProcessArgs{...} }
 type SuspendProcessArrayInput interface {
 	pulumi.Input
 
@@ -147,7 +147,7 @@ func (i SuspendProcessArray) ToSuspendProcessArrayOutputWithContext(ctx context.
 // SuspendProcessMapInput is an input type that accepts SuspendProcessMap and SuspendProcessMapOutput values.
 // You can construct a concrete instance of `SuspendProcessMapInput` via:
 //
-//          SuspendProcessMap{ "key": SuspendProcessArgs{...} }
+//	SuspendProcessMap{ "key": SuspendProcessArgs{...} }
 type SuspendProcessMapInput interface {
 	pulumi.Input
 

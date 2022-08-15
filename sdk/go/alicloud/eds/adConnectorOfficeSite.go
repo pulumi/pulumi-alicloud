@@ -19,52 +19,55 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-// 			CenInstanceName: pulumi.Any(_var.Name),
-// 			ProtectionLevel: pulumi.String("REDUCED"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewAdConnectorOfficeSite(ctx, "defaultAdConnectorOfficeSite", &eds.AdConnectorOfficeSiteArgs{
-// 			AdConnectorOfficeSiteName: pulumi.Any(_var.Name),
-// 			Bandwidth:                 pulumi.Int(100),
-// 			CenId:                     defaultInstance.ID(),
-// 			CidrBlock:                 pulumi.String("10.0.0.0/12"),
-// 			DesktopAccessType:         pulumi.String("INTERNET"),
-// 			DnsAddresses: pulumi.StringArray{
-// 				pulumi.String("127.0.0.2"),
-// 			},
-// 			DomainName:           pulumi.String("example1234.com"),
-// 			DomainPassword:       pulumi.String("YourPassword1234"),
-// 			DomainUserName:       pulumi.String("Administrator"),
-// 			EnableAdminAccess:    pulumi.Bool(true),
-// 			EnableInternetAccess: pulumi.Bool(true),
-// 			MfaEnabled:           pulumi.Bool(false),
-// 			SubDomainDnsAddresses: pulumi.StringArray{
-// 				pulumi.String("127.0.0.3"),
-// 			},
-// 			SubDomainName: pulumi.String("child.example1234.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.Any(_var.Name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewAdConnectorOfficeSite(ctx, "defaultAdConnectorOfficeSite", &eds.AdConnectorOfficeSiteArgs{
+//				AdConnectorOfficeSiteName: pulumi.Any(_var.Name),
+//				Bandwidth:                 pulumi.Int(100),
+//				CenId:                     defaultInstance.ID(),
+//				CidrBlock:                 pulumi.String("10.0.0.0/12"),
+//				DesktopAccessType:         pulumi.String("INTERNET"),
+//				DnsAddresses: pulumi.StringArray{
+//					pulumi.String("127.0.0.2"),
+//				},
+//				DomainName:           pulumi.String("example1234.com"),
+//				DomainPassword:       pulumi.String("YourPassword1234"),
+//				DomainUserName:       pulumi.String("Administrator"),
+//				EnableAdminAccess:    pulumi.Bool(true),
+//				EnableInternetAccess: pulumi.Bool(true),
+//				MfaEnabled:           pulumi.Bool(false),
+//				SubDomainDnsAddresses: pulumi.StringArray{
+//					pulumi.String("127.0.0.3"),
+//				},
+//				SubDomainName: pulumi.String("child.example1234.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -72,7 +75,9 @@ import (
 // ECD Ad Connector Office Site can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example <id>
+//
+//	$ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example <id>
+//
 // ```
 type AdConnectorOfficeSite struct {
 	pulumi.CustomResourceState
@@ -376,7 +381,7 @@ func (i *AdConnectorOfficeSite) ToAdConnectorOfficeSiteOutputWithContext(ctx con
 // AdConnectorOfficeSiteArrayInput is an input type that accepts AdConnectorOfficeSiteArray and AdConnectorOfficeSiteArrayOutput values.
 // You can construct a concrete instance of `AdConnectorOfficeSiteArrayInput` via:
 //
-//          AdConnectorOfficeSiteArray{ AdConnectorOfficeSiteArgs{...} }
+//	AdConnectorOfficeSiteArray{ AdConnectorOfficeSiteArgs{...} }
 type AdConnectorOfficeSiteArrayInput interface {
 	pulumi.Input
 
@@ -401,7 +406,7 @@ func (i AdConnectorOfficeSiteArray) ToAdConnectorOfficeSiteArrayOutputWithContex
 // AdConnectorOfficeSiteMapInput is an input type that accepts AdConnectorOfficeSiteMap and AdConnectorOfficeSiteMapOutput values.
 // You can construct a concrete instance of `AdConnectorOfficeSiteMapInput` via:
 //
-//          AdConnectorOfficeSiteMap{ "key": AdConnectorOfficeSiteArgs{...} }
+//	AdConnectorOfficeSiteMap{ "key": AdConnectorOfficeSiteArgs{...} }
 type AdConnectorOfficeSiteMapInput interface {
 	pulumi.Input
 

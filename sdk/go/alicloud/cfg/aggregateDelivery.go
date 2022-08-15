@@ -22,7 +22,9 @@ import (
 // Cloud Config Aggregate Delivery can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
+//
+//	$ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
+//
 // ```
 type AggregateDelivery struct {
 	pulumi.CustomResourceState
@@ -250,7 +252,7 @@ func (i *AggregateDelivery) ToAggregateDeliveryOutputWithContext(ctx context.Con
 // AggregateDeliveryArrayInput is an input type that accepts AggregateDeliveryArray and AggregateDeliveryArrayOutput values.
 // You can construct a concrete instance of `AggregateDeliveryArrayInput` via:
 //
-//          AggregateDeliveryArray{ AggregateDeliveryArgs{...} }
+//	AggregateDeliveryArray{ AggregateDeliveryArgs{...} }
 type AggregateDeliveryArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +277,7 @@ func (i AggregateDeliveryArray) ToAggregateDeliveryArrayOutputWithContext(ctx co
 // AggregateDeliveryMapInput is an input type that accepts AggregateDeliveryMap and AggregateDeliveryMapOutput values.
 // You can construct a concrete instance of `AggregateDeliveryMapInput` via:
 //
-//          AggregateDeliveryMap{ "key": AggregateDeliveryArgs{...} }
+//	AggregateDeliveryMap{ "key": AggregateDeliveryArgs{...} }
 type AggregateDeliveryMapInput interface {
 	pulumi.Input
 

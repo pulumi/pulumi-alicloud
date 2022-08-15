@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := brain.GetIndustrialPidProjects(ctx, &brain.GetIndustrialPidProjectsArgs{
-// 			Ids: []string{
-// 				"3e74e684-cbb5-xxxx",
-// 			},
-// 			NameRegex: pulumi.StringRef("tf-testAcc"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstBrainIndustrialPidProjectId", example.Projects[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := brain.GetIndustrialPidProjects(ctx, &brain.GetIndustrialPidProjectsArgs{
+//				Ids: []string{
+//					"3e74e684-cbb5-xxxx",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstBrainIndustrialPidProjectId", example.Projects[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetIndustrialPidProjects(ctx *pulumi.Context, args *GetIndustrialPidProjectsArgs, opts ...pulumi.InvokeOption) (*GetIndustrialPidProjectsResult, error) {
 	var rv GetIndustrialPidProjectsResult

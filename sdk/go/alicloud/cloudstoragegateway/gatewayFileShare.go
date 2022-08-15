@@ -19,98 +19,101 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
-// 			GatewayClass: pulumi.StringRef("Standard"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("example_value"),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       vpc.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(defaultStocks.Stocks[0].ZoneId),
-// 			VswitchName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "defaultStorageBundle", &cloudstoragegateway.StorageBundleArgs{
-// 			StorageBundleName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
-// 			Description:            pulumi.String("tf-acctestDesalone"),
-// 			GatewayClass:           pulumi.String("Standard"),
-// 			Type:                   pulumi.String("File"),
-// 			PaymentType:            pulumi.String("PayAsYouGo"),
-// 			VswitchId:              defaultSwitch.ID(),
-// 			ReleaseAfterExpiration: pulumi.Bool(true),
-// 			PublicNetworkBandwidth: pulumi.Int(10),
-// 			StorageBundleId:        defaultStorageBundle.ID(),
-// 			Location:               pulumi.String("Cloud"),
-// 			GatewayName:            pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGatewayCacheDisk, err := cloudstoragegateway.NewGatewayCacheDisk(ctx, "defaultGatewayCacheDisk", &cloudstoragegateway.GatewayCacheDiskArgs{
-// 			CacheDiskCategory: pulumi.String("cloud_efficiency"),
-// 			GatewayId:         defaultGateway.ID(),
-// 			CacheDiskSizeInGb: pulumi.Int(50),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-// 			Bucket: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudstoragegateway.NewGatewayFileShare(ctx, "defaultGatewayFileShare", &cloudstoragegateway.GatewayFileShareArgs{
-// 			GatewayFileShareName: pulumi.String("example_value"),
-// 			GatewayId:            defaultGateway.ID(),
-// 			LocalPath:            defaultGatewayCacheDisk.LocalFilePath,
-// 			OssBucketName:        defaultBucket.Bucket,
-// 			OssEndpoint:          defaultBucket.ExtranetEndpoint,
-// 			Protocol:             pulumi.String("NFS"),
-// 			RemoteSync:           pulumi.Bool(true),
-// 			PollingInterval:      pulumi.Int(4500),
-// 			FeLimit:              pulumi.Int(0),
-// 			BackendLimit:         pulumi.Int(0),
-// 			CacheMode:            pulumi.String("Cache"),
-// 			Squash:               pulumi.String("none"),
-// 			LagPeriod:            pulumi.Int(5),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
+//				GatewayClass: pulumi.StringRef("Standard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("example_value"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       vpc.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultStocks.Stocks[0].ZoneId),
+//				VswitchName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "defaultStorageBundle", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
+//				Description:            pulumi.String("tf-acctestDesalone"),
+//				GatewayClass:           pulumi.String("Standard"),
+//				Type:                   pulumi.String("File"),
+//				PaymentType:            pulumi.String("PayAsYouGo"),
+//				VswitchId:              defaultSwitch.ID(),
+//				ReleaseAfterExpiration: pulumi.Bool(true),
+//				PublicNetworkBandwidth: pulumi.Int(10),
+//				StorageBundleId:        defaultStorageBundle.ID(),
+//				Location:               pulumi.String("Cloud"),
+//				GatewayName:            pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewayCacheDisk, err := cloudstoragegateway.NewGatewayCacheDisk(ctx, "defaultGatewayCacheDisk", &cloudstoragegateway.GatewayCacheDiskArgs{
+//				CacheDiskCategory: pulumi.String("cloud_efficiency"),
+//				GatewayId:         defaultGateway.ID(),
+//				CacheDiskSizeInGb: pulumi.Int(50),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudstoragegateway.NewGatewayFileShare(ctx, "defaultGatewayFileShare", &cloudstoragegateway.GatewayFileShareArgs{
+//				GatewayFileShareName: pulumi.String("example_value"),
+//				GatewayId:            defaultGateway.ID(),
+//				LocalPath:            defaultGatewayCacheDisk.LocalFilePath,
+//				OssBucketName:        defaultBucket.Bucket,
+//				OssEndpoint:          defaultBucket.ExtranetEndpoint,
+//				Protocol:             pulumi.String("NFS"),
+//				RemoteSync:           pulumi.Bool(true),
+//				PollingInterval:      pulumi.Int(4500),
+//				FeLimit:              pulumi.Int(0),
+//				BackendLimit:         pulumi.Int(0),
+//				CacheMode:            pulumi.String("Cache"),
+//				Squash:               pulumi.String("none"),
+//				LagPeriod:            pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -118,7 +121,9 @@ import (
 // Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
+//
+//	$ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
+//
 // ```
 type GatewayFileShare struct {
 	pulumi.CustomResourceState
@@ -131,7 +136,7 @@ type GatewayFileShare struct {
 	Browsable pulumi.BoolOutput `pulumi:"browsable"`
 	// Direct reading OSS of the gateway file share.
 	BypassCacheRead pulumi.BoolOutput `pulumi:"bypassCacheRead"`
-	// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+	// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
 	CacheMode pulumi.StringOutput `pulumi:"cacheMode"`
 	// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
 	DirectIo pulumi.BoolOutput `pulumi:"directIo"`
@@ -248,7 +253,7 @@ type gatewayFileShareState struct {
 	Browsable *bool `pulumi:"browsable"`
 	// Direct reading OSS of the gateway file share.
 	BypassCacheRead *bool `pulumi:"bypassCacheRead"`
-	// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+	// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
 	CacheMode *string `pulumi:"cacheMode"`
 	// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
 	DirectIo *bool `pulumi:"directIo"`
@@ -319,7 +324,7 @@ type GatewayFileShareState struct {
 	Browsable pulumi.BoolPtrInput
 	// Direct reading OSS of the gateway file share.
 	BypassCacheRead pulumi.BoolPtrInput
-	// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+	// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
 	CacheMode pulumi.StringPtrInput
 	// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
 	DirectIo pulumi.BoolPtrInput
@@ -394,7 +399,7 @@ type gatewayFileShareArgs struct {
 	Browsable *bool `pulumi:"browsable"`
 	// Direct reading OSS of the gateway file share.
 	BypassCacheRead *bool `pulumi:"bypassCacheRead"`
-	// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+	// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
 	CacheMode *string `pulumi:"cacheMode"`
 	// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
 	DirectIo *bool `pulumi:"directIo"`
@@ -464,7 +469,7 @@ type GatewayFileShareArgs struct {
 	Browsable pulumi.BoolPtrInput
 	// Direct reading OSS of the gateway file share.
 	BypassCacheRead pulumi.BoolPtrInput
-	// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+	// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
 	CacheMode pulumi.StringPtrInput
 	// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
 	DirectIo pulumi.BoolPtrInput
@@ -550,7 +555,7 @@ func (i *GatewayFileShare) ToGatewayFileShareOutputWithContext(ctx context.Conte
 // GatewayFileShareArrayInput is an input type that accepts GatewayFileShareArray and GatewayFileShareArrayOutput values.
 // You can construct a concrete instance of `GatewayFileShareArrayInput` via:
 //
-//          GatewayFileShareArray{ GatewayFileShareArgs{...} }
+//	GatewayFileShareArray{ GatewayFileShareArgs{...} }
 type GatewayFileShareArrayInput interface {
 	pulumi.Input
 
@@ -575,7 +580,7 @@ func (i GatewayFileShareArray) ToGatewayFileShareArrayOutputWithContext(ctx cont
 // GatewayFileShareMapInput is an input type that accepts GatewayFileShareMap and GatewayFileShareMapOutput values.
 // You can construct a concrete instance of `GatewayFileShareMapInput` via:
 //
-//          GatewayFileShareMap{ "key": GatewayFileShareArgs{...} }
+//	GatewayFileShareMap{ "key": GatewayFileShareArgs{...} }
 type GatewayFileShareMapInput interface {
 	pulumi.Input
 
@@ -631,7 +636,7 @@ func (o GatewayFileShareOutput) BypassCacheRead() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GatewayFileShare) pulumi.BoolOutput { return v.BypassCacheRead }).(pulumi.BoolOutput)
 }
 
-// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
 func (o GatewayFileShareOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayFileShare) pulumi.StringOutput { return v.CacheMode }).(pulumi.StringOutput)
 }

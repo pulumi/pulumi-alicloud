@@ -19,38 +19,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := nas.NewAutoSnapshotPolicy(ctx, "example", &nas.AutoSnapshotPolicyArgs{
-// 			AutoSnapshotPolicyName: pulumi.String("example_value"),
-// 			RepeatWeekdays: pulumi.StringArray{
-// 				pulumi.String("3"),
-// 				pulumi.String("4"),
-// 				pulumi.String("5"),
-// 			},
-// 			RetentionDays: pulumi.Int(30),
-// 			TimePoints: pulumi.StringArray{
-// 				pulumi.String("3"),
-// 				pulumi.String("4"),
-// 				pulumi.String("5"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := nas.NewAutoSnapshotPolicy(ctx, "example", &nas.AutoSnapshotPolicyArgs{
+//				AutoSnapshotPolicyName: pulumi.String("example_value"),
+//				RepeatWeekdays: pulumi.StringArray{
+//					pulumi.String("3"),
+//					pulumi.String("4"),
+//					pulumi.String("5"),
+//				},
+//				RetentionDays: pulumi.Int(30),
+//				TimePoints: pulumi.StringArray{
+//					pulumi.String("3"),
+//					pulumi.String("4"),
+//					pulumi.String("5"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
+//
+//	$ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
+//
 // ```
 type AutoSnapshotPolicy struct {
 	pulumi.CustomResourceState
@@ -233,7 +238,7 @@ func (i *AutoSnapshotPolicy) ToAutoSnapshotPolicyOutputWithContext(ctx context.C
 // AutoSnapshotPolicyArrayInput is an input type that accepts AutoSnapshotPolicyArray and AutoSnapshotPolicyArrayOutput values.
 // You can construct a concrete instance of `AutoSnapshotPolicyArrayInput` via:
 //
-//          AutoSnapshotPolicyArray{ AutoSnapshotPolicyArgs{...} }
+//	AutoSnapshotPolicyArray{ AutoSnapshotPolicyArgs{...} }
 type AutoSnapshotPolicyArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +263,7 @@ func (i AutoSnapshotPolicyArray) ToAutoSnapshotPolicyArrayOutputWithContext(ctx 
 // AutoSnapshotPolicyMapInput is an input type that accepts AutoSnapshotPolicyMap and AutoSnapshotPolicyMapOutput values.
 // You can construct a concrete instance of `AutoSnapshotPolicyMapInput` via:
 //
-//          AutoSnapshotPolicyMap{ "key": AutoSnapshotPolicyArgs{...} }
+//	AutoSnapshotPolicyMap{ "key": AutoSnapshotPolicyArgs{...} }
 type AutoSnapshotPolicyMapInput interface {
 	pulumi.Input
 

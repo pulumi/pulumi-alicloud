@@ -15,7 +15,9 @@ import (
 // Function Compute Service can be imported using the id or name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fc/service:Service foo my-fc-service
+//
+//	$ pulumi import alicloud:fc/service:Service foo my-fc-service
+//
 // ```
 type Service struct {
 	pulumi.CustomResourceState
@@ -201,7 +203,7 @@ func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput 
 // ServiceArrayInput is an input type that accepts ServiceArray and ServiceArrayOutput values.
 // You can construct a concrete instance of `ServiceArrayInput` via:
 //
-//          ServiceArray{ ServiceArgs{...} }
+//	ServiceArray{ ServiceArgs{...} }
 type ServiceArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +228,7 @@ func (i ServiceArray) ToServiceArrayOutputWithContext(ctx context.Context) Servi
 // ServiceMapInput is an input type that accepts ServiceMap and ServiceMapOutput values.
 // You can construct a concrete instance of `ServiceMapInput` via:
 //
-//          ServiceMap{ "key": ServiceArgs{...} }
+//	ServiceMap{ "key": ServiceArgs{...} }
 type ServiceMapInput interface {
 	pulumi.Input
 

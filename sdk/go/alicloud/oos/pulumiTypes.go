@@ -36,7 +36,7 @@ type GetApplicationGroupsGroup struct {
 // GetApplicationGroupsGroupInput is an input type that accepts GetApplicationGroupsGroupArgs and GetApplicationGroupsGroupOutput values.
 // You can construct a concrete instance of `GetApplicationGroupsGroupInput` via:
 //
-//          GetApplicationGroupsGroupArgs{...}
+//	GetApplicationGroupsGroupArgs{...}
 type GetApplicationGroupsGroupInput interface {
 	pulumi.Input
 
@@ -82,7 +82,7 @@ func (i GetApplicationGroupsGroupArgs) ToGetApplicationGroupsGroupOutputWithCont
 // GetApplicationGroupsGroupArrayInput is an input type that accepts GetApplicationGroupsGroupArray and GetApplicationGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetApplicationGroupsGroupArrayInput` via:
 //
-//          GetApplicationGroupsGroupArray{ GetApplicationGroupsGroupArgs{...} }
+//	GetApplicationGroupsGroupArray{ GetApplicationGroupsGroupArgs{...} }
 type GetApplicationGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +208,7 @@ type GetApplicationsApplication struct {
 // GetApplicationsApplicationInput is an input type that accepts GetApplicationsApplicationArgs and GetApplicationsApplicationOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationInput` via:
 //
-//          GetApplicationsApplicationArgs{...}
+//	GetApplicationsApplicationArgs{...}
 type GetApplicationsApplicationInput interface {
 	pulumi.Input
 
@@ -248,7 +248,7 @@ func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutputWithCo
 // GetApplicationsApplicationArrayInput is an input type that accepts GetApplicationsApplicationArray and GetApplicationsApplicationArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationArrayInput` via:
 //
-//          GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
+//	GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
 type GetApplicationsApplicationArrayInput interface {
 	pulumi.Input
 
@@ -387,7 +387,7 @@ type GetExecutionsExecution struct {
 // GetExecutionsExecutionInput is an input type that accepts GetExecutionsExecutionArgs and GetExecutionsExecutionOutput values.
 // You can construct a concrete instance of `GetExecutionsExecutionInput` via:
 //
-//          GetExecutionsExecutionArgs{...}
+//	GetExecutionsExecutionArgs{...}
 type GetExecutionsExecutionInput interface {
 	pulumi.Input
 
@@ -455,7 +455,7 @@ func (i GetExecutionsExecutionArgs) ToGetExecutionsExecutionOutputWithContext(ct
 // GetExecutionsExecutionArrayInput is an input type that accepts GetExecutionsExecutionArray and GetExecutionsExecutionArrayOutput values.
 // You can construct a concrete instance of `GetExecutionsExecutionArrayInput` via:
 //
-//          GetExecutionsExecutionArray{ GetExecutionsExecutionArgs{...} }
+//	GetExecutionsExecutionArray{ GetExecutionsExecutionArgs{...} }
 type GetExecutionsExecutionArrayInput interface {
 	pulumi.Input
 
@@ -652,7 +652,7 @@ type GetParametersParameter struct {
 // GetParametersParameterInput is an input type that accepts GetParametersParameterArgs and GetParametersParameterOutput values.
 // You can construct a concrete instance of `GetParametersParameterInput` via:
 //
-//          GetParametersParameterArgs{...}
+//	GetParametersParameterArgs{...}
 type GetParametersParameterInput interface {
 	pulumi.Input
 
@@ -708,7 +708,7 @@ func (i GetParametersParameterArgs) ToGetParametersParameterOutputWithContext(ct
 // GetParametersParameterArrayInput is an input type that accepts GetParametersParameterArray and GetParametersParameterArrayOutput values.
 // You can construct a concrete instance of `GetParametersParameterArrayInput` via:
 //
-//          GetParametersParameterArray{ GetParametersParameterArgs{...} }
+//	GetParametersParameterArray{ GetParametersParameterArgs{...} }
 type GetParametersParameterArrayInput interface {
 	pulumi.Input
 
@@ -869,7 +869,7 @@ type GetPatchBaselinesBaseline struct {
 // GetPatchBaselinesBaselineInput is an input type that accepts GetPatchBaselinesBaselineArgs and GetPatchBaselinesBaselineOutput values.
 // You can construct a concrete instance of `GetPatchBaselinesBaselineInput` via:
 //
-//          GetPatchBaselinesBaselineArgs{...}
+//	GetPatchBaselinesBaselineArgs{...}
 type GetPatchBaselinesBaselineInput interface {
 	pulumi.Input
 
@@ -919,7 +919,7 @@ func (i GetPatchBaselinesBaselineArgs) ToGetPatchBaselinesBaselineOutputWithCont
 // GetPatchBaselinesBaselineArrayInput is an input type that accepts GetPatchBaselinesBaselineArray and GetPatchBaselinesBaselineArrayOutput values.
 // You can construct a concrete instance of `GetPatchBaselinesBaselineArrayInput` via:
 //
-//          GetPatchBaselinesBaselineArray{ GetPatchBaselinesBaselineArgs{...} }
+//	GetPatchBaselinesBaselineArray{ GetPatchBaselinesBaselineArgs{...} }
 type GetPatchBaselinesBaselineArrayInput interface {
 	pulumi.Input
 
@@ -1071,7 +1071,7 @@ type GetSecretParametersParameter struct {
 // GetSecretParametersParameterInput is an input type that accepts GetSecretParametersParameterArgs and GetSecretParametersParameterOutput values.
 // You can construct a concrete instance of `GetSecretParametersParameterInput` via:
 //
-//          GetSecretParametersParameterArgs{...}
+//	GetSecretParametersParameterArgs{...}
 type GetSecretParametersParameterInput interface {
 	pulumi.Input
 
@@ -1127,7 +1127,7 @@ func (i GetSecretParametersParameterArgs) ToGetSecretParametersParameterOutputWi
 // GetSecretParametersParameterArrayInput is an input type that accepts GetSecretParametersParameterArray and GetSecretParametersParameterArrayOutput values.
 // You can construct a concrete instance of `GetSecretParametersParameterArrayInput` via:
 //
-//          GetSecretParametersParameterArray{ GetSecretParametersParameterArgs{...} }
+//	GetSecretParametersParameterArray{ GetSecretParametersParameterArgs{...} }
 type GetSecretParametersParameterArrayInput interface {
 	pulumi.Input
 
@@ -1294,7 +1294,7 @@ type GetStateConfigurationsConfiguration struct {
 // GetStateConfigurationsConfigurationInput is an input type that accepts GetStateConfigurationsConfigurationArgs and GetStateConfigurationsConfigurationOutput values.
 // You can construct a concrete instance of `GetStateConfigurationsConfigurationInput` via:
 //
-//          GetStateConfigurationsConfigurationArgs{...}
+//	GetStateConfigurationsConfigurationArgs{...}
 type GetStateConfigurationsConfigurationInput interface {
 	pulumi.Input
 
@@ -1350,7 +1350,7 @@ func (i GetStateConfigurationsConfigurationArgs) ToGetStateConfigurationsConfigu
 // GetStateConfigurationsConfigurationArrayInput is an input type that accepts GetStateConfigurationsConfigurationArray and GetStateConfigurationsConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetStateConfigurationsConfigurationArrayInput` via:
 //
-//          GetStateConfigurationsConfigurationArray{ GetStateConfigurationsConfigurationArgs{...} }
+//	GetStateConfigurationsConfigurationArray{ GetStateConfigurationsConfigurationArgs{...} }
 type GetStateConfigurationsConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -1517,7 +1517,7 @@ type GetTemplatesTemplate struct {
 // GetTemplatesTemplateInput is an input type that accepts GetTemplatesTemplateArgs and GetTemplatesTemplateOutput values.
 // You can construct a concrete instance of `GetTemplatesTemplateInput` via:
 //
-//          GetTemplatesTemplateArgs{...}
+//	GetTemplatesTemplateArgs{...}
 type GetTemplatesTemplateInput interface {
 	pulumi.Input
 
@@ -1573,7 +1573,7 @@ func (i GetTemplatesTemplateArgs) ToGetTemplatesTemplateOutputWithContext(ctx co
 // GetTemplatesTemplateArrayInput is an input type that accepts GetTemplatesTemplateArray and GetTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetTemplatesTemplateArrayInput` via:
 //
-//          GetTemplatesTemplateArray{ GetTemplatesTemplateArgs{...} }
+//	GetTemplatesTemplateArray{ GetTemplatesTemplateArgs{...} }
 type GetTemplatesTemplateArrayInput interface {
 	pulumi.Input
 

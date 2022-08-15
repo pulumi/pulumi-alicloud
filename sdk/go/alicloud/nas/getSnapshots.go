@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := nas.GetSnapshots(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("nasSnapshotId1", ids.Snapshots[0].Id)
-// 		nameRegex, err := nas.GetSnapshots(ctx, &nas.GetSnapshotsArgs{
-// 			NameRegex: pulumi.StringRef("^my-Snapshot"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("nasSnapshotId2", nameRegex.Snapshots[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := nas.GetSnapshots(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nasSnapshotId1", ids.Snapshots[0].Id)
+//			nameRegex, err := nas.GetSnapshots(ctx, &nas.GetSnapshotsArgs{
+//				NameRegex: pulumi.StringRef("^my-Snapshot"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nasSnapshotId2", nameRegex.Snapshots[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {
 	var rv GetSnapshotsResult

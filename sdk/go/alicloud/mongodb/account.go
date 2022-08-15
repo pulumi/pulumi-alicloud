@@ -22,7 +22,9 @@ import (
 // MongoDB Account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
+//
+//	$ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
+//
 // ```
 type Account struct {
 	pulumi.CustomResourceState
@@ -175,7 +177,7 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
-//          AccountArray{ AccountArgs{...} }
+//	AccountArray{ AccountArgs{...} }
 type AccountArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +202,7 @@ func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) Accou
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
 // You can construct a concrete instance of `AccountMapInput` via:
 //
-//          AccountMap{ "key": AccountArgs{...} }
+//	AccountMap{ "key": AccountArgs{...} }
 type AccountMapInput interface {
 	pulumi.Input
 

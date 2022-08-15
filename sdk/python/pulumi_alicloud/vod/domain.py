@@ -150,7 +150,7 @@ class _DomainState:
         :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param pulumi.Input[str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
-        :param pulumi.Input[str] status: The status of the domain name for CDN. Value values:
+        :param pulumi.Input[str] status: The status of the domain name for CDN. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
@@ -324,7 +324,7 @@ class _DomainState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the domain name for CDN. Value values:
+        The status of the domain name for CDN. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -566,7 +566,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param pulumi.Input[str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
-        :param pulumi.Input[str] status: The status of the domain name for CDN. Value values:
+        :param pulumi.Input[str] status: The status of the domain name for CDN. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
@@ -686,7 +686,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the domain name for CDN. Value values:
+        The status of the domain name for CDN. Valid values:
         """
         return pulumi.get(self, "status")
 

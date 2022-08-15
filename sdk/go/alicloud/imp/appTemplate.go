@@ -19,33 +19,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := imp.NewAppTemplate(ctx, "example", &imp.AppTemplateArgs{
-// 			AppTemplateName: pulumi.String("example_value"),
-// 			ComponentLists: pulumi.StringArray{
-// 				pulumi.String("component.live"),
-// 				pulumi.String("component.liveRecord"),
-// 			},
-// 			IntegrationMode: pulumi.String("paasSDK"),
-// 			Scene:           pulumi.String("business"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := imp.NewAppTemplate(ctx, "example", &imp.AppTemplateArgs{
+//				AppTemplateName: pulumi.String("example_value"),
+//				ComponentLists: pulumi.StringArray{
+//					pulumi.String("component.live"),
+//					pulumi.String("component.liveRecord"),
+//				},
+//				IntegrationMode: pulumi.String("paasSDK"),
+//				Scene:           pulumi.String("business"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
+//
+//	$ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
+//
 // ```
 type AppTemplate struct {
 	pulumi.CustomResourceState
@@ -203,7 +208,7 @@ func (i *AppTemplate) ToAppTemplateOutputWithContext(ctx context.Context) AppTem
 // AppTemplateArrayInput is an input type that accepts AppTemplateArray and AppTemplateArrayOutput values.
 // You can construct a concrete instance of `AppTemplateArrayInput` via:
 //
-//          AppTemplateArray{ AppTemplateArgs{...} }
+//	AppTemplateArray{ AppTemplateArgs{...} }
 type AppTemplateArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +233,7 @@ func (i AppTemplateArray) ToAppTemplateArrayOutputWithContext(ctx context.Contex
 // AppTemplateMapInput is an input type that accepts AppTemplateMap and AppTemplateMapOutput values.
 // You can construct a concrete instance of `AppTemplateMapInput` via:
 //
-//          AppTemplateMap{ "key": AppTemplateArgs{...} }
+//	AppTemplateMap{ "key": AppTemplateArgs{...} }
 type AppTemplateMapInput interface {
 	pulumi.Input
 

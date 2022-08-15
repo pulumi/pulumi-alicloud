@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
-// 			CenInstanceName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
-// 			CenId:             exampleInstance.ID(),
-// 			TransitRouterName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewTrafficMarkingPolicy(ctx, "exampleTrafficMarkingPolicy", &cen.TrafficMarkingPolicyArgs{
-// 			MarkingDscp:              pulumi.Int(1),
-// 			Priority:                 pulumi.Int(1),
-// 			TrafficMarkingPolicyName: pulumi.String("example_value"),
-// 			TransitRouterId:          exampleTransitRouter.TransitRouterId,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				CenId:             exampleInstance.ID(),
+//				TransitRouterName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTrafficMarkingPolicy(ctx, "exampleTrafficMarkingPolicy", &cen.TrafficMarkingPolicyArgs{
+//				MarkingDscp:              pulumi.Int(1),
+//				Priority:                 pulumi.Int(1),
+//				TrafficMarkingPolicyName: pulumi.String("example_value"),
+//				TransitRouterId:          exampleTransitRouter.TransitRouterId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
+//
+//	$ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
+//
 // ```
 type TrafficMarkingPolicy struct {
 	pulumi.CustomResourceState
@@ -222,7 +227,7 @@ func (i *TrafficMarkingPolicy) ToTrafficMarkingPolicyOutputWithContext(ctx conte
 // TrafficMarkingPolicyArrayInput is an input type that accepts TrafficMarkingPolicyArray and TrafficMarkingPolicyArrayOutput values.
 // You can construct a concrete instance of `TrafficMarkingPolicyArrayInput` via:
 //
-//          TrafficMarkingPolicyArray{ TrafficMarkingPolicyArgs{...} }
+//	TrafficMarkingPolicyArray{ TrafficMarkingPolicyArgs{...} }
 type TrafficMarkingPolicyArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +252,7 @@ func (i TrafficMarkingPolicyArray) ToTrafficMarkingPolicyArrayOutputWithContext(
 // TrafficMarkingPolicyMapInput is an input type that accepts TrafficMarkingPolicyMap and TrafficMarkingPolicyMapOutput values.
 // You can construct a concrete instance of `TrafficMarkingPolicyMapInput` via:
 //
-//          TrafficMarkingPolicyMap{ "key": TrafficMarkingPolicyArgs{...} }
+//	TrafficMarkingPolicyMap{ "key": TrafficMarkingPolicyArgs{...} }
 type TrafficMarkingPolicyMapInput interface {
 	pulumi.Input
 

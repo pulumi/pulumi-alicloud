@@ -31,7 +31,7 @@ type GetImagesImage struct {
 // GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
 // You can construct a concrete instance of `GetImagesImageInput` via:
 //
-//          GetImagesImageArgs{...}
+//	GetImagesImageArgs{...}
 type GetImagesImageInput interface {
 	pulumi.Input
 
@@ -72,7 +72,7 @@ func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Contex
 // GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
 // You can construct a concrete instance of `GetImagesImageArrayInput` via:
 //
-//          GetImagesImageArray{ GetImagesImageArgs{...} }
+//	GetImagesImageArray{ GetImagesImageArgs{...} }
 type GetImagesImageArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +193,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -245,7 +245,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -382,7 +382,7 @@ type GetServerCustomImagesImage struct {
 // GetServerCustomImagesImageInput is an input type that accepts GetServerCustomImagesImageArgs and GetServerCustomImagesImageOutput values.
 // You can construct a concrete instance of `GetServerCustomImagesImageInput` via:
 //
-//          GetServerCustomImagesImageArgs{...}
+//	GetServerCustomImagesImageArgs{...}
 type GetServerCustomImagesImageInput interface {
 	pulumi.Input
 
@@ -418,7 +418,7 @@ func (i GetServerCustomImagesImageArgs) ToGetServerCustomImagesImageOutputWithCo
 // GetServerCustomImagesImageArrayInput is an input type that accepts GetServerCustomImagesImageArray and GetServerCustomImagesImageArrayOutput values.
 // You can construct a concrete instance of `GetServerCustomImagesImageArrayInput` via:
 //
-//          GetServerCustomImagesImageArray{ GetServerCustomImagesImageArgs{...} }
+//	GetServerCustomImagesImageArray{ GetServerCustomImagesImageArgs{...} }
 type GetServerCustomImagesImageArrayInput interface {
 	pulumi.Input
 
@@ -527,7 +527,7 @@ type GetServerDisksDisk struct {
 // GetServerDisksDiskInput is an input type that accepts GetServerDisksDiskArgs and GetServerDisksDiskOutput values.
 // You can construct a concrete instance of `GetServerDisksDiskInput` via:
 //
-//          GetServerDisksDiskArgs{...}
+//	GetServerDisksDiskArgs{...}
 type GetServerDisksDiskInput interface {
 	pulumi.Input
 
@@ -575,7 +575,7 @@ func (i GetServerDisksDiskArgs) ToGetServerDisksDiskOutputWithContext(ctx contex
 // GetServerDisksDiskArrayInput is an input type that accepts GetServerDisksDiskArray and GetServerDisksDiskArrayOutput values.
 // You can construct a concrete instance of `GetServerDisksDiskArrayInput` via:
 //
-//          GetServerDisksDiskArray{ GetServerDisksDiskArgs{...} }
+//	GetServerDisksDiskArray{ GetServerDisksDiskArgs{...} }
 type GetServerDisksDiskArrayInput interface {
 	pulumi.Input
 
@@ -704,7 +704,7 @@ type GetServerFirewallRulesRule struct {
 // GetServerFirewallRulesRuleInput is an input type that accepts GetServerFirewallRulesRuleArgs and GetServerFirewallRulesRuleOutput values.
 // You can construct a concrete instance of `GetServerFirewallRulesRuleInput` via:
 //
-//          GetServerFirewallRulesRuleArgs{...}
+//	GetServerFirewallRulesRuleArgs{...}
 type GetServerFirewallRulesRuleInput interface {
 	pulumi.Input
 
@@ -742,7 +742,7 @@ func (i GetServerFirewallRulesRuleArgs) ToGetServerFirewallRulesRuleOutputWithCo
 // GetServerFirewallRulesRuleArrayInput is an input type that accepts GetServerFirewallRulesRuleArray and GetServerFirewallRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetServerFirewallRulesRuleArrayInput` via:
 //
-//          GetServerFirewallRulesRuleArray{ GetServerFirewallRulesRuleArgs{...} }
+//	GetServerFirewallRulesRuleArray{ GetServerFirewallRulesRuleArgs{...} }
 type GetServerFirewallRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -850,7 +850,7 @@ type GetServerPlansPlan struct {
 // GetServerPlansPlanInput is an input type that accepts GetServerPlansPlanArgs and GetServerPlansPlanOutput values.
 // You can construct a concrete instance of `GetServerPlansPlanInput` via:
 //
-//          GetServerPlansPlanArgs{...}
+//	GetServerPlansPlanArgs{...}
 type GetServerPlansPlanInput interface {
 	pulumi.Input
 
@@ -892,7 +892,7 @@ func (i GetServerPlansPlanArgs) ToGetServerPlansPlanOutputWithContext(ctx contex
 // GetServerPlansPlanArrayInput is an input type that accepts GetServerPlansPlanArray and GetServerPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetServerPlansPlanArrayInput` via:
 //
-//          GetServerPlansPlanArray{ GetServerPlansPlanArgs{...} }
+//	GetServerPlansPlanArray{ GetServerPlansPlanArgs{...} }
 type GetServerPlansPlanArrayInput interface {
 	pulumi.Input
 
@@ -1012,7 +1012,7 @@ type GetServerSnapshotsSnapshot struct {
 // GetServerSnapshotsSnapshotInput is an input type that accepts GetServerSnapshotsSnapshotArgs and GetServerSnapshotsSnapshotOutput values.
 // You can construct a concrete instance of `GetServerSnapshotsSnapshotInput` via:
 //
-//          GetServerSnapshotsSnapshotArgs{...}
+//	GetServerSnapshotsSnapshotArgs{...}
 type GetServerSnapshotsSnapshotInput interface {
 	pulumi.Input
 
@@ -1056,7 +1056,7 @@ func (i GetServerSnapshotsSnapshotArgs) ToGetServerSnapshotsSnapshotOutputWithCo
 // GetServerSnapshotsSnapshotArrayInput is an input type that accepts GetServerSnapshotsSnapshotArray and GetServerSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetServerSnapshotsSnapshotArrayInput` via:
 //
-//          GetServerSnapshotsSnapshotArray{ GetServerSnapshotsSnapshotArgs{...} }
+//	GetServerSnapshotsSnapshotArray{ GetServerSnapshotsSnapshotArgs{...} }
 type GetServerSnapshotsSnapshotArrayInput interface {
 	pulumi.Input
 

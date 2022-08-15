@@ -19,57 +19,60 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisRandomUuid, err := random.NewRandomUuid(ctx, "thisRandomUuid", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cms.NewGroupMetricRule(ctx, "thisGroupMetricRule", &cms.GroupMetricRuleArgs{
-// 			GroupId:             pulumi.String("539****"),
-// 			RuleId:              thisRandomUuid.ID(),
-// 			Category:            pulumi.String("ecs"),
-// 			Namespace:           pulumi.String("acs_ecs_dashboard"),
-// 			MetricName:          pulumi.String("cpu_total"),
-// 			Period:              pulumi.Int(60),
-// 			GroupMetricRuleName: pulumi.String("tf-testacc-rule-name"),
-// 			EmailSubject:        pulumi.String("tf-testacc-rule-name-warning"),
-// 			Interval:            pulumi.String("3600"),
-// 			SilenceTime:         pulumi.Int(85800),
-// 			NoEffectiveInterval: pulumi.String("00:00-05:30"),
-// 			Webhook:             pulumi.String("http://www.aliyun.com"),
-// 			Escalations: &cms.GroupMetricRuleEscalationsArgs{
-// 				Warn: &cms.GroupMetricRuleEscalationsWarnArgs{
-// 					ComparisonOperator: pulumi.String("GreaterThanOrEqualToThreshold"),
-// 					Statistics:         pulumi.String("Average"),
-// 					Threshold:          pulumi.String("90"),
-// 					Times:              pulumi.Int(3),
-// 				},
-// 				Info: &cms.GroupMetricRuleEscalationsInfoArgs{
-// 					ComparisonOperator: pulumi.String("LessThanLastWeek"),
-// 					Statistics:         pulumi.String("Average"),
-// 					Threshold:          pulumi.String("90"),
-// 					Times:              pulumi.Int(5),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisRandomUuid, err := random.NewRandomUuid(ctx, "thisRandomUuid", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewGroupMetricRule(ctx, "thisGroupMetricRule", &cms.GroupMetricRuleArgs{
+//				GroupId:             pulumi.String("539****"),
+//				RuleId:              thisRandomUuid.ID(),
+//				Category:            pulumi.String("ecs"),
+//				Namespace:           pulumi.String("acs_ecs_dashboard"),
+//				MetricName:          pulumi.String("cpu_total"),
+//				Period:              pulumi.Int(60),
+//				GroupMetricRuleName: pulumi.String("tf-testacc-rule-name"),
+//				EmailSubject:        pulumi.String("tf-testacc-rule-name-warning"),
+//				Interval:            pulumi.String("3600"),
+//				SilenceTime:         pulumi.Int(85800),
+//				NoEffectiveInterval: pulumi.String("00:00-05:30"),
+//				Webhook:             pulumi.String("http://www.aliyun.com"),
+//				Escalations: &cms.GroupMetricRuleEscalationsArgs{
+//					Warn: &cms.GroupMetricRuleEscalationsWarnArgs{
+//						ComparisonOperator: pulumi.String("GreaterThanOrEqualToThreshold"),
+//						Statistics:         pulumi.String("Average"),
+//						Threshold:          pulumi.String("90"),
+//						Times:              pulumi.Int(3),
+//					},
+//					Info: &cms.GroupMetricRuleEscalationsInfoArgs{
+//						ComparisonOperator: pulumi.String("LessThanLastWeek"),
+//						Statistics:         pulumi.String("Average"),
+//						Threshold:          pulumi.String("90"),
+//						Times:              pulumi.Int(5),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -77,7 +80,9 @@ import (
 // Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
+//
+//	$ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
+//
 // ```
 type GroupMetricRule struct {
 	pulumi.CustomResourceState
@@ -342,7 +347,7 @@ func (i *GroupMetricRule) ToGroupMetricRuleOutputWithContext(ctx context.Context
 // GroupMetricRuleArrayInput is an input type that accepts GroupMetricRuleArray and GroupMetricRuleArrayOutput values.
 // You can construct a concrete instance of `GroupMetricRuleArrayInput` via:
 //
-//          GroupMetricRuleArray{ GroupMetricRuleArgs{...} }
+//	GroupMetricRuleArray{ GroupMetricRuleArgs{...} }
 type GroupMetricRuleArrayInput interface {
 	pulumi.Input
 
@@ -367,7 +372,7 @@ func (i GroupMetricRuleArray) ToGroupMetricRuleArrayOutputWithContext(ctx contex
 // GroupMetricRuleMapInput is an input type that accepts GroupMetricRuleMap and GroupMetricRuleMapOutput values.
 // You can construct a concrete instance of `GroupMetricRuleMapInput` via:
 //
-//          GroupMetricRuleMap{ "key": GroupMetricRuleArgs{...} }
+//	GroupMetricRuleMap{ "key": GroupMetricRuleArgs{...} }
 type GroupMetricRuleMapInput interface {
 	pulumi.Input
 

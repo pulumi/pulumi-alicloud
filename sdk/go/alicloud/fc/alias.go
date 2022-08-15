@@ -12,41 +12,45 @@ import (
 )
 
 // Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-//  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+//
+//	For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
 //
 // > **NOTE:** Available in 1.104.0+
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := fc.NewAlias(ctx, "example", &fc.AliasArgs{
-// 			AliasName:   pulumi.String("my_alias"),
-// 			Description: pulumi.String("a sample description"),
-// 			RoutingConfig: &fc.AliasRoutingConfigArgs{
-// 				AdditionalVersionWeights: pulumi.Float64Map{
-// 					"2": pulumi.Float64(0.5),
-// 				},
-// 			},
-// 			ServiceName:    pulumi.String("my_service_name"),
-// 			ServiceVersion: pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fc.NewAlias(ctx, "example", &fc.AliasArgs{
+//				AliasName:   pulumi.String("my_alias"),
+//				Description: pulumi.String("a sample description"),
+//				RoutingConfig: &fc.AliasRoutingConfigArgs{
+//					AdditionalVersionWeights: pulumi.Float64Map{
+//						"2": pulumi.Float64(0.5),
+//					},
+//				},
+//				ServiceName:    pulumi.String("my_service_name"),
+//				ServiceVersion: pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +58,9 @@ import (
 // Function Compute alias can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fc/alias:Alias example my_alias_id
+//
+//	$ pulumi import alicloud:fc/alias:Alias example my_alias_id
+//
 // ```
 type Alias struct {
 	pulumi.CustomResourceState
@@ -191,7 +197,7 @@ func (i *Alias) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 // AliasArrayInput is an input type that accepts AliasArray and AliasArrayOutput values.
 // You can construct a concrete instance of `AliasArrayInput` via:
 //
-//          AliasArray{ AliasArgs{...} }
+//	AliasArray{ AliasArgs{...} }
 type AliasArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +222,7 @@ func (i AliasArray) ToAliasArrayOutputWithContext(ctx context.Context) AliasArra
 // AliasMapInput is an input type that accepts AliasMap and AliasMapOutput values.
 // You can construct a concrete instance of `AliasMapInput` via:
 //
-//          AliasMap{ "key": AliasArgs{...} }
+//	AliasMap{ "key": AliasArgs{...} }
 type AliasMapInput interface {
 	pulumi.Input
 

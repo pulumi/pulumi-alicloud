@@ -16,29 +16,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := privatelink.GetVpcEndpointConnections(ctx, &privatelink.GetVpcEndpointConnectionsArgs{
-// 			ServiceId: "example_value",
-// 			Status:    pulumi.StringRef("Connected"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstPrivatelinkVpcEndpointConnectionId", example.Connections[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := privatelink.GetVpcEndpointConnections(ctx, &privatelink.GetVpcEndpointConnectionsArgs{
+//				ServiceId: "example_value",
+//				Status:    pulumi.StringRef("Connected"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstPrivatelinkVpcEndpointConnectionId", example.Connections[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetVpcEndpointConnections(ctx *pulumi.Context, args *GetVpcEndpointConnectionsArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointConnectionsResult, error) {
 	var rv GetVpcEndpointConnectionsResult

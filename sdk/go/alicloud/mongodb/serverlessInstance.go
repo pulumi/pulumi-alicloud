@@ -19,73 +19,76 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := mongodb.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = mongodb.NewServerlessInstance(ctx, "example", &mongodb.ServerlessInstanceArgs{
-// 			AccountPassword:       pulumi.String("Abc12345"),
-// 			DbInstanceDescription: pulumi.String("example_value"),
-// 			DbInstanceStorage:     pulumi.Int(5),
-// 			StorageEngine:         pulumi.String("WiredTiger"),
-// 			CapacityUnit:          pulumi.Int(100),
-// 			Engine:                pulumi.String("MongoDB"),
-// 			ResourceGroupId:       pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			EngineVersion:         pulumi.String("4.2"),
-// 			Period:                pulumi.Int(1),
-// 			PeriodPriceType:       pulumi.String("Month"),
-// 			VpcId:                 pulumi.String(defaultNetworks.Ids[0]),
-// 			ZoneId:                pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchId:             pulumi.String(defaultSwitches.Ids[0]),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("MongodbServerlessInstance"),
-// 				"For":     pulumi.Any("TF"),
-// 			},
-// 			SecurityIpGroups: mongodb.ServerlessInstanceSecurityIpGroupArray{
-// 				&mongodb.ServerlessInstanceSecurityIpGroupArgs{
-// 					SecurityIpGroupAttribute: pulumi.String("example_value"),
-// 					SecurityIpGroupName:      pulumi.String("example_value"),
-// 					SecurityIpList:           pulumi.String("192.168.0.1"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mongodb.NewServerlessInstance(ctx, "example", &mongodb.ServerlessInstanceArgs{
+//				AccountPassword:       pulumi.String("Abc12345"),
+//				DbInstanceDescription: pulumi.String("example_value"),
+//				DbInstanceStorage:     pulumi.Int(5),
+//				StorageEngine:         pulumi.String("WiredTiger"),
+//				CapacityUnit:          pulumi.Int(100),
+//				Engine:                pulumi.String("MongoDB"),
+//				ResourceGroupId:       pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				EngineVersion:         pulumi.String("4.2"),
+//				Period:                pulumi.Int(1),
+//				PeriodPriceType:       pulumi.String("Month"),
+//				VpcId:                 pulumi.String(defaultNetworks.Ids[0]),
+//				ZoneId:                pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchId:             pulumi.String(defaultSwitches.Ids[0]),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("MongodbServerlessInstance"),
+//					"For":     pulumi.Any("TF"),
+//				},
+//				SecurityIpGroups: mongodb.ServerlessInstanceSecurityIpGroupArray{
+//					&mongodb.ServerlessInstanceSecurityIpGroupArgs{
+//						SecurityIpGroupAttribute: pulumi.String("example_value"),
+//						SecurityIpGroupName:      pulumi.String("example_value"),
+//						SecurityIpList:           pulumi.String("192.168.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -93,7 +96,9 @@ import (
 // MongoDB Serverless Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
+//
+//	$ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
+//
 // ```
 type ServerlessInstance struct {
 	pulumi.CustomResourceState
@@ -388,7 +393,7 @@ func (i *ServerlessInstance) ToServerlessInstanceOutputWithContext(ctx context.C
 // ServerlessInstanceArrayInput is an input type that accepts ServerlessInstanceArray and ServerlessInstanceArrayOutput values.
 // You can construct a concrete instance of `ServerlessInstanceArrayInput` via:
 //
-//          ServerlessInstanceArray{ ServerlessInstanceArgs{...} }
+//	ServerlessInstanceArray{ ServerlessInstanceArgs{...} }
 type ServerlessInstanceArrayInput interface {
 	pulumi.Input
 
@@ -413,7 +418,7 @@ func (i ServerlessInstanceArray) ToServerlessInstanceArrayOutputWithContext(ctx 
 // ServerlessInstanceMapInput is an input type that accepts ServerlessInstanceMap and ServerlessInstanceMapOutput values.
 // You can construct a concrete instance of `ServerlessInstanceMapInput` via:
 //
-//          ServerlessInstanceMap{ "key": ServerlessInstanceArgs{...} }
+//	ServerlessInstanceMap{ "key": ServerlessInstanceArgs{...} }
 type ServerlessInstanceMapInput interface {
 	pulumi.Input
 

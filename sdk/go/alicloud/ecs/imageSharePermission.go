@@ -27,26 +27,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewImageSharePermission(ctx, "default", &ecs.ImageSharePermissionArgs{
-// 			AccountId: pulumi.String("1234567890"),
-// 			ImageId:   pulumi.String("m-bp1gxyh***"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewImageSharePermission(ctx, "default", &ecs.ImageSharePermissionArgs{
+//				AccountId: pulumi.String("1234567890"),
+//				ImageId:   pulumi.String("m-bp1gxyh***"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes Reference0
 //
-//  The following attributes are exported:
+//	The following attributes are exported:
 //
 // * `id` - ID of the image. It formats as `<image_id>:<account_id>`
 //
@@ -55,7 +58,9 @@ import (
 // image can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+//
+//	$ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+//
 // ```
 type ImageSharePermission struct {
 	pulumi.CustomResourceState
@@ -159,7 +164,7 @@ func (i *ImageSharePermission) ToImageSharePermissionOutputWithContext(ctx conte
 // ImageSharePermissionArrayInput is an input type that accepts ImageSharePermissionArray and ImageSharePermissionArrayOutput values.
 // You can construct a concrete instance of `ImageSharePermissionArrayInput` via:
 //
-//          ImageSharePermissionArray{ ImageSharePermissionArgs{...} }
+//	ImageSharePermissionArray{ ImageSharePermissionArgs{...} }
 type ImageSharePermissionArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +189,7 @@ func (i ImageSharePermissionArray) ToImageSharePermissionArrayOutputWithContext(
 // ImageSharePermissionMapInput is an input type that accepts ImageSharePermissionMap and ImageSharePermissionMapOutput values.
 // You can construct a concrete instance of `ImageSharePermissionMapInput` via:
 //
-//          ImageSharePermissionMap{ "key": ImageSharePermissionArgs{...} }
+//	ImageSharePermissionMap{ "key": ImageSharePermissionArgs{...} }
 type ImageSharePermissionMapInput interface {
 	pulumi.Input
 

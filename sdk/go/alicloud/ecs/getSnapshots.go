@@ -16,24 +16,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.GetSnapshots(ctx, &ecs.GetSnapshotsArgs{
-// 			Ids: []string{
-// 				"s-123456890abcdef",
-// 			},
-// 			NameRegex: pulumi.StringRef("tf-testAcc-snapshot"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.GetSnapshots(ctx, &ecs.GetSnapshotsArgs{
+//				Ids: []string{
+//					"s-123456890abcdef",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc-snapshot"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Argument Reference
 //
@@ -45,22 +48,26 @@ import (
 // * `ids` - (Optional)  A list of snapshot IDs.
 // * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
 // * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-//   * progressing: The snapshots are being created.
-//   * accomplished: The snapshots are ready to use.
-//   * failed: The snapshot creation failed.
-//   * all: All status.
+//   - progressing: The snapshots are being created.
+//   - accomplished: The snapshots are ready to use.
+//   - failed: The snapshot creation failed.
+//   - all: All status.
+//
 // * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-//   * auto: Auto snapshots.
-//   * user: Manual snapshots.
-//   * all: Auto and manual snapshots.
+//   - auto: Auto snapshots.
+//   - user: Manual snapshots.
+//   - all: Auto and manual snapshots.
+//
 // * `sourceDiskType` - (Optional) The type of source disk:
-//   * System: The snapshots are created for system disks.
-//   * Data: The snapshots are created for data disks.
+//   - System: The snapshots are created for system disks.
+//   - Data: The snapshots are created for data disks.
+//
 // * `usage` - (Optional) The usage of the snapshot:
-//   * image: The snapshots are used to create custom images.
-//   * disk: The snapshots are used to CreateDisk.
-//   * mage_disk: The snapshots are used to create custom images and data disks.
-//   * none: The snapshots are not used yet.
+//   - image: The snapshots are used to create custom images.
+//   - disk: The snapshots are used to CreateDisk.
+//   - mage_disk: The snapshots are used to create custom images and data disks.
+//   - none: The snapshots are not used yet.
+//
 // * `tags` - (Optional) A map of tags assigned to snapshots.
 // * `outputFile` - (Optional) The name of output file that saves the filter results.
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {

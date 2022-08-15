@@ -19,52 +19,55 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
-// 			Comments: pulumi.String("this is a group comments."),
-// 			Force:    pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			DisplayName: pulumi.String("user_display_name"),
-// 			Mobile:      pulumi.String("86-18688888888"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Comments:    pulumi.String("yoyoyo"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		user1, err := ram.NewUser(ctx, "user1", &ram.UserArgs{
-// 			DisplayName: pulumi.String("user_display_name1"),
-// 			Mobile:      pulumi.String("86-18688888889"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Comments:    pulumi.String("yoyoyo"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ram.NewGroupMembership(ctx, "membership", &ram.GroupMembershipArgs{
-// 			GroupName: group.Name,
-// 			UserNames: pulumi.StringArray{
-// 				user.Name,
-// 				user1.Name,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+//				Comments: pulumi.String("this is a group comments."),
+//				Force:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				DisplayName: pulumi.String("user_display_name"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user1, err := ram.NewUser(ctx, "user1", &ram.UserArgs{
+//				DisplayName: pulumi.String("user_display_name1"),
+//				Mobile:      pulumi.String("86-18688888889"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewGroupMembership(ctx, "membership", &ram.GroupMembershipArgs{
+//				GroupName: group.Name,
+//				UserNames: pulumi.StringArray{
+//					user.Name,
+//					user1.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -72,7 +75,9 @@ import (
 // RAM Group membership can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+//
+//	$ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+//
 // ```
 type GroupMembership struct {
 	pulumi.CustomResourceState
@@ -176,7 +181,7 @@ func (i *GroupMembership) ToGroupMembershipOutputWithContext(ctx context.Context
 // GroupMembershipArrayInput is an input type that accepts GroupMembershipArray and GroupMembershipArrayOutput values.
 // You can construct a concrete instance of `GroupMembershipArrayInput` via:
 //
-//          GroupMembershipArray{ GroupMembershipArgs{...} }
+//	GroupMembershipArray{ GroupMembershipArgs{...} }
 type GroupMembershipArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i GroupMembershipArray) ToGroupMembershipArrayOutputWithContext(ctx contex
 // GroupMembershipMapInput is an input type that accepts GroupMembershipMap and GroupMembershipMapOutput values.
 // You can construct a concrete instance of `GroupMembershipMapInput` via:
 //
-//          GroupMembershipMap{ "key": GroupMembershipArgs{...} }
+//	GroupMembershipMap{ "key": GroupMembershipArgs{...} }
 type GroupMembershipMapInput interface {
 	pulumi.Input
 

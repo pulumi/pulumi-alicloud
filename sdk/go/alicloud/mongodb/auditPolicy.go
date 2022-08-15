@@ -22,7 +22,9 @@ import (
 // MongoDB Audit Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+//
+//	$ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+//
 // ```
 type AuditPolicy struct {
 	pulumi.CustomResourceState
@@ -136,7 +138,7 @@ func (i *AuditPolicy) ToAuditPolicyOutputWithContext(ctx context.Context) AuditP
 // AuditPolicyArrayInput is an input type that accepts AuditPolicyArray and AuditPolicyArrayOutput values.
 // You can construct a concrete instance of `AuditPolicyArrayInput` via:
 //
-//          AuditPolicyArray{ AuditPolicyArgs{...} }
+//	AuditPolicyArray{ AuditPolicyArgs{...} }
 type AuditPolicyArrayInput interface {
 	pulumi.Input
 
@@ -161,7 +163,7 @@ func (i AuditPolicyArray) ToAuditPolicyArrayOutputWithContext(ctx context.Contex
 // AuditPolicyMapInput is an input type that accepts AuditPolicyMap and AuditPolicyMapOutput values.
 // You can construct a concrete instance of `AuditPolicyMapInput` via:
 //
-//          AuditPolicyMap{ "key": AuditPolicyArgs{...} }
+//	AuditPolicyMap{ "key": AuditPolicyArgs{...} }
 type AuditPolicyMapInput interface {
 	pulumi.Input
 

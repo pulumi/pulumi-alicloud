@@ -16,25 +16,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			Comments:    pulumi.String("yoyoyo"),
-// 			DisplayName: pulumi.String("user_display_name"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Force:       pulumi.Bool(true),
-// 			Mobile:      pulumi.String("86-18688888888"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				Comments:    pulumi.String("yoyoyo"),
+//				DisplayName: pulumi.String("user_display_name"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Force:       pulumi.Bool(true),
+//				Mobile:      pulumi.String("86-18688888888"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // RAM user can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/user:User example 123456789xxx
+//
+//	$ pulumi import alicloud:ram/user:User example 123456789xxx
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -180,7 +185,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -205,7 +210,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

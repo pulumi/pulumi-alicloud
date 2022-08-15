@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcemanager.GetSharedResources(ctx, &resourcemanager.GetSharedResourcesArgs{
-// 			ResourceShareId: pulumi.StringRef("rs-V2NV******"),
-// 			Ids: []string{
-// 				"vsw-bp1mzouzpmvie********:VSwitch",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstResourceManagerSharedResourceId", data.Alicloud_resource_manager_shared_resources.Example.Resources[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.GetSharedResources(ctx, &resourcemanager.GetSharedResourcesArgs{
+//				ResourceShareId: pulumi.StringRef("rs-V2NV******"),
+//				Ids: []string{
+//					"vsw-bp1mzouzpmvie********:VSwitch",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstResourceManagerSharedResourceId", data.Alicloud_resource_manager_shared_resources.Example.Resources[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSharedResources(ctx *pulumi.Context, args *GetSharedResourcesArgs, opts ...pulumi.InvokeOption) (*GetSharedResourcesResult, error) {
 	var rv GetSharedResourcesResult

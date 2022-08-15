@@ -23,7 +23,7 @@ type GetFoldersFolder struct {
 // GetFoldersFolderInput is an input type that accepts GetFoldersFolderArgs and GetFoldersFolderOutput values.
 // You can construct a concrete instance of `GetFoldersFolderInput` via:
 //
-//          GetFoldersFolderArgs{...}
+//	GetFoldersFolderArgs{...}
 type GetFoldersFolderInput interface {
 	pulumi.Input
 
@@ -56,7 +56,7 @@ func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Co
 // GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
 // You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
 //
-//          GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
+//	GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
 type GetFoldersFolderArrayInput interface {
 	pulumi.Input
 

@@ -15,82 +15,85 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "forward-entry-example-name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
-// 			VpcId:         defaultNetwork.ID(),
-// 			Specification: pulumi.String("Small"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
-// 			AddressName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
-// 			AllocationId: defaultEipAddress.ID(),
-// 			InstanceId:   defaultNatGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
-// 			ForwardTableId: defaultNatGateway.ForwardTableIds,
-// 			ExternalIp:     defaultEipAddress.IpAddress,
-// 			ExternalPort:   pulumi.String("80"),
-// 			IpProtocol:     pulumi.String("tcp"),
-// 			InternalIp:     pulumi.String("172.16.0.3"),
-// 			InternalPort:   pulumi.String("8080"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "forward-entry-example-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
+//				VpcId:         defaultNetwork.ID(),
+//				Specification: pulumi.String("Small"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				AddressName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
+//				AllocationId: defaultEipAddress.ID(),
+//				InstanceId:   defaultNatGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
+//				ForwardTableId: defaultNatGateway.ForwardTableIds,
+//				ExternalIp:     defaultEipAddress.IpAddress,
+//				ExternalPort:   pulumi.String("80"),
+//				IpProtocol:     pulumi.String("tcp"),
+//				InternalIp:     pulumi.String("172.16.0.3"),
+//				InternalPort:   pulumi.String("8080"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -98,7 +101,9 @@ import (
 // Forward Entry can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
+//
+//	$ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
+//
 // ```
 type ForwardEntry struct {
 	pulumi.CustomResourceState
@@ -306,7 +311,7 @@ func (i *ForwardEntry) ToForwardEntryOutputWithContext(ctx context.Context) Forw
 // ForwardEntryArrayInput is an input type that accepts ForwardEntryArray and ForwardEntryArrayOutput values.
 // You can construct a concrete instance of `ForwardEntryArrayInput` via:
 //
-//          ForwardEntryArray{ ForwardEntryArgs{...} }
+//	ForwardEntryArray{ ForwardEntryArgs{...} }
 type ForwardEntryArrayInput interface {
 	pulumi.Input
 
@@ -331,7 +336,7 @@ func (i ForwardEntryArray) ToForwardEntryArrayOutputWithContext(ctx context.Cont
 // ForwardEntryMapInput is an input type that accepts ForwardEntryMap and ForwardEntryMapOutput values.
 // You can construct a concrete instance of `ForwardEntryMapInput` via:
 //
-//          ForwardEntryMap{ "key": ForwardEntryArgs{...} }
+//	ForwardEntryMap{ "key": ForwardEntryArgs{...} }
 type ForwardEntryMapInput interface {
 	pulumi.Input
 

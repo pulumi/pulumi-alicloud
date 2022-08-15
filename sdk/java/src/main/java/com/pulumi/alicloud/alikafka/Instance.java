@@ -107,14 +107,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alikafka/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     * The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      * 
      */
     @Export(name="config", type=String.class, parameters={})
     private Output<String> config;
 
     /**
-     * @return （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     * @return The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      * 
      */
     public Output<String> config() {
@@ -209,6 +209,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ioMax;
     }
     /**
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     * 
+     */
+    @Export(name="kmsKeyId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> kmsKeyId;
+
+    /**
+     * @return The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyId() {
+        return Codegen.optional(this.kmsKeyId);
+    }
+    /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      * 
      */
@@ -237,28 +251,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paidType);
     }
     /**
-     * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     * The ID of security group for this instance. If the security group is empty, system will create a default one.
      * 
      */
     @Export(name="securityGroup", type=String.class, parameters={})
     private Output<String> securityGroup;
 
     /**
-     * @return （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     * @return The ID of security group for this instance. If the security group is empty, system will create a default one.
      * 
      */
     public Output<String> securityGroup() {
         return this.securityGroup;
     }
     /**
-     * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      * 
      */
     @Export(name="serviceVersion", type=String.class, parameters={})
     private Output<String> serviceVersion;
 
     /**
-     * @return （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     * @return The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      * 
      */
     public Output<String> serviceVersion() {
@@ -277,6 +291,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> specType() {
         return Codegen.optional(this.specType);
+    }
+    /**
+     * The status of the instance. Valid values:
+     * - 0: pending
+     * - 1: deploying
+     * - 5: running
+     * - 15: expired
+     * 
+     */
+    @Export(name="status", type=Integer.class, parameters={})
+    private Output<Integer> status;
+
+    /**
+     * @return The status of the instance. Valid values:
+     * - 0: pending
+     * - 1: deploying
+     * - 5: running
+     * - 15: expired
+     * 
+     */
+    public Output<Integer> status() {
+        return this.status;
     }
     /**
      * A mapping of tags to assign to the resource.

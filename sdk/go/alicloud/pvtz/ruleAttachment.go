@@ -22,7 +22,9 @@ import (
 // Private Zone Rule Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example <rule_id>
+//
+//	$ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example <rule_id>
+//
 // ```
 type RuleAttachment struct {
 	pulumi.CustomResourceState
@@ -126,7 +128,7 @@ func (i *RuleAttachment) ToRuleAttachmentOutputWithContext(ctx context.Context) 
 // RuleAttachmentArrayInput is an input type that accepts RuleAttachmentArray and RuleAttachmentArrayOutput values.
 // You can construct a concrete instance of `RuleAttachmentArrayInput` via:
 //
-//          RuleAttachmentArray{ RuleAttachmentArgs{...} }
+//	RuleAttachmentArray{ RuleAttachmentArgs{...} }
 type RuleAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -151,7 +153,7 @@ func (i RuleAttachmentArray) ToRuleAttachmentArrayOutputWithContext(ctx context.
 // RuleAttachmentMapInput is an input type that accepts RuleAttachmentMap and RuleAttachmentMapOutput values.
 // You can construct a concrete instance of `RuleAttachmentMapInput` via:
 //
-//          RuleAttachmentMap{ "key": RuleAttachmentArgs{...} }
+//	RuleAttachmentMap{ "key": RuleAttachmentArgs{...} }
 type RuleAttachmentMapInput interface {
 	pulumi.Input
 

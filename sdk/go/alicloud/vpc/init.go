@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HAVip{}
 	case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
 		r = &HAVipAttachment{}
+	case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
+		r = &Ipv4Gateway{}
 	case "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule":
 		r = &Ipv6EgressRule{}
 	case "alicloud:vpc/ipv6Gateway:Ipv6Gateway":
@@ -159,6 +161,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/hAVipAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipv4Gateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

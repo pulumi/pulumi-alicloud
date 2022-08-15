@@ -16,26 +16,29 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := dts.GetSynchronizationJobs(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dtsSynchronizationJobId1", ids.Jobs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dts.GetSynchronizationJobs(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dtsSynchronizationJobId1", ids.Jobs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSynchronizationJobs(ctx *pulumi.Context, args *GetSynchronizationJobsArgs, opts ...pulumi.InvokeOption) (*GetSynchronizationJobsResult, error) {
 	var rv GetSynchronizationJobsResult

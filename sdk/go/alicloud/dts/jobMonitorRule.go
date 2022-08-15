@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dts.NewJobMonitorRule(ctx, "example", &dts.JobMonitorRuleArgs{
-// 			DtsJobId: pulumi.String("example_value"),
-// 			Type:     pulumi.String("delay"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dts.NewJobMonitorRule(ctx, "example", &dts.JobMonitorRuleArgs{
+//				DtsJobId: pulumi.String("example_value"),
+//				Type:     pulumi.String("delay"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // DTS Job Monitor Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
+//
+//	$ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
+//
 // ```
 type JobMonitorRule struct {
 	pulumi.CustomResourceState
@@ -182,7 +187,7 @@ func (i *JobMonitorRule) ToJobMonitorRuleOutputWithContext(ctx context.Context) 
 // JobMonitorRuleArrayInput is an input type that accepts JobMonitorRuleArray and JobMonitorRuleArrayOutput values.
 // You can construct a concrete instance of `JobMonitorRuleArrayInput` via:
 //
-//          JobMonitorRuleArray{ JobMonitorRuleArgs{...} }
+//	JobMonitorRuleArray{ JobMonitorRuleArgs{...} }
 type JobMonitorRuleArrayInput interface {
 	pulumi.Input
 
@@ -207,7 +212,7 @@ func (i JobMonitorRuleArray) ToJobMonitorRuleArrayOutputWithContext(ctx context.
 // JobMonitorRuleMapInput is an input type that accepts JobMonitorRuleMap and JobMonitorRuleMapOutput values.
 // You can construct a concrete instance of `JobMonitorRuleMapInput` via:
 //
-//          JobMonitorRuleMap{ "key": JobMonitorRuleArgs{...} }
+//	JobMonitorRuleMap{ "key": JobMonitorRuleArgs{...} }
 type JobMonitorRuleMapInput interface {
 	pulumi.Input
 

@@ -19,29 +19,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := privatelink.NewVpcEndpointServiceResource(ctx, "example", &privatelink.VpcEndpointServiceResourceArgs{
-// 			ResourceId:   pulumi.String("lb-gw8nuym5xxxxx"),
-// 			ResourceType: pulumi.String("slb"),
-// 			ServiceId:    pulumi.String("epsrv-gw8ii1xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := privatelink.NewVpcEndpointServiceResource(ctx, "example", &privatelink.VpcEndpointServiceResourceArgs{
+//				ResourceId:   pulumi.String("lb-gw8nuym5xxxxx"),
+//				ResourceType: pulumi.String("slb"),
+//				ServiceId:    pulumi.String("epsrv-gw8ii1xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>
+//
+//	$ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>
+//
 // ```
 type VpcEndpointServiceResource struct {
 	pulumi.CustomResourceState
@@ -176,7 +181,7 @@ func (i *VpcEndpointServiceResource) ToVpcEndpointServiceResourceOutputWithConte
 // VpcEndpointServiceResourceArrayInput is an input type that accepts VpcEndpointServiceResourceArray and VpcEndpointServiceResourceArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceResourceArrayInput` via:
 //
-//          VpcEndpointServiceResourceArray{ VpcEndpointServiceResourceArgs{...} }
+//	VpcEndpointServiceResourceArray{ VpcEndpointServiceResourceArgs{...} }
 type VpcEndpointServiceResourceArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i VpcEndpointServiceResourceArray) ToVpcEndpointServiceResourceArrayOutput
 // VpcEndpointServiceResourceMapInput is an input type that accepts VpcEndpointServiceResourceMap and VpcEndpointServiceResourceMapOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceResourceMapInput` via:
 //
-//          VpcEndpointServiceResourceMap{ "key": VpcEndpointServiceResourceArgs{...} }
+//	VpcEndpointServiceResourceMap{ "key": VpcEndpointServiceResourceArgs{...} }
 type VpcEndpointServiceResourceMapInput interface {
 	pulumi.Input
 

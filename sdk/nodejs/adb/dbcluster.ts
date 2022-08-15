@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * });
  * const _this = new alicloud.adb.DBCluster("this", {
  *     dbClusterCategory: "Cluster",
- *     dbClusterClass: "C8",
+ *     dbNodeClass: "C8",
  *     dbNodeCount: 4,
  *     dbNodeStorage: 400,
  *     mode: "reserver",

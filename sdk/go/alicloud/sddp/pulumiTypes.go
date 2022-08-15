@@ -31,7 +31,7 @@ type GetConfigsConfig struct {
 // GetConfigsConfigInput is an input type that accepts GetConfigsConfigArgs and GetConfigsConfigOutput values.
 // You can construct a concrete instance of `GetConfigsConfigInput` via:
 //
-//          GetConfigsConfigArgs{...}
+//	GetConfigsConfigArgs{...}
 type GetConfigsConfigInput interface {
 	pulumi.Input
 
@@ -72,7 +72,7 @@ func (i GetConfigsConfigArgs) ToGetConfigsConfigOutputWithContext(ctx context.Co
 // GetConfigsConfigArrayInput is an input type that accepts GetConfigsConfigArray and GetConfigsConfigArrayOutput values.
 // You can construct a concrete instance of `GetConfigsConfigArrayInput` via:
 //
-//          GetConfigsConfigArray{ GetConfigsConfigArgs{...} }
+//	GetConfigsConfigArray{ GetConfigsConfigArgs{...} }
 type GetConfigsConfigArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +189,7 @@ type GetDataLimitsLimit struct {
 // GetDataLimitsLimitInput is an input type that accepts GetDataLimitsLimitArgs and GetDataLimitsLimitOutput values.
 // You can construct a concrete instance of `GetDataLimitsLimitInput` via:
 //
-//          GetDataLimitsLimitArgs{...}
+//	GetDataLimitsLimitArgs{...}
 type GetDataLimitsLimitInput interface {
 	pulumi.Input
 
@@ -237,7 +237,7 @@ func (i GetDataLimitsLimitArgs) ToGetDataLimitsLimitOutputWithContext(ctx contex
 // GetDataLimitsLimitArrayInput is an input type that accepts GetDataLimitsLimitArray and GetDataLimitsLimitArrayOutput values.
 // You can construct a concrete instance of `GetDataLimitsLimitArrayInput` via:
 //
-//          GetDataLimitsLimitArray{ GetDataLimitsLimitArgs{...} }
+//	GetDataLimitsLimitArray{ GetDataLimitsLimitArgs{...} }
 type GetDataLimitsLimitArrayInput interface {
 	pulumi.Input
 
@@ -373,7 +373,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -418,7 +418,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -575,7 +575,7 @@ type GetRulesRule struct {
 // GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
 // You can construct a concrete instance of `GetRulesRuleInput` via:
 //
-//          GetRulesRuleArgs{...}
+//	GetRulesRuleArgs{...}
 type GetRulesRuleInput interface {
 	pulumi.Input
 
@@ -647,7 +647,7 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
-//          GetRulesRuleArray{ GetRulesRuleArgs{...} }
+//	GetRulesRuleArray{ GetRulesRuleArgs{...} }
 type GetRulesRuleArrayInput interface {
 	pulumi.Input
 

@@ -31,53 +31,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("Gpdb"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			VswitchName: pulumi.String("vpc-123456"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gpdb.NewInstance(ctx, "example", &gpdb.InstanceArgs{
-// 			Description:        pulumi.String("tf-gpdb-test"),
-// 			Engine:             pulumi.String("gpdb"),
-// 			EngineVersion:      pulumi.String("4.3"),
-// 			InstanceClass:      pulumi.String("gpdb.group.segsdx2"),
-// 			InstanceGroupCount: pulumi.String("2"),
-// 			VswitchId:          defaultSwitch.ID(),
-// 			SecurityIpLists: pulumi.StringArray{
-// 				pulumi.String("10.168.1.12"),
-// 				pulumi.String("100.69.7.112"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Gpdb"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				VswitchName: pulumi.String("vpc-123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gpdb.NewInstance(ctx, "example", &gpdb.InstanceArgs{
+//				Description:        pulumi.String("tf-gpdb-test"),
+//				Engine:             pulumi.String("gpdb"),
+//				EngineVersion:      pulumi.String("4.3"),
+//				InstanceClass:      pulumi.String("gpdb.group.segsdx2"),
+//				InstanceGroupCount: pulumi.String("2"),
+//				VswitchId:          defaultSwitch.ID(),
+//				SecurityIpLists: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("100.69.7.112"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -85,7 +88,9 @@ import (
 // AnalyticDB for PostgreSQL can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
+//
+//	$ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -270,7 +275,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +300,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

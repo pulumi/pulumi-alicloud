@@ -18,30 +18,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpc.NewDhcpOptionsSet(ctx, "example", &vpc.DhcpOptionsSetArgs{
-// 			DhcpOptionsSetDescription: pulumi.String("example_value"),
-// 			DhcpOptionsSetName:        pulumi.String("example_value"),
-// 			DomainName:                pulumi.String("example.com"),
-// 			DomainNameServers:         pulumi.String("100.100.2.136"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.NewDhcpOptionsSet(ctx, "example", &vpc.DhcpOptionsSetArgs{
+//				DhcpOptionsSetDescription: pulumi.String("example_value"),
+//				DhcpOptionsSetName:        pulumi.String("example_value"),
+//				DomainName:                pulumi.String("example.com"),
+//				DomainNameServers:         pulumi.String("100.100.2.136"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // VPC Dhcp Options Set can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
+//
+//	$ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
+//
 // ```
 type DhcpOptionsSet struct {
 	pulumi.CustomResourceState
@@ -209,7 +214,7 @@ func (i *DhcpOptionsSet) ToDhcpOptionsSetOutputWithContext(ctx context.Context) 
 // DhcpOptionsSetArrayInput is an input type that accepts DhcpOptionsSetArray and DhcpOptionsSetArrayOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetArrayInput` via:
 //
-//          DhcpOptionsSetArray{ DhcpOptionsSetArgs{...} }
+//	DhcpOptionsSetArray{ DhcpOptionsSetArgs{...} }
 type DhcpOptionsSetArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +239,7 @@ func (i DhcpOptionsSetArray) ToDhcpOptionsSetArrayOutputWithContext(ctx context.
 // DhcpOptionsSetMapInput is an input type that accepts DhcpOptionsSetMap and DhcpOptionsSetMapOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetMapInput` via:
 //
-//          DhcpOptionsSetMap{ "key": DhcpOptionsSetArgs{...} }
+//	DhcpOptionsSetMap{ "key": DhcpOptionsSetArgs{...} }
 type DhcpOptionsSetMapInput interface {
 	pulumi.Input
 

@@ -44,7 +44,7 @@ type GetAnycastEipAddressesAddress struct {
 // GetAnycastEipAddressesAddressInput is an input type that accepts GetAnycastEipAddressesAddressArgs and GetAnycastEipAddressesAddressOutput values.
 // You can construct a concrete instance of `GetAnycastEipAddressesAddressInput` via:
 //
-//          GetAnycastEipAddressesAddressArgs{...}
+//	GetAnycastEipAddressesAddressArgs{...}
 type GetAnycastEipAddressesAddressInput interface {
 	pulumi.Input
 
@@ -98,7 +98,7 @@ func (i GetAnycastEipAddressesAddressArgs) ToGetAnycastEipAddressesAddressOutput
 // GetAnycastEipAddressesAddressArrayInput is an input type that accepts GetAnycastEipAddressesAddressArray and GetAnycastEipAddressesAddressArrayOutput values.
 // You can construct a concrete instance of `GetAnycastEipAddressesAddressArrayInput` via:
 //
-//          GetAnycastEipAddressesAddressArray{ GetAnycastEipAddressesAddressArgs{...} }
+//	GetAnycastEipAddressesAddressArray{ GetAnycastEipAddressesAddressArgs{...} }
 type GetAnycastEipAddressesAddressArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +240,7 @@ type GetAnycastEipAddressesAddressAnycastEipBindInfoList struct {
 // GetAnycastEipAddressesAddressAnycastEipBindInfoListInput is an input type that accepts GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs and GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput values.
 // You can construct a concrete instance of `GetAnycastEipAddressesAddressAnycastEipBindInfoListInput` via:
 //
-//          GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs{...}
+//	GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs{...}
 type GetAnycastEipAddressesAddressAnycastEipBindInfoListInput interface {
 	pulumi.Input
 
@@ -274,7 +274,7 @@ func (i GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs) ToGetAnycastEip
 // GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayInput is an input type that accepts GetAnycastEipAddressesAddressAnycastEipBindInfoListArray and GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput values.
 // You can construct a concrete instance of `GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayInput` via:
 //
-//          GetAnycastEipAddressesAddressAnycastEipBindInfoListArray{ GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs{...} }
+//	GetAnycastEipAddressesAddressAnycastEipBindInfoListArray{ GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs{...} }
 type GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayInput interface {
 	pulumi.Input
 

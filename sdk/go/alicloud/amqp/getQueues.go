@@ -16,42 +16,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := amqp.GetQueues(ctx, &amqp.GetQueuesArgs{
-// 			InstanceId:      "amqp-abc12345",
-// 			VirtualHostName: "my-VirtualHost",
-// 			Ids: []string{
-// 				"my-Queue-1",
-// 				"my-Queue-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("amqpQueueId1", ids.Queues[0].Id)
-// 		nameRegex, err := amqp.GetQueues(ctx, &amqp.GetQueuesArgs{
-// 			InstanceId:      "amqp-abc12345",
-// 			VirtualHostName: "my-VirtualHost",
-// 			NameRegex:       pulumi.StringRef("^my-Queue"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("amqpQueueId2", nameRegex.Queues[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := amqp.GetQueues(ctx, &amqp.GetQueuesArgs{
+//				InstanceId:      "amqp-abc12345",
+//				VirtualHostName: "my-VirtualHost",
+//				Ids: []string{
+//					"my-Queue-1",
+//					"my-Queue-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpQueueId1", ids.Queues[0].Id)
+//			nameRegex, err := amqp.GetQueues(ctx, &amqp.GetQueuesArgs{
+//				InstanceId:      "amqp-abc12345",
+//				VirtualHostName: "my-VirtualHost",
+//				NameRegex:       pulumi.StringRef("^my-Queue"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpQueueId2", nameRegex.Queues[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetQueues(ctx *pulumi.Context, args *GetQueuesArgs, opts ...pulumi.InvokeOption) (*GetQueuesResult, error) {
 	var rv GetQueuesResult

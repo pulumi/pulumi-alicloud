@@ -16,30 +16,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := eds.GetCustomProperties(ctx, &eds.GetCustomPropertiesArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("ecdCustomPropertyId1", ids.Properties[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := eds.GetCustomProperties(ctx, &eds.GetCustomPropertiesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecdCustomPropertyId1", ids.Properties[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetCustomProperties(ctx *pulumi.Context, args *GetCustomPropertiesArgs, opts ...pulumi.InvokeOption) (*GetCustomPropertiesResult, error) {
 	var rv GetCustomPropertiesResult

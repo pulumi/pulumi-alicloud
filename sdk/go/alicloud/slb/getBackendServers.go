@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sampleDs, err := slb.GetBackendServers(ctx, &slb.GetBackendServersArgs{
-// 			LoadBalancerId: alicloud_slb_load_balancer.Sample_slb.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstSlbBackendServerId", sampleDs.BackendServers[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sampleDs, err := slb.GetBackendServers(ctx, &slb.GetBackendServersArgs{
+//				LoadBalancerId: alicloud_slb_load_balancer.Sample_slb.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSlbBackendServerId", sampleDs.BackendServers[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetBackendServers(ctx *pulumi.Context, args *GetBackendServersArgs, opts ...pulumi.InvokeOption) (*GetBackendServersResult, error) {
 	var rv GetBackendServersResult

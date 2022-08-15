@@ -16,86 +16,89 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
-// 			NatGatewayId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcNatIpId1", ids.Ips[0].Id)
-// 		nameRegex, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
-// 			NatGatewayId: "example_value",
-// 			NameRegex:    pulumi.StringRef("^my-NatIp"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcNatIpId2", nameRegex.Ips[0].Id)
-// 		natIpCidr, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
-// 			NatGatewayId: "example_value",
-// 			NatIpCidr:    pulumi.StringRef("example_value"),
-// 			NameRegex:    pulumi.StringRef("^my-NatIp"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcNatIpId3", natIpCidr.Ips[0].Id)
-// 		natIpName, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
-// 			NatGatewayId: "example_value",
-// 			Ids: []string{
-// 				"example_value",
-// 			},
-// 			NatIpNames: []string{
-// 				"example_value",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcNatIpId4", natIpName.Ips[0].Id)
-// 		natIpIds, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
-// 			NatGatewayId: "example_value",
-// 			Ids: []string{
-// 				"example_value",
-// 			},
-// 			NatIpIds: []string{
-// 				"example_value",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcNatIpId5", natIpIds.Ips[0].Id)
-// 		status, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
-// 			NatGatewayId: "example_value",
-// 			Ids: []string{
-// 				"example_value",
-// 			},
-// 			Status: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcNatIpId6", status.Ips[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
+//				NatGatewayId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpId1", ids.Ips[0].Id)
+//			nameRegex, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
+//				NatGatewayId: "example_value",
+//				NameRegex:    pulumi.StringRef("^my-NatIp"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpId2", nameRegex.Ips[0].Id)
+//			natIpCidr, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
+//				NatGatewayId: "example_value",
+//				NatIpCidr:    pulumi.StringRef("example_value"),
+//				NameRegex:    pulumi.StringRef("^my-NatIp"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpId3", natIpCidr.Ips[0].Id)
+//			natIpName, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
+//				NatGatewayId: "example_value",
+//				Ids: []string{
+//					"example_value",
+//				},
+//				NatIpNames: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpId4", natIpName.Ips[0].Id)
+//			natIpIds, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
+//				NatGatewayId: "example_value",
+//				Ids: []string{
+//					"example_value",
+//				},
+//				NatIpIds: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpId5", natIpIds.Ips[0].Id)
+//			status, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
+//				NatGatewayId: "example_value",
+//				Ids: []string{
+//					"example_value",
+//				},
+//				Status: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpId6", status.Ips[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNatIps(ctx *pulumi.Context, args *GetNatIpsArgs, opts ...pulumi.InvokeOption) (*GetNatIpsResult, error) {
 	var rv GetNatIpsResult

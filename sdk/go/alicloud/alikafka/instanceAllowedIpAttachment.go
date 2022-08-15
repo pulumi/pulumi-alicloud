@@ -19,68 +19,71 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tftest"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("^default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			VpcId: pulumi.String(defaultNetworks.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			TopicQuota:    pulumi.Int(50),
-// 			DiskType:      pulumi.Int(1),
-// 			DiskSize:      pulumi.Int(500),
-// 			DeployType:    pulumi.Int(5),
-// 			IoMax:         pulumi.Int(20),
-// 			VswitchId:     pulumi.String(defaultSwitches.Ids[0]),
-// 			SecurityGroup: defaultSecurityGroup.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = alikafka.NewInstanceAllowedIpAttachment(ctx, "defaultInstanceAllowedIpAttachment", &alikafka.InstanceAllowedIpAttachmentArgs{
-// 			AllowedIp:   pulumi.String("114.237.9.78/32"),
-// 			AllowedType: pulumi.String("vpc"),
-// 			InstanceId:  defaultInstance.ID(),
-// 			PortRange:   pulumi.String("9092/9092"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tftest"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//				TopicQuota:    pulumi.Int(50),
+//				DiskType:      pulumi.Int(1),
+//				DiskSize:      pulumi.Int(500),
+//				DeployType:    pulumi.Int(5),
+//				IoMax:         pulumi.Int(20),
+//				VswitchId:     pulumi.String(defaultSwitches.Ids[0]),
+//				SecurityGroup: defaultSecurityGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alikafka.NewInstanceAllowedIpAttachment(ctx, "defaultInstanceAllowedIpAttachment", &alikafka.InstanceAllowedIpAttachmentArgs{
+//				AllowedIp:   pulumi.String("114.237.9.78/32"),
+//				AllowedType: pulumi.String("vpc"),
+//				InstanceId:  defaultInstance.ID(),
+//				PortRange:   pulumi.String("9092/9092"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -88,7 +91,9 @@ import (
 // AliKafka Instance Allowed Ip Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example <instance_id>:<allowed_type>:<port_range>:<allowed_ip>
+//
+//	$ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example <instance_id>:<allowed_type>:<port_range>:<allowed_ip>
+//
 // ```
 type InstanceAllowedIpAttachment struct {
 	pulumi.CustomResourceState
@@ -238,7 +243,7 @@ func (i *InstanceAllowedIpAttachment) ToInstanceAllowedIpAttachmentOutputWithCon
 // InstanceAllowedIpAttachmentArrayInput is an input type that accepts InstanceAllowedIpAttachmentArray and InstanceAllowedIpAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceAllowedIpAttachmentArrayInput` via:
 //
-//          InstanceAllowedIpAttachmentArray{ InstanceAllowedIpAttachmentArgs{...} }
+//	InstanceAllowedIpAttachmentArray{ InstanceAllowedIpAttachmentArgs{...} }
 type InstanceAllowedIpAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -263,7 +268,7 @@ func (i InstanceAllowedIpAttachmentArray) ToInstanceAllowedIpAttachmentArrayOutp
 // InstanceAllowedIpAttachmentMapInput is an input type that accepts InstanceAllowedIpAttachmentMap and InstanceAllowedIpAttachmentMapOutput values.
 // You can construct a concrete instance of `InstanceAllowedIpAttachmentMapInput` via:
 //
-//          InstanceAllowedIpAttachmentMap{ "key": InstanceAllowedIpAttachmentArgs{...} }
+//	InstanceAllowedIpAttachmentMap{ "key": InstanceAllowedIpAttachmentArgs{...} }
 type InstanceAllowedIpAttachmentMapInput interface {
 	pulumi.Input
 

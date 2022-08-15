@@ -157,6 +157,10 @@ export class Alarm extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Critical level alarm threshold value, which must be a numeric value currently.
      *
      * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
@@ -205,6 +209,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["startTime"] = state ? state.startTime : undefined;
             resourceInputs["statistics"] = state ? state.statistics : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["threshold"] = state ? state.threshold : undefined;
             resourceInputs["triggeredCount"] = state ? state.triggeredCount : undefined;
             resourceInputs["webhook"] = state ? state.webhook : undefined;
@@ -237,6 +242,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
             resourceInputs["statistics"] = args ? args.statistics : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["threshold"] = args ? args.threshold : undefined;
             resourceInputs["triggeredCount"] = args ? args.triggeredCount : undefined;
             resourceInputs["webhook"] = args ? args.webhook : undefined;
@@ -338,6 +344,10 @@ export interface AlarmState {
      * The current alarm rule status.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Critical level alarm threshold value, which must be a numeric value currently.
      *
@@ -443,6 +453,10 @@ export interface AlarmArgs {
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
     statistics?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Critical level alarm threshold value, which must be a numeric value currently.
      *

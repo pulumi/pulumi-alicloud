@@ -21,24 +21,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gpdb, err := gpdb.GetInstances(ctx, &gpdb.GetInstancesArgs{
-// 			AvailabilityZone: pulumi.StringRef("cn-beijing-c"),
-// 			NameRegex:        pulumi.StringRef("gp-.+\\d+"),
-// 			OutputFile:       pulumi.StringRef("instances.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("instanceId", gpdb.Instances[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gpdb, err := gpdb.GetInstances(ctx, &gpdb.GetInstancesArgs{
+//				AvailabilityZone: pulumi.StringRef("cn-beijing-c"),
+//				NameRegex:        pulumi.StringRef("gp-.+\\d+"),
+//				OutputFile:       pulumi.StringRef("instances.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("instanceId", gpdb.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

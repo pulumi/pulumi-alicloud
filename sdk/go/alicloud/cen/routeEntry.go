@@ -17,132 +17,135 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newalicloud(ctx, "hz", &providers.alicloudArgs{
-// 			Region: "cn-hangzhou",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccCenRouteEntryConfig"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 			CpuCoreCount:     pulumi.IntRef(1),
-// 			MemorySize:       pulumi.Float64Ref(2),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-// 			MostRecent: pulumi.BoolRef(true),
-// 			Owners:     pulumi.StringRef("system"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider(alicloud.Hz))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       vpc.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		}, pulumi.Provider(alicloud.Hz))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			Description: pulumi.String("foo"),
-// 			VpcId:       vpc.ID(),
-// 		}, pulumi.Provider(alicloud.Hz))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-// 			VswitchId:               defaultSwitch.ID(),
-// 			ImageId:                 pulumi.String(defaultImages.Images[0].Id),
-// 			InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// 			SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-// 			InternetChargeType:      pulumi.String("PayByTraffic"),
-// 			InternetMaxBandwidthOut: pulumi.Int(5),
-// 			SecurityGroups: pulumi.StringArray{
-// 				defaultSecurityGroup.ID(),
-// 			},
-// 			InstanceName: pulumi.String(name),
-// 		}, pulumi.Provider(alicloud.Hz))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cen, err := cen.NewInstance(ctx, "cen", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		attach, err := cen.NewInstanceAttachment(ctx, "attach", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            cen.ID(),
-// 			ChildInstanceId:       vpc.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			defaultSwitch,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		route, err := vpc.NewRouteEntry(ctx, "route", &vpc.RouteEntryArgs{
-// 			RouteTableId:         vpc.RouteTableId,
-// 			DestinationCidrblock: pulumi.String("11.0.0.0/16"),
-// 			NexthopType:          pulumi.String("Instance"),
-// 			NexthopId:            defaultInstance.ID(),
-// 		}, pulumi.Provider(alicloud.Hz))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewRouteEntry(ctx, "foo", &cen.RouteEntryArgs{
-// 			InstanceId:   cen.ID(),
-// 			RouteTableId: vpc.RouteTableId,
-// 			CidrBlock:    route.DestinationCidrblock,
-// 		}, pulumi.Provider(alicloud.Hz), pulumi.DependsOn([]pulumi.Resource{
-// 			attach,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := providers.Newalicloud(ctx, "hz", &providers.alicloudArgs{
+//				Region: "cn-hangzhou",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccCenRouteEntryConfig"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       vpc.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String("foo"),
+//				VpcId:       vpc.ID(),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				VswitchId:               defaultSwitch.ID(),
+//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//				InternetChargeType:      pulumi.String("PayByTraffic"),
+//				InternetMaxBandwidthOut: pulumi.Int(5),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				InstanceName: pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			cen, err := cen.NewInstance(ctx, "cen", nil)
+//			if err != nil {
+//				return err
+//			}
+//			attach, err := cen.NewInstanceAttachment(ctx, "attach", &cen.InstanceAttachmentArgs{
+//				InstanceId:            cen.ID(),
+//				ChildInstanceId:       vpc.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultSwitch,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			route, err := vpc.NewRouteEntry(ctx, "route", &vpc.RouteEntryArgs{
+//				RouteTableId:         vpc.RouteTableId,
+//				DestinationCidrblock: pulumi.String("11.0.0.0/16"),
+//				NexthopType:          pulumi.String("Instance"),
+//				NexthopId:            defaultInstance.ID(),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewRouteEntry(ctx, "foo", &cen.RouteEntryArgs{
+//				InstanceId:   cen.ID(),
+//				RouteTableId: vpc.RouteTableId,
+//				CidrBlock:    route.DestinationCidrblock,
+//			}, pulumi.Provider(alicloud.Hz), pulumi.DependsOn([]pulumi.Resource{
+//				attach,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -150,7 +153,9 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
+//
+//	$ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
+//
 // ```
 type RouteEntry struct {
 	pulumi.CustomResourceState
@@ -267,7 +272,7 @@ func (i *RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEnt
 // RouteEntryArrayInput is an input type that accepts RouteEntryArray and RouteEntryArrayOutput values.
 // You can construct a concrete instance of `RouteEntryArrayInput` via:
 //
-//          RouteEntryArray{ RouteEntryArgs{...} }
+//	RouteEntryArray{ RouteEntryArgs{...} }
 type RouteEntryArrayInput interface {
 	pulumi.Input
 
@@ -292,7 +297,7 @@ func (i RouteEntryArray) ToRouteEntryArrayOutputWithContext(ctx context.Context)
 // RouteEntryMapInput is an input type that accepts RouteEntryMap and RouteEntryMapOutput values.
 // You can construct a concrete instance of `RouteEntryMapInput` via:
 //
-//          RouteEntryMap{ "key": RouteEntryArgs{...} }
+//	RouteEntryMap{ "key": RouteEntryArgs{...} }
 type RouteEntryMapInput interface {
 	pulumi.Input
 

@@ -109,14 +109,14 @@ public final class FunctionAsyncInvokeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Function Compute async job configuration. valid values true or false, default `false`
+     * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      * 
      */
     @Import(name="statefulInvocation")
     private @Nullable Output<Boolean> statefulInvocation;
 
     /**
-     * @return Function Compute async job configuration. valid values true or false, default `false`
+     * @return Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      * 
      */
     public Optional<Output<Boolean>> statefulInvocation() {
@@ -280,7 +280,7 @@ public final class FunctionAsyncInvokeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param statefulInvocation Function Compute async job configuration. valid values true or false, default `false`
+         * @param statefulInvocation Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class FunctionAsyncInvokeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param statefulInvocation Function Compute async job configuration. valid values true or false, default `false`
+         * @param statefulInvocation Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
          * 
          * @return builder
          * 

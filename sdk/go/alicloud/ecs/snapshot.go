@@ -17,25 +17,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewSnapshot(ctx, "snapshot", &ecs.SnapshotArgs{
-// 			DiskId:      pulumi.Any(alicloud_disk_attachment.Instance - attachment.Disk_id),
-// 			Description: pulumi.String("this snapshot is created for testing"),
-// 			Tags: pulumi.AnyMap{
-// 				"version": pulumi.Any("1.2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewSnapshot(ctx, "snapshot", &ecs.SnapshotArgs{
+//				DiskId:      pulumi.Any(alicloud_disk_attachment.Instance - attachment.Disk_id),
+//				Description: pulumi.String("this snapshot is created for testing"),
+//				Tags: pulumi.AnyMap{
+//					"version": pulumi.Any("1.2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // Snapshot can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
+//
+//	$ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
+//
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState
@@ -222,7 +227,7 @@ func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutp
 // SnapshotArrayInput is an input type that accepts SnapshotArray and SnapshotArrayOutput values.
 // You can construct a concrete instance of `SnapshotArrayInput` via:
 //
-//          SnapshotArray{ SnapshotArgs{...} }
+//	SnapshotArray{ SnapshotArgs{...} }
 type SnapshotArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +252,7 @@ func (i SnapshotArray) ToSnapshotArrayOutputWithContext(ctx context.Context) Sna
 // SnapshotMapInput is an input type that accepts SnapshotMap and SnapshotMapOutput values.
 // You can construct a concrete instance of `SnapshotMapInput` via:
 //
-//          SnapshotMap{ "key": SnapshotArgs{...} }
+//	SnapshotMap{ "key": SnapshotArgs{...} }
 type SnapshotMapInput interface {
 	pulumi.Input
 

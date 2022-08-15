@@ -22,28 +22,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		f1, err := resourcemanager.NewFolder(ctx, "f1", &resourcemanager.FolderArgs{
-// 			FolderName: pulumi.String("test1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
-// 			DisplayName: pulumi.String("RDAccount"),
-// 			FolderId:    f1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			f1, err := resourcemanager.NewFolder(ctx, "f1", &resourcemanager.FolderArgs{
+//				FolderName: pulumi.String("test1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
+//				DisplayName: pulumi.String("RDAccount"),
+//				FolderId:    f1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Resource Manager Account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+//
+//	$ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+//
 // ```
 type Account struct {
 	pulumi.CustomResourceState
@@ -74,6 +79,8 @@ type Account struct {
 	ResourceDirectoryId pulumi.StringOutput `pulumi:"resourceDirectoryId"`
 	// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -128,6 +135,8 @@ type accountState struct {
 	ResourceDirectoryId *string `pulumi:"resourceDirectoryId"`
 	// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type *string `pulumi:"type"`
 }
@@ -151,6 +160,8 @@ type AccountState struct {
 	ResourceDirectoryId pulumi.StringPtrInput
 	// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type pulumi.StringPtrInput
 }
@@ -168,6 +179,8 @@ type accountArgs struct {
 	FolderId *string `pulumi:"folderId"`
 	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId *string `pulumi:"payerAccountId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Account resource.
@@ -180,6 +193,8 @@ type AccountArgs struct {
 	FolderId pulumi.StringPtrInput
 	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {
@@ -208,7 +223,7 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
-//          AccountArray{ AccountArgs{...} }
+//	AccountArray{ AccountArgs{...} }
 type AccountArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +248,7 @@ func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) Accou
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
 // You can construct a concrete instance of `AccountMapInput` via:
 //
-//          AccountMap{ "key": AccountArgs{...} }
+//	AccountMap{ "key": AccountArgs{...} }
 type AccountMapInput interface {
 	pulumi.Input
 
@@ -312,6 +327,11 @@ func (o AccountOutput) ResourceDirectoryId() pulumi.StringOutput {
 // Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
 func (o AccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o AccountOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Account) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Member type. The value of `ResourceAccount` indicates the resource account.

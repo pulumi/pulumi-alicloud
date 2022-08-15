@@ -19,31 +19,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sddp.NewRule(ctx, "default", &sddp.RuleArgs{
-// 			Category:    pulumi.Int(0),
-// 			Content:     pulumi.String("content"),
-// 			ProductCode: pulumi.String("ODPS"),
-// 			RiskLevelId: pulumi.String("4"),
-// 			RuleName:    pulumi.String("rule_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sddp.NewRule(ctx, "default", &sddp.RuleArgs{
+//				Category:    pulumi.Int(0),
+//				Content:     pulumi.String("content"),
+//				ProductCode: pulumi.String("ODPS"),
+//				RiskLevelId: pulumi.String("4"),
+//				RuleName:    pulumi.String("rule_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Data Security Center Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sddp/rule:Rule example <id>
+//
+//	$ pulumi import alicloud:sddp/rule:Rule example <id>
+//
 // ```
 type Rule struct {
 	pulumi.CustomResourceState
@@ -368,7 +373,7 @@ func (i *Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // RuleArrayInput is an input type that accepts RuleArray and RuleArrayOutput values.
 // You can construct a concrete instance of `RuleArrayInput` via:
 //
-//          RuleArray{ RuleArgs{...} }
+//	RuleArray{ RuleArgs{...} }
 type RuleArrayInput interface {
 	pulumi.Input
 
@@ -393,7 +398,7 @@ func (i RuleArray) ToRuleArrayOutputWithContext(ctx context.Context) RuleArrayOu
 // RuleMapInput is an input type that accepts RuleMap and RuleMapOutput values.
 // You can construct a concrete instance of `RuleMapInput` via:
 //
-//          RuleMap{ "key": RuleArgs{...} }
+//	RuleMap{ "key": RuleArgs{...} }
 type RuleMapInput interface {
 	pulumi.Input
 

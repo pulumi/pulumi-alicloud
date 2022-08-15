@@ -19,41 +19,44 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		this, err := alicloud.GetAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cms.NewSlsGroup(ctx, "default", &cms.SlsGroupArgs{
-// 			SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
-// 				&cms.SlsGroupSlsGroupConfigArgs{
-// 					SlsUserId:   pulumi.String(this.Id),
-// 					SlsLogstore: pulumi.String("Logstore-ECS"),
-// 					SlsProject:  pulumi.String("aliyun-project"),
-// 					SlsRegion:   pulumi.String("cn-hangzhou"),
-// 				},
-// 			},
-// 			SlsGroupDescription: pulumi.Any(_var.Name),
-// 			SlsGroupName:        pulumi.Any(_var.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewSlsGroup(ctx, "default", &cms.SlsGroupArgs{
+//				SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
+//					&cms.SlsGroupSlsGroupConfigArgs{
+//						SlsUserId:   pulumi.String(this.Id),
+//						SlsLogstore: pulumi.String("Logstore-ECS"),
+//						SlsProject:  pulumi.String("aliyun-project"),
+//						SlsRegion:   pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//				SlsGroupDescription: pulumi.Any(_var.Name),
+//				SlsGroupName:        pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -61,7 +64,9 @@ import (
 // Cloud Monitor Service Sls Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/slsGroup:SlsGroup example <sls_group_name>
+//
+//	$ pulumi import alicloud:cms/slsGroup:SlsGroup example <sls_group_name>
+//
 // ```
 type SlsGroup struct {
 	pulumi.CustomResourceState
@@ -175,7 +180,7 @@ func (i *SlsGroup) ToSlsGroupOutputWithContext(ctx context.Context) SlsGroupOutp
 // SlsGroupArrayInput is an input type that accepts SlsGroupArray and SlsGroupArrayOutput values.
 // You can construct a concrete instance of `SlsGroupArrayInput` via:
 //
-//          SlsGroupArray{ SlsGroupArgs{...} }
+//	SlsGroupArray{ SlsGroupArgs{...} }
 type SlsGroupArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +205,7 @@ func (i SlsGroupArray) ToSlsGroupArrayOutputWithContext(ctx context.Context) Sls
 // SlsGroupMapInput is an input type that accepts SlsGroupMap and SlsGroupMapOutput values.
 // You can construct a concrete instance of `SlsGroupMapInput` via:
 //
-//          SlsGroupMap{ "key": SlsGroupArgs{...} }
+//	SlsGroupMap{ "key": SlsGroupArgs{...} }
 type SlsGroupMapInput interface {
 	pulumi.Input
 

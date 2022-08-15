@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        /// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
@@ -541,7 +541,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        /// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -859,7 +859,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        /// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }

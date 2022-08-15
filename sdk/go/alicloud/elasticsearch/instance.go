@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/elasticsearch"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/elasticsearch"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elasticsearch.NewInstance(ctx, "instance", &elasticsearch.InstanceArgs{
-// 			ClientNodeAmount:   pulumi.Int(2),
-// 			ClientNodeSpec:     pulumi.String("elasticsearch.sn2ne.large"),
-// 			DataNodeAmount:     pulumi.Int(2),
-// 			DataNodeDiskSize:   pulumi.Int(20),
-// 			DataNodeDiskType:   pulumi.String("cloud_ssd"),
-// 			DataNodeSpec:       pulumi.String("elasticsearch.sn2ne.large"),
-// 			Description:        pulumi.String("description"),
-// 			InstanceChargeType: pulumi.String("PostPaid"),
-// 			Password:           pulumi.String("Your password"),
-// 			Protocol:           pulumi.String("HTTPS"),
-// 			Tags: pulumi.AnyMap{
-// 				"key1": pulumi.Any("value1"),
-// 				"key2": pulumi.Any("value2"),
-// 			},
-// 			Version:   pulumi.String("5.5.3_with_X-Pack"),
-// 			VswitchId: pulumi.String("some vswitch id"),
-// 			ZoneCount: pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := elasticsearch.NewInstance(ctx, "instance", &elasticsearch.InstanceArgs{
+//				ClientNodeAmount:   pulumi.Int(2),
+//				ClientNodeSpec:     pulumi.String("elasticsearch.sn2ne.large"),
+//				DataNodeAmount:     pulumi.Int(2),
+//				DataNodeDiskSize:   pulumi.Int(20),
+//				DataNodeDiskType:   pulumi.String("cloud_ssd"),
+//				DataNodeSpec:       pulumi.String("elasticsearch.sn2ne.large"),
+//				Description:        pulumi.String("description"),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				Password:           pulumi.String("Your password"),
+//				Protocol:           pulumi.String("HTTPS"),
+//				Tags: pulumi.AnyMap{
+//					"key1": pulumi.Any("value1"),
+//					"key2": pulumi.Any("value2"),
+//				},
+//				Version:   pulumi.String("5.5.3_with_X-Pack"),
+//				VswitchId: pulumi.String("some vswitch id"),
+//				ZoneCount: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Elasticsearch can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+//
+//	$ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -494,7 +499,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -519,7 +524,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

@@ -24,7 +24,9 @@ import (
 // Lindorm Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:lindorm/instance:Instance example <id>
+//
+//	$ pulumi import alicloud:lindorm/instance:Instance example <id>
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -447,7 +449,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -472,7 +474,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

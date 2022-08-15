@@ -18,25 +18,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		policiesDs, err := ram.GetPolicies(ctx, &ram.GetPoliciesArgs{
-// 			GroupName:  pulumi.StringRef("group1"),
-// 			OutputFile: pulumi.StringRef("policies.txt"),
-// 			Type:       pulumi.StringRef("System"),
-// 			UserName:   pulumi.StringRef("user1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstPolicyName", policiesDs.Policies[0].Name)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			policiesDs, err := ram.GetPolicies(ctx, &ram.GetPoliciesArgs{
+//				GroupName:  pulumi.StringRef("group1"),
+//				OutputFile: pulumi.StringRef("policies.txt"),
+//				Type:       pulumi.StringRef("System"),
+//				UserName:   pulumi.StringRef("user1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstPolicyName", policiesDs.Policies[0].Name)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetPolicies(ctx *pulumi.Context, args *GetPoliciesArgs, opts ...pulumi.InvokeOption) (*GetPoliciesResult, error) {
 	var rv GetPoliciesResult

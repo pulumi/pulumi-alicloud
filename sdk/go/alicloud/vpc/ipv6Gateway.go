@@ -19,35 +19,38 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// 			VpcName:    pulumi.String("example_value"),
-// 			EnableIpv6: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewIpv6Gateway(ctx, "example", &vpc.Ipv6GatewayArgs{
-// 			Ipv6GatewayName: pulumi.String("example_value"),
-// 			VpcId:           _default.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:    pulumi.String("example_value"),
+//				EnableIpv6: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewIpv6Gateway(ctx, "example", &vpc.Ipv6GatewayArgs{
+//				Ipv6GatewayName: pulumi.String("example_value"),
+//				VpcId:           _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // VPC Ipv6 Gateway can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
+//
+//	$ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
+//
 // ```
 type Ipv6Gateway struct {
 	pulumi.CustomResourceState
@@ -182,7 +187,7 @@ func (i *Ipv6Gateway) ToIpv6GatewayOutputWithContext(ctx context.Context) Ipv6Ga
 // Ipv6GatewayArrayInput is an input type that accepts Ipv6GatewayArray and Ipv6GatewayArrayOutput values.
 // You can construct a concrete instance of `Ipv6GatewayArrayInput` via:
 //
-//          Ipv6GatewayArray{ Ipv6GatewayArgs{...} }
+//	Ipv6GatewayArray{ Ipv6GatewayArgs{...} }
 type Ipv6GatewayArrayInput interface {
 	pulumi.Input
 
@@ -207,7 +212,7 @@ func (i Ipv6GatewayArray) ToIpv6GatewayArrayOutputWithContext(ctx context.Contex
 // Ipv6GatewayMapInput is an input type that accepts Ipv6GatewayMap and Ipv6GatewayMapOutput values.
 // You can construct a concrete instance of `Ipv6GatewayMapInput` via:
 //
-//          Ipv6GatewayMap{ "key": Ipv6GatewayArgs{...} }
+//	Ipv6GatewayMap{ "key": Ipv6GatewayArgs{...} }
 type Ipv6GatewayMapInput interface {
 	pulumi.Input
 

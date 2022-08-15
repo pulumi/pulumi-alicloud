@@ -19,104 +19,107 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ehpc"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ehpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cfg := config.New(ctx, "")
-// 		storageType := "Performance"
-// 		if param := cfg.Get("storageType"); param != "" {
-// 			storageType = param
-// 		}
-// 		defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
-// 			StorageType:  pulumi.String(storageType),
-// 			ProtocolType: pulumi.String("NFS"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultMountTarget, err := nas.NewMountTarget(ctx, "defaultMountTarget", &nas.MountTargetArgs{
-// 			FileSystemId:    defaultFileSystem.ID(),
-// 			AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
-// 			VswitchId:       pulumi.String(defaultSwitches.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex: pulumi.StringRef("^centos_7_6_x64*"),
-// 			Owners:    pulumi.StringRef("system"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ehpc.NewCluster(ctx, "defaultCluster", &ehpc.ClusterArgs{
-// 			ClusterName:         pulumi.String("example_value"),
-// 			DeployMode:          pulumi.String("Simple"),
-// 			Description:         pulumi.String("example_description"),
-// 			HaEnable:            pulumi.Bool(false),
-// 			ImageId:             pulumi.String(defaultImages.Images[0].Id),
-// 			ImageOwnerAlias:     pulumi.String("system"),
-// 			VolumeProtocol:      pulumi.String("nfs"),
-// 			VolumeId:            defaultFileSystem.ID(),
-// 			VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
-// 			ComputeCount:        pulumi.Int(1),
-// 			ComputeInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// 			LoginCount:          pulumi.Int(1),
-// 			LoginInstanceType:   pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// 			ManagerCount:        pulumi.Int(1),
-// 			ManagerInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// 			OsTag:               pulumi.String("CentOS_7.6_64"),
-// 			SchedulerType:       pulumi.String("pbs"),
-// 			Password:            pulumi.String("your-password123"),
-// 			VswitchId:           pulumi.String(defaultSwitches.Ids[0]),
-// 			VpcId:               pulumi.String(defaultNetworks.Ids[0]),
-// 			ZoneId:              pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			storageType := "Performance"
+//			if param := cfg.Get("storageType"); param != "" {
+//				storageType = param
+//			}
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//				StorageType:  pulumi.String(storageType),
+//				ProtocolType: pulumi.String("NFS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMountTarget, err := nas.NewMountTarget(ctx, "defaultMountTarget", &nas.MountTargetArgs{
+//				FileSystemId:    defaultFileSystem.ID(),
+//				AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
+//				VswitchId:       pulumi.String(defaultSwitches.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^centos_7_6_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ehpc.NewCluster(ctx, "defaultCluster", &ehpc.ClusterArgs{
+//				ClusterName:         pulumi.String("example_value"),
+//				DeployMode:          pulumi.String("Simple"),
+//				Description:         pulumi.String("example_description"),
+//				HaEnable:            pulumi.Bool(false),
+//				ImageId:             pulumi.String(defaultImages.Images[0].Id),
+//				ImageOwnerAlias:     pulumi.String("system"),
+//				VolumeProtocol:      pulumi.String("nfs"),
+//				VolumeId:            defaultFileSystem.ID(),
+//				VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
+//				ComputeCount:        pulumi.Int(1),
+//				ComputeInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				LoginCount:          pulumi.Int(1),
+//				LoginInstanceType:   pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ManagerCount:        pulumi.Int(1),
+//				ManagerInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				OsTag:               pulumi.String("CentOS_7.6_64"),
+//				SchedulerType:       pulumi.String("pbs"),
+//				Password:            pulumi.String("your-password123"),
+//				VswitchId:           pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:               pulumi.String(defaultNetworks.Ids[0]),
+//				ZoneId:              pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -124,7 +127,9 @@ import (
 // Ehpc Cluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ehpc/cluster:Cluster example <id>
+//
+//	$ pulumi import alicloud:ehpc/cluster:Cluster example <id>
+//
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -899,7 +904,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//          ClusterArray{ ClusterArgs{...} }
+//	ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -924,7 +929,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//          ClusterMap{ "key": ClusterArgs{...} }
+//	ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 

@@ -16,32 +16,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := hbr.GetHanaBackupPlans(ctx, &hbr.GetHanaBackupPlansArgs{
-// 			ClusterId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("hbrHanaBackupPlanId1", ids.Plans[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := hbr.GetHanaBackupPlans(ctx, &hbr.GetHanaBackupPlansArgs{
+//				ClusterId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("hbrHanaBackupPlanId1", ids.Plans[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHanaBackupPlans(ctx *pulumi.Context, args *GetHanaBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetHanaBackupPlansResult, error) {
 	var rv GetHanaBackupPlansResult

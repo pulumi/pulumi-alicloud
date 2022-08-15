@@ -8,12 +8,15 @@ import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetApisPlainArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetAppsPlainArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetBackendsPlainArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetGroupsPlainArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.apigateway.outputs.GetApisResult;
 import com.pulumi.alicloud.apigateway.outputs.GetAppsResult;
+import com.pulumi.alicloud.apigateway.outputs.GetBackendsResult;
 import com.pulumi.alicloud.apigateway.outputs.GetGroupsResult;
 import com.pulumi.alicloud.apigateway.outputs.GetServiceResult;
 import com.pulumi.core.Output;
@@ -478,6 +481,246 @@ public final class ApigatewayFunctions {
      */
     public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:apigateway/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getBackends();
+     * 
+     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBackendsResult> getBackends() {
+        return getBackends(GetBackendsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getBackends();
+     * 
+     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBackendsResult> getBackendsPlain() {
+        return getBackendsPlain(GetBackendsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getBackends();
+     * 
+     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBackendsResult> getBackends(GetBackendsArgs args) {
+        return getBackends(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getBackends();
+     * 
+     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBackendsResult> getBackendsPlain(GetBackendsPlainArgs args) {
+        return getBackendsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getBackends();
+     * 
+     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBackendsResult> getBackends(GetBackendsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apigateway/getBackends:getBackends", TypeShape.of(GetBackendsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getBackends();
+     * 
+     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBackendsResult> getBackendsPlain(GetBackendsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apigateway/getBackends:getBackends", TypeShape.of(GetBackendsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the api groups of the current Alibaba Cloud user.

@@ -17,61 +17,64 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "networkInterfaceName"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("192.168.0.0/24"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// 			CidrBlock: pulumi.String("192.168.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 			VpcId:     vpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-// 			VpcId: vpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewNetworkInterface(ctx, "defaultNetworkInterface", &vpc.NetworkInterfaceArgs{
-// 			VswitchId: vswitch.ID(),
-// 			SecurityGroups: pulumi.StringArray{
-// 				group.ID(),
-// 			},
-// 			PrivateIp:       pulumi.String("192.168.0.2"),
-// 			PrivateIpsCount: pulumi.Int(3),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "networkInterfaceName"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+//				CidrBlock: pulumi.String("192.168.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				VpcId:     vpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				VpcId: vpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNetworkInterface(ctx, "defaultNetworkInterface", &vpc.NetworkInterfaceArgs{
+//				VswitchId: vswitch.ID(),
+//				SecurityGroups: pulumi.StringArray{
+//					group.ID(),
+//				},
+//				PrivateIp:       pulumi.String("192.168.0.2"),
+//				PrivateIpsCount: pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -79,7 +82,9 @@ import (
 // ENI can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+//
+//	$ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+//
 // ```
 type NetworkInterface struct {
 	pulumi.CustomResourceState
@@ -339,7 +344,7 @@ func (i *NetworkInterface) ToNetworkInterfaceOutputWithContext(ctx context.Conte
 // NetworkInterfaceArrayInput is an input type that accepts NetworkInterfaceArray and NetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `NetworkInterfaceArrayInput` via:
 //
-//          NetworkInterfaceArray{ NetworkInterfaceArgs{...} }
+//	NetworkInterfaceArray{ NetworkInterfaceArgs{...} }
 type NetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -364,7 +369,7 @@ func (i NetworkInterfaceArray) ToNetworkInterfaceArrayOutputWithContext(ctx cont
 // NetworkInterfaceMapInput is an input type that accepts NetworkInterfaceMap and NetworkInterfaceMapOutput values.
 // You can construct a concrete instance of `NetworkInterfaceMapInput` via:
 //
-//          NetworkInterfaceMap{ "key": NetworkInterfaceArgs{...} }
+//	NetworkInterfaceMap{ "key": NetworkInterfaceArgs{...} }
 type NetworkInterfaceMapInput interface {
 	pulumi.Input
 

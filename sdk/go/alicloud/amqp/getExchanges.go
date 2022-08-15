@@ -16,42 +16,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := amqp.GetExchanges(ctx, &amqp.GetExchangesArgs{
-// 			InstanceId:      "amqp-abc12345",
-// 			VirtualHostName: "my-VirtualHost",
-// 			Ids: []string{
-// 				"my-Exchange-1",
-// 				"my-Exchange-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("amqpExchangeId1", ids.Exchanges[0].Id)
-// 		nameRegex, err := amqp.GetExchanges(ctx, &amqp.GetExchangesArgs{
-// 			InstanceId:      "amqp-abc12345",
-// 			VirtualHostName: "my-VirtualHost",
-// 			NameRegex:       pulumi.StringRef("^my-Exchange"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("amqpExchangeId2", nameRegex.Exchanges[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := amqp.GetExchanges(ctx, &amqp.GetExchangesArgs{
+//				InstanceId:      "amqp-abc12345",
+//				VirtualHostName: "my-VirtualHost",
+//				Ids: []string{
+//					"my-Exchange-1",
+//					"my-Exchange-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpExchangeId1", ids.Exchanges[0].Id)
+//			nameRegex, err := amqp.GetExchanges(ctx, &amqp.GetExchangesArgs{
+//				InstanceId:      "amqp-abc12345",
+//				VirtualHostName: "my-VirtualHost",
+//				NameRegex:       pulumi.StringRef("^my-Exchange"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpExchangeId2", nameRegex.Exchanges[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetExchanges(ctx *pulumi.Context, args *GetExchangesArgs, opts ...pulumi.InvokeOption) (*GetExchangesResult, error) {
 	var rv GetExchangesResult

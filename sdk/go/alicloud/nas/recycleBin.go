@@ -19,37 +19,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
-// 			ProtocolType: pulumi.String("NFS"),
-// 			StorageType:  pulumi.String("Performance"),
-// 			Description:  pulumi.Any(_var.Name),
-// 			EncryptType:  pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewRecycleBin(ctx, "exampleRecycleBin", &nas.RecycleBinArgs{
-// 			FileSystemId: exampleFileSystem.ID(),
-// 			ReservedDays: pulumi.Int(3),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//				ProtocolType: pulumi.String("NFS"),
+//				StorageType:  pulumi.String("Performance"),
+//				Description:  pulumi.Any(_var.Name),
+//				EncryptType:  pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewRecycleBin(ctx, "exampleRecycleBin", &nas.RecycleBinArgs{
+//				FileSystemId: exampleFileSystem.ID(),
+//				ReservedDays: pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
+//
+//	$ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
+//
 // ```
 type RecycleBin struct {
 	pulumi.CustomResourceState
@@ -164,7 +169,7 @@ func (i *RecycleBin) ToRecycleBinOutputWithContext(ctx context.Context) RecycleB
 // RecycleBinArrayInput is an input type that accepts RecycleBinArray and RecycleBinArrayOutput values.
 // You can construct a concrete instance of `RecycleBinArrayInput` via:
 //
-//          RecycleBinArray{ RecycleBinArgs{...} }
+//	RecycleBinArray{ RecycleBinArgs{...} }
 type RecycleBinArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +194,7 @@ func (i RecycleBinArray) ToRecycleBinArrayOutputWithContext(ctx context.Context)
 // RecycleBinMapInput is an input type that accepts RecycleBinMap and RecycleBinMapOutput values.
 // You can construct a concrete instance of `RecycleBinMapInput` via:
 //
-//          RecycleBinMap{ "key": RecycleBinArgs{...} }
+//	RecycleBinMap{ "key": RecycleBinArgs{...} }
 type RecycleBinMapInput interface {
 	pulumi.Input
 

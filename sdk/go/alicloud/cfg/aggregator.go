@@ -19,35 +19,38 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cfg.NewAggregator(ctx, "example", &cfg.AggregatorArgs{
-// 			AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
-// 				&cfg.AggregatorAggregatorAccountArgs{
-// 					AccountId:   pulumi.String("123968452689****"),
-// 					AccountName: pulumi.String("tf-testacc1234"),
-// 					AccountType: pulumi.String("ResourceDirectory"),
-// 				},
-// 			},
-// 			AggregatorName: pulumi.String("tf-testaccConfigAggregator1234"),
-// 			Description:    pulumi.String("tf-testaccConfigAggregator1234"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cfg.NewAggregator(ctx, "example", &cfg.AggregatorArgs{
+//				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
+//					&cfg.AggregatorAggregatorAccountArgs{
+//						AccountId:   pulumi.String("123968452689****"),
+//						AccountName: pulumi.String("tf-testacc1234"),
+//						AccountType: pulumi.String("ResourceDirectory"),
+//					},
+//				},
+//				AggregatorName: pulumi.String("tf-testaccConfigAggregator1234"),
+//				Description:    pulumi.String("tf-testaccConfigAggregator1234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Cloud Config Aggregator can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
+//
+//	$ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
+//
 // ```
 type Aggregator struct {
 	pulumi.CustomResourceState
@@ -185,7 +190,7 @@ func (i *Aggregator) ToAggregatorOutputWithContext(ctx context.Context) Aggregat
 // AggregatorArrayInput is an input type that accepts AggregatorArray and AggregatorArrayOutput values.
 // You can construct a concrete instance of `AggregatorArrayInput` via:
 //
-//          AggregatorArray{ AggregatorArgs{...} }
+//	AggregatorArray{ AggregatorArgs{...} }
 type AggregatorArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +215,7 @@ func (i AggregatorArray) ToAggregatorArrayOutputWithContext(ctx context.Context)
 // AggregatorMapInput is an input type that accepts AggregatorMap and AggregatorMapOutput values.
 // You can construct a concrete instance of `AggregatorMapInput` via:
 //
-//          AggregatorMap{ "key": AggregatorArgs{...} }
+//	AggregatorMap{ "key": AggregatorArgs{...} }
 type AggregatorMapInput interface {
 	pulumi.Input
 

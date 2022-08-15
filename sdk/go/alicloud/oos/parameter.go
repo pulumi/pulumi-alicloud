@@ -19,40 +19,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oos.NewParameter(ctx, "example", &oos.ParameterArgs{
-// 			ParameterName: pulumi.String("my-Parameter"),
-// 			Type:          pulumi.String("String"),
-// 			Value:         pulumi.String("example_value"),
-// 			Description:   pulumi.String("example_value"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("OosParameter"),
-// 			},
-// 			ResourceGroupId: pulumi.String(_default.Groups[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewParameter(ctx, "example", &oos.ParameterArgs{
+//				ParameterName: pulumi.String("my-Parameter"),
+//				Type:          pulumi.String("String"),
+//				Value:         pulumi.String("example_value"),
+//				Description:   pulumi.String("example_value"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("OosParameter"),
+//				},
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // OOS Parameter can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
+//
+//	$ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
+//
 // ```
 type Parameter struct {
 	pulumi.CustomResourceState
@@ -237,7 +242,7 @@ func (i *Parameter) ToParameterOutputWithContext(ctx context.Context) ParameterO
 // ParameterArrayInput is an input type that accepts ParameterArray and ParameterArrayOutput values.
 // You can construct a concrete instance of `ParameterArrayInput` via:
 //
-//          ParameterArray{ ParameterArgs{...} }
+//	ParameterArray{ ParameterArgs{...} }
 type ParameterArrayInput interface {
 	pulumi.Input
 
@@ -262,7 +267,7 @@ func (i ParameterArray) ToParameterArrayOutputWithContext(ctx context.Context) P
 // ParameterMapInput is an input type that accepts ParameterMap and ParameterMapOutput values.
 // You can construct a concrete instance of `ParameterMapInput` via:
 //
-//          ParameterMap{ "key": ParameterArgs{...} }
+//	ParameterMap{ "key": ParameterArgs{...} }
 type ParameterMapInput interface {
 	pulumi.Input
 

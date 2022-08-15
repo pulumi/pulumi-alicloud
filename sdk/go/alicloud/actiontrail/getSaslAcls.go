@@ -20,26 +20,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		saslAclsDs, err := actiontrail.GetSaslAcls(ctx, &actiontrail.GetSaslAclsArgs{
-// 			AclResourceName: "testTopic",
-// 			AclResourceType: "Topic",
-// 			InstanceId:      "xxx",
-// 			OutputFile:      pulumi.StringRef("saslAcls.txt"),
-// 			Username:        "username",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstSaslAclUsername", saslAclsDs.Acls[0].Username)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			saslAclsDs, err := actiontrail.GetSaslAcls(ctx, &actiontrail.GetSaslAclsArgs{
+//				AclResourceName: "testTopic",
+//				AclResourceType: "Topic",
+//				InstanceId:      "xxx",
+//				OutputFile:      pulumi.StringRef("saslAcls.txt"),
+//				Username:        "username",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSaslAclUsername", saslAclsDs.Acls[0].Username)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSaslAcls(ctx *pulumi.Context, args *GetSaslAclsArgs, opts ...pulumi.InvokeOption) (*GetSaslAclsResult, error) {
 	var rv GetSaslAclsResult

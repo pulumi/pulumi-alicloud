@@ -21,22 +21,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := cs.GetKubernetesAddons(ctx, &cs.GetKubernetesAddonsArgs{
-// 			ClusterId: alicloud_cs_managed_kubernetes.Default[0].Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("addons", _default.Addons)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cs.GetKubernetesAddons(ctx, &cs.GetKubernetesAddonsArgs{
+//				ClusterId: alicloud_cs_managed_kubernetes.Default[0].Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("addons", _default.Addons)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetKubernetesAddons(ctx *pulumi.Context, args *GetKubernetesAddonsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesAddonsResult, error) {
 	var rv GetKubernetesAddonsResult

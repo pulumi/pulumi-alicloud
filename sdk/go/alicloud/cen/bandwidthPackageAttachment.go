@@ -15,44 +15,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-// 			Description: pulumi.String("tf-testAccCenBandwidthPackageAttachmentDescription"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bwp, err := cen.NewBandwidthPackage(ctx, "bwp", &cen.BandwidthPackageArgs{
-// 			Bandwidth: pulumi.Int(20),
-// 			GeographicRegionIds: pulumi.StringArray{
-// 				pulumi.String("China"),
-// 				pulumi.String("Asia-Pacific"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewBandwidthPackageAttachment(ctx, "foo", &cen.BandwidthPackageAttachmentArgs{
-// 			InstanceId:         cen.ID(),
-// 			BandwidthPackageId: bwp.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//				Description: pulumi.String("tf-testAccCenBandwidthPackageAttachmentDescription"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bwp, err := cen.NewBandwidthPackage(ctx, "bwp", &cen.BandwidthPackageArgs{
+//				Bandwidth: pulumi.Int(20),
+//				GeographicRegionIds: pulumi.StringArray{
+//					pulumi.String("China"),
+//					pulumi.String("Asia-Pacific"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewBandwidthPackageAttachment(ctx, "foo", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         cen.ID(),
+//				BandwidthPackageId: bwp.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // CEN bandwidth package attachment resource can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
+//
+//	$ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
+//
 // ```
 type BandwidthPackageAttachment struct {
 	pulumi.CustomResourceState
@@ -164,7 +169,7 @@ func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutputWithConte
 // BandwidthPackageAttachmentArrayInput is an input type that accepts BandwidthPackageAttachmentArray and BandwidthPackageAttachmentArrayOutput values.
 // You can construct a concrete instance of `BandwidthPackageAttachmentArrayInput` via:
 //
-//          BandwidthPackageAttachmentArray{ BandwidthPackageAttachmentArgs{...} }
+//	BandwidthPackageAttachmentArray{ BandwidthPackageAttachmentArgs{...} }
 type BandwidthPackageAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +194,7 @@ func (i BandwidthPackageAttachmentArray) ToBandwidthPackageAttachmentArrayOutput
 // BandwidthPackageAttachmentMapInput is an input type that accepts BandwidthPackageAttachmentMap and BandwidthPackageAttachmentMapOutput values.
 // You can construct a concrete instance of `BandwidthPackageAttachmentMapInput` via:
 //
-//          BandwidthPackageAttachmentMap{ "key": BandwidthPackageAttachmentArgs{...} }
+//	BandwidthPackageAttachmentMap{ "key": BandwidthPackageAttachmentArgs{...} }
 type BandwidthPackageAttachmentMapInput interface {
 	pulumi.Input
 

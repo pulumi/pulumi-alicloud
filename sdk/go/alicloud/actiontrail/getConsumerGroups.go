@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		consumerGroupsDs, err := actiontrail.GetConsumerGroups(ctx, &actiontrail.GetConsumerGroupsArgs{
-// 			ConsumerIdRegex: pulumi.StringRef("CID-alikafkaGroupDatasourceName"),
-// 			InstanceId:      "xxx",
-// 			OutputFile:      pulumi.StringRef("consumerGroups.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstGroupName", consumerGroupsDs.ConsumerIds[0])
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			consumerGroupsDs, err := actiontrail.GetConsumerGroups(ctx, &actiontrail.GetConsumerGroupsArgs{
+//				ConsumerIdRegex: pulumi.StringRef("CID-alikafkaGroupDatasourceName"),
+//				InstanceId:      "xxx",
+//				OutputFile:      pulumi.StringRef("consumerGroups.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstGroupName", consumerGroupsDs.ConsumerIds[0])
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetConsumerGroups(ctx *pulumi.Context, args *GetConsumerGroupsArgs, opts ...pulumi.InvokeOption) (*GetConsumerGroupsResult, error) {
 	var rv GetConsumerGroupsResult

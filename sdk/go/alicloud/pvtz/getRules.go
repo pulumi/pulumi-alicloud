@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := pvtz.GetRules(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("pvtzRuleId1", ids.Rules[0].Id)
-// 		nameRegex, err := pvtz.GetRules(ctx, &pvtz.GetRulesArgs{
-// 			NameRegex: pulumi.StringRef("^my-Rule"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("pvtzRuleId2", nameRegex.Rules[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := pvtz.GetRules(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("pvtzRuleId1", ids.Rules[0].Id)
+//			nameRegex, err := pvtz.GetRules(ctx, &pvtz.GetRulesArgs{
+//				NameRegex: pulumi.StringRef("^my-Rule"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("pvtzRuleId2", nameRegex.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	var rv GetRulesResult

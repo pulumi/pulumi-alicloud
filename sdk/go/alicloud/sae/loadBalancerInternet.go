@@ -19,35 +19,38 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sae.NewLoadBalancerInternet(ctx, "example", &sae.LoadBalancerInternetArgs{
-// 			AppId: pulumi.String("your_application_id"),
-// 			Internets: sae.LoadBalancerInternetInternetArray{
-// 				&sae.LoadBalancerInternetInternetArgs{
-// 					Port:       pulumi.Int(80),
-// 					Protocol:   pulumi.String("TCP"),
-// 					TargetPort: pulumi.Int(8080),
-// 				},
-// 			},
-// 			InternetSlbId: pulumi.String("your_internet_slb_id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sae.NewLoadBalancerInternet(ctx, "example", &sae.LoadBalancerInternetArgs{
+//				AppId: pulumi.String("your_application_id"),
+//				Internets: sae.LoadBalancerInternetInternetArray{
+//					&sae.LoadBalancerInternetInternetArgs{
+//						Port:       pulumi.Int(80),
+//						Protocol:   pulumi.String("TCP"),
+//						TargetPort: pulumi.Int(8080),
+//					},
+//				},
+//				InternetSlbId: pulumi.String("your_internet_slb_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // The resource can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
+//
+//	$ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
+//
 // ```
 type LoadBalancerInternet struct {
 	pulumi.CustomResourceState
@@ -175,7 +180,7 @@ func (i *LoadBalancerInternet) ToLoadBalancerInternetOutputWithContext(ctx conte
 // LoadBalancerInternetArrayInput is an input type that accepts LoadBalancerInternetArray and LoadBalancerInternetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerInternetArrayInput` via:
 //
-//          LoadBalancerInternetArray{ LoadBalancerInternetArgs{...} }
+//	LoadBalancerInternetArray{ LoadBalancerInternetArgs{...} }
 type LoadBalancerInternetArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +205,7 @@ func (i LoadBalancerInternetArray) ToLoadBalancerInternetArrayOutputWithContext(
 // LoadBalancerInternetMapInput is an input type that accepts LoadBalancerInternetMap and LoadBalancerInternetMapOutput values.
 // You can construct a concrete instance of `LoadBalancerInternetMapInput` via:
 //
-//          LoadBalancerInternetMap{ "key": LoadBalancerInternetArgs{...} }
+//	LoadBalancerInternetMap{ "key": LoadBalancerInternetArgs{...} }
 type LoadBalancerInternetMapInput interface {
 	pulumi.Input
 

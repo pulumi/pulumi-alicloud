@@ -21,52 +21,56 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
-// 			Content: pulumi.String(fmt.Sprintf(`  {
-//     "FormatVersion": "OOS-2019-06-01",
-//     "Description": "Update Describe instances of given status",
-//     "Parameters":{
-//       "Status":{
-//         "Type": "String",
-//         "Description": "(Required) The status of the Ecs instance."
-//       }
-//     },
-//     "Tasks": [
-//       {
-//         "Properties" :{
-//           "Parameters":{
-//             "Status": "{{ Status }}"
-//           },
-//           "API": "DescribeInstances",
-//           "Service": "Ecs"
-//         },
-//         "Name": "foo",
-//         "Action": "ACS::ExecuteApi"
-//       }]
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
+//				Content: pulumi.String(fmt.Sprintf(`  {
+//	    "FormatVersion": "OOS-2019-06-01",
+//	    "Description": "Update Describe instances of given status",
+//	    "Parameters":{
+//	      "Status":{
+//	        "Type": "String",
+//	        "Description": "(Required) The status of the Ecs instance."
+//	      }
+//	    },
+//	    "Tasks": [
+//	      {
+//	        "Properties" :{
+//	          "Parameters":{
+//	            "Status": "{{ Status }}"
+//	          },
+//	          "API": "DescribeInstances",
+//	          "Service": "Ecs"
+//	        },
+//	        "Name": "foo",
+//	        "Action": "ACS::ExecuteApi"
+//	      }]
+//	  }
 //
 // `)),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("acceptance Test"),
-// 			},
-// 			TemplateName: pulumi.String("test-name"),
-// 			VersionName:  pulumi.String("test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("acceptance Test"),
+//				},
+//				TemplateName: pulumi.String("test-name"),
+//				VersionName:  pulumi.String("test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -74,7 +78,9 @@ import (
 // OOS Template can be imported using the id or template_name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/template:Template example template_name
+//
+//	$ pulumi import alicloud:oos/template:Template example template_name
+//
 // ```
 type Template struct {
 	pulumi.CustomResourceState
@@ -284,7 +290,7 @@ func (i *Template) ToTemplateOutputWithContext(ctx context.Context) TemplateOutp
 // TemplateArrayInput is an input type that accepts TemplateArray and TemplateArrayOutput values.
 // You can construct a concrete instance of `TemplateArrayInput` via:
 //
-//          TemplateArray{ TemplateArgs{...} }
+//	TemplateArray{ TemplateArgs{...} }
 type TemplateArrayInput interface {
 	pulumi.Input
 
@@ -309,7 +315,7 @@ func (i TemplateArray) ToTemplateArrayOutputWithContext(ctx context.Context) Tem
 // TemplateMapInput is an input type that accepts TemplateMap and TemplateMapOutput values.
 // You can construct a concrete instance of `TemplateMapInput` via:
 //
-//          TemplateMap{ "key": TemplateArgs{...} }
+//	TemplateMap{ "key": TemplateArgs{...} }
 type TemplateMapInput interface {
 	pulumi.Input
 

@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcemanager.NewResourceShare(ctx, "example", &resourcemanager.ResourceShareArgs{
-// 			ResourceShareName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.NewResourceShare(ctx, "example", &resourcemanager.ResourceShareArgs{
+//				ResourceShareName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Resource Manager Resource Share can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
+//
+//	$ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
+//
 // ```
 type ResourceShare struct {
 	pulumi.CustomResourceState
@@ -150,7 +155,7 @@ func (i *ResourceShare) ToResourceShareOutputWithContext(ctx context.Context) Re
 // ResourceShareArrayInput is an input type that accepts ResourceShareArray and ResourceShareArrayOutput values.
 // You can construct a concrete instance of `ResourceShareArrayInput` via:
 //
-//          ResourceShareArray{ ResourceShareArgs{...} }
+//	ResourceShareArray{ ResourceShareArgs{...} }
 type ResourceShareArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +180,7 @@ func (i ResourceShareArray) ToResourceShareArrayOutputWithContext(ctx context.Co
 // ResourceShareMapInput is an input type that accepts ResourceShareMap and ResourceShareMapOutput values.
 // You can construct a concrete instance of `ResourceShareMapInput` via:
 //
-//          ResourceShareMap{ "key": ResourceShareArgs{...} }
+//	ResourceShareMap{ "key": ResourceShareArgs{...} }
 type ResourceShareMapInput interface {
 	pulumi.Input
 

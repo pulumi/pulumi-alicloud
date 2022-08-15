@@ -42,7 +42,7 @@ type ContainerGroupContainer struct {
 // ContainerGroupContainerInput is an input type that accepts ContainerGroupContainerArgs and ContainerGroupContainerOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerInput` via:
 //
-//          ContainerGroupContainerArgs{...}
+//	ContainerGroupContainerArgs{...}
 type ContainerGroupContainerInput interface {
 	pulumi.Input
 
@@ -94,7 +94,7 @@ func (i ContainerGroupContainerArgs) ToContainerGroupContainerOutputWithContext(
 // ContainerGroupContainerArrayInput is an input type that accepts ContainerGroupContainerArray and ContainerGroupContainerArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerArrayInput` via:
 //
-//          ContainerGroupContainerArray{ ContainerGroupContainerArgs{...} }
+//	ContainerGroupContainerArray{ ContainerGroupContainerArgs{...} }
 type ContainerGroupContainerArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +228,7 @@ type ContainerGroupContainerEnvironmentVar struct {
 // ContainerGroupContainerEnvironmentVarInput is an input type that accepts ContainerGroupContainerEnvironmentVarArgs and ContainerGroupContainerEnvironmentVarOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerEnvironmentVarInput` via:
 //
-//          ContainerGroupContainerEnvironmentVarArgs{...}
+//	ContainerGroupContainerEnvironmentVarArgs{...}
 type ContainerGroupContainerEnvironmentVarInput interface {
 	pulumi.Input
 
@@ -258,7 +258,7 @@ func (i ContainerGroupContainerEnvironmentVarArgs) ToContainerGroupContainerEnvi
 // ContainerGroupContainerEnvironmentVarArrayInput is an input type that accepts ContainerGroupContainerEnvironmentVarArray and ContainerGroupContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerEnvironmentVarArrayInput` via:
 //
-//          ContainerGroupContainerEnvironmentVarArray{ ContainerGroupContainerEnvironmentVarArgs{...} }
+//	ContainerGroupContainerEnvironmentVarArray{ ContainerGroupContainerEnvironmentVarArgs{...} }
 type ContainerGroupContainerEnvironmentVarArrayInput interface {
 	pulumi.Input
 
@@ -334,7 +334,7 @@ type ContainerGroupContainerPort struct {
 // ContainerGroupContainerPortInput is an input type that accepts ContainerGroupContainerPortArgs and ContainerGroupContainerPortOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerPortInput` via:
 //
-//          ContainerGroupContainerPortArgs{...}
+//	ContainerGroupContainerPortArgs{...}
 type ContainerGroupContainerPortInput interface {
 	pulumi.Input
 
@@ -364,7 +364,7 @@ func (i ContainerGroupContainerPortArgs) ToContainerGroupContainerPortOutputWith
 // ContainerGroupContainerPortArrayInput is an input type that accepts ContainerGroupContainerPortArray and ContainerGroupContainerPortArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerPortArrayInput` via:
 //
-//          ContainerGroupContainerPortArray{ ContainerGroupContainerPortArgs{...} }
+//	ContainerGroupContainerPortArray{ ContainerGroupContainerPortArgs{...} }
 type ContainerGroupContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -442,7 +442,7 @@ type ContainerGroupContainerVolumeMount struct {
 // ContainerGroupContainerVolumeMountInput is an input type that accepts ContainerGroupContainerVolumeMountArgs and ContainerGroupContainerVolumeMountOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerVolumeMountInput` via:
 //
-//          ContainerGroupContainerVolumeMountArgs{...}
+//	ContainerGroupContainerVolumeMountArgs{...}
 type ContainerGroupContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -474,7 +474,7 @@ func (i ContainerGroupContainerVolumeMountArgs) ToContainerGroupContainerVolumeM
 // ContainerGroupContainerVolumeMountArrayInput is an input type that accepts ContainerGroupContainerVolumeMountArray and ContainerGroupContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerVolumeMountArrayInput` via:
 //
-//          ContainerGroupContainerVolumeMountArray{ ContainerGroupContainerVolumeMountArgs{...} }
+//	ContainerGroupContainerVolumeMountArray{ ContainerGroupContainerVolumeMountArgs{...} }
 type ContainerGroupContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -557,7 +557,7 @@ type ContainerGroupDnsConfig struct {
 // ContainerGroupDnsConfigInput is an input type that accepts ContainerGroupDnsConfigArgs and ContainerGroupDnsConfigOutput values.
 // You can construct a concrete instance of `ContainerGroupDnsConfigInput` via:
 //
-//          ContainerGroupDnsConfigArgs{...}
+//	ContainerGroupDnsConfigArgs{...}
 type ContainerGroupDnsConfigInput interface {
 	pulumi.Input
 
@@ -597,11 +597,11 @@ func (i ContainerGroupDnsConfigArgs) ToContainerGroupDnsConfigPtrOutputWithConte
 // ContainerGroupDnsConfigPtrInput is an input type that accepts ContainerGroupDnsConfigArgs, ContainerGroupDnsConfigPtr and ContainerGroupDnsConfigPtrOutput values.
 // You can construct a concrete instance of `ContainerGroupDnsConfigPtrInput` via:
 //
-//          ContainerGroupDnsConfigArgs{...}
+//	        ContainerGroupDnsConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerGroupDnsConfigPtrInput interface {
 	pulumi.Input
 
@@ -730,7 +730,7 @@ type ContainerGroupDnsConfigOption struct {
 // ContainerGroupDnsConfigOptionInput is an input type that accepts ContainerGroupDnsConfigOptionArgs and ContainerGroupDnsConfigOptionOutput values.
 // You can construct a concrete instance of `ContainerGroupDnsConfigOptionInput` via:
 //
-//          ContainerGroupDnsConfigOptionArgs{...}
+//	ContainerGroupDnsConfigOptionArgs{...}
 type ContainerGroupDnsConfigOptionInput interface {
 	pulumi.Input
 
@@ -760,7 +760,7 @@ func (i ContainerGroupDnsConfigOptionArgs) ToContainerGroupDnsConfigOptionOutput
 // ContainerGroupDnsConfigOptionArrayInput is an input type that accepts ContainerGroupDnsConfigOptionArray and ContainerGroupDnsConfigOptionArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupDnsConfigOptionArrayInput` via:
 //
-//          ContainerGroupDnsConfigOptionArray{ ContainerGroupDnsConfigOptionArgs{...} }
+//	ContainerGroupDnsConfigOptionArray{ ContainerGroupDnsConfigOptionArgs{...} }
 type ContainerGroupDnsConfigOptionArrayInput interface {
 	pulumi.Input
 
@@ -834,7 +834,7 @@ type ContainerGroupEciSecurityContext struct {
 // ContainerGroupEciSecurityContextInput is an input type that accepts ContainerGroupEciSecurityContextArgs and ContainerGroupEciSecurityContextOutput values.
 // You can construct a concrete instance of `ContainerGroupEciSecurityContextInput` via:
 //
-//          ContainerGroupEciSecurityContextArgs{...}
+//	ContainerGroupEciSecurityContextArgs{...}
 type ContainerGroupEciSecurityContextInput interface {
 	pulumi.Input
 
@@ -870,11 +870,11 @@ func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContext
 // ContainerGroupEciSecurityContextPtrInput is an input type that accepts ContainerGroupEciSecurityContextArgs, ContainerGroupEciSecurityContextPtr and ContainerGroupEciSecurityContextPtrOutput values.
 // You can construct a concrete instance of `ContainerGroupEciSecurityContextPtrInput` via:
 //
-//          ContainerGroupEciSecurityContextArgs{...}
+//	        ContainerGroupEciSecurityContextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerGroupEciSecurityContextPtrInput interface {
 	pulumi.Input
 
@@ -973,7 +973,7 @@ type ContainerGroupEciSecurityContextSysctl struct {
 // ContainerGroupEciSecurityContextSysctlInput is an input type that accepts ContainerGroupEciSecurityContextSysctlArgs and ContainerGroupEciSecurityContextSysctlOutput values.
 // You can construct a concrete instance of `ContainerGroupEciSecurityContextSysctlInput` via:
 //
-//          ContainerGroupEciSecurityContextSysctlArgs{...}
+//	ContainerGroupEciSecurityContextSysctlArgs{...}
 type ContainerGroupEciSecurityContextSysctlInput interface {
 	pulumi.Input
 
@@ -1003,7 +1003,7 @@ func (i ContainerGroupEciSecurityContextSysctlArgs) ToContainerGroupEciSecurityC
 // ContainerGroupEciSecurityContextSysctlArrayInput is an input type that accepts ContainerGroupEciSecurityContextSysctlArray and ContainerGroupEciSecurityContextSysctlArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupEciSecurityContextSysctlArrayInput` via:
 //
-//          ContainerGroupEciSecurityContextSysctlArray{ ContainerGroupEciSecurityContextSysctlArgs{...} }
+//	ContainerGroupEciSecurityContextSysctlArray{ ContainerGroupEciSecurityContextSysctlArgs{...} }
 type ContainerGroupEciSecurityContextSysctlArrayInput interface {
 	pulumi.Input
 
@@ -1079,7 +1079,7 @@ type ContainerGroupHostAlias struct {
 // ContainerGroupHostAliasInput is an input type that accepts ContainerGroupHostAliasArgs and ContainerGroupHostAliasOutput values.
 // You can construct a concrete instance of `ContainerGroupHostAliasInput` via:
 //
-//          ContainerGroupHostAliasArgs{...}
+//	ContainerGroupHostAliasArgs{...}
 type ContainerGroupHostAliasInput interface {
 	pulumi.Input
 
@@ -1109,7 +1109,7 @@ func (i ContainerGroupHostAliasArgs) ToContainerGroupHostAliasOutputWithContext(
 // ContainerGroupHostAliasArrayInput is an input type that accepts ContainerGroupHostAliasArray and ContainerGroupHostAliasArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupHostAliasArrayInput` via:
 //
-//          ContainerGroupHostAliasArray{ ContainerGroupHostAliasArgs{...} }
+//	ContainerGroupHostAliasArray{ ContainerGroupHostAliasArgs{...} }
 type ContainerGroupHostAliasArrayInput interface {
 	pulumi.Input
 
@@ -1187,7 +1187,7 @@ type ContainerGroupImageRegistryCredential struct {
 // ContainerGroupImageRegistryCredentialInput is an input type that accepts ContainerGroupImageRegistryCredentialArgs and ContainerGroupImageRegistryCredentialOutput values.
 // You can construct a concrete instance of `ContainerGroupImageRegistryCredentialInput` via:
 //
-//          ContainerGroupImageRegistryCredentialArgs{...}
+//	ContainerGroupImageRegistryCredentialArgs{...}
 type ContainerGroupImageRegistryCredentialInput interface {
 	pulumi.Input
 
@@ -1219,7 +1219,7 @@ func (i ContainerGroupImageRegistryCredentialArgs) ToContainerGroupImageRegistry
 // ContainerGroupImageRegistryCredentialArrayInput is an input type that accepts ContainerGroupImageRegistryCredentialArray and ContainerGroupImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupImageRegistryCredentialArrayInput` via:
 //
-//          ContainerGroupImageRegistryCredentialArray{ ContainerGroupImageRegistryCredentialArgs{...} }
+//	ContainerGroupImageRegistryCredentialArray{ ContainerGroupImageRegistryCredentialArgs{...} }
 type ContainerGroupImageRegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -1322,7 +1322,7 @@ type ContainerGroupInitContainer struct {
 // ContainerGroupInitContainerInput is an input type that accepts ContainerGroupInitContainerArgs and ContainerGroupInitContainerOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerInput` via:
 //
-//          ContainerGroupInitContainerArgs{...}
+//	ContainerGroupInitContainerArgs{...}
 type ContainerGroupInitContainerInput interface {
 	pulumi.Input
 
@@ -1374,7 +1374,7 @@ func (i ContainerGroupInitContainerArgs) ToContainerGroupInitContainerOutputWith
 // ContainerGroupInitContainerArrayInput is an input type that accepts ContainerGroupInitContainerArray and ContainerGroupInitContainerArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerArrayInput` via:
 //
-//          ContainerGroupInitContainerArray{ ContainerGroupInitContainerArgs{...} }
+//	ContainerGroupInitContainerArray{ ContainerGroupInitContainerArgs{...} }
 type ContainerGroupInitContainerArrayInput interface {
 	pulumi.Input
 
@@ -1510,7 +1510,7 @@ type ContainerGroupInitContainerEnvironmentVar struct {
 // ContainerGroupInitContainerEnvironmentVarInput is an input type that accepts ContainerGroupInitContainerEnvironmentVarArgs and ContainerGroupInitContainerEnvironmentVarOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerEnvironmentVarInput` via:
 //
-//          ContainerGroupInitContainerEnvironmentVarArgs{...}
+//	ContainerGroupInitContainerEnvironmentVarArgs{...}
 type ContainerGroupInitContainerEnvironmentVarInput interface {
 	pulumi.Input
 
@@ -1540,7 +1540,7 @@ func (i ContainerGroupInitContainerEnvironmentVarArgs) ToContainerGroupInitConta
 // ContainerGroupInitContainerEnvironmentVarArrayInput is an input type that accepts ContainerGroupInitContainerEnvironmentVarArray and ContainerGroupInitContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerEnvironmentVarArrayInput` via:
 //
-//          ContainerGroupInitContainerEnvironmentVarArray{ ContainerGroupInitContainerEnvironmentVarArgs{...} }
+//	ContainerGroupInitContainerEnvironmentVarArray{ ContainerGroupInitContainerEnvironmentVarArgs{...} }
 type ContainerGroupInitContainerEnvironmentVarArrayInput interface {
 	pulumi.Input
 
@@ -1616,7 +1616,7 @@ type ContainerGroupInitContainerPort struct {
 // ContainerGroupInitContainerPortInput is an input type that accepts ContainerGroupInitContainerPortArgs and ContainerGroupInitContainerPortOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerPortInput` via:
 //
-//          ContainerGroupInitContainerPortArgs{...}
+//	ContainerGroupInitContainerPortArgs{...}
 type ContainerGroupInitContainerPortInput interface {
 	pulumi.Input
 
@@ -1646,7 +1646,7 @@ func (i ContainerGroupInitContainerPortArgs) ToContainerGroupInitContainerPortOu
 // ContainerGroupInitContainerPortArrayInput is an input type that accepts ContainerGroupInitContainerPortArray and ContainerGroupInitContainerPortArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerPortArrayInput` via:
 //
-//          ContainerGroupInitContainerPortArray{ ContainerGroupInitContainerPortArgs{...} }
+//	ContainerGroupInitContainerPortArray{ ContainerGroupInitContainerPortArgs{...} }
 type ContainerGroupInitContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -1724,7 +1724,7 @@ type ContainerGroupInitContainerVolumeMount struct {
 // ContainerGroupInitContainerVolumeMountInput is an input type that accepts ContainerGroupInitContainerVolumeMountArgs and ContainerGroupInitContainerVolumeMountOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerVolumeMountInput` via:
 //
-//          ContainerGroupInitContainerVolumeMountArgs{...}
+//	ContainerGroupInitContainerVolumeMountArgs{...}
 type ContainerGroupInitContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -1756,7 +1756,7 @@ func (i ContainerGroupInitContainerVolumeMountArgs) ToContainerGroupInitContaine
 // ContainerGroupInitContainerVolumeMountArrayInput is an input type that accepts ContainerGroupInitContainerVolumeMountArray and ContainerGroupInitContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerVolumeMountArrayInput` via:
 //
-//          ContainerGroupInitContainerVolumeMountArray{ ContainerGroupInitContainerVolumeMountArgs{...} }
+//	ContainerGroupInitContainerVolumeMountArray{ ContainerGroupInitContainerVolumeMountArgs{...} }
 type ContainerGroupInitContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -1855,7 +1855,7 @@ type ContainerGroupVolume struct {
 // ContainerGroupVolumeInput is an input type that accepts ContainerGroupVolumeArgs and ContainerGroupVolumeOutput values.
 // You can construct a concrete instance of `ContainerGroupVolumeInput` via:
 //
-//          ContainerGroupVolumeArgs{...}
+//	ContainerGroupVolumeArgs{...}
 type ContainerGroupVolumeInput interface {
 	pulumi.Input
 
@@ -1903,7 +1903,7 @@ func (i ContainerGroupVolumeArgs) ToContainerGroupVolumeOutputWithContext(ctx co
 // ContainerGroupVolumeArrayInput is an input type that accepts ContainerGroupVolumeArray and ContainerGroupVolumeArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupVolumeArrayInput` via:
 //
-//          ContainerGroupVolumeArray{ ContainerGroupVolumeArgs{...} }
+//	ContainerGroupVolumeArray{ ContainerGroupVolumeArgs{...} }
 type ContainerGroupVolumeArrayInput interface {
 	pulumi.Input
 
@@ -2026,7 +2026,7 @@ type ContainerGroupVolumeConfigFileVolumeConfigFileToPath struct {
 // ContainerGroupVolumeConfigFileVolumeConfigFileToPathInput is an input type that accepts ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs and ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput values.
 // You can construct a concrete instance of `ContainerGroupVolumeConfigFileVolumeConfigFileToPathInput` via:
 //
-//          ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs{...}
+//	ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs{...}
 type ContainerGroupVolumeConfigFileVolumeConfigFileToPathInput interface {
 	pulumi.Input
 
@@ -2056,7 +2056,7 @@ func (i ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs) ToContainerGro
 // ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput is an input type that accepts ContainerGroupVolumeConfigFileVolumeConfigFileToPathArray and ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput` via:
 //
-//          ContainerGroupVolumeConfigFileVolumeConfigFileToPathArray{ ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs{...} }
+//	ContainerGroupVolumeConfigFileVolumeConfigFileToPathArray{ ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs{...} }
 type ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput interface {
 	pulumi.Input
 
@@ -2134,7 +2134,7 @@ type ImageCacheImageRegistryCredential struct {
 // ImageCacheImageRegistryCredentialInput is an input type that accepts ImageCacheImageRegistryCredentialArgs and ImageCacheImageRegistryCredentialOutput values.
 // You can construct a concrete instance of `ImageCacheImageRegistryCredentialInput` via:
 //
-//          ImageCacheImageRegistryCredentialArgs{...}
+//	ImageCacheImageRegistryCredentialArgs{...}
 type ImageCacheImageRegistryCredentialInput interface {
 	pulumi.Input
 
@@ -2166,7 +2166,7 @@ func (i ImageCacheImageRegistryCredentialArgs) ToImageCacheImageRegistryCredenti
 // ImageCacheImageRegistryCredentialArrayInput is an input type that accepts ImageCacheImageRegistryCredentialArray and ImageCacheImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `ImageCacheImageRegistryCredentialArrayInput` via:
 //
-//          ImageCacheImageRegistryCredentialArray{ ImageCacheImageRegistryCredentialArgs{...} }
+//	ImageCacheImageRegistryCredentialArray{ ImageCacheImageRegistryCredentialArgs{...} }
 type ImageCacheImageRegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -2246,7 +2246,7 @@ type OpenApiImageCacheImageRegistryCredential struct {
 // OpenApiImageCacheImageRegistryCredentialInput is an input type that accepts OpenApiImageCacheImageRegistryCredentialArgs and OpenApiImageCacheImageRegistryCredentialOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheImageRegistryCredentialInput` via:
 //
-//          OpenApiImageCacheImageRegistryCredentialArgs{...}
+//	OpenApiImageCacheImageRegistryCredentialArgs{...}
 type OpenApiImageCacheImageRegistryCredentialInput interface {
 	pulumi.Input
 
@@ -2275,7 +2275,7 @@ func (i OpenApiImageCacheImageRegistryCredentialArgs) ToOpenApiImageCacheImageRe
 // OpenApiImageCacheImageRegistryCredentialArrayInput is an input type that accepts OpenApiImageCacheImageRegistryCredentialArray and OpenApiImageCacheImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheImageRegistryCredentialArrayInput` via:
 //
-//          OpenApiImageCacheImageRegistryCredentialArray{ OpenApiImageCacheImageRegistryCredentialArgs{...} }
+//	OpenApiImageCacheImageRegistryCredentialArray{ OpenApiImageCacheImageRegistryCredentialArgs{...} }
 type OpenApiImageCacheImageRegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -2355,7 +2355,7 @@ type VirtualNodeTaint struct {
 // VirtualNodeTaintInput is an input type that accepts VirtualNodeTaintArgs and VirtualNodeTaintOutput values.
 // You can construct a concrete instance of `VirtualNodeTaintInput` via:
 //
-//          VirtualNodeTaintArgs{...}
+//	VirtualNodeTaintArgs{...}
 type VirtualNodeTaintInput interface {
 	pulumi.Input
 
@@ -2387,7 +2387,7 @@ func (i VirtualNodeTaintArgs) ToVirtualNodeTaintOutputWithContext(ctx context.Co
 // VirtualNodeTaintArrayInput is an input type that accepts VirtualNodeTaintArray and VirtualNodeTaintArrayOutput values.
 // You can construct a concrete instance of `VirtualNodeTaintArrayInput` via:
 //
-//          VirtualNodeTaintArray{ VirtualNodeTaintArgs{...} }
+//	VirtualNodeTaintArray{ VirtualNodeTaintArgs{...} }
 type VirtualNodeTaintArrayInput interface {
 	pulumi.Input
 
@@ -2523,7 +2523,7 @@ type GetContainerGroupsGroup struct {
 // GetContainerGroupsGroupInput is an input type that accepts GetContainerGroupsGroupArgs and GetContainerGroupsGroupOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInput` via:
 //
-//          GetContainerGroupsGroupArgs{...}
+//	GetContainerGroupsGroupArgs{...}
 type GetContainerGroupsGroupInput interface {
 	pulumi.Input
 
@@ -2608,7 +2608,7 @@ func (i GetContainerGroupsGroupArgs) ToGetContainerGroupsGroupOutputWithContext(
 // GetContainerGroupsGroupArrayInput is an input type that accepts GetContainerGroupsGroupArray and GetContainerGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupArrayInput` via:
 //
-//          GetContainerGroupsGroupArray{ GetContainerGroupsGroupArgs{...} }
+//	GetContainerGroupsGroupArray{ GetContainerGroupsGroupArgs{...} }
 type GetContainerGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -2849,7 +2849,7 @@ type GetContainerGroupsGroupContainer struct {
 // GetContainerGroupsGroupContainerInput is an input type that accepts GetContainerGroupsGroupContainerArgs and GetContainerGroupsGroupContainerOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerInput` via:
 //
-//          GetContainerGroupsGroupContainerArgs{...}
+//	GetContainerGroupsGroupContainerArgs{...}
 type GetContainerGroupsGroupContainerInput interface {
 	pulumi.Input
 
@@ -2903,7 +2903,7 @@ func (i GetContainerGroupsGroupContainerArgs) ToGetContainerGroupsGroupContainer
 // GetContainerGroupsGroupContainerArrayInput is an input type that accepts GetContainerGroupsGroupContainerArray and GetContainerGroupsGroupContainerArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerArrayInput` via:
 //
-//          GetContainerGroupsGroupContainerArray{ GetContainerGroupsGroupContainerArgs{...} }
+//	GetContainerGroupsGroupContainerArray{ GetContainerGroupsGroupContainerArgs{...} }
 type GetContainerGroupsGroupContainerArrayInput interface {
 	pulumi.Input
 
@@ -3043,7 +3043,7 @@ type GetContainerGroupsGroupContainerEnvironmentVar struct {
 // GetContainerGroupsGroupContainerEnvironmentVarInput is an input type that accepts GetContainerGroupsGroupContainerEnvironmentVarArgs and GetContainerGroupsGroupContainerEnvironmentVarOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerEnvironmentVarInput` via:
 //
-//          GetContainerGroupsGroupContainerEnvironmentVarArgs{...}
+//	GetContainerGroupsGroupContainerEnvironmentVarArgs{...}
 type GetContainerGroupsGroupContainerEnvironmentVarInput interface {
 	pulumi.Input
 
@@ -3073,7 +3073,7 @@ func (i GetContainerGroupsGroupContainerEnvironmentVarArgs) ToGetContainerGroups
 // GetContainerGroupsGroupContainerEnvironmentVarArrayInput is an input type that accepts GetContainerGroupsGroupContainerEnvironmentVarArray and GetContainerGroupsGroupContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerEnvironmentVarArrayInput` via:
 //
-//          GetContainerGroupsGroupContainerEnvironmentVarArray{ GetContainerGroupsGroupContainerEnvironmentVarArgs{...} }
+//	GetContainerGroupsGroupContainerEnvironmentVarArray{ GetContainerGroupsGroupContainerEnvironmentVarArgs{...} }
 type GetContainerGroupsGroupContainerEnvironmentVarArrayInput interface {
 	pulumi.Input
 
@@ -3149,7 +3149,7 @@ type GetContainerGroupsGroupContainerPort struct {
 // GetContainerGroupsGroupContainerPortInput is an input type that accepts GetContainerGroupsGroupContainerPortArgs and GetContainerGroupsGroupContainerPortOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerPortInput` via:
 //
-//          GetContainerGroupsGroupContainerPortArgs{...}
+//	GetContainerGroupsGroupContainerPortArgs{...}
 type GetContainerGroupsGroupContainerPortInput interface {
 	pulumi.Input
 
@@ -3179,7 +3179,7 @@ func (i GetContainerGroupsGroupContainerPortArgs) ToGetContainerGroupsGroupConta
 // GetContainerGroupsGroupContainerPortArrayInput is an input type that accepts GetContainerGroupsGroupContainerPortArray and GetContainerGroupsGroupContainerPortArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerPortArrayInput` via:
 //
-//          GetContainerGroupsGroupContainerPortArray{ GetContainerGroupsGroupContainerPortArgs{...} }
+//	GetContainerGroupsGroupContainerPortArray{ GetContainerGroupsGroupContainerPortArgs{...} }
 type GetContainerGroupsGroupContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -3257,7 +3257,7 @@ type GetContainerGroupsGroupContainerVolumeMount struct {
 // GetContainerGroupsGroupContainerVolumeMountInput is an input type that accepts GetContainerGroupsGroupContainerVolumeMountArgs and GetContainerGroupsGroupContainerVolumeMountOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerVolumeMountInput` via:
 //
-//          GetContainerGroupsGroupContainerVolumeMountArgs{...}
+//	GetContainerGroupsGroupContainerVolumeMountArgs{...}
 type GetContainerGroupsGroupContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -3289,7 +3289,7 @@ func (i GetContainerGroupsGroupContainerVolumeMountArgs) ToGetContainerGroupsGro
 // GetContainerGroupsGroupContainerVolumeMountArrayInput is an input type that accepts GetContainerGroupsGroupContainerVolumeMountArray and GetContainerGroupsGroupContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerVolumeMountArrayInput` via:
 //
-//          GetContainerGroupsGroupContainerVolumeMountArray{ GetContainerGroupsGroupContainerVolumeMountArgs{...} }
+//	GetContainerGroupsGroupContainerVolumeMountArray{ GetContainerGroupsGroupContainerVolumeMountArgs{...} }
 type GetContainerGroupsGroupContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -3372,7 +3372,7 @@ type GetContainerGroupsGroupDnsConfig struct {
 // GetContainerGroupsGroupDnsConfigInput is an input type that accepts GetContainerGroupsGroupDnsConfigArgs and GetContainerGroupsGroupDnsConfigOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupDnsConfigInput` via:
 //
-//          GetContainerGroupsGroupDnsConfigArgs{...}
+//	GetContainerGroupsGroupDnsConfigArgs{...}
 type GetContainerGroupsGroupDnsConfigInput interface {
 	pulumi.Input
 
@@ -3404,7 +3404,7 @@ func (i GetContainerGroupsGroupDnsConfigArgs) ToGetContainerGroupsGroupDnsConfig
 // GetContainerGroupsGroupDnsConfigArrayInput is an input type that accepts GetContainerGroupsGroupDnsConfigArray and GetContainerGroupsGroupDnsConfigArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupDnsConfigArrayInput` via:
 //
-//          GetContainerGroupsGroupDnsConfigArray{ GetContainerGroupsGroupDnsConfigArgs{...} }
+//	GetContainerGroupsGroupDnsConfigArray{ GetContainerGroupsGroupDnsConfigArgs{...} }
 type GetContainerGroupsGroupDnsConfigArrayInput interface {
 	pulumi.Input
 
@@ -3485,7 +3485,7 @@ type GetContainerGroupsGroupDnsConfigOption struct {
 // GetContainerGroupsGroupDnsConfigOptionInput is an input type that accepts GetContainerGroupsGroupDnsConfigOptionArgs and GetContainerGroupsGroupDnsConfigOptionOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupDnsConfigOptionInput` via:
 //
-//          GetContainerGroupsGroupDnsConfigOptionArgs{...}
+//	GetContainerGroupsGroupDnsConfigOptionArgs{...}
 type GetContainerGroupsGroupDnsConfigOptionInput interface {
 	pulumi.Input
 
@@ -3515,7 +3515,7 @@ func (i GetContainerGroupsGroupDnsConfigOptionArgs) ToGetContainerGroupsGroupDns
 // GetContainerGroupsGroupDnsConfigOptionArrayInput is an input type that accepts GetContainerGroupsGroupDnsConfigOptionArray and GetContainerGroupsGroupDnsConfigOptionArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupDnsConfigOptionArrayInput` via:
 //
-//          GetContainerGroupsGroupDnsConfigOptionArray{ GetContainerGroupsGroupDnsConfigOptionArgs{...} }
+//	GetContainerGroupsGroupDnsConfigOptionArray{ GetContainerGroupsGroupDnsConfigOptionArgs{...} }
 type GetContainerGroupsGroupDnsConfigOptionArrayInput interface {
 	pulumi.Input
 
@@ -3589,7 +3589,7 @@ type GetContainerGroupsGroupEciSecurityContext struct {
 // GetContainerGroupsGroupEciSecurityContextInput is an input type that accepts GetContainerGroupsGroupEciSecurityContextArgs and GetContainerGroupsGroupEciSecurityContextOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEciSecurityContextInput` via:
 //
-//          GetContainerGroupsGroupEciSecurityContextArgs{...}
+//	GetContainerGroupsGroupEciSecurityContextArgs{...}
 type GetContainerGroupsGroupEciSecurityContextInput interface {
 	pulumi.Input
 
@@ -3617,7 +3617,7 @@ func (i GetContainerGroupsGroupEciSecurityContextArgs) ToGetContainerGroupsGroup
 // GetContainerGroupsGroupEciSecurityContextArrayInput is an input type that accepts GetContainerGroupsGroupEciSecurityContextArray and GetContainerGroupsGroupEciSecurityContextArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEciSecurityContextArrayInput` via:
 //
-//          GetContainerGroupsGroupEciSecurityContextArray{ GetContainerGroupsGroupEciSecurityContextArgs{...} }
+//	GetContainerGroupsGroupEciSecurityContextArray{ GetContainerGroupsGroupEciSecurityContextArgs{...} }
 type GetContainerGroupsGroupEciSecurityContextArrayInput interface {
 	pulumi.Input
 
@@ -3690,7 +3690,7 @@ type GetContainerGroupsGroupEciSecurityContextSysctl struct {
 // GetContainerGroupsGroupEciSecurityContextSysctlInput is an input type that accepts GetContainerGroupsGroupEciSecurityContextSysctlArgs and GetContainerGroupsGroupEciSecurityContextSysctlOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEciSecurityContextSysctlInput` via:
 //
-//          GetContainerGroupsGroupEciSecurityContextSysctlArgs{...}
+//	GetContainerGroupsGroupEciSecurityContextSysctlArgs{...}
 type GetContainerGroupsGroupEciSecurityContextSysctlInput interface {
 	pulumi.Input
 
@@ -3720,7 +3720,7 @@ func (i GetContainerGroupsGroupEciSecurityContextSysctlArgs) ToGetContainerGroup
 // GetContainerGroupsGroupEciSecurityContextSysctlArrayInput is an input type that accepts GetContainerGroupsGroupEciSecurityContextSysctlArray and GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEciSecurityContextSysctlArrayInput` via:
 //
-//          GetContainerGroupsGroupEciSecurityContextSysctlArray{ GetContainerGroupsGroupEciSecurityContextSysctlArgs{...} }
+//	GetContainerGroupsGroupEciSecurityContextSysctlArray{ GetContainerGroupsGroupEciSecurityContextSysctlArgs{...} }
 type GetContainerGroupsGroupEciSecurityContextSysctlArrayInput interface {
 	pulumi.Input
 
@@ -3806,7 +3806,7 @@ type GetContainerGroupsGroupEvent struct {
 // GetContainerGroupsGroupEventInput is an input type that accepts GetContainerGroupsGroupEventArgs and GetContainerGroupsGroupEventOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEventInput` via:
 //
-//          GetContainerGroupsGroupEventArgs{...}
+//	GetContainerGroupsGroupEventArgs{...}
 type GetContainerGroupsGroupEventInput interface {
 	pulumi.Input
 
@@ -3846,7 +3846,7 @@ func (i GetContainerGroupsGroupEventArgs) ToGetContainerGroupsGroupEventOutputWi
 // GetContainerGroupsGroupEventArrayInput is an input type that accepts GetContainerGroupsGroupEventArray and GetContainerGroupsGroupEventArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEventArrayInput` via:
 //
-//          GetContainerGroupsGroupEventArray{ GetContainerGroupsGroupEventArgs{...} }
+//	GetContainerGroupsGroupEventArray{ GetContainerGroupsGroupEventArgs{...} }
 type GetContainerGroupsGroupEventArrayInput interface {
 	pulumi.Input
 
@@ -3947,7 +3947,7 @@ type GetContainerGroupsGroupHostAlias struct {
 // GetContainerGroupsGroupHostAliasInput is an input type that accepts GetContainerGroupsGroupHostAliasArgs and GetContainerGroupsGroupHostAliasOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupHostAliasInput` via:
 //
-//          GetContainerGroupsGroupHostAliasArgs{...}
+//	GetContainerGroupsGroupHostAliasArgs{...}
 type GetContainerGroupsGroupHostAliasInput interface {
 	pulumi.Input
 
@@ -3977,7 +3977,7 @@ func (i GetContainerGroupsGroupHostAliasArgs) ToGetContainerGroupsGroupHostAlias
 // GetContainerGroupsGroupHostAliasArrayInput is an input type that accepts GetContainerGroupsGroupHostAliasArray and GetContainerGroupsGroupHostAliasArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupHostAliasArrayInput` via:
 //
-//          GetContainerGroupsGroupHostAliasArray{ GetContainerGroupsGroupHostAliasArgs{...} }
+//	GetContainerGroupsGroupHostAliasArray{ GetContainerGroupsGroupHostAliasArgs{...} }
 type GetContainerGroupsGroupHostAliasArrayInput interface {
 	pulumi.Input
 
@@ -4077,7 +4077,7 @@ type GetContainerGroupsGroupInitContainer struct {
 // GetContainerGroupsGroupInitContainerInput is an input type that accepts GetContainerGroupsGroupInitContainerArgs and GetContainerGroupsGroupInitContainerOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerInput` via:
 //
-//          GetContainerGroupsGroupInitContainerArgs{...}
+//	GetContainerGroupsGroupInitContainerArgs{...}
 type GetContainerGroupsGroupInitContainerInput interface {
 	pulumi.Input
 
@@ -4131,7 +4131,7 @@ func (i GetContainerGroupsGroupInitContainerArgs) ToGetContainerGroupsGroupInitC
 // GetContainerGroupsGroupInitContainerArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerArray and GetContainerGroupsGroupInitContainerArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerArrayInput` via:
 //
-//          GetContainerGroupsGroupInitContainerArray{ GetContainerGroupsGroupInitContainerArgs{...} }
+//	GetContainerGroupsGroupInitContainerArray{ GetContainerGroupsGroupInitContainerArgs{...} }
 type GetContainerGroupsGroupInitContainerArrayInput interface {
 	pulumi.Input
 
@@ -4273,7 +4273,7 @@ type GetContainerGroupsGroupInitContainerEnvironmentVar struct {
 // GetContainerGroupsGroupInitContainerEnvironmentVarInput is an input type that accepts GetContainerGroupsGroupInitContainerEnvironmentVarArgs and GetContainerGroupsGroupInitContainerEnvironmentVarOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerEnvironmentVarInput` via:
 //
-//          GetContainerGroupsGroupInitContainerEnvironmentVarArgs{...}
+//	GetContainerGroupsGroupInitContainerEnvironmentVarArgs{...}
 type GetContainerGroupsGroupInitContainerEnvironmentVarInput interface {
 	pulumi.Input
 
@@ -4303,7 +4303,7 @@ func (i GetContainerGroupsGroupInitContainerEnvironmentVarArgs) ToGetContainerGr
 // GetContainerGroupsGroupInitContainerEnvironmentVarArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerEnvironmentVarArray and GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerEnvironmentVarArrayInput` via:
 //
-//          GetContainerGroupsGroupInitContainerEnvironmentVarArray{ GetContainerGroupsGroupInitContainerEnvironmentVarArgs{...} }
+//	GetContainerGroupsGroupInitContainerEnvironmentVarArray{ GetContainerGroupsGroupInitContainerEnvironmentVarArgs{...} }
 type GetContainerGroupsGroupInitContainerEnvironmentVarArrayInput interface {
 	pulumi.Input
 
@@ -4379,7 +4379,7 @@ type GetContainerGroupsGroupInitContainerPort struct {
 // GetContainerGroupsGroupInitContainerPortInput is an input type that accepts GetContainerGroupsGroupInitContainerPortArgs and GetContainerGroupsGroupInitContainerPortOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerPortInput` via:
 //
-//          GetContainerGroupsGroupInitContainerPortArgs{...}
+//	GetContainerGroupsGroupInitContainerPortArgs{...}
 type GetContainerGroupsGroupInitContainerPortInput interface {
 	pulumi.Input
 
@@ -4409,7 +4409,7 @@ func (i GetContainerGroupsGroupInitContainerPortArgs) ToGetContainerGroupsGroupI
 // GetContainerGroupsGroupInitContainerPortArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerPortArray and GetContainerGroupsGroupInitContainerPortArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerPortArrayInput` via:
 //
-//          GetContainerGroupsGroupInitContainerPortArray{ GetContainerGroupsGroupInitContainerPortArgs{...} }
+//	GetContainerGroupsGroupInitContainerPortArray{ GetContainerGroupsGroupInitContainerPortArgs{...} }
 type GetContainerGroupsGroupInitContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -4487,7 +4487,7 @@ type GetContainerGroupsGroupInitContainerVolumeMount struct {
 // GetContainerGroupsGroupInitContainerVolumeMountInput is an input type that accepts GetContainerGroupsGroupInitContainerVolumeMountArgs and GetContainerGroupsGroupInitContainerVolumeMountOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerVolumeMountInput` via:
 //
-//          GetContainerGroupsGroupInitContainerVolumeMountArgs{...}
+//	GetContainerGroupsGroupInitContainerVolumeMountArgs{...}
 type GetContainerGroupsGroupInitContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -4519,7 +4519,7 @@ func (i GetContainerGroupsGroupInitContainerVolumeMountArgs) ToGetContainerGroup
 // GetContainerGroupsGroupInitContainerVolumeMountArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerVolumeMountArray and GetContainerGroupsGroupInitContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerVolumeMountArrayInput` via:
 //
-//          GetContainerGroupsGroupInitContainerVolumeMountArray{ GetContainerGroupsGroupInitContainerVolumeMountArgs{...} }
+//	GetContainerGroupsGroupInitContainerVolumeMountArray{ GetContainerGroupsGroupInitContainerVolumeMountArgs{...} }
 type GetContainerGroupsGroupInitContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -4618,7 +4618,7 @@ type GetContainerGroupsGroupVolume struct {
 // GetContainerGroupsGroupVolumeInput is an input type that accepts GetContainerGroupsGroupVolumeArgs and GetContainerGroupsGroupVolumeOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupVolumeInput` via:
 //
-//          GetContainerGroupsGroupVolumeArgs{...}
+//	GetContainerGroupsGroupVolumeArgs{...}
 type GetContainerGroupsGroupVolumeInput interface {
 	pulumi.Input
 
@@ -4666,7 +4666,7 @@ func (i GetContainerGroupsGroupVolumeArgs) ToGetContainerGroupsGroupVolumeOutput
 // GetContainerGroupsGroupVolumeArrayInput is an input type that accepts GetContainerGroupsGroupVolumeArray and GetContainerGroupsGroupVolumeArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupVolumeArrayInput` via:
 //
-//          GetContainerGroupsGroupVolumeArray{ GetContainerGroupsGroupVolumeArgs{...} }
+//	GetContainerGroupsGroupVolumeArray{ GetContainerGroupsGroupVolumeArgs{...} }
 type GetContainerGroupsGroupVolumeArrayInput interface {
 	pulumi.Input
 
@@ -4789,7 +4789,7 @@ type GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath struct {
 // GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathInput is an input type that accepts GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs and GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathInput` via:
 //
-//          GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs{...}
+//	GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs{...}
 type GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathInput interface {
 	pulumi.Input
 
@@ -4819,7 +4819,7 @@ func (i GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs) ToGet
 // GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayInput is an input type that accepts GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray and GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayInput` via:
 //
-//          GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray{ GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs{...} }
+//	GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray{ GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs{...} }
 type GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayInput interface {
 	pulumi.Input
 
@@ -4911,7 +4911,7 @@ type GetImageCachesCach struct {
 // GetImageCachesCachInput is an input type that accepts GetImageCachesCachArgs and GetImageCachesCachOutput values.
 // You can construct a concrete instance of `GetImageCachesCachInput` via:
 //
-//          GetImageCachesCachArgs{...}
+//	GetImageCachesCachArgs{...}
 type GetImageCachesCachInput interface {
 	pulumi.Input
 
@@ -4957,7 +4957,7 @@ func (i GetImageCachesCachArgs) ToGetImageCachesCachOutputWithContext(ctx contex
 // GetImageCachesCachArrayInput is an input type that accepts GetImageCachesCachArray and GetImageCachesCachArrayOutput values.
 // You can construct a concrete instance of `GetImageCachesCachArrayInput` via:
 //
-//          GetImageCachesCachArray{ GetImageCachesCachArgs{...} }
+//	GetImageCachesCachArray{ GetImageCachesCachArgs{...} }
 type GetImageCachesCachArrayInput interface {
 	pulumi.Input
 
@@ -5080,7 +5080,7 @@ type GetImageCachesCachEvent struct {
 // GetImageCachesCachEventInput is an input type that accepts GetImageCachesCachEventArgs and GetImageCachesCachEventOutput values.
 // You can construct a concrete instance of `GetImageCachesCachEventInput` via:
 //
-//          GetImageCachesCachEventArgs{...}
+//	GetImageCachesCachEventArgs{...}
 type GetImageCachesCachEventInput interface {
 	pulumi.Input
 
@@ -5117,7 +5117,7 @@ func (i GetImageCachesCachEventArgs) ToGetImageCachesCachEventOutputWithContext(
 // GetImageCachesCachEventArrayInput is an input type that accepts GetImageCachesCachEventArray and GetImageCachesCachEventArrayOutput values.
 // You can construct a concrete instance of `GetImageCachesCachEventArrayInput` via:
 //
-//          GetImageCachesCachEventArray{ GetImageCachesCachEventArgs{...} }
+//	GetImageCachesCachEventArray{ GetImageCachesCachEventArgs{...} }
 type GetImageCachesCachEventArrayInput interface {
 	pulumi.Input
 
@@ -5243,7 +5243,7 @@ type GetVirtualNodesNode struct {
 // GetVirtualNodesNodeInput is an input type that accepts GetVirtualNodesNodeArgs and GetVirtualNodesNodeOutput values.
 // You can construct a concrete instance of `GetVirtualNodesNodeInput` via:
 //
-//          GetVirtualNodesNodeArgs{...}
+//	GetVirtualNodesNodeArgs{...}
 type GetVirtualNodesNodeInput interface {
 	pulumi.Input
 
@@ -5304,7 +5304,7 @@ func (i GetVirtualNodesNodeArgs) ToGetVirtualNodesNodeOutputWithContext(ctx cont
 // GetVirtualNodesNodeArrayInput is an input type that accepts GetVirtualNodesNodeArray and GetVirtualNodesNodeArrayOutput values.
 // You can construct a concrete instance of `GetVirtualNodesNodeArrayInput` via:
 //
-//          GetVirtualNodesNodeArray{ GetVirtualNodesNodeArgs{...} }
+//	GetVirtualNodesNodeArray{ GetVirtualNodesNodeArgs{...} }
 type GetVirtualNodesNodeArrayInput interface {
 	pulumi.Input
 
@@ -5469,7 +5469,7 @@ type GetVirtualNodesNodeEvent struct {
 // GetVirtualNodesNodeEventInput is an input type that accepts GetVirtualNodesNodeEventArgs and GetVirtualNodesNodeEventOutput values.
 // You can construct a concrete instance of `GetVirtualNodesNodeEventInput` via:
 //
-//          GetVirtualNodesNodeEventArgs{...}
+//	GetVirtualNodesNodeEventArgs{...}
 type GetVirtualNodesNodeEventInput interface {
 	pulumi.Input
 
@@ -5509,7 +5509,7 @@ func (i GetVirtualNodesNodeEventArgs) ToGetVirtualNodesNodeEventOutputWithContex
 // GetVirtualNodesNodeEventArrayInput is an input type that accepts GetVirtualNodesNodeEventArray and GetVirtualNodesNodeEventArrayOutput values.
 // You can construct a concrete instance of `GetVirtualNodesNodeEventArrayInput` via:
 //
-//          GetVirtualNodesNodeEventArray{ GetVirtualNodesNodeEventArgs{...} }
+//	GetVirtualNodesNodeEventArray{ GetVirtualNodesNodeEventArgs{...} }
 type GetVirtualNodesNodeEventArrayInput interface {
 	pulumi.Input
 
@@ -5610,7 +5610,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -5640,7 +5640,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

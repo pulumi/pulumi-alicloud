@@ -22,12 +22,14 @@ import (
 // Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>
+//
+//	$ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>
+//
 // ```
 type GatewayBlockVolume struct {
 	pulumi.CustomResourceState
 
-	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode pulumi.StringOutput `pulumi:"cacheMode"`
 	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
 	ChapEnabled pulumi.BoolOutput `pulumi:"chapEnabled"`
@@ -116,7 +118,7 @@ func GetGatewayBlockVolume(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayBlockVolume resources.
 type gatewayBlockVolumeState struct {
-	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode *string `pulumi:"cacheMode"`
 	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
 	ChapEnabled *bool `pulumi:"chapEnabled"`
@@ -162,7 +164,7 @@ type gatewayBlockVolumeState struct {
 }
 
 type GatewayBlockVolumeState struct {
-	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode pulumi.StringPtrInput
 	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
 	ChapEnabled pulumi.BoolPtrInput
@@ -212,7 +214,7 @@ func (GatewayBlockVolumeState) ElementType() reflect.Type {
 }
 
 type gatewayBlockVolumeArgs struct {
-	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode *string `pulumi:"cacheMode"`
 	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
 	ChapEnabled *bool `pulumi:"chapEnabled"`
@@ -246,7 +248,7 @@ type gatewayBlockVolumeArgs struct {
 
 // The set of arguments for constructing a GatewayBlockVolume resource.
 type GatewayBlockVolumeArgs struct {
-	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode pulumi.StringPtrInput
 	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
 	ChapEnabled pulumi.BoolPtrInput
@@ -304,7 +306,7 @@ func (i *GatewayBlockVolume) ToGatewayBlockVolumeOutputWithContext(ctx context.C
 // GatewayBlockVolumeArrayInput is an input type that accepts GatewayBlockVolumeArray and GatewayBlockVolumeArrayOutput values.
 // You can construct a concrete instance of `GatewayBlockVolumeArrayInput` via:
 //
-//          GatewayBlockVolumeArray{ GatewayBlockVolumeArgs{...} }
+//	GatewayBlockVolumeArray{ GatewayBlockVolumeArgs{...} }
 type GatewayBlockVolumeArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +331,7 @@ func (i GatewayBlockVolumeArray) ToGatewayBlockVolumeArrayOutputWithContext(ctx 
 // GatewayBlockVolumeMapInput is an input type that accepts GatewayBlockVolumeMap and GatewayBlockVolumeMapOutput values.
 // You can construct a concrete instance of `GatewayBlockVolumeMapInput` via:
 //
-//          GatewayBlockVolumeMap{ "key": GatewayBlockVolumeArgs{...} }
+//	GatewayBlockVolumeMap{ "key": GatewayBlockVolumeArgs{...} }
 type GatewayBlockVolumeMapInput interface {
 	pulumi.Input
 
@@ -365,7 +367,7 @@ func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumeOutputWithContext(ctx cont
 	return o
 }
 
-// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 func (o GatewayBlockVolumeOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.CacheMode }).(pulumi.StringOutput)
 }

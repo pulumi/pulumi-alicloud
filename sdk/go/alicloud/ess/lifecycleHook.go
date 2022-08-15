@@ -16,7 +16,9 @@ import (
 // Ess lifecycle hook can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+//
+//	$ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+//
 // ```
 type LifecycleHook struct {
 	pulumi.CustomResourceState
@@ -170,7 +172,7 @@ func (i *LifecycleHook) ToLifecycleHookOutputWithContext(ctx context.Context) Li
 // LifecycleHookArrayInput is an input type that accepts LifecycleHookArray and LifecycleHookArrayOutput values.
 // You can construct a concrete instance of `LifecycleHookArrayInput` via:
 //
-//          LifecycleHookArray{ LifecycleHookArgs{...} }
+//	LifecycleHookArray{ LifecycleHookArgs{...} }
 type LifecycleHookArrayInput interface {
 	pulumi.Input
 
@@ -195,7 +197,7 @@ func (i LifecycleHookArray) ToLifecycleHookArrayOutputWithContext(ctx context.Co
 // LifecycleHookMapInput is an input type that accepts LifecycleHookMap and LifecycleHookMapOutput values.
 // You can construct a concrete instance of `LifecycleHookMapInput` via:
 //
-//          LifecycleHookMap{ "key": LifecycleHookArgs{...} }
+//	LifecycleHookMap{ "key": LifecycleHookArgs{...} }
 type LifecycleHookMapInput interface {
 	pulumi.Input
 

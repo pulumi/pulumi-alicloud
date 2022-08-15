@@ -19,77 +19,80 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:         pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType: pulumi.String("Internet"),
-// 			OfficeSiteName:    pulumi.String("your_simple_office_site_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
-// 			BundleType: pulumi.StringRef("SYSTEM"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
-// 			PolicyGroupName: pulumi.String("your_policy_group_name"),
-// 			Clipboard:       pulumi.String("readwrite"),
-// 			LocalDrive:      pulumi.String("read"),
-// 			AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-// 					Description: pulumi.String("example_value"),
-// 					CidrIp:      pulumi.String("1.2.3.4/24"),
-// 				},
-// 			},
-// 			AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-// 					Type:        pulumi.String("inflow"),
-// 					Policy:      pulumi.String("accept"),
-// 					Description: pulumi.String("example_value"),
-// 					PortRange:   pulumi.String("80/80"),
-// 					IpProtocol:  pulumi.String("TCP"),
-// 					Priority:    pulumi.String("1"),
-// 					CidrIp:      pulumi.String("0.0.0.0/0"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
-// 			OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-// 			PolicyGroupId: defaultEcdPolicyGroup.ID(),
-// 			BundleId:      pulumi.String(defaultBundles.Bundles[1].Id),
-// 			DesktopName:   pulumi.String("your_desktop_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewImage(ctx, "defaultImage", &eds.ImageArgs{
-// 			ImageName:   pulumi.String("your_image_name"),
-// 			DesktopId:   defaultDesktop.ID(),
-// 			Description: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String("your_simple_office_site_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//				BundleType: pulumi.StringRef("SYSTEM"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String("your_policy_group_name"),
+//				Clipboard:       pulumi.String("readwrite"),
+//				LocalDrive:      pulumi.String("read"),
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						Description: pulumi.String("example_value"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String("example_value"),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("0.0.0.0/0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				BundleId:      pulumi.String(defaultBundles.Bundles[1].Id),
+//				DesktopName:   pulumi.String("your_desktop_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewImage(ctx, "defaultImage", &eds.ImageArgs{
+//				ImageName:   pulumi.String("your_image_name"),
+//				DesktopId:   defaultDesktop.ID(),
+//				Description: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -97,7 +100,9 @@ import (
 // ECD Image can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/image:Image example <id>
+//
+//	$ pulumi import alicloud:eds/image:Image example <id>
+//
 // ```
 type Image struct {
 	pulumi.CustomResourceState
@@ -214,7 +219,7 @@ func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
-//          ImageArray{ ImageArgs{...} }
+//	ImageArray{ ImageArgs{...} }
 type ImageArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +244,7 @@ func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArra
 // ImageMapInput is an input type that accepts ImageMap and ImageMapOutput values.
 // You can construct a concrete instance of `ImageMapInput` via:
 //
-//          ImageMap{ "key": ImageArgs{...} }
+//	ImageMap{ "key": ImageArgs{...} }
 type ImageMapInput interface {
 	pulumi.Input
 

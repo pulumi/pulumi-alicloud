@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eventbridge.NewEventBus(ctx, "example", &eventbridge.EventBusArgs{
-// 			EventBusName: pulumi.String("my-EventBus"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eventbridge.NewEventBus(ctx, "example", &eventbridge.EventBusArgs{
+//				EventBusName: pulumi.String("my-EventBus"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Event Bridge Event Bus can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
+//
+//	$ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
+//
 // ```
 type EventBus struct {
 	pulumi.CustomResourceState
@@ -148,7 +153,7 @@ func (i *EventBus) ToEventBusOutputWithContext(ctx context.Context) EventBusOutp
 // EventBusArrayInput is an input type that accepts EventBusArray and EventBusArrayOutput values.
 // You can construct a concrete instance of `EventBusArrayInput` via:
 //
-//          EventBusArray{ EventBusArgs{...} }
+//	EventBusArray{ EventBusArgs{...} }
 type EventBusArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +178,7 @@ func (i EventBusArray) ToEventBusArrayOutputWithContext(ctx context.Context) Eve
 // EventBusMapInput is an input type that accepts EventBusMap and EventBusMapOutput values.
 // You can construct a concrete instance of `EventBusMapInput` via:
 //
-//          EventBusMap{ "key": EventBusArgs{...} }
+//	EventBusMap{ "key": EventBusArgs{...} }
 type EventBusMapInput interface {
 	pulumi.Input
 

@@ -24,7 +24,9 @@ import (
 // MongoDB Sharding Network Public Address can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress example <db_instance_id>:<node_id>
+//
+//	$ pulumi import alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress example <db_instance_id>:<node_id>
+//
 // ```
 type ShardingNetworkPublicAddress struct {
 	pulumi.CustomResourceState
@@ -134,7 +136,7 @@ func (i *ShardingNetworkPublicAddress) ToShardingNetworkPublicAddressOutputWithC
 // ShardingNetworkPublicAddressArrayInput is an input type that accepts ShardingNetworkPublicAddressArray and ShardingNetworkPublicAddressArrayOutput values.
 // You can construct a concrete instance of `ShardingNetworkPublicAddressArrayInput` via:
 //
-//          ShardingNetworkPublicAddressArray{ ShardingNetworkPublicAddressArgs{...} }
+//	ShardingNetworkPublicAddressArray{ ShardingNetworkPublicAddressArgs{...} }
 type ShardingNetworkPublicAddressArrayInput interface {
 	pulumi.Input
 
@@ -159,7 +161,7 @@ func (i ShardingNetworkPublicAddressArray) ToShardingNetworkPublicAddressArrayOu
 // ShardingNetworkPublicAddressMapInput is an input type that accepts ShardingNetworkPublicAddressMap and ShardingNetworkPublicAddressMapOutput values.
 // You can construct a concrete instance of `ShardingNetworkPublicAddressMapInput` via:
 //
-//          ShardingNetworkPublicAddressMap{ "key": ShardingNetworkPublicAddressArgs{...} }
+//	ShardingNetworkPublicAddressMap{ "key": ShardingNetworkPublicAddressArgs{...} }
 type ShardingNetworkPublicAddressMapInput interface {
 	pulumi.Input
 

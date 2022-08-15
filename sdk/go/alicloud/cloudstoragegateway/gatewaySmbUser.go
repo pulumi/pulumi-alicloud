@@ -19,63 +19,66 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		example, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
-// 			StorageBundleName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
-// 			Description:            pulumi.String("tf-acctestDesalone"),
-// 			GatewayClass:           pulumi.String("Standard"),
-// 			Type:                   pulumi.String("File"),
-// 			PaymentType:            pulumi.String("PayAsYouGo"),
-// 			VswitchId:              pulumi.String(defaultSwitches.Ids[0]),
-// 			ReleaseAfterExpiration: pulumi.Bool(false),
-// 			PublicNetworkBandwidth: pulumi.Int(40),
-// 			StorageBundleId:        example.ID(),
-// 			Location:               pulumi.String("Cloud"),
-// 			GatewayName:            pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudstoragegateway.NewGatewaySmbUser(ctx, "defaultGatewaySmbUser", &cloudstoragegateway.GatewaySmbUserArgs{
-// 			Username:  pulumi.String("your_username"),
-// 			Password:  pulumi.String("password"),
-// 			GatewayId: defaultGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
+//				Description:            pulumi.String("tf-acctestDesalone"),
+//				GatewayClass:           pulumi.String("Standard"),
+//				Type:                   pulumi.String("File"),
+//				PaymentType:            pulumi.String("PayAsYouGo"),
+//				VswitchId:              pulumi.String(defaultSwitches.Ids[0]),
+//				ReleaseAfterExpiration: pulumi.Bool(false),
+//				PublicNetworkBandwidth: pulumi.Int(40),
+//				StorageBundleId:        example.ID(),
+//				Location:               pulumi.String("Cloud"),
+//				GatewayName:            pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudstoragegateway.NewGatewaySmbUser(ctx, "defaultGatewaySmbUser", &cloudstoragegateway.GatewaySmbUserArgs{
+//				Username:  pulumi.String("your_username"),
+//				Password:  pulumi.String("password"),
+//				GatewayId: defaultGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -83,7 +86,9 @@ import (
 // Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
+//
+//	$ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
+//
 // ```
 type GatewaySmbUser struct {
 	pulumi.CustomResourceState
@@ -200,7 +205,7 @@ func (i *GatewaySmbUser) ToGatewaySmbUserOutputWithContext(ctx context.Context) 
 // GatewaySmbUserArrayInput is an input type that accepts GatewaySmbUserArray and GatewaySmbUserArrayOutput values.
 // You can construct a concrete instance of `GatewaySmbUserArrayInput` via:
 //
-//          GatewaySmbUserArray{ GatewaySmbUserArgs{...} }
+//	GatewaySmbUserArray{ GatewaySmbUserArgs{...} }
 type GatewaySmbUserArrayInput interface {
 	pulumi.Input
 
@@ -225,7 +230,7 @@ func (i GatewaySmbUserArray) ToGatewaySmbUserArrayOutputWithContext(ctx context.
 // GatewaySmbUserMapInput is an input type that accepts GatewaySmbUserMap and GatewaySmbUserMapOutput values.
 // You can construct a concrete instance of `GatewaySmbUserMapInput` via:
 //
-//          GatewaySmbUserMap{ "key": GatewaySmbUserArgs{...} }
+//	GatewaySmbUserMap{ "key": GatewaySmbUserArgs{...} }
 type GatewaySmbUserMapInput interface {
 	pulumi.Input
 

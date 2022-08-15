@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ControlPolicy{}
 	case "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
 		r = &ControlPolicyAttachment{}
+	case "alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator":
+		r = &DelegatedAdministrator{}
 	case "alicloud:resourcemanager/folder:Folder":
 		r = &Folder{}
 	case "alicloud:resourcemanager/handshake:Handshake":
@@ -77,6 +79,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/controlPolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/delegatedAdministrator",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

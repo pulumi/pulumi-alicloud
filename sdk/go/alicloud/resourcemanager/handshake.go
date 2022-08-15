@@ -22,23 +22,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcemanager.NewHandshake(ctx, "example", &resourcemanager.HandshakeArgs{
-// 			Note:         pulumi.String("test resource manager handshake"),
-// 			TargetEntity: pulumi.String("1182775234******"),
-// 			TargetType:   pulumi.String("Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.NewHandshake(ctx, "example", &resourcemanager.HandshakeArgs{
+//				Note:         pulumi.String("test resource manager handshake"),
+//				TargetEntity: pulumi.String("1182775234******"),
+//				TargetType:   pulumi.String("Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Resource Manager handshake can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+//
+//	$ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+//
 // ```
 type Handshake struct {
 	pulumi.CustomResourceState
@@ -196,7 +201,7 @@ func (i *Handshake) ToHandshakeOutputWithContext(ctx context.Context) HandshakeO
 // HandshakeArrayInput is an input type that accepts HandshakeArray and HandshakeArrayOutput values.
 // You can construct a concrete instance of `HandshakeArrayInput` via:
 //
-//          HandshakeArray{ HandshakeArgs{...} }
+//	HandshakeArray{ HandshakeArgs{...} }
 type HandshakeArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +226,7 @@ func (i HandshakeArray) ToHandshakeArrayOutputWithContext(ctx context.Context) H
 // HandshakeMapInput is an input type that accepts HandshakeMap and HandshakeMapOutput values.
 // You can construct a concrete instance of `HandshakeMapInput` via:
 //
-//          HandshakeMap{ "key": HandshakeArgs{...} }
+//	HandshakeMap{ "key": HandshakeArgs{...} }
 type HandshakeMapInput interface {
 	pulumi.Input
 

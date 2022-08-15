@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
-// 			NameRegex: pulumi.StringRef("tf-testacc-actiontrail"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("trailName", _default.Trails[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
+//				NameRegex: pulumi.StringRef("tf-testacc-actiontrail"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("trailName", _default.Trails[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOption) (*GetTrailsResult, error) {
 	var rv GetTrailsResult

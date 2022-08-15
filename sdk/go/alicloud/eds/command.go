@@ -19,78 +19,81 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:         pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType: pulumi.String("Internet"),
-// 			OfficeSiteName:    pulumi.String("your_office_site_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
-// 			BundleType: pulumi.StringRef("SYSTEM"),
-// 			NameRegex:  pulumi.StringRef("windows"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
-// 			PolicyGroupName: pulumi.String("your_policy_group_name"),
-// 			Clipboard:       pulumi.String("readwrite"),
-// 			LocalDrive:      pulumi.String("read"),
-// 			AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-// 					Description: pulumi.String("example_value"),
-// 					CidrIp:      pulumi.String("1.2.3.4/24"),
-// 				},
-// 			},
-// 			AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-// 					Type:        pulumi.String("inflow"),
-// 					Policy:      pulumi.String("accept"),
-// 					Description: pulumi.String("example_value"),
-// 					PortRange:   pulumi.String("80/80"),
-// 					IpProtocol:  pulumi.String("TCP"),
-// 					Priority:    pulumi.String("1"),
-// 					CidrIp:      pulumi.String("0.0.0.0/0"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
-// 			OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-// 			PolicyGroupId: defaultEcdPolicyGroup.ID(),
-// 			BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
-// 			DesktopName:   pulumi.Any(_var.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewCommand(ctx, "defaultCommand", &eds.CommandArgs{
-// 			CommandContent: pulumi.String("ipconfig"),
-// 			CommandType:    pulumi.String("RunPowerShellScript"),
-// 			DesktopId:      defaultDesktop.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String("your_office_site_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//				BundleType: pulumi.StringRef("SYSTEM"),
+//				NameRegex:  pulumi.StringRef("windows"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String("your_policy_group_name"),
+//				Clipboard:       pulumi.String("readwrite"),
+//				LocalDrive:      pulumi.String("read"),
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						Description: pulumi.String("example_value"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String("example_value"),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("0.0.0.0/0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
+//				DesktopName:   pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewCommand(ctx, "defaultCommand", &eds.CommandArgs{
+//				CommandContent: pulumi.String("ipconfig"),
+//				CommandType:    pulumi.String("RunPowerShellScript"),
+//				DesktopId:      defaultDesktop.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -98,7 +101,9 @@ import (
 // ECD Command can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/command:Command example <id>
+//
+//	$ pulumi import alicloud:eds/command:Command example <id>
+//
 // ```
 type Command struct {
 	pulumi.CustomResourceState
@@ -241,7 +246,7 @@ func (i *Command) ToCommandOutputWithContext(ctx context.Context) CommandOutput 
 // CommandArrayInput is an input type that accepts CommandArray and CommandArrayOutput values.
 // You can construct a concrete instance of `CommandArrayInput` via:
 //
-//          CommandArray{ CommandArgs{...} }
+//	CommandArray{ CommandArgs{...} }
 type CommandArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +271,7 @@ func (i CommandArray) ToCommandArrayOutputWithContext(ctx context.Context) Comma
 // CommandMapInput is an input type that accepts CommandMap and CommandMapOutput values.
 // You can construct a concrete instance of `CommandMapInput` via:
 //
-//          CommandMap{ "key": CommandArgs{...} }
+//	CommandMap{ "key": CommandArgs{...} }
 type CommandMapInput interface {
 	pulumi.Input
 

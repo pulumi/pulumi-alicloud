@@ -17,23 +17,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewRecord(ctx, "record", &dns.RecordArgs{
-// 			HostRecord: pulumi.String("@"),
-// 			Type:       pulumi.String("A"),
-// 			Value:      pulumi.String("192.168.99.99"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewRecord(ctx, "record", &dns.RecordArgs{
+//				HostRecord: pulumi.String("@"),
+//				Type:       pulumi.String("A"),
+//				Value:      pulumi.String("192.168.99.99"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -41,7 +44,9 @@ import (
 // RDS record can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/record:Record example abc123456
+//
+//	$ pulumi import alicloud:dns/record:Record example abc123456
+//
 // ```
 type Record struct {
 	pulumi.CustomResourceState
@@ -207,7 +212,7 @@ func (i *Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 // RecordArrayInput is an input type that accepts RecordArray and RecordArrayOutput values.
 // You can construct a concrete instance of `RecordArrayInput` via:
 //
-//          RecordArray{ RecordArgs{...} }
+//	RecordArray{ RecordArgs{...} }
 type RecordArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +237,7 @@ func (i RecordArray) ToRecordArrayOutputWithContext(ctx context.Context) RecordA
 // RecordMapInput is an input type that accepts RecordMap and RecordMapOutput values.
 // You can construct a concrete instance of `RecordMapInput` via:
 //
-//          RecordMap{ "key": RecordArgs{...} }
+//	RecordMap{ "key": RecordArgs{...} }
 type RecordMapInput interface {
 	pulumi.Input
 

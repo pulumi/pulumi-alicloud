@@ -13,38 +13,41 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mns.NewTopic(ctx, "topic", &mns.TopicArgs{
-// 			LoggingEnabled:     pulumi.Bool(false),
-// 			MaximumMessageSize: pulumi.Int(65536),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = mns.NewTopicSubscription(ctx, "subscription", &mns.TopicSubscriptionArgs{
-// 			Endpoint:            pulumi.String("http://www.xxx.com/xxx"),
-// 			FilterTag:           pulumi.String("test"),
-// 			NotifyContentFormat: pulumi.String("XML"),
-// 			NotifyStrategy:      pulumi.String("BACKOFF_RETRY"),
-// 			TopicName:           pulumi.String("tf-example-mnstopic"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mns.NewTopic(ctx, "topic", &mns.TopicArgs{
+//				LoggingEnabled:     pulumi.Bool(false),
+//				MaximumMessageSize: pulumi.Int(65536),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mns.NewTopicSubscription(ctx, "subscription", &mns.TopicSubscriptionArgs{
+//				Endpoint:            pulumi.String("http://www.xxx.com/xxx"),
+//				FilterTag:           pulumi.String("test"),
+//				NotifyContentFormat: pulumi.String("XML"),
+//				NotifyStrategy:      pulumi.String("BACKOFF_RETRY"),
+//				TopicName:           pulumi.String("tf-example-mnstopic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,7 +55,9 @@ import (
 // MNS Topic subscription can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+//
+//	$ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+//
 // ```
 type TopicSubscription struct {
 	pulumi.CustomResourceState
@@ -211,7 +216,7 @@ func (i *TopicSubscription) ToTopicSubscriptionOutputWithContext(ctx context.Con
 // TopicSubscriptionArrayInput is an input type that accepts TopicSubscriptionArray and TopicSubscriptionArrayOutput values.
 // You can construct a concrete instance of `TopicSubscriptionArrayInput` via:
 //
-//          TopicSubscriptionArray{ TopicSubscriptionArgs{...} }
+//	TopicSubscriptionArray{ TopicSubscriptionArgs{...} }
 type TopicSubscriptionArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +241,7 @@ func (i TopicSubscriptionArray) ToTopicSubscriptionArrayOutputWithContext(ctx co
 // TopicSubscriptionMapInput is an input type that accepts TopicSubscriptionMap and TopicSubscriptionMapOutput values.
 // You can construct a concrete instance of `TopicSubscriptionMapInput` via:
 //
-//          TopicSubscriptionMap{ "key": TopicSubscriptionArgs{...} }
+//	TopicSubscriptionMap{ "key": TopicSubscriptionArgs{...} }
 type TopicSubscriptionMapInput interface {
 	pulumi.Input
 

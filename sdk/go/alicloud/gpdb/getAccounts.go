@@ -16,40 +16,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := gpdb.GetAccounts(ctx, &gpdb.GetAccountsArgs{
-// 			DbInstanceId: "example_value",
-// 			Ids: []string{
-// 				"my-Account-1",
-// 				"my-Account-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("gpdbAccountId1", ids.Accounts[0].Id)
-// 		nameRegex, err := gpdb.GetAccounts(ctx, &gpdb.GetAccountsArgs{
-// 			DbInstanceId: "example_value",
-// 			NameRegex:    pulumi.StringRef("^my-Account"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("gpdbAccountId2", nameRegex.Accounts[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := gpdb.GetAccounts(ctx, &gpdb.GetAccountsArgs{
+//				DbInstanceId: "example_value",
+//				Ids: []string{
+//					"my-Account-1",
+//					"my-Account-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gpdbAccountId1", ids.Accounts[0].Id)
+//			nameRegex, err := gpdb.GetAccounts(ctx, &gpdb.GetAccountsArgs{
+//				DbInstanceId: "example_value",
+//				NameRegex:    pulumi.StringRef("^my-Account"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gpdbAccountId2", nameRegex.Accounts[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	var rv GetAccountsResult

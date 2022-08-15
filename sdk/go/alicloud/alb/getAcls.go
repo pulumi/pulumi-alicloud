@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := alb.GetAcls(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("albAclId1", ids.Acls[0].Id)
-// 		nameRegex, err := alb.GetAcls(ctx, &alb.GetAclsArgs{
-// 			NameRegex: pulumi.StringRef("^my-Acl"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("albAclId2", nameRegex.Acls[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := alb.GetAcls(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albAclId1", ids.Acls[0].Id)
+//			nameRegex, err := alb.GetAcls(ctx, &alb.GetAclsArgs{
+//				NameRegex: pulumi.StringRef("^my-Acl"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albAclId2", nameRegex.Acls[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAcls(ctx *pulumi.Context, args *GetAclsArgs, opts ...pulumi.InvokeOption) (*GetAclsResult, error) {
 	var rv GetAclsResult

@@ -15,7 +15,9 @@ import (
 // ESS schedule task can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
+//
+//	$ pulumi import alicloud:ess/scheduledTask:ScheduledTask example abc123456
+//
 // ```
 type ScheduledTask struct {
 	pulumi.CustomResourceState
@@ -283,7 +285,7 @@ func (i *ScheduledTask) ToScheduledTaskOutputWithContext(ctx context.Context) Sc
 // ScheduledTaskArrayInput is an input type that accepts ScheduledTaskArray and ScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `ScheduledTaskArrayInput` via:
 //
-//          ScheduledTaskArray{ ScheduledTaskArgs{...} }
+//	ScheduledTaskArray{ ScheduledTaskArgs{...} }
 type ScheduledTaskArrayInput interface {
 	pulumi.Input
 
@@ -308,7 +310,7 @@ func (i ScheduledTaskArray) ToScheduledTaskArrayOutputWithContext(ctx context.Co
 // ScheduledTaskMapInput is an input type that accepts ScheduledTaskMap and ScheduledTaskMapOutput values.
 // You can construct a concrete instance of `ScheduledTaskMapInput` via:
 //
-//          ScheduledTaskMap{ "key": ScheduledTaskArgs{...} }
+//	ScheduledTaskMap{ "key": ScheduledTaskArgs{...} }
 type ScheduledTaskMapInput interface {
 	pulumi.Input
 

@@ -21,29 +21,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		polardbClustersDs, err := polardb.GetClusters(ctx, &polardb.GetClustersArgs{
-// 			DescriptionRegex: pulumi.StringRef("pc-\\w+"),
-// 			Status:           pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_default, err := polardb.GetAccounts(ctx, &polardb.GetAccountsArgs{
-// 			DbClusterId: polardbClustersDs.Clusters[0].Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("account", _default.Accounts[0].AccountName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			polardbClustersDs, err := polardb.GetClusters(ctx, &polardb.GetClustersArgs{
+//				DescriptionRegex: pulumi.StringRef("pc-\\w+"),
+//				Status:           pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := polardb.GetAccounts(ctx, &polardb.GetAccountsArgs{
+//				DbClusterId: polardbClustersDs.Clusters[0].Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("account", _default.Accounts[0].AccountName)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	var rv GetAccountsResult

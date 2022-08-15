@@ -23,30 +23,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEipAddress(ctx, "example", &ecs.EipAddressArgs{
-// 			AddressName:        pulumi.String("tf-testAcc1234"),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
-// 			Isp:                pulumi.String("BGP"),
-// 			PaymentType:        pulumi.String("PayAsYouGo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEipAddress(ctx, "example", &ecs.EipAddressArgs{
+//				AddressName:        pulumi.String("tf-testAcc1234"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				Isp:                pulumi.String("BGP"),
+//				PaymentType:        pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // EIP Address can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
+//
+//	$ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
+//
 // ```
 type EipAddress struct {
 	pulumi.CustomResourceState
@@ -319,7 +324,7 @@ func (i *EipAddress) ToEipAddressOutputWithContext(ctx context.Context) EipAddre
 // EipAddressArrayInput is an input type that accepts EipAddressArray and EipAddressArrayOutput values.
 // You can construct a concrete instance of `EipAddressArrayInput` via:
 //
-//          EipAddressArray{ EipAddressArgs{...} }
+//	EipAddressArray{ EipAddressArgs{...} }
 type EipAddressArrayInput interface {
 	pulumi.Input
 
@@ -344,7 +349,7 @@ func (i EipAddressArray) ToEipAddressArrayOutputWithContext(ctx context.Context)
 // EipAddressMapInput is an input type that accepts EipAddressMap and EipAddressMapOutput values.
 // You can construct a concrete instance of `EipAddressMapInput` via:
 //
-//          EipAddressMap{ "key": EipAddressArgs{...} }
+//	EipAddressMap{ "key": EipAddressArgs{...} }
 type EipAddressMapInput interface {
 	pulumi.Input
 

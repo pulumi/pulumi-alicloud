@@ -19,37 +19,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := quotas.NewQuotaApplication(ctx, "example", &quotas.QuotaApplicationArgs{
-// 			DesireValue: pulumi.Float64(100),
-// 			Dimensions: quotas.QuotaApplicationDimensionArray{
-// 				&quotas.QuotaApplicationDimensionArgs{
-// 					Key:   pulumi.String("regionId"),
-// 					Value: pulumi.String("cn-hangzhou"),
-// 				},
-// 			},
-// 			NoticeType:      pulumi.Int(0),
-// 			ProductCode:     pulumi.String("ess"),
-// 			QuotaActionCode: pulumi.String("q_db_instance"),
-// 			Reason:          pulumi.String("For Terraform Test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := quotas.NewQuotaApplication(ctx, "example", &quotas.QuotaApplicationArgs{
+//				DesireValue: pulumi.Float64(100),
+//				Dimensions: quotas.QuotaApplicationDimensionArray{
+//					&quotas.QuotaApplicationDimensionArgs{
+//						Key:   pulumi.String("regionId"),
+//						Value: pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//				NoticeType:      pulumi.Int(0),
+//				ProductCode:     pulumi.String("ess"),
+//				QuotaActionCode: pulumi.String("q_db_instance"),
+//				Reason:          pulumi.String("For Terraform Test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // Quotas Application Info can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
+//
+//	$ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
+//
 // ```
 type QuotaApplication struct {
 	pulumi.CustomResourceState
@@ -275,7 +280,7 @@ func (i *QuotaApplication) ToQuotaApplicationOutputWithContext(ctx context.Conte
 // QuotaApplicationArrayInput is an input type that accepts QuotaApplicationArray and QuotaApplicationArrayOutput values.
 // You can construct a concrete instance of `QuotaApplicationArrayInput` via:
 //
-//          QuotaApplicationArray{ QuotaApplicationArgs{...} }
+//	QuotaApplicationArray{ QuotaApplicationArgs{...} }
 type QuotaApplicationArrayInput interface {
 	pulumi.Input
 
@@ -300,7 +305,7 @@ func (i QuotaApplicationArray) ToQuotaApplicationArrayOutputWithContext(ctx cont
 // QuotaApplicationMapInput is an input type that accepts QuotaApplicationMap and QuotaApplicationMapOutput values.
 // You can construct a concrete instance of `QuotaApplicationMapInput` via:
 //
-//          QuotaApplicationMap{ "key": QuotaApplicationArgs{...} }
+//	QuotaApplicationMap{ "key": QuotaApplicationArgs{...} }
 type QuotaApplicationMapInput interface {
 	pulumi.Input
 

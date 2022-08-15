@@ -16,7 +16,9 @@ import (
 // CEN bandwidth package can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
+//
+//	$ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
+//
 // ```
 type BandwidthPackage struct {
 	pulumi.CustomResourceState
@@ -234,7 +236,7 @@ func (i *BandwidthPackage) ToBandwidthPackageOutputWithContext(ctx context.Conte
 // BandwidthPackageArrayInput is an input type that accepts BandwidthPackageArray and BandwidthPackageArrayOutput values.
 // You can construct a concrete instance of `BandwidthPackageArrayInput` via:
 //
-//          BandwidthPackageArray{ BandwidthPackageArgs{...} }
+//	BandwidthPackageArray{ BandwidthPackageArgs{...} }
 type BandwidthPackageArrayInput interface {
 	pulumi.Input
 
@@ -259,7 +261,7 @@ func (i BandwidthPackageArray) ToBandwidthPackageArrayOutputWithContext(ctx cont
 // BandwidthPackageMapInput is an input type that accepts BandwidthPackageMap and BandwidthPackageMapOutput values.
 // You can construct a concrete instance of `BandwidthPackageMapInput` via:
 //
-//          BandwidthPackageMap{ "key": BandwidthPackageArgs{...} }
+//	BandwidthPackageMap{ "key": BandwidthPackageArgs{...} }
 type BandwidthPackageMapInput interface {
 	pulumi.Input
 

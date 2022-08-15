@@ -20,7 +20,7 @@ type ProviderAssumeRole struct {
 // ProviderAssumeRoleInput is an input type that accepts ProviderAssumeRoleArgs and ProviderAssumeRoleOutput values.
 // You can construct a concrete instance of `ProviderAssumeRoleInput` via:
 //
-//          ProviderAssumeRoleArgs{...}
+//	ProviderAssumeRoleArgs{...}
 type ProviderAssumeRoleInput interface {
 	pulumi.Input
 
@@ -58,11 +58,11 @@ func (i ProviderAssumeRoleArgs) ToProviderAssumeRolePtrOutputWithContext(ctx con
 // ProviderAssumeRolePtrInput is an input type that accepts ProviderAssumeRoleArgs, ProviderAssumeRolePtr and ProviderAssumeRolePtrOutput values.
 // You can construct a concrete instance of `ProviderAssumeRolePtrInput` via:
 //
-//          ProviderAssumeRoleArgs{...}
+//	        ProviderAssumeRoleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ProviderAssumeRolePtrInput interface {
 	pulumi.Input
 
@@ -310,7 +310,7 @@ type ProviderEndpoint struct {
 // ProviderEndpointInput is an input type that accepts ProviderEndpointArgs and ProviderEndpointOutput values.
 // You can construct a concrete instance of `ProviderEndpointInput` via:
 //
-//          ProviderEndpointArgs{...}
+//	ProviderEndpointArgs{...}
 type ProviderEndpointInput interface {
 	pulumi.Input
 
@@ -452,7 +452,7 @@ func (i ProviderEndpointArgs) ToProviderEndpointOutputWithContext(ctx context.Co
 // ProviderEndpointArrayInput is an input type that accepts ProviderEndpointArray and ProviderEndpointArrayOutput values.
 // You can construct a concrete instance of `ProviderEndpointArrayInput` via:
 //
-//          ProviderEndpointArray{ ProviderEndpointArgs{...} }
+//	ProviderEndpointArray{ ProviderEndpointArgs{...} }
 type ProviderEndpointArrayInput interface {
 	pulumi.Input
 
@@ -1004,7 +1004,7 @@ type GetMscSubContactsContact struct {
 // GetMscSubContactsContactInput is an input type that accepts GetMscSubContactsContactArgs and GetMscSubContactsContactOutput values.
 // You can construct a concrete instance of `GetMscSubContactsContactInput` via:
 //
-//          GetMscSubContactsContactArgs{...}
+//	GetMscSubContactsContactArgs{...}
 type GetMscSubContactsContactInput interface {
 	pulumi.Input
 
@@ -1056,7 +1056,7 @@ func (i GetMscSubContactsContactArgs) ToGetMscSubContactsContactOutputWithContex
 // GetMscSubContactsContactArrayInput is an input type that accepts GetMscSubContactsContactArray and GetMscSubContactsContactArrayOutput values.
 // You can construct a concrete instance of `GetMscSubContactsContactArrayInput` via:
 //
-//          GetMscSubContactsContactArray{ GetMscSubContactsContactArgs{...} }
+//	GetMscSubContactsContactArray{ GetMscSubContactsContactArgs{...} }
 type GetMscSubContactsContactArrayInput interface {
 	pulumi.Input
 
@@ -1207,7 +1207,7 @@ type GetMscSubSubscriptionsSubscription struct {
 // GetMscSubSubscriptionsSubscriptionInput is an input type that accepts GetMscSubSubscriptionsSubscriptionArgs and GetMscSubSubscriptionsSubscriptionOutput values.
 // You can construct a concrete instance of `GetMscSubSubscriptionsSubscriptionInput` via:
 //
-//          GetMscSubSubscriptionsSubscriptionArgs{...}
+//	GetMscSubSubscriptionsSubscriptionArgs{...}
 type GetMscSubSubscriptionsSubscriptionInput interface {
 	pulumi.Input
 
@@ -1257,7 +1257,7 @@ func (i GetMscSubSubscriptionsSubscriptionArgs) ToGetMscSubSubscriptionsSubscrip
 // GetMscSubSubscriptionsSubscriptionArrayInput is an input type that accepts GetMscSubSubscriptionsSubscriptionArray and GetMscSubSubscriptionsSubscriptionArrayOutput values.
 // You can construct a concrete instance of `GetMscSubSubscriptionsSubscriptionArrayInput` via:
 //
-//          GetMscSubSubscriptionsSubscriptionArray{ GetMscSubSubscriptionsSubscriptionArgs{...} }
+//	GetMscSubSubscriptionsSubscriptionArray{ GetMscSubSubscriptionsSubscriptionArgs{...} }
 type GetMscSubSubscriptionsSubscriptionArrayInput interface {
 	pulumi.Input
 
@@ -1387,7 +1387,7 @@ type GetMscSubWebhooksWebhook struct {
 // GetMscSubWebhooksWebhookInput is an input type that accepts GetMscSubWebhooksWebhookArgs and GetMscSubWebhooksWebhookOutput values.
 // You can construct a concrete instance of `GetMscSubWebhooksWebhookInput` via:
 //
-//          GetMscSubWebhooksWebhookArgs{...}
+//	GetMscSubWebhooksWebhookArgs{...}
 type GetMscSubWebhooksWebhookInput interface {
 	pulumi.Input
 
@@ -1421,7 +1421,7 @@ func (i GetMscSubWebhooksWebhookArgs) ToGetMscSubWebhooksWebhookOutputWithContex
 // GetMscSubWebhooksWebhookArrayInput is an input type that accepts GetMscSubWebhooksWebhookArray and GetMscSubWebhooksWebhookArrayOutput values.
 // You can construct a concrete instance of `GetMscSubWebhooksWebhookArrayInput` via:
 //
-//          GetMscSubWebhooksWebhookArray{ GetMscSubWebhooksWebhookArgs{...} }
+//	GetMscSubWebhooksWebhookArray{ GetMscSubWebhooksWebhookArgs{...} }
 type GetMscSubWebhooksWebhookArrayInput interface {
 	pulumi.Input
 
@@ -1508,7 +1508,7 @@ type GetRegionsRegion struct {
 // GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
 // You can construct a concrete instance of `GetRegionsRegionInput` via:
 //
-//          GetRegionsRegionArgs{...}
+//	GetRegionsRegionArgs{...}
 type GetRegionsRegionInput interface {
 	pulumi.Input
 
@@ -1539,7 +1539,7 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
-//          GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
+//	GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
 type GetRegionsRegionArrayInput interface {
 	pulumi.Input
 
@@ -1630,7 +1630,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -1671,7 +1671,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

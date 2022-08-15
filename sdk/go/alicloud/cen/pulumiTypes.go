@@ -20,7 +20,7 @@ type TransitRouterVpcAttachmentZoneMapping struct {
 // TransitRouterVpcAttachmentZoneMappingInput is an input type that accepts TransitRouterVpcAttachmentZoneMappingArgs and TransitRouterVpcAttachmentZoneMappingOutput values.
 // You can construct a concrete instance of `TransitRouterVpcAttachmentZoneMappingInput` via:
 //
-//          TransitRouterVpcAttachmentZoneMappingArgs{...}
+//	TransitRouterVpcAttachmentZoneMappingArgs{...}
 type TransitRouterVpcAttachmentZoneMappingInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i TransitRouterVpcAttachmentZoneMappingArgs) ToTransitRouterVpcAttachmentZ
 // TransitRouterVpcAttachmentZoneMappingArrayInput is an input type that accepts TransitRouterVpcAttachmentZoneMappingArray and TransitRouterVpcAttachmentZoneMappingArrayOutput values.
 // You can construct a concrete instance of `TransitRouterVpcAttachmentZoneMappingArrayInput` via:
 //
-//          TransitRouterVpcAttachmentZoneMappingArray{ TransitRouterVpcAttachmentZoneMappingArgs{...} }
+//	TransitRouterVpcAttachmentZoneMappingArray{ TransitRouterVpcAttachmentZoneMappingArgs{...} }
 type TransitRouterVpcAttachmentZoneMappingArrayInput interface {
 	pulumi.Input
 
@@ -132,7 +132,7 @@ type GetBandwidthLimitsLimit struct {
 // GetBandwidthLimitsLimitInput is an input type that accepts GetBandwidthLimitsLimitArgs and GetBandwidthLimitsLimitOutput values.
 // You can construct a concrete instance of `GetBandwidthLimitsLimitInput` via:
 //
-//          GetBandwidthLimitsLimitArgs{...}
+//	GetBandwidthLimitsLimitArgs{...}
 type GetBandwidthLimitsLimitInput interface {
 	pulumi.Input
 
@@ -168,7 +168,7 @@ func (i GetBandwidthLimitsLimitArgs) ToGetBandwidthLimitsLimitOutputWithContext(
 // GetBandwidthLimitsLimitArrayInput is an input type that accepts GetBandwidthLimitsLimitArray and GetBandwidthLimitsLimitArrayOutput values.
 // You can construct a concrete instance of `GetBandwidthLimitsLimitArrayInput` via:
 //
-//          GetBandwidthLimitsLimitArray{ GetBandwidthLimitsLimitArgs{...} }
+//	GetBandwidthLimitsLimitArray{ GetBandwidthLimitsLimitArgs{...} }
 type GetBandwidthLimitsLimitArrayInput interface {
 	pulumi.Input
 
@@ -298,7 +298,7 @@ type GetBandwidthPackagesPackage struct {
 // GetBandwidthPackagesPackageInput is an input type that accepts GetBandwidthPackagesPackageArgs and GetBandwidthPackagesPackageOutput values.
 // You can construct a concrete instance of `GetBandwidthPackagesPackageInput` via:
 //
-//          GetBandwidthPackagesPackageArgs{...}
+//	GetBandwidthPackagesPackageArgs{...}
 type GetBandwidthPackagesPackageInput interface {
 	pulumi.Input
 
@@ -367,7 +367,7 @@ func (i GetBandwidthPackagesPackageArgs) ToGetBandwidthPackagesPackageOutputWith
 // GetBandwidthPackagesPackageArrayInput is an input type that accepts GetBandwidthPackagesPackageArray and GetBandwidthPackagesPackageArrayOutput values.
 // You can construct a concrete instance of `GetBandwidthPackagesPackageArrayInput` via:
 //
-//          GetBandwidthPackagesPackageArray{ GetBandwidthPackagesPackageArgs{...} }
+//	GetBandwidthPackagesPackageArray{ GetBandwidthPackagesPackageArgs{...} }
 type GetBandwidthPackagesPackageArrayInput interface {
 	pulumi.Input
 
@@ -554,7 +554,7 @@ type GetFlowlogsFlowlog struct {
 // GetFlowlogsFlowlogInput is an input type that accepts GetFlowlogsFlowlogArgs and GetFlowlogsFlowlogOutput values.
 // You can construct a concrete instance of `GetFlowlogsFlowlogInput` via:
 //
-//          GetFlowlogsFlowlogArgs{...}
+//	GetFlowlogsFlowlogArgs{...}
 type GetFlowlogsFlowlogInput interface {
 	pulumi.Input
 
@@ -596,7 +596,7 @@ func (i GetFlowlogsFlowlogArgs) ToGetFlowlogsFlowlogOutputWithContext(ctx contex
 // GetFlowlogsFlowlogArrayInput is an input type that accepts GetFlowlogsFlowlogArray and GetFlowlogsFlowlogArrayOutput values.
 // You can construct a concrete instance of `GetFlowlogsFlowlogArrayInput` via:
 //
-//          GetFlowlogsFlowlogArray{ GetFlowlogsFlowlogArgs{...} }
+//	GetFlowlogsFlowlogArray{ GetFlowlogsFlowlogArgs{...} }
 type GetFlowlogsFlowlogArrayInput interface {
 	pulumi.Input
 
@@ -714,7 +714,7 @@ type GetInstanceAttachmentsAttachment struct {
 // GetInstanceAttachmentsAttachmentInput is an input type that accepts GetInstanceAttachmentsAttachmentArgs and GetInstanceAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetInstanceAttachmentsAttachmentInput` via:
 //
-//          GetInstanceAttachmentsAttachmentArgs{...}
+//	GetInstanceAttachmentsAttachmentArgs{...}
 type GetInstanceAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -756,7 +756,7 @@ func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachment
 // GetInstanceAttachmentsAttachmentArrayInput is an input type that accepts GetInstanceAttachmentsAttachmentArray and GetInstanceAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetInstanceAttachmentsAttachmentArrayInput` via:
 //
-//          GetInstanceAttachmentsAttachmentArray{ GetInstanceAttachmentsAttachmentArgs{...} }
+//	GetInstanceAttachmentsAttachmentArray{ GetInstanceAttachmentsAttachmentArgs{...} }
 type GetInstanceAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -878,7 +878,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -924,7 +924,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1050,7 +1050,7 @@ type GetPrivateZonesZone struct {
 // GetPrivateZonesZoneInput is an input type that accepts GetPrivateZonesZoneArgs and GetPrivateZonesZoneOutput values.
 // You can construct a concrete instance of `GetPrivateZonesZoneInput` via:
 //
-//          GetPrivateZonesZoneArgs{...}
+//	GetPrivateZonesZoneArgs{...}
 type GetPrivateZonesZoneInput interface {
 	pulumi.Input
 
@@ -1090,7 +1090,7 @@ func (i GetPrivateZonesZoneArgs) ToGetPrivateZonesZoneOutputWithContext(ctx cont
 // GetPrivateZonesZoneArrayInput is an input type that accepts GetPrivateZonesZoneArray and GetPrivateZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetPrivateZonesZoneArrayInput` via:
 //
-//          GetPrivateZonesZoneArray{ GetPrivateZonesZoneArgs{...} }
+//	GetPrivateZonesZoneArray{ GetPrivateZonesZoneArgs{...} }
 type GetPrivateZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -1197,7 +1197,7 @@ type GetRegionRouteEntriesEntry struct {
 // GetRegionRouteEntriesEntryInput is an input type that accepts GetRegionRouteEntriesEntryArgs and GetRegionRouteEntriesEntryOutput values.
 // You can construct a concrete instance of `GetRegionRouteEntriesEntryInput` via:
 //
-//          GetRegionRouteEntriesEntryArgs{...}
+//	GetRegionRouteEntriesEntryArgs{...}
 type GetRegionRouteEntriesEntryInput interface {
 	pulumi.Input
 
@@ -1233,7 +1233,7 @@ func (i GetRegionRouteEntriesEntryArgs) ToGetRegionRouteEntriesEntryOutputWithCo
 // GetRegionRouteEntriesEntryArrayInput is an input type that accepts GetRegionRouteEntriesEntryArray and GetRegionRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetRegionRouteEntriesEntryArrayInput` via:
 //
-//          GetRegionRouteEntriesEntryArray{ GetRegionRouteEntriesEntryArgs{...} }
+//	GetRegionRouteEntriesEntryArray{ GetRegionRouteEntriesEntryArgs{...} }
 type GetRegionRouteEntriesEntryArrayInput interface {
 	pulumi.Input
 
@@ -1336,7 +1336,7 @@ type GetRouteEntriesEntry struct {
 // GetRouteEntriesEntryInput is an input type that accepts GetRouteEntriesEntryArgs and GetRouteEntriesEntryOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryInput` via:
 //
-//          GetRouteEntriesEntryArgs{...}
+//	GetRouteEntriesEntryArgs{...}
 type GetRouteEntriesEntryInput interface {
 	pulumi.Input
 
@@ -1378,7 +1378,7 @@ func (i GetRouteEntriesEntryArgs) ToGetRouteEntriesEntryOutputWithContext(ctx co
 // GetRouteEntriesEntryArrayInput is an input type that accepts GetRouteEntriesEntryArray and GetRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryArrayInput` via:
 //
-//          GetRouteEntriesEntryArray{ GetRouteEntriesEntryArgs{...} }
+//	GetRouteEntriesEntryArray{ GetRouteEntriesEntryArgs{...} }
 type GetRouteEntriesEntryArrayInput interface {
 	pulumi.Input
 
@@ -1490,7 +1490,7 @@ type GetRouteEntriesEntryConflict struct {
 // GetRouteEntriesEntryConflictInput is an input type that accepts GetRouteEntriesEntryConflictArgs and GetRouteEntriesEntryConflictOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryConflictInput` via:
 //
-//          GetRouteEntriesEntryConflictArgs{...}
+//	GetRouteEntriesEntryConflictArgs{...}
 type GetRouteEntriesEntryConflictInput interface {
 	pulumi.Input
 
@@ -1526,7 +1526,7 @@ func (i GetRouteEntriesEntryConflictArgs) ToGetRouteEntriesEntryConflictOutputWi
 // GetRouteEntriesEntryConflictArrayInput is an input type that accepts GetRouteEntriesEntryConflictArray and GetRouteEntriesEntryConflictArrayOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryConflictArrayInput` via:
 //
-//          GetRouteEntriesEntryConflictArray{ GetRouteEntriesEntryConflictArgs{...} }
+//	GetRouteEntriesEntryConflictArray{ GetRouteEntriesEntryConflictArgs{...} }
 type GetRouteEntriesEntryConflictArrayInput interface {
 	pulumi.Input
 
@@ -1673,7 +1673,7 @@ type GetRouteMapsMap struct {
 // GetRouteMapsMapInput is an input type that accepts GetRouteMapsMap and GetRouteMapsMapOutput values.
 // You can construct a concrete instance of `GetRouteMapsMapInput` via:
 //
-//          GetRouteMapsMap{ "key": GetRouteMapsArgs{...} }
+//	GetRouteMapsMap{ "key": GetRouteMapsArgs{...} }
 type GetRouteMapsMapInput interface {
 	pulumi.Input
 
@@ -1759,7 +1759,7 @@ func (i GetRouteMapsMapArgs) ToGetRouteMapsMapOutputWithContext(ctx context.Cont
 // GetRouteMapsMapArrayInput is an input type that accepts GetRouteMapsMapArray and GetRouteMapsMapArrayOutput values.
 // You can construct a concrete instance of `GetRouteMapsMapArrayInput` via:
 //
-//          GetRouteMapsMapArray{ GetRouteMapsMapArgs{...} }
+//	GetRouteMapsMapArray{ GetRouteMapsMapArgs{...} }
 type GetRouteMapsMapArrayInput interface {
 	pulumi.Input
 
@@ -1991,7 +1991,7 @@ type GetRouteServicesService struct {
 // GetRouteServicesServiceInput is an input type that accepts GetRouteServicesServiceArgs and GetRouteServicesServiceOutput values.
 // You can construct a concrete instance of `GetRouteServicesServiceInput` via:
 //
-//          GetRouteServicesServiceArgs{...}
+//	GetRouteServicesServiceArgs{...}
 type GetRouteServicesServiceInput interface {
 	pulumi.Input
 
@@ -2037,7 +2037,7 @@ func (i GetRouteServicesServiceArgs) ToGetRouteServicesServiceOutputWithContext(
 // GetRouteServicesServiceArrayInput is an input type that accepts GetRouteServicesServiceArray and GetRouteServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetRouteServicesServiceArrayInput` via:
 //
-//          GetRouteServicesServiceArray{ GetRouteServicesServiceArgs{...} }
+//	GetRouteServicesServiceArray{ GetRouteServicesServiceArgs{...} }
 type GetRouteServicesServiceArrayInput interface {
 	pulumi.Input
 
@@ -2165,7 +2165,7 @@ type GetTrafficMarkingPoliciesPolicy struct {
 // GetTrafficMarkingPoliciesPolicyInput is an input type that accepts GetTrafficMarkingPoliciesPolicyArgs and GetTrafficMarkingPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetTrafficMarkingPoliciesPolicyInput` via:
 //
-//          GetTrafficMarkingPoliciesPolicyArgs{...}
+//	GetTrafficMarkingPoliciesPolicyArgs{...}
 type GetTrafficMarkingPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -2207,7 +2207,7 @@ func (i GetTrafficMarkingPoliciesPolicyArgs) ToGetTrafficMarkingPoliciesPolicyOu
 // GetTrafficMarkingPoliciesPolicyArrayInput is an input type that accepts GetTrafficMarkingPoliciesPolicyArray and GetTrafficMarkingPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetTrafficMarkingPoliciesPolicyArrayInput` via:
 //
-//          GetTrafficMarkingPoliciesPolicyArray{ GetTrafficMarkingPoliciesPolicyArgs{...} }
+//	GetTrafficMarkingPoliciesPolicyArray{ GetTrafficMarkingPoliciesPolicyArgs{...} }
 type GetTrafficMarkingPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -2313,7 +2313,7 @@ type GetTransitRouterAvailableResourcesResource struct {
 // GetTransitRouterAvailableResourcesResourceInput is an input type that accepts GetTransitRouterAvailableResourcesResourceArgs and GetTransitRouterAvailableResourcesResourceOutput values.
 // You can construct a concrete instance of `GetTransitRouterAvailableResourcesResourceInput` via:
 //
-//          GetTransitRouterAvailableResourcesResourceArgs{...}
+//	GetTransitRouterAvailableResourcesResourceArgs{...}
 type GetTransitRouterAvailableResourcesResourceInput interface {
 	pulumi.Input
 
@@ -2343,7 +2343,7 @@ func (i GetTransitRouterAvailableResourcesResourceArgs) ToGetTransitRouterAvaila
 // GetTransitRouterAvailableResourcesResourceArrayInput is an input type that accepts GetTransitRouterAvailableResourcesResourceArray and GetTransitRouterAvailableResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterAvailableResourcesResourceArrayInput` via:
 //
-//          GetTransitRouterAvailableResourcesResourceArray{ GetTransitRouterAvailableResourcesResourceArgs{...} }
+//	GetTransitRouterAvailableResourcesResourceArray{ GetTransitRouterAvailableResourcesResourceArgs{...} }
 type GetTransitRouterAvailableResourcesResourceArrayInput interface {
 	pulumi.Input
 
@@ -2443,7 +2443,7 @@ type GetTransitRouterPeerAttachmentsAttachment struct {
 // GetTransitRouterPeerAttachmentsAttachmentInput is an input type that accepts GetTransitRouterPeerAttachmentsAttachmentArgs and GetTransitRouterPeerAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetTransitRouterPeerAttachmentsAttachmentInput` via:
 //
-//          GetTransitRouterPeerAttachmentsAttachmentArgs{...}
+//	GetTransitRouterPeerAttachmentsAttachmentArgs{...}
 type GetTransitRouterPeerAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -2497,7 +2497,7 @@ func (i GetTransitRouterPeerAttachmentsAttachmentArgs) ToGetTransitRouterPeerAtt
 // GetTransitRouterPeerAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterPeerAttachmentsAttachmentArray and GetTransitRouterPeerAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterPeerAttachmentsAttachmentArrayInput` via:
 //
-//          GetTransitRouterPeerAttachmentsAttachmentArray{ GetTransitRouterPeerAttachmentsAttachmentArgs{...} }
+//	GetTransitRouterPeerAttachmentsAttachmentArray{ GetTransitRouterPeerAttachmentsAttachmentArgs{...} }
 type GetTransitRouterPeerAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -2642,7 +2642,7 @@ type GetTransitRouterRouteEntriesEntry struct {
 // GetTransitRouterRouteEntriesEntryInput is an input type that accepts GetTransitRouterRouteEntriesEntryArgs and GetTransitRouterRouteEntriesEntryOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteEntriesEntryInput` via:
 //
-//          GetTransitRouterRouteEntriesEntryArgs{...}
+//	GetTransitRouterRouteEntriesEntryArgs{...}
 type GetTransitRouterRouteEntriesEntryInput interface {
 	pulumi.Input
 
@@ -2681,7 +2681,7 @@ func (i GetTransitRouterRouteEntriesEntryArgs) ToGetTransitRouterRouteEntriesEnt
 // GetTransitRouterRouteEntriesEntryArrayInput is an input type that accepts GetTransitRouterRouteEntriesEntryArray and GetTransitRouterRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteEntriesEntryArrayInput` via:
 //
-//          GetTransitRouterRouteEntriesEntryArray{ GetTransitRouterRouteEntriesEntryArgs{...} }
+//	GetTransitRouterRouteEntriesEntryArray{ GetTransitRouterRouteEntriesEntryArgs{...} }
 type GetTransitRouterRouteEntriesEntryArrayInput interface {
 	pulumi.Input
 
@@ -2792,7 +2792,7 @@ type GetTransitRouterRouteTableAssociationsAssociation struct {
 // GetTransitRouterRouteTableAssociationsAssociationInput is an input type that accepts GetTransitRouterRouteTableAssociationsAssociationArgs and GetTransitRouterRouteTableAssociationsAssociationOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTableAssociationsAssociationInput` via:
 //
-//          GetTransitRouterRouteTableAssociationsAssociationArgs{...}
+//	GetTransitRouterRouteTableAssociationsAssociationArgs{...}
 type GetTransitRouterRouteTableAssociationsAssociationInput interface {
 	pulumi.Input
 
@@ -2827,7 +2827,7 @@ func (i GetTransitRouterRouteTableAssociationsAssociationArgs) ToGetTransitRoute
 // GetTransitRouterRouteTableAssociationsAssociationArrayInput is an input type that accepts GetTransitRouterRouteTableAssociationsAssociationArray and GetTransitRouterRouteTableAssociationsAssociationArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTableAssociationsAssociationArrayInput` via:
 //
-//          GetTransitRouterRouteTableAssociationsAssociationArray{ GetTransitRouterRouteTableAssociationsAssociationArgs{...} }
+//	GetTransitRouterRouteTableAssociationsAssociationArray{ GetTransitRouterRouteTableAssociationsAssociationArgs{...} }
 type GetTransitRouterRouteTableAssociationsAssociationArrayInput interface {
 	pulumi.Input
 
@@ -2922,7 +2922,7 @@ type GetTransitRouterRouteTablePropagationsPropagation struct {
 // GetTransitRouterRouteTablePropagationsPropagationInput is an input type that accepts GetTransitRouterRouteTablePropagationsPropagationArgs and GetTransitRouterRouteTablePropagationsPropagationOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTablePropagationsPropagationInput` via:
 //
-//          GetTransitRouterRouteTablePropagationsPropagationArgs{...}
+//	GetTransitRouterRouteTablePropagationsPropagationArgs{...}
 type GetTransitRouterRouteTablePropagationsPropagationInput interface {
 	pulumi.Input
 
@@ -2957,7 +2957,7 @@ func (i GetTransitRouterRouteTablePropagationsPropagationArgs) ToGetTransitRoute
 // GetTransitRouterRouteTablePropagationsPropagationArrayInput is an input type that accepts GetTransitRouterRouteTablePropagationsPropagationArray and GetTransitRouterRouteTablePropagationsPropagationArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTablePropagationsPropagationArrayInput` via:
 //
-//          GetTransitRouterRouteTablePropagationsPropagationArray{ GetTransitRouterRouteTablePropagationsPropagationArgs{...} }
+//	GetTransitRouterRouteTablePropagationsPropagationArray{ GetTransitRouterRouteTablePropagationsPropagationArgs{...} }
 type GetTransitRouterRouteTablePropagationsPropagationArrayInput interface {
 	pulumi.Input
 
@@ -3054,7 +3054,7 @@ type GetTransitRouterRouteTablesTable struct {
 // GetTransitRouterRouteTablesTableInput is an input type that accepts GetTransitRouterRouteTablesTableArgs and GetTransitRouterRouteTablesTableOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTablesTableInput` via:
 //
-//          GetTransitRouterRouteTablesTableArgs{...}
+//	GetTransitRouterRouteTablesTableArgs{...}
 type GetTransitRouterRouteTablesTableInput interface {
 	pulumi.Input
 
@@ -3091,7 +3091,7 @@ func (i GetTransitRouterRouteTablesTableArgs) ToGetTransitRouterRouteTablesTable
 // GetTransitRouterRouteTablesTableArrayInput is an input type that accepts GetTransitRouterRouteTablesTableArray and GetTransitRouterRouteTablesTableArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTablesTableArrayInput` via:
 //
-//          GetTransitRouterRouteTablesTableArray{ GetTransitRouterRouteTablesTableArgs{...} }
+//	GetTransitRouterRouteTablesTableArray{ GetTransitRouterRouteTablesTableArgs{...} }
 type GetTransitRouterRouteTablesTableArrayInput interface {
 	pulumi.Input
 
@@ -3198,7 +3198,7 @@ type GetTransitRouterVbrAttachmentsAttachment struct {
 // GetTransitRouterVbrAttachmentsAttachmentInput is an input type that accepts GetTransitRouterVbrAttachmentsAttachmentArgs and GetTransitRouterVbrAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetTransitRouterVbrAttachmentsAttachmentInput` via:
 //
-//          GetTransitRouterVbrAttachmentsAttachmentArgs{...}
+//	GetTransitRouterVbrAttachmentsAttachmentArgs{...}
 type GetTransitRouterVbrAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -3240,7 +3240,7 @@ func (i GetTransitRouterVbrAttachmentsAttachmentArgs) ToGetTransitRouterVbrAttac
 // GetTransitRouterVbrAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterVbrAttachmentsAttachmentArray and GetTransitRouterVbrAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVbrAttachmentsAttachmentArrayInput` via:
 //
-//          GetTransitRouterVbrAttachmentsAttachmentArray{ GetTransitRouterVbrAttachmentsAttachmentArgs{...} }
+//	GetTransitRouterVbrAttachmentsAttachmentArray{ GetTransitRouterVbrAttachmentsAttachmentArgs{...} }
 type GetTransitRouterVbrAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -3365,7 +3365,7 @@ type GetTransitRouterVpcAttachmentsAttachment struct {
 // GetTransitRouterVpcAttachmentsAttachmentInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentArgs and GetTransitRouterVpcAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentInput` via:
 //
-//          GetTransitRouterVpcAttachmentsAttachmentArgs{...}
+//	GetTransitRouterVpcAttachmentsAttachmentArgs{...}
 type GetTransitRouterVpcAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -3411,7 +3411,7 @@ func (i GetTransitRouterVpcAttachmentsAttachmentArgs) ToGetTransitRouterVpcAttac
 // GetTransitRouterVpcAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentArray and GetTransitRouterVpcAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentArrayInput` via:
 //
-//          GetTransitRouterVpcAttachmentsAttachmentArray{ GetTransitRouterVpcAttachmentsAttachmentArgs{...} }
+//	GetTransitRouterVpcAttachmentsAttachmentArray{ GetTransitRouterVpcAttachmentsAttachmentArgs{...} }
 type GetTransitRouterVpcAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -3529,7 +3529,7 @@ type GetTransitRouterVpcAttachmentsAttachmentZoneMapping struct {
 // GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs and GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput` via:
 //
-//          GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{...}
+//	GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{...}
 type GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput interface {
 	pulumi.Input
 
@@ -3559,7 +3559,7 @@ func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs) ToGetTransitRou
 // GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray and GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput` via:
 //
-//          GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray{ GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{...} }
+//	GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray{ GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{...} }
 type GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput interface {
 	pulumi.Input
 
@@ -3649,7 +3649,7 @@ type GetTransitRoutersTransitRouter struct {
 // GetTransitRoutersTransitRouterInput is an input type that accepts GetTransitRoutersTransitRouterArgs and GetTransitRoutersTransitRouterOutput values.
 // You can construct a concrete instance of `GetTransitRoutersTransitRouterInput` via:
 //
-//          GetTransitRoutersTransitRouterArgs{...}
+//	GetTransitRoutersTransitRouterArgs{...}
 type GetTransitRoutersTransitRouterInput interface {
 	pulumi.Input
 
@@ -3693,7 +3693,7 @@ func (i GetTransitRoutersTransitRouterArgs) ToGetTransitRoutersTransitRouterOutp
 // GetTransitRoutersTransitRouterArrayInput is an input type that accepts GetTransitRoutersTransitRouterArray and GetTransitRoutersTransitRouterArrayOutput values.
 // You can construct a concrete instance of `GetTransitRoutersTransitRouterArrayInput` via:
 //
-//          GetTransitRoutersTransitRouterArray{ GetTransitRoutersTransitRouterArgs{...} }
+//	GetTransitRoutersTransitRouterArray{ GetTransitRoutersTransitRouterArgs{...} }
 type GetTransitRoutersTransitRouterArrayInput interface {
 	pulumi.Input
 
@@ -3816,7 +3816,7 @@ type GetVbrHealthChecksCheck struct {
 // GetVbrHealthChecksCheckInput is an input type that accepts GetVbrHealthChecksCheckArgs and GetVbrHealthChecksCheckOutput values.
 // You can construct a concrete instance of `GetVbrHealthChecksCheckInput` via:
 //
-//          GetVbrHealthChecksCheckArgs{...}
+//	GetVbrHealthChecksCheckArgs{...}
 type GetVbrHealthChecksCheckInput interface {
 	pulumi.Input
 
@@ -3858,7 +3858,7 @@ func (i GetVbrHealthChecksCheckArgs) ToGetVbrHealthChecksCheckOutputWithContext(
 // GetVbrHealthChecksCheckArrayInput is an input type that accepts GetVbrHealthChecksCheckArray and GetVbrHealthChecksCheckArrayOutput values.
 // You can construct a concrete instance of `GetVbrHealthChecksCheckArrayInput` via:
 //
-//          GetVbrHealthChecksCheckArray{ GetVbrHealthChecksCheckArgs{...} }
+//	GetVbrHealthChecksCheckArray{ GetVbrHealthChecksCheckArgs{...} }
 type GetVbrHealthChecksCheckArrayInput interface {
 	pulumi.Input
 

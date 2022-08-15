@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := directmail.NewMailAddress(ctx, "example", &directmail.MailAddressArgs{
-// 			AccountName: pulumi.String("example_value@email.com"),
-// 			Sendtype:    pulumi.String("batch"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := directmail.NewMailAddress(ctx, "example", &directmail.MailAddressArgs{
+//				AccountName: pulumi.String("example_value@email.com"),
+//				Sendtype:    pulumi.String("batch"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // > **Note:**
@@ -53,7 +56,9 @@ import (
 // Direct Mail Mail Address can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:directmail/mailAddress:MailAddress example <id>
+//
+//	$ pulumi import alicloud:directmail/mailAddress:MailAddress example <id>
+//
 // ```
 type MailAddress struct {
 	pulumi.CustomResourceState
@@ -183,7 +188,7 @@ func (i *MailAddress) ToMailAddressOutputWithContext(ctx context.Context) MailAd
 // MailAddressArrayInput is an input type that accepts MailAddressArray and MailAddressArrayOutput values.
 // You can construct a concrete instance of `MailAddressArrayInput` via:
 //
-//          MailAddressArray{ MailAddressArgs{...} }
+//	MailAddressArray{ MailAddressArgs{...} }
 type MailAddressArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +213,7 @@ func (i MailAddressArray) ToMailAddressArrayOutputWithContext(ctx context.Contex
 // MailAddressMapInput is an input type that accepts MailAddressMap and MailAddressMapOutput values.
 // You can construct a concrete instance of `MailAddressMapInput` via:
 //
-//          MailAddressMap{ "key": MailAddressArgs{...} }
+//	MailAddressMap{ "key": MailAddressArgs{...} }
 type MailAddressMapInput interface {
 	pulumi.Input
 

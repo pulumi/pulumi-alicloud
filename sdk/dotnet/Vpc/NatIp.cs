@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
         /// </summary>
         [Output("natIp")]
-        public Output<string?> NatIpAddress { get; private set; } = null!;
+        public Output<string> NatIpAddress { get; private set; } = null!;
 
         /// <summary>
         /// NAT IP ADDRESS of the address segment.
@@ -121,6 +121,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("natIpDescription")]
         public Output<string?> NatIpDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// Ihe ID of the Nat Ip.
+        /// </summary>
         [Output("natIpId")]
         public Output<string> NatIpId { get; private set; } = null!;
 
@@ -267,6 +270,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("natIpDescription")]
         public Input<string>? NatIpDescription { get; set; }
 
+        /// <summary>
+        /// Ihe ID of the Nat Ip.
+        /// </summary>
         [Input("natIpId")]
         public Input<string>? NatIpId { get; set; }
 

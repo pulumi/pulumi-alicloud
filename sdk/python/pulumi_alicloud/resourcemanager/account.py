@@ -17,13 +17,15 @@ class AccountArgs:
                  display_name: pulumi.Input[str],
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
-                 payer_account_id: Optional[pulumi.Input[str]] = None):
+                 payer_account_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
         :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "display_name", display_name)
         if account_name_prefix is not None:
@@ -32,6 +34,8 @@ class AccountArgs:
             pulumi.set(__self__, "folder_id", folder_id)
         if payer_account_id is not None:
             pulumi.set(__self__, "payer_account_id", payer_account_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="displayName")
@@ -81,6 +85,18 @@ class AccountArgs:
     def payer_account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payer_account_id", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _AccountState:
@@ -94,6 +110,7 @@ class _AccountState:
                  payer_account_id: Optional[pulumi.Input[str]] = None,
                  resource_directory_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
@@ -106,6 +123,7 @@ class _AccountState:
         :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         :param pulumi.Input[str] resource_directory_id: Resource directory ID.
         :param pulumi.Input[str] status: Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: Member type. The value of `ResourceAccount` indicates the resource account.
         """
         if account_name_prefix is not None:
@@ -126,6 +144,8 @@ class _AccountState:
             pulumi.set(__self__, "resource_directory_id", resource_directory_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -239,6 +259,18 @@ class _AccountState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Member type. The value of `ResourceAccount` indicates the resource account.
@@ -259,6 +291,7 @@ class Account(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
@@ -293,6 +326,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
         :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -346,6 +380,7 @@ class Account(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -361,6 +396,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["payer_account_id"] = payer_account_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["join_method"] = None
             __props__.__dict__["join_time"] = None
             __props__.__dict__["modify_time"] = None
@@ -386,6 +422,7 @@ class Account(pulumi.CustomResource):
             payer_account_id: Optional[pulumi.Input[str]] = None,
             resource_directory_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
@@ -403,6 +440,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         :param pulumi.Input[str] resource_directory_id: Resource directory ID.
         :param pulumi.Input[str] status: Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: Member type. The value of `ResourceAccount` indicates the resource account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -418,6 +456,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["payer_account_id"] = payer_account_id
         __props__.__dict__["resource_directory_id"] = resource_directory_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         return Account(resource_name, opts=opts, __props__=__props__)
 
@@ -492,6 +531,14 @@ class Account(pulumi.CustomResource):
         Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

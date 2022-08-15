@@ -20,7 +20,7 @@ type AppTemplateConfigList struct {
 // AppTemplateConfigListInput is an input type that accepts AppTemplateConfigListArgs and AppTemplateConfigListOutput values.
 // You can construct a concrete instance of `AppTemplateConfigListInput` via:
 //
-//          AppTemplateConfigListArgs{...}
+//	AppTemplateConfigListArgs{...}
 type AppTemplateConfigListInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i AppTemplateConfigListArgs) ToAppTemplateConfigListOutputWithContext(ctx 
 // AppTemplateConfigListArrayInput is an input type that accepts AppTemplateConfigListArray and AppTemplateConfigListArrayOutput values.
 // You can construct a concrete instance of `AppTemplateConfigListArrayInput` via:
 //
-//          AppTemplateConfigListArray{ AppTemplateConfigListArgs{...} }
+//	AppTemplateConfigListArray{ AppTemplateConfigListArgs{...} }
 type AppTemplateConfigListArrayInput interface {
 	pulumi.Input
 
@@ -146,7 +146,7 @@ type GetAppTemplatesTemplate struct {
 // GetAppTemplatesTemplateInput is an input type that accepts GetAppTemplatesTemplateArgs and GetAppTemplatesTemplateOutput values.
 // You can construct a concrete instance of `GetAppTemplatesTemplateInput` via:
 //
-//          GetAppTemplatesTemplateArgs{...}
+//	GetAppTemplatesTemplateArgs{...}
 type GetAppTemplatesTemplateInput interface {
 	pulumi.Input
 
@@ -196,7 +196,7 @@ func (i GetAppTemplatesTemplateArgs) ToGetAppTemplatesTemplateOutputWithContext(
 // GetAppTemplatesTemplateArrayInput is an input type that accepts GetAppTemplatesTemplateArray and GetAppTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetAppTemplatesTemplateArrayInput` via:
 //
-//          GetAppTemplatesTemplateArray{ GetAppTemplatesTemplateArgs{...} }
+//	GetAppTemplatesTemplateArray{ GetAppTemplatesTemplateArgs{...} }
 type GetAppTemplatesTemplateArrayInput interface {
 	pulumi.Input
 
@@ -322,7 +322,7 @@ type GetAppTemplatesTemplateConfigList struct {
 // GetAppTemplatesTemplateConfigListInput is an input type that accepts GetAppTemplatesTemplateConfigListArgs and GetAppTemplatesTemplateConfigListOutput values.
 // You can construct a concrete instance of `GetAppTemplatesTemplateConfigListInput` via:
 //
-//          GetAppTemplatesTemplateConfigListArgs{...}
+//	GetAppTemplatesTemplateConfigListArgs{...}
 type GetAppTemplatesTemplateConfigListInput interface {
 	pulumi.Input
 
@@ -352,7 +352,7 @@ func (i GetAppTemplatesTemplateConfigListArgs) ToGetAppTemplatesTemplateConfigLi
 // GetAppTemplatesTemplateConfigListArrayInput is an input type that accepts GetAppTemplatesTemplateConfigListArray and GetAppTemplatesTemplateConfigListArrayOutput values.
 // You can construct a concrete instance of `GetAppTemplatesTemplateConfigListArrayInput` via:
 //
-//          GetAppTemplatesTemplateConfigListArray{ GetAppTemplatesTemplateConfigListArgs{...} }
+//	GetAppTemplatesTemplateConfigListArray{ GetAppTemplatesTemplateConfigListArgs{...} }
 type GetAppTemplatesTemplateConfigListArrayInput interface {
 	pulumi.Input
 

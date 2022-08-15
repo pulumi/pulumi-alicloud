@@ -34,7 +34,7 @@ type GetIndustrialPidLoopsLoop struct {
 // GetIndustrialPidLoopsLoopInput is an input type that accepts GetIndustrialPidLoopsLoopArgs and GetIndustrialPidLoopsLoopOutput values.
 // You can construct a concrete instance of `GetIndustrialPidLoopsLoopInput` via:
 //
-//          GetIndustrialPidLoopsLoopArgs{...}
+//	GetIndustrialPidLoopsLoopArgs{...}
 type GetIndustrialPidLoopsLoopInput interface {
 	pulumi.Input
 
@@ -78,7 +78,7 @@ func (i GetIndustrialPidLoopsLoopArgs) ToGetIndustrialPidLoopsLoopOutputWithCont
 // GetIndustrialPidLoopsLoopArrayInput is an input type that accepts GetIndustrialPidLoopsLoopArray and GetIndustrialPidLoopsLoopArrayOutput values.
 // You can construct a concrete instance of `GetIndustrialPidLoopsLoopArrayInput` via:
 //
-//          GetIndustrialPidLoopsLoopArray{ GetIndustrialPidLoopsLoopArgs{...} }
+//	GetIndustrialPidLoopsLoopArray{ GetIndustrialPidLoopsLoopArgs{...} }
 type GetIndustrialPidLoopsLoopArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +198,7 @@ type GetIndustrialPidOrganizationsOrganization struct {
 // GetIndustrialPidOrganizationsOrganizationInput is an input type that accepts GetIndustrialPidOrganizationsOrganizationArgs and GetIndustrialPidOrganizationsOrganizationOutput values.
 // You can construct a concrete instance of `GetIndustrialPidOrganizationsOrganizationInput` via:
 //
-//          GetIndustrialPidOrganizationsOrganizationArgs{...}
+//	GetIndustrialPidOrganizationsOrganizationArgs{...}
 type GetIndustrialPidOrganizationsOrganizationInput interface {
 	pulumi.Input
 
@@ -234,7 +234,7 @@ func (i GetIndustrialPidOrganizationsOrganizationArgs) ToGetIndustrialPidOrganiz
 // GetIndustrialPidOrganizationsOrganizationArrayInput is an input type that accepts GetIndustrialPidOrganizationsOrganizationArray and GetIndustrialPidOrganizationsOrganizationArrayOutput values.
 // You can construct a concrete instance of `GetIndustrialPidOrganizationsOrganizationArrayInput` via:
 //
-//          GetIndustrialPidOrganizationsOrganizationArray{ GetIndustrialPidOrganizationsOrganizationArgs{...} }
+//	GetIndustrialPidOrganizationsOrganizationArray{ GetIndustrialPidOrganizationsOrganizationArgs{...} }
 type GetIndustrialPidOrganizationsOrganizationArrayInput interface {
 	pulumi.Input
 
@@ -331,7 +331,7 @@ type GetIndustrialPidProjectsProject struct {
 // GetIndustrialPidProjectsProjectInput is an input type that accepts GetIndustrialPidProjectsProjectArgs and GetIndustrialPidProjectsProjectOutput values.
 // You can construct a concrete instance of `GetIndustrialPidProjectsProjectInput` via:
 //
-//          GetIndustrialPidProjectsProjectArgs{...}
+//	GetIndustrialPidProjectsProjectArgs{...}
 type GetIndustrialPidProjectsProjectInput interface {
 	pulumi.Input
 
@@ -367,7 +367,7 @@ func (i GetIndustrialPidProjectsProjectArgs) ToGetIndustrialPidProjectsProjectOu
 // GetIndustrialPidProjectsProjectArrayInput is an input type that accepts GetIndustrialPidProjectsProjectArray and GetIndustrialPidProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetIndustrialPidProjectsProjectArrayInput` via:
 //
-//          GetIndustrialPidProjectsProjectArray{ GetIndustrialPidProjectsProjectArgs{...} }
+//	GetIndustrialPidProjectsProjectArray{ GetIndustrialPidProjectsProjectArgs{...} }
 type GetIndustrialPidProjectsProjectArrayInput interface {
 	pulumi.Input
 

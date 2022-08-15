@@ -20,43 +20,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "onsInstanceName"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		groupName := "GID-onsGroupDatasourceName"
-// 		if param := cfg.Get("groupName"); param != "" {
-// 			groupName = param
-// 		}
-// 		defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
-// 			InstanceName: pulumi.String(name),
-// 			Remark:       pulumi.String("default_ons_instance_remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGroup, err := rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
-// 			GroupName:  pulumi.String(groupName),
-// 			InstanceId: defaultInstance.ID(),
-// 			Remark:     pulumi.String("dafault_ons_group_remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstGroupName", groupsDs.ApplyT(func(groupsDs rocketmq.GetGroupsResult) (string, error) {
-// 			return groupsDs.Groups[0].GroupName, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "onsInstanceName"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			groupName := "GID-onsGroupDatasourceName"
+//			if param := cfg.Get("groupName"); param != "" {
+//				groupName = param
+//			}
+//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+//				InstanceName: pulumi.String(name),
+//				Remark:       pulumi.String("default_ons_instance_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGroup, err := rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
+//				GroupName:  pulumi.String(groupName),
+//				InstanceId: defaultInstance.ID(),
+//				Remark:     pulumi.String("dafault_ons_group_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstGroupName", groupsDs.ApplyT(func(groupsDs rocketmq.GetGroupsResult) (string, error) {
+//				return groupsDs.Groups[0].GroupName, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult

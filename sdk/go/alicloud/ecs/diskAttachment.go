@@ -13,60 +13,63 @@ import (
 
 // ## Example Usage
 //
-// Basic usage
+// # Basic usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
-// 			Description: pulumi.String("New security group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ecsDisk, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
-// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
-// 			Size:             pulumi.Int(50),
-// 			Tags: pulumi.AnyMap{
-// 				"Name": pulumi.Any("TerraformTest-disk"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
-// 			ImageId:          pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
-// 			InstanceType:     pulumi.String("ecs.n4.small"),
-// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
-// 			SecurityGroups: pulumi.StringArray{
-// 				ecsSg.ID(),
-// 			},
-// 			InstanceName:       pulumi.String("Hello"),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("TerraformTest-instance"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewDiskAttachment(ctx, "ecsDiskAtt", &ecs.DiskAttachmentArgs{
-// 			DiskId:     ecsDisk.ID(),
-// 			InstanceId: ecsInstance.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String("New security group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ecsDisk, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+//				AvailabilityZone: pulumi.String("cn-beijing-a"),
+//				Size:             pulumi.Int(50),
+//				Tags: pulumi.AnyMap{
+//					"Name": pulumi.Any("TerraformTest-disk"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
+//				ImageId:          pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
+//				InstanceType:     pulumi.String("ecs.n4.small"),
+//				AvailabilityZone: pulumi.String("cn-beijing-a"),
+//				SecurityGroups: pulumi.StringArray{
+//					ecsSg.ID(),
+//				},
+//				InstanceName:       pulumi.String("Hello"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				Tags: pulumi.StringMap{
+//					"Name": pulumi.String("TerraformTest-instance"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewDiskAttachment(ctx, "ecsDiskAtt", &ecs.DiskAttachmentArgs{
+//				DiskId:     ecsDisk.ID(),
+//				InstanceId: ecsInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -74,7 +77,9 @@ import (
 // The disk attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/diskAttachment:DiskAttachment example d-abc12345678:i-abc12355
+//
+//	$ pulumi import alicloud:ecs/diskAttachment:DiskAttachment example d-abc12345678:i-abc12355
+//
 // ```
 type DiskAttachment struct {
 	pulumi.CustomResourceState
@@ -201,7 +206,7 @@ func (i *DiskAttachment) ToDiskAttachmentOutputWithContext(ctx context.Context) 
 // DiskAttachmentArrayInput is an input type that accepts DiskAttachmentArray and DiskAttachmentArrayOutput values.
 // You can construct a concrete instance of `DiskAttachmentArrayInput` via:
 //
-//          DiskAttachmentArray{ DiskAttachmentArgs{...} }
+//	DiskAttachmentArray{ DiskAttachmentArgs{...} }
 type DiskAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +231,7 @@ func (i DiskAttachmentArray) ToDiskAttachmentArrayOutputWithContext(ctx context.
 // DiskAttachmentMapInput is an input type that accepts DiskAttachmentMap and DiskAttachmentMapOutput values.
 // You can construct a concrete instance of `DiskAttachmentMapInput` via:
 //
-//          DiskAttachmentMap{ "key": DiskAttachmentArgs{...} }
+//	DiskAttachmentMap{ "key": DiskAttachmentArgs{...} }
 type DiskAttachmentMapInput interface {
 	pulumi.Input
 

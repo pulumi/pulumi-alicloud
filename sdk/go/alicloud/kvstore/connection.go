@@ -17,29 +17,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kvstore.NewConnection(ctx, "default", &kvstore.ConnectionArgs{
-// 			ConnectionStringPrefix: pulumi.String("allocatetestupdate"),
-// 			InstanceId:             pulumi.String("r-abc123456"),
-// 			Port:                   pulumi.String("6370"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kvstore.NewConnection(ctx, "default", &kvstore.ConnectionArgs{
+//				ConnectionStringPrefix: pulumi.String("allocatetestupdate"),
+//				InstanceId:             pulumi.String("r-abc123456"),
+//				Port:                   pulumi.String("6370"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // KVStore connection can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
+//
+//	$ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
+//
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
@@ -170,7 +175,7 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
-//          ConnectionArray{ ConnectionArgs{...} }
+//	ConnectionArray{ ConnectionArgs{...} }
 type ConnectionArrayInput interface {
 	pulumi.Input
 
@@ -195,7 +200,7 @@ func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context)
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
 // You can construct a concrete instance of `ConnectionMapInput` via:
 //
-//          ConnectionMap{ "key": ConnectionArgs{...} }
+//	ConnectionMap{ "key": ConnectionArgs{...} }
 type ConnectionMapInput interface {
 	pulumi.Input
 

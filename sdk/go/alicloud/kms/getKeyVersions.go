@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		alicloudKmsKeyVersionsDs, err := kms.GetKeyVersions(ctx, &kms.GetKeyVersionsArgs{
-// 			Ids: []string{
-// 				"d89e8a53-b708-41aa-8c67-6873axxx",
-// 			},
-// 			KeyId: "08438c-b4d5-4d05-928c-07b7xxxx",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("allVersions", alicloudKmsKeyVersionsDs.Versions)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			alicloudKmsKeyVersionsDs, err := kms.GetKeyVersions(ctx, &kms.GetKeyVersionsArgs{
+//				Ids: []string{
+//					"d89e8a53-b708-41aa-8c67-6873axxx",
+//				},
+//				KeyId: "08438c-b4d5-4d05-928c-07b7xxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allVersions", alicloudKmsKeyVersionsDs.Versions)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetKeyVersions(ctx *pulumi.Context, args *GetKeyVersionsArgs, opts ...pulumi.InvokeOption) (*GetKeyVersionsResult, error) {
 	var rv GetKeyVersionsResult

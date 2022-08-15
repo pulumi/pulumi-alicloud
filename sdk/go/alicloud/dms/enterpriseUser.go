@@ -21,26 +21,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dms.NewEnterpriseUser(ctx, "example", &dms.EnterpriseUserArgs{
-// 			Mobile: pulumi.String("1591066xxxx"),
-// 			RoleNames: pulumi.StringArray{
-// 				pulumi.String("DBA"),
-// 			},
-// 			Uid:      pulumi.String("uid"),
-// 			UserName: pulumi.String("tf-test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dms.NewEnterpriseUser(ctx, "example", &dms.EnterpriseUserArgs{
+//				Mobile: pulumi.String("1591066xxxx"),
+//				RoleNames: pulumi.StringArray{
+//					pulumi.String("DBA"),
+//				},
+//				Uid:      pulumi.String("uid"),
+//				UserName: pulumi.String("tf-test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // DMS Enterprise User can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
+//
+//	$ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
+//
 // ```
 type EnterpriseUser struct {
 	pulumi.CustomResourceState
@@ -229,7 +234,7 @@ func (i *EnterpriseUser) ToEnterpriseUserOutputWithContext(ctx context.Context) 
 // EnterpriseUserArrayInput is an input type that accepts EnterpriseUserArray and EnterpriseUserArrayOutput values.
 // You can construct a concrete instance of `EnterpriseUserArrayInput` via:
 //
-//          EnterpriseUserArray{ EnterpriseUserArgs{...} }
+//	EnterpriseUserArray{ EnterpriseUserArgs{...} }
 type EnterpriseUserArrayInput interface {
 	pulumi.Input
 
@@ -254,7 +259,7 @@ func (i EnterpriseUserArray) ToEnterpriseUserArrayOutputWithContext(ctx context.
 // EnterpriseUserMapInput is an input type that accepts EnterpriseUserMap and EnterpriseUserMapOutput values.
 // You can construct a concrete instance of `EnterpriseUserMapInput` via:
 //
-//          EnterpriseUserMap{ "key": EnterpriseUserArgs{...} }
+//	EnterpriseUserMap{ "key": EnterpriseUserArgs{...} }
 type EnterpriseUserMapInput interface {
 	pulumi.Input
 

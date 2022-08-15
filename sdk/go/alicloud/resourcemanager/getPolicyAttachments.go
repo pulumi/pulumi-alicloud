@@ -20,20 +20,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := resourcemanager.GetPolicyAttachments(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstAttachmentId", example.Attachments[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := resourcemanager.GetPolicyAttachments(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstAttachmentId", example.Attachments[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetPolicyAttachments(ctx *pulumi.Context, args *GetPolicyAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetPolicyAttachmentsResult, error) {
 	var rv GetPolicyAttachmentsResult

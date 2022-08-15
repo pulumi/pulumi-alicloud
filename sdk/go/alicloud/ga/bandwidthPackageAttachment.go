@@ -19,47 +19,50 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
-// 			Duration:      pulumi.Int(1),
-// 			AutoUseCoupon: pulumi.Bool(true),
-// 			Spec:          pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
-// 			Bandwidth:     pulumi.Int(20),
-// 			Type:          pulumi.String("Basic"),
-// 			BandwidthType: pulumi.String("Basic"),
-// 			Duration:      pulumi.String("1"),
-// 			AutoPay:       pulumi.Bool(true),
-// 			Ratio:         pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-// 			AcceleratorId:      exampleAccelerator.ID(),
-// 			BandwidthPackageId: exampleBandwidthPackage.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(20),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				Duration:      pulumi.String("1"),
+//				AutoPay:       pulumi.Bool(true),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      exampleAccelerator.ID(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -67,7 +70,9 @@ import (
 // Ga Bandwidth Package Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
+//
+//	$ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
+//
 // ```
 type BandwidthPackageAttachment struct {
 	pulumi.CustomResourceState
@@ -183,7 +188,7 @@ func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutputWithConte
 // BandwidthPackageAttachmentArrayInput is an input type that accepts BandwidthPackageAttachmentArray and BandwidthPackageAttachmentArrayOutput values.
 // You can construct a concrete instance of `BandwidthPackageAttachmentArrayInput` via:
 //
-//          BandwidthPackageAttachmentArray{ BandwidthPackageAttachmentArgs{...} }
+//	BandwidthPackageAttachmentArray{ BandwidthPackageAttachmentArgs{...} }
 type BandwidthPackageAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +213,7 @@ func (i BandwidthPackageAttachmentArray) ToBandwidthPackageAttachmentArrayOutput
 // BandwidthPackageAttachmentMapInput is an input type that accepts BandwidthPackageAttachmentMap and BandwidthPackageAttachmentMapOutput values.
 // You can construct a concrete instance of `BandwidthPackageAttachmentMapInput` via:
 //
-//          BandwidthPackageAttachmentMap{ "key": BandwidthPackageAttachmentArgs{...} }
+//	BandwidthPackageAttachmentMap{ "key": BandwidthPackageAttachmentArgs{...} }
 type BandwidthPackageAttachmentMapInput interface {
 	pulumi.Input
 

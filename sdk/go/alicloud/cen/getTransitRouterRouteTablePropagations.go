@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := cen.GetTransitRouterRouteTablePropagations(ctx, &cen.GetTransitRouterRouteTablePropagationsArgs{
-// 			TransitRouterRouteTableId: "rtb-id1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", _default.Propagations[0].ResourceType)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cen.GetTransitRouterRouteTablePropagations(ctx, &cen.GetTransitRouterRouteTablePropagationsArgs{
+//				TransitRouterRouteTableId: "rtb-id1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", _default.Propagations[0].ResourceType)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTransitRouterRouteTablePropagations(ctx *pulumi.Context, args *GetTransitRouterRouteTablePropagationsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterRouteTablePropagationsResult, error) {
 	var rv GetTransitRouterRouteTablePropagationsResult

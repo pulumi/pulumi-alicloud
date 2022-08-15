@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<bool> BypassCacheRead { get; private set; } = null!;
 
         /// <summary>
-        /// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        /// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         /// </summary>
         [Output("cacheMode")]
         public Output<string> CacheMode { get; private set; } = null!;
@@ -378,7 +378,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<bool>? BypassCacheRead { get; set; }
 
         /// <summary>
-        /// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        /// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         /// </summary>
         [Input("cacheMode")]
         public Input<string>? CacheMode { get; set; }
@@ -583,7 +583,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<bool>? BypassCacheRead { get; set; }
 
         /// <summary>
-        /// The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+        /// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         /// </summary>
         [Input("cacheMode")]
         public Input<string>? CacheMode { get; set; }

@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := databasegateway.GetGateways(ctx, &databasegateway.GetGatewaysArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("databaseGatewayGatewayId1", ids.Gateways[0].Id)
-// 		nameRegex, err := databasegateway.GetGateways(ctx, &databasegateway.GetGatewaysArgs{
-// 			NameRegex: pulumi.StringRef("^my-Gateway"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("databaseGatewayGatewayId2", nameRegex.Gateways[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := databasegateway.GetGateways(ctx, &databasegateway.GetGatewaysArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databaseGatewayGatewayId1", ids.Gateways[0].Id)
+//			nameRegex, err := databasegateway.GetGateways(ctx, &databasegateway.GetGatewaysArgs{
+//				NameRegex: pulumi.StringRef("^my-Gateway"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databaseGatewayGatewayId2", nameRegex.Gateways[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGateways(ctx *pulumi.Context, args *GetGatewaysArgs, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	var rv GetGatewaysResult

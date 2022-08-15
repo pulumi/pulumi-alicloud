@@ -19,31 +19,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewHostAccount(ctx, "example", &bastionhost.HostAccountArgs{
-// 			HostAccountName: pulumi.String("example_value"),
-// 			HostId:          pulumi.String("15"),
-// 			InstanceId:      pulumi.String("bastionhost-cn-tl32bh0no30"),
-// 			Password:        pulumi.String("YourPassword12345"),
-// 			ProtocolName:    pulumi.String("SSH"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.NewHostAccount(ctx, "example", &bastionhost.HostAccountArgs{
+//				HostAccountName: pulumi.String("example_value"),
+//				HostId:          pulumi.String("15"),
+//				InstanceId:      pulumi.String("bastionhost-cn-tl32bh0no30"),
+//				Password:        pulumi.String("YourPassword12345"),
+//				ProtocolName:    pulumi.String("SSH"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Bastion Host Host Account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/hostAccount:HostAccount example <instance_id>:<host_account_id>
+//
+//	$ pulumi import alicloud:bastionhost/hostAccount:HostAccount example <instance_id>:<host_account_id>
+//
 // ```
 type HostAccount struct {
 	pulumi.CustomResourceState
@@ -217,7 +222,7 @@ func (i *HostAccount) ToHostAccountOutputWithContext(ctx context.Context) HostAc
 // HostAccountArrayInput is an input type that accepts HostAccountArray and HostAccountArrayOutput values.
 // You can construct a concrete instance of `HostAccountArrayInput` via:
 //
-//          HostAccountArray{ HostAccountArgs{...} }
+//	HostAccountArray{ HostAccountArgs{...} }
 type HostAccountArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +247,7 @@ func (i HostAccountArray) ToHostAccountArrayOutputWithContext(ctx context.Contex
 // HostAccountMapInput is an input type that accepts HostAccountMap and HostAccountMapOutput values.
 // You can construct a concrete instance of `HostAccountMapInput` via:
 //
-//          HostAccountMap{ "key": HostAccountArgs{...} }
+//	HostAccountMap{ "key": HostAccountArgs{...} }
 type HostAccountMapInput interface {
 	pulumi.Input
 

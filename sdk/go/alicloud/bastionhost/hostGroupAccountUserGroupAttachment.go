@@ -20,7 +20,9 @@ import (
 // Bastion Host Host Account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment example <instance_id>:<user_group_id>:<host_group_id>
+//
+//	$ pulumi import alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment example <instance_id>:<user_group_id>:<host_group_id>
+//
 // ```
 type HostGroupAccountUserGroupAttachment struct {
 	pulumi.CustomResourceState
@@ -150,7 +152,7 @@ func (i *HostGroupAccountUserGroupAttachment) ToHostGroupAccountUserGroupAttachm
 // HostGroupAccountUserGroupAttachmentArrayInput is an input type that accepts HostGroupAccountUserGroupAttachmentArray and HostGroupAccountUserGroupAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostGroupAccountUserGroupAttachmentArrayInput` via:
 //
-//          HostGroupAccountUserGroupAttachmentArray{ HostGroupAccountUserGroupAttachmentArgs{...} }
+//	HostGroupAccountUserGroupAttachmentArray{ HostGroupAccountUserGroupAttachmentArgs{...} }
 type HostGroupAccountUserGroupAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +177,7 @@ func (i HostGroupAccountUserGroupAttachmentArray) ToHostGroupAccountUserGroupAtt
 // HostGroupAccountUserGroupAttachmentMapInput is an input type that accepts HostGroupAccountUserGroupAttachmentMap and HostGroupAccountUserGroupAttachmentMapOutput values.
 // You can construct a concrete instance of `HostGroupAccountUserGroupAttachmentMapInput` via:
 //
-//          HostGroupAccountUserGroupAttachmentMap{ "key": HostGroupAccountUserGroupAttachmentArgs{...} }
+//	HostGroupAccountUserGroupAttachmentMap{ "key": HostGroupAccountUserGroupAttachmentArgs{...} }
 type HostGroupAccountUserGroupAttachmentMapInput interface {
 	pulumi.Input
 

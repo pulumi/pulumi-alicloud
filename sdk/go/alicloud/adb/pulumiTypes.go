@@ -77,7 +77,7 @@ type GetClustersCluster struct {
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
 // You can construct a concrete instance of `GetClustersClusterInput` via:
 //
-//          GetClustersClusterArgs{...}
+//	GetClustersClusterArgs{...}
 type GetClustersClusterInput interface {
 	pulumi.Input
 
@@ -164,7 +164,7 @@ func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx contex
 // GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterArrayInput` via:
 //
-//          GetClustersClusterArray{ GetClustersClusterArgs{...} }
+//	GetClustersClusterArray{ GetClustersClusterArgs{...} }
 type GetClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -500,7 +500,7 @@ type GetDBClustersCluster struct {
 // GetDBClustersClusterInput is an input type that accepts GetDBClustersClusterArgs and GetDBClustersClusterOutput values.
 // You can construct a concrete instance of `GetDBClustersClusterInput` via:
 //
-//          GetDBClustersClusterArgs{...}
+//	GetDBClustersClusterArgs{...}
 type GetDBClustersClusterInput interface {
 	pulumi.Input
 
@@ -610,7 +610,7 @@ func (i GetDBClustersClusterArgs) ToGetDBClustersClusterOutputWithContext(ctx co
 // GetDBClustersClusterArrayInput is an input type that accepts GetDBClustersClusterArray and GetDBClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetDBClustersClusterArrayInput` via:
 //
-//          GetDBClustersClusterArray{ GetDBClustersClusterArgs{...} }
+//	GetDBClustersClusterArray{ GetDBClustersClusterArgs{...} }
 type GetDBClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -889,7 +889,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -919,7 +919,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

@@ -18,36 +18,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewSiteMonitor(ctx, "basic", &cms.SiteMonitorArgs{
-// 			Address:  pulumi.String("http://www.alibabacloud.com"),
-// 			Interval: pulumi.Int(5),
-// 			IspCities: cms.SiteMonitorIspCityArray{
-// 				&cms.SiteMonitorIspCityArgs{
-// 					City: pulumi.String("546"),
-// 					Isp:  pulumi.String("465"),
-// 				},
-// 			},
-// 			TaskName: pulumi.String("tf-testAccCmsSiteMonitor_basic"),
-// 			TaskType: pulumi.String("HTTP"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewSiteMonitor(ctx, "basic", &cms.SiteMonitorArgs{
+//				Address:  pulumi.String("http://www.alibabacloud.com"),
+//				Interval: pulumi.Int(5),
+//				IspCities: cms.SiteMonitorIspCityArray{
+//					&cms.SiteMonitorIspCityArgs{
+//						City: pulumi.String("546"),
+//						Isp:  pulumi.String("465"),
+//					},
+//				},
+//				TaskName: pulumi.String("tf-testAccCmsSiteMonitor_basic"),
+//				TaskType: pulumi.String("HTTP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Alarm rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/siteMonitor:SiteMonitor alarm abc12345
+//
+//	$ pulumi import alicloud:cms/siteMonitor:SiteMonitor alarm abc12345
+//
 // ```
 type SiteMonitor struct {
 	pulumi.CustomResourceState
@@ -221,7 +226,7 @@ func (i *SiteMonitor) ToSiteMonitorOutputWithContext(ctx context.Context) SiteMo
 // SiteMonitorArrayInput is an input type that accepts SiteMonitorArray and SiteMonitorArrayOutput values.
 // You can construct a concrete instance of `SiteMonitorArrayInput` via:
 //
-//          SiteMonitorArray{ SiteMonitorArgs{...} }
+//	SiteMonitorArray{ SiteMonitorArgs{...} }
 type SiteMonitorArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +251,7 @@ func (i SiteMonitorArray) ToSiteMonitorArrayOutputWithContext(ctx context.Contex
 // SiteMonitorMapInput is an input type that accepts SiteMonitorMap and SiteMonitorMapOutput values.
 // You can construct a concrete instance of `SiteMonitorMapInput` via:
 //
-//          SiteMonitorMap{ "key": SiteMonitorArgs{...} }
+//	SiteMonitorMap{ "key": SiteMonitorArgs{...} }
 type SiteMonitorMapInput interface {
 	pulumi.Input
 

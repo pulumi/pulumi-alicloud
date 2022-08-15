@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudauth"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudauth"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudauth.NewFaceConfig(ctx, "example", &cloudauth.FaceConfigArgs{
-// 			BizName: pulumi.String("example_value"),
-// 			BizType: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudauth.NewFaceConfig(ctx, "example", &cloudauth.FaceConfigArgs{
+//				BizName: pulumi.String("example_value"),
+//				BizType: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Cloudauth Face Config can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
+//
+//	$ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
+//
 // ```
 type FaceConfig struct {
 	pulumi.CustomResourceState
@@ -158,7 +163,7 @@ func (i *FaceConfig) ToFaceConfigOutputWithContext(ctx context.Context) FaceConf
 // FaceConfigArrayInput is an input type that accepts FaceConfigArray and FaceConfigArrayOutput values.
 // You can construct a concrete instance of `FaceConfigArrayInput` via:
 //
-//          FaceConfigArray{ FaceConfigArgs{...} }
+//	FaceConfigArray{ FaceConfigArgs{...} }
 type FaceConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +188,7 @@ func (i FaceConfigArray) ToFaceConfigArrayOutputWithContext(ctx context.Context)
 // FaceConfigMapInput is an input type that accepts FaceConfigMap and FaceConfigMapOutput values.
 // You can construct a concrete instance of `FaceConfigMapInput` via:
 //
-//          FaceConfigMap{ "key": FaceConfigArgs{...} }
+//	FaceConfigMap{ "key": FaceConfigArgs{...} }
 type FaceConfigMapInput interface {
 	pulumi.Input
 

@@ -24,70 +24,73 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testaccdbinstance"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		creation := "Rds"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-// 			VpcId:     exampleNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(exampleZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
-// 			Engine:             pulumi.String("MySQL"),
-// 			EngineVersion:      pulumi.String("5.6"),
-// 			InstanceType:       pulumi.String("rds.mysql.s2.large"),
-// 			InstanceStorage:    pulumi.Int(30),
-// 			InstanceChargeType: pulumi.String("Postpaid"),
-// 			InstanceName:       pulumi.String(name),
-// 			VswitchId:          exampleSwitch.ID(),
-// 			MonitoringPeriod:   pulumi.Int(60),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewRdsCloneDbInstance(ctx, "exampleRdsCloneDbInstance", &rds.RdsCloneDbInstanceArgs{
-// 			SourceDbInstanceId:    exampleInstance.ID(),
-// 			DbInstanceStorageType: pulumi.String("local_ssd"),
-// 			PaymentType:           pulumi.String("PayAsYouGo"),
-// 			RestoreTime:           pulumi.String("2021-11-24T11:25:00Z"),
-// 			DbInstanceStorage:     pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testaccdbinstance"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			creation := "Rds"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:     exampleNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//				Engine:             pulumi.String("MySQL"),
+//				EngineVersion:      pulumi.String("5.6"),
+//				InstanceType:       pulumi.String("rds.mysql.s2.large"),
+//				InstanceStorage:    pulumi.Int(30),
+//				InstanceChargeType: pulumi.String("Postpaid"),
+//				InstanceName:       pulumi.String(name),
+//				VswitchId:          exampleSwitch.ID(),
+//				MonitoringPeriod:   pulumi.Int(60),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewRdsCloneDbInstance(ctx, "exampleRdsCloneDbInstance", &rds.RdsCloneDbInstanceArgs{
+//				SourceDbInstanceId:    exampleInstance.ID(),
+//				DbInstanceStorageType: pulumi.String("local_ssd"),
+//				PaymentType:           pulumi.String("PayAsYouGo"),
+//				RestoreTime:           pulumi.String("2021-11-24T11:25:00Z"),
+//				DbInstanceStorage:     pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -95,7 +98,9 @@ import (
 // RDS Clone DB Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
+//
+//	$ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
+//
 // ```
 type RdsCloneDbInstance struct {
 	pulumi.CustomResourceState
@@ -958,7 +963,7 @@ func (i *RdsCloneDbInstance) ToRdsCloneDbInstanceOutputWithContext(ctx context.C
 // RdsCloneDbInstanceArrayInput is an input type that accepts RdsCloneDbInstanceArray and RdsCloneDbInstanceArrayOutput values.
 // You can construct a concrete instance of `RdsCloneDbInstanceArrayInput` via:
 //
-//          RdsCloneDbInstanceArray{ RdsCloneDbInstanceArgs{...} }
+//	RdsCloneDbInstanceArray{ RdsCloneDbInstanceArgs{...} }
 type RdsCloneDbInstanceArrayInput interface {
 	pulumi.Input
 
@@ -983,7 +988,7 @@ func (i RdsCloneDbInstanceArray) ToRdsCloneDbInstanceArrayOutputWithContext(ctx 
 // RdsCloneDbInstanceMapInput is an input type that accepts RdsCloneDbInstanceMap and RdsCloneDbInstanceMapOutput values.
 // You can construct a concrete instance of `RdsCloneDbInstanceMapInput` via:
 //
-//          RdsCloneDbInstanceMap{ "key": RdsCloneDbInstanceArgs{...} }
+//	RdsCloneDbInstanceMap{ "key": RdsCloneDbInstanceArgs{...} }
 type RdsCloneDbInstanceMapInput interface {
 	pulumi.Input
 

@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := nas.GetProtocols(ctx, &nas.GetProtocolsArgs{
-// 			OutputFile: pulumi.StringRef("protocols.txt"),
-// 			Type:       "Performance",
-// 			ZoneId:     pulumi.StringRef("cn-beijing-e"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("nasProtocolsProtocol", _default.Protocols[0])
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := nas.GetProtocols(ctx, &nas.GetProtocolsArgs{
+//				OutputFile: pulumi.StringRef("protocols.txt"),
+//				Type:       "Performance",
+//				ZoneId:     pulumi.StringRef("cn-beijing-e"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nasProtocolsProtocol", _default.Protocols[0])
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetProtocols(ctx *pulumi.Context, args *GetProtocolsArgs, opts ...pulumi.InvokeOption) (*GetProtocolsResult, error) {
 	var rv GetProtocolsResult

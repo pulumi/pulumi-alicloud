@@ -17,27 +17,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := brain.NewIndustrialPidOrganization(ctx, "example", &brain.IndustrialPidOrganizationArgs{
-// 			PidOrganizationName: pulumi.String("tf-testAcc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := brain.NewIndustrialPidOrganization(ctx, "example", &brain.IndustrialPidOrganizationArgs{
+//				PidOrganizationName: pulumi.String("tf-testAcc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // Brain Industrial Pid Organization can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
+//
+//	$ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
+//
 // ```
 type IndustrialPidOrganization struct {
 	pulumi.CustomResourceState
@@ -146,7 +151,7 @@ func (i *IndustrialPidOrganization) ToIndustrialPidOrganizationOutputWithContext
 // IndustrialPidOrganizationArrayInput is an input type that accepts IndustrialPidOrganizationArray and IndustrialPidOrganizationArrayOutput values.
 // You can construct a concrete instance of `IndustrialPidOrganizationArrayInput` via:
 //
-//          IndustrialPidOrganizationArray{ IndustrialPidOrganizationArgs{...} }
+//	IndustrialPidOrganizationArray{ IndustrialPidOrganizationArgs{...} }
 type IndustrialPidOrganizationArrayInput interface {
 	pulumi.Input
 
@@ -171,7 +176,7 @@ func (i IndustrialPidOrganizationArray) ToIndustrialPidOrganizationArrayOutputWi
 // IndustrialPidOrganizationMapInput is an input type that accepts IndustrialPidOrganizationMap and IndustrialPidOrganizationMapOutput values.
 // You can construct a concrete instance of `IndustrialPidOrganizationMapInput` via:
 //
-//          IndustrialPidOrganizationMap{ "key": IndustrialPidOrganizationArgs{...} }
+//	IndustrialPidOrganizationMap{ "key": IndustrialPidOrganizationArgs{...} }
 type IndustrialPidOrganizationMapInput interface {
 	pulumi.Input
 

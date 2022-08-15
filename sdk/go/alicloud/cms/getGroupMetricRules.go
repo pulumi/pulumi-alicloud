@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cms.GetGroupMetricRules(ctx, &cms.GetGroupMetricRulesArgs{
-// 			Ids: []string{
-// 				"4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
-// 			},
-// 			NameRegex: pulumi.StringRef("the_resource_name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstCmsGroupMetricRuleId", example.Rules[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cms.GetGroupMetricRules(ctx, &cms.GetGroupMetricRulesArgs{
+//				Ids: []string{
+//					"4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstCmsGroupMetricRuleId", example.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGroupMetricRules(ctx *pulumi.Context, args *GetGroupMetricRulesArgs, opts ...pulumi.InvokeOption) (*GetGroupMetricRulesResult, error) {
 	var rv GetGroupMetricRulesResult

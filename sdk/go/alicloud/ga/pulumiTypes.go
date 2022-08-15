@@ -20,7 +20,7 @@ type AclAclEntry struct {
 // AclAclEntryInput is an input type that accepts AclAclEntryArgs and AclAclEntryOutput values.
 // You can construct a concrete instance of `AclAclEntryInput` via:
 //
-//          AclAclEntryArgs{...}
+//	AclAclEntryArgs{...}
 type AclAclEntryInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i AclAclEntryArgs) ToAclAclEntryOutputWithContext(ctx context.Context) Acl
 // AclAclEntryArrayInput is an input type that accepts AclAclEntryArray and AclAclEntryArrayOutput values.
 // You can construct a concrete instance of `AclAclEntryArrayInput` via:
 //
-//          AclAclEntryArray{ AclAclEntryArgs{...} }
+//	AclAclEntryArray{ AclAclEntryArgs{...} }
 type AclAclEntryArrayInput interface {
 	pulumi.Input
 
@@ -130,7 +130,7 @@ type EndpointGroupEndpointConfiguration struct {
 // EndpointGroupEndpointConfigurationInput is an input type that accepts EndpointGroupEndpointConfigurationArgs and EndpointGroupEndpointConfigurationOutput values.
 // You can construct a concrete instance of `EndpointGroupEndpointConfigurationInput` via:
 //
-//          EndpointGroupEndpointConfigurationArgs{...}
+//	EndpointGroupEndpointConfigurationArgs{...}
 type EndpointGroupEndpointConfigurationInput interface {
 	pulumi.Input
 
@@ -164,7 +164,7 @@ func (i EndpointGroupEndpointConfigurationArgs) ToEndpointGroupEndpointConfigura
 // EndpointGroupEndpointConfigurationArrayInput is an input type that accepts EndpointGroupEndpointConfigurationArray and EndpointGroupEndpointConfigurationArrayOutput values.
 // You can construct a concrete instance of `EndpointGroupEndpointConfigurationArrayInput` via:
 //
-//          EndpointGroupEndpointConfigurationArray{ EndpointGroupEndpointConfigurationArgs{...} }
+//	EndpointGroupEndpointConfigurationArray{ EndpointGroupEndpointConfigurationArgs{...} }
 type EndpointGroupEndpointConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +250,7 @@ type EndpointGroupPortOverrides struct {
 // EndpointGroupPortOverridesInput is an input type that accepts EndpointGroupPortOverridesArgs and EndpointGroupPortOverridesOutput values.
 // You can construct a concrete instance of `EndpointGroupPortOverridesInput` via:
 //
-//          EndpointGroupPortOverridesArgs{...}
+//	EndpointGroupPortOverridesArgs{...}
 type EndpointGroupPortOverridesInput interface {
 	pulumi.Input
 
@@ -288,11 +288,11 @@ func (i EndpointGroupPortOverridesArgs) ToEndpointGroupPortOverridesPtrOutputWit
 // EndpointGroupPortOverridesPtrInput is an input type that accepts EndpointGroupPortOverridesArgs, EndpointGroupPortOverridesPtr and EndpointGroupPortOverridesPtrOutput values.
 // You can construct a concrete instance of `EndpointGroupPortOverridesPtrInput` via:
 //
-//          EndpointGroupPortOverridesArgs{...}
+//	        EndpointGroupPortOverridesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EndpointGroupPortOverridesPtrInput interface {
 	pulumi.Input
 
@@ -408,7 +408,7 @@ type ForwardingRuleRuleAction struct {
 // ForwardingRuleRuleActionInput is an input type that accepts ForwardingRuleRuleActionArgs and ForwardingRuleRuleActionOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleActionInput` via:
 //
-//          ForwardingRuleRuleActionArgs{...}
+//	ForwardingRuleRuleActionArgs{...}
 type ForwardingRuleRuleActionInput interface {
 	pulumi.Input
 
@@ -440,7 +440,7 @@ func (i ForwardingRuleRuleActionArgs) ToForwardingRuleRuleActionOutputWithContex
 // ForwardingRuleRuleActionArrayInput is an input type that accepts ForwardingRuleRuleActionArray and ForwardingRuleRuleActionArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleActionArrayInput` via:
 //
-//          ForwardingRuleRuleActionArray{ ForwardingRuleRuleActionArgs{...} }
+//	ForwardingRuleRuleActionArray{ ForwardingRuleRuleActionArgs{...} }
 type ForwardingRuleRuleActionArrayInput interface {
 	pulumi.Input
 
@@ -521,7 +521,7 @@ type ForwardingRuleRuleActionForwardGroupConfig struct {
 // ForwardingRuleRuleActionForwardGroupConfigInput is an input type that accepts ForwardingRuleRuleActionForwardGroupConfigArgs and ForwardingRuleRuleActionForwardGroupConfigOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleActionForwardGroupConfigInput` via:
 //
-//          ForwardingRuleRuleActionForwardGroupConfigArgs{...}
+//	ForwardingRuleRuleActionForwardGroupConfigArgs{...}
 type ForwardingRuleRuleActionForwardGroupConfigInput interface {
 	pulumi.Input
 
@@ -575,7 +575,7 @@ type ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple struct {
 // ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs and ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput` via:
 //
-//          ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
+//	ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
 type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 	pulumi.Input
 
@@ -603,7 +603,7 @@ func (i ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToForwar
 // ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray and ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput` via:
 //
-//          ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{ ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
+//	ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{ ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
 type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput interface {
 	pulumi.Input
 
@@ -676,7 +676,7 @@ type ForwardingRuleRuleCondition struct {
 // ForwardingRuleRuleConditionInput is an input type that accepts ForwardingRuleRuleConditionArgs and ForwardingRuleRuleConditionOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleConditionInput` via:
 //
-//          ForwardingRuleRuleConditionArgs{...}
+//	ForwardingRuleRuleConditionArgs{...}
 type ForwardingRuleRuleConditionInput interface {
 	pulumi.Input
 
@@ -708,7 +708,7 @@ func (i ForwardingRuleRuleConditionArgs) ToForwardingRuleRuleConditionOutputWith
 // ForwardingRuleRuleConditionArrayInput is an input type that accepts ForwardingRuleRuleConditionArray and ForwardingRuleRuleConditionArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleConditionArrayInput` via:
 //
-//          ForwardingRuleRuleConditionArray{ ForwardingRuleRuleConditionArgs{...} }
+//	ForwardingRuleRuleConditionArray{ ForwardingRuleRuleConditionArgs{...} }
 type ForwardingRuleRuleConditionArrayInput interface {
 	pulumi.Input
 
@@ -787,7 +787,7 @@ type ForwardingRuleRuleConditionHostConfig struct {
 // ForwardingRuleRuleConditionHostConfigInput is an input type that accepts ForwardingRuleRuleConditionHostConfigArgs and ForwardingRuleRuleConditionHostConfigOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleConditionHostConfigInput` via:
 //
-//          ForwardingRuleRuleConditionHostConfigArgs{...}
+//	ForwardingRuleRuleConditionHostConfigArgs{...}
 type ForwardingRuleRuleConditionHostConfigInput interface {
 	pulumi.Input
 
@@ -815,7 +815,7 @@ func (i ForwardingRuleRuleConditionHostConfigArgs) ToForwardingRuleRuleCondition
 // ForwardingRuleRuleConditionHostConfigArrayInput is an input type that accepts ForwardingRuleRuleConditionHostConfigArray and ForwardingRuleRuleConditionHostConfigArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleConditionHostConfigArrayInput` via:
 //
-//          ForwardingRuleRuleConditionHostConfigArray{ ForwardingRuleRuleConditionHostConfigArgs{...} }
+//	ForwardingRuleRuleConditionHostConfigArray{ ForwardingRuleRuleConditionHostConfigArgs{...} }
 type ForwardingRuleRuleConditionHostConfigArrayInput interface {
 	pulumi.Input
 
@@ -884,7 +884,7 @@ type ForwardingRuleRuleConditionPathConfig struct {
 // ForwardingRuleRuleConditionPathConfigInput is an input type that accepts ForwardingRuleRuleConditionPathConfigArgs and ForwardingRuleRuleConditionPathConfigOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleConditionPathConfigInput` via:
 //
-//          ForwardingRuleRuleConditionPathConfigArgs{...}
+//	ForwardingRuleRuleConditionPathConfigArgs{...}
 type ForwardingRuleRuleConditionPathConfigInput interface {
 	pulumi.Input
 
@@ -920,11 +920,11 @@ func (i ForwardingRuleRuleConditionPathConfigArgs) ToForwardingRuleRuleCondition
 // ForwardingRuleRuleConditionPathConfigPtrInput is an input type that accepts ForwardingRuleRuleConditionPathConfigArgs, ForwardingRuleRuleConditionPathConfigPtr and ForwardingRuleRuleConditionPathConfigPtrOutput values.
 // You can construct a concrete instance of `ForwardingRuleRuleConditionPathConfigPtrInput` via:
 //
-//          ForwardingRuleRuleConditionPathConfigArgs{...}
+//	        ForwardingRuleRuleConditionPathConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ForwardingRuleRuleConditionPathConfigPtrInput interface {
 	pulumi.Input
 
@@ -1021,7 +1021,7 @@ type ListenerCertificate struct {
 // ListenerCertificateInput is an input type that accepts ListenerCertificateArgs and ListenerCertificateOutput values.
 // You can construct a concrete instance of `ListenerCertificateInput` via:
 //
-//          ListenerCertificateArgs{...}
+//	ListenerCertificateArgs{...}
 type ListenerCertificateInput interface {
 	pulumi.Input
 
@@ -1049,7 +1049,7 @@ func (i ListenerCertificateArgs) ToListenerCertificateOutputWithContext(ctx cont
 // ListenerCertificateArrayInput is an input type that accepts ListenerCertificateArray and ListenerCertificateArrayOutput values.
 // You can construct a concrete instance of `ListenerCertificateArrayInput` via:
 //
-//          ListenerCertificateArray{ ListenerCertificateArgs{...} }
+//	ListenerCertificateArray{ ListenerCertificateArgs{...} }
 type ListenerCertificateArrayInput interface {
 	pulumi.Input
 
@@ -1120,7 +1120,7 @@ type ListenerPortRange struct {
 // ListenerPortRangeInput is an input type that accepts ListenerPortRangeArgs and ListenerPortRangeOutput values.
 // You can construct a concrete instance of `ListenerPortRangeInput` via:
 //
-//          ListenerPortRangeArgs{...}
+//	ListenerPortRangeArgs{...}
 type ListenerPortRangeInput interface {
 	pulumi.Input
 
@@ -1150,7 +1150,7 @@ func (i ListenerPortRangeArgs) ToListenerPortRangeOutputWithContext(ctx context.
 // ListenerPortRangeArrayInput is an input type that accepts ListenerPortRangeArray and ListenerPortRangeArrayOutput values.
 // You can construct a concrete instance of `ListenerPortRangeArrayInput` via:
 //
-//          ListenerPortRangeArray{ ListenerPortRangeArgs{...} }
+//	ListenerPortRangeArray{ ListenerPortRangeArgs{...} }
 type ListenerPortRangeArrayInput interface {
 	pulumi.Input
 
@@ -1230,7 +1230,7 @@ type GetAcceleratorSpareIpAttachmentsAttachment struct {
 // GetAcceleratorSpareIpAttachmentsAttachmentInput is an input type that accepts GetAcceleratorSpareIpAttachmentsAttachmentArgs and GetAcceleratorSpareIpAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetAcceleratorSpareIpAttachmentsAttachmentInput` via:
 //
-//          GetAcceleratorSpareIpAttachmentsAttachmentArgs{...}
+//	GetAcceleratorSpareIpAttachmentsAttachmentArgs{...}
 type GetAcceleratorSpareIpAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -1264,7 +1264,7 @@ func (i GetAcceleratorSpareIpAttachmentsAttachmentArgs) ToGetAcceleratorSpareIpA
 // GetAcceleratorSpareIpAttachmentsAttachmentArrayInput is an input type that accepts GetAcceleratorSpareIpAttachmentsAttachmentArray and GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetAcceleratorSpareIpAttachmentsAttachmentArrayInput` via:
 //
-//          GetAcceleratorSpareIpAttachmentsAttachmentArray{ GetAcceleratorSpareIpAttachmentsAttachmentArgs{...} }
+//	GetAcceleratorSpareIpAttachmentsAttachmentArray{ GetAcceleratorSpareIpAttachmentsAttachmentArgs{...} }
 type GetAcceleratorSpareIpAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -1374,7 +1374,7 @@ type GetAcceleratorsAccelerator struct {
 // GetAcceleratorsAcceleratorInput is an input type that accepts GetAcceleratorsAcceleratorArgs and GetAcceleratorsAcceleratorOutput values.
 // You can construct a concrete instance of `GetAcceleratorsAcceleratorInput` via:
 //
-//          GetAcceleratorsAcceleratorArgs{...}
+//	GetAcceleratorsAcceleratorArgs{...}
 type GetAcceleratorsAcceleratorInput interface {
 	pulumi.Input
 
@@ -1428,7 +1428,7 @@ func (i GetAcceleratorsAcceleratorArgs) ToGetAcceleratorsAcceleratorOutputWithCo
 // GetAcceleratorsAcceleratorArrayInput is an input type that accepts GetAcceleratorsAcceleratorArray and GetAcceleratorsAcceleratorArrayOutput values.
 // You can construct a concrete instance of `GetAcceleratorsAcceleratorArrayInput` via:
 //
-//          GetAcceleratorsAcceleratorArray{ GetAcceleratorsAcceleratorArgs{...} }
+//	GetAcceleratorsAcceleratorArray{ GetAcceleratorsAcceleratorArgs{...} }
 type GetAcceleratorsAcceleratorArrayInput interface {
 	pulumi.Input
 
@@ -1570,7 +1570,7 @@ type GetAcceleratorsAcceleratorBasicBandwidthPackage struct {
 // GetAcceleratorsAcceleratorBasicBandwidthPackageInput is an input type that accepts GetAcceleratorsAcceleratorBasicBandwidthPackageArgs and GetAcceleratorsAcceleratorBasicBandwidthPackageOutput values.
 // You can construct a concrete instance of `GetAcceleratorsAcceleratorBasicBandwidthPackageInput` via:
 //
-//          GetAcceleratorsAcceleratorBasicBandwidthPackageArgs{...}
+//	GetAcceleratorsAcceleratorBasicBandwidthPackageArgs{...}
 type GetAcceleratorsAcceleratorBasicBandwidthPackageInput interface {
 	pulumi.Input
 
@@ -1602,7 +1602,7 @@ func (i GetAcceleratorsAcceleratorBasicBandwidthPackageArgs) ToGetAcceleratorsAc
 // GetAcceleratorsAcceleratorBasicBandwidthPackageArrayInput is an input type that accepts GetAcceleratorsAcceleratorBasicBandwidthPackageArray and GetAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput values.
 // You can construct a concrete instance of `GetAcceleratorsAcceleratorBasicBandwidthPackageArrayInput` via:
 //
-//          GetAcceleratorsAcceleratorBasicBandwidthPackageArray{ GetAcceleratorsAcceleratorBasicBandwidthPackageArgs{...} }
+//	GetAcceleratorsAcceleratorBasicBandwidthPackageArray{ GetAcceleratorsAcceleratorBasicBandwidthPackageArgs{...} }
 type GetAcceleratorsAcceleratorBasicBandwidthPackageArrayInput interface {
 	pulumi.Input
 
@@ -1683,7 +1683,7 @@ type GetAcceleratorsAcceleratorCrossDomainBandwidthPackage struct {
 // GetAcceleratorsAcceleratorCrossDomainBandwidthPackageInput is an input type that accepts GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs and GetAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput values.
 // You can construct a concrete instance of `GetAcceleratorsAcceleratorCrossDomainBandwidthPackageInput` via:
 //
-//          GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{...}
+//	GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{...}
 type GetAcceleratorsAcceleratorCrossDomainBandwidthPackageInput interface {
 	pulumi.Input
 
@@ -1713,7 +1713,7 @@ func (i GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs) ToGetAccelera
 // GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput is an input type that accepts GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArray and GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput values.
 // You can construct a concrete instance of `GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput` via:
 //
-//          GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{ GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{...} }
+//	GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{ GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{...} }
 type GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput interface {
 	pulumi.Input
 
@@ -1797,7 +1797,7 @@ type GetAclsAcl struct {
 // GetAclsAclInput is an input type that accepts GetAclsAclArgs and GetAclsAclOutput values.
 // You can construct a concrete instance of `GetAclsAclInput` via:
 //
-//          GetAclsAclArgs{...}
+//	GetAclsAclArgs{...}
 type GetAclsAclInput interface {
 	pulumi.Input
 
@@ -1835,7 +1835,7 @@ func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAc
 // GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclArrayInput` via:
 //
-//          GetAclsAclArray{ GetAclsAclArgs{...} }
+//	GetAclsAclArray{ GetAclsAclArgs{...} }
 type GetAclsAclArrayInput interface {
 	pulumi.Input
 
@@ -1931,7 +1931,7 @@ type GetAclsAclAclEntry struct {
 // GetAclsAclAclEntryInput is an input type that accepts GetAclsAclAclEntryArgs and GetAclsAclAclEntryOutput values.
 // You can construct a concrete instance of `GetAclsAclAclEntryInput` via:
 //
-//          GetAclsAclAclEntryArgs{...}
+//	GetAclsAclAclEntryArgs{...}
 type GetAclsAclAclEntryInput interface {
 	pulumi.Input
 
@@ -1961,7 +1961,7 @@ func (i GetAclsAclAclEntryArgs) ToGetAclsAclAclEntryOutputWithContext(ctx contex
 // GetAclsAclAclEntryArrayInput is an input type that accepts GetAclsAclAclEntryArray and GetAclsAclAclEntryArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclAclEntryArrayInput` via:
 //
-//          GetAclsAclAclEntryArray{ GetAclsAclAclEntryArgs{...} }
+//	GetAclsAclAclEntryArray{ GetAclsAclAclEntryArgs{...} }
 type GetAclsAclAclEntryArrayInput interface {
 	pulumi.Input
 
@@ -2043,7 +2043,7 @@ type GetAdditionalCertificatesCertificate struct {
 // GetAdditionalCertificatesCertificateInput is an input type that accepts GetAdditionalCertificatesCertificateArgs and GetAdditionalCertificatesCertificateOutput values.
 // You can construct a concrete instance of `GetAdditionalCertificatesCertificateInput` via:
 //
-//          GetAdditionalCertificatesCertificateArgs{...}
+//	GetAdditionalCertificatesCertificateArgs{...}
 type GetAdditionalCertificatesCertificateInput interface {
 	pulumi.Input
 
@@ -2079,7 +2079,7 @@ func (i GetAdditionalCertificatesCertificateArgs) ToGetAdditionalCertificatesCer
 // GetAdditionalCertificatesCertificateArrayInput is an input type that accepts GetAdditionalCertificatesCertificateArray and GetAdditionalCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetAdditionalCertificatesCertificateArrayInput` via:
 //
-//          GetAdditionalCertificatesCertificateArray{ GetAdditionalCertificatesCertificateArgs{...} }
+//	GetAdditionalCertificatesCertificateArray{ GetAdditionalCertificatesCertificateArgs{...} }
 type GetAdditionalCertificatesCertificateArrayInput interface {
 	pulumi.Input
 
@@ -2190,7 +2190,7 @@ type GetBandwidthPackagesPackage struct {
 // GetBandwidthPackagesPackageInput is an input type that accepts GetBandwidthPackagesPackageArgs and GetBandwidthPackagesPackageOutput values.
 // You can construct a concrete instance of `GetBandwidthPackagesPackageInput` via:
 //
-//          GetBandwidthPackagesPackageArgs{...}
+//	GetBandwidthPackagesPackageArgs{...}
 type GetBandwidthPackagesPackageInput interface {
 	pulumi.Input
 
@@ -2240,7 +2240,7 @@ func (i GetBandwidthPackagesPackageArgs) ToGetBandwidthPackagesPackageOutputWith
 // GetBandwidthPackagesPackageArrayInput is an input type that accepts GetBandwidthPackagesPackageArray and GetBandwidthPackagesPackageArrayOutput values.
 // You can construct a concrete instance of `GetBandwidthPackagesPackageArrayInput` via:
 //
-//          GetBandwidthPackagesPackageArray{ GetBandwidthPackagesPackageArgs{...} }
+//	GetBandwidthPackagesPackageArray{ GetBandwidthPackagesPackageArgs{...} }
 type GetBandwidthPackagesPackageArrayInput interface {
 	pulumi.Input
 
@@ -2392,7 +2392,7 @@ type GetEndpointGroupsGroup struct {
 // GetEndpointGroupsGroupInput is an input type that accepts GetEndpointGroupsGroupArgs and GetEndpointGroupsGroupOutput values.
 // You can construct a concrete instance of `GetEndpointGroupsGroupInput` via:
 //
-//          GetEndpointGroupsGroupArgs{...}
+//	GetEndpointGroupsGroupArgs{...}
 type GetEndpointGroupsGroupInput interface {
 	pulumi.Input
 
@@ -2448,7 +2448,7 @@ func (i GetEndpointGroupsGroupArgs) ToGetEndpointGroupsGroupOutputWithContext(ct
 // GetEndpointGroupsGroupArrayInput is an input type that accepts GetEndpointGroupsGroupArray and GetEndpointGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetEndpointGroupsGroupArrayInput` via:
 //
-//          GetEndpointGroupsGroupArray{ GetEndpointGroupsGroupArgs{...} }
+//	GetEndpointGroupsGroupArray{ GetEndpointGroupsGroupArgs{...} }
 type GetEndpointGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -2599,7 +2599,7 @@ type GetEndpointGroupsGroupEndpointConfiguration struct {
 // GetEndpointGroupsGroupEndpointConfigurationInput is an input type that accepts GetEndpointGroupsGroupEndpointConfigurationArgs and GetEndpointGroupsGroupEndpointConfigurationOutput values.
 // You can construct a concrete instance of `GetEndpointGroupsGroupEndpointConfigurationInput` via:
 //
-//          GetEndpointGroupsGroupEndpointConfigurationArgs{...}
+//	GetEndpointGroupsGroupEndpointConfigurationArgs{...}
 type GetEndpointGroupsGroupEndpointConfigurationInput interface {
 	pulumi.Input
 
@@ -2637,7 +2637,7 @@ func (i GetEndpointGroupsGroupEndpointConfigurationArgs) ToGetEndpointGroupsGrou
 // GetEndpointGroupsGroupEndpointConfigurationArrayInput is an input type that accepts GetEndpointGroupsGroupEndpointConfigurationArray and GetEndpointGroupsGroupEndpointConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetEndpointGroupsGroupEndpointConfigurationArrayInput` via:
 //
-//          GetEndpointGroupsGroupEndpointConfigurationArray{ GetEndpointGroupsGroupEndpointConfigurationArgs{...} }
+//	GetEndpointGroupsGroupEndpointConfigurationArray{ GetEndpointGroupsGroupEndpointConfigurationArgs{...} }
 type GetEndpointGroupsGroupEndpointConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -2733,7 +2733,7 @@ type GetEndpointGroupsGroupPortOverride struct {
 // GetEndpointGroupsGroupPortOverrideInput is an input type that accepts GetEndpointGroupsGroupPortOverrideArgs and GetEndpointGroupsGroupPortOverrideOutput values.
 // You can construct a concrete instance of `GetEndpointGroupsGroupPortOverrideInput` via:
 //
-//          GetEndpointGroupsGroupPortOverrideArgs{...}
+//	GetEndpointGroupsGroupPortOverrideArgs{...}
 type GetEndpointGroupsGroupPortOverrideInput interface {
 	pulumi.Input
 
@@ -2763,7 +2763,7 @@ func (i GetEndpointGroupsGroupPortOverrideArgs) ToGetEndpointGroupsGroupPortOver
 // GetEndpointGroupsGroupPortOverrideArrayInput is an input type that accepts GetEndpointGroupsGroupPortOverrideArray and GetEndpointGroupsGroupPortOverrideArrayOutput values.
 // You can construct a concrete instance of `GetEndpointGroupsGroupPortOverrideArrayInput` via:
 //
-//          GetEndpointGroupsGroupPortOverrideArray{ GetEndpointGroupsGroupPortOverrideArgs{...} }
+//	GetEndpointGroupsGroupPortOverrideArray{ GetEndpointGroupsGroupPortOverrideArgs{...} }
 type GetEndpointGroupsGroupPortOverrideArrayInput interface {
 	pulumi.Input
 
@@ -2860,7 +2860,7 @@ type GetForwardingRulesForwardingRule struct {
 // GetForwardingRulesForwardingRuleInput is an input type that accepts GetForwardingRulesForwardingRuleArgs and GetForwardingRulesForwardingRuleOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleInput` via:
 //
-//          GetForwardingRulesForwardingRuleArgs{...}
+//	GetForwardingRulesForwardingRuleArgs{...}
 type GetForwardingRulesForwardingRuleInput interface {
 	pulumi.Input
 
@@ -2911,7 +2911,7 @@ func (i GetForwardingRulesForwardingRuleArgs) ToGetForwardingRulesForwardingRule
 // GetForwardingRulesForwardingRuleArrayInput is an input type that accepts GetForwardingRulesForwardingRuleArray and GetForwardingRulesForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleArrayInput` via:
 //
-//          GetForwardingRulesForwardingRuleArray{ GetForwardingRulesForwardingRuleArgs{...} }
+//	GetForwardingRulesForwardingRuleArray{ GetForwardingRulesForwardingRuleArgs{...} }
 type GetForwardingRulesForwardingRuleArrayInput interface {
 	pulumi.Input
 
@@ -3029,7 +3029,7 @@ type GetForwardingRulesForwardingRuleRuleAction struct {
 // GetForwardingRulesForwardingRuleRuleActionInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionArgs and GetForwardingRulesForwardingRuleRuleActionOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleActionArgs{...}
+//	GetForwardingRulesForwardingRuleRuleActionArgs{...}
 type GetForwardingRulesForwardingRuleRuleActionInput interface {
 	pulumi.Input
 
@@ -3058,7 +3058,7 @@ func (i GetForwardingRulesForwardingRuleRuleActionArgs) ToGetForwardingRulesForw
 // GetForwardingRulesForwardingRuleRuleActionArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionArray and GetForwardingRulesForwardingRuleRuleActionArrayOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionArrayInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleActionArray{ GetForwardingRulesForwardingRuleRuleActionArgs{...} }
+//	GetForwardingRulesForwardingRuleRuleActionArray{ GetForwardingRulesForwardingRuleRuleActionArgs{...} }
 type GetForwardingRulesForwardingRuleRuleActionArrayInput interface {
 	pulumi.Input
 
@@ -3135,7 +3135,7 @@ type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig struct {
 // GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs{...}
+//	GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs{...}
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput interface {
 	pulumi.Input
 
@@ -3162,7 +3162,7 @@ func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs) ToGetF
 // GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray{ GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs{...} }
+//	GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray{ GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs{...} }
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput interface {
 	pulumi.Input
 
@@ -3231,7 +3231,7 @@ type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupl
 // GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
+//	GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 	pulumi.Input
 
@@ -3258,7 +3258,7 @@ func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupT
 // GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{ GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
+//	GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{ GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput interface {
 	pulumi.Input
 
@@ -3329,7 +3329,7 @@ type GetForwardingRulesForwardingRuleRuleCondition struct {
 // GetForwardingRulesForwardingRuleRuleConditionInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionArgs and GetForwardingRulesForwardingRuleRuleConditionOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleConditionArgs{...}
+//	GetForwardingRulesForwardingRuleRuleConditionArgs{...}
 type GetForwardingRulesForwardingRuleRuleConditionInput interface {
 	pulumi.Input
 
@@ -3358,7 +3358,7 @@ func (i GetForwardingRulesForwardingRuleRuleConditionArgs) ToGetForwardingRulesF
 // GetForwardingRulesForwardingRuleRuleConditionArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionArray and GetForwardingRulesForwardingRuleRuleConditionArrayOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionArrayInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleConditionArray{ GetForwardingRulesForwardingRuleRuleConditionArgs{...} }
+//	GetForwardingRulesForwardingRuleRuleConditionArray{ GetForwardingRulesForwardingRuleRuleConditionArgs{...} }
 type GetForwardingRulesForwardingRuleRuleConditionArrayInput interface {
 	pulumi.Input
 
@@ -3437,7 +3437,7 @@ type GetForwardingRulesForwardingRuleRuleConditionHostConfig struct {
 // GetForwardingRulesForwardingRuleRuleConditionHostConfigInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs and GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionHostConfigInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs{...}
+//	GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs{...}
 type GetForwardingRulesForwardingRuleRuleConditionHostConfigInput interface {
 	pulumi.Input
 
@@ -3464,7 +3464,7 @@ func (i GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs) ToGetForwar
 // GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionHostConfigArray and GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleConditionHostConfigArray{ GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs{...} }
+//	GetForwardingRulesForwardingRuleRuleConditionHostConfigArray{ GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs{...} }
 type GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput interface {
 	pulumi.Input
 
@@ -3531,7 +3531,7 @@ type GetForwardingRulesForwardingRuleRuleConditionPathConfig struct {
 // GetForwardingRulesForwardingRuleRuleConditionPathConfigInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs and GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionPathConfigInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs{...}
+//	GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs{...}
 type GetForwardingRulesForwardingRuleRuleConditionPathConfigInput interface {
 	pulumi.Input
 
@@ -3558,7 +3558,7 @@ func (i GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs) ToGetForwar
 // GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionPathConfigArray and GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput values.
 // You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput` via:
 //
-//          GetForwardingRulesForwardingRuleRuleConditionPathConfigArray{ GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs{...} }
+//	GetForwardingRulesForwardingRuleRuleConditionPathConfigArray{ GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs{...} }
 type GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput interface {
 	pulumi.Input
 
@@ -3638,7 +3638,7 @@ type GetIpSetsSet struct {
 // GetIpSetsSetInput is an input type that accepts GetIpSetsSetArgs and GetIpSetsSetOutput values.
 // You can construct a concrete instance of `GetIpSetsSetInput` via:
 //
-//          GetIpSetsSetArgs{...}
+//	GetIpSetsSetArgs{...}
 type GetIpSetsSetInput interface {
 	pulumi.Input
 
@@ -3678,7 +3678,7 @@ func (i GetIpSetsSetArgs) ToGetIpSetsSetOutputWithContext(ctx context.Context) G
 // GetIpSetsSetArrayInput is an input type that accepts GetIpSetsSetArray and GetIpSetsSetArrayOutput values.
 // You can construct a concrete instance of `GetIpSetsSetArrayInput` via:
 //
-//          GetIpSetsSetArray{ GetIpSetsSetArgs{...} }
+//	GetIpSetsSetArray{ GetIpSetsSetArgs{...} }
 type GetIpSetsSetArrayInput interface {
 	pulumi.Input
 
@@ -3793,7 +3793,7 @@ type GetListenersListener struct {
 // GetListenersListenerInput is an input type that accepts GetListenersListenerArgs and GetListenersListenerOutput values.
 // You can construct a concrete instance of `GetListenersListenerInput` via:
 //
-//          GetListenersListenerArgs{...}
+//	GetListenersListenerArgs{...}
 type GetListenersListenerInput interface {
 	pulumi.Input
 
@@ -3837,7 +3837,7 @@ func (i GetListenersListenerArgs) ToGetListenersListenerOutputWithContext(ctx co
 // GetListenersListenerArrayInput is an input type that accepts GetListenersListenerArray and GetListenersListenerArrayOutput values.
 // You can construct a concrete instance of `GetListenersListenerArrayInput` via:
 //
-//          GetListenersListenerArray{ GetListenersListenerArgs{...} }
+//	GetListenersListenerArray{ GetListenersListenerArgs{...} }
 type GetListenersListenerArrayInput interface {
 	pulumi.Input
 
@@ -3948,7 +3948,7 @@ type GetListenersListenerCertificate struct {
 // GetListenersListenerCertificateInput is an input type that accepts GetListenersListenerCertificateArgs and GetListenersListenerCertificateOutput values.
 // You can construct a concrete instance of `GetListenersListenerCertificateInput` via:
 //
-//          GetListenersListenerCertificateArgs{...}
+//	GetListenersListenerCertificateArgs{...}
 type GetListenersListenerCertificateInput interface {
 	pulumi.Input
 
@@ -3978,7 +3978,7 @@ func (i GetListenersListenerCertificateArgs) ToGetListenersListenerCertificateOu
 // GetListenersListenerCertificateArrayInput is an input type that accepts GetListenersListenerCertificateArray and GetListenersListenerCertificateArrayOutput values.
 // You can construct a concrete instance of `GetListenersListenerCertificateArrayInput` via:
 //
-//          GetListenersListenerCertificateArray{ GetListenersListenerCertificateArgs{...} }
+//	GetListenersListenerCertificateArray{ GetListenersListenerCertificateArgs{...} }
 type GetListenersListenerCertificateArrayInput interface {
 	pulumi.Input
 
@@ -4054,7 +4054,7 @@ type GetListenersListenerPortRange struct {
 // GetListenersListenerPortRangeInput is an input type that accepts GetListenersListenerPortRangeArgs and GetListenersListenerPortRangeOutput values.
 // You can construct a concrete instance of `GetListenersListenerPortRangeInput` via:
 //
-//          GetListenersListenerPortRangeArgs{...}
+//	GetListenersListenerPortRangeArgs{...}
 type GetListenersListenerPortRangeInput interface {
 	pulumi.Input
 
@@ -4084,7 +4084,7 @@ func (i GetListenersListenerPortRangeArgs) ToGetListenersListenerPortRangeOutput
 // GetListenersListenerPortRangeArrayInput is an input type that accepts GetListenersListenerPortRangeArray and GetListenersListenerPortRangeArrayOutput values.
 // You can construct a concrete instance of `GetListenersListenerPortRangeArrayInput` via:
 //
-//          GetListenersListenerPortRangeArray{ GetListenersListenerPortRangeArgs{...} }
+//	GetListenersListenerPortRangeArray{ GetListenersListenerPortRangeArgs{...} }
 type GetListenersListenerPortRangeArrayInput interface {
 	pulumi.Input
 

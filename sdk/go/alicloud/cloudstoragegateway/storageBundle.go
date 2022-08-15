@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
-// 			StorageBundleName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudstoragegateway.NewStorageBundle(ctx, "example", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example <id>
+//
+//	$ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example <id>
+//
 // ```
 type StorageBundle struct {
 	pulumi.CustomResourceState
@@ -148,7 +153,7 @@ func (i *StorageBundle) ToStorageBundleOutputWithContext(ctx context.Context) St
 // StorageBundleArrayInput is an input type that accepts StorageBundleArray and StorageBundleArrayOutput values.
 // You can construct a concrete instance of `StorageBundleArrayInput` via:
 //
-//          StorageBundleArray{ StorageBundleArgs{...} }
+//	StorageBundleArray{ StorageBundleArgs{...} }
 type StorageBundleArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +178,7 @@ func (i StorageBundleArray) ToStorageBundleArrayOutputWithContext(ctx context.Co
 // StorageBundleMapInput is an input type that accepts StorageBundleMap and StorageBundleMapOutput values.
 // You can construct a concrete instance of `StorageBundleMapInput` via:
 //
-//          StorageBundleMap{ "key": StorageBundleArgs{...} }
+//	StorageBundleMap{ "key": StorageBundleArgs{...} }
 type StorageBundleMapInput interface {
 	pulumi.Input
 

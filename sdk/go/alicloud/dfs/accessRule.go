@@ -19,45 +19,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example_name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
-// 			NetworkType:     pulumi.String("VPC"),
-// 			AccessGroupName: pulumi.String(name),
-// 			Description:     pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dfs.NewAccessRule(ctx, "defaultAccessRule", &dfs.AccessRuleArgs{
-// 			NetworkSegment: pulumi.String("192.0.2.0/24"),
-// 			AccessGroupId:  defaultAccessGroup.ID(),
-// 			Description:    pulumi.String(name),
-// 			RwAccessType:   pulumi.String("RDWR"),
-// 			Priority:       pulumi.Int(10),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
+//				NetworkType:     pulumi.String("VPC"),
+//				AccessGroupName: pulumi.String(name),
+//				Description:     pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dfs.NewAccessRule(ctx, "defaultAccessRule", &dfs.AccessRuleArgs{
+//				NetworkSegment: pulumi.String("192.0.2.0/24"),
+//				AccessGroupId:  defaultAccessGroup.ID(),
+//				Description:    pulumi.String(name),
+//				RwAccessType:   pulumi.String("RDWR"),
+//				Priority:       pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // DFS Access Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
+//
+//	$ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
+//
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState
@@ -211,7 +216,7 @@ func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRu
 // AccessRuleArrayInput is an input type that accepts AccessRuleArray and AccessRuleArrayOutput values.
 // You can construct a concrete instance of `AccessRuleArrayInput` via:
 //
-//          AccessRuleArray{ AccessRuleArgs{...} }
+//	AccessRuleArray{ AccessRuleArgs{...} }
 type AccessRuleArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +241,7 @@ func (i AccessRuleArray) ToAccessRuleArrayOutputWithContext(ctx context.Context)
 // AccessRuleMapInput is an input type that accepts AccessRuleMap and AccessRuleMapOutput values.
 // You can construct a concrete instance of `AccessRuleMapInput` via:
 //
-//          AccessRuleMap{ "key": AccessRuleArgs{...} }
+//	AccessRuleMap{ "key": AccessRuleArgs{...} }
 type AccessRuleMapInput interface {
 	pulumi.Input
 

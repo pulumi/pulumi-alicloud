@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := resourcemanager.GetPolicyVersions(ctx, &resourcemanager.GetPolicyVersionsArgs{
-// 			PolicyName: "tftest",
-// 			PolicyType: "Custom",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstPolicyVersionId", _default.Versions[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetPolicyVersions(ctx, &resourcemanager.GetPolicyVersionsArgs{
+//				PolicyName: "tftest",
+//				PolicyType: "Custom",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstPolicyVersionId", _default.Versions[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetPolicyVersions(ctx *pulumi.Context, args *GetPolicyVersionsArgs, opts ...pulumi.InvokeOption) (*GetPolicyVersionsResult, error) {
 	var rv GetPolicyVersionsResult

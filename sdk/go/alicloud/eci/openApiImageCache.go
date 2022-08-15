@@ -155,7 +155,7 @@ func (i *OpenApiImageCache) ToOpenApiImageCacheOutputWithContext(ctx context.Con
 // OpenApiImageCacheArrayInput is an input type that accepts OpenApiImageCacheArray and OpenApiImageCacheArrayOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheArrayInput` via:
 //
-//          OpenApiImageCacheArray{ OpenApiImageCacheArgs{...} }
+//	OpenApiImageCacheArray{ OpenApiImageCacheArgs{...} }
 type OpenApiImageCacheArrayInput interface {
 	pulumi.Input
 
@@ -180,7 +180,7 @@ func (i OpenApiImageCacheArray) ToOpenApiImageCacheArrayOutputWithContext(ctx co
 // OpenApiImageCacheMapInput is an input type that accepts OpenApiImageCacheMap and OpenApiImageCacheMapOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheMapInput` via:
 //
-//          OpenApiImageCacheMap{ "key": OpenApiImageCacheArgs{...} }
+//	OpenApiImageCacheMap{ "key": OpenApiImageCacheArgs{...} }
 type OpenApiImageCacheMapInput interface {
 	pulumi.Input
 

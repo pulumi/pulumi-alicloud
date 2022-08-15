@@ -16,38 +16,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := eci.GetVirtualNodes(ctx, &eci.GetVirtualNodesArgs{
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("eciVirtualNodeId1", ids.Nodes[0].Id)
-// 		nameRegex, err := eci.GetVirtualNodes(ctx, &eci.GetVirtualNodesArgs{
-// 			NameRegex: pulumi.StringRef("^my-VirtualNode"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("eciVirtualNodeId2", nameRegex.Nodes[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := eci.GetVirtualNodes(ctx, &eci.GetVirtualNodesArgs{
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("eciVirtualNodeId1", ids.Nodes[0].Id)
+//			nameRegex, err := eci.GetVirtualNodes(ctx, &eci.GetVirtualNodesArgs{
+//				NameRegex: pulumi.StringRef("^my-VirtualNode"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("eciVirtualNodeId2", nameRegex.Nodes[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetVirtualNodes(ctx *pulumi.Context, args *GetVirtualNodesArgs, opts ...pulumi.InvokeOption) (*GetVirtualNodesResult, error) {
 	var rv GetVirtualNodesResult

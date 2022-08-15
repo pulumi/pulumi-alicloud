@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ds, err := ess.GetLifecycleHooks(ctx, &ess.GetLifecycleHooksArgs{
-// 			NameRegex:      pulumi.StringRef("lifecyclehook_name"),
-// 			ScalingGroupId: pulumi.StringRef("scaling_group_id"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstLifecycleHook", ds.Hooks[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ds, err := ess.GetLifecycleHooks(ctx, &ess.GetLifecycleHooksArgs{
+//				NameRegex:      pulumi.StringRef("lifecyclehook_name"),
+//				ScalingGroupId: pulumi.StringRef("scaling_group_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstLifecycleHook", ds.Hooks[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetLifecycleHooks(ctx *pulumi.Context, args *GetLifecycleHooksArgs, opts ...pulumi.InvokeOption) (*GetLifecycleHooksResult, error) {
 	var rv GetLifecycleHooksResult

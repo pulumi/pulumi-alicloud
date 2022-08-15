@@ -19,34 +19,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstances, err := bastionhost.GetInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
-// 			HostShareKeyName: pulumi.String("example_name"),
-// 			InstanceId:       pulumi.String(defaultInstances.Instances[0].Id),
-// 			PassPhrase:       pulumi.String("example_value"),
-// 			PrivateKey:       pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstances, err := bastionhost.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
+//				HostShareKeyName: pulumi.String("example_name"),
+//				InstanceId:       pulumi.String(defaultInstances.Instances[0].Id),
+//				PassPhrase:       pulumi.String("example_value"),
+//				PrivateKey:       pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Bastion Host Share Key can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/hostShareKey:HostShareKey example <instance_id>:<host_share_key_id>
+//
+//	$ pulumi import alicloud:bastionhost/hostShareKey:HostShareKey example <instance_id>:<host_share_key_id>
+//
 // ```
 type HostShareKey struct {
 	pulumi.CustomResourceState
@@ -193,7 +198,7 @@ func (i *HostShareKey) ToHostShareKeyOutputWithContext(ctx context.Context) Host
 // HostShareKeyArrayInput is an input type that accepts HostShareKeyArray and HostShareKeyArrayOutput values.
 // You can construct a concrete instance of `HostShareKeyArrayInput` via:
 //
-//          HostShareKeyArray{ HostShareKeyArgs{...} }
+//	HostShareKeyArray{ HostShareKeyArgs{...} }
 type HostShareKeyArrayInput interface {
 	pulumi.Input
 
@@ -218,7 +223,7 @@ func (i HostShareKeyArray) ToHostShareKeyArrayOutputWithContext(ctx context.Cont
 // HostShareKeyMapInput is an input type that accepts HostShareKeyMap and HostShareKeyMapOutput values.
 // You can construct a concrete instance of `HostShareKeyMapInput` via:
 //
-//          HostShareKeyMap{ "key": HostShareKeyArgs{...} }
+//	HostShareKeyMap{ "key": HostShareKeyArgs{...} }
 type HostShareKeyMapInput interface {
 	pulumi.Input
 

@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := simpleapplicationserver.GetServerCustomImages(ctx, &simpleapplicationserver.GetServerCustomImagesArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("simpleApplicationServerCustomImageId1", ids.Images[0].Id)
-// 		nameRegex, err := simpleapplicationserver.GetServerCustomImages(ctx, &simpleapplicationserver.GetServerCustomImagesArgs{
-// 			NameRegex: pulumi.StringRef("^my-CustomImage"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("simpleApplicationServerCustomImageId2", nameRegex.Images[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := simpleapplicationserver.GetServerCustomImages(ctx, &simpleapplicationserver.GetServerCustomImagesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerCustomImageId1", ids.Images[0].Id)
+//			nameRegex, err := simpleapplicationserver.GetServerCustomImages(ctx, &simpleapplicationserver.GetServerCustomImagesArgs{
+//				NameRegex: pulumi.StringRef("^my-CustomImage"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerCustomImageId2", nameRegex.Images[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetServerCustomImages(ctx *pulumi.Context, args *GetServerCustomImagesArgs, opts ...pulumi.InvokeOption) (*GetServerCustomImagesResult, error) {
 	var rv GetServerCustomImagesResult

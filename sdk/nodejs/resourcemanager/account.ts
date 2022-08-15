@@ -97,6 +97,10 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Member type. The value of `ResourceAccount` indicates the resource account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
@@ -123,6 +127,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["payerAccountId"] = state ? state.payerAccountId : undefined;
             resourceInputs["resourceDirectoryId"] = state ? state.resourceDirectoryId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
@@ -133,6 +138,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["payerAccountId"] = args ? args.payerAccountId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["joinMethod"] = undefined /*out*/;
             resourceInputs["joinTime"] = undefined /*out*/;
             resourceInputs["modifyTime"] = undefined /*out*/;
@@ -186,6 +192,10 @@ export interface AccountState {
      */
     status?: pulumi.Input<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Member type. The value of `ResourceAccount` indicates the resource account.
      */
     type?: pulumi.Input<string>;
@@ -211,4 +221,8 @@ export interface AccountArgs {
      * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      */
     payerAccountId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

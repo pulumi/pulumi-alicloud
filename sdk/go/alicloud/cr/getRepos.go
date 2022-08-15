@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myRepos, err := cr.GetRepos(ctx, &cr.GetReposArgs{
-// 			NameRegex:  pulumi.StringRef("my-repos"),
-// 			OutputFile: pulumi.StringRef("my-repo-json"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("output", myRepos.Repos)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myRepos, err := cr.GetRepos(ctx, &cr.GetReposArgs{
+//				NameRegex:  pulumi.StringRef("my-repos"),
+//				OutputFile: pulumi.StringRef("my-repo-json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("output", myRepos.Repos)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRepos(ctx *pulumi.Context, args *GetReposArgs, opts ...pulumi.InvokeOption) (*GetReposResult, error) {
 	var rv GetReposResult

@@ -166,7 +166,7 @@ func (i *AutoscalingConfig) ToAutoscalingConfigOutputWithContext(ctx context.Con
 // AutoscalingConfigArrayInput is an input type that accepts AutoscalingConfigArray and AutoscalingConfigArrayOutput values.
 // You can construct a concrete instance of `AutoscalingConfigArrayInput` via:
 //
-//          AutoscalingConfigArray{ AutoscalingConfigArgs{...} }
+//	AutoscalingConfigArray{ AutoscalingConfigArgs{...} }
 type AutoscalingConfigArrayInput interface {
 	pulumi.Input
 
@@ -191,7 +191,7 @@ func (i AutoscalingConfigArray) ToAutoscalingConfigArrayOutputWithContext(ctx co
 // AutoscalingConfigMapInput is an input type that accepts AutoscalingConfigMap and AutoscalingConfigMapOutput values.
 // You can construct a concrete instance of `AutoscalingConfigMapInput` via:
 //
-//          AutoscalingConfigMap{ "key": AutoscalingConfigArgs{...} }
+//	AutoscalingConfigMap{ "key": AutoscalingConfigArgs{...} }
 type AutoscalingConfigMapInput interface {
 	pulumi.Input
 

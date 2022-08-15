@@ -16,28 +16,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
-// 			NameRegex: pulumi.StringRef("^my-NasBackupPlan"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("hbrNasBackupPlanId", ids.Plans[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
+//				NameRegex: pulumi.StringRef("^my-NasBackupPlan"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("hbrNasBackupPlanId", ids.Plans[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNasBackupPlans(ctx *pulumi.Context, args *GetNasBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetNasBackupPlansResult, error) {
 	var rv GetNasBackupPlansResult

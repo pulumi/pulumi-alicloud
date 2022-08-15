@@ -40,7 +40,9 @@ import (
 // Load balancer backend server group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+//
+//	$ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+//
 // ```
 type ServerGroup struct {
 	pulumi.CustomResourceState
@@ -171,7 +173,7 @@ func (i *ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) Server
 // ServerGroupArrayInput is an input type that accepts ServerGroupArray and ServerGroupArrayOutput values.
 // You can construct a concrete instance of `ServerGroupArrayInput` via:
 //
-//          ServerGroupArray{ ServerGroupArgs{...} }
+//	ServerGroupArray{ ServerGroupArgs{...} }
 type ServerGroupArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +198,7 @@ func (i ServerGroupArray) ToServerGroupArrayOutputWithContext(ctx context.Contex
 // ServerGroupMapInput is an input type that accepts ServerGroupMap and ServerGroupMapOutput values.
 // You can construct a concrete instance of `ServerGroupMapInput` via:
 //
-//          ServerGroupMap{ "key": ServerGroupArgs{...} }
+//	ServerGroupMap{ "key": ServerGroupArgs{...} }
 type ServerGroupMapInput interface {
 	pulumi.Input
 

@@ -18,31 +18,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewActivation(ctx, "example", &ecs.ActivationArgs{
-// 			Description:       pulumi.Any(_var.Name),
-// 			InstanceCount:     pulumi.Int(10),
-// 			InstanceName:      pulumi.Any(_var.Name),
-// 			IpAddressRange:    pulumi.String("0.0.0.0/0"),
-// 			TimeToLiveInHours: pulumi.Int(4),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewActivation(ctx, "example", &ecs.ActivationArgs{
+//				Description:       pulumi.Any(_var.Name),
+//				InstanceCount:     pulumi.Int(10),
+//				InstanceName:      pulumi.Any(_var.Name),
+//				IpAddressRange:    pulumi.String("0.0.0.0/0"),
+//				TimeToLiveInHours: pulumi.Int(4),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // ECS Activation can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/activation:Activation example <id>
+//
+//	$ pulumi import alicloud:ecs/activation:Activation example <id>
+//
 // ```
 type Activation struct {
 	pulumi.CustomResourceState
@@ -188,7 +193,7 @@ func (i *Activation) ToActivationOutputWithContext(ctx context.Context) Activati
 // ActivationArrayInput is an input type that accepts ActivationArray and ActivationArrayOutput values.
 // You can construct a concrete instance of `ActivationArrayInput` via:
 //
-//          ActivationArray{ ActivationArgs{...} }
+//	ActivationArray{ ActivationArgs{...} }
 type ActivationArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +218,7 @@ func (i ActivationArray) ToActivationArrayOutputWithContext(ctx context.Context)
 // ActivationMapInput is an input type that accepts ActivationMap and ActivationMapOutput values.
 // You can construct a concrete instance of `ActivationMapInput` via:
 //
-//          ActivationMap{ "key": ActivationArgs{...} }
+//	ActivationMap{ "key": ActivationArgs{...} }
 type ActivationMapInput interface {
 	pulumi.Input
 

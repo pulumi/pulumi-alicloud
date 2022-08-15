@@ -19,24 +19,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mongodb.GetInstances(ctx, &mongodb.GetInstancesArgs{
-// 			AvailabilityZone: pulumi.StringRef("eu-central-1a"),
-// 			InstanceClass:    pulumi.StringRef("dds.mongo.mid"),
-// 			InstanceType:     pulumi.StringRef("replicate"),
-// 			NameRegex:        pulumi.StringRef("dds-.+\\d+"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mongodb.GetInstances(ctx, &mongodb.GetInstancesArgs{
+//				AvailabilityZone: pulumi.StringRef("eu-central-1a"),
+//				InstanceClass:    pulumi.StringRef("dds.mongo.mid"),
+//				InstanceType:     pulumi.StringRef("replicate"),
+//				NameRegex:        pulumi.StringRef("dds-.+\\d+"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

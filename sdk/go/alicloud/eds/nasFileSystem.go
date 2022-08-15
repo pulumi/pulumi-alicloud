@@ -19,38 +19,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:            pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType:    pulumi.String("Internet"),
-// 			OfficeSiteName:       pulumi.String("your_office_site_name"),
-// 			EnableInternetAccess: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewNasFileSystem(ctx, "example", &eds.NasFileSystemArgs{
-// 			NasFileSystemName: pulumi.String("example_value"),
-// 			OfficeSiteId:      _default.ID(),
-// 			Description:       pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:            pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType:    pulumi.String("Internet"),
+//				OfficeSiteName:       pulumi.String("your_office_site_name"),
+//				EnableInternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewNasFileSystem(ctx, "example", &eds.NasFileSystemArgs{
+//				NasFileSystemName: pulumi.String("example_value"),
+//				OfficeSiteId:      _default.ID(),
+//				Description:       pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // ECD Nas File System can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
+//
+//	$ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
+//
 // ```
 type NasFileSystem struct {
 	pulumi.CustomResourceState
@@ -205,7 +210,7 @@ func (i *NasFileSystem) ToNasFileSystemOutputWithContext(ctx context.Context) Na
 // NasFileSystemArrayInput is an input type that accepts NasFileSystemArray and NasFileSystemArrayOutput values.
 // You can construct a concrete instance of `NasFileSystemArrayInput` via:
 //
-//          NasFileSystemArray{ NasFileSystemArgs{...} }
+//	NasFileSystemArray{ NasFileSystemArgs{...} }
 type NasFileSystemArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +235,7 @@ func (i NasFileSystemArray) ToNasFileSystemArrayOutputWithContext(ctx context.Co
 // NasFileSystemMapInput is an input type that accepts NasFileSystemMap and NasFileSystemMapOutput values.
 // You can construct a concrete instance of `NasFileSystemMapInput` via:
 //
-//          NasFileSystemMap{ "key": NasFileSystemArgs{...} }
+//	NasFileSystemMap{ "key": NasFileSystemArgs{...} }
 type NasFileSystemMapInput interface {
 	pulumi.Input
 

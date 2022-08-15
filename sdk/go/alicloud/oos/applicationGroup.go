@@ -19,48 +19,51 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultApplication, err := oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
-// 			ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			ApplicationName: pulumi.String("example_value"),
-// 			Description:     pulumi.String("example_value"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oos.NewApplicationGroup(ctx, "defaultApplicationGroup", &oos.ApplicationGroupArgs{
-// 			ApplicationGroupName: pulumi.Any(_var.Name),
-// 			ApplicationName:      defaultApplication.ID(),
-// 			DeployRegionId:       pulumi.String("example_value"),
-// 			Description:          pulumi.String("example_value"),
-// 			ImportTagKey:         pulumi.String("example_value"),
-// 			ImportTagValue:       pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplication, err := oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ApplicationName: pulumi.String("example_value"),
+//				Description:     pulumi.String("example_value"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewApplicationGroup(ctx, "defaultApplicationGroup", &oos.ApplicationGroupArgs{
+//				ApplicationGroupName: pulumi.Any(_var.Name),
+//				ApplicationName:      defaultApplication.ID(),
+//				DeployRegionId:       pulumi.String("example_value"),
+//				Description:          pulumi.String("example_value"),
+//				ImportTagKey:         pulumi.String("example_value"),
+//				ImportTagValue:       pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -68,7 +71,9 @@ import (
 // OOS Application Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
+//
+//	$ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
+//
 // ```
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
@@ -220,7 +225,7 @@ func (i *ApplicationGroup) ToApplicationGroupOutputWithContext(ctx context.Conte
 // ApplicationGroupArrayInput is an input type that accepts ApplicationGroupArray and ApplicationGroupArrayOutput values.
 // You can construct a concrete instance of `ApplicationGroupArrayInput` via:
 //
-//          ApplicationGroupArray{ ApplicationGroupArgs{...} }
+//	ApplicationGroupArray{ ApplicationGroupArgs{...} }
 type ApplicationGroupArrayInput interface {
 	pulumi.Input
 
@@ -245,7 +250,7 @@ func (i ApplicationGroupArray) ToApplicationGroupArrayOutputWithContext(ctx cont
 // ApplicationGroupMapInput is an input type that accepts ApplicationGroupMap and ApplicationGroupMapOutput values.
 // You can construct a concrete instance of `ApplicationGroupMapInput` via:
 //
-//          ApplicationGroupMap{ "key": ApplicationGroupArgs{...} }
+//	ApplicationGroupMap{ "key": ApplicationGroupArgs{...} }
 type ApplicationGroupMapInput interface {
 	pulumi.Input
 

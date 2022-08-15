@@ -16,7 +16,9 @@ import (
 // Log machine group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+//
+//	$ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+//
 // ```
 type MachineGroup struct {
 	pulumi.CustomResourceState
@@ -150,7 +152,7 @@ func (i *MachineGroup) ToMachineGroupOutputWithContext(ctx context.Context) Mach
 // MachineGroupArrayInput is an input type that accepts MachineGroupArray and MachineGroupArrayOutput values.
 // You can construct a concrete instance of `MachineGroupArrayInput` via:
 //
-//          MachineGroupArray{ MachineGroupArgs{...} }
+//	MachineGroupArray{ MachineGroupArgs{...} }
 type MachineGroupArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +177,7 @@ func (i MachineGroupArray) ToMachineGroupArrayOutputWithContext(ctx context.Cont
 // MachineGroupMapInput is an input type that accepts MachineGroupMap and MachineGroupMapOutput values.
 // You can construct a concrete instance of `MachineGroupMapInput` via:
 //
-//          MachineGroupMap{ "key": MachineGroupArgs{...} }
+//	MachineGroupMap{ "key": MachineGroupArgs{...} }
 type MachineGroupMapInput interface {
 	pulumi.Input
 

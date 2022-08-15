@@ -28,7 +28,9 @@ import (
 // ESS alb server groups can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
+//
+//	$ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
+//
 // ```
 type AlbServerGroupAttachment struct {
 	pulumi.CustomResourceState
@@ -173,7 +175,7 @@ func (i *AlbServerGroupAttachment) ToAlbServerGroupAttachmentOutputWithContext(c
 // AlbServerGroupAttachmentArrayInput is an input type that accepts AlbServerGroupAttachmentArray and AlbServerGroupAttachmentArrayOutput values.
 // You can construct a concrete instance of `AlbServerGroupAttachmentArrayInput` via:
 //
-//          AlbServerGroupAttachmentArray{ AlbServerGroupAttachmentArgs{...} }
+//	AlbServerGroupAttachmentArray{ AlbServerGroupAttachmentArgs{...} }
 type AlbServerGroupAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +200,7 @@ func (i AlbServerGroupAttachmentArray) ToAlbServerGroupAttachmentArrayOutputWith
 // AlbServerGroupAttachmentMapInput is an input type that accepts AlbServerGroupAttachmentMap and AlbServerGroupAttachmentMapOutput values.
 // You can construct a concrete instance of `AlbServerGroupAttachmentMapInput` via:
 //
-//          AlbServerGroupAttachmentMap{ "key": AlbServerGroupAttachmentArgs{...} }
+//	AlbServerGroupAttachmentMap{ "key": AlbServerGroupAttachmentArgs{...} }
 type AlbServerGroupAttachmentMapInput interface {
 	pulumi.Input
 

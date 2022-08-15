@@ -20,7 +20,9 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry default vtb-*********:rte-*******
+//
+//	$ pulumi import alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry default vtb-*********:rte-*******
+//
 // ```
 type TransitRouterRouteEntry struct {
 	pulumi.CustomResourceState
@@ -186,7 +188,7 @@ func (i *TransitRouterRouteEntry) ToTransitRouterRouteEntryOutputWithContext(ctx
 // TransitRouterRouteEntryArrayInput is an input type that accepts TransitRouterRouteEntryArray and TransitRouterRouteEntryArrayOutput values.
 // You can construct a concrete instance of `TransitRouterRouteEntryArrayInput` via:
 //
-//          TransitRouterRouteEntryArray{ TransitRouterRouteEntryArgs{...} }
+//	TransitRouterRouteEntryArray{ TransitRouterRouteEntryArgs{...} }
 type TransitRouterRouteEntryArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +213,7 @@ func (i TransitRouterRouteEntryArray) ToTransitRouterRouteEntryArrayOutputWithCo
 // TransitRouterRouteEntryMapInput is an input type that accepts TransitRouterRouteEntryMap and TransitRouterRouteEntryMapOutput values.
 // You can construct a concrete instance of `TransitRouterRouteEntryMapInput` via:
 //
-//          TransitRouterRouteEntryMap{ "key": TransitRouterRouteEntryArgs{...} }
+//	TransitRouterRouteEntryMap{ "key": TransitRouterRouteEntryArgs{...} }
 type TransitRouterRouteEntryMapInput interface {
 	pulumi.Input
 

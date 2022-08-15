@@ -18,7 +18,7 @@ type ApplicationInfoDimension struct {
 // ApplicationInfoDimensionInput is an input type that accepts ApplicationInfoDimensionArgs and ApplicationInfoDimensionOutput values.
 // You can construct a concrete instance of `ApplicationInfoDimensionInput` via:
 //
-//          ApplicationInfoDimensionArgs{...}
+//	ApplicationInfoDimensionArgs{...}
 type ApplicationInfoDimensionInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i ApplicationInfoDimensionArgs) ToApplicationInfoDimensionOutputWithContex
 // ApplicationInfoDimensionArrayInput is an input type that accepts ApplicationInfoDimensionArray and ApplicationInfoDimensionArrayOutput values.
 // You can construct a concrete instance of `ApplicationInfoDimensionArrayInput` via:
 //
-//          ApplicationInfoDimensionArray{ ApplicationInfoDimensionArgs{...} }
+//	ApplicationInfoDimensionArray{ ApplicationInfoDimensionArgs{...} }
 type ApplicationInfoDimensionArrayInput interface {
 	pulumi.Input
 
@@ -120,7 +120,7 @@ type QuotaAlarmQuotaDimension struct {
 // QuotaAlarmQuotaDimensionInput is an input type that accepts QuotaAlarmQuotaDimensionArgs and QuotaAlarmQuotaDimensionOutput values.
 // You can construct a concrete instance of `QuotaAlarmQuotaDimensionInput` via:
 //
-//          QuotaAlarmQuotaDimensionArgs{...}
+//	QuotaAlarmQuotaDimensionArgs{...}
 type QuotaAlarmQuotaDimensionInput interface {
 	pulumi.Input
 
@@ -150,7 +150,7 @@ func (i QuotaAlarmQuotaDimensionArgs) ToQuotaAlarmQuotaDimensionOutputWithContex
 // QuotaAlarmQuotaDimensionArrayInput is an input type that accepts QuotaAlarmQuotaDimensionArray and QuotaAlarmQuotaDimensionArrayOutput values.
 // You can construct a concrete instance of `QuotaAlarmQuotaDimensionArrayInput` via:
 //
-//          QuotaAlarmQuotaDimensionArray{ QuotaAlarmQuotaDimensionArgs{...} }
+//	QuotaAlarmQuotaDimensionArray{ QuotaAlarmQuotaDimensionArgs{...} }
 type QuotaAlarmQuotaDimensionArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +226,7 @@ type QuotaApplicationDimension struct {
 // QuotaApplicationDimensionInput is an input type that accepts QuotaApplicationDimensionArgs and QuotaApplicationDimensionOutput values.
 // You can construct a concrete instance of `QuotaApplicationDimensionInput` via:
 //
-//          QuotaApplicationDimensionArgs{...}
+//	QuotaApplicationDimensionArgs{...}
 type QuotaApplicationDimensionInput interface {
 	pulumi.Input
 
@@ -256,7 +256,7 @@ func (i QuotaApplicationDimensionArgs) ToQuotaApplicationDimensionOutputWithCont
 // QuotaApplicationDimensionArrayInput is an input type that accepts QuotaApplicationDimensionArray and QuotaApplicationDimensionArrayOutput values.
 // You can construct a concrete instance of `QuotaApplicationDimensionArrayInput` via:
 //
-//          QuotaApplicationDimensionArray{ QuotaApplicationDimensionArgs{...} }
+//	QuotaApplicationDimensionArray{ QuotaApplicationDimensionArgs{...} }
 type QuotaApplicationDimensionArrayInput interface {
 	pulumi.Input
 
@@ -344,7 +344,7 @@ type GetApplicationInfosApplication struct {
 // GetApplicationInfosApplicationInput is an input type that accepts GetApplicationInfosApplicationArgs and GetApplicationInfosApplicationOutput values.
 // You can construct a concrete instance of `GetApplicationInfosApplicationInput` via:
 //
-//          GetApplicationInfosApplicationArgs{...}
+//	GetApplicationInfosApplicationArgs{...}
 type GetApplicationInfosApplicationInput interface {
 	pulumi.Input
 
@@ -386,7 +386,7 @@ func (i GetApplicationInfosApplicationArgs) ToGetApplicationInfosApplicationOutp
 // GetApplicationInfosApplicationArrayInput is an input type that accepts GetApplicationInfosApplicationArray and GetApplicationInfosApplicationArrayOutput values.
 // You can construct a concrete instance of `GetApplicationInfosApplicationArrayInput` via:
 //
-//          GetApplicationInfosApplicationArray{ GetApplicationInfosApplicationArgs{...} }
+//	GetApplicationInfosApplicationArray{ GetApplicationInfosApplicationArgs{...} }
 type GetApplicationInfosApplicationArrayInput interface {
 	pulumi.Input
 
@@ -514,7 +514,7 @@ type GetApplicationInfosApplicationDimension struct {
 // GetApplicationInfosApplicationDimensionInput is an input type that accepts GetApplicationInfosApplicationDimensionArgs and GetApplicationInfosApplicationDimensionOutput values.
 // You can construct a concrete instance of `GetApplicationInfosApplicationDimensionInput` via:
 //
-//          GetApplicationInfosApplicationDimensionArgs{...}
+//	GetApplicationInfosApplicationDimensionArgs{...}
 type GetApplicationInfosApplicationDimensionInput interface {
 	pulumi.Input
 
@@ -542,7 +542,7 @@ func (i GetApplicationInfosApplicationDimensionArgs) ToGetApplicationInfosApplic
 // GetApplicationInfosApplicationDimensionArrayInput is an input type that accepts GetApplicationInfosApplicationDimensionArray and GetApplicationInfosApplicationDimensionArrayOutput values.
 // You can construct a concrete instance of `GetApplicationInfosApplicationDimensionArrayInput` via:
 //
-//          GetApplicationInfosApplicationDimensionArray{ GetApplicationInfosApplicationDimensionArgs{...} }
+//	GetApplicationInfosApplicationDimensionArray{ GetApplicationInfosApplicationDimensionArgs{...} }
 type GetApplicationInfosApplicationDimensionArrayInput interface {
 	pulumi.Input
 
@@ -614,7 +614,7 @@ type GetApplicationInfosDimension struct {
 // GetApplicationInfosDimensionInput is an input type that accepts GetApplicationInfosDimensionArgs and GetApplicationInfosDimensionOutput values.
 // You can construct a concrete instance of `GetApplicationInfosDimensionInput` via:
 //
-//          GetApplicationInfosDimensionArgs{...}
+//	GetApplicationInfosDimensionArgs{...}
 type GetApplicationInfosDimensionInput interface {
 	pulumi.Input
 
@@ -642,7 +642,7 @@ func (i GetApplicationInfosDimensionArgs) ToGetApplicationInfosDimensionOutputWi
 // GetApplicationInfosDimensionArrayInput is an input type that accepts GetApplicationInfosDimensionArray and GetApplicationInfosDimensionArrayOutput values.
 // You can construct a concrete instance of `GetApplicationInfosDimensionArrayInput` via:
 //
-//          GetApplicationInfosDimensionArray{ GetApplicationInfosDimensionArgs{...} }
+//	GetApplicationInfosDimensionArray{ GetApplicationInfosDimensionArgs{...} }
 type GetApplicationInfosDimensionArrayInput interface {
 	pulumi.Input
 
@@ -730,7 +730,7 @@ type GetQuotaAlarmsAlarm struct {
 // GetQuotaAlarmsAlarmInput is an input type that accepts GetQuotaAlarmsAlarmArgs and GetQuotaAlarmsAlarmOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsAlarmInput` via:
 //
-//          GetQuotaAlarmsAlarmArgs{...}
+//	GetQuotaAlarmsAlarmArgs{...}
 type GetQuotaAlarmsAlarmInput interface {
 	pulumi.Input
 
@@ -774,7 +774,7 @@ func (i GetQuotaAlarmsAlarmArgs) ToGetQuotaAlarmsAlarmOutputWithContext(ctx cont
 // GetQuotaAlarmsAlarmArrayInput is an input type that accepts GetQuotaAlarmsAlarmArray and GetQuotaAlarmsAlarmArrayOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsAlarmArrayInput` via:
 //
-//          GetQuotaAlarmsAlarmArray{ GetQuotaAlarmsAlarmArgs{...} }
+//	GetQuotaAlarmsAlarmArray{ GetQuotaAlarmsAlarmArgs{...} }
 type GetQuotaAlarmsAlarmArrayInput interface {
 	pulumi.Input
 
@@ -885,7 +885,7 @@ type GetQuotaAlarmsAlarmQuotaDimension struct {
 // GetQuotaAlarmsAlarmQuotaDimensionInput is an input type that accepts GetQuotaAlarmsAlarmQuotaDimensionArgs and GetQuotaAlarmsAlarmQuotaDimensionOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsAlarmQuotaDimensionInput` via:
 //
-//          GetQuotaAlarmsAlarmQuotaDimensionArgs{...}
+//	GetQuotaAlarmsAlarmQuotaDimensionArgs{...}
 type GetQuotaAlarmsAlarmQuotaDimensionInput interface {
 	pulumi.Input
 
@@ -915,7 +915,7 @@ func (i GetQuotaAlarmsAlarmQuotaDimensionArgs) ToGetQuotaAlarmsAlarmQuotaDimensi
 // GetQuotaAlarmsAlarmQuotaDimensionArrayInput is an input type that accepts GetQuotaAlarmsAlarmQuotaDimensionArray and GetQuotaAlarmsAlarmQuotaDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsAlarmQuotaDimensionArrayInput` via:
 //
-//          GetQuotaAlarmsAlarmQuotaDimensionArray{ GetQuotaAlarmsAlarmQuotaDimensionArgs{...} }
+//	GetQuotaAlarmsAlarmQuotaDimensionArray{ GetQuotaAlarmsAlarmQuotaDimensionArgs{...} }
 type GetQuotaAlarmsAlarmQuotaDimensionArrayInput interface {
 	pulumi.Input
 
@@ -991,7 +991,7 @@ type GetQuotaAlarmsQuotaDimension struct {
 // GetQuotaAlarmsQuotaDimensionInput is an input type that accepts GetQuotaAlarmsQuotaDimensionArgs and GetQuotaAlarmsQuotaDimensionOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsQuotaDimensionInput` via:
 //
-//          GetQuotaAlarmsQuotaDimensionArgs{...}
+//	GetQuotaAlarmsQuotaDimensionArgs{...}
 type GetQuotaAlarmsQuotaDimensionInput interface {
 	pulumi.Input
 
@@ -1021,7 +1021,7 @@ func (i GetQuotaAlarmsQuotaDimensionArgs) ToGetQuotaAlarmsQuotaDimensionOutputWi
 // GetQuotaAlarmsQuotaDimensionArrayInput is an input type that accepts GetQuotaAlarmsQuotaDimensionArray and GetQuotaAlarmsQuotaDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsQuotaDimensionArrayInput` via:
 //
-//          GetQuotaAlarmsQuotaDimensionArray{ GetQuotaAlarmsQuotaDimensionArgs{...} }
+//	GetQuotaAlarmsQuotaDimensionArray{ GetQuotaAlarmsQuotaDimensionArgs{...} }
 type GetQuotaAlarmsQuotaDimensionArrayInput interface {
 	pulumi.Input
 
@@ -1125,7 +1125,7 @@ type GetQuotaApplicationsApplication struct {
 // GetQuotaApplicationsApplicationInput is an input type that accepts GetQuotaApplicationsApplicationArgs and GetQuotaApplicationsApplicationOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsApplicationInput` via:
 //
-//          GetQuotaApplicationsApplicationArgs{...}
+//	GetQuotaApplicationsApplicationArgs{...}
 type GetQuotaApplicationsApplicationInput interface {
 	pulumi.Input
 
@@ -1183,7 +1183,7 @@ func (i GetQuotaApplicationsApplicationArgs) ToGetQuotaApplicationsApplicationOu
 // GetQuotaApplicationsApplicationArrayInput is an input type that accepts GetQuotaApplicationsApplicationArray and GetQuotaApplicationsApplicationArrayOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsApplicationArrayInput` via:
 //
-//          GetQuotaApplicationsApplicationArray{ GetQuotaApplicationsApplicationArgs{...} }
+//	GetQuotaApplicationsApplicationArray{ GetQuotaApplicationsApplicationArgs{...} }
 type GetQuotaApplicationsApplicationArrayInput interface {
 	pulumi.Input
 
@@ -1331,7 +1331,7 @@ type GetQuotaApplicationsApplicationDimension struct {
 // GetQuotaApplicationsApplicationDimensionInput is an input type that accepts GetQuotaApplicationsApplicationDimensionArgs and GetQuotaApplicationsApplicationDimensionOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsApplicationDimensionInput` via:
 //
-//          GetQuotaApplicationsApplicationDimensionArgs{...}
+//	GetQuotaApplicationsApplicationDimensionArgs{...}
 type GetQuotaApplicationsApplicationDimensionInput interface {
 	pulumi.Input
 
@@ -1361,7 +1361,7 @@ func (i GetQuotaApplicationsApplicationDimensionArgs) ToGetQuotaApplicationsAppl
 // GetQuotaApplicationsApplicationDimensionArrayInput is an input type that accepts GetQuotaApplicationsApplicationDimensionArray and GetQuotaApplicationsApplicationDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsApplicationDimensionArrayInput` via:
 //
-//          GetQuotaApplicationsApplicationDimensionArray{ GetQuotaApplicationsApplicationDimensionArgs{...} }
+//	GetQuotaApplicationsApplicationDimensionArray{ GetQuotaApplicationsApplicationDimensionArgs{...} }
 type GetQuotaApplicationsApplicationDimensionArrayInput interface {
 	pulumi.Input
 
@@ -1437,7 +1437,7 @@ type GetQuotaApplicationsDimension struct {
 // GetQuotaApplicationsDimensionInput is an input type that accepts GetQuotaApplicationsDimensionArgs and GetQuotaApplicationsDimensionOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsDimensionInput` via:
 //
-//          GetQuotaApplicationsDimensionArgs{...}
+//	GetQuotaApplicationsDimensionArgs{...}
 type GetQuotaApplicationsDimensionInput interface {
 	pulumi.Input
 
@@ -1467,7 +1467,7 @@ func (i GetQuotaApplicationsDimensionArgs) ToGetQuotaApplicationsDimensionOutput
 // GetQuotaApplicationsDimensionArrayInput is an input type that accepts GetQuotaApplicationsDimensionArray and GetQuotaApplicationsDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsDimensionArrayInput` via:
 //
-//          GetQuotaApplicationsDimensionArray{ GetQuotaApplicationsDimensionArgs{...} }
+//	GetQuotaApplicationsDimensionArray{ GetQuotaApplicationsDimensionArgs{...} }
 type GetQuotaApplicationsDimensionArrayInput interface {
 	pulumi.Input
 
@@ -1543,7 +1543,7 @@ type GetQuotasDimension struct {
 // GetQuotasDimensionInput is an input type that accepts GetQuotasDimensionArgs and GetQuotasDimensionOutput values.
 // You can construct a concrete instance of `GetQuotasDimensionInput` via:
 //
-//          GetQuotasDimensionArgs{...}
+//	GetQuotasDimensionArgs{...}
 type GetQuotasDimensionInput interface {
 	pulumi.Input
 
@@ -1573,7 +1573,7 @@ func (i GetQuotasDimensionArgs) ToGetQuotasDimensionOutputWithContext(ctx contex
 // GetQuotasDimensionArrayInput is an input type that accepts GetQuotasDimensionArray and GetQuotasDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotasDimensionArrayInput` via:
 //
-//          GetQuotasDimensionArray{ GetQuotasDimensionArgs{...} }
+//	GetQuotasDimensionArray{ GetQuotasDimensionArgs{...} }
 type GetQuotasDimensionArrayInput interface {
 	pulumi.Input
 
@@ -1671,7 +1671,7 @@ type GetQuotasQuota struct {
 // GetQuotasQuotaInput is an input type that accepts GetQuotasQuotaArgs and GetQuotasQuotaOutput values.
 // You can construct a concrete instance of `GetQuotasQuotaInput` via:
 //
-//          GetQuotasQuotaArgs{...}
+//	GetQuotasQuotaArgs{...}
 type GetQuotasQuotaInput interface {
 	pulumi.Input
 
@@ -1723,7 +1723,7 @@ func (i GetQuotasQuotaArgs) ToGetQuotasQuotaOutputWithContext(ctx context.Contex
 // GetQuotasQuotaArrayInput is an input type that accepts GetQuotasQuotaArray and GetQuotasQuotaArrayOutput values.
 // You can construct a concrete instance of `GetQuotasQuotaArrayInput` via:
 //
-//          GetQuotasQuotaArray{ GetQuotasQuotaArgs{...} }
+//	GetQuotasQuotaArray{ GetQuotasQuotaArgs{...} }
 type GetQuotasQuotaArrayInput interface {
 	pulumi.Input
 

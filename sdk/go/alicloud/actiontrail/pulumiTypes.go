@@ -26,7 +26,7 @@ type GetConsumerGroupsGroup struct {
 // GetConsumerGroupsGroupInput is an input type that accepts GetConsumerGroupsGroupArgs and GetConsumerGroupsGroupOutput values.
 // You can construct a concrete instance of `GetConsumerGroupsGroupInput` via:
 //
-//          GetConsumerGroupsGroupArgs{...}
+//	GetConsumerGroupsGroupArgs{...}
 type GetConsumerGroupsGroupInput interface {
 	pulumi.Input
 
@@ -62,7 +62,7 @@ func (i GetConsumerGroupsGroupArgs) ToGetConsumerGroupsGroupOutputWithContext(ct
 // GetConsumerGroupsGroupArrayInput is an input type that accepts GetConsumerGroupsGroupArray and GetConsumerGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetConsumerGroupsGroupArrayInput` via:
 //
-//          GetConsumerGroupsGroupArray{ GetConsumerGroupsGroupArgs{...} }
+//	GetConsumerGroupsGroupArray{ GetConsumerGroupsGroupArgs{...} }
 type GetConsumerGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -168,7 +168,7 @@ type GetHistoryDeliveryJobsJob struct {
 // GetHistoryDeliveryJobsJobInput is an input type that accepts GetHistoryDeliveryJobsJobArgs and GetHistoryDeliveryJobsJobOutput values.
 // You can construct a concrete instance of `GetHistoryDeliveryJobsJobInput` via:
 //
-//          GetHistoryDeliveryJobsJobArgs{...}
+//	GetHistoryDeliveryJobsJobArgs{...}
 type GetHistoryDeliveryJobsJobInput interface {
 	pulumi.Input
 
@@ -213,7 +213,7 @@ func (i GetHistoryDeliveryJobsJobArgs) ToGetHistoryDeliveryJobsJobOutputWithCont
 // GetHistoryDeliveryJobsJobArrayInput is an input type that accepts GetHistoryDeliveryJobsJobArray and GetHistoryDeliveryJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetHistoryDeliveryJobsJobArrayInput` via:
 //
-//          GetHistoryDeliveryJobsJobArray{ GetHistoryDeliveryJobsJobArgs{...} }
+//	GetHistoryDeliveryJobsJobArray{ GetHistoryDeliveryJobsJobArgs{...} }
 type GetHistoryDeliveryJobsJobArrayInput interface {
 	pulumi.Input
 
@@ -328,7 +328,7 @@ type GetHistoryDeliveryJobsJobJobStatus struct {
 // GetHistoryDeliveryJobsJobJobStatusInput is an input type that accepts GetHistoryDeliveryJobsJobJobStatusArgs and GetHistoryDeliveryJobsJobJobStatusOutput values.
 // You can construct a concrete instance of `GetHistoryDeliveryJobsJobJobStatusInput` via:
 //
-//          GetHistoryDeliveryJobsJobJobStatusArgs{...}
+//	GetHistoryDeliveryJobsJobJobStatusArgs{...}
 type GetHistoryDeliveryJobsJobJobStatusInput interface {
 	pulumi.Input
 
@@ -358,7 +358,7 @@ func (i GetHistoryDeliveryJobsJobJobStatusArgs) ToGetHistoryDeliveryJobsJobJobSt
 // GetHistoryDeliveryJobsJobJobStatusArrayInput is an input type that accepts GetHistoryDeliveryJobsJobJobStatusArray and GetHistoryDeliveryJobsJobJobStatusArrayOutput values.
 // You can construct a concrete instance of `GetHistoryDeliveryJobsJobJobStatusArrayInput` via:
 //
-//          GetHistoryDeliveryJobsJobJobStatusArray{ GetHistoryDeliveryJobsJobJobStatusArgs{...} }
+//	GetHistoryDeliveryJobsJobJobStatusArray{ GetHistoryDeliveryJobsJobJobStatusArgs{...} }
 type GetHistoryDeliveryJobsJobJobStatusArrayInput interface {
 	pulumi.Input
 
@@ -486,7 +486,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -568,7 +568,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -778,7 +778,7 @@ type GetInstancesInstanceAllowedList struct {
 // GetInstancesInstanceAllowedListInput is an input type that accepts GetInstancesInstanceAllowedListArgs and GetInstancesInstanceAllowedListOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceAllowedListInput` via:
 //
-//          GetInstancesInstanceAllowedListArgs{...}
+//	GetInstancesInstanceAllowedListArgs{...}
 type GetInstancesInstanceAllowedListInput interface {
 	pulumi.Input
 
@@ -810,7 +810,7 @@ func (i GetInstancesInstanceAllowedListArgs) ToGetInstancesInstanceAllowedListOu
 // GetInstancesInstanceAllowedListArrayInput is an input type that accepts GetInstancesInstanceAllowedListArray and GetInstancesInstanceAllowedListArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceAllowedListArrayInput` via:
 //
-//          GetInstancesInstanceAllowedListArray{ GetInstancesInstanceAllowedListArgs{...} }
+//	GetInstancesInstanceAllowedListArray{ GetInstancesInstanceAllowedListArgs{...} }
 type GetInstancesInstanceAllowedListArrayInput interface {
 	pulumi.Input
 
@@ -893,7 +893,7 @@ type GetInstancesInstanceAllowedListInternetList struct {
 // GetInstancesInstanceAllowedListInternetListInput is an input type that accepts GetInstancesInstanceAllowedListInternetListArgs and GetInstancesInstanceAllowedListInternetListOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceAllowedListInternetListInput` via:
 //
-//          GetInstancesInstanceAllowedListInternetListArgs{...}
+//	GetInstancesInstanceAllowedListInternetListArgs{...}
 type GetInstancesInstanceAllowedListInternetListInput interface {
 	pulumi.Input
 
@@ -923,7 +923,7 @@ func (i GetInstancesInstanceAllowedListInternetListArgs) ToGetInstancesInstanceA
 // GetInstancesInstanceAllowedListInternetListArrayInput is an input type that accepts GetInstancesInstanceAllowedListInternetListArray and GetInstancesInstanceAllowedListInternetListArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceAllowedListInternetListArrayInput` via:
 //
-//          GetInstancesInstanceAllowedListInternetListArray{ GetInstancesInstanceAllowedListInternetListArgs{...} }
+//	GetInstancesInstanceAllowedListInternetListArray{ GetInstancesInstanceAllowedListInternetListArgs{...} }
 type GetInstancesInstanceAllowedListInternetListArrayInput interface {
 	pulumi.Input
 
@@ -999,7 +999,7 @@ type GetInstancesInstanceAllowedListVpcList struct {
 // GetInstancesInstanceAllowedListVpcListInput is an input type that accepts GetInstancesInstanceAllowedListVpcListArgs and GetInstancesInstanceAllowedListVpcListOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceAllowedListVpcListInput` via:
 //
-//          GetInstancesInstanceAllowedListVpcListArgs{...}
+//	GetInstancesInstanceAllowedListVpcListArgs{...}
 type GetInstancesInstanceAllowedListVpcListInput interface {
 	pulumi.Input
 
@@ -1029,7 +1029,7 @@ func (i GetInstancesInstanceAllowedListVpcListArgs) ToGetInstancesInstanceAllowe
 // GetInstancesInstanceAllowedListVpcListArrayInput is an input type that accepts GetInstancesInstanceAllowedListVpcListArray and GetInstancesInstanceAllowedListVpcListArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceAllowedListVpcListArrayInput` via:
 //
-//          GetInstancesInstanceAllowedListVpcListArray{ GetInstancesInstanceAllowedListVpcListArgs{...} }
+//	GetInstancesInstanceAllowedListVpcListArray{ GetInstancesInstanceAllowedListVpcListArgs{...} }
 type GetInstancesInstanceAllowedListVpcListArrayInput interface {
 	pulumi.Input
 
@@ -1103,7 +1103,7 @@ type GetInstancesInstanceUpgradeServiceDetailInfo struct {
 // GetInstancesInstanceUpgradeServiceDetailInfoInput is an input type that accepts GetInstancesInstanceUpgradeServiceDetailInfoArgs and GetInstancesInstanceUpgradeServiceDetailInfoOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceUpgradeServiceDetailInfoInput` via:
 //
-//          GetInstancesInstanceUpgradeServiceDetailInfoArgs{...}
+//	GetInstancesInstanceUpgradeServiceDetailInfoArgs{...}
 type GetInstancesInstanceUpgradeServiceDetailInfoInput interface {
 	pulumi.Input
 
@@ -1131,7 +1131,7 @@ func (i GetInstancesInstanceUpgradeServiceDetailInfoArgs) ToGetInstancesInstance
 // GetInstancesInstanceUpgradeServiceDetailInfoArrayInput is an input type that accepts GetInstancesInstanceUpgradeServiceDetailInfoArray and GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceUpgradeServiceDetailInfoArrayInput` via:
 //
-//          GetInstancesInstanceUpgradeServiceDetailInfoArray{ GetInstancesInstanceUpgradeServiceDetailInfoArgs{...} }
+//	GetInstancesInstanceUpgradeServiceDetailInfoArray{ GetInstancesInstanceUpgradeServiceDetailInfoArgs{...} }
 type GetInstancesInstanceUpgradeServiceDetailInfoArrayInput interface {
 	pulumi.Input
 
@@ -1210,7 +1210,7 @@ type GetSaslAclsAcl struct {
 // GetSaslAclsAclInput is an input type that accepts GetSaslAclsAclArgs and GetSaslAclsAclOutput values.
 // You can construct a concrete instance of `GetSaslAclsAclInput` via:
 //
-//          GetSaslAclsAclArgs{...}
+//	GetSaslAclsAclArgs{...}
 type GetSaslAclsAclInput interface {
 	pulumi.Input
 
@@ -1248,7 +1248,7 @@ func (i GetSaslAclsAclArgs) ToGetSaslAclsAclOutputWithContext(ctx context.Contex
 // GetSaslAclsAclArrayInput is an input type that accepts GetSaslAclsAclArray and GetSaslAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetSaslAclsAclArrayInput` via:
 //
-//          GetSaslAclsAclArray{ GetSaslAclsAclArgs{...} }
+//	GetSaslAclsAclArray{ GetSaslAclsAclArgs{...} }
 type GetSaslAclsAclArrayInput interface {
 	pulumi.Input
 
@@ -1344,7 +1344,7 @@ type GetSaslUsersUser struct {
 // GetSaslUsersUserInput is an input type that accepts GetSaslUsersUserArgs and GetSaslUsersUserOutput values.
 // You can construct a concrete instance of `GetSaslUsersUserInput` via:
 //
-//          GetSaslUsersUserArgs{...}
+//	GetSaslUsersUserArgs{...}
 type GetSaslUsersUserInput interface {
 	pulumi.Input
 
@@ -1374,7 +1374,7 @@ func (i GetSaslUsersUserArgs) ToGetSaslUsersUserOutputWithContext(ctx context.Co
 // GetSaslUsersUserArrayInput is an input type that accepts GetSaslUsersUserArray and GetSaslUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetSaslUsersUserArrayInput` via:
 //
-//          GetSaslUsersUserArray{ GetSaslUsersUserArgs{...} }
+//	GetSaslUsersUserArray{ GetSaslUsersUserArgs{...} }
 type GetSaslUsersUserArrayInput interface {
 	pulumi.Input
 
@@ -1468,7 +1468,7 @@ type GetTopicsTopic struct {
 // GetTopicsTopicInput is an input type that accepts GetTopicsTopicArgs and GetTopicsTopicOutput values.
 // You can construct a concrete instance of `GetTopicsTopicInput` via:
 //
-//          GetTopicsTopicArgs{...}
+//	GetTopicsTopicArgs{...}
 type GetTopicsTopicInput interface {
 	pulumi.Input
 
@@ -1516,7 +1516,7 @@ func (i GetTopicsTopicArgs) ToGetTopicsTopicOutputWithContext(ctx context.Contex
 // GetTopicsTopicArrayInput is an input type that accepts GetTopicsTopicArray and GetTopicsTopicArrayOutput values.
 // You can construct a concrete instance of `GetTopicsTopicArrayInput` via:
 //
-//          GetTopicsTopicArray{ GetTopicsTopicArgs{...} }
+//	GetTopicsTopicArray{ GetTopicsTopicArgs{...} }
 type GetTopicsTopicArrayInput interface {
 	pulumi.Input
 
@@ -1653,7 +1653,7 @@ type GetTrailsActiontrail struct {
 // GetTrailsActiontrailInput is an input type that accepts GetTrailsActiontrailArgs and GetTrailsActiontrailOutput values.
 // You can construct a concrete instance of `GetTrailsActiontrailInput` via:
 //
-//          GetTrailsActiontrailArgs{...}
+//	GetTrailsActiontrailArgs{...}
 type GetTrailsActiontrailInput interface {
 	pulumi.Input
 
@@ -1699,7 +1699,7 @@ func (i GetTrailsActiontrailArgs) ToGetTrailsActiontrailOutputWithContext(ctx co
 // GetTrailsActiontrailArrayInput is an input type that accepts GetTrailsActiontrailArray and GetTrailsActiontrailArrayOutput values.
 // You can construct a concrete instance of `GetTrailsActiontrailArrayInput` via:
 //
-//          GetTrailsActiontrailArray{ GetTrailsActiontrailArgs{...} }
+//	GetTrailsActiontrailArray{ GetTrailsActiontrailArgs{...} }
 type GetTrailsActiontrailArrayInput interface {
 	pulumi.Input
 
@@ -1830,7 +1830,7 @@ type GetTrailsDeprecatedActiontrail struct {
 // GetTrailsDeprecatedActiontrailInput is an input type that accepts GetTrailsDeprecatedActiontrailArgs and GetTrailsDeprecatedActiontrailOutput values.
 // You can construct a concrete instance of `GetTrailsDeprecatedActiontrailInput` via:
 //
-//          GetTrailsDeprecatedActiontrailArgs{...}
+//	GetTrailsDeprecatedActiontrailArgs{...}
 type GetTrailsDeprecatedActiontrailInput interface {
 	pulumi.Input
 
@@ -1872,7 +1872,7 @@ func (i GetTrailsDeprecatedActiontrailArgs) ToGetTrailsDeprecatedActiontrailOutp
 // GetTrailsDeprecatedActiontrailArrayInput is an input type that accepts GetTrailsDeprecatedActiontrailArray and GetTrailsDeprecatedActiontrailArrayOutput values.
 // You can construct a concrete instance of `GetTrailsDeprecatedActiontrailArrayInput` via:
 //
-//          GetTrailsDeprecatedActiontrailArray{ GetTrailsDeprecatedActiontrailArgs{...} }
+//	GetTrailsDeprecatedActiontrailArray{ GetTrailsDeprecatedActiontrailArgs{...} }
 type GetTrailsDeprecatedActiontrailArrayInput interface {
 	pulumi.Input
 
@@ -1999,7 +1999,7 @@ type GetTrailsDeprecatedTrail struct {
 // GetTrailsDeprecatedTrailInput is an input type that accepts GetTrailsDeprecatedTrailArgs and GetTrailsDeprecatedTrailOutput values.
 // You can construct a concrete instance of `GetTrailsDeprecatedTrailInput` via:
 //
-//          GetTrailsDeprecatedTrailArgs{...}
+//	GetTrailsDeprecatedTrailArgs{...}
 type GetTrailsDeprecatedTrailInput interface {
 	pulumi.Input
 
@@ -2041,7 +2041,7 @@ func (i GetTrailsDeprecatedTrailArgs) ToGetTrailsDeprecatedTrailOutputWithContex
 // GetTrailsDeprecatedTrailArrayInput is an input type that accepts GetTrailsDeprecatedTrailArray and GetTrailsDeprecatedTrailArrayOutput values.
 // You can construct a concrete instance of `GetTrailsDeprecatedTrailArrayInput` via:
 //
-//          GetTrailsDeprecatedTrailArray{ GetTrailsDeprecatedTrailArgs{...} }
+//	GetTrailsDeprecatedTrailArray{ GetTrailsDeprecatedTrailArgs{...} }
 type GetTrailsDeprecatedTrailArrayInput interface {
 	pulumi.Input
 
@@ -2172,7 +2172,7 @@ type GetTrailsTrail struct {
 // GetTrailsTrailInput is an input type that accepts GetTrailsTrailArgs and GetTrailsTrailOutput values.
 // You can construct a concrete instance of `GetTrailsTrailInput` via:
 //
-//          GetTrailsTrailArgs{...}
+//	GetTrailsTrailArgs{...}
 type GetTrailsTrailInput interface {
 	pulumi.Input
 
@@ -2218,7 +2218,7 @@ func (i GetTrailsTrailArgs) ToGetTrailsTrailOutputWithContext(ctx context.Contex
 // GetTrailsTrailArrayInput is an input type that accepts GetTrailsTrailArray and GetTrailsTrailArrayOutput values.
 // You can construct a concrete instance of `GetTrailsTrailArrayInput` via:
 //
-//          GetTrailsTrailArray{ GetTrailsTrailArgs{...} }
+//	GetTrailsTrailArray{ GetTrailsTrailArgs{...} }
 type GetTrailsTrailArrayInput interface {
 	pulumi.Input
 

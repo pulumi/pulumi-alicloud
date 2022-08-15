@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Adb
     ///         var @this = new AliCloud.Adb.DBCluster("this", new AliCloud.Adb.DBClusterArgs
     ///         {
     ///             DbClusterCategory = "Cluster",
-    ///             DbClusterClass = "C8",
+    ///             DbNodeClass = "C8",
     ///             DbNodeCount = 4,
     ///             DbNodeStorage = 400,
     ///             Mode = "reserver",

@@ -17,29 +17,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kvstore.NewAuditLogConfig(ctx, "example", &kvstore.AuditLogConfigArgs{
-// 			DbAudit:    pulumi.Bool(true),
-// 			InstanceId: pulumi.String("r-abc123455"),
-// 			Retention:  pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kvstore.NewAuditLogConfig(ctx, "example", &kvstore.AuditLogConfigArgs{
+//				DbAudit:    pulumi.Bool(true),
+//				InstanceId: pulumi.String("r-abc123455"),
+//				Retention:  pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Redis And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
+//
+//	$ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
+//
 // ```
 type AuditLogConfig struct {
 	pulumi.CustomResourceState
@@ -180,7 +185,7 @@ func (i *AuditLogConfig) ToAuditLogConfigOutputWithContext(ctx context.Context) 
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -205,7 +210,7 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 // AuditLogConfigMapInput is an input type that accepts AuditLogConfigMap and AuditLogConfigMapOutput values.
 // You can construct a concrete instance of `AuditLogConfigMapInput` via:
 //
-//          AuditLogConfigMap{ "key": AuditLogConfigArgs{...} }
+//	AuditLogConfigMap{ "key": AuditLogConfigArgs{...} }
 type AuditLogConfigMapInput interface {
 	pulumi.Input
 

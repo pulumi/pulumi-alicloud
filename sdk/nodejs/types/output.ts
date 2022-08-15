@@ -2901,6 +2901,34 @@ export namespace apigateway {
         name: string;
     }
 
+    export interface GetBackendsBackend {
+        /**
+         * The id of the Backend.
+         */
+        backendId: string;
+        /**
+         * The name of the Backend.
+         */
+        backendName: string;
+        /**
+         * The type of the Backend.
+         */
+        backendType: string;
+        /**
+         * The created time of the Backend.
+         */
+        createTime: string;
+        /**
+         * The description of the Backend.
+         */
+        description: string;
+        id: string;
+        /**
+         * The modified time of the Backend.
+         */
+        modifiedTime: string;
+    }
+
     export interface GetGroupsGroup {
         /**
          * Billing status.
@@ -3305,7 +3333,6 @@ export namespace arms {
          */
         value?: string;
     }
-
 }
 
 export namespace bastionhost {
@@ -3681,6 +3708,7 @@ export namespace bastionhost {
          */
         standbyServer?: string;
     }
+
 }
 
 export namespace brain {
@@ -6928,7 +6956,7 @@ export namespace cloudstoragegateway {
          */
         address: string;
         /**
-         * The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+         * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
          */
         cacheMode: string;
         /**
@@ -9203,7 +9231,6 @@ export namespace cr {
          */
         vpc: string;
     }
-
 }
 
 export namespace cs {
@@ -10279,6 +10306,61 @@ export namespace cs {
         snapshotId?: string;
     }
 
+    export interface NodePoolKubeletConfiguration {
+        /**
+         * Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+         */
+        cpuManagerPolicy?: string;
+        /**
+         * Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+         */
+        eventBurst?: string;
+        /**
+         * Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+         */
+        eventRecordQps?: string;
+        /**
+         * Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+         */
+        evictionHard?: {[key: string]: any};
+        /**
+         * Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+         */
+        evictionSoft?: {[key: string]: any};
+        /**
+         * Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+         */
+        evictionSoftGracePeriod?: {[key: string]: any};
+        /**
+         * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+         */
+        kubeApiBurst?: string;
+        /**
+         * Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+         */
+        kubeApiQps?: string;
+        /**
+         * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         */
+        kubeReserved?: {[key: string]: any};
+        /**
+         * Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+         */
+        registryBurst?: string;
+        /**
+         * Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+         */
+        registryPullQps?: string;
+        /**
+         * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+         */
+        serializeImagePulls?: string;
+        /**
+         * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         */
+        systemReserved?: {[key: string]: any};
+    }
+
     export interface NodePoolLabel {
         /**
          * The label key.
@@ -10311,6 +10393,13 @@ export namespace cs {
          * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
          */
         surgePercentage?: number;
+    }
+
+    export interface NodePoolRolloutPolicy {
+        /**
+         * Max number of unavailable nodes. Default to `1`.
+         */
+        maxUnavailable?: number;
     }
 
     export interface NodePoolScalingConfig {
@@ -10898,6 +10987,29 @@ export namespace ddos {
          * The instance's type.
          */
         type: string;
+    }
+
+    export interface GetDdosBgpIpsIp {
+        /**
+         * The ID of the Ip. The value formats as `<instance_id>:<ip>`.
+         */
+        id: string;
+        /**
+         * The ID of the native protection enterprise instance to be operated.
+         */
+        instanceId: string;
+        /**
+         * The IP address.
+         */
+        ip: string;
+        /**
+         * The type of cloud asset to which the IP address belongs.
+         */
+        product: string;
+        /**
+         * The current state of the IP address.
+         */
+        status: string;
     }
 
     export interface GetDdosCooDomainResourcesResource {
@@ -12582,6 +12694,7 @@ export namespace dns {
          */
         ispCode: string;
     }
+
 }
 
 export namespace drds {
@@ -17195,6 +17308,17 @@ export namespace ecs {
         snapshotId?: string;
     }
 
+    export interface InstanceMaintenanceTime {
+        /**
+         * The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         */
+        endTime?: string;
+        /**
+         * The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+         */
+        startTime?: string;
+    }
+
     export interface LaunchTemplateDataDisk {
         /**
          * The category of the disk:
@@ -20443,7 +20567,6 @@ export namespace ess {
         metricIntervalUpperBound?: string;
         scalingAdjustment?: number;
     }
-
 }
 
 export namespace eventbridge {
@@ -21318,7 +21441,6 @@ export namespace fc {
          */
         vswitchIds: string[];
     }
-
 }
 
 export namespace fnf {
@@ -23636,7 +23758,6 @@ export namespace hbr {
          */
         timeoutInSeconds?: number;
     }
-
 }
 
 export namespace imm {
@@ -25666,7 +25787,6 @@ export namespace mongodb {
          */
         vswitchId: string;
     }
-
 }
 
 export namespace mse {
@@ -28098,6 +28218,56 @@ export namespace polardb {
         vswitchId: string;
     }
 
+    export interface GetGlobalDatabaseNetworksNetwork {
+        /**
+         * The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+         */
+        createTime: string;
+        /**
+         * The details of each cluster in the Global Database Network.
+         */
+        dbClusters: outputs.polardb.GetGlobalDatabaseNetworksNetworkDbCluster[];
+        /**
+         * The type of the database engine. Only MySQL is supported.
+         */
+        dbType: string;
+        /**
+         * The version number of the database engine. Only the 8.0 version is supported.
+         */
+        dbVersion: string;
+        /**
+         * The description of the Global Database Network.
+         */
+        description: string;
+        /**
+         * The ID of the Global Database Network.
+         */
+        gdnId: string;
+        /**
+         * The ID of the Global Database Network.
+         */
+        id: string;
+        /**
+         * The status of the Global Database Network.
+         */
+        status: string;
+    }
+
+    export interface GetGlobalDatabaseNetworksNetworkDbCluster {
+        /**
+         * The ID of the PolarDB cluster.
+         */
+        dbClusterId: string;
+        /**
+         * The region ID of the cluster.
+         */
+        regionId: string;
+        /**
+         * The role of the cluster.
+         */
+        role: string;
+    }
+
     export interface GetNodeClassesClass {
         /**
          * A list of PolarDB node classes in the zone.
@@ -29836,7 +30006,6 @@ export namespace rds {
         name: string;
         value: string;
     }
-
 }
 
 export namespace resourcemanager {
@@ -29947,6 +30116,25 @@ export namespace resourcemanager {
          * The type of policy.
          */
         policyType: string;
+    }
+
+    export interface GetDelegatedAdministratorsAdministrator {
+        /**
+         * The ID of the member account.
+         */
+        accountId: string;
+        /**
+         * The time when the member was specified as a delegated administrator account.
+         */
+        delegationEnabledTime: string;
+        /**
+         * The ID of the Delegated Administrator.
+         */
+        id: string;
+        /**
+         * The identity of the trusted service.
+         */
+        servicePrincipal: string;
     }
 
     export interface GetFoldersFolder {
@@ -30919,7 +31107,6 @@ export namespace ros {
          */
         resourceTypeFilters?: string[];
     }
-
 }
 
 export namespace sae {
@@ -34139,6 +34326,7 @@ export namespace slb {
         type?: string;
         weight?: number;
     }
+
 }
 
 export namespace tag {
@@ -34939,6 +35127,45 @@ export namespace vpc {
          * Diffie-Hellman key exchange algorithm.
          */
         ipsecPfs: string;
+    }
+
+    export interface GetIpv4GatewaysGateway {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * Indicates whether the IPv4 gateway is activated.
+         */
+        enabled: boolean;
+        /**
+         * The ID of the Ipv4 Gateway.
+         */
+        id: string;
+        /**
+         * The description of the IPv4 gateway.
+         */
+        ipv4GatewayDescription: string;
+        /**
+         * The resource attribute field that represents the resource level 1 ID.
+         */
+        ipv4GatewayId: string;
+        /**
+         * The name of the IPv4 gateway.
+         */
+        ipv4GatewayName: string;
+        /**
+         * ID of the route table associated with IPv4 Gateway.
+         */
+        ipv4GatewayRouteTableId: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The ID of the VPC associated with the IPv4 Gateway.
+         */
+        vpcId: string;
     }
 
     export interface GetIpv6AddressesAddress {
@@ -36294,6 +36521,110 @@ export namespace vpn {
         ipsecPfs?: string;
     }
 
+    export interface GatewayVpnAttachmentBgpConfig {
+        /**
+         * Whether to enable BGP.
+         */
+        enable: boolean;
+        /**
+         * The ASN on the Alibaba Cloud side.
+         */
+        localAsn: number;
+        /**
+         * The BGP IP address on the Alibaba Cloud side.
+         */
+        localBgpIp: string;
+        /**
+         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         */
+        tunnelCidr: string;
+    }
+
+    export interface GatewayVpnAttachmentHealthCheckConfig {
+        /**
+         * The destination IP address that is used for health checks.
+         */
+        dip: string;
+        /**
+         * Whether to enable BGP.
+         */
+        enable: boolean;
+        /**
+         * The interval between two consecutive health checks. Unit: seconds.
+         */
+        interval: number;
+        /**
+         * Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+         */
+        policy: string;
+        /**
+         * The maximum number of health check retries.
+         */
+        retry: number;
+        /**
+         * The source IP address that is used for health checks.
+         */
+        sip: string;
+    }
+
+    export interface GatewayVpnAttachmentIkeConfig {
+        /**
+         * IKE authentication algorithm supports sha1 and MD5.
+         */
+        ikeAuthAlg: string;
+        /**
+         * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+         */
+        ikeEncAlg?: string;
+        /**
+         * The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         */
+        ikeLifetime?: number;
+        /**
+         * The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+         */
+        ikeMode?: string;
+        /**
+         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         */
+        ikePfs?: string;
+        /**
+         * The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+         */
+        ikeVersion?: string;
+        /**
+         * The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+         */
+        localId?: string;
+        /**
+         * Used for authentication between the IPsec VPN gateway and the customer gateway.
+         */
+        psk?: string;
+        /**
+         * The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+         */
+        remoteId?: string;
+    }
+
+    export interface GatewayVpnAttachmentIpsecConfig {
+        /**
+         * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         */
+        ipsecAuthAlg?: string;
+        /**
+         * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         */
+        ipsecEncAlg?: string;
+        /**
+         * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         */
+        ipsecLifetime?: number;
+        /**
+         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         */
+        ipsecPfs?: string;
+    }
+
     export interface GetConnectionsConnection {
         createTime: string;
         /**
@@ -36414,6 +36745,174 @@ export namespace vpn {
          * The name of the VPN customer gateway.
          */
         name: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachment {
+        /**
+         * The configurations of the BGP routing protocol.
+         */
+        bgpConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentBgpConfig[];
+        /**
+         * The status of the IPsec-VPN connection.
+         */
+        connectionStatus: string;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The ID of the customer gateway.
+         */
+        customerGatewayId: string;
+        /**
+         * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+         */
+        effectImmediately: boolean;
+        /**
+         * The health check configurations.
+         */
+        healthCheckConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentHealthCheckConfig[];
+        /**
+         * The ID of the Vpn Attachment.
+         */
+        id: string;
+        /**
+         * Configuration negotiated in the second stage.
+         */
+        ikeConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentIkeConfig[];
+        /**
+         * The configuration of Phase 2 negotiations.
+         */
+        ipsecConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentIpsecConfig[];
+        /**
+         * The CIDR block of the virtual private cloud (VPC).
+         */
+        localSubnet: string;
+        /**
+         * The network type.
+         */
+        networkType: string;
+        /**
+         * The CIDR block of the on-premises data center.
+         */
+        remoteSubnet: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The name of the IPsec-VPN connection.
+         */
+        vpnAttachmentName: string;
+        /**
+         * The first ID of the resource.
+         */
+        vpnConnectionId: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentBgpConfig {
+        /**
+         * The ASN on the Alibaba Cloud side.
+         */
+        localAsn: string;
+        /**
+         * The BGP IP address on the Alibaba Cloud side.
+         */
+        localBgpIp: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         */
+        tunnelCidr: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
+        /**
+         * The destination IP address.
+         */
+        dip: string;
+        enable: boolean;
+        /**
+         * The interval between two consecutive health checks. Unit: seconds.
+         */
+        interval: number;
+        /**
+         * Whether to revoke the published route when the health check fails.
+         */
+        policy: string;
+        /**
+         * The maximum number of health check retries.
+         */
+        retry: number;
+        /**
+         * The source IP address.
+         */
+        sip: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentIkeConfig {
+        /**
+         * The IKE authentication algorithm.
+         */
+        ikeAuthAlg: string;
+        /**
+         * The IKE encryption algorithm.
+         */
+        ikeEncAlg: string;
+        /**
+         * The IKE lifetime. Unit: seconds.
+         */
+        ikeLifetime: string;
+        /**
+         * The IKE negotiation mode.
+         */
+        ikeMode: string;
+        /**
+         * The DH group.
+         */
+        ikePfs: string;
+        /**
+         * The version of the IKE protocol.
+         */
+        ikeVersion: string;
+        /**
+         * The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+         */
+        localId: string;
+        /**
+         * The pre-shared key.
+         */
+        psk: string;
+        /**
+         * The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+         */
+        remoteId: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentIpsecConfig {
+        /**
+         * The IPsec authentication algorithm.
+         */
+        ipsecAuthAlg: string;
+        /**
+         * The IPsec encryption algorithm.
+         */
+        ipsecEncAlg: string;
+        /**
+         * The IPsec lifetime. Unit: seconds.
+         */
+        ipsecLifetime: string;
+        /**
+         * The DH group.
+         */
+        ipsecPfs: string;
     }
 
     export interface GetGatewaysGateway {

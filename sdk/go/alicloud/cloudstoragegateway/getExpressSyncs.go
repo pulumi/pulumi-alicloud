@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cloudstoragegateway.GetExpressSyncs(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudStorageGatewayExpressSyncId1", ids.Syncs[0].Id)
-// 		nameRegex, err := cloudstoragegateway.GetExpressSyncs(ctx, &cloudstoragegateway.GetExpressSyncsArgs{
-// 			NameRegex: pulumi.StringRef("^my-ExpressSync"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudStorageGatewayExpressSyncId2", nameRegex.Syncs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudstoragegateway.GetExpressSyncs(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayExpressSyncId1", ids.Syncs[0].Id)
+//			nameRegex, err := cloudstoragegateway.GetExpressSyncs(ctx, &cloudstoragegateway.GetExpressSyncsArgs{
+//				NameRegex: pulumi.StringRef("^my-ExpressSync"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayExpressSyncId2", nameRegex.Syncs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetExpressSyncs(ctx *pulumi.Context, args *GetExpressSyncsArgs, opts ...pulumi.InvokeOption) (*GetExpressSyncsResult, error) {
 	var rv GetExpressSyncsResult

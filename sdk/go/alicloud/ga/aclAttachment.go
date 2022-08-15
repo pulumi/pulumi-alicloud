@@ -22,7 +22,9 @@ import (
 // Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
+//
+//	$ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
+//
 // ```
 type AclAttachment struct {
 	pulumi.CustomResourceState
@@ -165,7 +167,7 @@ func (i *AclAttachment) ToAclAttachmentOutputWithContext(ctx context.Context) Ac
 // AclAttachmentArrayInput is an input type that accepts AclAttachmentArray and AclAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclAttachmentArrayInput` via:
 //
-//          AclAttachmentArray{ AclAttachmentArgs{...} }
+//	AclAttachmentArray{ AclAttachmentArgs{...} }
 type AclAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -190,7 +192,7 @@ func (i AclAttachmentArray) ToAclAttachmentArrayOutputWithContext(ctx context.Co
 // AclAttachmentMapInput is an input type that accepts AclAttachmentMap and AclAttachmentMapOutput values.
 // You can construct a concrete instance of `AclAttachmentMapInput` via:
 //
-//          AclAttachmentMap{ "key": AclAttachmentArgs{...} }
+//	AclAttachmentMap{ "key": AclAttachmentArgs{...} }
 type AclAttachmentMapInput interface {
 	pulumi.Input
 

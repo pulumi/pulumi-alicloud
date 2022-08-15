@@ -21,32 +21,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewCustomProperty(ctx, "example", &eds.CustomPropertyArgs{
-// 			PropertyKey: pulumi.String("example_key"),
-// 			PropertyValues: eds.CustomPropertyPropertyValueArray{
-// 				&eds.CustomPropertyPropertyValueArgs{
-// 					PropertyValue: pulumi.String("example_value"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewCustomProperty(ctx, "example", &eds.CustomPropertyArgs{
+//				PropertyKey: pulumi.String("example_key"),
+//				PropertyValues: eds.CustomPropertyPropertyValueArray{
+//					&eds.CustomPropertyPropertyValueArgs{
+//						PropertyValue: pulumi.String("example_value"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // ECD Custom Property can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
+//
+//	$ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
+//
 // ```
 type CustomProperty struct {
 	pulumi.CustomResourceState
@@ -155,7 +160,7 @@ func (i *CustomProperty) ToCustomPropertyOutputWithContext(ctx context.Context) 
 // CustomPropertyArrayInput is an input type that accepts CustomPropertyArray and CustomPropertyArrayOutput values.
 // You can construct a concrete instance of `CustomPropertyArrayInput` via:
 //
-//          CustomPropertyArray{ CustomPropertyArgs{...} }
+//	CustomPropertyArray{ CustomPropertyArgs{...} }
 type CustomPropertyArrayInput interface {
 	pulumi.Input
 
@@ -180,7 +185,7 @@ func (i CustomPropertyArray) ToCustomPropertyArrayOutputWithContext(ctx context.
 // CustomPropertyMapInput is an input type that accepts CustomPropertyMap and CustomPropertyMapOutput values.
 // You can construct a concrete instance of `CustomPropertyMapInput` via:
 //
-//          CustomPropertyMap{ "key": CustomPropertyArgs{...} }
+//	CustomPropertyMap{ "key": CustomPropertyArgs{...} }
 type CustomPropertyMapInput interface {
 	pulumi.Input
 

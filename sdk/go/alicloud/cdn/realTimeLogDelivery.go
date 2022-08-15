@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cdn.NewRealTimeLogDelivery(ctx, "example", &cdn.RealTimeLogDeliveryArgs{
-// 			Domain:    pulumi.String("example_value"),
-// 			Logstore:  pulumi.String("example_value"),
-// 			Project:   pulumi.String("example_value"),
-// 			SlsRegion: pulumi.String("cn-hanghzou"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cdn.NewRealTimeLogDelivery(ctx, "example", &cdn.RealTimeLogDeliveryArgs{
+//				Domain:    pulumi.String("example_value"),
+//				Logstore:  pulumi.String("example_value"),
+//				Project:   pulumi.String("example_value"),
+//				SlsRegion: pulumi.String("cn-hanghzou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // CDN Real Time Log Delivery can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
+//
+//	$ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
+//
 // ```
 type RealTimeLogDelivery struct {
 	pulumi.CustomResourceState
@@ -186,7 +191,7 @@ func (i *RealTimeLogDelivery) ToRealTimeLogDeliveryOutputWithContext(ctx context
 // RealTimeLogDeliveryArrayInput is an input type that accepts RealTimeLogDeliveryArray and RealTimeLogDeliveryArrayOutput values.
 // You can construct a concrete instance of `RealTimeLogDeliveryArrayInput` via:
 //
-//          RealTimeLogDeliveryArray{ RealTimeLogDeliveryArgs{...} }
+//	RealTimeLogDeliveryArray{ RealTimeLogDeliveryArgs{...} }
 type RealTimeLogDeliveryArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +216,7 @@ func (i RealTimeLogDeliveryArray) ToRealTimeLogDeliveryArrayOutputWithContext(ct
 // RealTimeLogDeliveryMapInput is an input type that accepts RealTimeLogDeliveryMap and RealTimeLogDeliveryMapOutput values.
 // You can construct a concrete instance of `RealTimeLogDeliveryMapInput` via:
 //
-//          RealTimeLogDeliveryMap{ "key": RealTimeLogDeliveryArgs{...} }
+//	RealTimeLogDeliveryMap{ "key": RealTimeLogDeliveryArgs{...} }
 type RealTimeLogDeliveryMapInput interface {
 	pulumi.Input
 

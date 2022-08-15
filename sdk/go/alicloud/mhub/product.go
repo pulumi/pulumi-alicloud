@@ -21,27 +21,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mhub.NewProduct(ctx, "example", &mhub.ProductArgs{
-// 			ProductName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mhub.NewProduct(ctx, "example", &mhub.ProductArgs{
+//				ProductName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // MHUB Product can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mhub/product:Product example <id>
+//
+//	$ pulumi import alicloud:mhub/product:Product example <id>
+//
 // ```
 type Product struct {
 	pulumi.CustomResourceState
@@ -140,7 +145,7 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 // ProductArrayInput is an input type that accepts ProductArray and ProductArrayOutput values.
 // You can construct a concrete instance of `ProductArrayInput` via:
 //
-//          ProductArray{ ProductArgs{...} }
+//	ProductArray{ ProductArgs{...} }
 type ProductArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +170,7 @@ func (i ProductArray) ToProductArrayOutputWithContext(ctx context.Context) Produ
 // ProductMapInput is an input type that accepts ProductMap and ProductMapOutput values.
 // You can construct a concrete instance of `ProductMapInput` via:
 //
-//          ProductMap{ "key": ProductArgs{...} }
+//	ProductMap{ "key": ProductArgs{...} }
 type ProductMapInput interface {
 	pulumi.Input
 

@@ -35,7 +35,7 @@ type GetGatewaysGateway struct {
 // GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayInput` via:
 //
-//          GetGatewaysGatewayArgs{...}
+//	GetGatewaysGatewayArgs{...}
 type GetGatewaysGatewayInput interface {
 	pulumi.Input
 
@@ -80,7 +80,7 @@ func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx contex
 // GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
 //
-//          GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
+//	GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
 type GetGatewaysGatewayArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +211,7 @@ type GetGatewaysGatewayGatewayInstance struct {
 // GetGatewaysGatewayGatewayInstanceInput is an input type that accepts GetGatewaysGatewayGatewayInstanceArgs and GetGatewaysGatewayGatewayInstanceOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayGatewayInstanceInput` via:
 //
-//          GetGatewaysGatewayGatewayInstanceArgs{...}
+//	GetGatewaysGatewayGatewayInstanceArgs{...}
 type GetGatewaysGatewayGatewayInstanceInput interface {
 	pulumi.Input
 
@@ -257,7 +257,7 @@ func (i GetGatewaysGatewayGatewayInstanceArgs) ToGetGatewaysGatewayGatewayInstan
 // GetGatewaysGatewayGatewayInstanceArrayInput is an input type that accepts GetGatewaysGatewayGatewayInstanceArray and GetGatewaysGatewayGatewayInstanceArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayGatewayInstanceArrayInput` via:
 //
-//          GetGatewaysGatewayGatewayInstanceArray{ GetGatewaysGatewayGatewayInstanceArgs{...} }
+//	GetGatewaysGatewayGatewayInstanceArray{ GetGatewaysGatewayGatewayInstanceArgs{...} }
 type GetGatewaysGatewayGatewayInstanceArrayInput interface {
 	pulumi.Input
 

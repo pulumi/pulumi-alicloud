@@ -18,7 +18,7 @@ type InstanceParameter struct {
 // InstanceParameterInput is an input type that accepts InstanceParameterArgs and InstanceParameterOutput values.
 // You can construct a concrete instance of `InstanceParameterInput` via:
 //
-//          InstanceParameterArgs{...}
+//	InstanceParameterArgs{...}
 type InstanceParameterInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i InstanceParameterArgs) ToInstanceParameterOutputWithContext(ctx context.
 // InstanceParameterArrayInput is an input type that accepts InstanceParameterArray and InstanceParameterArrayOutput values.
 // You can construct a concrete instance of `InstanceParameterArrayInput` via:
 //
-//          InstanceParameterArray{ InstanceParameterArgs{...} }
+//	InstanceParameterArray{ InstanceParameterArgs{...} }
 type InstanceParameterArrayInput interface {
 	pulumi.Input
 
@@ -130,7 +130,7 @@ type GetAccountsAccount struct {
 // GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
 // You can construct a concrete instance of `GetAccountsAccountInput` via:
 //
-//          GetAccountsAccountArgs{...}
+//	GetAccountsAccountArgs{...}
 type GetAccountsAccountInput interface {
 	pulumi.Input
 
@@ -170,7 +170,7 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
-//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+//	GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
 type GetAccountsAccountArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +287,7 @@ type GetConnectionsConnection struct {
 // GetConnectionsConnectionInput is an input type that accepts GetConnectionsConnectionArgs and GetConnectionsConnectionOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionInput` via:
 //
-//          GetConnectionsConnectionArgs{...}
+//	GetConnectionsConnectionArgs{...}
 type GetConnectionsConnectionInput interface {
 	pulumi.Input
 
@@ -333,7 +333,7 @@ func (i GetConnectionsConnectionArgs) ToGetConnectionsConnectionOutputWithContex
 // GetConnectionsConnectionArrayInput is an input type that accepts GetConnectionsConnectionArray and GetConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionArrayInput` via:
 //
-//          GetConnectionsConnectionArray{ GetConnectionsConnectionArgs{...} }
+//	GetConnectionsConnectionArray{ GetConnectionsConnectionArgs{...} }
 type GetConnectionsConnectionArrayInput interface {
 	pulumi.Input
 
@@ -451,7 +451,7 @@ type GetInstanceClassesClass struct {
 // GetInstanceClassesClassInput is an input type that accepts GetInstanceClassesClassArgs and GetInstanceClassesClassOutput values.
 // You can construct a concrete instance of `GetInstanceClassesClassInput` via:
 //
-//          GetInstanceClassesClassArgs{...}
+//	GetInstanceClassesClassArgs{...}
 type GetInstanceClassesClassInput interface {
 	pulumi.Input
 
@@ -480,7 +480,7 @@ func (i GetInstanceClassesClassArgs) ToGetInstanceClassesClassOutputWithContext(
 // GetInstanceClassesClassArrayInput is an input type that accepts GetInstanceClassesClassArray and GetInstanceClassesClassArrayOutput values.
 // You can construct a concrete instance of `GetInstanceClassesClassArrayInput` via:
 //
-//          GetInstanceClassesClassArray{ GetInstanceClassesClassArgs{...} }
+//	GetInstanceClassesClassArray{ GetInstanceClassesClassArgs{...} }
 type GetInstanceClassesClassArrayInput interface {
 	pulumi.Input
 
@@ -557,7 +557,7 @@ type GetInstanceEnginesInstanceEngine struct {
 // GetInstanceEnginesInstanceEngineInput is an input type that accepts GetInstanceEnginesInstanceEngineArgs and GetInstanceEnginesInstanceEngineOutput values.
 // You can construct a concrete instance of `GetInstanceEnginesInstanceEngineInput` via:
 //
-//          GetInstanceEnginesInstanceEngineArgs{...}
+//	GetInstanceEnginesInstanceEngineArgs{...}
 type GetInstanceEnginesInstanceEngineInput interface {
 	pulumi.Input
 
@@ -589,7 +589,7 @@ func (i GetInstanceEnginesInstanceEngineArgs) ToGetInstanceEnginesInstanceEngine
 // GetInstanceEnginesInstanceEngineArrayInput is an input type that accepts GetInstanceEnginesInstanceEngineArray and GetInstanceEnginesInstanceEngineArrayOutput values.
 // You can construct a concrete instance of `GetInstanceEnginesInstanceEngineArrayInput` via:
 //
-//          GetInstanceEnginesInstanceEngineArray{ GetInstanceEnginesInstanceEngineArgs{...} }
+//	GetInstanceEnginesInstanceEngineArray{ GetInstanceEnginesInstanceEngineArgs{...} }
 type GetInstanceEnginesInstanceEngineArrayInput interface {
 	pulumi.Input
 
@@ -761,7 +761,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -882,7 +882,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1202,7 +1202,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -1232,7 +1232,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

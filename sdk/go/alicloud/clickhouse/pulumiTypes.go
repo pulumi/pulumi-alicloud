@@ -22,7 +22,7 @@ type DbClusterDbClusterAccessWhiteList struct {
 // DbClusterDbClusterAccessWhiteListInput is an input type that accepts DbClusterDbClusterAccessWhiteListArgs and DbClusterDbClusterAccessWhiteListOutput values.
 // You can construct a concrete instance of `DbClusterDbClusterAccessWhiteListInput` via:
 //
-//          DbClusterDbClusterAccessWhiteListArgs{...}
+//	DbClusterDbClusterAccessWhiteListArgs{...}
 type DbClusterDbClusterAccessWhiteListInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i DbClusterDbClusterAccessWhiteListArgs) ToDbClusterDbClusterAccessWhiteLi
 // DbClusterDbClusterAccessWhiteListArrayInput is an input type that accepts DbClusterDbClusterAccessWhiteListArray and DbClusterDbClusterAccessWhiteListArrayOutput values.
 // You can construct a concrete instance of `DbClusterDbClusterAccessWhiteListArrayInput` via:
 //
-//          DbClusterDbClusterAccessWhiteListArray{ DbClusterDbClusterAccessWhiteListArgs{...} }
+//	DbClusterDbClusterAccessWhiteListArray{ DbClusterDbClusterAccessWhiteListArgs{...} }
 type DbClusterDbClusterAccessWhiteListArrayInput interface {
 	pulumi.Input
 
@@ -143,7 +143,7 @@ type GetAccountsAccount struct {
 // GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
 // You can construct a concrete instance of `GetAccountsAccountInput` via:
 //
-//          GetAccountsAccountArgs{...}
+//	GetAccountsAccountArgs{...}
 type GetAccountsAccountInput interface {
 	pulumi.Input
 
@@ -181,7 +181,7 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
-//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+//	GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
 type GetAccountsAccountArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +285,7 @@ type GetBackupPoliciesPolicy struct {
 // GetBackupPoliciesPolicyInput is an input type that accepts GetBackupPoliciesPolicyArgs and GetBackupPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetBackupPoliciesPolicyInput` via:
 //
-//          GetBackupPoliciesPolicyArgs{...}
+//	GetBackupPoliciesPolicyArgs{...}
 type GetBackupPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -323,7 +323,7 @@ func (i GetBackupPoliciesPolicyArgs) ToGetBackupPoliciesPolicyOutputWithContext(
 // GetBackupPoliciesPolicyArrayInput is an input type that accepts GetBackupPoliciesPolicyArray and GetBackupPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetBackupPoliciesPolicyArrayInput` via:
 //
-//          GetBackupPoliciesPolicyArray{ GetBackupPoliciesPolicyArgs{...} }
+//	GetBackupPoliciesPolicyArray{ GetBackupPoliciesPolicyArgs{...} }
 type GetBackupPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -492,7 +492,7 @@ type GetDbClustersCluster struct {
 // GetDbClustersClusterInput is an input type that accepts GetDbClustersClusterArgs and GetDbClustersClusterOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterInput` via:
 //
-//          GetDbClustersClusterArgs{...}
+//	GetDbClustersClusterArgs{...}
 type GetDbClustersClusterInput interface {
 	pulumi.Input
 
@@ -595,7 +595,7 @@ func (i GetDbClustersClusterArgs) ToGetDbClustersClusterOutputWithContext(ctx co
 // GetDbClustersClusterArrayInput is an input type that accepts GetDbClustersClusterArray and GetDbClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterArrayInput` via:
 //
-//          GetDbClustersClusterArray{ GetDbClustersClusterArgs{...} }
+//	GetDbClustersClusterArray{ GetDbClustersClusterArgs{...} }
 type GetDbClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -859,7 +859,7 @@ type GetDbClustersClusterDbClusterAccessWhiteList struct {
 // GetDbClustersClusterDbClusterAccessWhiteListInput is an input type that accepts GetDbClustersClusterDbClusterAccessWhiteListArgs and GetDbClustersClusterDbClusterAccessWhiteListOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterDbClusterAccessWhiteListInput` via:
 //
-//          GetDbClustersClusterDbClusterAccessWhiteListArgs{...}
+//	GetDbClustersClusterDbClusterAccessWhiteListArgs{...}
 type GetDbClustersClusterDbClusterAccessWhiteListInput interface {
 	pulumi.Input
 
@@ -891,7 +891,7 @@ func (i GetDbClustersClusterDbClusterAccessWhiteListArgs) ToGetDbClustersCluster
 // GetDbClustersClusterDbClusterAccessWhiteListArrayInput is an input type that accepts GetDbClustersClusterDbClusterAccessWhiteListArray and GetDbClustersClusterDbClusterAccessWhiteListArrayOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterDbClusterAccessWhiteListArrayInput` via:
 //
-//          GetDbClustersClusterDbClusterAccessWhiteListArray{ GetDbClustersClusterDbClusterAccessWhiteListArgs{...} }
+//	GetDbClustersClusterDbClusterAccessWhiteListArray{ GetDbClustersClusterDbClusterAccessWhiteListArgs{...} }
 type GetDbClustersClusterDbClusterAccessWhiteListArrayInput interface {
 	pulumi.Input
 
@@ -972,7 +972,7 @@ type GetDbClustersClusterScaleOutStatus struct {
 // GetDbClustersClusterScaleOutStatusInput is an input type that accepts GetDbClustersClusterScaleOutStatusArgs and GetDbClustersClusterScaleOutStatusOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterScaleOutStatusInput` via:
 //
-//          GetDbClustersClusterScaleOutStatusArgs{...}
+//	GetDbClustersClusterScaleOutStatusArgs{...}
 type GetDbClustersClusterScaleOutStatusInput interface {
 	pulumi.Input
 
@@ -1002,7 +1002,7 @@ func (i GetDbClustersClusterScaleOutStatusArgs) ToGetDbClustersClusterScaleOutSt
 // GetDbClustersClusterScaleOutStatusArrayInput is an input type that accepts GetDbClustersClusterScaleOutStatusArray and GetDbClustersClusterScaleOutStatusArrayOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterScaleOutStatusArrayInput` via:
 //
-//          GetDbClustersClusterScaleOutStatusArray{ GetDbClustersClusterScaleOutStatusArgs{...} }
+//	GetDbClustersClusterScaleOutStatusArray{ GetDbClustersClusterScaleOutStatusArgs{...} }
 type GetDbClustersClusterScaleOutStatusArrayInput interface {
 	pulumi.Input
 
@@ -1078,7 +1078,7 @@ type GetRegionsRegion struct {
 // GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
 // You can construct a concrete instance of `GetRegionsRegionInput` via:
 //
-//          GetRegionsRegionArgs{...}
+//	GetRegionsRegionArgs{...}
 type GetRegionsRegionInput interface {
 	pulumi.Input
 
@@ -1108,7 +1108,7 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
-//          GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
+//	GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
 type GetRegionsRegionArrayInput interface {
 	pulumi.Input
 
@@ -1184,7 +1184,7 @@ type GetRegionsRegionZoneId struct {
 // GetRegionsRegionZoneIdInput is an input type that accepts GetRegionsRegionZoneIdArgs and GetRegionsRegionZoneIdOutput values.
 // You can construct a concrete instance of `GetRegionsRegionZoneIdInput` via:
 //
-//          GetRegionsRegionZoneIdArgs{...}
+//	GetRegionsRegionZoneIdArgs{...}
 type GetRegionsRegionZoneIdInput interface {
 	pulumi.Input
 
@@ -1214,7 +1214,7 @@ func (i GetRegionsRegionZoneIdArgs) ToGetRegionsRegionZoneIdOutputWithContext(ct
 // GetRegionsRegionZoneIdArrayInput is an input type that accepts GetRegionsRegionZoneIdArray and GetRegionsRegionZoneIdArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionZoneIdArrayInput` via:
 //
-//          GetRegionsRegionZoneIdArray{ GetRegionsRegionZoneIdArgs{...} }
+//	GetRegionsRegionZoneIdArray{ GetRegionsRegionZoneIdArgs{...} }
 type GetRegionsRegionZoneIdArrayInput interface {
 	pulumi.Input
 

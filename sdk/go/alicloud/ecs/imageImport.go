@@ -25,37 +25,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewImageImport(ctx, "this", &ecs.ImageImportArgs{
-// 			Architecture: pulumi.String("x86_64"),
-// 			Description:  pulumi.String("test import image"),
-// 			DiskDeviceMappings: ecs.ImageImportDiskDeviceMappingArray{
-// 				&ecs.ImageImportDiskDeviceMappingArgs{
-// 					DiskImageSize: pulumi.Int(5),
-// 					OssBucket:     pulumi.String("testimportimage"),
-// 					OssObject:     pulumi.String("root.img"),
-// 				},
-// 			},
-// 			ImageName:   pulumi.String("test-import-image"),
-// 			LicenseType: pulumi.String("Auto"),
-// 			OsType:      pulumi.String("linux"),
-// 			Platform:    pulumi.String("Ubuntu"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewImageImport(ctx, "this", &ecs.ImageImportArgs{
+//				Architecture: pulumi.String("x86_64"),
+//				Description:  pulumi.String("test import image"),
+//				DiskDeviceMappings: ecs.ImageImportDiskDeviceMappingArray{
+//					&ecs.ImageImportDiskDeviceMappingArgs{
+//						DiskImageSize: pulumi.Int(5),
+//						OssBucket:     pulumi.String("testimportimage"),
+//						OssObject:     pulumi.String("root.img"),
+//					},
+//				},
+//				ImageName:   pulumi.String("test-import-image"),
+//				LicenseType: pulumi.String("Auto"),
+//				OsType:      pulumi.String("linux"),
+//				Platform:    pulumi.String("Ubuntu"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes Reference0
 //
-//  The following attributes are exported:
+//	The following attributes are exported:
 //
 // * `id` - ID of the image.
 //
@@ -64,7 +67,9 @@ import (
 // image can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/imageImport:ImageImport default m-uf66871ape***yg1q***
+//
+//	$ pulumi import alicloud:ecs/imageImport:ImageImport default m-uf66871ape***yg1q***
+//
 // ```
 type ImageImport struct {
 	pulumi.CustomResourceState
@@ -215,7 +220,7 @@ func (i *ImageImport) ToImageImportOutputWithContext(ctx context.Context) ImageI
 // ImageImportArrayInput is an input type that accepts ImageImportArray and ImageImportArrayOutput values.
 // You can construct a concrete instance of `ImageImportArrayInput` via:
 //
-//          ImageImportArray{ ImageImportArgs{...} }
+//	ImageImportArray{ ImageImportArgs{...} }
 type ImageImportArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +245,7 @@ func (i ImageImportArray) ToImageImportArrayOutputWithContext(ctx context.Contex
 // ImageImportMapInput is an input type that accepts ImageImportMap and ImageImportMapOutput values.
 // You can construct a concrete instance of `ImageImportMapInput` via:
 //
-//          ImageImportMap{ "key": ImageImportArgs{...} }
+//	ImageImportMap{ "key": ImageImportArgs{...} }
 type ImageImportMapInput interface {
 	pulumi.Input
 

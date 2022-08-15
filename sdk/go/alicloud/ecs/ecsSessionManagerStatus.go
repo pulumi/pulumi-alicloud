@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsSessionManagerStatus(ctx, "default", &ecs.EcsSessionManagerStatusArgs{
-// 			SessionManagerStatusName: pulumi.String("sessionManagerStatus"),
-// 			Status:                   pulumi.String("Disabled"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsSessionManagerStatus(ctx, "default", &ecs.EcsSessionManagerStatusArgs{
+//				SessionManagerStatusName: pulumi.String("sessionManagerStatus"),
+//				Status:                   pulumi.String("Disabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // ECS Session Manager Status can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+//
+//	$ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+//
 // ```
 type EcsSessionManagerStatus struct {
 	pulumi.CustomResourceState
@@ -152,7 +157,7 @@ func (i *EcsSessionManagerStatus) ToEcsSessionManagerStatusOutputWithContext(ctx
 // EcsSessionManagerStatusArrayInput is an input type that accepts EcsSessionManagerStatusArray and EcsSessionManagerStatusArrayOutput values.
 // You can construct a concrete instance of `EcsSessionManagerStatusArrayInput` via:
 //
-//          EcsSessionManagerStatusArray{ EcsSessionManagerStatusArgs{...} }
+//	EcsSessionManagerStatusArray{ EcsSessionManagerStatusArgs{...} }
 type EcsSessionManagerStatusArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +182,7 @@ func (i EcsSessionManagerStatusArray) ToEcsSessionManagerStatusArrayOutputWithCo
 // EcsSessionManagerStatusMapInput is an input type that accepts EcsSessionManagerStatusMap and EcsSessionManagerStatusMapOutput values.
 // You can construct a concrete instance of `EcsSessionManagerStatusMapInput` via:
 //
-//          EcsSessionManagerStatusMap{ "key": EcsSessionManagerStatusArgs{...} }
+//	EcsSessionManagerStatusMap{ "key": EcsSessionManagerStatusArgs{...} }
 type EcsSessionManagerStatusMapInput interface {
 	pulumi.Input
 

@@ -18,14 +18,14 @@ public final class GatewayBlockVolumeArgs extends com.pulumi.resources.ResourceA
     public static final GatewayBlockVolumeArgs Empty = new GatewayBlockVolumeArgs();
 
     /**
-     * The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
     @Import(name="cacheMode")
     private @Nullable Output<String> cacheMode;
 
     /**
-     * @return The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * @return The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
     public Optional<Output<String>> cacheMode() {
@@ -281,7 +281,7 @@ public final class GatewayBlockVolumeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cacheMode The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+         * @param cacheMode The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class GatewayBlockVolumeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cacheMode The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+         * @param cacheMode The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
          * 
          * @return builder
          * 

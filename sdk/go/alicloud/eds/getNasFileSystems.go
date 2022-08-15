@@ -16,46 +16,49 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:            pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType:    pulumi.String("Internet"),
-// 			OfficeSiteName:       pulumi.String("your_office_site_name"),
-// 			EnableInternetAccess: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNasFileSystem, err := eds.NewNasFileSystem(ctx, "defaultNasFileSystem", &eds.NasFileSystemArgs{
-// 			Description:       pulumi.String("your_description"),
-// 			OfficeSiteId:      defaultSimpleOfficeSite.ID(),
-// 			NasFileSystemName: pulumi.String("your_nas_file_system_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ids, err := eds.GetNasFileSystems(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("ecdNasFileSystemId1", ids.Systems[0].Id)
-// 		ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (string, error) {
-// 			return nameRegex.Systems[0].Id, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:            pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType:    pulumi.String("Internet"),
+//				OfficeSiteName:       pulumi.String("your_office_site_name"),
+//				EnableInternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNasFileSystem, err := eds.NewNasFileSystem(ctx, "defaultNasFileSystem", &eds.NasFileSystemArgs{
+//				Description:       pulumi.String("your_description"),
+//				OfficeSiteId:      defaultSimpleOfficeSite.ID(),
+//				NasFileSystemName: pulumi.String("your_nas_file_system_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids, err := eds.GetNasFileSystems(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecdNasFileSystemId1", ids.Systems[0].Id)
+//			ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (string, error) {
+//				return nameRegex.Systems[0].Id, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNasFileSystems(ctx *pulumi.Context, args *GetNasFileSystemsArgs, opts ...pulumi.InvokeOption) (*GetNasFileSystemsResult, error) {
 	var rv GetNasFileSystemsResult

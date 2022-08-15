@@ -20,7 +20,7 @@ type TablePrimaryKey struct {
 // TablePrimaryKeyInput is an input type that accepts TablePrimaryKeyArgs and TablePrimaryKeyOutput values.
 // You can construct a concrete instance of `TablePrimaryKeyInput` via:
 //
-//          TablePrimaryKeyArgs{...}
+//	TablePrimaryKeyArgs{...}
 type TablePrimaryKeyInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i TablePrimaryKeyArgs) ToTablePrimaryKeyOutputWithContext(ctx context.Cont
 // TablePrimaryKeyArrayInput is an input type that accepts TablePrimaryKeyArray and TablePrimaryKeyArrayOutput values.
 // You can construct a concrete instance of `TablePrimaryKeyArrayInput` via:
 //
-//          TablePrimaryKeyArray{ TablePrimaryKeyArgs{...} }
+//	TablePrimaryKeyArray{ TablePrimaryKeyArgs{...} }
 type TablePrimaryKeyArrayInput interface {
 	pulumi.Input
 
@@ -132,7 +132,7 @@ type TunnelChannel struct {
 // TunnelChannelInput is an input type that accepts TunnelChannelArgs and TunnelChannelOutput values.
 // You can construct a concrete instance of `TunnelChannelInput` via:
 //
-//          TunnelChannelArgs{...}
+//	TunnelChannelArgs{...}
 type TunnelChannelInput interface {
 	pulumi.Input
 
@@ -168,7 +168,7 @@ func (i TunnelChannelArgs) ToTunnelChannelOutputWithContext(ctx context.Context)
 // TunnelChannelArrayInput is an input type that accepts TunnelChannelArray and TunnelChannelArrayOutput values.
 // You can construct a concrete instance of `TunnelChannelArrayInput` via:
 //
-//          TunnelChannelArray{ TunnelChannelArgs{...} }
+//	TunnelChannelArray{ TunnelChannelArgs{...} }
 type TunnelChannelArrayInput interface {
 	pulumi.Input
 
@@ -269,7 +269,7 @@ type GetInstanceAttachmentsAttachment struct {
 // GetInstanceAttachmentsAttachmentInput is an input type that accepts GetInstanceAttachmentsAttachmentArgs and GetInstanceAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetInstanceAttachmentsAttachmentInput` via:
 //
-//          GetInstanceAttachmentsAttachmentArgs{...}
+//	GetInstanceAttachmentsAttachmentArgs{...}
 type GetInstanceAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -309,7 +309,7 @@ func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachment
 // GetInstanceAttachmentsAttachmentArrayInput is an input type that accepts GetInstanceAttachmentsAttachmentArray and GetInstanceAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetInstanceAttachmentsAttachmentArrayInput` via:
 //
-//          GetInstanceAttachmentsAttachmentArray{ GetInstanceAttachmentsAttachmentArgs{...} }
+//	GetInstanceAttachmentsAttachmentArray{ GetInstanceAttachmentsAttachmentArgs{...} }
 type GetInstanceAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -453,7 +453,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -526,7 +526,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -612,24 +612,27 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-// 			Tags: map[string]interface{}{
-// 				"tagKey1": "tagValue1",
-// 				"tagKey2": "tagValue2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
@@ -683,7 +686,7 @@ type GetTablesTable struct {
 // GetTablesTableInput is an input type that accepts GetTablesTableArgs and GetTablesTableOutput values.
 // You can construct a concrete instance of `GetTablesTableInput` via:
 //
-//          GetTablesTableArgs{...}
+//	GetTablesTableArgs{...}
 type GetTablesTableInput interface {
 	pulumi.Input
 
@@ -721,7 +724,7 @@ func (i GetTablesTableArgs) ToGetTablesTableOutputWithContext(ctx context.Contex
 // GetTablesTableArrayInput is an input type that accepts GetTablesTableArray and GetTablesTableArrayOutput values.
 // You can construct a concrete instance of `GetTablesTableArrayInput` via:
 //
-//          GetTablesTableArray{ GetTablesTableArgs{...} }
+//	GetTablesTableArray{ GetTablesTableArgs{...} }
 type GetTablesTableArrayInput interface {
 	pulumi.Input
 
@@ -815,7 +818,7 @@ type GetTablesTablePrimaryKey struct {
 // GetTablesTablePrimaryKeyInput is an input type that accepts GetTablesTablePrimaryKeyArgs and GetTablesTablePrimaryKeyOutput values.
 // You can construct a concrete instance of `GetTablesTablePrimaryKeyInput` via:
 //
-//          GetTablesTablePrimaryKeyArgs{...}
+//	GetTablesTablePrimaryKeyArgs{...}
 type GetTablesTablePrimaryKeyInput interface {
 	pulumi.Input
 
@@ -843,7 +846,7 @@ func (i GetTablesTablePrimaryKeyArgs) ToGetTablesTablePrimaryKeyOutputWithContex
 // GetTablesTablePrimaryKeyArrayInput is an input type that accepts GetTablesTablePrimaryKeyArray and GetTablesTablePrimaryKeyArrayOutput values.
 // You can construct a concrete instance of `GetTablesTablePrimaryKeyArrayInput` via:
 //
-//          GetTablesTablePrimaryKeyArray{ GetTablesTablePrimaryKeyArgs{...} }
+//	GetTablesTablePrimaryKeyArray{ GetTablesTablePrimaryKeyArgs{...} }
 type GetTablesTablePrimaryKeyArrayInput interface {
 	pulumi.Input
 
@@ -935,7 +938,7 @@ type GetTunnelsTunnel struct {
 // GetTunnelsTunnelInput is an input type that accepts GetTunnelsTunnelArgs and GetTunnelsTunnelOutput values.
 // You can construct a concrete instance of `GetTunnelsTunnelInput` via:
 //
-//          GetTunnelsTunnelArgs{...}
+//	GetTunnelsTunnelArgs{...}
 type GetTunnelsTunnelInput interface {
 	pulumi.Input
 
@@ -983,7 +986,7 @@ func (i GetTunnelsTunnelArgs) ToGetTunnelsTunnelOutputWithContext(ctx context.Co
 // GetTunnelsTunnelArrayInput is an input type that accepts GetTunnelsTunnelArray and GetTunnelsTunnelArrayOutput values.
 // You can construct a concrete instance of `GetTunnelsTunnelArrayInput` via:
 //
-//          GetTunnelsTunnelArray{ GetTunnelsTunnelArgs{...} }
+//	GetTunnelsTunnelArray{ GetTunnelsTunnelArgs{...} }
 type GetTunnelsTunnelArrayInput interface {
 	pulumi.Input
 
@@ -1110,7 +1113,7 @@ type GetTunnelsTunnelChannel struct {
 // GetTunnelsTunnelChannelInput is an input type that accepts GetTunnelsTunnelChannelArgs and GetTunnelsTunnelChannelOutput values.
 // You can construct a concrete instance of `GetTunnelsTunnelChannelInput` via:
 //
-//          GetTunnelsTunnelChannelArgs{...}
+//	GetTunnelsTunnelChannelArgs{...}
 type GetTunnelsTunnelChannelInput interface {
 	pulumi.Input
 
@@ -1146,7 +1149,7 @@ func (i GetTunnelsTunnelChannelArgs) ToGetTunnelsTunnelChannelOutputWithContext(
 // GetTunnelsTunnelChannelArrayInput is an input type that accepts GetTunnelsTunnelChannelArray and GetTunnelsTunnelChannelArrayOutput values.
 // You can construct a concrete instance of `GetTunnelsTunnelChannelArrayInput` via:
 //
-//          GetTunnelsTunnelChannelArray{ GetTunnelsTunnelChannelArgs{...} }
+//	GetTunnelsTunnelChannelArray{ GetTunnelsTunnelChannelArgs{...} }
 type GetTunnelsTunnelChannelArrayInput interface {
 	pulumi.Input
 

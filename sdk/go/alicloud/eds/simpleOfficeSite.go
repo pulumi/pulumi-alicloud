@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
-// 			Bandwidth:         pulumi.Int(5),
-// 			CidrBlock:         pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType: pulumi.String("Internet"),
-// 			OfficeSiteName:    pulumi.String("site_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//				Bandwidth:         pulumi.Int(5),
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String("site_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // ECD Simple Office Site can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
+//
+//	$ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
+//
 // ```
 type SimpleOfficeSite struct {
 	pulumi.CustomResourceState
@@ -267,7 +272,7 @@ func (i *SimpleOfficeSite) ToSimpleOfficeSiteOutputWithContext(ctx context.Conte
 // SimpleOfficeSiteArrayInput is an input type that accepts SimpleOfficeSiteArray and SimpleOfficeSiteArrayOutput values.
 // You can construct a concrete instance of `SimpleOfficeSiteArrayInput` via:
 //
-//          SimpleOfficeSiteArray{ SimpleOfficeSiteArgs{...} }
+//	SimpleOfficeSiteArray{ SimpleOfficeSiteArgs{...} }
 type SimpleOfficeSiteArrayInput interface {
 	pulumi.Input
 
@@ -292,7 +297,7 @@ func (i SimpleOfficeSiteArray) ToSimpleOfficeSiteArrayOutputWithContext(ctx cont
 // SimpleOfficeSiteMapInput is an input type that accepts SimpleOfficeSiteMap and SimpleOfficeSiteMapOutput values.
 // You can construct a concrete instance of `SimpleOfficeSiteMapInput` via:
 //
-//          SimpleOfficeSiteMap{ "key": SimpleOfficeSiteArgs{...} }
+//	SimpleOfficeSiteMap{ "key": SimpleOfficeSiteArgs{...} }
 type SimpleOfficeSiteMapInput interface {
 	pulumi.Input
 

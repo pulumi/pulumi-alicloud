@@ -106,9 +106,17 @@ public final class NatIpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.natIpDescription);
     }
 
+    /**
+     * Ihe ID of the Nat Ip.
+     * 
+     */
     @Import(name="natIpId")
     private @Nullable Output<String> natIpId;
 
+    /**
+     * @return Ihe ID of the Nat Ip.
+     * 
+     */
     public Optional<Output<String>> natIpId() {
         return Optional.ofNullable(this.natIpId);
     }
@@ -301,11 +309,23 @@ public final class NatIpState extends com.pulumi.resources.ResourceArgs {
             return natIpDescription(Output.of(natIpDescription));
         }
 
+        /**
+         * @param natIpId Ihe ID of the Nat Ip.
+         * 
+         * @return builder
+         * 
+         */
         public Builder natIpId(@Nullable Output<String> natIpId) {
             $.natIpId = natIpId;
             return this;
         }
 
+        /**
+         * @param natIpId Ihe ID of the Nat Ip.
+         * 
+         * @return builder
+         * 
+         */
         public Builder natIpId(String natIpId) {
             return natIpId(Output.of(natIpId));
         }

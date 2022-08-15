@@ -19,62 +19,65 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
-// 			FileSystemType: pulumi.StringRef("cpfs"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneId),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
-// 			ProtocolType:   pulumi.String("cpfs"),
-// 			StorageType:    pulumi.String("advance_200"),
-// 			FileSystemType: pulumi.String("cpfs"),
-// 			Capacity:       pulumi.Int(3600),
-// 			Description:    pulumi.String("tf-testacc"),
-// 			ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
-// 			VpcId:          pulumi.String(defaultNetworks.Ids[0]),
-// 			VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewFileset(ctx, "defaultFileset", &nas.FilesetArgs{
-// 			FileSystemId:   defaultFileSystem.ID(),
-// 			FileSystemPath: pulumi.String("/example_path/"),
-// 			Description:    pulumi.String("tf-testacc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("cpfs"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//				ProtocolType:   pulumi.String("cpfs"),
+//				StorageType:    pulumi.String("advance_200"),
+//				FileSystemType: pulumi.String("cpfs"),
+//				Capacity:       pulumi.Int(3600),
+//				Description:    pulumi.String("tf-testacc"),
+//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
+//				VpcId:          pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewFileset(ctx, "defaultFileset", &nas.FilesetArgs{
+//				FileSystemId:   defaultFileSystem.ID(),
+//				FileSystemPath: pulumi.String("/example_path/"),
+//				Description:    pulumi.String("tf-testacc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +85,9 @@ import (
 // Network Attached Storage (NAS) Fileset can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
+//
+//	$ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
+//
 // ```
 type Fileset struct {
 	pulumi.CustomResourceState
@@ -218,7 +223,7 @@ func (i *Fileset) ToFilesetOutputWithContext(ctx context.Context) FilesetOutput 
 // FilesetArrayInput is an input type that accepts FilesetArray and FilesetArrayOutput values.
 // You can construct a concrete instance of `FilesetArrayInput` via:
 //
-//          FilesetArray{ FilesetArgs{...} }
+//	FilesetArray{ FilesetArgs{...} }
 type FilesetArrayInput interface {
 	pulumi.Input
 
@@ -243,7 +248,7 @@ func (i FilesetArray) ToFilesetArrayOutputWithContext(ctx context.Context) Files
 // FilesetMapInput is an input type that accepts FilesetMap and FilesetMapOutput values.
 // You can construct a concrete instance of `FilesetMapInput` via:
 //
-//          FilesetMap{ "key": FilesetArgs{...} }
+//	FilesetMap{ "key": FilesetArgs{...} }
 type FilesetMapInput interface {
 	pulumi.Input
 

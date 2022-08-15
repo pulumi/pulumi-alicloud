@@ -21,7 +21,9 @@ import (
 // ECS Snapshot Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example <id>
+//
 // ```
 type EcsSnapshotGroup struct {
 	pulumi.CustomResourceState
@@ -195,7 +197,7 @@ func (i *EcsSnapshotGroup) ToEcsSnapshotGroupOutputWithContext(ctx context.Conte
 // EcsSnapshotGroupArrayInput is an input type that accepts EcsSnapshotGroupArray and EcsSnapshotGroupArrayOutput values.
 // You can construct a concrete instance of `EcsSnapshotGroupArrayInput` via:
 //
-//          EcsSnapshotGroupArray{ EcsSnapshotGroupArgs{...} }
+//	EcsSnapshotGroupArray{ EcsSnapshotGroupArgs{...} }
 type EcsSnapshotGroupArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +222,7 @@ func (i EcsSnapshotGroupArray) ToEcsSnapshotGroupArrayOutputWithContext(ctx cont
 // EcsSnapshotGroupMapInput is an input type that accepts EcsSnapshotGroupMap and EcsSnapshotGroupMapOutput values.
 // You can construct a concrete instance of `EcsSnapshotGroupMapInput` via:
 //
-//          EcsSnapshotGroupMap{ "key": EcsSnapshotGroupArgs{...} }
+//	EcsSnapshotGroupMap{ "key": EcsSnapshotGroupArgs{...} }
 type EcsSnapshotGroupMapInput interface {
 	pulumi.Input
 

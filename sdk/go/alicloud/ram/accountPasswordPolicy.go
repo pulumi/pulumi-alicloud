@@ -18,48 +18,54 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewAccountPasswordPolicy(ctx, "default", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewAccountPasswordPolicy(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewAccountPasswordPolicy(ctx, "corporate", &ram.AccountPasswordPolicyArgs{
-// 			HardExpiry:                 pulumi.Bool(true),
-// 			MaxLoginAttempts:           pulumi.Int(3),
-// 			MaxPasswordAge:             pulumi.Int(12),
-// 			MinimumPasswordLength:      pulumi.Int(9),
-// 			PasswordReusePrevention:    pulumi.Int(5),
-// 			RequireLowercaseCharacters: pulumi.Bool(false),
-// 			RequireNumbers:             pulumi.Bool(false),
-// 			RequireSymbols:             pulumi.Bool(false),
-// 			RequireUppercaseCharacters: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewAccountPasswordPolicy(ctx, "corporate", &ram.AccountPasswordPolicyArgs{
+//				HardExpiry:                 pulumi.Bool(true),
+//				MaxLoginAttempts:           pulumi.Int(3),
+//				MaxPasswordAge:             pulumi.Int(12),
+//				MinimumPasswordLength:      pulumi.Int(9),
+//				PasswordReusePrevention:    pulumi.Int(5),
+//				RequireLowercaseCharacters: pulumi.Bool(false),
+//				RequireNumbers:             pulumi.Bool(false),
+//				RequireSymbols:             pulumi.Bool(false),
+//				RequireUppercaseCharacters: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // For not specified values sets defaults.
 //
@@ -68,7 +74,9 @@ import (
 // RAM account password policy can be imported using the `id`, e.g. bash
 //
 // ```sh
-//  $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+//
+//	$ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+//
 // ```
 type AccountPasswordPolicy struct {
 	pulumi.CustomResourceState
@@ -236,7 +244,7 @@ func (i *AccountPasswordPolicy) ToAccountPasswordPolicyOutputWithContext(ctx con
 // AccountPasswordPolicyArrayInput is an input type that accepts AccountPasswordPolicyArray and AccountPasswordPolicyArrayOutput values.
 // You can construct a concrete instance of `AccountPasswordPolicyArrayInput` via:
 //
-//          AccountPasswordPolicyArray{ AccountPasswordPolicyArgs{...} }
+//	AccountPasswordPolicyArray{ AccountPasswordPolicyArgs{...} }
 type AccountPasswordPolicyArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +269,7 @@ func (i AccountPasswordPolicyArray) ToAccountPasswordPolicyArrayOutputWithContex
 // AccountPasswordPolicyMapInput is an input type that accepts AccountPasswordPolicyMap and AccountPasswordPolicyMapOutput values.
 // You can construct a concrete instance of `AccountPasswordPolicyMapInput` via:
 //
-//          AccountPasswordPolicyMap{ "key": AccountPasswordPolicyArgs{...} }
+//	AccountPasswordPolicyMap{ "key": AccountPasswordPolicyArgs{...} }
 type AccountPasswordPolicyMapInput interface {
 	pulumi.Input
 

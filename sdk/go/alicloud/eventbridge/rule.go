@@ -19,54 +19,57 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleEventBus, err := eventbridge.NewEventBus(ctx, "exampleEventBus", &eventbridge.EventBusArgs{
-// 			EventBusName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eventbridge.NewRule(ctx, "exampleRule", &eventbridge.RuleArgs{
-// 			EventBusName:  exampleEventBus.ID(),
-// 			RuleName:      pulumi.Any(_var.Name),
-// 			Description:   pulumi.String("test"),
-// 			FilterPattern: pulumi.String("{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}"),
-// 			Targets: eventbridge.RuleTargetArray{
-// 				&eventbridge.RuleTargetArgs{
-// 					TargetId: pulumi.String("tf-test"),
-// 					Endpoint: pulumi.String("acs:mns:cn-hangzhou:118938335****:queues/tf-test"),
-// 					Type:     pulumi.String("acs.mns.queue"),
-// 					ParamLists: eventbridge.RuleTargetParamListArray{
-// 						&eventbridge.RuleTargetParamListArgs{
-// 							ResourceKey: pulumi.String("queue"),
-// 							Form:        pulumi.String("CONSTANT"),
-// 							Value:       pulumi.String("tf-testaccEbRule"),
-// 						},
-// 						&eventbridge.RuleTargetParamListArgs{
-// 							ResourceKey: pulumi.String("Body"),
-// 							Form:        pulumi.String("ORIGINAL"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleEventBus, err := eventbridge.NewEventBus(ctx, "exampleEventBus", &eventbridge.EventBusArgs{
+//				EventBusName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eventbridge.NewRule(ctx, "exampleRule", &eventbridge.RuleArgs{
+//				EventBusName:  exampleEventBus.ID(),
+//				RuleName:      pulumi.Any(_var.Name),
+//				Description:   pulumi.String("test"),
+//				FilterPattern: pulumi.String("{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}"),
+//				Targets: eventbridge.RuleTargetArray{
+//					&eventbridge.RuleTargetArgs{
+//						TargetId: pulumi.String("tf-test"),
+//						Endpoint: pulumi.String("acs:mns:cn-hangzhou:118938335****:queues/tf-test"),
+//						Type:     pulumi.String("acs.mns.queue"),
+//						ParamLists: eventbridge.RuleTargetParamListArray{
+//							&eventbridge.RuleTargetParamListArgs{
+//								ResourceKey: pulumi.String("queue"),
+//								Form:        pulumi.String("CONSTANT"),
+//								Value:       pulumi.String("tf-testaccEbRule"),
+//							},
+//							&eventbridge.RuleTargetParamListArgs{
+//								ResourceKey: pulumi.String("Body"),
+//								Form:        pulumi.String("ORIGINAL"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -74,7 +77,9 @@ import (
 // Event Bridge Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eventbridge/rule:Rule example <event_bus_name>:<rule_name>
+//
+//	$ pulumi import alicloud:eventbridge/rule:Rule example <event_bus_name>:<rule_name>
+//
 // ```
 type Rule struct {
 	pulumi.CustomResourceState
@@ -224,7 +229,7 @@ func (i *Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // RuleArrayInput is an input type that accepts RuleArray and RuleArrayOutput values.
 // You can construct a concrete instance of `RuleArrayInput` via:
 //
-//          RuleArray{ RuleArgs{...} }
+//	RuleArray{ RuleArgs{...} }
 type RuleArrayInput interface {
 	pulumi.Input
 
@@ -249,7 +254,7 @@ func (i RuleArray) ToRuleArrayOutputWithContext(ctx context.Context) RuleArrayOu
 // RuleMapInput is an input type that accepts RuleMap and RuleMapOutput values.
 // You can construct a concrete instance of `RuleMapInput` via:
 //
-//          RuleMap{ "key": RuleArgs{...} }
+//	RuleMap{ "key": RuleArgs{...} }
 type RuleMapInput interface {
 	pulumi.Input
 

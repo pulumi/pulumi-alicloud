@@ -19,51 +19,54 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
-// 			DomainName: pulumi.String("mycdndomain.xiaozhu.com"),
-// 			CdnType:    pulumi.String("web"),
-// 			Scope:      pulumi.String("overseas"),
-// 			Sources: cdn.DomainNewSourceArray{
-// 				&cdn.DomainNewSourceArgs{
-// 					Content:  pulumi.String("1.1.1.1"),
-// 					Type:     pulumi.String("ipaddr"),
-// 					Priority: pulumi.Int(20),
-// 					Port:     pulumi.Int(80),
-// 					Weight:   pulumi.Int(15),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cdn.NewDomainConfig(ctx, "config", &cdn.DomainConfigArgs{
-// 			DomainName:   domain.DomainName,
-// 			FunctionName: pulumi.String("ip_allow_list_set"),
-// 			FunctionArgs: cdn.DomainConfigFunctionArgArray{
-// 				&cdn.DomainConfigFunctionArgArgs{
-// 					ArgName:  pulumi.String("ip_list"),
-// 					ArgValue: pulumi.String("110.110.110.110"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
+//				DomainName: pulumi.String("mycdndomain.xiaozhu.com"),
+//				CdnType:    pulumi.String("web"),
+//				Scope:      pulumi.String("overseas"),
+//				Sources: cdn.DomainNewSourceArray{
+//					&cdn.DomainNewSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Type:     pulumi.String("ipaddr"),
+//						Priority: pulumi.Int(20),
+//						Port:     pulumi.Int(80),
+//						Weight:   pulumi.Int(15),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cdn.NewDomainConfig(ctx, "config", &cdn.DomainConfigArgs{
+//				DomainName:   domain.DomainName,
+//				FunctionName: pulumi.String("ip_allow_list_set"),
+//				FunctionArgs: cdn.DomainConfigFunctionArgArray{
+//					&cdn.DomainConfigFunctionArgArgs{
+//						ArgName:  pulumi.String("ip_list"),
+//						ArgValue: pulumi.String("110.110.110.110"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -71,11 +74,15 @@ import (
 // CDN domain config can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+//
+//	$ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+//
 // ```
 //
 // ```sh
-//  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
+//
+//	$ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
+//
 // ```
 type DomainConfig struct {
 	pulumi.CustomResourceState
@@ -204,7 +211,7 @@ func (i *DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) Doma
 // DomainConfigArrayInput is an input type that accepts DomainConfigArray and DomainConfigArrayOutput values.
 // You can construct a concrete instance of `DomainConfigArrayInput` via:
 //
-//          DomainConfigArray{ DomainConfigArgs{...} }
+//	DomainConfigArray{ DomainConfigArgs{...} }
 type DomainConfigArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +236,7 @@ func (i DomainConfigArray) ToDomainConfigArrayOutputWithContext(ctx context.Cont
 // DomainConfigMapInput is an input type that accepts DomainConfigMap and DomainConfigMapOutput values.
 // You can construct a concrete instance of `DomainConfigMapInput` via:
 //
-//          DomainConfigMap{ "key": DomainConfigArgs{...} }
+//	DomainConfigMap{ "key": DomainConfigArgs{...} }
 type DomainConfigMapInput interface {
 	pulumi.Input
 

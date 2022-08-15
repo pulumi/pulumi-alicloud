@@ -10,6 +10,8 @@ import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesPlainArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsPlainArgs;
+import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsPlainArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersPlainArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
@@ -35,6 +37,7 @@ import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsPlainArgs;
 import com.pulumi.alicloud.resourcemanager.outputs.GetAccountsResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetControlPoliciesResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetControlPolicyAttachmentsResult;
+import com.pulumi.alicloud.resourcemanager.outputs.GetDelegatedAdministratorsResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetFoldersResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetHandshakesResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetPoliciesResult;
@@ -706,6 +709,258 @@ public final class ResourcemanagerFunctions {
      */
     public static CompletableFuture<GetControlPolicyAttachmentsResult> getControlPolicyAttachmentsPlain(GetControlPolicyAttachmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", TypeShape.of(GetControlPolicyAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators() {
+        return getDelegatedAdministrators(GetDelegatedAdministratorsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDelegatedAdministratorsResult> getDelegatedAdministratorsPlain() {
+        return getDelegatedAdministratorsPlain(GetDelegatedAdministratorsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators(GetDelegatedAdministratorsArgs args) {
+        return getDelegatedAdministrators(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDelegatedAdministratorsResult> getDelegatedAdministratorsPlain(GetDelegatedAdministratorsPlainArgs args) {
+        return getDelegatedAdministratorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators(GetDelegatedAdministratorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", TypeShape.of(GetDelegatedAdministratorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
+     *             .ids(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDelegatedAdministratorsResult> getDelegatedAdministratorsPlain(GetDelegatedAdministratorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", TypeShape.of(GetDelegatedAdministratorsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the resource manager folders of the current Alibaba Cloud user.

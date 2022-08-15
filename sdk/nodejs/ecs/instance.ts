@@ -164,6 +164,18 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     */
+    public readonly maintenanceAction!: pulumi.Output<string>;
+    /**
+     * Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+     */
+    public readonly maintenanceNotify!: pulumi.Output<boolean | undefined>;
+    /**
+     * The time of maintenance. See the following `Block maintenanceTime`.
+     */
+    public readonly maintenanceTime!: pulumi.Output<outputs.ecs.InstanceMaintenanceTime | undefined>;
+    /**
      * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      */
     public readonly operatorType!: pulumi.Output<string | undefined>;
@@ -343,6 +355,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["maintenanceAction"] = state ? state.maintenanceAction : undefined;
+            resourceInputs["maintenanceNotify"] = state ? state.maintenanceNotify : undefined;
+            resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
             resourceInputs["operatorType"] = state ? state.operatorType : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
@@ -412,6 +427,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["maintenanceAction"] = args ? args.maintenanceAction : undefined;
+            resourceInputs["maintenanceNotify"] = args ? args.maintenanceNotify : undefined;
+            resourceInputs["maintenanceTime"] = args ? args.maintenanceTime : undefined;
             resourceInputs["operatorType"] = args ? args.operatorType : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
@@ -576,6 +594,18 @@ export interface InstanceState {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     */
+    maintenanceAction?: pulumi.Input<string>;
+    /**
+     * Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+     */
+    maintenanceNotify?: pulumi.Input<boolean>;
+    /**
+     * The time of maintenance. See the following `Block maintenanceTime`.
+     */
+    maintenanceTime?: pulumi.Input<inputs.ecs.InstanceMaintenanceTime>;
     /**
      * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      */
@@ -838,6 +868,18 @@ export interface InstanceArgs {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     */
+    maintenanceAction?: pulumi.Input<string>;
+    /**
+     * Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+     */
+    maintenanceNotify?: pulumi.Input<boolean>;
+    /**
+     * The time of maintenance. See the following `Block maintenanceTime`.
+     */
+    maintenanceTime?: pulumi.Input<inputs.ecs.InstanceMaintenanceTime>;
     /**
      * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      */

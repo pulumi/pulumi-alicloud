@@ -14,6 +14,7 @@ __all__ = [
     'DomainResourceProxyType',
     'SchedulerRuleRule',
     'GetDdosBgpInstancesInstanceResult',
+    'GetDdosBgpIpsIpResult',
     'GetDdosCooDomainResourcesResourceResult',
     'GetDdosCooDomainResourcesResourceProxyTypeResult',
     'GetDdosCooInstancesInstanceResult',
@@ -273,6 +274,68 @@ class GetDdosBgpInstancesInstanceResult(dict):
         The instance's type.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDdosBgpIpsIpResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 instance_id: str,
+                 ip: str,
+                 product: str,
+                 status: str):
+        """
+        :param str id: The ID of the Ip. The value formats as `<instance_id>:<ip>`.
+        :param str instance_id: The ID of the native protection enterprise instance to be operated.
+        :param str ip: The IP address.
+        :param str product: The type of cloud asset to which the IP address belongs.
+        :param str status: The current state of the IP address.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ip. The value formats as `<instance_id>:<ip>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the native protection enterprise instance to be operated.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def product(self) -> str:
+        """
+        The type of cloud asset to which the IP address belongs.
+        """
+        return pulumi.get(self, "product")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The current state of the IP address.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

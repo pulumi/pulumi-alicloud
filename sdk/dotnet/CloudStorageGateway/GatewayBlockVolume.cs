@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public partial class GatewayBlockVolume : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         /// </summary>
         [Output("cacheMode")]
         public Output<string> CacheMode { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayBlockVolumeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         /// </summary>
         [Input("cacheMode")]
         public Input<string>? CacheMode { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayBlockVolumeState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         /// </summary>
         [Input("cacheMode")]
         public Input<string>? CacheMode { get; set; }

@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oos.NewStateConfiguration(ctx, "defaultStateConfiguration", &oos.StateConfigurationArgs{
-// 			TemplateName:       pulumi.String("ACS-ECS-InventoryDataCollection"),
-// 			ConfigureMode:      pulumi.String("ApplyOnly"),
-// 			Description:        pulumi.Any(_var.Name),
-// 			ScheduleType:       pulumi.String("rate"),
-// 			ScheduleExpression: pulumi.String("1 hour"),
-// 			ResourceGroupId:    pulumi.String(defaultResourceGroups.Ids[0]),
-// 			Targets:            pulumi.String("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}"),
-// 			Parameters:         pulumi.String("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewStateConfiguration(ctx, "defaultStateConfiguration", &oos.StateConfigurationArgs{
+//				TemplateName:       pulumi.String("ACS-ECS-InventoryDataCollection"),
+//				ConfigureMode:      pulumi.String("ApplyOnly"),
+//				Description:        pulumi.Any(_var.Name),
+//				ScheduleType:       pulumi.String("rate"),
+//				ScheduleExpression: pulumi.String("1 hour"),
+//				ResourceGroupId:    pulumi.String(defaultResourceGroups.Ids[0]),
+//				Targets:            pulumi.String("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}"),
+//				Parameters:         pulumi.String("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // OOS State Configuration can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
+//
+//	$ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
+//
 // ```
 type StateConfiguration struct {
 	pulumi.CustomResourceState
@@ -253,7 +258,7 @@ func (i *StateConfiguration) ToStateConfigurationOutputWithContext(ctx context.C
 // StateConfigurationArrayInput is an input type that accepts StateConfigurationArray and StateConfigurationArrayOutput values.
 // You can construct a concrete instance of `StateConfigurationArrayInput` via:
 //
-//          StateConfigurationArray{ StateConfigurationArgs{...} }
+//	StateConfigurationArray{ StateConfigurationArgs{...} }
 type StateConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -278,7 +283,7 @@ func (i StateConfigurationArray) ToStateConfigurationArrayOutputWithContext(ctx 
 // StateConfigurationMapInput is an input type that accepts StateConfigurationMap and StateConfigurationMapOutput values.
 // You can construct a concrete instance of `StateConfigurationMapInput` via:
 //
-//          StateConfigurationMap{ "key": StateConfigurationArgs{...} }
+//	StateConfigurationMap{ "key": StateConfigurationArgs{...} }
 type StateConfigurationMapInput interface {
 	pulumi.Input
 

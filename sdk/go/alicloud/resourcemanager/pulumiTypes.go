@@ -20,7 +20,7 @@ type ResourceGroupRegionStatus struct {
 // ResourceGroupRegionStatusInput is an input type that accepts ResourceGroupRegionStatusArgs and ResourceGroupRegionStatusOutput values.
 // You can construct a concrete instance of `ResourceGroupRegionStatusInput` via:
 //
-//          ResourceGroupRegionStatusArgs{...}
+//	ResourceGroupRegionStatusArgs{...}
 type ResourceGroupRegionStatusInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i ResourceGroupRegionStatusArgs) ToResourceGroupRegionStatusOutputWithCont
 // ResourceGroupRegionStatusArrayInput is an input type that accepts ResourceGroupRegionStatusArray and ResourceGroupRegionStatusArrayOutput values.
 // You can construct a concrete instance of `ResourceGroupRegionStatusArrayInput` via:
 //
-//          ResourceGroupRegionStatusArray{ ResourceGroupRegionStatusArgs{...} }
+//	ResourceGroupRegionStatusArray{ ResourceGroupRegionStatusArgs{...} }
 type ResourceGroupRegionStatusArrayInput interface {
 	pulumi.Input
 
@@ -146,7 +146,7 @@ type GetAccountsAccount struct {
 // GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
 // You can construct a concrete instance of `GetAccountsAccountInput` via:
 //
-//          GetAccountsAccountArgs{...}
+//	GetAccountsAccountArgs{...}
 type GetAccountsAccountInput interface {
 	pulumi.Input
 
@@ -196,7 +196,7 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
-//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+//	GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
 type GetAccountsAccountArrayInput interface {
 	pulumi.Input
 
@@ -334,7 +334,7 @@ type GetControlPoliciesPolicy struct {
 // GetControlPoliciesPolicyInput is an input type that accepts GetControlPoliciesPolicyArgs and GetControlPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetControlPoliciesPolicyInput` via:
 //
-//          GetControlPoliciesPolicyArgs{...}
+//	GetControlPoliciesPolicyArgs{...}
 type GetControlPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -376,7 +376,7 @@ func (i GetControlPoliciesPolicyArgs) ToGetControlPoliciesPolicyOutputWithContex
 // GetControlPoliciesPolicyArrayInput is an input type that accepts GetControlPoliciesPolicyArray and GetControlPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetControlPoliciesPolicyArrayInput` via:
 //
-//          GetControlPoliciesPolicyArray{ GetControlPoliciesPolicyArgs{...} }
+//	GetControlPoliciesPolicyArray{ GetControlPoliciesPolicyArgs{...} }
 type GetControlPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -490,7 +490,7 @@ type GetControlPolicyAttachmentsAttachment struct {
 // GetControlPolicyAttachmentsAttachmentInput is an input type that accepts GetControlPolicyAttachmentsAttachmentArgs and GetControlPolicyAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetControlPolicyAttachmentsAttachmentInput` via:
 //
-//          GetControlPolicyAttachmentsAttachmentArgs{...}
+//	GetControlPolicyAttachmentsAttachmentArgs{...}
 type GetControlPolicyAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -528,7 +528,7 @@ func (i GetControlPolicyAttachmentsAttachmentArgs) ToGetControlPolicyAttachments
 // GetControlPolicyAttachmentsAttachmentArrayInput is an input type that accepts GetControlPolicyAttachmentsAttachmentArray and GetControlPolicyAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetControlPolicyAttachmentsAttachmentArrayInput` via:
 //
-//          GetControlPolicyAttachmentsAttachmentArray{ GetControlPolicyAttachmentsAttachmentArgs{...} }
+//	GetControlPolicyAttachmentsAttachmentArray{ GetControlPolicyAttachmentsAttachmentArgs{...} }
 type GetControlPolicyAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -614,6 +614,130 @@ func (o GetControlPolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInpu
 	}).(GetControlPolicyAttachmentsAttachmentOutput)
 }
 
+type GetDelegatedAdministratorsAdministrator struct {
+	// The ID of the member account.
+	AccountId string `pulumi:"accountId"`
+	// The time when the member was specified as a delegated administrator account.
+	DelegationEnabledTime string `pulumi:"delegationEnabledTime"`
+	// The ID of the Delegated Administrator.
+	Id string `pulumi:"id"`
+	// The identity of the trusted service.
+	ServicePrincipal string `pulumi:"servicePrincipal"`
+}
+
+// GetDelegatedAdministratorsAdministratorInput is an input type that accepts GetDelegatedAdministratorsAdministratorArgs and GetDelegatedAdministratorsAdministratorOutput values.
+// You can construct a concrete instance of `GetDelegatedAdministratorsAdministratorInput` via:
+//
+//	GetDelegatedAdministratorsAdministratorArgs{...}
+type GetDelegatedAdministratorsAdministratorInput interface {
+	pulumi.Input
+
+	ToGetDelegatedAdministratorsAdministratorOutput() GetDelegatedAdministratorsAdministratorOutput
+	ToGetDelegatedAdministratorsAdministratorOutputWithContext(context.Context) GetDelegatedAdministratorsAdministratorOutput
+}
+
+type GetDelegatedAdministratorsAdministratorArgs struct {
+	// The ID of the member account.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The time when the member was specified as a delegated administrator account.
+	DelegationEnabledTime pulumi.StringInput `pulumi:"delegationEnabledTime"`
+	// The ID of the Delegated Administrator.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The identity of the trusted service.
+	ServicePrincipal pulumi.StringInput `pulumi:"servicePrincipal"`
+}
+
+func (GetDelegatedAdministratorsAdministratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDelegatedAdministratorsAdministrator)(nil)).Elem()
+}
+
+func (i GetDelegatedAdministratorsAdministratorArgs) ToGetDelegatedAdministratorsAdministratorOutput() GetDelegatedAdministratorsAdministratorOutput {
+	return i.ToGetDelegatedAdministratorsAdministratorOutputWithContext(context.Background())
+}
+
+func (i GetDelegatedAdministratorsAdministratorArgs) ToGetDelegatedAdministratorsAdministratorOutputWithContext(ctx context.Context) GetDelegatedAdministratorsAdministratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDelegatedAdministratorsAdministratorOutput)
+}
+
+// GetDelegatedAdministratorsAdministratorArrayInput is an input type that accepts GetDelegatedAdministratorsAdministratorArray and GetDelegatedAdministratorsAdministratorArrayOutput values.
+// You can construct a concrete instance of `GetDelegatedAdministratorsAdministratorArrayInput` via:
+//
+//	GetDelegatedAdministratorsAdministratorArray{ GetDelegatedAdministratorsAdministratorArgs{...} }
+type GetDelegatedAdministratorsAdministratorArrayInput interface {
+	pulumi.Input
+
+	ToGetDelegatedAdministratorsAdministratorArrayOutput() GetDelegatedAdministratorsAdministratorArrayOutput
+	ToGetDelegatedAdministratorsAdministratorArrayOutputWithContext(context.Context) GetDelegatedAdministratorsAdministratorArrayOutput
+}
+
+type GetDelegatedAdministratorsAdministratorArray []GetDelegatedAdministratorsAdministratorInput
+
+func (GetDelegatedAdministratorsAdministratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDelegatedAdministratorsAdministrator)(nil)).Elem()
+}
+
+func (i GetDelegatedAdministratorsAdministratorArray) ToGetDelegatedAdministratorsAdministratorArrayOutput() GetDelegatedAdministratorsAdministratorArrayOutput {
+	return i.ToGetDelegatedAdministratorsAdministratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetDelegatedAdministratorsAdministratorArray) ToGetDelegatedAdministratorsAdministratorArrayOutputWithContext(ctx context.Context) GetDelegatedAdministratorsAdministratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDelegatedAdministratorsAdministratorArrayOutput)
+}
+
+type GetDelegatedAdministratorsAdministratorOutput struct{ *pulumi.OutputState }
+
+func (GetDelegatedAdministratorsAdministratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDelegatedAdministratorsAdministrator)(nil)).Elem()
+}
+
+func (o GetDelegatedAdministratorsAdministratorOutput) ToGetDelegatedAdministratorsAdministratorOutput() GetDelegatedAdministratorsAdministratorOutput {
+	return o
+}
+
+func (o GetDelegatedAdministratorsAdministratorOutput) ToGetDelegatedAdministratorsAdministratorOutputWithContext(ctx context.Context) GetDelegatedAdministratorsAdministratorOutput {
+	return o
+}
+
+// The ID of the member account.
+func (o GetDelegatedAdministratorsAdministratorOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsAdministrator) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The time when the member was specified as a delegated administrator account.
+func (o GetDelegatedAdministratorsAdministratorOutput) DelegationEnabledTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsAdministrator) string { return v.DelegationEnabledTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Delegated Administrator.
+func (o GetDelegatedAdministratorsAdministratorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsAdministrator) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity of the trusted service.
+func (o GetDelegatedAdministratorsAdministratorOutput) ServicePrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsAdministrator) string { return v.ServicePrincipal }).(pulumi.StringOutput)
+}
+
+type GetDelegatedAdministratorsAdministratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDelegatedAdministratorsAdministratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDelegatedAdministratorsAdministrator)(nil)).Elem()
+}
+
+func (o GetDelegatedAdministratorsAdministratorArrayOutput) ToGetDelegatedAdministratorsAdministratorArrayOutput() GetDelegatedAdministratorsAdministratorArrayOutput {
+	return o
+}
+
+func (o GetDelegatedAdministratorsAdministratorArrayOutput) ToGetDelegatedAdministratorsAdministratorArrayOutputWithContext(ctx context.Context) GetDelegatedAdministratorsAdministratorArrayOutput {
+	return o
+}
+
+func (o GetDelegatedAdministratorsAdministratorArrayOutput) Index(i pulumi.IntInput) GetDelegatedAdministratorsAdministratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDelegatedAdministratorsAdministrator {
+		return vs[0].([]GetDelegatedAdministratorsAdministrator)[vs[1].(int)]
+	}).(GetDelegatedAdministratorsAdministratorOutput)
+}
+
 type GetFoldersFolder struct {
 	FolderId   string `pulumi:"folderId"`
 	FolderName string `pulumi:"folderName"`
@@ -629,7 +753,7 @@ type GetFoldersFolder struct {
 // GetFoldersFolderInput is an input type that accepts GetFoldersFolderArgs and GetFoldersFolderOutput values.
 // You can construct a concrete instance of `GetFoldersFolderInput` via:
 //
-//          GetFoldersFolderArgs{...}
+//	GetFoldersFolderArgs{...}
 type GetFoldersFolderInput interface {
 	pulumi.Input
 
@@ -664,7 +788,7 @@ func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Co
 // GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
 // You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
 //
-//          GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
+//	GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
 type GetFoldersFolderArrayInput interface {
 	pulumi.Input
 
@@ -773,7 +897,7 @@ type GetHandshakesHandshake struct {
 // GetHandshakesHandshakeInput is an input type that accepts GetHandshakesHandshakeArgs and GetHandshakesHandshakeOutput values.
 // You can construct a concrete instance of `GetHandshakesHandshakeInput` via:
 //
-//          GetHandshakesHandshakeArgs{...}
+//	GetHandshakesHandshakeArgs{...}
 type GetHandshakesHandshakeInput interface {
 	pulumi.Input
 
@@ -825,7 +949,7 @@ func (i GetHandshakesHandshakeArgs) ToGetHandshakesHandshakeOutputWithContext(ct
 // GetHandshakesHandshakeArrayInput is an input type that accepts GetHandshakesHandshakeArray and GetHandshakesHandshakeArrayOutput values.
 // You can construct a concrete instance of `GetHandshakesHandshakeArrayInput` via:
 //
-//          GetHandshakesHandshakeArray{ GetHandshakesHandshakeArgs{...} }
+//	GetHandshakesHandshakeArray{ GetHandshakesHandshakeArgs{...} }
 type GetHandshakesHandshakeArrayInput interface {
 	pulumi.Input
 
@@ -967,7 +1091,7 @@ type GetPoliciesPolicy struct {
 // GetPoliciesPolicyInput is an input type that accepts GetPoliciesPolicyArgs and GetPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetPoliciesPolicyInput` via:
 //
-//          GetPoliciesPolicyArgs{...}
+//	GetPoliciesPolicyArgs{...}
 type GetPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -1008,7 +1132,7 @@ func (i GetPoliciesPolicyArgs) ToGetPoliciesPolicyOutputWithContext(ctx context.
 // GetPoliciesPolicyArrayInput is an input type that accepts GetPoliciesPolicyArray and GetPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetPoliciesPolicyArrayInput` via:
 //
-//          GetPoliciesPolicyArray{ GetPoliciesPolicyArgs{...} }
+//	GetPoliciesPolicyArray{ GetPoliciesPolicyArgs{...} }
 type GetPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -1126,7 +1250,7 @@ type GetPolicyAttachmentsAttachment struct {
 // GetPolicyAttachmentsAttachmentInput is an input type that accepts GetPolicyAttachmentsAttachmentArgs and GetPolicyAttachmentsAttachmentOutput values.
 // You can construct a concrete instance of `GetPolicyAttachmentsAttachmentInput` via:
 //
-//          GetPolicyAttachmentsAttachmentArgs{...}
+//	GetPolicyAttachmentsAttachmentArgs{...}
 type GetPolicyAttachmentsAttachmentInput interface {
 	pulumi.Input
 
@@ -1172,7 +1296,7 @@ func (i GetPolicyAttachmentsAttachmentArgs) ToGetPolicyAttachmentsAttachmentOutp
 // GetPolicyAttachmentsAttachmentArrayInput is an input type that accepts GetPolicyAttachmentsAttachmentArray and GetPolicyAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetPolicyAttachmentsAttachmentArrayInput` via:
 //
-//          GetPolicyAttachmentsAttachmentArray{ GetPolicyAttachmentsAttachmentArgs{...} }
+//	GetPolicyAttachmentsAttachmentArray{ GetPolicyAttachmentsAttachmentArgs{...} }
 type GetPolicyAttachmentsAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -1287,7 +1411,7 @@ type GetPolicyVersionsVersion struct {
 // GetPolicyVersionsVersionInput is an input type that accepts GetPolicyVersionsVersionArgs and GetPolicyVersionsVersionOutput values.
 // You can construct a concrete instance of `GetPolicyVersionsVersionInput` via:
 //
-//          GetPolicyVersionsVersionArgs{...}
+//	GetPolicyVersionsVersionArgs{...}
 type GetPolicyVersionsVersionInput interface {
 	pulumi.Input
 
@@ -1322,7 +1446,7 @@ func (i GetPolicyVersionsVersionArgs) ToGetPolicyVersionsVersionOutputWithContex
 // GetPolicyVersionsVersionArrayInput is an input type that accepts GetPolicyVersionsVersionArray and GetPolicyVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetPolicyVersionsVersionArrayInput` via:
 //
-//          GetPolicyVersionsVersionArray{ GetPolicyVersionsVersionArgs{...} }
+//	GetPolicyVersionsVersionArray{ GetPolicyVersionsVersionArgs{...} }
 type GetPolicyVersionsVersionArrayInput interface {
 	pulumi.Input
 
@@ -1417,7 +1541,7 @@ type GetResourceDirectoriesDirectory struct {
 // GetResourceDirectoriesDirectoryInput is an input type that accepts GetResourceDirectoriesDirectoryArgs and GetResourceDirectoriesDirectoryOutput values.
 // You can construct a concrete instance of `GetResourceDirectoriesDirectoryInput` via:
 //
-//          GetResourceDirectoriesDirectoryArgs{...}
+//	GetResourceDirectoriesDirectoryArgs{...}
 type GetResourceDirectoriesDirectoryInput interface {
 	pulumi.Input
 
@@ -1455,7 +1579,7 @@ func (i GetResourceDirectoriesDirectoryArgs) ToGetResourceDirectoriesDirectoryOu
 // GetResourceDirectoriesDirectoryArrayInput is an input type that accepts GetResourceDirectoriesDirectoryArray and GetResourceDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetResourceDirectoriesDirectoryArrayInput` via:
 //
-//          GetResourceDirectoriesDirectoryArray{ GetResourceDirectoriesDirectoryArgs{...} }
+//	GetResourceDirectoriesDirectoryArray{ GetResourceDirectoriesDirectoryArgs{...} }
 type GetResourceDirectoriesDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -1560,7 +1684,7 @@ type GetResourceGroupsGroup struct {
 // GetResourceGroupsGroupInput is an input type that accepts GetResourceGroupsGroupArgs and GetResourceGroupsGroupOutput values.
 // You can construct a concrete instance of `GetResourceGroupsGroupInput` via:
 //
-//          GetResourceGroupsGroupArgs{...}
+//	GetResourceGroupsGroupArgs{...}
 type GetResourceGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1599,7 +1723,7 @@ func (i GetResourceGroupsGroupArgs) ToGetResourceGroupsGroupOutputWithContext(ct
 // GetResourceGroupsGroupArrayInput is an input type that accepts GetResourceGroupsGroupArray and GetResourceGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetResourceGroupsGroupArrayInput` via:
 //
-//          GetResourceGroupsGroupArray{ GetResourceGroupsGroupArgs{...} }
+//	GetResourceGroupsGroupArray{ GetResourceGroupsGroupArgs{...} }
 type GetResourceGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1699,7 +1823,7 @@ type GetResourceGroupsGroupRegionStatus struct {
 // GetResourceGroupsGroupRegionStatusInput is an input type that accepts GetResourceGroupsGroupRegionStatusArgs and GetResourceGroupsGroupRegionStatusOutput values.
 // You can construct a concrete instance of `GetResourceGroupsGroupRegionStatusInput` via:
 //
-//          GetResourceGroupsGroupRegionStatusArgs{...}
+//	GetResourceGroupsGroupRegionStatusArgs{...}
 type GetResourceGroupsGroupRegionStatusInput interface {
 	pulumi.Input
 
@@ -1729,7 +1853,7 @@ func (i GetResourceGroupsGroupRegionStatusArgs) ToGetResourceGroupsGroupRegionSt
 // GetResourceGroupsGroupRegionStatusArrayInput is an input type that accepts GetResourceGroupsGroupRegionStatusArray and GetResourceGroupsGroupRegionStatusArrayOutput values.
 // You can construct a concrete instance of `GetResourceGroupsGroupRegionStatusArrayInput` via:
 //
-//          GetResourceGroupsGroupRegionStatusArray{ GetResourceGroupsGroupRegionStatusArgs{...} }
+//	GetResourceGroupsGroupRegionStatusArray{ GetResourceGroupsGroupRegionStatusArgs{...} }
 type GetResourceGroupsGroupRegionStatusArrayInput interface {
 	pulumi.Input
 
@@ -1811,7 +1935,7 @@ type GetResourceSharesShare struct {
 // GetResourceSharesShareInput is an input type that accepts GetResourceSharesShareArgs and GetResourceSharesShareOutput values.
 // You can construct a concrete instance of `GetResourceSharesShareInput` via:
 //
-//          GetResourceSharesShareArgs{...}
+//	GetResourceSharesShareArgs{...}
 type GetResourceSharesShareInput interface {
 	pulumi.Input
 
@@ -1847,7 +1971,7 @@ func (i GetResourceSharesShareArgs) ToGetResourceSharesShareOutputWithContext(ct
 // GetResourceSharesShareArrayInput is an input type that accepts GetResourceSharesShareArray and GetResourceSharesShareArrayOutput values.
 // You can construct a concrete instance of `GetResourceSharesShareArrayInput` via:
 //
-//          GetResourceSharesShareArray{ GetResourceSharesShareArgs{...} }
+//	GetResourceSharesShareArray{ GetResourceSharesShareArgs{...} }
 type GetResourceSharesShareArrayInput interface {
 	pulumi.Input
 
@@ -1951,7 +2075,7 @@ type GetRolesRole struct {
 // GetRolesRoleInput is an input type that accepts GetRolesRoleArgs and GetRolesRoleOutput values.
 // You can construct a concrete instance of `GetRolesRoleInput` via:
 //
-//          GetRolesRoleArgs{...}
+//	GetRolesRoleArgs{...}
 type GetRolesRoleInput interface {
 	pulumi.Input
 
@@ -1994,7 +2118,7 @@ func (i GetRolesRoleArgs) ToGetRolesRoleOutputWithContext(ctx context.Context) G
 // GetRolesRoleArrayInput is an input type that accepts GetRolesRoleArray and GetRolesRoleArrayOutput values.
 // You can construct a concrete instance of `GetRolesRoleArrayInput` via:
 //
-//          GetRolesRoleArray{ GetRolesRoleArgs{...} }
+//	GetRolesRoleArray{ GetRolesRoleArgs{...} }
 type GetRolesRoleArrayInput interface {
 	pulumi.Input
 
@@ -2107,7 +2231,7 @@ type GetSharedResourcesResource struct {
 // GetSharedResourcesResourceInput is an input type that accepts GetSharedResourcesResourceArgs and GetSharedResourcesResourceOutput values.
 // You can construct a concrete instance of `GetSharedResourcesResourceInput` via:
 //
-//          GetSharedResourcesResourceArgs{...}
+//	GetSharedResourcesResourceArgs{...}
 type GetSharedResourcesResourceInput interface {
 	pulumi.Input
 
@@ -2143,7 +2267,7 @@ func (i GetSharedResourcesResourceArgs) ToGetSharedResourcesResourceOutputWithCo
 // GetSharedResourcesResourceArrayInput is an input type that accepts GetSharedResourcesResourceArray and GetSharedResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetSharedResourcesResourceArrayInput` via:
 //
-//          GetSharedResourcesResourceArray{ GetSharedResourcesResourceArgs{...} }
+//	GetSharedResourcesResourceArray{ GetSharedResourcesResourceArgs{...} }
 type GetSharedResourcesResourceArrayInput interface {
 	pulumi.Input
 
@@ -2238,7 +2362,7 @@ type GetSharedTargetsTarget struct {
 // GetSharedTargetsTargetInput is an input type that accepts GetSharedTargetsTargetArgs and GetSharedTargetsTargetOutput values.
 // You can construct a concrete instance of `GetSharedTargetsTargetInput` via:
 //
-//          GetSharedTargetsTargetArgs{...}
+//	GetSharedTargetsTargetArgs{...}
 type GetSharedTargetsTargetInput interface {
 	pulumi.Input
 
@@ -2272,7 +2396,7 @@ func (i GetSharedTargetsTargetArgs) ToGetSharedTargetsTargetOutputWithContext(ct
 // GetSharedTargetsTargetArrayInput is an input type that accepts GetSharedTargetsTargetArray and GetSharedTargetsTargetArrayOutput values.
 // You can construct a concrete instance of `GetSharedTargetsTargetArrayInput` via:
 //
-//          GetSharedTargetsTargetArray{ GetSharedTargetsTargetArgs{...} }
+//	GetSharedTargetsTargetArray{ GetSharedTargetsTargetArgs{...} }
 type GetSharedTargetsTargetArrayInput interface {
 	pulumi.Input
 
@@ -2357,6 +2481,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyArrayInput)(nil)).Elem(), GetControlPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPolicyAttachmentsAttachmentInput)(nil)).Elem(), GetControlPolicyAttachmentsAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPolicyAttachmentsAttachmentArrayInput)(nil)).Elem(), GetControlPolicyAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDelegatedAdministratorsAdministratorInput)(nil)).Elem(), GetDelegatedAdministratorsAdministratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDelegatedAdministratorsAdministratorArrayInput)(nil)).Elem(), GetDelegatedAdministratorsAdministratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderInput)(nil)).Elem(), GetFoldersFolderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderArrayInput)(nil)).Elem(), GetFoldersFolderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHandshakesHandshakeInput)(nil)).Elem(), GetHandshakesHandshakeArgs{})
@@ -2389,6 +2515,8 @@ func init() {
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetControlPolicyAttachmentsAttachmentOutput{})
 	pulumi.RegisterOutputType(GetControlPolicyAttachmentsAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetDelegatedAdministratorsAdministratorOutput{})
+	pulumi.RegisterOutputType(GetDelegatedAdministratorsAdministratorArrayOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
 	pulumi.RegisterOutputType(GetHandshakesHandshakeOutput{})

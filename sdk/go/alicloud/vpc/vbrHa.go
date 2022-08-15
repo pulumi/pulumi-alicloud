@@ -22,7 +22,9 @@ import (
 // VPC Vbr Ha can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
+//
+//	$ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
+//
 // ```
 type VbrHa struct {
 	pulumi.CustomResourceState
@@ -162,7 +164,7 @@ func (i *VbrHa) ToVbrHaOutputWithContext(ctx context.Context) VbrHaOutput {
 // VbrHaArrayInput is an input type that accepts VbrHaArray and VbrHaArrayOutput values.
 // You can construct a concrete instance of `VbrHaArrayInput` via:
 //
-//          VbrHaArray{ VbrHaArgs{...} }
+//	VbrHaArray{ VbrHaArgs{...} }
 type VbrHaArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +189,7 @@ func (i VbrHaArray) ToVbrHaArrayOutputWithContext(ctx context.Context) VbrHaArra
 // VbrHaMapInput is an input type that accepts VbrHaMap and VbrHaMapOutput values.
 // You can construct a concrete instance of `VbrHaMapInput` via:
 //
-//          VbrHaMap{ "key": VbrHaArgs{...} }
+//	VbrHaMap{ "key": VbrHaArgs{...} }
 type VbrHaMapInput interface {
 	pulumi.Input
 

@@ -19,7 +19,7 @@ type InstanceSlbConnAddr struct {
 // InstanceSlbConnAddrInput is an input type that accepts InstanceSlbConnAddrArgs and InstanceSlbConnAddrOutput values.
 // You can construct a concrete instance of `InstanceSlbConnAddrInput` via:
 //
-//          InstanceSlbConnAddrArgs{...}
+//	InstanceSlbConnAddrArgs{...}
 type InstanceSlbConnAddrInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i InstanceSlbConnAddrArgs) ToInstanceSlbConnAddrOutputWithContext(ctx cont
 // InstanceSlbConnAddrArrayInput is an input type that accepts InstanceSlbConnAddrArray and InstanceSlbConnAddrArrayOutput values.
 // You can construct a concrete instance of `InstanceSlbConnAddrArrayInput` via:
 //
-//          InstanceSlbConnAddrArray{ InstanceSlbConnAddrArgs{...} }
+//	InstanceSlbConnAddrArray{ InstanceSlbConnAddrArgs{...} }
 type InstanceSlbConnAddrArrayInput interface {
 	pulumi.Input
 
@@ -125,7 +125,7 @@ type InstanceUiProxyConnAddr struct {
 // InstanceUiProxyConnAddrInput is an input type that accepts InstanceUiProxyConnAddrArgs and InstanceUiProxyConnAddrOutput values.
 // You can construct a concrete instance of `InstanceUiProxyConnAddrInput` via:
 //
-//          InstanceUiProxyConnAddrArgs{...}
+//	InstanceUiProxyConnAddrArgs{...}
 type InstanceUiProxyConnAddrInput interface {
 	pulumi.Input
 
@@ -154,7 +154,7 @@ func (i InstanceUiProxyConnAddrArgs) ToInstanceUiProxyConnAddrOutputWithContext(
 // InstanceUiProxyConnAddrArrayInput is an input type that accepts InstanceUiProxyConnAddrArray and InstanceUiProxyConnAddrArrayOutput values.
 // You can construct a concrete instance of `InstanceUiProxyConnAddrArrayInput` via:
 //
-//          InstanceUiProxyConnAddrArray{ InstanceUiProxyConnAddrArgs{...} }
+//	InstanceUiProxyConnAddrArray{ InstanceUiProxyConnAddrArgs{...} }
 type InstanceUiProxyConnAddrArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +231,7 @@ type InstanceZkConnAddr struct {
 // InstanceZkConnAddrInput is an input type that accepts InstanceZkConnAddrArgs and InstanceZkConnAddrOutput values.
 // You can construct a concrete instance of `InstanceZkConnAddrInput` via:
 //
-//          InstanceZkConnAddrArgs{...}
+//	InstanceZkConnAddrArgs{...}
 type InstanceZkConnAddrInput interface {
 	pulumi.Input
 
@@ -260,7 +260,7 @@ func (i InstanceZkConnAddrArgs) ToInstanceZkConnAddrOutputWithContext(ctx contex
 // InstanceZkConnAddrArrayInput is an input type that accepts InstanceZkConnAddrArray and InstanceZkConnAddrArrayOutput values.
 // You can construct a concrete instance of `InstanceZkConnAddrArrayInput` via:
 //
-//          InstanceZkConnAddrArray{ InstanceZkConnAddrArgs{...} }
+//	InstanceZkConnAddrArray{ InstanceZkConnAddrArgs{...} }
 type InstanceZkConnAddrArrayInput interface {
 	pulumi.Input
 
@@ -352,7 +352,7 @@ type GetInstanceTypesCoreInstanceType struct {
 // GetInstanceTypesCoreInstanceTypeInput is an input type that accepts GetInstanceTypesCoreInstanceTypeArgs and GetInstanceTypesCoreInstanceTypeOutput values.
 // You can construct a concrete instance of `GetInstanceTypesCoreInstanceTypeInput` via:
 //
-//          GetInstanceTypesCoreInstanceTypeArgs{...}
+//	GetInstanceTypesCoreInstanceTypeArgs{...}
 type GetInstanceTypesCoreInstanceTypeInput interface {
 	pulumi.Input
 
@@ -396,7 +396,7 @@ func (i GetInstanceTypesCoreInstanceTypeArgs) ToGetInstanceTypesCoreInstanceType
 // GetInstanceTypesCoreInstanceTypeArrayInput is an input type that accepts GetInstanceTypesCoreInstanceTypeArray and GetInstanceTypesCoreInstanceTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesCoreInstanceTypeArrayInput` via:
 //
-//          GetInstanceTypesCoreInstanceTypeArray{ GetInstanceTypesCoreInstanceTypeArgs{...} }
+//	GetInstanceTypesCoreInstanceTypeArray{ GetInstanceTypesCoreInstanceTypeArgs{...} }
 type GetInstanceTypesCoreInstanceTypeArrayInput interface {
 	pulumi.Input
 
@@ -509,7 +509,7 @@ type GetInstanceTypesMasterInstanceType struct {
 // GetInstanceTypesMasterInstanceTypeInput is an input type that accepts GetInstanceTypesMasterInstanceTypeArgs and GetInstanceTypesMasterInstanceTypeOutput values.
 // You can construct a concrete instance of `GetInstanceTypesMasterInstanceTypeInput` via:
 //
-//          GetInstanceTypesMasterInstanceTypeArgs{...}
+//	GetInstanceTypesMasterInstanceTypeArgs{...}
 type GetInstanceTypesMasterInstanceTypeInput interface {
 	pulumi.Input
 
@@ -541,7 +541,7 @@ func (i GetInstanceTypesMasterInstanceTypeArgs) ToGetInstanceTypesMasterInstance
 // GetInstanceTypesMasterInstanceTypeArrayInput is an input type that accepts GetInstanceTypesMasterInstanceTypeArray and GetInstanceTypesMasterInstanceTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesMasterInstanceTypeArrayInput` via:
 //
-//          GetInstanceTypesMasterInstanceTypeArray{ GetInstanceTypesMasterInstanceTypeArgs{...} }
+//	GetInstanceTypesMasterInstanceTypeArray{ GetInstanceTypesMasterInstanceTypeArgs{...} }
 type GetInstanceTypesMasterInstanceTypeArrayInput interface {
 	pulumi.Input
 
@@ -624,7 +624,7 @@ type GetInstanceTypesType struct {
 // GetInstanceTypesTypeInput is an input type that accepts GetInstanceTypesTypeArgs and GetInstanceTypesTypeOutput values.
 // You can construct a concrete instance of `GetInstanceTypesTypeInput` via:
 //
-//          GetInstanceTypesTypeArgs{...}
+//	GetInstanceTypesTypeArgs{...}
 type GetInstanceTypesTypeInput interface {
 	pulumi.Input
 
@@ -656,7 +656,7 @@ func (i GetInstanceTypesTypeArgs) ToGetInstanceTypesTypeOutputWithContext(ctx co
 // GetInstanceTypesTypeArrayInput is an input type that accepts GetInstanceTypesTypeArray and GetInstanceTypesTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesTypeArrayInput` via:
 //
-//          GetInstanceTypesTypeArray{ GetInstanceTypesTypeArgs{...} }
+//	GetInstanceTypesTypeArray{ GetInstanceTypesTypeArgs{...} }
 type GetInstanceTypesTypeArrayInput interface {
 	pulumi.Input
 
@@ -777,7 +777,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -847,7 +847,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1023,7 +1023,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -1053,7 +1053,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

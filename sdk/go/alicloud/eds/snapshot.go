@@ -19,85 +19,88 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example_value"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:            pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType:    pulumi.String("Internet"),
-// 			OfficeSiteName:       pulumi.String(name),
-// 			EnableInternetAccess: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
-// 			BundleType: pulumi.StringRef("SYSTEM"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
-// 			PolicyGroupName: pulumi.String(name),
-// 			Clipboard:       pulumi.String("readwrite"),
-// 			LocalDrive:      pulumi.String("read"),
-// 			AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-// 					Description: pulumi.String("example_value"),
-// 					CidrIp:      pulumi.String("1.2.3.4/24"),
-// 				},
-// 			},
-// 			AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-// 					Type:        pulumi.String("inflow"),
-// 					Policy:      pulumi.String("accept"),
-// 					Description: pulumi.String("example_value"),
-// 					PortRange:   pulumi.String("80/80"),
-// 					IpProtocol:  pulumi.String("TCP"),
-// 					Priority:    pulumi.String("1"),
-// 					CidrIp:      pulumi.String("0.0.0.0/0"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
-// 			OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-// 			PolicyGroupId: defaultEcdPolicyGroup.ID(),
-// 			BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
-// 			DesktopName:   pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewSnapshot(ctx, "defaultSnapshot", &eds.SnapshotArgs{
-// 			Description:    pulumi.String(name),
-// 			DesktopId:      defaultDesktop.ID(),
-// 			SnapshotName:   pulumi.String(name),
-// 			SourceDiskType: pulumi.String("SYSTEM"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_value"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:            pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType:    pulumi.String("Internet"),
+//				OfficeSiteName:       pulumi.String(name),
+//				EnableInternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//				BundleType: pulumi.StringRef("SYSTEM"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String(name),
+//				Clipboard:       pulumi.String("readwrite"),
+//				LocalDrive:      pulumi.String("read"),
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						Description: pulumi.String("example_value"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String("example_value"),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("0.0.0.0/0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
+//				DesktopName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewSnapshot(ctx, "defaultSnapshot", &eds.SnapshotArgs{
+//				Description:    pulumi.String(name),
+//				DesktopId:      defaultDesktop.ID(),
+//				SnapshotName:   pulumi.String(name),
+//				SourceDiskType: pulumi.String("SYSTEM"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -105,7 +108,9 @@ import (
 // ECD Snapshot can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/snapshot:Snapshot example <id>
+//
+//	$ pulumi import alicloud:eds/snapshot:Snapshot example <id>
+//
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState
@@ -238,7 +243,7 @@ func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutp
 // SnapshotArrayInput is an input type that accepts SnapshotArray and SnapshotArrayOutput values.
 // You can construct a concrete instance of `SnapshotArrayInput` via:
 //
-//          SnapshotArray{ SnapshotArgs{...} }
+//	SnapshotArray{ SnapshotArgs{...} }
 type SnapshotArrayInput interface {
 	pulumi.Input
 
@@ -263,7 +268,7 @@ func (i SnapshotArray) ToSnapshotArrayOutputWithContext(ctx context.Context) Sna
 // SnapshotMapInput is an input type that accepts SnapshotMap and SnapshotMapOutput values.
 // You can construct a concrete instance of `SnapshotMapInput` via:
 //
-//          SnapshotMap{ "key": SnapshotArgs{...} }
+//	SnapshotMap{ "key": SnapshotArgs{...} }
 type SnapshotMapInput interface {
 	pulumi.Input
 

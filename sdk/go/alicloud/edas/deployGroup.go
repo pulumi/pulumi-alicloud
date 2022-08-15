@@ -17,28 +17,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewDeployGroup(ctx, "default", &edas.DeployGroupArgs{
-// 			AppId:     pulumi.Any(_var.App_id),
-// 			GroupName: pulumi.Any(_var.Group_name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edas.NewDeployGroup(ctx, "default", &edas.DeployGroupArgs{
+//				AppId:     pulumi.Any(_var.App_id),
+//				GroupName: pulumi.Any(_var.Group_name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // EDAS deploy group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
+//
+//	$ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
+//
 // ```
 type DeployGroup struct {
 	pulumi.CustomResourceState
@@ -156,7 +161,7 @@ func (i *DeployGroup) ToDeployGroupOutputWithContext(ctx context.Context) Deploy
 // DeployGroupArrayInput is an input type that accepts DeployGroupArray and DeployGroupArrayOutput values.
 // You can construct a concrete instance of `DeployGroupArrayInput` via:
 //
-//          DeployGroupArray{ DeployGroupArgs{...} }
+//	DeployGroupArray{ DeployGroupArgs{...} }
 type DeployGroupArrayInput interface {
 	pulumi.Input
 
@@ -181,7 +186,7 @@ func (i DeployGroupArray) ToDeployGroupArrayOutputWithContext(ctx context.Contex
 // DeployGroupMapInput is an input type that accepts DeployGroupMap and DeployGroupMapOutput values.
 // You can construct a concrete instance of `DeployGroupMapInput` via:
 //
-//          DeployGroupMap{ "key": DeployGroupArgs{...} }
+//	DeployGroupMap{ "key": DeployGroupArgs{...} }
 type DeployGroupMapInput interface {
 	pulumi.Input
 

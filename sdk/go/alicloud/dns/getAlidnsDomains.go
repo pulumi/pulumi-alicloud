@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		domainsDs, err := dns.GetAlidnsDomains(ctx, &dns.GetAlidnsDomainsArgs{
-// 			DomainNameRegex: pulumi.StringRef("^hegu"),
-// 			OutputFile:      pulumi.StringRef("domains.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstDomainId", domainsDs.Domains[0].DomainId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			domainsDs, err := dns.GetAlidnsDomains(ctx, &dns.GetAlidnsDomainsArgs{
+//				DomainNameRegex: pulumi.StringRef("^hegu"),
+//				OutputFile:      pulumi.StringRef("domains.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstDomainId", domainsDs.Domains[0].DomainId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAlidnsDomains(ctx *pulumi.Context, args *GetAlidnsDomainsArgs, opts ...pulumi.InvokeOption) (*GetAlidnsDomainsResult, error) {
 	var rv GetAlidnsDomainsResult

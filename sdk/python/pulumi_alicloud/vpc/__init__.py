@@ -23,6 +23,7 @@ from .get_enhanced_nat_available_zones import *
 from .get_forward_entries import *
 from .get_havips import *
 from .get_ipsec_servers import *
+from .get_ipv4_gateways import *
 from .get_ipv6_addresses import *
 from .get_ipv6_egress_rules import *
 from .get_ipv6_gateways import *
@@ -48,6 +49,7 @@ from .get_traffic_mirror_sessions import *
 from .get_vpc_flow_logs import *
 from .ha_vip import *
 from .ha_vip_attachment import *
+from .ipv4_gateway import *
 from .ipv6_egress_rule import *
 from .ipv6_gateway import *
 from .ipv6_internet_bandwidth import *

@@ -22,7 +22,9 @@ import (
 // VPC Traffic Mirror Session can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
+//
+//	$ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
+//
 // ```
 type TrafficMirrorSession struct {
 	pulumi.CustomResourceState
@@ -221,7 +223,7 @@ func (i *TrafficMirrorSession) ToTrafficMirrorSessionOutputWithContext(ctx conte
 // TrafficMirrorSessionArrayInput is an input type that accepts TrafficMirrorSessionArray and TrafficMirrorSessionArrayOutput values.
 // You can construct a concrete instance of `TrafficMirrorSessionArrayInput` via:
 //
-//          TrafficMirrorSessionArray{ TrafficMirrorSessionArgs{...} }
+//	TrafficMirrorSessionArray{ TrafficMirrorSessionArgs{...} }
 type TrafficMirrorSessionArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +248,7 @@ func (i TrafficMirrorSessionArray) ToTrafficMirrorSessionArrayOutputWithContext(
 // TrafficMirrorSessionMapInput is an input type that accepts TrafficMirrorSessionMap and TrafficMirrorSessionMapOutput values.
 // You can construct a concrete instance of `TrafficMirrorSessionMapInput` via:
 //
-//          TrafficMirrorSessionMap{ "key": TrafficMirrorSessionArgs{...} }
+//	TrafficMirrorSessionMap{ "key": TrafficMirrorSessionArgs{...} }
 type TrafficMirrorSessionMapInput interface {
 	pulumi.Input
 

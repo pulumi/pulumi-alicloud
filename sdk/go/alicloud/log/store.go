@@ -16,7 +16,9 @@ import (
 // Log store can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+//
+//	$ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+//
 // ```
 type Store struct {
 	pulumi.CustomResourceState
@@ -203,7 +205,7 @@ func (i *Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
 // StoreArrayInput is an input type that accepts StoreArray and StoreArrayOutput values.
 // You can construct a concrete instance of `StoreArrayInput` via:
 //
-//          StoreArray{ StoreArgs{...} }
+//	StoreArray{ StoreArgs{...} }
 type StoreArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +230,7 @@ func (i StoreArray) ToStoreArrayOutputWithContext(ctx context.Context) StoreArra
 // StoreMapInput is an input type that accepts StoreMap and StoreMapOutput values.
 // You can construct a concrete instance of `StoreMapInput` via:
 //
-//          StoreMap{ "key": StoreArgs{...} }
+//	StoreMap{ "key": StoreArgs{...} }
 type StoreMapInput interface {
 	pulumi.Input
 

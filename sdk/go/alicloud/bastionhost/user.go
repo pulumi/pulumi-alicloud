@@ -19,44 +19,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewUser(ctx, "local", &bastionhost.UserArgs{
-// 			InstanceId:        pulumi.String("example_value"),
-// 			Mobile:            pulumi.String("13312345678"),
-// 			MobileCountryCode: pulumi.String("CN"),
-// 			Password:          pulumi.String("YourPassword-123"),
-// 			Source:            pulumi.String("Local"),
-// 			UserName:          pulumi.String("my-local-user"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bastionhost.NewUser(ctx, "ram", &bastionhost.UserArgs{
-// 			InstanceId:        pulumi.String("example_value"),
-// 			Mobile:            pulumi.String("13312345678"),
-// 			MobileCountryCode: pulumi.String("CN"),
-// 			Password:          pulumi.String("YourPassword-123"),
-// 			Source:            pulumi.String("Ram"),
-// 			SourceUserId:      pulumi.String("1234567890"),
-// 			UserName:          pulumi.String("my-ram-user"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.NewUser(ctx, "local", &bastionhost.UserArgs{
+//				InstanceId:        pulumi.String("example_value"),
+//				Mobile:            pulumi.String("13312345678"),
+//				MobileCountryCode: pulumi.String("CN"),
+//				Password:          pulumi.String("YourPassword-123"),
+//				Source:            pulumi.String("Local"),
+//				UserName:          pulumi.String("my-local-user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewUser(ctx, "ram", &bastionhost.UserArgs{
+//				InstanceId:        pulumi.String("example_value"),
+//				Mobile:            pulumi.String("13312345678"),
+//				MobileCountryCode: pulumi.String("CN"),
+//				Password:          pulumi.String("YourPassword-123"),
+//				Source:            pulumi.String("Ram"),
+//				SourceUserId:      pulumi.String("1234567890"),
+//				UserName:          pulumi.String("my-ram-user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,7 +67,9 @@ import (
 // Bastion Host User can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
+//
+//	$ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -372,7 +377,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -397,7 +402,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

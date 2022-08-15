@@ -46,7 +46,7 @@ type GetSystemGroupsGroup struct {
 // GetSystemGroupsGroupInput is an input type that accepts GetSystemGroupsGroupArgs and GetSystemGroupsGroupOutput values.
 // You can construct a concrete instance of `GetSystemGroupsGroupInput` via:
 //
-//          GetSystemGroupsGroupArgs{...}
+//	GetSystemGroupsGroupArgs{...}
 type GetSystemGroupsGroupInput interface {
 	pulumi.Input
 
@@ -102,7 +102,7 @@ func (i GetSystemGroupsGroupArgs) ToGetSystemGroupsGroupOutputWithContext(ctx co
 // GetSystemGroupsGroupArrayInput is an input type that accepts GetSystemGroupsGroupArray and GetSystemGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetSystemGroupsGroupArrayInput` via:
 //
-//          GetSystemGroupsGroupArray{ GetSystemGroupsGroupArgs{...} }
+//	GetSystemGroupsGroupArray{ GetSystemGroupsGroupArgs{...} }
 type GetSystemGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +247,7 @@ type GetSystemGroupsGroupStat struct {
 // GetSystemGroupsGroupStatInput is an input type that accepts GetSystemGroupsGroupStatArgs and GetSystemGroupsGroupStatOutput values.
 // You can construct a concrete instance of `GetSystemGroupsGroupStatInput` via:
 //
-//          GetSystemGroupsGroupStatArgs{...}
+//	GetSystemGroupsGroupStatArgs{...}
 type GetSystemGroupsGroupStatInput interface {
 	pulumi.Input
 
@@ -281,7 +281,7 @@ func (i GetSystemGroupsGroupStatArgs) ToGetSystemGroupsGroupStatOutputWithContex
 // GetSystemGroupsGroupStatArrayInput is an input type that accepts GetSystemGroupsGroupStatArray and GetSystemGroupsGroupStatArrayOutput values.
 // You can construct a concrete instance of `GetSystemGroupsGroupStatArrayInput` via:
 //
-//          GetSystemGroupsGroupStatArray{ GetSystemGroupsGroupStatArgs{...} }
+//	GetSystemGroupsGroupStatArray{ GetSystemGroupsGroupStatArgs{...} }
 type GetSystemGroupsGroupStatArrayInput interface {
 	pulumi.Input
 

@@ -20,7 +20,7 @@ type AddressBookEcsTag struct {
 // AddressBookEcsTagInput is an input type that accepts AddressBookEcsTagArgs and AddressBookEcsTagOutput values.
 // You can construct a concrete instance of `AddressBookEcsTagInput` via:
 //
-//          AddressBookEcsTagArgs{...}
+//	AddressBookEcsTagArgs{...}
 type AddressBookEcsTagInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i AddressBookEcsTagArgs) ToAddressBookEcsTagOutputWithContext(ctx context.
 // AddressBookEcsTagArrayInput is an input type that accepts AddressBookEcsTagArray and AddressBookEcsTagArrayOutput values.
 // You can construct a concrete instance of `AddressBookEcsTagArrayInput` via:
 //
-//          AddressBookEcsTagArray{ AddressBookEcsTagArgs{...} }
+//	AddressBookEcsTagArray{ AddressBookEcsTagArgs{...} }
 type AddressBookEcsTagArrayInput interface {
 	pulumi.Input
 
@@ -140,7 +140,7 @@ type GetAddressBooksBook struct {
 // GetAddressBooksBookInput is an input type that accepts GetAddressBooksBookArgs and GetAddressBooksBookOutput values.
 // You can construct a concrete instance of `GetAddressBooksBookInput` via:
 //
-//          GetAddressBooksBookArgs{...}
+//	GetAddressBooksBookArgs{...}
 type GetAddressBooksBookInput interface {
 	pulumi.Input
 
@@ -184,7 +184,7 @@ func (i GetAddressBooksBookArgs) ToGetAddressBooksBookOutputWithContext(ctx cont
 // GetAddressBooksBookArrayInput is an input type that accepts GetAddressBooksBookArray and GetAddressBooksBookArrayOutput values.
 // You can construct a concrete instance of `GetAddressBooksBookArrayInput` via:
 //
-//          GetAddressBooksBookArray{ GetAddressBooksBookArgs{...} }
+//	GetAddressBooksBookArray{ GetAddressBooksBookArgs{...} }
 type GetAddressBooksBookArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +295,7 @@ type GetAddressBooksBookEcsTag struct {
 // GetAddressBooksBookEcsTagInput is an input type that accepts GetAddressBooksBookEcsTagArgs and GetAddressBooksBookEcsTagOutput values.
 // You can construct a concrete instance of `GetAddressBooksBookEcsTagInput` via:
 //
-//          GetAddressBooksBookEcsTagArgs{...}
+//	GetAddressBooksBookEcsTagArgs{...}
 type GetAddressBooksBookEcsTagInput interface {
 	pulumi.Input
 
@@ -325,7 +325,7 @@ func (i GetAddressBooksBookEcsTagArgs) ToGetAddressBooksBookEcsTagOutputWithCont
 // GetAddressBooksBookEcsTagArrayInput is an input type that accepts GetAddressBooksBookEcsTagArray and GetAddressBooksBookEcsTagArrayOutput values.
 // You can construct a concrete instance of `GetAddressBooksBookEcsTagArrayInput` via:
 //
-//          GetAddressBooksBookEcsTagArray{ GetAddressBooksBookEcsTagArgs{...} }
+//	GetAddressBooksBookEcsTagArray{ GetAddressBooksBookEcsTagArgs{...} }
 type GetAddressBooksBookEcsTagArrayInput interface {
 	pulumi.Input
 
@@ -437,7 +437,7 @@ type GetControlPoliciesPolicy struct {
 // GetControlPoliciesPolicyInput is an input type that accepts GetControlPoliciesPolicyArgs and GetControlPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetControlPoliciesPolicyInput` via:
 //
-//          GetControlPoliciesPolicyArgs{...}
+//	GetControlPoliciesPolicyArgs{...}
 type GetControlPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -503,7 +503,7 @@ func (i GetControlPoliciesPolicyArgs) ToGetControlPoliciesPolicyOutputWithContex
 // GetControlPoliciesPolicyArrayInput is an input type that accepts GetControlPoliciesPolicyArray and GetControlPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetControlPoliciesPolicyArrayInput` via:
 //
-//          GetControlPoliciesPolicyArray{ GetControlPoliciesPolicyArgs{...} }
+//	GetControlPoliciesPolicyArray{ GetControlPoliciesPolicyArgs{...} }
 type GetControlPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -696,7 +696,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -738,7 +738,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 

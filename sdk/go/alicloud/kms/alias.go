@@ -17,32 +17,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisKey, err := kms.NewKey(ctx, "thisKey", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = kms.NewAlias(ctx, "thisAlias", &kms.AliasArgs{
-// 			AliasName: pulumi.String("alias/test_kms_alias"),
-// 			KeyId:     thisKey.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisKey, err := kms.NewKey(ctx, "thisKey", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewAlias(ctx, "thisAlias", &kms.AliasArgs{
+//				AliasName: pulumi.String("alias/test_kms_alias"),
+//				KeyId:     thisKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // KMS alias can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
+//
+//	$ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
+//
 // ```
 type Alias struct {
 	pulumi.CustomResourceState
@@ -154,7 +159,7 @@ func (i *Alias) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 // AliasArrayInput is an input type that accepts AliasArray and AliasArrayOutput values.
 // You can construct a concrete instance of `AliasArrayInput` via:
 //
-//          AliasArray{ AliasArgs{...} }
+//	AliasArray{ AliasArgs{...} }
 type AliasArrayInput interface {
 	pulumi.Input
 
@@ -179,7 +184,7 @@ func (i AliasArray) ToAliasArrayOutputWithContext(ctx context.Context) AliasArra
 // AliasMapInput is an input type that accepts AliasMap and AliasMapOutput values.
 // You can construct a concrete instance of `AliasMapInput` via:
 //
-//          AliasMap{ "key": AliasArgs{...} }
+//	AliasMap{ "key": AliasArgs{...} }
 type AliasMapInput interface {
 	pulumi.Input
 

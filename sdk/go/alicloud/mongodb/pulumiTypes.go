@@ -30,7 +30,7 @@ type InstanceReplicaSet struct {
 // InstanceReplicaSetInput is an input type that accepts InstanceReplicaSetArgs and InstanceReplicaSetOutput values.
 // You can construct a concrete instance of `InstanceReplicaSetInput` via:
 //
-//          InstanceReplicaSetArgs{...}
+//	InstanceReplicaSetArgs{...}
 type InstanceReplicaSetInput interface {
 	pulumi.Input
 
@@ -70,7 +70,7 @@ func (i InstanceReplicaSetArgs) ToInstanceReplicaSetOutputWithContext(ctx contex
 // InstanceReplicaSetArrayInput is an input type that accepts InstanceReplicaSetArray and InstanceReplicaSetArrayOutput values.
 // You can construct a concrete instance of `InstanceReplicaSetArrayInput` via:
 //
-//          InstanceReplicaSetArray{ InstanceReplicaSetArgs{...} }
+//	InstanceReplicaSetArray{ InstanceReplicaSetArgs{...} }
 type InstanceReplicaSetArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +173,7 @@ type ServerlessInstanceSecurityIpGroup struct {
 // ServerlessInstanceSecurityIpGroupInput is an input type that accepts ServerlessInstanceSecurityIpGroupArgs and ServerlessInstanceSecurityIpGroupOutput values.
 // You can construct a concrete instance of `ServerlessInstanceSecurityIpGroupInput` via:
 //
-//          ServerlessInstanceSecurityIpGroupArgs{...}
+//	ServerlessInstanceSecurityIpGroupArgs{...}
 type ServerlessInstanceSecurityIpGroupInput interface {
 	pulumi.Input
 
@@ -205,7 +205,7 @@ func (i ServerlessInstanceSecurityIpGroupArgs) ToServerlessInstanceSecurityIpGro
 // ServerlessInstanceSecurityIpGroupArrayInput is an input type that accepts ServerlessInstanceSecurityIpGroupArray and ServerlessInstanceSecurityIpGroupArrayOutput values.
 // You can construct a concrete instance of `ServerlessInstanceSecurityIpGroupArrayInput` via:
 //
-//          ServerlessInstanceSecurityIpGroupArray{ ServerlessInstanceSecurityIpGroupArgs{...} }
+//	ServerlessInstanceSecurityIpGroupArray{ ServerlessInstanceSecurityIpGroupArgs{...} }
 type ServerlessInstanceSecurityIpGroupArrayInput interface {
 	pulumi.Input
 
@@ -299,7 +299,7 @@ type ShardingInstanceConfigServerList struct {
 // ShardingInstanceConfigServerListInput is an input type that accepts ShardingInstanceConfigServerListArgs and ShardingInstanceConfigServerListOutput values.
 // You can construct a concrete instance of `ShardingInstanceConfigServerListInput` via:
 //
-//          ShardingInstanceConfigServerListArgs{...}
+//	ShardingInstanceConfigServerListArgs{...}
 type ShardingInstanceConfigServerListInput interface {
 	pulumi.Input
 
@@ -342,7 +342,7 @@ func (i ShardingInstanceConfigServerListArgs) ToShardingInstanceConfigServerList
 // ShardingInstanceConfigServerListArrayInput is an input type that accepts ShardingInstanceConfigServerListArray and ShardingInstanceConfigServerListArrayOutput values.
 // You can construct a concrete instance of `ShardingInstanceConfigServerListArrayInput` via:
 //
-//          ShardingInstanceConfigServerListArray{ ShardingInstanceConfigServerListArgs{...} }
+//	ShardingInstanceConfigServerListArray{ ShardingInstanceConfigServerListArgs{...} }
 type ShardingInstanceConfigServerListArrayInput interface {
 	pulumi.Input
 
@@ -453,7 +453,7 @@ type ShardingInstanceMongoList struct {
 // ShardingInstanceMongoListInput is an input type that accepts ShardingInstanceMongoListArgs and ShardingInstanceMongoListOutput values.
 // You can construct a concrete instance of `ShardingInstanceMongoListInput` via:
 //
-//          ShardingInstanceMongoListArgs{...}
+//	ShardingInstanceMongoListArgs{...}
 type ShardingInstanceMongoListInput interface {
 	pulumi.Input
 
@@ -487,7 +487,7 @@ func (i ShardingInstanceMongoListArgs) ToShardingInstanceMongoListOutputWithCont
 // ShardingInstanceMongoListArrayInput is an input type that accepts ShardingInstanceMongoListArray and ShardingInstanceMongoListArrayOutput values.
 // You can construct a concrete instance of `ShardingInstanceMongoListArrayInput` via:
 //
-//          ShardingInstanceMongoListArray{ ShardingInstanceMongoListArgs{...} }
+//	ShardingInstanceMongoListArray{ ShardingInstanceMongoListArgs{...} }
 type ShardingInstanceMongoListArrayInput interface {
 	pulumi.Input
 
@@ -578,7 +578,7 @@ type ShardingInstanceShardList struct {
 // ShardingInstanceShardListInput is an input type that accepts ShardingInstanceShardListArgs and ShardingInstanceShardListOutput values.
 // You can construct a concrete instance of `ShardingInstanceShardListInput` via:
 //
-//          ShardingInstanceShardListArgs{...}
+//	ShardingInstanceShardListArgs{...}
 type ShardingInstanceShardListInput interface {
 	pulumi.Input
 
@@ -613,7 +613,7 @@ func (i ShardingInstanceShardListArgs) ToShardingInstanceShardListOutputWithCont
 // ShardingInstanceShardListArrayInput is an input type that accepts ShardingInstanceShardListArray and ShardingInstanceShardListArrayOutput values.
 // You can construct a concrete instance of `ShardingInstanceShardListArrayInput` via:
 //
-//          ShardingInstanceShardListArray{ ShardingInstanceShardListArgs{...} }
+//	ShardingInstanceShardListArray{ ShardingInstanceShardListArgs{...} }
 type ShardingInstanceShardListArrayInput interface {
 	pulumi.Input
 
@@ -716,7 +716,7 @@ type ShardingNetworkPrivateAddressNetworkAddress struct {
 // ShardingNetworkPrivateAddressNetworkAddressInput is an input type that accepts ShardingNetworkPrivateAddressNetworkAddressArgs and ShardingNetworkPrivateAddressNetworkAddressOutput values.
 // You can construct a concrete instance of `ShardingNetworkPrivateAddressNetworkAddressInput` via:
 //
-//          ShardingNetworkPrivateAddressNetworkAddressArgs{...}
+//	ShardingNetworkPrivateAddressNetworkAddressArgs{...}
 type ShardingNetworkPrivateAddressNetworkAddressInput interface {
 	pulumi.Input
 
@@ -762,7 +762,7 @@ func (i ShardingNetworkPrivateAddressNetworkAddressArgs) ToShardingNetworkPrivat
 // ShardingNetworkPrivateAddressNetworkAddressArrayInput is an input type that accepts ShardingNetworkPrivateAddressNetworkAddressArray and ShardingNetworkPrivateAddressNetworkAddressArrayOutput values.
 // You can construct a concrete instance of `ShardingNetworkPrivateAddressNetworkAddressArrayInput` via:
 //
-//          ShardingNetworkPrivateAddressNetworkAddressArray{ ShardingNetworkPrivateAddressNetworkAddressArgs{...} }
+//	ShardingNetworkPrivateAddressNetworkAddressArray{ ShardingNetworkPrivateAddressNetworkAddressArgs{...} }
 type ShardingNetworkPrivateAddressNetworkAddressArrayInput interface {
 	pulumi.Input
 
@@ -894,7 +894,7 @@ type ShardingNetworkPublicAddressNetworkAddress struct {
 // ShardingNetworkPublicAddressNetworkAddressInput is an input type that accepts ShardingNetworkPublicAddressNetworkAddressArgs and ShardingNetworkPublicAddressNetworkAddressOutput values.
 // You can construct a concrete instance of `ShardingNetworkPublicAddressNetworkAddressInput` via:
 //
-//          ShardingNetworkPublicAddressNetworkAddressArgs{...}
+//	ShardingNetworkPublicAddressNetworkAddressArgs{...}
 type ShardingNetworkPublicAddressNetworkAddressInput interface {
 	pulumi.Input
 
@@ -940,7 +940,7 @@ func (i ShardingNetworkPublicAddressNetworkAddressArgs) ToShardingNetworkPublicA
 // ShardingNetworkPublicAddressNetworkAddressArrayInput is an input type that accepts ShardingNetworkPublicAddressNetworkAddressArray and ShardingNetworkPublicAddressNetworkAddressArrayOutput values.
 // You can construct a concrete instance of `ShardingNetworkPublicAddressNetworkAddressArrayInput` via:
 //
-//          ShardingNetworkPublicAddressNetworkAddressArray{ ShardingNetworkPublicAddressNetworkAddressArgs{...} }
+//	ShardingNetworkPublicAddressNetworkAddressArray{ ShardingNetworkPublicAddressNetworkAddressArgs{...} }
 type ShardingNetworkPublicAddressNetworkAddressArrayInput interface {
 	pulumi.Input
 
@@ -1064,7 +1064,7 @@ type GetAccountsAccount struct {
 // GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
 // You can construct a concrete instance of `GetAccountsAccountInput` via:
 //
-//          GetAccountsAccountArgs{...}
+//	GetAccountsAccountArgs{...}
 type GetAccountsAccountInput interface {
 	pulumi.Input
 
@@ -1102,7 +1102,7 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
-//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+//	GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
 type GetAccountsAccountArrayInput interface {
 	pulumi.Input
 
@@ -1200,7 +1200,7 @@ type GetAuditPoliciesPolicy struct {
 // GetAuditPoliciesPolicyInput is an input type that accepts GetAuditPoliciesPolicyArgs and GetAuditPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetAuditPoliciesPolicyInput` via:
 //
-//          GetAuditPoliciesPolicyArgs{...}
+//	GetAuditPoliciesPolicyArgs{...}
 type GetAuditPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -1232,7 +1232,7 @@ func (i GetAuditPoliciesPolicyArgs) ToGetAuditPoliciesPolicyOutputWithContext(ct
 // GetAuditPoliciesPolicyArrayInput is an input type that accepts GetAuditPoliciesPolicyArray and GetAuditPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetAuditPoliciesPolicyArrayInput` via:
 //
-//          GetAuditPoliciesPolicyArray{ GetAuditPoliciesPolicyArgs{...} }
+//	GetAuditPoliciesPolicyArray{ GetAuditPoliciesPolicyArgs{...} }
 type GetAuditPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -1347,7 +1347,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -1411,7 +1411,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1574,7 +1574,7 @@ type GetInstancesInstanceMongo struct {
 // GetInstancesInstanceMongoInput is an input type that accepts GetInstancesInstanceMongoArgs and GetInstancesInstanceMongoOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceMongoInput` via:
 //
-//          GetInstancesInstanceMongoArgs{...}
+//	GetInstancesInstanceMongoArgs{...}
 type GetInstancesInstanceMongoInput interface {
 	pulumi.Input
 
@@ -1606,7 +1606,7 @@ func (i GetInstancesInstanceMongoArgs) ToGetInstancesInstanceMongoOutputWithCont
 // GetInstancesInstanceMongoArrayInput is an input type that accepts GetInstancesInstanceMongoArray and GetInstancesInstanceMongoArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceMongoArrayInput` via:
 //
-//          GetInstancesInstanceMongoArray{ GetInstancesInstanceMongoArgs{...} }
+//	GetInstancesInstanceMongoArray{ GetInstancesInstanceMongoArgs{...} }
 type GetInstancesInstanceMongoArrayInput interface {
 	pulumi.Input
 
@@ -1691,7 +1691,7 @@ type GetInstancesInstanceShard struct {
 // GetInstancesInstanceShardInput is an input type that accepts GetInstancesInstanceShardArgs and GetInstancesInstanceShardOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceShardInput` via:
 //
-//          GetInstancesInstanceShardArgs{...}
+//	GetInstancesInstanceShardArgs{...}
 type GetInstancesInstanceShardInput interface {
 	pulumi.Input
 
@@ -1725,7 +1725,7 @@ func (i GetInstancesInstanceShardArgs) ToGetInstancesInstanceShardOutputWithCont
 // GetInstancesInstanceShardArrayInput is an input type that accepts GetInstancesInstanceShardArray and GetInstancesInstanceShardArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceShardArrayInput` via:
 //
-//          GetInstancesInstanceShardArray{ GetInstancesInstanceShardArgs{...} }
+//	GetInstancesInstanceShardArray{ GetInstancesInstanceShardArgs{...} }
 type GetInstancesInstanceShardArrayInput interface {
 	pulumi.Input
 
@@ -1863,7 +1863,7 @@ type GetServerlessInstancesInstance struct {
 // GetServerlessInstancesInstanceInput is an input type that accepts GetServerlessInstancesInstanceArgs and GetServerlessInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetServerlessInstancesInstanceInput` via:
 //
-//          GetServerlessInstancesInstanceArgs{...}
+//	GetServerlessInstancesInstanceArgs{...}
 type GetServerlessInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -1945,7 +1945,7 @@ func (i GetServerlessInstancesInstanceArgs) ToGetServerlessInstancesInstanceOutp
 // GetServerlessInstancesInstanceArrayInput is an input type that accepts GetServerlessInstancesInstanceArray and GetServerlessInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetServerlessInstancesInstanceArrayInput` via:
 //
-//          GetServerlessInstancesInstanceArray{ GetServerlessInstancesInstanceArgs{...} }
+//	GetServerlessInstancesInstanceArray{ GetServerlessInstancesInstanceArgs{...} }
 type GetServerlessInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -2155,7 +2155,7 @@ type GetServerlessInstancesInstanceSecurityIpGroup struct {
 // GetServerlessInstancesInstanceSecurityIpGroupInput is an input type that accepts GetServerlessInstancesInstanceSecurityIpGroupArgs and GetServerlessInstancesInstanceSecurityIpGroupOutput values.
 // You can construct a concrete instance of `GetServerlessInstancesInstanceSecurityIpGroupInput` via:
 //
-//          GetServerlessInstancesInstanceSecurityIpGroupArgs{...}
+//	GetServerlessInstancesInstanceSecurityIpGroupArgs{...}
 type GetServerlessInstancesInstanceSecurityIpGroupInput interface {
 	pulumi.Input
 
@@ -2187,7 +2187,7 @@ func (i GetServerlessInstancesInstanceSecurityIpGroupArgs) ToGetServerlessInstan
 // GetServerlessInstancesInstanceSecurityIpGroupArrayInput is an input type that accepts GetServerlessInstancesInstanceSecurityIpGroupArray and GetServerlessInstancesInstanceSecurityIpGroupArrayOutput values.
 // You can construct a concrete instance of `GetServerlessInstancesInstanceSecurityIpGroupArrayInput` via:
 //
-//          GetServerlessInstancesInstanceSecurityIpGroupArray{ GetServerlessInstancesInstanceSecurityIpGroupArgs{...} }
+//	GetServerlessInstancesInstanceSecurityIpGroupArray{ GetServerlessInstancesInstanceSecurityIpGroupArgs{...} }
 type GetServerlessInstancesInstanceSecurityIpGroupArrayInput interface {
 	pulumi.Input
 
@@ -2286,7 +2286,7 @@ type GetShardingNetworkPrivateAddressesAddress struct {
 // GetShardingNetworkPrivateAddressesAddressInput is an input type that accepts GetShardingNetworkPrivateAddressesAddressArgs and GetShardingNetworkPrivateAddressesAddressOutput values.
 // You can construct a concrete instance of `GetShardingNetworkPrivateAddressesAddressInput` via:
 //
-//          GetShardingNetworkPrivateAddressesAddressArgs{...}
+//	GetShardingNetworkPrivateAddressesAddressArgs{...}
 type GetShardingNetworkPrivateAddressesAddressInput interface {
 	pulumi.Input
 
@@ -2334,7 +2334,7 @@ func (i GetShardingNetworkPrivateAddressesAddressArgs) ToGetShardingNetworkPriva
 // GetShardingNetworkPrivateAddressesAddressArrayInput is an input type that accepts GetShardingNetworkPrivateAddressesAddressArray and GetShardingNetworkPrivateAddressesAddressArrayOutput values.
 // You can construct a concrete instance of `GetShardingNetworkPrivateAddressesAddressArrayInput` via:
 //
-//          GetShardingNetworkPrivateAddressesAddressArray{ GetShardingNetworkPrivateAddressesAddressArgs{...} }
+//	GetShardingNetworkPrivateAddressesAddressArray{ GetShardingNetworkPrivateAddressesAddressArgs{...} }
 type GetShardingNetworkPrivateAddressesAddressArrayInput interface {
 	pulumi.Input
 
@@ -2473,7 +2473,7 @@ type GetShardingNetworkPublicAddressesAddress struct {
 // GetShardingNetworkPublicAddressesAddressInput is an input type that accepts GetShardingNetworkPublicAddressesAddressArgs and GetShardingNetworkPublicAddressesAddressOutput values.
 // You can construct a concrete instance of `GetShardingNetworkPublicAddressesAddressInput` via:
 //
-//          GetShardingNetworkPublicAddressesAddressArgs{...}
+//	GetShardingNetworkPublicAddressesAddressArgs{...}
 type GetShardingNetworkPublicAddressesAddressInput interface {
 	pulumi.Input
 
@@ -2521,7 +2521,7 @@ func (i GetShardingNetworkPublicAddressesAddressArgs) ToGetShardingNetworkPublic
 // GetShardingNetworkPublicAddressesAddressArrayInput is an input type that accepts GetShardingNetworkPublicAddressesAddressArray and GetShardingNetworkPublicAddressesAddressArrayOutput values.
 // You can construct a concrete instance of `GetShardingNetworkPublicAddressesAddressArrayInput` via:
 //
-//          GetShardingNetworkPublicAddressesAddressArray{ GetShardingNetworkPublicAddressesAddressArgs{...} }
+//	GetShardingNetworkPublicAddressesAddressArray{ GetShardingNetworkPublicAddressesAddressArgs{...} }
 type GetShardingNetworkPublicAddressesAddressArrayInput interface {
 	pulumi.Input
 
@@ -2642,7 +2642,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -2672,7 +2672,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

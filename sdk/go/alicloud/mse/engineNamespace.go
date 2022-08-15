@@ -19,58 +19,61 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultCluster, err := mse.NewCluster(ctx, "defaultCluster", &mse.ClusterArgs{
-// 			ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
-// 			ClusterType:          pulumi.String("Nacos-Ans"),
-// 			ClusterVersion:       pulumi.String("NACOS_ANS_1_2_1"),
-// 			InstanceCount:        pulumi.Int(1),
-// 			NetType:              pulumi.String("privatenet"),
-// 			VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
-// 			PubNetworkFlow:       pulumi.String("1"),
-// 			AclEntryLists: pulumi.StringArray{
-// 				pulumi.String("127.0.0.1/32"),
-// 			},
-// 			ClusterAliasName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = mse.NewEngineNamespace(ctx, "example", &mse.EngineNamespaceArgs{
-// 			ClusterId:         defaultCluster.ClusterId,
-// 			NamespaceShowName: pulumi.String("example_value"),
-// 			NamespaceId:       pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := mse.NewCluster(ctx, "defaultCluster", &mse.ClusterArgs{
+//				ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
+//				ClusterType:          pulumi.String("Nacos-Ans"),
+//				ClusterVersion:       pulumi.String("NACOS_ANS_1_2_1"),
+//				InstanceCount:        pulumi.Int(1),
+//				NetType:              pulumi.String("privatenet"),
+//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
+//				PubNetworkFlow:       pulumi.String("1"),
+//				AclEntryLists: pulumi.StringArray{
+//					pulumi.String("127.0.0.1/32"),
+//				},
+//				ClusterAliasName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mse.NewEngineNamespace(ctx, "example", &mse.EngineNamespaceArgs{
+//				ClusterId:         defaultCluster.ClusterId,
+//				NamespaceShowName: pulumi.String("example_value"),
+//				NamespaceId:       pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -78,7 +81,9 @@ import (
 // Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+//
+//	$ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+//
 // ```
 type EngineNamespace struct {
 	pulumi.CustomResourceState
@@ -205,7 +210,7 @@ func (i *EngineNamespace) ToEngineNamespaceOutputWithContext(ctx context.Context
 // EngineNamespaceArrayInput is an input type that accepts EngineNamespaceArray and EngineNamespaceArrayOutput values.
 // You can construct a concrete instance of `EngineNamespaceArrayInput` via:
 //
-//          EngineNamespaceArray{ EngineNamespaceArgs{...} }
+//	EngineNamespaceArray{ EngineNamespaceArgs{...} }
 type EngineNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +235,7 @@ func (i EngineNamespaceArray) ToEngineNamespaceArrayOutputWithContext(ctx contex
 // EngineNamespaceMapInput is an input type that accepts EngineNamespaceMap and EngineNamespaceMapOutput values.
 // You can construct a concrete instance of `EngineNamespaceMapInput` via:
 //
-//          EngineNamespaceMap{ "key": EngineNamespaceArgs{...} }
+//	EngineNamespaceMap{ "key": EngineNamespaceArgs{...} }
 type EngineNamespaceMapInput interface {
 	pulumi.Input
 

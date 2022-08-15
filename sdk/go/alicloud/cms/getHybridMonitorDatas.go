@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := cms.GetHybridMonitorDatas(ctx, &cms.GetHybridMonitorDatasArgs{
-// 			Namespace: "example_value",
-// 			PromSql:   "AliyunEcs_cpu_total",
-// 			Start:     "1657505665",
-// 			End:       "1657520065",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cmsMetricRuleTemplateId1", _default.Datas[0])
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cms.GetHybridMonitorDatas(ctx, &cms.GetHybridMonitorDatasArgs{
+//				Namespace: "example_value",
+//				PromSql:   "AliyunEcs_cpu_total",
+//				Start:     "1657505665",
+//				End:       "1657520065",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cmsMetricRuleTemplateId1", _default.Datas[0])
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHybridMonitorDatas(ctx *pulumi.Context, args *GetHybridMonitorDatasArgs, opts ...pulumi.InvokeOption) (*GetHybridMonitorDatasResult, error) {
 	var rv GetHybridMonitorDatasResult

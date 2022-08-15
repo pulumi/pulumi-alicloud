@@ -110,7 +110,7 @@ func (i *KubernetesPermission) ToKubernetesPermissionOutputWithContext(ctx conte
 // KubernetesPermissionArrayInput is an input type that accepts KubernetesPermissionArray and KubernetesPermissionArrayOutput values.
 // You can construct a concrete instance of `KubernetesPermissionArrayInput` via:
 //
-//          KubernetesPermissionArray{ KubernetesPermissionArgs{...} }
+//	KubernetesPermissionArray{ KubernetesPermissionArgs{...} }
 type KubernetesPermissionArrayInput interface {
 	pulumi.Input
 
@@ -135,7 +135,7 @@ func (i KubernetesPermissionArray) ToKubernetesPermissionArrayOutputWithContext(
 // KubernetesPermissionMapInput is an input type that accepts KubernetesPermissionMap and KubernetesPermissionMapOutput values.
 // You can construct a concrete instance of `KubernetesPermissionMapInput` via:
 //
-//          KubernetesPermissionMap{ "key": KubernetesPermissionArgs{...} }
+//	KubernetesPermissionMap{ "key": KubernetesPermissionArgs{...} }
 type KubernetesPermissionMapInput interface {
 	pulumi.Input
 

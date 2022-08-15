@@ -13,33 +13,36 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/marketplace"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/marketplace"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := marketplace.NewOrder(ctx, "order", &marketplace.OrderArgs{
-// 			CouponId:       pulumi.String(""),
-// 			Duration:       pulumi.Int(1),
-// 			PackageVersion: pulumi.String("yuncode2713600001"),
-// 			PayType:        pulumi.String("prepay"),
-// 			PricingCycle:   pulumi.String("Month"),
-// 			ProductCode:    pulumi.String("cmapi033136"),
-// 			Quantity:       pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := marketplace.NewOrder(ctx, "order", &marketplace.OrderArgs{
+//				CouponId:       pulumi.String(""),
+//				Duration:       pulumi.Int(1),
+//				PackageVersion: pulumi.String("yuncode2713600001"),
+//				PayType:        pulumi.String("prepay"),
+//				PricingCycle:   pulumi.String("Month"),
+//				ProductCode:    pulumi.String("cmapi033136"),
+//				Quantity:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Market order can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:marketplace/order:Order order your-order-id
+//
+//	$ pulumi import alicloud:marketplace/order:Order order your-order-id
+//
 // ```
 type Order struct {
 	pulumi.CustomResourceState
@@ -214,7 +219,7 @@ func (i *Order) ToOrderOutputWithContext(ctx context.Context) OrderOutput {
 // OrderArrayInput is an input type that accepts OrderArray and OrderArrayOutput values.
 // You can construct a concrete instance of `OrderArrayInput` via:
 //
-//          OrderArray{ OrderArgs{...} }
+//	OrderArray{ OrderArgs{...} }
 type OrderArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +244,7 @@ func (i OrderArray) ToOrderArrayOutputWithContext(ctx context.Context) OrderArra
 // OrderMapInput is an input type that accepts OrderMap and OrderMapOutput values.
 // You can construct a concrete instance of `OrderMapInput` via:
 //
-//          OrderMap{ "key": OrderArgs{...} }
+//	OrderMap{ "key": OrderArgs{...} }
 type OrderMapInput interface {
 	pulumi.Input
 

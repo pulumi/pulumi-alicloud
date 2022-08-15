@@ -22,7 +22,9 @@ import (
 // Resource Manager Shared Target can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
+//
+//	$ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
+//
 // ```
 type SharedTarget struct {
 	pulumi.CustomResourceState
@@ -132,7 +134,7 @@ func (i *SharedTarget) ToSharedTargetOutputWithContext(ctx context.Context) Shar
 // SharedTargetArrayInput is an input type that accepts SharedTargetArray and SharedTargetArrayOutput values.
 // You can construct a concrete instance of `SharedTargetArrayInput` via:
 //
-//          SharedTargetArray{ SharedTargetArgs{...} }
+//	SharedTargetArray{ SharedTargetArgs{...} }
 type SharedTargetArrayInput interface {
 	pulumi.Input
 
@@ -157,7 +159,7 @@ func (i SharedTargetArray) ToSharedTargetArrayOutputWithContext(ctx context.Cont
 // SharedTargetMapInput is an input type that accepts SharedTargetMap and SharedTargetMapOutput values.
 // You can construct a concrete instance of `SharedTargetMapInput` via:
 //
-//          SharedTargetMap{ "key": SharedTargetArgs{...} }
+//	SharedTargetMap{ "key": SharedTargetArgs{...} }
 type SharedTargetMapInput interface {
 	pulumi.Input
 

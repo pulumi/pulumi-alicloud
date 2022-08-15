@@ -163,7 +163,7 @@ func (i *ApplicationInfo) ToApplicationInfoOutputWithContext(ctx context.Context
 // ApplicationInfoArrayInput is an input type that accepts ApplicationInfoArray and ApplicationInfoArrayOutput values.
 // You can construct a concrete instance of `ApplicationInfoArrayInput` via:
 //
-//          ApplicationInfoArray{ ApplicationInfoArgs{...} }
+//	ApplicationInfoArray{ ApplicationInfoArgs{...} }
 type ApplicationInfoArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +188,7 @@ func (i ApplicationInfoArray) ToApplicationInfoArrayOutputWithContext(ctx contex
 // ApplicationInfoMapInput is an input type that accepts ApplicationInfoMap and ApplicationInfoMapOutput values.
 // You can construct a concrete instance of `ApplicationInfoMapInput` via:
 //
-//          ApplicationInfoMap{ "key": ApplicationInfoArgs{...} }
+//	ApplicationInfoMap{ "key": ApplicationInfoArgs{...} }
 type ApplicationInfoMapInput interface {
 	pulumi.Input
 

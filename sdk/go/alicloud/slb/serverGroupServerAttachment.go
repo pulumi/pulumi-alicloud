@@ -20,7 +20,9 @@ import (
 // Load balancer backend server group server attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
+//
+//	$ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
+//
 // ```
 type ServerGroupServerAttachment struct {
 	pulumi.CustomResourceState
@@ -167,7 +169,7 @@ func (i *ServerGroupServerAttachment) ToServerGroupServerAttachmentOutputWithCon
 // ServerGroupServerAttachmentArrayInput is an input type that accepts ServerGroupServerAttachmentArray and ServerGroupServerAttachmentArrayOutput values.
 // You can construct a concrete instance of `ServerGroupServerAttachmentArrayInput` via:
 //
-//          ServerGroupServerAttachmentArray{ ServerGroupServerAttachmentArgs{...} }
+//	ServerGroupServerAttachmentArray{ ServerGroupServerAttachmentArgs{...} }
 type ServerGroupServerAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -192,7 +194,7 @@ func (i ServerGroupServerAttachmentArray) ToServerGroupServerAttachmentArrayOutp
 // ServerGroupServerAttachmentMapInput is an input type that accepts ServerGroupServerAttachmentMap and ServerGroupServerAttachmentMapOutput values.
 // You can construct a concrete instance of `ServerGroupServerAttachmentMapInput` via:
 //
-//          ServerGroupServerAttachmentMap{ "key": ServerGroupServerAttachmentArgs{...} }
+//	ServerGroupServerAttachmentMap{ "key": ServerGroupServerAttachmentArgs{...} }
 type ServerGroupServerAttachmentMapInput interface {
 	pulumi.Input
 

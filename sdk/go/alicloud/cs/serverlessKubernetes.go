@@ -13,86 +13,89 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "ask-example"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("10.1.0.0/21"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VswitchName: pulumi.String(name),
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("10.1.1.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cs.NewServerlessKubernetes(ctx, "serverless", &cs.ServerlessKubernetesArgs{
-// 			NamePrefix: pulumi.String(name),
-// 			VpcId:      defaultNetwork.ID(),
-// 			VswitchIds: pulumi.StringArray{
-// 				defaultSwitch.ID(),
-// 			},
-// 			NewNatGateway:               pulumi.Bool(true),
-// 			EndpointPublicAccessEnabled: pulumi.Bool(true),
-// 			DeletionProtection:          pulumi.Bool(false),
-// 			LoadBalancerSpec:            pulumi.String("slb.s2.small"),
-// 			TimeZone:                    pulumi.String("Asia/Shanghai"),
-// 			ServiceCidr:                 pulumi.String("172.21.0.0/20"),
-// 			ServiceDiscoveryTypes: pulumi.StringArray{
-// 				pulumi.String("PrivateZone"),
-// 			},
-// 			LoggingType: pulumi.String("SLS"),
-// 			Tags: pulumi.AnyMap{
-// 				"k-aa": pulumi.Any("v-aa"),
-// 				"k-bb": pulumi.Any("v-aa"),
-// 			},
-// 			Addons: cs.ServerlessKubernetesAddonArray{
-// 				&cs.ServerlessKubernetesAddonArgs{
-// 					Name: pulumi.String("alb-ingress-controller"),
-// 				},
-// 				&cs.ServerlessKubernetesAddonArgs{
-// 					Name: pulumi.String("metrics-server"),
-// 				},
-// 				&cs.ServerlessKubernetesAddonArgs{
-// 					Name: pulumi.String("knative"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "ask-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.1.1.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewServerlessKubernetes(ctx, "serverless", &cs.ServerlessKubernetesArgs{
+//				NamePrefix: pulumi.String(name),
+//				VpcId:      defaultNetwork.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				NewNatGateway:               pulumi.Bool(true),
+//				EndpointPublicAccessEnabled: pulumi.Bool(true),
+//				DeletionProtection:          pulumi.Bool(false),
+//				LoadBalancerSpec:            pulumi.String("slb.s2.small"),
+//				TimeZone:                    pulumi.String("Asia/Shanghai"),
+//				ServiceCidr:                 pulumi.String("172.21.0.0/20"),
+//				ServiceDiscoveryTypes: pulumi.StringArray{
+//					pulumi.String("PrivateZone"),
+//				},
+//				LoggingType: pulumi.String("SLS"),
+//				Tags: pulumi.AnyMap{
+//					"k-aa": pulumi.Any("v-aa"),
+//					"k-bb": pulumi.Any("v-aa"),
+//				},
+//				Addons: cs.ServerlessKubernetesAddonArray{
+//					&cs.ServerlessKubernetesAddonArgs{
+//						Name: pulumi.String("alb-ingress-controller"),
+//					},
+//					&cs.ServerlessKubernetesAddonArgs{
+//						Name: pulumi.String("metrics-server"),
+//					},
+//					&cs.ServerlessKubernetesAddonArgs{
+//						Name: pulumi.String("knative"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -100,7 +103,9 @@ import (
 // Serverless Kubernetes cluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+//
+//	$ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+//
 // ```
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
@@ -506,7 +511,7 @@ func (i *ServerlessKubernetes) ToServerlessKubernetesOutputWithContext(ctx conte
 // ServerlessKubernetesArrayInput is an input type that accepts ServerlessKubernetesArray and ServerlessKubernetesArrayOutput values.
 // You can construct a concrete instance of `ServerlessKubernetesArrayInput` via:
 //
-//          ServerlessKubernetesArray{ ServerlessKubernetesArgs{...} }
+//	ServerlessKubernetesArray{ ServerlessKubernetesArgs{...} }
 type ServerlessKubernetesArrayInput interface {
 	pulumi.Input
 
@@ -531,7 +536,7 @@ func (i ServerlessKubernetesArray) ToServerlessKubernetesArrayOutputWithContext(
 // ServerlessKubernetesMapInput is an input type that accepts ServerlessKubernetesMap and ServerlessKubernetesMapOutput values.
 // You can construct a concrete instance of `ServerlessKubernetesMapInput` via:
 //
-//          ServerlessKubernetesMap{ "key": ServerlessKubernetesArgs{...} }
+//	ServerlessKubernetesMap{ "key": ServerlessKubernetesArgs{...} }
 type ServerlessKubernetesMapInput interface {
 	pulumi.Input
 

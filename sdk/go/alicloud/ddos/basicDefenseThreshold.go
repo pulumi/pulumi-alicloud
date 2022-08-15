@@ -19,41 +19,44 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
-// 			AddressName:        pulumi.Any(_var.Name),
-// 			Isp:                pulumi.String("BGP"),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
-// 			PaymentType:        pulumi.String("PayAsYouGo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ddos.NewBasicDefenseThreshold(ctx, "example", &ddos.BasicDefenseThresholdArgs{
-// 			InstanceId:   _default.ID(),
-// 			DdosType:     pulumi.String("defense"),
-// 			InstanceType: pulumi.String("eip"),
-// 			Bps:          pulumi.Int(390),
-// 			Pps:          pulumi.Int(90000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
+//				AddressName:        pulumi.Any(_var.Name),
+//				Isp:                pulumi.String("BGP"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				PaymentType:        pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ddos.NewBasicDefenseThreshold(ctx, "example", &ddos.BasicDefenseThresholdArgs{
+//				InstanceId:   _default.ID(),
+//				DdosType:     pulumi.String("defense"),
+//				InstanceType: pulumi.String("eip"),
+//				Bps:          pulumi.Int(390),
+//				Pps:          pulumi.Int(90000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -61,7 +64,9 @@ import (
 // Ddos Basic Antiddos can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example <instance_id>:<instance_type>:<ddos_type>
+//
+//	$ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example <instance_id>:<instance_type>:<ddos_type>
+//
 // ```
 type BasicDefenseThreshold struct {
 	pulumi.CustomResourceState
@@ -250,7 +255,7 @@ func (i *BasicDefenseThreshold) ToBasicDefenseThresholdOutputWithContext(ctx con
 // BasicDefenseThresholdArrayInput is an input type that accepts BasicDefenseThresholdArray and BasicDefenseThresholdArrayOutput values.
 // You can construct a concrete instance of `BasicDefenseThresholdArrayInput` via:
 //
-//          BasicDefenseThresholdArray{ BasicDefenseThresholdArgs{...} }
+//	BasicDefenseThresholdArray{ BasicDefenseThresholdArgs{...} }
 type BasicDefenseThresholdArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +280,7 @@ func (i BasicDefenseThresholdArray) ToBasicDefenseThresholdArrayOutputWithContex
 // BasicDefenseThresholdMapInput is an input type that accepts BasicDefenseThresholdMap and BasicDefenseThresholdMapOutput values.
 // You can construct a concrete instance of `BasicDefenseThresholdMapInput` via:
 //
-//          BasicDefenseThresholdMap{ "key": BasicDefenseThresholdArgs{...} }
+//	BasicDefenseThresholdMap{ "key": BasicDefenseThresholdArgs{...} }
 type BasicDefenseThresholdMapInput interface {
 	pulumi.Input
 

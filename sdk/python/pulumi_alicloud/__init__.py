@@ -604,6 +604,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apigateway/backend",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/backend:Backend": "Backend"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/group",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -1736,6 +1744,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ddos",
   "classes": {
    "alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold": "BasicDefenseThreshold"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ddos/bgpIp",
+  "fqn": "pulumi_alicloud.ddos",
+  "classes": {
+   "alicloud:ddos/bgpIp:BgpIp": "BgpIp"
   }
  },
  {
@@ -2932,6 +2948,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "fc/layerVersion",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/layerVersion:LayerVersion": "LayerVersion"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "fc/service",
   "fqn": "pulumi_alicloud.fc",
   "classes": {
@@ -3860,6 +3884,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/globalDatabaseNetwork",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork": "GlobalDatabaseNetwork"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "privatelink/vpcEndpoint",
   "fqn": "pulumi_alicloud.privatelink",
   "classes": {
@@ -4256,6 +4288,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
    "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment": "ControlPolicyAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "resourcemanager/delegatedAdministrator",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator": "DelegatedAdministrator"
   }
  },
  {
@@ -4924,6 +4964,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "vpc/ipv4Gateway",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipv4Gateway:Ipv4Gateway": "Ipv4Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "vpc/ipv6EgressRule",
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
@@ -5144,6 +5192,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpn",
   "classes": {
    "alicloud:vpn/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpn/gatewayVpnAttachment",
+  "fqn": "pulumi_alicloud.vpn",
+  "classes": {
+   "alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment": "GatewayVpnAttachment"
   }
  },
  {

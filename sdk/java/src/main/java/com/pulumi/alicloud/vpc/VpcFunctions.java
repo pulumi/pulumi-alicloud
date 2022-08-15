@@ -22,6 +22,8 @@ import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
 import com.pulumi.alicloud.vpc.inputs.GetHavipsPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpsecServersPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
@@ -77,6 +79,7 @@ import com.pulumi.alicloud.vpc.outputs.GetEnhancedNatAvailableZonesResult;
 import com.pulumi.alicloud.vpc.outputs.GetForwardEntriesResult;
 import com.pulumi.alicloud.vpc.outputs.GetHavipsResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpsecServersResult;
+import com.pulumi.alicloud.vpc.outputs.GetIpv4GatewaysResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6AddressesResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6EgressRulesResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6GatewaysResult;
@@ -2696,6 +2699,276 @@ public final class VpcFunctions {
      */
     public static CompletableFuture<GetIpsecServersResult> getIpsecServersPlain(GetIpsecServersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpsecServers:getIpsecServers", TypeShape.of(GetIpsecServersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv4Gateways();
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIpv4GatewaysResult> getIpv4Gateways() {
+        return getIpv4Gateways(GetIpv4GatewaysArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv4Gateways();
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIpv4GatewaysResult> getIpv4GatewaysPlain() {
+        return getIpv4GatewaysPlain(GetIpv4GatewaysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv4Gateways();
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIpv4GatewaysResult> getIpv4Gateways(GetIpv4GatewaysArgs args) {
+        return getIpv4Gateways(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv4Gateways();
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIpv4GatewaysResult> getIpv4GatewaysPlain(GetIpv4GatewaysPlainArgs args) {
+        return getIpv4GatewaysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv4Gateways();
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIpv4GatewaysResult> getIpv4Gateways(GetIpv4GatewaysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", TypeShape.of(GetIpv4GatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getIpv4Gateways();
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIpv4GatewaysResult> getIpv4GatewaysPlain(GetIpv4GatewaysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", TypeShape.of(GetIpv4GatewaysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.

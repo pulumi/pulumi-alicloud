@@ -16,40 +16,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := oos.GetApplicationGroups(ctx, &oos.GetApplicationGroupsArgs{
-// 			ApplicationName: "example_value",
-// 			Ids: []string{
-// 				"my-ApplicationGroup-1",
-// 				"my-ApplicationGroup-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("oosApplicationGroupId1", ids.Groups[0].Id)
-// 		nameRegex, err := oos.GetApplicationGroups(ctx, &oos.GetApplicationGroupsArgs{
-// 			ApplicationName: "example_value",
-// 			NameRegex:       pulumi.StringRef("^my-ApplicationGroup"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("oosApplicationGroupId2", nameRegex.Groups[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := oos.GetApplicationGroups(ctx, &oos.GetApplicationGroupsArgs{
+//				ApplicationName: "example_value",
+//				Ids: []string{
+//					"my-ApplicationGroup-1",
+//					"my-ApplicationGroup-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oosApplicationGroupId1", ids.Groups[0].Id)
+//			nameRegex, err := oos.GetApplicationGroups(ctx, &oos.GetApplicationGroupsArgs{
+//				ApplicationName: "example_value",
+//				NameRegex:       pulumi.StringRef("^my-ApplicationGroup"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oosApplicationGroupId2", nameRegex.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetApplicationGroups(ctx *pulumi.Context, args *GetApplicationGroupsArgs, opts ...pulumi.InvokeOption) (*GetApplicationGroupsResult, error) {
 	var rv GetApplicationGroupsResult

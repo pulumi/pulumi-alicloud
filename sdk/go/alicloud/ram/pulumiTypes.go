@@ -22,7 +22,7 @@ type PolicyStatement struct {
 // PolicyStatementInput is an input type that accepts PolicyStatementArgs and PolicyStatementOutput values.
 // You can construct a concrete instance of `PolicyStatementInput` via:
 //
-//          PolicyStatementArgs{...}
+//	PolicyStatementArgs{...}
 type PolicyStatementInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i PolicyStatementArgs) ToPolicyStatementOutputWithContext(ctx context.Cont
 // PolicyStatementArrayInput is an input type that accepts PolicyStatementArray and PolicyStatementArrayOutput values.
 // You can construct a concrete instance of `PolicyStatementArrayInput` via:
 //
-//          PolicyStatementArray{ PolicyStatementArgs{...} }
+//	PolicyStatementArray{ PolicyStatementArgs{...} }
 type PolicyStatementArrayInput interface {
 	pulumi.Input
 
@@ -135,7 +135,7 @@ type GetGroupsGroup struct {
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
 // You can construct a concrete instance of `GetGroupsGroupInput` via:
 //
-//          GetGroupsGroupArgs{...}
+//	GetGroupsGroupArgs{...}
 type GetGroupsGroupInput interface {
 	pulumi.Input
 
@@ -165,7 +165,7 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
-//          GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
 type GetGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -262,7 +262,7 @@ type GetPoliciesPolicy struct {
 // GetPoliciesPolicyInput is an input type that accepts GetPoliciesPolicyArgs and GetPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetPoliciesPolicyInput` via:
 //
-//          GetPoliciesPolicyArgs{...}
+//	GetPoliciesPolicyArgs{...}
 type GetPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (i GetPoliciesPolicyArgs) ToGetPoliciesPolicyOutputWithContext(ctx context.
 // GetPoliciesPolicyArrayInput is an input type that accepts GetPoliciesPolicyArray and GetPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetPoliciesPolicyArrayInput` via:
 //
-//          GetPoliciesPolicyArray{ GetPoliciesPolicyArgs{...} }
+//	GetPoliciesPolicyArray{ GetPoliciesPolicyArgs{...} }
 type GetPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -455,7 +455,7 @@ type GetRolesRole struct {
 // GetRolesRoleInput is an input type that accepts GetRolesRoleArgs and GetRolesRoleOutput values.
 // You can construct a concrete instance of `GetRolesRoleInput` via:
 //
-//          GetRolesRoleArgs{...}
+//	GetRolesRoleArgs{...}
 type GetRolesRoleInput interface {
 	pulumi.Input
 
@@ -497,7 +497,7 @@ func (i GetRolesRoleArgs) ToGetRolesRoleOutputWithContext(ctx context.Context) G
 // GetRolesRoleArrayInput is an input type that accepts GetRolesRoleArray and GetRolesRoleArrayOutput values.
 // You can construct a concrete instance of `GetRolesRoleArrayInput` via:
 //
-//          GetRolesRoleArray{ GetRolesRoleArgs{...} }
+//	GetRolesRoleArray{ GetRolesRoleArgs{...} }
 type GetRolesRoleArrayInput interface {
 	pulumi.Input
 
@@ -611,7 +611,7 @@ type GetSamlProvidersProvider struct {
 // GetSamlProvidersProviderInput is an input type that accepts GetSamlProvidersProviderArgs and GetSamlProvidersProviderOutput values.
 // You can construct a concrete instance of `GetSamlProvidersProviderInput` via:
 //
-//          GetSamlProvidersProviderArgs{...}
+//	GetSamlProvidersProviderArgs{...}
 type GetSamlProvidersProviderInput interface {
 	pulumi.Input
 
@@ -649,7 +649,7 @@ func (i GetSamlProvidersProviderArgs) ToGetSamlProvidersProviderOutputWithContex
 // GetSamlProvidersProviderArrayInput is an input type that accepts GetSamlProvidersProviderArray and GetSamlProvidersProviderArrayOutput values.
 // You can construct a concrete instance of `GetSamlProvidersProviderArrayInput` via:
 //
-//          GetSamlProvidersProviderArray{ GetSamlProvidersProviderArgs{...} }
+//	GetSamlProvidersProviderArray{ GetSamlProvidersProviderArgs{...} }
 type GetSamlProvidersProviderArrayInput interface {
 	pulumi.Input
 
@@ -749,7 +749,7 @@ type GetUsersUser struct {
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
 // You can construct a concrete instance of `GetUsersUserInput` via:
 //
-//          GetUsersUserArgs{...}
+//	GetUsersUserArgs{...}
 type GetUsersUserInput interface {
 	pulumi.Input
 
@@ -783,7 +783,7 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
-//          GetUsersUserArray{ GetUsersUserArgs{...} }
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
 type GetUsersUserArrayInput interface {
 	pulumi.Input
 

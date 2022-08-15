@@ -21,130 +21,133 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = providers.Newalicloud(ctx, "vpc00Region", &providers.alicloudArgs{
-// 			Region: "cn-hangzhou",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = providers.Newalicloud(ctx, "vpc01Region", &providers.alicloudArgs{
-// 			Region: "cn-shanghai",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc00, err := vpc.NewNetwork(ctx, "vpc00", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider(alicloud.Vpc00_region))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc01, err := vpc.NewNetwork(ctx, "vpc01", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider(alicloud.Vpc01_region))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		default00, err := cen.NewInstanceAttachment(ctx, "default00", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            defaultInstance.ID(),
-// 			ChildInstanceId:       vpc00.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		default01, err := cen.NewInstanceAttachment(ctx, "default01", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            defaultInstance.ID(),
-// 			ChildInstanceId:       vpc01.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewRouteMap(ctx, "defaultRouteMap", &cen.RouteMapArgs{
-// 			CenRegionId:       pulumi.String("cn-hangzhou"),
-// 			CenId:             pulumi.Any(alicloud_cen_instance.Cen.Id),
-// 			Description:       pulumi.String("test-desc"),
-// 			Priority:          pulumi.Int(1),
-// 			TransmitDirection: pulumi.String("RegionIn"),
-// 			MapResult:         pulumi.String("Permit"),
-// 			NextPriority:      pulumi.Int(1),
-// 			SourceRegionIds: pulumi.StringArray{
-// 				pulumi.String("cn-hangzhou"),
-// 			},
-// 			SourceInstanceIds: pulumi.StringArray{
-// 				vpc00.ID(),
-// 			},
-// 			SourceInstanceIdsReverseMatch: pulumi.Bool(false),
-// 			DestinationInstanceIds: pulumi.StringArray{
-// 				vpc01.ID(),
-// 			},
-// 			DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
-// 			SourceRouteTableIds: pulumi.StringArray{
-// 				vpc00.RouteTableId,
-// 			},
-// 			DestinationRouteTableIds: pulumi.StringArray{
-// 				vpc01.RouteTableId,
-// 			},
-// 			SourceChildInstanceTypes: pulumi.StringArray{
-// 				pulumi.String("VPC"),
-// 			},
-// 			DestinationChildInstanceTypes: pulumi.StringArray{
-// 				pulumi.String("VPC"),
-// 			},
-// 			DestinationCidrBlocks: pulumi.StringArray{
-// 				vpc01.CidrBlock,
-// 			},
-// 			CidrMatchMode: pulumi.String("Include"),
-// 			RouteTypes: pulumi.StringArray{
-// 				pulumi.String("System"),
-// 			},
-// 			MatchAsns: pulumi.StringArray{
-// 				pulumi.String("65501"),
-// 			},
-// 			AsPathMatchMode: pulumi.String("Include"),
-// 			MatchCommunitySets: pulumi.StringArray{
-// 				pulumi.String("65501:1"),
-// 			},
-// 			CommunityMatchMode:   pulumi.String("Include"),
-// 			CommunityOperateMode: pulumi.String("Additive"),
-// 			OperateCommunitySets: pulumi.StringArray{
-// 				pulumi.String("65501:1"),
-// 			},
-// 			Preference: pulumi.Int(20),
-// 			PrependAsPaths: pulumi.StringArray{
-// 				pulumi.String("65501"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			default00,
-// 			default01,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = providers.Newalicloud(ctx, "vpc00Region", &providers.alicloudArgs{
+//				Region: "cn-hangzhou",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = providers.Newalicloud(ctx, "vpc01Region", &providers.alicloudArgs{
+//				Region: "cn-shanghai",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc00, err := vpc.NewNetwork(ctx, "vpc00", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			}, pulumi.Provider(alicloud.Vpc00_region))
+//			if err != nil {
+//				return err
+//			}
+//			vpc01, err := vpc.NewNetwork(ctx, "vpc01", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			}, pulumi.Provider(alicloud.Vpc01_region))
+//			if err != nil {
+//				return err
+//			}
+//			default00, err := cen.NewInstanceAttachment(ctx, "default00", &cen.InstanceAttachmentArgs{
+//				InstanceId:            defaultInstance.ID(),
+//				ChildInstanceId:       vpc00.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default01, err := cen.NewInstanceAttachment(ctx, "default01", &cen.InstanceAttachmentArgs{
+//				InstanceId:            defaultInstance.ID(),
+//				ChildInstanceId:       vpc01.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("cn-shanghai"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewRouteMap(ctx, "defaultRouteMap", &cen.RouteMapArgs{
+//				CenRegionId:       pulumi.String("cn-hangzhou"),
+//				CenId:             pulumi.Any(alicloud_cen_instance.Cen.Id),
+//				Description:       pulumi.String("test-desc"),
+//				Priority:          pulumi.Int(1),
+//				TransmitDirection: pulumi.String("RegionIn"),
+//				MapResult:         pulumi.String("Permit"),
+//				NextPriority:      pulumi.Int(1),
+//				SourceRegionIds: pulumi.StringArray{
+//					pulumi.String("cn-hangzhou"),
+//				},
+//				SourceInstanceIds: pulumi.StringArray{
+//					vpc00.ID(),
+//				},
+//				SourceInstanceIdsReverseMatch: pulumi.Bool(false),
+//				DestinationInstanceIds: pulumi.StringArray{
+//					vpc01.ID(),
+//				},
+//				DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
+//				SourceRouteTableIds: pulumi.StringArray{
+//					vpc00.RouteTableId,
+//				},
+//				DestinationRouteTableIds: pulumi.StringArray{
+//					vpc01.RouteTableId,
+//				},
+//				SourceChildInstanceTypes: pulumi.StringArray{
+//					pulumi.String("VPC"),
+//				},
+//				DestinationChildInstanceTypes: pulumi.StringArray{
+//					pulumi.String("VPC"),
+//				},
+//				DestinationCidrBlocks: pulumi.StringArray{
+//					vpc01.CidrBlock,
+//				},
+//				CidrMatchMode: pulumi.String("Include"),
+//				RouteTypes: pulumi.StringArray{
+//					pulumi.String("System"),
+//				},
+//				MatchAsns: pulumi.StringArray{
+//					pulumi.String("65501"),
+//				},
+//				AsPathMatchMode: pulumi.String("Include"),
+//				MatchCommunitySets: pulumi.StringArray{
+//					pulumi.String("65501:1"),
+//				},
+//				CommunityMatchMode:   pulumi.String("Include"),
+//				CommunityOperateMode: pulumi.String("Additive"),
+//				OperateCommunitySets: pulumi.StringArray{
+//					pulumi.String("65501:1"),
+//				},
+//				Preference: pulumi.Int(20),
+//				PrependAsPaths: pulumi.StringArray{
+//					pulumi.String("65501"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				default00,
+//				default01,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -152,7 +155,9 @@ import (
 // CEN RouteMap can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
+//
+//	$ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
+//
 // ```
 type RouteMap struct {
 	pulumi.CustomResourceState
@@ -537,7 +542,7 @@ func (i *RouteMap) ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutp
 // RouteMapArrayInput is an input type that accepts RouteMapArray and RouteMapArrayOutput values.
 // You can construct a concrete instance of `RouteMapArrayInput` via:
 //
-//          RouteMapArray{ RouteMapArgs{...} }
+//	RouteMapArray{ RouteMapArgs{...} }
 type RouteMapArrayInput interface {
 	pulumi.Input
 
@@ -562,7 +567,7 @@ func (i RouteMapArray) ToRouteMapArrayOutputWithContext(ctx context.Context) Rou
 // RouteMapMapInput is an input type that accepts RouteMapMap and RouteMapMapOutput values.
 // You can construct a concrete instance of `RouteMapMapInput` via:
 //
-//          RouteMapMap{ "key": RouteMapArgs{...} }
+//	RouteMapMap{ "key": RouteMapArgs{...} }
 type RouteMapMapInput interface {
 	pulumi.Input
 

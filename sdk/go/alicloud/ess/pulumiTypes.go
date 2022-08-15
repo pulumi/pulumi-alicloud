@@ -42,7 +42,7 @@ type EciScalingConfigurationContainer struct {
 // EciScalingConfigurationContainerInput is an input type that accepts EciScalingConfigurationContainerArgs and EciScalingConfigurationContainerOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerInput` via:
 //
-//          EciScalingConfigurationContainerArgs{...}
+//	EciScalingConfigurationContainerArgs{...}
 type EciScalingConfigurationContainerInput interface {
 	pulumi.Input
 
@@ -94,7 +94,7 @@ func (i EciScalingConfigurationContainerArgs) ToEciScalingConfigurationContainer
 // EciScalingConfigurationContainerArrayInput is an input type that accepts EciScalingConfigurationContainerArray and EciScalingConfigurationContainerArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerArrayInput` via:
 //
-//          EciScalingConfigurationContainerArray{ EciScalingConfigurationContainerArgs{...} }
+//	EciScalingConfigurationContainerArray{ EciScalingConfigurationContainerArgs{...} }
 type EciScalingConfigurationContainerArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +227,7 @@ type EciScalingConfigurationContainerEnvironmentVar struct {
 // EciScalingConfigurationContainerEnvironmentVarInput is an input type that accepts EciScalingConfigurationContainerEnvironmentVarArgs and EciScalingConfigurationContainerEnvironmentVarOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerEnvironmentVarInput` via:
 //
-//          EciScalingConfigurationContainerEnvironmentVarArgs{...}
+//	EciScalingConfigurationContainerEnvironmentVarArgs{...}
 type EciScalingConfigurationContainerEnvironmentVarInput interface {
 	pulumi.Input
 
@@ -258,7 +258,7 @@ func (i EciScalingConfigurationContainerEnvironmentVarArgs) ToEciScalingConfigur
 // EciScalingConfigurationContainerEnvironmentVarArrayInput is an input type that accepts EciScalingConfigurationContainerEnvironmentVarArray and EciScalingConfigurationContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerEnvironmentVarArrayInput` via:
 //
-//          EciScalingConfigurationContainerEnvironmentVarArray{ EciScalingConfigurationContainerEnvironmentVarArgs{...} }
+//	EciScalingConfigurationContainerEnvironmentVarArray{ EciScalingConfigurationContainerEnvironmentVarArgs{...} }
 type EciScalingConfigurationContainerEnvironmentVarArrayInput interface {
 	pulumi.Input
 
@@ -335,7 +335,7 @@ type EciScalingConfigurationContainerPort struct {
 // EciScalingConfigurationContainerPortInput is an input type that accepts EciScalingConfigurationContainerPortArgs and EciScalingConfigurationContainerPortOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerPortInput` via:
 //
-//          EciScalingConfigurationContainerPortArgs{...}
+//	EciScalingConfigurationContainerPortArgs{...}
 type EciScalingConfigurationContainerPortInput interface {
 	pulumi.Input
 
@@ -365,7 +365,7 @@ func (i EciScalingConfigurationContainerPortArgs) ToEciScalingConfigurationConta
 // EciScalingConfigurationContainerPortArrayInput is an input type that accepts EciScalingConfigurationContainerPortArray and EciScalingConfigurationContainerPortArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerPortArrayInput` via:
 //
-//          EciScalingConfigurationContainerPortArray{ EciScalingConfigurationContainerPortArgs{...} }
+//	EciScalingConfigurationContainerPortArray{ EciScalingConfigurationContainerPortArgs{...} }
 type EciScalingConfigurationContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -444,7 +444,7 @@ type EciScalingConfigurationContainerVolumeMount struct {
 // EciScalingConfigurationContainerVolumeMountInput is an input type that accepts EciScalingConfigurationContainerVolumeMountArgs and EciScalingConfigurationContainerVolumeMountOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerVolumeMountInput` via:
 //
-//          EciScalingConfigurationContainerVolumeMountArgs{...}
+//	EciScalingConfigurationContainerVolumeMountArgs{...}
 type EciScalingConfigurationContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -477,7 +477,7 @@ func (i EciScalingConfigurationContainerVolumeMountArgs) ToEciScalingConfigurati
 // EciScalingConfigurationContainerVolumeMountArrayInput is an input type that accepts EciScalingConfigurationContainerVolumeMountArray and EciScalingConfigurationContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerVolumeMountArrayInput` via:
 //
-//          EciScalingConfigurationContainerVolumeMountArray{ EciScalingConfigurationContainerVolumeMountArgs{...} }
+//	EciScalingConfigurationContainerVolumeMountArray{ EciScalingConfigurationContainerVolumeMountArgs{...} }
 type EciScalingConfigurationContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -559,7 +559,7 @@ type EciScalingConfigurationHostAlias struct {
 // EciScalingConfigurationHostAliasInput is an input type that accepts EciScalingConfigurationHostAliasArgs and EciScalingConfigurationHostAliasOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationHostAliasInput` via:
 //
-//          EciScalingConfigurationHostAliasArgs{...}
+//	EciScalingConfigurationHostAliasArgs{...}
 type EciScalingConfigurationHostAliasInput interface {
 	pulumi.Input
 
@@ -589,7 +589,7 @@ func (i EciScalingConfigurationHostAliasArgs) ToEciScalingConfigurationHostAlias
 // EciScalingConfigurationHostAliasArrayInput is an input type that accepts EciScalingConfigurationHostAliasArray and EciScalingConfigurationHostAliasArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationHostAliasArrayInput` via:
 //
-//          EciScalingConfigurationHostAliasArray{ EciScalingConfigurationHostAliasArgs{...} }
+//	EciScalingConfigurationHostAliasArray{ EciScalingConfigurationHostAliasArgs{...} }
 type EciScalingConfigurationHostAliasArrayInput interface {
 	pulumi.Input
 
@@ -668,7 +668,7 @@ type EciScalingConfigurationImageRegistryCredential struct {
 // EciScalingConfigurationImageRegistryCredentialInput is an input type that accepts EciScalingConfigurationImageRegistryCredentialArgs and EciScalingConfigurationImageRegistryCredentialOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationImageRegistryCredentialInput` via:
 //
-//          EciScalingConfigurationImageRegistryCredentialArgs{...}
+//	EciScalingConfigurationImageRegistryCredentialArgs{...}
 type EciScalingConfigurationImageRegistryCredentialInput interface {
 	pulumi.Input
 
@@ -701,7 +701,7 @@ func (i EciScalingConfigurationImageRegistryCredentialArgs) ToEciScalingConfigur
 // EciScalingConfigurationImageRegistryCredentialArrayInput is an input type that accepts EciScalingConfigurationImageRegistryCredentialArray and EciScalingConfigurationImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationImageRegistryCredentialArrayInput` via:
 //
-//          EciScalingConfigurationImageRegistryCredentialArray{ EciScalingConfigurationImageRegistryCredentialArgs{...} }
+//	EciScalingConfigurationImageRegistryCredentialArray{ EciScalingConfigurationImageRegistryCredentialArgs{...} }
 type EciScalingConfigurationImageRegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -805,7 +805,7 @@ type EciScalingConfigurationInitContainer struct {
 // EciScalingConfigurationInitContainerInput is an input type that accepts EciScalingConfigurationInitContainerArgs and EciScalingConfigurationInitContainerOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerInput` via:
 //
-//          EciScalingConfigurationInitContainerArgs{...}
+//	EciScalingConfigurationInitContainerArgs{...}
 type EciScalingConfigurationInitContainerInput interface {
 	pulumi.Input
 
@@ -857,7 +857,7 @@ func (i EciScalingConfigurationInitContainerArgs) ToEciScalingConfigurationInitC
 // EciScalingConfigurationInitContainerArrayInput is an input type that accepts EciScalingConfigurationInitContainerArray and EciScalingConfigurationInitContainerArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerArrayInput` via:
 //
-//          EciScalingConfigurationInitContainerArray{ EciScalingConfigurationInitContainerArgs{...} }
+//	EciScalingConfigurationInitContainerArray{ EciScalingConfigurationInitContainerArgs{...} }
 type EciScalingConfigurationInitContainerArrayInput interface {
 	pulumi.Input
 
@@ -992,7 +992,7 @@ type EciScalingConfigurationInitContainerEnvironmentVar struct {
 // EciScalingConfigurationInitContainerEnvironmentVarInput is an input type that accepts EciScalingConfigurationInitContainerEnvironmentVarArgs and EciScalingConfigurationInitContainerEnvironmentVarOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerEnvironmentVarInput` via:
 //
-//          EciScalingConfigurationInitContainerEnvironmentVarArgs{...}
+//	EciScalingConfigurationInitContainerEnvironmentVarArgs{...}
 type EciScalingConfigurationInitContainerEnvironmentVarInput interface {
 	pulumi.Input
 
@@ -1023,7 +1023,7 @@ func (i EciScalingConfigurationInitContainerEnvironmentVarArgs) ToEciScalingConf
 // EciScalingConfigurationInitContainerEnvironmentVarArrayInput is an input type that accepts EciScalingConfigurationInitContainerEnvironmentVarArray and EciScalingConfigurationInitContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerEnvironmentVarArrayInput` via:
 //
-//          EciScalingConfigurationInitContainerEnvironmentVarArray{ EciScalingConfigurationInitContainerEnvironmentVarArgs{...} }
+//	EciScalingConfigurationInitContainerEnvironmentVarArray{ EciScalingConfigurationInitContainerEnvironmentVarArgs{...} }
 type EciScalingConfigurationInitContainerEnvironmentVarArrayInput interface {
 	pulumi.Input
 
@@ -1100,7 +1100,7 @@ type EciScalingConfigurationInitContainerPort struct {
 // EciScalingConfigurationInitContainerPortInput is an input type that accepts EciScalingConfigurationInitContainerPortArgs and EciScalingConfigurationInitContainerPortOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerPortInput` via:
 //
-//          EciScalingConfigurationInitContainerPortArgs{...}
+//	EciScalingConfigurationInitContainerPortArgs{...}
 type EciScalingConfigurationInitContainerPortInput interface {
 	pulumi.Input
 
@@ -1130,7 +1130,7 @@ func (i EciScalingConfigurationInitContainerPortArgs) ToEciScalingConfigurationI
 // EciScalingConfigurationInitContainerPortArrayInput is an input type that accepts EciScalingConfigurationInitContainerPortArray and EciScalingConfigurationInitContainerPortArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerPortArrayInput` via:
 //
-//          EciScalingConfigurationInitContainerPortArray{ EciScalingConfigurationInitContainerPortArgs{...} }
+//	EciScalingConfigurationInitContainerPortArray{ EciScalingConfigurationInitContainerPortArgs{...} }
 type EciScalingConfigurationInitContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -1209,7 +1209,7 @@ type EciScalingConfigurationInitContainerVolumeMount struct {
 // EciScalingConfigurationInitContainerVolumeMountInput is an input type that accepts EciScalingConfigurationInitContainerVolumeMountArgs and EciScalingConfigurationInitContainerVolumeMountOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerVolumeMountInput` via:
 //
-//          EciScalingConfigurationInitContainerVolumeMountArgs{...}
+//	EciScalingConfigurationInitContainerVolumeMountArgs{...}
 type EciScalingConfigurationInitContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -1242,7 +1242,7 @@ func (i EciScalingConfigurationInitContainerVolumeMountArgs) ToEciScalingConfigu
 // EciScalingConfigurationInitContainerVolumeMountArrayInput is an input type that accepts EciScalingConfigurationInitContainerVolumeMountArray and EciScalingConfigurationInitContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerVolumeMountArrayInput` via:
 //
-//          EciScalingConfigurationInitContainerVolumeMountArray{ EciScalingConfigurationInitContainerVolumeMountArgs{...} }
+//	EciScalingConfigurationInitContainerVolumeMountArray{ EciScalingConfigurationInitContainerVolumeMountArgs{...} }
 type EciScalingConfigurationInitContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -1346,7 +1346,7 @@ type EciScalingConfigurationVolume struct {
 // EciScalingConfigurationVolumeInput is an input type that accepts EciScalingConfigurationVolumeArgs and EciScalingConfigurationVolumeOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationVolumeInput` via:
 //
-//          EciScalingConfigurationVolumeArgs{...}
+//	EciScalingConfigurationVolumeArgs{...}
 type EciScalingConfigurationVolumeInput interface {
 	pulumi.Input
 
@@ -1398,7 +1398,7 @@ func (i EciScalingConfigurationVolumeArgs) ToEciScalingConfigurationVolumeOutput
 // EciScalingConfigurationVolumeArrayInput is an input type that accepts EciScalingConfigurationVolumeArray and EciScalingConfigurationVolumeArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationVolumeArrayInput` via:
 //
-//          EciScalingConfigurationVolumeArray{ EciScalingConfigurationVolumeArgs{...} }
+//	EciScalingConfigurationVolumeArray{ EciScalingConfigurationVolumeArgs{...} }
 type EciScalingConfigurationVolumeArrayInput interface {
 	pulumi.Input
 
@@ -1528,7 +1528,7 @@ type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath struct {
 // EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput is an input type that accepts EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs and EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput` via:
 //
-//          EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{...}
+//	EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{...}
 type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput interface {
 	pulumi.Input
 
@@ -1558,7 +1558,7 @@ func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ToEci
 // EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput is an input type that accepts EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray and EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput` via:
 //
-//          EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray{ EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{...} }
+//	EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray{ EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{...} }
 type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput interface {
 	pulumi.Input
 
@@ -1642,7 +1642,7 @@ type ScalingConfigurationDataDisk struct {
 // ScalingConfigurationDataDiskInput is an input type that accepts ScalingConfigurationDataDiskArgs and ScalingConfigurationDataDiskOutput values.
 // You can construct a concrete instance of `ScalingConfigurationDataDiskInput` via:
 //
-//          ScalingConfigurationDataDiskArgs{...}
+//	ScalingConfigurationDataDiskArgs{...}
 type ScalingConfigurationDataDiskInput interface {
 	pulumi.Input
 
@@ -1680,7 +1680,7 @@ func (i ScalingConfigurationDataDiskArgs) ToScalingConfigurationDataDiskOutputWi
 // ScalingConfigurationDataDiskArrayInput is an input type that accepts ScalingConfigurationDataDiskArray and ScalingConfigurationDataDiskArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationDataDiskArrayInput` via:
 //
-//          ScalingConfigurationDataDiskArray{ ScalingConfigurationDataDiskArgs{...} }
+//	ScalingConfigurationDataDiskArray{ ScalingConfigurationDataDiskArgs{...} }
 type ScalingConfigurationDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -1791,7 +1791,7 @@ type ScalingConfigurationInstancePatternInfo struct {
 // ScalingConfigurationInstancePatternInfoInput is an input type that accepts ScalingConfigurationInstancePatternInfoArgs and ScalingConfigurationInstancePatternInfoOutput values.
 // You can construct a concrete instance of `ScalingConfigurationInstancePatternInfoInput` via:
 //
-//          ScalingConfigurationInstancePatternInfoArgs{...}
+//	ScalingConfigurationInstancePatternInfoArgs{...}
 type ScalingConfigurationInstancePatternInfoInput interface {
 	pulumi.Input
 
@@ -1821,7 +1821,7 @@ func (i ScalingConfigurationInstancePatternInfoArgs) ToScalingConfigurationInsta
 // ScalingConfigurationInstancePatternInfoArrayInput is an input type that accepts ScalingConfigurationInstancePatternInfoArray and ScalingConfigurationInstancePatternInfoArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationInstancePatternInfoArrayInput` via:
 //
-//          ScalingConfigurationInstancePatternInfoArray{ ScalingConfigurationInstancePatternInfoArgs{...} }
+//	ScalingConfigurationInstancePatternInfoArray{ ScalingConfigurationInstancePatternInfoArgs{...} }
 type ScalingConfigurationInstancePatternInfoArrayInput interface {
 	pulumi.Input
 
@@ -1902,7 +1902,7 @@ type ScalingConfigurationSpotPriceLimit struct {
 // ScalingConfigurationSpotPriceLimitInput is an input type that accepts ScalingConfigurationSpotPriceLimitArgs and ScalingConfigurationSpotPriceLimitOutput values.
 // You can construct a concrete instance of `ScalingConfigurationSpotPriceLimitInput` via:
 //
-//          ScalingConfigurationSpotPriceLimitArgs{...}
+//	ScalingConfigurationSpotPriceLimitArgs{...}
 type ScalingConfigurationSpotPriceLimitInput interface {
 	pulumi.Input
 
@@ -1931,7 +1931,7 @@ func (i ScalingConfigurationSpotPriceLimitArgs) ToScalingConfigurationSpotPriceL
 // ScalingConfigurationSpotPriceLimitArrayInput is an input type that accepts ScalingConfigurationSpotPriceLimitArray and ScalingConfigurationSpotPriceLimitArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationSpotPriceLimitArrayInput` via:
 //
-//          ScalingConfigurationSpotPriceLimitArray{ ScalingConfigurationSpotPriceLimitArgs{...} }
+//	ScalingConfigurationSpotPriceLimitArray{ ScalingConfigurationSpotPriceLimitArgs{...} }
 type ScalingConfigurationSpotPriceLimitArrayInput interface {
 	pulumi.Input
 
@@ -2004,7 +2004,7 @@ type ScalingGroupVServerGroupsVserverGroup struct {
 // ScalingGroupVServerGroupsVserverGroupInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupArgs and ScalingGroupVServerGroupsVserverGroupOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupInput` via:
 //
-//          ScalingGroupVServerGroupsVserverGroupArgs{...}
+//	ScalingGroupVServerGroupsVserverGroupArgs{...}
 type ScalingGroupVServerGroupsVserverGroupInput interface {
 	pulumi.Input
 
@@ -2032,7 +2032,7 @@ func (i ScalingGroupVServerGroupsVserverGroupArgs) ToScalingGroupVServerGroupsVs
 // ScalingGroupVServerGroupsVserverGroupArrayInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupArray and ScalingGroupVServerGroupsVserverGroupArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupArrayInput` via:
 //
-//          ScalingGroupVServerGroupsVserverGroupArray{ ScalingGroupVServerGroupsVserverGroupArgs{...} }
+//	ScalingGroupVServerGroupsVserverGroupArray{ ScalingGroupVServerGroupsVserverGroupArgs{...} }
 type ScalingGroupVServerGroupsVserverGroupArrayInput interface {
 	pulumi.Input
 
@@ -2107,7 +2107,7 @@ type ScalingGroupVServerGroupsVserverGroupVserverAttribute struct {
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs and ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupVserverAttributeInput` via:
 //
-//          ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...}
+//	ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...}
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeInput interface {
 	pulumi.Input
 
@@ -2136,7 +2136,7 @@ func (i ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ToScalingGrou
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArray and ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput` via:
 //
-//          ScalingGroupVServerGroupsVserverGroupVserverAttributeArray{ ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...} }
+//	ScalingGroupVServerGroupsVserverGroupVserverAttributeArray{ ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{...} }
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput interface {
 	pulumi.Input
 
@@ -2213,7 +2213,7 @@ type ScalingRuleStepAdjustment struct {
 // ScalingRuleStepAdjustmentInput is an input type that accepts ScalingRuleStepAdjustmentArgs and ScalingRuleStepAdjustmentOutput values.
 // You can construct a concrete instance of `ScalingRuleStepAdjustmentInput` via:
 //
-//          ScalingRuleStepAdjustmentArgs{...}
+//	ScalingRuleStepAdjustmentArgs{...}
 type ScalingRuleStepAdjustmentInput interface {
 	pulumi.Input
 
@@ -2242,7 +2242,7 @@ func (i ScalingRuleStepAdjustmentArgs) ToScalingRuleStepAdjustmentOutputWithCont
 // ScalingRuleStepAdjustmentArrayInput is an input type that accepts ScalingRuleStepAdjustmentArray and ScalingRuleStepAdjustmentArrayOutput values.
 // You can construct a concrete instance of `ScalingRuleStepAdjustmentArrayInput` via:
 //
-//          ScalingRuleStepAdjustmentArray{ ScalingRuleStepAdjustmentArgs{...} }
+//	ScalingRuleStepAdjustmentArray{ ScalingRuleStepAdjustmentArgs{...} }
 type ScalingRuleStepAdjustmentArrayInput interface {
 	pulumi.Input
 
@@ -2348,7 +2348,7 @@ type GetAlarmsAlarm struct {
 // GetAlarmsAlarmInput is an input type that accepts GetAlarmsAlarmArgs and GetAlarmsAlarmOutput values.
 // You can construct a concrete instance of `GetAlarmsAlarmInput` via:
 //
-//          GetAlarmsAlarmArgs{...}
+//	GetAlarmsAlarmArgs{...}
 type GetAlarmsAlarmInput interface {
 	pulumi.Input
 
@@ -2406,7 +2406,7 @@ func (i GetAlarmsAlarmArgs) ToGetAlarmsAlarmOutputWithContext(ctx context.Contex
 // GetAlarmsAlarmArrayInput is an input type that accepts GetAlarmsAlarmArray and GetAlarmsAlarmArrayOutput values.
 // You can construct a concrete instance of `GetAlarmsAlarmArrayInput` via:
 //
-//          GetAlarmsAlarmArray{ GetAlarmsAlarmArgs{...} }
+//	GetAlarmsAlarmArray{ GetAlarmsAlarmArgs{...} }
 type GetAlarmsAlarmArrayInput interface {
 	pulumi.Input
 
@@ -2564,7 +2564,7 @@ type GetLifecycleHooksHook struct {
 // GetLifecycleHooksHookInput is an input type that accepts GetLifecycleHooksHookArgs and GetLifecycleHooksHookOutput values.
 // You can construct a concrete instance of `GetLifecycleHooksHookInput` via:
 //
-//          GetLifecycleHooksHookArgs{...}
+//	GetLifecycleHooksHookArgs{...}
 type GetLifecycleHooksHookInput interface {
 	pulumi.Input
 
@@ -2606,7 +2606,7 @@ func (i GetLifecycleHooksHookArgs) ToGetLifecycleHooksHookOutputWithContext(ctx 
 // GetLifecycleHooksHookArrayInput is an input type that accepts GetLifecycleHooksHookArray and GetLifecycleHooksHookArrayOutput values.
 // You can construct a concrete instance of `GetLifecycleHooksHookArrayInput` via:
 //
-//          GetLifecycleHooksHookArray{ GetLifecycleHooksHookArgs{...} }
+//	GetLifecycleHooksHookArray{ GetLifecycleHooksHookArgs{...} }
 type GetLifecycleHooksHookArrayInput interface {
 	pulumi.Input
 
@@ -2716,7 +2716,7 @@ type GetNotificationsNotification struct {
 // GetNotificationsNotificationInput is an input type that accepts GetNotificationsNotificationArgs and GetNotificationsNotificationOutput values.
 // You can construct a concrete instance of `GetNotificationsNotificationInput` via:
 //
-//          GetNotificationsNotificationArgs{...}
+//	GetNotificationsNotificationArgs{...}
 type GetNotificationsNotificationInput interface {
 	pulumi.Input
 
@@ -2750,7 +2750,7 @@ func (i GetNotificationsNotificationArgs) ToGetNotificationsNotificationOutputWi
 // GetNotificationsNotificationArrayInput is an input type that accepts GetNotificationsNotificationArray and GetNotificationsNotificationArrayOutput values.
 // You can construct a concrete instance of `GetNotificationsNotificationArrayInput` via:
 //
-//          GetNotificationsNotificationArray{ GetNotificationsNotificationArgs{...} }
+//	GetNotificationsNotificationArray{ GetNotificationsNotificationArgs{...} }
 type GetNotificationsNotificationArrayInput interface {
 	pulumi.Input
 
@@ -2872,7 +2872,7 @@ type GetScalingConfigurationsConfiguration struct {
 // GetScalingConfigurationsConfigurationInput is an input type that accepts GetScalingConfigurationsConfigurationArgs and GetScalingConfigurationsConfigurationOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationInput` via:
 //
-//          GetScalingConfigurationsConfigurationArgs{...}
+//	GetScalingConfigurationsConfigurationArgs{...}
 type GetScalingConfigurationsConfigurationInput interface {
 	pulumi.Input
 
@@ -2938,7 +2938,7 @@ func (i GetScalingConfigurationsConfigurationArgs) ToGetScalingConfigurationsCon
 // GetScalingConfigurationsConfigurationArrayInput is an input type that accepts GetScalingConfigurationsConfigurationArray and GetScalingConfigurationsConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationArrayInput` via:
 //
-//          GetScalingConfigurationsConfigurationArray{ GetScalingConfigurationsConfigurationArgs{...} }
+//	GetScalingConfigurationsConfigurationArray{ GetScalingConfigurationsConfigurationArgs{...} }
 type GetScalingConfigurationsConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -3116,7 +3116,7 @@ type GetScalingConfigurationsConfigurationDataDisk struct {
 // GetScalingConfigurationsConfigurationDataDiskInput is an input type that accepts GetScalingConfigurationsConfigurationDataDiskArgs and GetScalingConfigurationsConfigurationDataDiskOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationDataDiskInput` via:
 //
-//          GetScalingConfigurationsConfigurationDataDiskArgs{...}
+//	GetScalingConfigurationsConfigurationDataDiskArgs{...}
 type GetScalingConfigurationsConfigurationDataDiskInput interface {
 	pulumi.Input
 
@@ -3154,7 +3154,7 @@ func (i GetScalingConfigurationsConfigurationDataDiskArgs) ToGetScalingConfigura
 // GetScalingConfigurationsConfigurationDataDiskArrayInput is an input type that accepts GetScalingConfigurationsConfigurationDataDiskArray and GetScalingConfigurationsConfigurationDataDiskArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationDataDiskArrayInput` via:
 //
-//          GetScalingConfigurationsConfigurationDataDiskArray{ GetScalingConfigurationsConfigurationDataDiskArgs{...} }
+//	GetScalingConfigurationsConfigurationDataDiskArray{ GetScalingConfigurationsConfigurationDataDiskArgs{...} }
 type GetScalingConfigurationsConfigurationDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -3250,7 +3250,7 @@ type GetScalingConfigurationsConfigurationSpotPriceLimit struct {
 // GetScalingConfigurationsConfigurationSpotPriceLimitInput is an input type that accepts GetScalingConfigurationsConfigurationSpotPriceLimitArgs and GetScalingConfigurationsConfigurationSpotPriceLimitOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationSpotPriceLimitInput` via:
 //
-//          GetScalingConfigurationsConfigurationSpotPriceLimitArgs{...}
+//	GetScalingConfigurationsConfigurationSpotPriceLimitArgs{...}
 type GetScalingConfigurationsConfigurationSpotPriceLimitInput interface {
 	pulumi.Input
 
@@ -3280,7 +3280,7 @@ func (i GetScalingConfigurationsConfigurationSpotPriceLimitArgs) ToGetScalingCon
 // GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput is an input type that accepts GetScalingConfigurationsConfigurationSpotPriceLimitArray and GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput` via:
 //
-//          GetScalingConfigurationsConfigurationSpotPriceLimitArray{ GetScalingConfigurationsConfigurationSpotPriceLimitArgs{...} }
+//	GetScalingConfigurationsConfigurationSpotPriceLimitArray{ GetScalingConfigurationsConfigurationSpotPriceLimitArgs{...} }
 type GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput interface {
 	pulumi.Input
 
@@ -3406,7 +3406,7 @@ type GetScalingGroupsGroup struct {
 // GetScalingGroupsGroupInput is an input type that accepts GetScalingGroupsGroupArgs and GetScalingGroupsGroupOutput values.
 // You can construct a concrete instance of `GetScalingGroupsGroupInput` via:
 //
-//          GetScalingGroupsGroupArgs{...}
+//	GetScalingGroupsGroupArgs{...}
 type GetScalingGroupsGroupInput interface {
 	pulumi.Input
 
@@ -3486,7 +3486,7 @@ func (i GetScalingGroupsGroupArgs) ToGetScalingGroupsGroupOutputWithContext(ctx 
 // GetScalingGroupsGroupArrayInput is an input type that accepts GetScalingGroupsGroupArray and GetScalingGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetScalingGroupsGroupArrayInput` via:
 //
-//          GetScalingGroupsGroupArray{ GetScalingGroupsGroupArgs{...} }
+//	GetScalingGroupsGroupArray{ GetScalingGroupsGroupArgs{...} }
 type GetScalingGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -3701,7 +3701,7 @@ type GetScalingRulesRule struct {
 // GetScalingRulesRuleInput is an input type that accepts GetScalingRulesRuleArgs and GetScalingRulesRuleOutput values.
 // You can construct a concrete instance of `GetScalingRulesRuleInput` via:
 //
-//          GetScalingRulesRuleArgs{...}
+//	GetScalingRulesRuleArgs{...}
 type GetScalingRulesRuleInput interface {
 	pulumi.Input
 
@@ -3745,7 +3745,7 @@ func (i GetScalingRulesRuleArgs) ToGetScalingRulesRuleOutputWithContext(ctx cont
 // GetScalingRulesRuleArrayInput is an input type that accepts GetScalingRulesRuleArray and GetScalingRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetScalingRulesRuleArrayInput` via:
 //
-//          GetScalingRulesRuleArray{ GetScalingRulesRuleArgs{...} }
+//	GetScalingRulesRuleArray{ GetScalingRulesRuleArgs{...} }
 type GetScalingRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -3873,7 +3873,7 @@ type GetScheduledTasksTask struct {
 // GetScheduledTasksTaskInput is an input type that accepts GetScheduledTasksTaskArgs and GetScheduledTasksTaskOutput values.
 // You can construct a concrete instance of `GetScheduledTasksTaskInput` via:
 //
-//          GetScheduledTasksTaskArgs{...}
+//	GetScheduledTasksTaskArgs{...}
 type GetScheduledTasksTaskInput interface {
 	pulumi.Input
 
@@ -3920,7 +3920,7 @@ func (i GetScheduledTasksTaskArgs) ToGetScheduledTasksTaskOutputWithContext(ctx 
 // GetScheduledTasksTaskArrayInput is an input type that accepts GetScheduledTasksTaskArray and GetScheduledTasksTaskArrayOutput values.
 // You can construct a concrete instance of `GetScheduledTasksTaskArrayInput` via:
 //
-//          GetScheduledTasksTaskArray{ GetScheduledTasksTaskArgs{...} }
+//	GetScheduledTasksTaskArray{ GetScheduledTasksTaskArgs{...} }
 type GetScheduledTasksTaskArrayInput interface {
 	pulumi.Input
 

@@ -19,36 +19,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsPrefixList(ctx, "default", &ecs.EcsPrefixListArgs{
-// 			AddressFamily: pulumi.String("IPv4"),
-// 			Description:   pulumi.String("description"),
-// 			Entries: ecs.EcsPrefixListEntryArray{
-// 				&ecs.EcsPrefixListEntryArgs{
-// 					Cidr:        pulumi.String("192.168.0.0/24"),
-// 					Description: pulumi.String("description"),
-// 				},
-// 			},
-// 			MaxEntries:     pulumi.Int(2),
-// 			PrefixListName: pulumi.String("tftest"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsPrefixList(ctx, "default", &ecs.EcsPrefixListArgs{
+//				AddressFamily: pulumi.String("IPv4"),
+//				Description:   pulumi.String("description"),
+//				Entries: ecs.EcsPrefixListEntryArray{
+//					&ecs.EcsPrefixListEntryArgs{
+//						Cidr:        pulumi.String("192.168.0.0/24"),
+//						Description: pulumi.String("description"),
+//					},
+//				},
+//				MaxEntries:     pulumi.Int(2),
+//				PrefixListName: pulumi.String("tftest"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // ECS Prefix List can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
+//
 // ```
 type EcsPrefixList struct {
 	pulumi.CustomResourceState
@@ -196,7 +201,7 @@ func (i *EcsPrefixList) ToEcsPrefixListOutputWithContext(ctx context.Context) Ec
 // EcsPrefixListArrayInput is an input type that accepts EcsPrefixListArray and EcsPrefixListArrayOutput values.
 // You can construct a concrete instance of `EcsPrefixListArrayInput` via:
 //
-//          EcsPrefixListArray{ EcsPrefixListArgs{...} }
+//	EcsPrefixListArray{ EcsPrefixListArgs{...} }
 type EcsPrefixListArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +226,7 @@ func (i EcsPrefixListArray) ToEcsPrefixListArrayOutputWithContext(ctx context.Co
 // EcsPrefixListMapInput is an input type that accepts EcsPrefixListMap and EcsPrefixListMapOutput values.
 // You can construct a concrete instance of `EcsPrefixListMapInput` via:
 //
-//          EcsPrefixListMap{ "key": EcsPrefixListArgs{...} }
+//	EcsPrefixListMap{ "key": EcsPrefixListArgs{...} }
 type EcsPrefixListMapInput interface {
 	pulumi.Input
 

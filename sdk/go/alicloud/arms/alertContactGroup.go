@@ -19,39 +19,42 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAlertContact, err := arms.NewAlertContact(ctx, "exampleAlertContact", &arms.AlertContactArgs{
-// 			AlertContactName:    pulumi.String("example_value"),
-// 			DingRobotWebhookUrl: pulumi.String("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****"),
-// 			Email:               pulumi.String("someone@example.com"),
-// 			PhoneNum:            pulumi.String("1381111****"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = arms.NewAlertContactGroup(ctx, "exampleAlertContactGroup", &arms.AlertContactGroupArgs{
-// 			AlertContactGroupName: pulumi.String("example_value"),
-// 			ContactIds: pulumi.StringArray{
-// 				exampleAlertContact.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAlertContact, err := arms.NewAlertContact(ctx, "exampleAlertContact", &arms.AlertContactArgs{
+//				AlertContactName:    pulumi.String("example_value"),
+//				DingRobotWebhookUrl: pulumi.String("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****"),
+//				Email:               pulumi.String("someone@example.com"),
+//				PhoneNum:            pulumi.String("1381111****"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = arms.NewAlertContactGroup(ctx, "exampleAlertContactGroup", &arms.AlertContactGroupArgs{
+//				AlertContactGroupName: pulumi.String("example_value"),
+//				ContactIds: pulumi.StringArray{
+//					exampleAlertContact.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // Application Real-Time Monitoring Service (ARMS) Alert Contact Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example <id>
+//
+//	$ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example <id>
+//
 // ```
 type AlertContactGroup struct {
 	pulumi.CustomResourceState
@@ -160,7 +165,7 @@ func (i *AlertContactGroup) ToAlertContactGroupOutputWithContext(ctx context.Con
 // AlertContactGroupArrayInput is an input type that accepts AlertContactGroupArray and AlertContactGroupArrayOutput values.
 // You can construct a concrete instance of `AlertContactGroupArrayInput` via:
 //
-//          AlertContactGroupArray{ AlertContactGroupArgs{...} }
+//	AlertContactGroupArray{ AlertContactGroupArgs{...} }
 type AlertContactGroupArrayInput interface {
 	pulumi.Input
 
@@ -185,7 +190,7 @@ func (i AlertContactGroupArray) ToAlertContactGroupArrayOutputWithContext(ctx co
 // AlertContactGroupMapInput is an input type that accepts AlertContactGroupMap and AlertContactGroupMapOutput values.
 // You can construct a concrete instance of `AlertContactGroupMapInput` via:
 //
-//          AlertContactGroupMap{ "key": AlertContactGroupArgs{...} }
+//	AlertContactGroupMap{ "key": AlertContactGroupArgs{...} }
 type AlertContactGroupMapInput interface {
 	pulumi.Input
 

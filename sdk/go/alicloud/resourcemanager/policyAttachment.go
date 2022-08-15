@@ -21,7 +21,9 @@ import (
 // Resource Manager Policy Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+//
+//	$ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+//
 // ```
 type PolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -164,7 +166,7 @@ func (i *PolicyAttachment) ToPolicyAttachmentOutputWithContext(ctx context.Conte
 // PolicyAttachmentArrayInput is an input type that accepts PolicyAttachmentArray and PolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `PolicyAttachmentArrayInput` via:
 //
-//          PolicyAttachmentArray{ PolicyAttachmentArgs{...} }
+//	PolicyAttachmentArray{ PolicyAttachmentArgs{...} }
 type PolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +191,7 @@ func (i PolicyAttachmentArray) ToPolicyAttachmentArrayOutputWithContext(ctx cont
 // PolicyAttachmentMapInput is an input type that accepts PolicyAttachmentMap and PolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `PolicyAttachmentMapInput` via:
 //
-//          PolicyAttachmentMap{ "key": PolicyAttachmentArgs{...} }
+//	PolicyAttachmentMap{ "key": PolicyAttachmentArgs{...} }
 type PolicyAttachmentMapInput interface {
 	pulumi.Input
 

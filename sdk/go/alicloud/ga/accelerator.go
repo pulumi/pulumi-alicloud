@@ -21,29 +21,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
-// 			AutoUseCoupon: pulumi.Bool(true),
-// 			Duration:      pulumi.Int(1),
-// 			Spec:          pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Duration:      pulumi.Int(1),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Ga Accelerator can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/accelerator:Accelerator example <accelerator_id>
+//
+//	$ pulumi import alicloud:ga/accelerator:Accelerator example <accelerator_id>
+//
 // ```
 type Accelerator struct {
 	pulumi.CustomResourceState
@@ -286,7 +291,7 @@ func (i *Accelerator) ToAcceleratorOutputWithContext(ctx context.Context) Accele
 // AcceleratorArrayInput is an input type that accepts AcceleratorArray and AcceleratorArrayOutput values.
 // You can construct a concrete instance of `AcceleratorArrayInput` via:
 //
-//          AcceleratorArray{ AcceleratorArgs{...} }
+//	AcceleratorArray{ AcceleratorArgs{...} }
 type AcceleratorArrayInput interface {
 	pulumi.Input
 
@@ -311,7 +316,7 @@ func (i AcceleratorArray) ToAcceleratorArrayOutputWithContext(ctx context.Contex
 // AcceleratorMapInput is an input type that accepts AcceleratorMap and AcceleratorMapOutput values.
 // You can construct a concrete instance of `AcceleratorMapInput` via:
 //
-//          AcceleratorMap{ "key": AcceleratorArgs{...} }
+//	AcceleratorMap{ "key": AcceleratorArgs{...} }
 type AcceleratorMapInput interface {
 	pulumi.Input
 

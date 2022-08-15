@@ -14,7 +14,8 @@ import (
 // Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
 //
 // > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
-//  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+//	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 //
 // ## Example Usage
 //
@@ -22,73 +23,76 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "PolarDB"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "polardbconnectionbasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
-// 			DbType:      pulumi.String("MySQL"),
-// 			DbVersion:   pulumi.String("8.0"),
-// 			PayType:     pulumi.String("PostPaid"),
-// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
-// 			VswitchId:   defaultSwitch.ID(),
-// 			Description: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEndpoints := polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
-// 			DbClusterId: defaultCluster.ID(),
-// 		}, nil)
-// 		_, err = polardb.NewEndpointAddress(ctx, "endpoint", &polardb.EndpointAddressArgs{
-// 			DbClusterId: defaultCluster.ID(),
-// 			DbEndpointId: defaultEndpoints.ApplyT(func(defaultEndpoints polardb.GetEndpointsResult) (string, error) {
-// 				return defaultEndpoints.Endpoints[0].DbEndpointId, nil
-// 			}).(pulumi.StringOutput),
-// 			ConnectionPrefix: pulumi.String("testpolardbconn"),
-// 			NetType:          pulumi.String("Public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "PolarDB"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "polardbconnectionbasic"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				PayType:     pulumi.String("PostPaid"),
+//				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+//				VswitchId:   defaultSwitch.ID(),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEndpoints := polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
+//				DbClusterId: defaultCluster.ID(),
+//			}, nil)
+//			_, err = polardb.NewEndpointAddress(ctx, "endpoint", &polardb.EndpointAddressArgs{
+//				DbClusterId: defaultCluster.ID(),
+//				DbEndpointId: defaultEndpoints.ApplyT(func(defaultEndpoints polardb.GetEndpointsResult) (string, error) {
+//					return defaultEndpoints.Endpoints[0].DbEndpointId, nil
+//				}).(pulumi.StringOutput),
+//				ConnectionPrefix: pulumi.String("testpolardbconn"),
+//				NetType:          pulumi.String("Public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -96,7 +100,9 @@ import (
 // PolarDB endpoint address can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+//
+//	$ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+//
 // ```
 type EndpointAddress struct {
 	pulumi.CustomResourceState
@@ -238,7 +244,7 @@ func (i *EndpointAddress) ToEndpointAddressOutputWithContext(ctx context.Context
 // EndpointAddressArrayInput is an input type that accepts EndpointAddressArray and EndpointAddressArrayOutput values.
 // You can construct a concrete instance of `EndpointAddressArrayInput` via:
 //
-//          EndpointAddressArray{ EndpointAddressArgs{...} }
+//	EndpointAddressArray{ EndpointAddressArgs{...} }
 type EndpointAddressArrayInput interface {
 	pulumi.Input
 
@@ -263,7 +269,7 @@ func (i EndpointAddressArray) ToEndpointAddressArrayOutputWithContext(ctx contex
 // EndpointAddressMapInput is an input type that accepts EndpointAddressMap and EndpointAddressMapOutput values.
 // You can construct a concrete instance of `EndpointAddressMapInput` via:
 //
-//          EndpointAddressMap{ "key": EndpointAddressArgs{...} }
+//	EndpointAddressMap{ "key": EndpointAddressArgs{...} }
 type EndpointAddressMapInput interface {
 	pulumi.Input
 

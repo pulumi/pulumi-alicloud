@@ -150,7 +150,7 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
      */
     public readonly spotAllocationStrategy!: pulumi.Output<string | undefined>;
     /**
-     * The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+     * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      */
     public readonly spotInstanceInterruptionBehavior!: pulumi.Output<string | undefined>;
     /**
@@ -305,7 +305,7 @@ export interface AutoProvisioningGroupState {
      */
     spotAllocationStrategy?: pulumi.Input<string>;
     /**
-     * The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+     * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      */
     spotInstanceInterruptionBehavior?: pulumi.Input<string>;
     /**
@@ -391,7 +391,7 @@ export interface AutoProvisioningGroupArgs {
      */
     spotAllocationStrategy?: pulumi.Input<string>;
     /**
-     * The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+     * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      */
     spotInstanceInterruptionBehavior?: pulumi.Input<string>;
     /**

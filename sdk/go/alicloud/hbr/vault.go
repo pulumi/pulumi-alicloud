@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := hbr.NewVault(ctx, "example", &hbr.VaultArgs{
-// 			VaultName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hbr.NewVault(ctx, "example", &hbr.VaultArgs{
+//				VaultName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // HBR Vault can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/vault:Vault example <id>
+//
+//	$ pulumi import alicloud:hbr/vault:Vault example <id>
+//
 // ```
 type Vault struct {
 	pulumi.CustomResourceState
@@ -224,7 +229,7 @@ func (i *Vault) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 // VaultArrayInput is an input type that accepts VaultArray and VaultArrayOutput values.
 // You can construct a concrete instance of `VaultArrayInput` via:
 //
-//          VaultArray{ VaultArgs{...} }
+//	VaultArray{ VaultArgs{...} }
 type VaultArrayInput interface {
 	pulumi.Input
 
@@ -249,7 +254,7 @@ func (i VaultArray) ToVaultArrayOutputWithContext(ctx context.Context) VaultArra
 // VaultMapInput is an input type that accepts VaultMap and VaultMapOutput values.
 // You can construct a concrete instance of `VaultMapInput` via:
 //
-//          VaultMap{ "key": VaultArgs{...} }
+//	VaultMap{ "key": VaultArgs{...} }
 type VaultMapInput interface {
 	pulumi.Input
 

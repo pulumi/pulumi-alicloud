@@ -19,29 +19,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewSamlProvider(ctx, "example", &ram.SamlProviderArgs{
-// 			Description:                 pulumi.String("For Terraform Test"),
-// 			EncodedsamlMetadataDocument: pulumi.String("your encodedsaml metadata document"),
-// 			SamlProviderName:            pulumi.String("tf-testAcc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewSamlProvider(ctx, "example", &ram.SamlProviderArgs{
+//				Description:                 pulumi.String("For Terraform Test"),
+//				EncodedsamlMetadataDocument: pulumi.String("your encodedsaml metadata document"),
+//				SamlProviderName:            pulumi.String("tf-testAcc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // RAM SAML Provider can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+//
+//	$ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+//
 // ```
 type SamlProvider struct {
 	pulumi.CustomResourceState
@@ -172,7 +177,7 @@ func (i *SamlProvider) ToSamlProviderOutputWithContext(ctx context.Context) Saml
 // SamlProviderArrayInput is an input type that accepts SamlProviderArray and SamlProviderArrayOutput values.
 // You can construct a concrete instance of `SamlProviderArrayInput` via:
 //
-//          SamlProviderArray{ SamlProviderArgs{...} }
+//	SamlProviderArray{ SamlProviderArgs{...} }
 type SamlProviderArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +202,7 @@ func (i SamlProviderArray) ToSamlProviderArrayOutputWithContext(ctx context.Cont
 // SamlProviderMapInput is an input type that accepts SamlProviderMap and SamlProviderMapOutput values.
 // You can construct a concrete instance of `SamlProviderMapInput` via:
 //
-//          SamlProviderMap{ "key": SamlProviderArgs{...} }
+//	SamlProviderMap{ "key": SamlProviderArgs{...} }
 type SamlProviderMapInput interface {
 	pulumi.Input
 

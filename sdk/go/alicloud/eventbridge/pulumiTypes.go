@@ -24,7 +24,7 @@ type RuleTarget struct {
 // RuleTargetInput is an input type that accepts RuleTargetArgs and RuleTargetOutput values.
 // You can construct a concrete instance of `RuleTargetInput` via:
 //
-//          RuleTargetArgs{...}
+//	RuleTargetArgs{...}
 type RuleTargetInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i RuleTargetArgs) ToRuleTargetOutputWithContext(ctx context.Context) RuleT
 // RuleTargetArrayInput is an input type that accepts RuleTargetArray and RuleTargetArrayOutput values.
 // You can construct a concrete instance of `RuleTargetArrayInput` via:
 //
-//          RuleTargetArray{ RuleTargetArgs{...} }
+//	RuleTargetArray{ RuleTargetArgs{...} }
 type RuleTargetArrayInput interface {
 	pulumi.Input
 
@@ -148,7 +148,7 @@ type RuleTargetParamList struct {
 // RuleTargetParamListInput is an input type that accepts RuleTargetParamListArgs and RuleTargetParamListOutput values.
 // You can construct a concrete instance of `RuleTargetParamListInput` via:
 //
-//          RuleTargetParamListArgs{...}
+//	RuleTargetParamListArgs{...}
 type RuleTargetParamListInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ func (i RuleTargetParamListArgs) ToRuleTargetParamListOutputWithContext(ctx cont
 // RuleTargetParamListArrayInput is an input type that accepts RuleTargetParamListArray and RuleTargetParamListArrayOutput values.
 // You can construct a concrete instance of `RuleTargetParamListArrayInput` via:
 //
-//          RuleTargetParamListArray{ RuleTargetParamListArgs{...} }
+//	RuleTargetParamListArray{ RuleTargetParamListArgs{...} }
 type RuleTargetParamListArrayInput interface {
 	pulumi.Input
 
@@ -272,7 +272,7 @@ type GetEventBusesBus struct {
 // GetEventBusesBusInput is an input type that accepts GetEventBusesBusArgs and GetEventBusesBusOutput values.
 // You can construct a concrete instance of `GetEventBusesBusInput` via:
 //
-//          GetEventBusesBusArgs{...}
+//	GetEventBusesBusArgs{...}
 type GetEventBusesBusInput interface {
 	pulumi.Input
 
@@ -306,7 +306,7 @@ func (i GetEventBusesBusArgs) ToGetEventBusesBusOutputWithContext(ctx context.Co
 // GetEventBusesBusArrayInput is an input type that accepts GetEventBusesBusArray and GetEventBusesBusArrayOutput values.
 // You can construct a concrete instance of `GetEventBusesBusArrayInput` via:
 //
-//          GetEventBusesBusArray{ GetEventBusesBusArgs{...} }
+//	GetEventBusesBusArray{ GetEventBusesBusArgs{...} }
 type GetEventBusesBusArrayInput interface {
 	pulumi.Input
 
@@ -401,7 +401,7 @@ type GetEventSourcesSource struct {
 // GetEventSourcesSourceInput is an input type that accepts GetEventSourcesSourceArgs and GetEventSourcesSourceOutput values.
 // You can construct a concrete instance of `GetEventSourcesSourceInput` via:
 //
-//          GetEventSourcesSourceArgs{...}
+//	GetEventSourcesSourceArgs{...}
 type GetEventSourcesSourceInput interface {
 	pulumi.Input
 
@@ -440,7 +440,7 @@ func (i GetEventSourcesSourceArgs) ToGetEventSourcesSourceOutputWithContext(ctx 
 // GetEventSourcesSourceArrayInput is an input type that accepts GetEventSourcesSourceArray and GetEventSourcesSourceArrayOutput values.
 // You can construct a concrete instance of `GetEventSourcesSourceArrayInput` via:
 //
-//          GetEventSourcesSourceArray{ GetEventSourcesSourceArgs{...} }
+//	GetEventSourcesSourceArray{ GetEventSourcesSourceArgs{...} }
 type GetEventSourcesSourceArrayInput interface {
 	pulumi.Input
 
@@ -550,7 +550,7 @@ type GetRulesRule struct {
 // GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
 // You can construct a concrete instance of `GetRulesRuleInput` via:
 //
-//          GetRulesRuleArgs{...}
+//	GetRulesRuleArgs{...}
 type GetRulesRuleInput interface {
 	pulumi.Input
 
@@ -590,7 +590,7 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
-//          GetRulesRuleArray{ GetRulesRuleArgs{...} }
+//	GetRulesRuleArray{ GetRulesRuleArgs{...} }
 type GetRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -693,7 +693,7 @@ type GetRulesRuleTarget struct {
 // GetRulesRuleTargetInput is an input type that accepts GetRulesRuleTargetArgs and GetRulesRuleTargetOutput values.
 // You can construct a concrete instance of `GetRulesRuleTargetInput` via:
 //
-//          GetRulesRuleTargetArgs{...}
+//	GetRulesRuleTargetArgs{...}
 type GetRulesRuleTargetInput interface {
 	pulumi.Input
 
@@ -725,7 +725,7 @@ func (i GetRulesRuleTargetArgs) ToGetRulesRuleTargetOutputWithContext(ctx contex
 // GetRulesRuleTargetArrayInput is an input type that accepts GetRulesRuleTargetArray and GetRulesRuleTargetArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleTargetArrayInput` via:
 //
-//          GetRulesRuleTargetArray{ GetRulesRuleTargetArgs{...} }
+//	GetRulesRuleTargetArray{ GetRulesRuleTargetArgs{...} }
 type GetRulesRuleTargetArrayInput interface {
 	pulumi.Input
 

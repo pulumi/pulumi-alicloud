@@ -20,7 +20,9 @@ import (
 // CEN transit router route table propagation can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default tr-********:tr-attach-********
+//
+//	$ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default tr-********:tr-attach-********
+//
 // ```
 type TransitRouterRouteTablePropagation struct {
 	pulumi.CustomResourceState
@@ -140,7 +142,7 @@ func (i *TransitRouterRouteTablePropagation) ToTransitRouterRouteTablePropagatio
 // TransitRouterRouteTablePropagationArrayInput is an input type that accepts TransitRouterRouteTablePropagationArray and TransitRouterRouteTablePropagationArrayOutput values.
 // You can construct a concrete instance of `TransitRouterRouteTablePropagationArrayInput` via:
 //
-//          TransitRouterRouteTablePropagationArray{ TransitRouterRouteTablePropagationArgs{...} }
+//	TransitRouterRouteTablePropagationArray{ TransitRouterRouteTablePropagationArgs{...} }
 type TransitRouterRouteTablePropagationArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +167,7 @@ func (i TransitRouterRouteTablePropagationArray) ToTransitRouterRouteTablePropag
 // TransitRouterRouteTablePropagationMapInput is an input type that accepts TransitRouterRouteTablePropagationMap and TransitRouterRouteTablePropagationMapOutput values.
 // You can construct a concrete instance of `TransitRouterRouteTablePropagationMapInput` via:
 //
-//          TransitRouterRouteTablePropagationMap{ "key": TransitRouterRouteTablePropagationArgs{...} }
+//	TransitRouterRouteTablePropagationMap{ "key": TransitRouterRouteTablePropagationArgs{...} }
 type TransitRouterRouteTablePropagationMapInput interface {
 	pulumi.Input
 

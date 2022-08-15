@@ -22,7 +22,9 @@ import (
 // Service Mesh User Permission can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
+//
+//	$ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
+//
 // ```
 type UserPermission struct {
 	pulumi.CustomResourceState
@@ -123,7 +125,7 @@ func (i *UserPermission) ToUserPermissionOutputWithContext(ctx context.Context) 
 // UserPermissionArrayInput is an input type that accepts UserPermissionArray and UserPermissionArrayOutput values.
 // You can construct a concrete instance of `UserPermissionArrayInput` via:
 //
-//          UserPermissionArray{ UserPermissionArgs{...} }
+//	UserPermissionArray{ UserPermissionArgs{...} }
 type UserPermissionArrayInput interface {
 	pulumi.Input
 
@@ -148,7 +150,7 @@ func (i UserPermissionArray) ToUserPermissionArrayOutputWithContext(ctx context.
 // UserPermissionMapInput is an input type that accepts UserPermissionMap and UserPermissionMapOutput values.
 // You can construct a concrete instance of `UserPermissionMapInput` via:
 //
-//          UserPermissionMap{ "key": UserPermissionArgs{...} }
+//	UserPermissionMap{ "key": UserPermissionArgs{...} }
 type UserPermissionMapInput interface {
 	pulumi.Input
 
